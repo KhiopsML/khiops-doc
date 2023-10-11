@@ -1,0 +1,141 @@
+site_name: Khiops
+site_url: https://khiops.org/
+
+# Repository
+repo_name: KhiopsML/Khiops
+repo_url: https://github.com/KhiopsML/khiops
+
+# Copyright
+copyright: Copyright &copy; 2023 Orange S.A. 
+
+theme:
+  name: material
+  logo: assets/images/new_khiops_logo.webp
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    primary: black
+  favicon: assets/images/new_khiops_logo.webp
+  custom_dir: overrides
+  font: 
+      false
+  features:
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.path
+    - navigation.tabs.sticky
+    - navigation.sections
+    - content.code.copy
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/KhiopsML/khiops
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+  analytics:
+    provider: google
+    property: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="https://msurvey.orange.com/khiopsdoc" target="_blank" rel="noopener">feedback form</a>.
+
+# Add extra Orange css
+extra_css:
+  - assets/stylesheets/orange-helvetica.min.css
+  - assets/stylesheets/boosted.min.css
+  - assets/stylesheets/orange.css
+  - assets/stylesheets/main.css
+
+
+# Add JS for Material plugins
+extra_javascript:
+  - assets/javascripts/mathjax.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - mkdocs-jupyter
+  - blog
+
+nav:
+    - Home: index.md
+    - Getting Started:
+      - Installation: setup/installation.md
+      - Quickstart: setup/quickstart.md
+      - Scikit-learn API: https://khiops.tech.orange/html/pykhiops-doc/sklearn/generated/pykhiops.sklearn.estimators.html
+      - Core API: https://khiops.tech.orange/html/pykhiops-doc/core/index.html
+      #- Variable Types: learn/types.md
+      - Technical benefits: 
+        - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb 
+        - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
+        - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
+        #- Out of core: advanced/Notebooks/outofcore.ipynb
+      - Basic Tutorials:
+        - Train, Evaluate et Deploy a classifier: advanced/Notebooks/Sklearn Basics 1 - Train, Evaluate and Deploy a Classifier.ipynb
+        - Train a Classifier on a Star Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 2 - Train a Classifier on a Star Multi-Table Dataset.ipynb
+        - Train a Classifier on a Snowflake Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 3 - Train a Classifier on a Snowflake Multi-Table Dataset.ipynb
+     # - Advanced use cases:
+     #   - GO / No Go: advanced/gonogo.md
+      #  - Time Series: advanced/timeseries.md
+      #  - NLP: advanced/nlp.md
+      #  - Anomaly detection: advanced/anomaly.md 
+      #  - Drift  detection: advanced/drift.md
+      #  - Model calibration: advanced/calibration.md 
+     #   - Variable importance with Shapley:  advanced/shapley.md 
+        #- Advanced notebook examples: advanced/notebooks.md 
+      - Standalone Applications: 
+        - setup/nocode.md
+        - Khiops Visualization: setup/visualization.md
+    - Understanding: 
+        - What makes Khiops different: learn/understand.md
+        - An original formalism: learn/modl.md
+        - Optimal Encoding: learn/preprocessing.md
+        - Auto Feature Engineering: learn/autofeature_engineering.md
+        - Parcimonious Training: learn/learning_models.md
+        - Auto Hardware Adaptation: learn/hardware_adaptation.md
+        - Bibliography: references.md
+    - Blog:
+      - blog/index.md
+   # - To Do List: todo.md
+
+

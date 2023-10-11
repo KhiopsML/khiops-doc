@@ -1,0 +1,186 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+
+<!-- Main site Entry button descriptions -->
+<section class="md-container container">
+  <div class="row my-5">
+    <div class="col">
+      <p class="mb-2">The Orange Open Source AutoML library</p>
+      <div class="mb-2 d-flex align-items-end">
+        <h1 class="display-2 mb-0 d-inline-block">
+          Redefining machine learning on tabular data
+        </h1>
+      </div>
+      <p class="mb-2">
+        <!--Experience hyperparameter-free machine learning with automated feature engineering and encoding,
+         even more extraordinary with relational data! 
+        Eliminating tedious tweaks allows focusing on data and model explainability.-->
+
+        Embark on a fully automated machine learning experience free of hyperparameters.
+        Whether you're working with relational or regular tabular data, 
+        Khiops eliminates the tedious tweaks (including feature engineering and variable encoding),
+        allowing focus on data and model explainability.
+      </p>
+      <a href="setup/installation/">
+        <button class="btn btn-primary">
+          Get Started
+        </button>
+      </a>
+      
+    </div>
+    <div class="col bg-image" style="background-image: url(assets/images/orange-data-client.webp);"></div>
+  </div>
+</section>
+
+<div class="bg-gray-900 text-white py-5">
+  <div id="service" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2>What is it about ?</h2>
+          <p>Khiops makes machine learning on tabular data easier, faster, and more intuitive than ever before, yet extremely sophisticated algorithms. 
+            This open source project offers an ultra-efficient and secure Auto ML pipeline, within everyone's reach! </p>
+          <p>A new lean Machine Learning experience <strong>to enhance the power of Data Scientists.</strong> <br />
+            </p>
+          <div class="justify-content-center d-flex"> <hr class="separator" /></div> 
+        </div>
+      </div>
+      <div class="row justify-content-md-center align-items-center"> 
+        <div class="col-12 col-md-6 col-lg-5">
+          <picture>
+            <source srcset="/assets/images/pyramid.webp" type="image/webp">
+            <img style="width: 100%;padding: 10%;" src="/assets/images/pyramid.png" alt="unique-formalism" loading="lazy"> 
+          </picture>
+        </div> 
+        <div class="col-12 col-md-12 col-lg-7 mt-4">
+          <p><strong>Khiops stands out for its singular formalism that offers significant advantages:</strong>
+            </p>
+            <div class="service-box align-items-center">
+              <img class="service-icon" src="assets/images/automation_circular.webp" loading="lazy";></img>
+              <div class="service-text pt-2">
+                <p class="Small"><strong>Automation:</strong> it automates ML pipeline tasks like data preparation, cleaning, variable selection, 
+                  and aggregate extraction from relational data. 
+                  Its hyper-parameter-free approach prevents overfitting.</p>
+              </div> 
+            </div>
+            <div class="service-box align-items-center">
+              <img class="service-icon" src="assets/images/interpretable_circular.webp" loading="lazy";></img>
+              <div class="service-text pt-2">
+                <p class="Small"><strong>Interpretability:</strong> it is interpretable by design thanks to optimal encoding (grouping and discretization), 
+                  explicit aggregates from relational data, and parsimonious training selecting a few variables.</p>
+              </div>
+            </div>
+            <div class="service-box align-items-center">
+              <img class="service-icon" src="assets/images/speed_circular.webp" loading="lazy";></img>
+              <div class="service-text pt-2">
+                <p class="Small"><strong>Ultra scalable:</strong> The approach is hyperparameter-free, which avoids costly cross-validation and grid search. 
+                  In addition, Khiops' C++ code is highly optimized and implements an efficient strategy for hardware adaptation. </p>
+              </div>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <a href="learn/understand/">
+          <button class="btn btn-primary">
+            Learn More
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!--SERVICE END-->
+</div>
+
+<div class="bg-supporting-yellow py-4">
+  <div class="container text-center">
+    <h2 class="display-4 m-0">
+      Challenge your data, we take care of the rest.
+    </h2>
+  </div>
+</div>
+<div class="container pt-5">
+  <div class="row pb-5 clearfix align-items-center justify-content-center" style="flex-direction: row-reverse;">
+    <div class="col-12 col-md-6 mb-3 ms-md-3">
+      <h3>Auto ML as never seen before </h3>
+      <p>
+        Khiops is based on a breakthrough mathematical formalism which enables end-to-end ML pipeline 
+        without over-fitting or hyper-parameters adjustment. 
+        No more time-consuming data preparation or manual feature engineering, even with relational data. 
+        The models learned are accurate and parsimonious, making them easy to interpret.
+      </p>
+      <p> <a class="link-chevron" href="learn/understand/">What makes Khiops different</a> </p>
+      <p> <a class="link-chevron" href="learn/modl/">Understand the original formalism</a> </p>
+    </div>
+    <div class="col-10 col-md-5 mb-3 ms-md-3">
+      <picture>
+        <source srcset="assets/images/AutoML.webp" type="image/webp">
+        <img src="assets/images/AutoML.png" class="w-100" alt="automl-pipeline" loading="lazy">
+      </picture>
+    </div>
+  </div>
+  <div class="row pb-5 clearfix align-items-center justify-content-center">
+    <div class="col-12 col-md-6 mb-3 ms-md-3">
+      <h3>Khiops.fit(X, y)</h3>
+      <p>
+        Khiops is a low-code Python library featuring an efficient Auto ML pipeline in a simple .fit() function.
+        Sophisticated algorithms have never been so easy to use, thanks to its sklearn-like implementation. 
+        Khiops allows anyone to practice Machine Learning safely. 
+        You can analyze your models and better understand your data with minimal coding required.
+      </p>
+      <p> <a class="link-chevron" href="setup/installation/">Getting Started</a> </p>
+      <p> <a class="link-chevron" href="setup/simple_notebooks/">Browse the Notebook examples</a> </p>
+    </div>
+    <div class="col-10 col-md-5 mb-3 ms-md-3">
+      <picture>
+        <source srcset="assets/images/notebook.webp" type="image/webp">
+        <img src="assets/images/notebook.png" class="w-100" alt="..." loading="lazy">
+      </picture>
+    </div>
+  </div>
+  <div class="row pb-5 clearfix align-items-center justify-content-center" style="flex-direction: row-reverse;">
+    <div class="col-12 col-md-6 mb-3 ms-md-3">
+      <h3>No-code visualization, and more</h3>
+      <p>
+        The library has an interactive visualization tool that enables access to comprehensive preparation and modelization results directly from a notebook or a dedicated app. 
+        As a result, you won't have to write specific visualization codes to showcase your models. 
+        Additionally, Khiops offers a No-code version that allows you to use all the learning algorithms without needing to write any Python codes.
+      </p>
+      <p> <a class="link-chevron" href="learn/reporting/">Discover the visualization</a> </p>
+      <p> <a class="link-chevron" href="lab/">Start with our No Code app</a> </p>
+    </div>
+    <div class="col-10 col-md-5 mb-3 ms-md-3">
+      <picture>
+        <source srcset="assets/images/visu.webp" type="image/webp">
+        <img src="assets/images/visu.png" class="w-100" alt="visualization" loading="lazy">
+      </picture>
+    </div>
+
+  </div>
+  <div class="row pb-5 clearfix align-items-center justify-content-center">
+      <div class="col-12 col-md-6 mb-3 ms-md-3">
+      <h3>Ready for smooth production</h3>
+      <p>
+        Khiops is a highly durable system designed for industrial usage, ensuring optimal functionality. 
+        Our algorithm processing adjusts to the hardware resources available, allowing for seamless transitions between out-of-core and distributed calculations.
+        Khiops adapts calculation time based on the size of your data. 
+        By using Khiops, you can reduce your expenses for cloud providers.
+      </p>
+      <p> <a class="link-chevron" href="learn/hardware_adaptation/">Learn more about hardware adaptation and out of core</a> </p>
+    </div>
+    <div class="col-10 col-md-5 mb-3 ms-md-3">
+      <picture>
+        <source srcset="assets/images/bench_hardware_short.webp" type="image/webp">
+        <img src="assets/images/bench_hardware_short.png" class="w-100" alt="..." loading="lazy">
+      </picture>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+{% block content %}{% endblock %}

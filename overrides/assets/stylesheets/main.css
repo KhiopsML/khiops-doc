@@ -1,0 +1,138 @@
+html,
+body {
+  -webkit-font-smoothing: antialiased !important;
+}
+#banner {
+  background: url("../img/banner-bg-dark.png") no-repeat;
+  background-size: cover;
+  min-height: 500px;
+}
+.section-padding {
+  padding: 40px 0px;
+}
+
+.separator {
+  width: 80%;
+  border-top: 1px solid #e5e5e5;
+}
+
+.service-box {
+  margin: 0 0 30px;
+  display: flex;
+}
+.service-box .service-icon {
+  min-width: 75px;
+  height: 75px;
+  max-width: 100px;
+  border-radius: 50px;
+  overflow: hidden;
+  line-height: 75px;
+  text-align: center;
+  color: #f16e00;
+  margin: 0px 10px 0px 10px;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.service-box .service-text h3 {
+  margin: 0 0 10px 0;
+  padding: 0 0 0 0;
+  font-size: 1.125rem;
+  line-height: 24px;
+  color: #333333;
+  font-weight: bold;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+.service-text{
+  font-size: 1rem;
+}
+
+.page-title {
+  /* margin-bottom: 40px; */
+  /* font-size: 1.2rem; */
+}
+
+.community-box {
+  width: 100%;
+  margin: 0 0 30px;
+  display: inline-block;
+  text-align: center;
+}
+
+.community-icon {
+  font-size: 5rem;
+  height: 100px;
+}
+
+.community-box.discord .community-icon {
+  height: 88px;
+  margin: 6px 0;
+}
+
+.community-text {
+  padding: 20px 0;
+}
+
+.community-text h3 {
+  font-weight: bold;
+  transition: all 0.5s ease 0s;
+}
+
+footer .mention {
+  font-weight: normal;
+}
+footer .mention a {
+  color: #fff;
+  font-weight: 700;
+}
+footer .mention a:hover {
+  color: #f16e00;
+}
+
+.bg-image {
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: contain;
+}
+
+.bg-image:hover {
+  transform: scale(1.025);
+}
+
+.bg-gray-900 {
+  background-color: #333333FF;
+}
+
+.bg-supporting-yellow {
+  background-color: rgb(255, 210, 0);
+}
+
+.premium {
+  display: inline-block;
+  padding-bottom: 0px;
+  margin-bottom: 6px !important;
+  vertical-align: bottom;
+}
+
+.bg-image-center {
+  background-position: center !important;
+}
+
+.ratio-50 {
+  padding-bottom: 50%;
+}
+
+.section-padding {
+  padding: 40px 0px;
+}
+
+
+.kaas-ui-landing-avatar:before {
+  content: "\e944";
+}
+
