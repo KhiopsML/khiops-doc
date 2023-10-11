@@ -194,6 +194,75 @@ The user specifies a number of candidate aggregates one wants to generate, and t
 
 
 
-## One more thing ...
+## Decisions Trees
 
-<span style="color:red">**TODO : faire une section courte sur les arbres**</span> 
+Decision Tree Feature Engineering corresponds to the last **(A')** step of the Auto-ML pipline implemented by Khiops. It is an optional pre-processing step to build decisions trees from native variables and aggregates. Khiops is able to automatically build parameter free decisions trees from native variables and informatives agregates. 
+
+<img style="max-width:800px;width: -webkit-fill-available;" src="/assets/images/auto-ml-pipeline-Ab.png"></img>
+
+### Definition 
+
+A decision tree is a classification model which aims at predicting a categorical class variable from a set of numerical or categorical input variables. One advantage of decision trees is that they provide understandable models, based on decision rules. Khiops exploit a parameter-free Bayesian approach to build decision trees. This approch consist on an analytic formula for the evaluation of the posterior probability of a decision tree given the data. We thus transform the problem into an sampling problem in the space of decision tree models. Khiops build random informatives Trees.
+
+[MODLTREE]: https://link.springer.com/chapter/10.1007/978-3-642-00580-0_2
+
+
+**Input:**
+
+Flate-table data consists of: natives variables and agregates.
+
+**Output:** 
+
+Informative Decision tree
+
+
+### Model's parameters
+
+
+A MODL binary decision tree model is defined by its structure, the distribution of the instances in this structure and the distribution of output values in the leaves. The structure of the decision tree model consists of the set of internal nodes (not leave node), the set of leaves and the relations between these nodes. The distribution of the instances in this structure is defined by the partition of the segmentation variable in each internal node and by the distribution of the classes in each leaf. A decision tree model T is thus defined by:
+<img style="max-width:960px;width: -webkit-fill-available;" src="/assets/images/decision-tree.png"></img>
+
+- the subset of variables $\mathcal{K_T}$ used by model T , that is the number of selected variables $K_T$ and the choice of the $K_T$ variables among input set of $K$ variables,
+- the number of child nodes $I_s$,
+  - if Is = 0 then the node is an internal node,
+  - if Is = 1 then the node is a leaf,
+- the distribution of the instances in each internal node s:
+   - the segmentation variable $X_s$,
+   - the distribution of the instances on this parts (child nodes) $\{ N_{s1.},N_{s2.}\}$
+- the distribution of the classes in each leaf l: $\{N_{l.j}
+\}_{1≤j≤J}$
+
+#### Optimization Criterion
+
+!!! success "Key idea #1"
+    **The MODL decision tree criterion simply result from the expansion of the Bayes' formula.** 
+
+As MODL discretisation the objective of the optimization criterion is to select the most probable model given the training data, denoted $T$, by maximizing the probability $P(T|d)=P(T).P(d|T)/p(d)$.  
+The optimization criterion used to select the most probable supervised decision tree model can easily be interpreted: 
+
+$$-\log(P(T).P(d|T)) = \overbrace{\underbrace{ \vphantom{\sum\limits_{k=1}^K}  \log(K+1) +\log \binom{K+K_T-1}{K_T-1} }_{\textbf{level 1}} + \underbrace{ \sum_{I_s=0,X_s Num. } \log (2K_T (N_{s.}+1))}_{\textbf{level 2}}+\underbrace{ \sum_{I_s=1, X_s Cat.} \log (2K_TB(G_{X_s},2))}_{\textbf{level 3}} + \underbrace{\sum\limits_{l} \log 2+\log \binom{N_l + J -1}{J-1}}_{\textbf{level 4}}}^{\textbf{Prior}} 
++ \overbrace{\sum\limits_{l} \log \frac{N_l!}{N_{l1}!N_{l2}! \dots N_{lJ}!}}^{\textbf{Likelihood}} $$
+
+The first four terms corespond to the **prior** model distribution $-\log(P(T))$, which is hierarchical and uniform at each level of this hierarchy.
+Here is the meaning of each term:
+
+- **level 1**: probability of $K_T$ and probability to select $K_T$ variables. All the values $K_T \in [0, K]$ being equiprobable with a probability equals to $1/(K+1)$, with $\binom{K + K_T-1}{K_T-1}$ the number of subset of $K_T$ variables; 
+- **level 2**: probality of node $s$ to split into two nodes according $X_s$ a numerical variable;
+- **level 3**: probality of node $s$ to split into two nodes according $X_s$ a categorical variable, $B(G_{X_s},2)$ is the number of divisions of the $G_{X_s}$ values into 2 groups;
+- **level 4**: given the previous parameters of split, probability of observing particular sub-effects by class and by intervals in leave node $l$, with $\binom{N_l + J -1}{J-1}$ the number of possible sub-effects.   
+
+The last term represents the **Likelihood** $-\log(P(d|T))$ which enumerates the training sets that can be generated such that they are correctly described by the model. It is calculated by counting the permutations of the training examples within each leave (numerator) and the permutations of the labels (denominator). Note that the groups of examples located in each leave are considered to be independent (i.e. the sum corresponds to a probability product), which is the case when the training examples are i.i.d (independent and identically distributed), as always in Machine Learning.
+
+
+### Ramdom trees generation 
+
+
+
+[information_theory]: https://en.wikipedia.org/wiki/Information_theory
+[discretization]: preprocessing.md#discretization
+[grouping]: preprocessing.md#grouping
+[publications]: ../references.md#publications
+The purpose of this section is to introduce the intuitions of the Ramdom trees generation, for more details, you can refer to [scientific publications][publications].
+
+Khiops doesn't search to build best tree according the decision tree criterion. The induction of an optimal decision tree from a data set is NP-hard. The exhaustive search algorithm is then excluded. We use criterion to generate random informative decision trees. 
+To do this, we exploit a pre-pruning algorithm on a ramdom subsample of $K_T$ variables ($K_T=\sqrt K$). The pre-pruning algorithm starts with the root node and searches for all the partitions from the $K_T$ variables that improve the criterion. We choose ramdomly a partition and The leaf is splited. For each leaf, the partition is performed according to the univariate MODL discretization or grouping methods, then the global cost of the tree is updated by accounting for this new partition. The algorithm continues to split the leaves until there are no more partitions that improve the tree criterion. 
