@@ -40,39 +40,22 @@ docker pull khiopsml/khiops-notebook
 
 **Try it without effort using Binder**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/KhiopsML/khiops-notebook/main/)
 
+!!! warning "Our image is not yet build for ARM architecture"
+    Running it will be extremly slow on :simple-raspberrypi: Raspberry or :material-apple: Apple Silicon.
 
-## Getting Khiops with docker { #with-docker  }
 
-The official [Docker image] provides all the necessary to start using Khiops, including notebooks samples. Open up a terminal
-and pull the image with:
+## Install Khiops using pip <small>  Advanced </small> {#with-pip data-toc-label="Install Khiops via pip"}
 
-  [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+Before proceeding with the `pip` installation, there are essential prerequisites:
 
+- **Windows Users**: Install Khiops on your machine using the desktop application.
+- **Linux Users**: Ensure you've installed the `khiops-core` package. This will set up an appropriate version of `MPI` on your system.
+
+Instructions for installation are available [here][nocode]. This method is not yet available for :material-apple: Mac users. 
+
+Once the prerequisites are met, you can install Khiops using the following command:
+
+```sh
+pip install 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0a4'
 ```
-docker pull dockerfactory.tech.orange/khiops/docker/khiops-ubuntu:20.04-0.6.1
-```
-
-
-??? question "How to add plugins to the Docker image?"
-
-    Khiops only bundles selected plugins in order to keep the size
-    of the official image small. If the plugin you want to use is not included, 
-    create a new `Dockerfile` and extend the official Docker image:
-
-    ``` Dockerfile
-    FROM dockerfactory.tech.orange/khiops/docker/khiops-ubuntu-slim:20.04-0.6.1
-    ADD my_code_and_packages /where_I_want_them
-    # Write my_own_entrypoint.sh, calling install_license.sh if needed
-    ADD my_own_entrypoint.sh
-    RUN chmod +x my_own_entrypoint.sh
-    ENTRYPOINT ["/tini", "--", "/my_own_entrypoint.sh"]
-    ```
-
-    Next, you can build the image with the following command:
-
-    ```
-    docker build -t dockerfactory.tech.orange/khiops/docker/khiops-ubuntu:20.04-0.6.1 .
-    ```
-
-    The new image can be used exactly like the official image.
 
