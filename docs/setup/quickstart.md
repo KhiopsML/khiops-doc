@@ -12,7 +12,7 @@ To find out more, read the page ["What makes Khiops different"][what_makes_khiop
 
 ## Auto-ML as simple as a regular classifier 
 
-The Khiops Auto-ML pipe automates supervised Machine Learning, which is used to classify input examples into predefined groups, each identified by a label. Common applications include predicting customer chrun (Yes or No), the severity of a failure (Minor, Major, Critical) etc. 
+The Khiops Auto-ML pipe automates supervised Machine Learning, which is used to classify input examples into predefined groups, each identified by a label. Common applications include predicting customer churn (Yes or No), the severity of a failure (Minor, Major, Critical) etc. 
 
 Featuring [unique learning algorithms][original_formalism], Khiops automates many steps seamlessly for the user. For example, there's no longer any need to prepare training data, as [missing values, labeling noise, outliers and unbalanced classes][no_data_preparation] are handled for you. [Encoding categorical variables][encoding] is also no longer a problem. 
 
@@ -38,6 +38,7 @@ The following is a minimal code sample, and more detailed [tutorials][tuto] are 
 
 ```python
 # Import of the used packages.
+import pandas as pd
 
 from khiops.sklearn import KhiopsClassifier
 from sklearn.model_selection import train_test_split
@@ -48,7 +49,7 @@ from sklearn.model_selection import train_test_split
 
 ```python
 # Loading and reading the data file into a Pandas DataFrame.
-url = "https://raw.githubusercontent.com/KhiopsML/khiops-samples/1686433ec63549a741cec49604d7004bec6e1eeb/Adult/Adult.txt"
+url = "https://raw.githubusercontent.com/KhiopsML/khiops-samples/main/Adult/Adult.txt"
 df = pd.read_csv(url, delimiter='\t',index_col="Label")
 ```
 
@@ -89,7 +90,7 @@ pred = clf.predict(X_test, y_test)
 
 ## Auto Feature Engineering as simple as writting a dictionnary 
 
-[Feature Engineering][Auto_feature_engineering] aimes to build a training set from multi-table data, by summarizing the useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecom operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *``call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
+[Feature Engineering][Auto_feature_engineering] aims to build a training set from multi-table data, by summarizing the useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecom operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *``call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
 
 [Auto_feature_engineering]: /learn/autofeature_engineering
 

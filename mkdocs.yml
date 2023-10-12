@@ -131,7 +131,7 @@ nav:
         - An original formalism: learn/modl.md
         - Optimal Encoding: learn/preprocessing.md
         - Auto Feature Engineering: learn/autofeature_engineering.md
-        - Parcimonious Training: learn/learning_models.md
+        - Parsimonious Training: learn/learning_models.md
         - Auto Hardware Adaptation: learn/hardware_adaptation.md
         - Bibliography: references.md
     - Blog:

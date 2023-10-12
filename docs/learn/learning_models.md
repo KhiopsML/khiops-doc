@@ -1,4 +1,3 @@
-
 # Parsimonious Training
 
 Parsimonious training is the last step **(C)** of the Auto ML pipeline implemented by Khiops, and consists in selecting the best subset of explicative variables (or aggregates) and weighting them within a Bayesian model:  
