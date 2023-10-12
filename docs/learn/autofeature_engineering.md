@@ -181,16 +181,8 @@ The user specifies a number of candidate aggregates one wants to generate, and t
 !!! tip "Use in any Machine Learning pipeline "
     Only part of the Khiops Auto ML pipeline can be reused. In particular, the Auto Feature Engineering step can be integrated into any Machine Learning pipeline. This saves a lot of time in data science projects by automatically generating a large number of informative aggregates. Then, any Machine Learning model can be trained from the root table enriched by the aggregates.  
 
-    [:material-test-tube: Experiment on Google Collab][no-data-cleaning-notebook]
-
-[no-data-cleaning-notebook]: https://colab.research.google.com 
-
 !!! tip "Improve business knowledge "
     The aggregates produced by Khiops are labeled with their mathematical formula, which allows us to interpret them a posteriori. In practice, the analysis of the most informative aggregates allows us to better understand the data and to easily identify the useful information for the learning task at hand.
-
-    [:material-test-tube: Experiment on Google Collab][no-data-cleaning-notebook]
-
-[no-data-cleaning-notebook]: https://colab.research.google.com 
 
 
 

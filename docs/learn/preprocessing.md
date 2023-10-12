@@ -212,9 +212,6 @@ For an efficient coding, it is necessary to keep in memory the sorted lists of a
 !!! tip "Optimal Encoding"
     Discretization and grouping models offer an ideal framework for encoding both numerical and categorical variables without requiring user-defined parameters. These supervised approaches become progressively more accurate as the volume of training data expands. Furthermore, Khiops can be seamlessly integrated into existing machine learning **pipelines**, thereby eliminating the need for arbitrary pre-encoding decisions or their inclusion in hyperparameter optimization.
 
-    [:material-test-tube: Experiment on Google Collab][optimal-encoding-notebook]
-
-[optimal-encoding-notebook]: https://colab.research.google.com      
 
 !!! tip "Robust Evaluation via Compression Gain Metric"
     Khiops provides a **robust metric** called Compression Gain, also known as *Level* in Khiops outputs, that can be directly applied to training data for evaluation. In information theory, MODL optimization criteria represent a coding length, i.e. the number of bits needed (i) to describe the model (prior), (ii) to describe the target variable $y$ of the training data (likelihood). Because this value is dependent on the dataset's size, it is not a standalone evaluation metric. The Compression Gain $CG$ corrects for this by normalizing the learned model's $\hat{h}$ coding length to a baseline model $h_0$, which consists of a single group/interval:
@@ -223,24 +220,10 @@ For an efficient coding, it is necessary to keep in memory the sorted lists of a
 
     Available in Khiops' output, the Compression Gain metric weighs the individual predictive level of each variable for the target $y$, effectively measuring its importance.
 
-    [:material-test-tube: Experiment on Google Collab][compression-gain-notebook]
-
-[compression-gain-notebook]: https://colab.research.google.com
-
-
 !!! tip "Resilience to Outliers"
     Being based on **rank statistics**, the MODL approach ensures that outliers have no impact on the learning process for discretization models. Specifically, an extreme value is simply processed as the smallest or the largest value.
 
-    [:material-test-tube: Experiment on Google Collab][outlier-notebook]
-
-[outlier-notebook]: https://colab.research.google.com
-
-
 !!! tip "Data Cleaning Not Required"
     Khiops eliminates the need for cleaning your training data, and even discourages it to avoid introducing bias into the data. The library incorporates the missing values as predictive features rather than discarding them. In the case of discretization models, missing values are treated as an extreme value, while for modality grouping models, they are treated as a distinct modality. This enables the model to capture informative patterns the missing values might offer for classifying the target variable. During inference, any unknown modalities encountered are automatically categorized as missing values.
-
-    [:material-test-tube: Experiment on Google Collab][no-data-cleaning-notebook]
-
-[no-data-cleaning-notebook]: https://colab.research.google.com 
    
 

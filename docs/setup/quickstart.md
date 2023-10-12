@@ -147,13 +147,13 @@ clf.fit(X_train, y_train)
 
 ## Embedded visualization in Jupyter <small>  🚧 Beta 🚧 </small> 
 
-In the beta version, the interactive visualization widget is not yet integrated into Jupyter Notebook. It will shows the features obtained by the Auto Feature Engineering algorithm, the encoding of variables, the selection of variables and their importance for predictions. 
+In the beta version, the interactive visualization widget is not yet integrated into Jupyter Notebooks. It will shows the features obtained by the Auto Feature Engineering algorithm, the encoding of variables, the selection of variables and their importance for predictions. 
 
-But, you can open the visualization report using the standalone application what is available on several Operating Systems. More details on this visualization tool can be found on the [dedicated page][visu]. 
+But you can open the visualization report using the standalone application on several Operating Systems. More details on this visualization tool can be found on the [dedicated page][visu]. 
 
 [visu]: /setup/visualization
 
-To generate the report, you need to specify the `output_dir` parameter when call KhiopsClassifer(): 
+To generate the report, you need to specify the `output_dir` parameter when calling KhiopsClassifier(): 
 
 ```python
 # Classifier declaration with a specifed output directory

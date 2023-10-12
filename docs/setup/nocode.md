@@ -31,7 +31,13 @@ To get started with the Khiops Desktop Application, follow the procedure appropr
 
 [releases]: https://github.com/KhiopsML/khiops/releases
 
-Please click on the relevant operating system:
+Please click on the relevant operating system after reading [README.txt][readme], [install.txt][install] and [whatsnew.txt][whatsnew]:
+
+[readme]: README.txt
+[install]: install.txt
+[whatsnew]: whatsnewV10.1.txt
+
+
 === "Windows"
     On Windows, the Khiops installer automatically installs the visualization application, but you may also install it without the main application, to only analyze Khiops reports.
 
