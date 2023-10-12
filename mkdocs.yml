@@ -102,8 +102,8 @@ nav:
     - Getting Started:
       - Installation: setup/installation.md
       - Quickstart: setup/quickstart.md
-      - Scikit-learn API: https://khiops.tech.orange/html/pykhiops-doc/sklearn/generated/pykhiops.sklearn.estimators.html
-      - Core API: https://khiops.tech.orange/html/pykhiops-doc/core/index.html
+      - Scikit-learn API: https://khiopsml.github.io/khiops-python/sklearn/generated/khiops.sklearn.estimators.html
+      - Core API: https://khiopsml.github.io/khiops-python/core/index.html
       #- Variable Types: learn/types.md
       - Technical benefits: 
         - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb 
