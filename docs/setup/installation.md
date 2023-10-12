@@ -1,6 +1,6 @@
 # Installation
 
-Khiops was originally released as a desktop application with a graphical user interface, the "No code" version, which is currently production-ready and available [here][nocode]. **But, as part of our recent transition to open-source, we are actively expanding the installation options to meet various user requirements**. Specifically, we offer a *beta* version of a [`conda`][conda] packaging (better supporting system-wide MPI installation than `pip`) and a beta version of a notebook image based on the [`Jupyter`][jupyter] Docker Stacks. Details and installation steps are provided below.
+Khiops was originally released as a desktop application with a graphical user interface, the "No code" version, which is currently production-ready and available [here][nocode]. **But, as part of our recent transition to open-source, we are actively expanding the installation options to meet various user requirements**. Specifically, we offer a *beta* version of a [`conda`][conda] packaging (managing the MPI installation, what `pip` cannot) and a beta version of a notebook image based on the [`Jupyter`][jupyter] Docker Stacks. Details and installation steps are provided below.
 
   [conda]: #with-conda
   [jupyter]: #with-docker
@@ -9,8 +9,7 @@ Khiops was originally released as a desktop application with a graphical user in
 
 ## Install Khiops using conda <small>  🚧 Beta 🚧 </small> {#with-conda data-toc-label="Install Khiops via conda"}
 
-The `conda` installation guarantees optimal performance since it handles installing or upgrading the MPI library on your system.
-
+The `conda` installation guarantees optimal performance since it handles installing or upgrading the MPI library on your system. Windows users already having MSMPI installed may see an anaconda warning suggesting to uninstall it; please ignore this message.
 
 ``` sh
 conda install -c khiops khiops
