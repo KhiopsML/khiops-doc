@@ -9,13 +9,15 @@ Khiops was originally released as a desktop application with a graphical user in
 
 ## Install Khiops using conda <small>  🚧 Beta 🚧 </small> {#with-conda data-toc-label="Install Khiops via conda"}
 
-The `conda` installation guarantees optimal performance since it handles installing or upgrading the MPI library on your system. Windows users already having MSMPI installed may see an anaconda warning suggesting to uninstall it; please ignore this message.
+The `conda` installation guarantees optimal performance since it handles installing or upgrading the MPI library on your system. For those who aren't familiar with `conda`, you can start by reading [**Getting started with conda**][conda-user-guide].
+
+[conda-user-guide]: https://conda.io/projects/conda/en/latest/user-guide/getting-started.html
 
 ``` sh
 conda install -c khiops khiops
 ```
 
-On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
+On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality. Plus, Windows users already having MSMPI installed may see an anaconda warning suggesting to uninstall it; please ignore this message.
 
 !!! warning "Temporary limitation on :material-apple: Apple Silicon"
     
@@ -40,7 +42,7 @@ docker pull khiopsml/khiops-notebook
 
 **Try it without effort using Binder**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/KhiopsML/khiops-notebook/main/)
 
-!!! warning "Our image is not yet build for ARM architecture"
+!!! warning "Our Jupyter Docker image is not yet build for ARM architecture"
     Running it will be extremly slow on :simple-raspberrypi: Raspberry or :material-apple: Apple Silicon.
 
 
