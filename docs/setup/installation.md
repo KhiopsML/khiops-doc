@@ -58,6 +58,6 @@ Instructions for installation are available [here][nocode]. This method is not y
 Once the prerequisites are met, you can install Khiops using the following command:
 
 ```sh
-pip install 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0a4'
+pip install 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1'
 ```
 
