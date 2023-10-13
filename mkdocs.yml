@@ -96,6 +96,7 @@ extra_javascript:
 plugins:
   - mkdocs-jupyter
   - blog
+  - search
 
 nav:
     - Home: index.md
