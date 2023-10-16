@@ -14,7 +14,7 @@ To find out more, read the page ["What makes Khiops different"][what_makes_khiop
 
 The Khiops Auto-ML pipe automates supervised Machine Learning, which is used to classify input examples into predefined groups, each identified by a label. Common applications include predicting customer churn (Yes or No), the severity of a failure (Minor, Major, Critical) etc. 
 
-Featuring [unique learning algorithms][original_formalism], Khiops automates many steps seamlessly for the user. For example, there's no longer any need to prepare training data, as [missing values, labeling noise, outliers and unbalanced classes][no_data_preparation] are handled for you. [Encoding categorical variables][encoding] is also no longer a problem. 
+Featuring [unique learning algorithms][original_formalism], Khiops automates many steps seamlessly for the user. For example, there's no longer any need to prepare training data, as [missing values, noise, outliers and unbalanced classes][no_data_preparation] are handled for you. [Encoding categorical variables][encoding] is also no longer a problem. 
 
 Ultimately, all you need is to use the standard `sklearn` syntax, and Khiops takes care of handling poor-quality raw data, producing competitive, robust and interpretable models.  
 
@@ -99,7 +99,7 @@ In practice, Feature Engineering is an extremely time-consuming manual task whic
 ### 🖋️ Simply describe your multi-table data
 
 The following only shows the `syntax` to be used when describing multi-table data. For a running code sample, please refer to the [dedicated page][full_pipeline].
-Here we continue with the previous example, where the multi-table data describes the customers of a telecom operator and where the goal is to predict the chrun:
+Here we continue with the previous example, where the multi-table data describes the customers of a telecom operator and where the goal is to predict the churn:
 
 [full_pipeline]: /advanced/Notebooks/Use_in_any_ML_pipeline
 
