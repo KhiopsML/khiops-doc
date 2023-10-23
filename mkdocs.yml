@@ -100,33 +100,36 @@ plugins:
 
 nav:
     - Home: index.md
-    - Getting Started:
-      - Installation: setup/installation.md
+    - Installation:
+      - Overview: setup/installation.md
+      - Packages:
+        - conda: setup/conda.md
+        - pip: setup/pip.md
+        - docker notebook: setup/khiops-notebook.md
+      - Standalone Applications: 
+        - Khiops Desktop: setup/nocode.md
+        - Khiops Visualization: setup/visualization.md
+    - User Guide:
       - Quickstart: setup/quickstart.md
-      - Scikit-learn API: https://khiopsml.github.io/khiops-python/sklearn/generated/khiops.sklearn.estimators.html
-      - Core API: https://khiopsml.github.io/khiops-python/core/index.html
-      #- Variable Types: learn/types.md
+      - API Reference : https://khiopsml.github.io/khiops-python/index.html
       - Technical benefits: 
         - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb 
         - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
         - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
-        #- Out of core: advanced/Notebooks/outofcore.ipynb
-      - Basic Tutorials:
+      #  - Out of core: advanced/Notebooks/outofcore.ipynb
+      - Starter Tutorials:
         - Train, Evaluate et Deploy a classifier: advanced/Notebooks/Sklearn Basics 1 - Train, Evaluate and Deploy a Classifier.ipynb
         - Train a Classifier on a Star Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 2 - Train a Classifier on a Star Multi-Table Dataset.ipynb
         - Train a Classifier on a Snowflake Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 3 - Train a Classifier on a Snowflake Multi-Table Dataset.ipynb
-     # - Advanced use cases:
-     #   - GO / No Go: advanced/gonogo.md
+    #  - Advanced use cases:
+      #  - GO / No Go: advanced/gonogo.md
       #  - Time Series: advanced/timeseries.md
       #  - NLP: advanced/nlp.md
       #  - Anomaly detection: advanced/anomaly.md 
       #  - Drift  detection: advanced/drift.md
       #  - Model calibration: advanced/calibration.md 
-     #   - Variable importance with Shapley:  advanced/shapley.md 
-        #- Advanced notebook examples: advanced/notebooks.md 
-      - Standalone Applications: 
-        - setup/nocode.md
-        - Khiops Visualization: setup/visualization.md
+      #  - Variable importance with Shapley:  advanced/shapley.md 
+      #  - Advanced notebook examples: advanced/notebooks.md 
     - Understanding: 
         - What makes Khiops different: learn/understand.md
         - An original formalism: learn/modl.md
