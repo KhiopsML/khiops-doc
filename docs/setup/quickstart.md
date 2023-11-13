@@ -24,7 +24,7 @@ The following is a minimal code sample, and more detailed [tutorials][tuto] are 
 [original_formalism]: /learn/modl
 [no_data_preparation]: /advanced/Notebooks/No_data_Cleaning
 [encoding]: /advanced/Notebooks/Optimal_Encoding
-[tuto]: https://khiops.tech.orange/html/pykhiops-doc/tutorials/index.html
+[tuto]: https://khiopsml.github.io/khiops-python/tutorials/index.html
 
 
 ### 🔧 Setup

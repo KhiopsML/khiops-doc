@@ -35,7 +35,7 @@ You can consult the limitations or known problems corresponding to your operatin
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
 
     !!! warning 
-        Windows users already having MSMPI installed may see an anaconda warning suggesting to uninstall it; please ignore this message
+        Windows users already having MSMPI installed may see an anaconda warning suggesting to uninstall it; please ignore this message.
 
 
 === "Users on :material-apple: Apple Silicon"

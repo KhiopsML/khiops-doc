@@ -4,7 +4,7 @@ Installing the `khiops-core` binary is a prerequisite.
 
 === "Ubuntu"
     
-    You need to download and install the `khiops-core` component and then the python library. You can do it using the single following command:
+    You need to download and install the `khiops-core` package and then the python library. You can do it using the single following command:
     ``` sh
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB="$(mktemp)" && \
@@ -31,7 +31,7 @@ Installing the `khiops-core` binary is a prerequisite.
 
 === "CentOS"
     
-    You need to download and install the `khiops-core` component and then the python library. You can do it using the single following command:
+    You need to download and install the `khiops-core` package and then the python library. You can do it using the single following command:
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp)" && \
