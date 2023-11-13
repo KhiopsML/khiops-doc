@@ -85,7 +85,7 @@ clf.fit(X_train, y_train)
 
 ```python
 # Test set prediction.
-pred = clf.predict(X_test, y_test)
+pred = clf.predict(X_test)
 ```
 
 ## Auto Feature Engineering as simple as writting a dictionnary 
