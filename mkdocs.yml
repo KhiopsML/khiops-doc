@@ -10,12 +10,12 @@ copyright: Copyright &copy; 2023 Orange S.A.
 
 theme:
   name: material
-  logo: assets/images/new_khiops_logo.webp
+  logo: assets/images/new_khiops_logo.png
   icon:
     repo: fontawesome/brands/github
   palette:
     primary: black
-  favicon: assets/images/new_khiops_logo.webp
+  favicon: assets/images/new_khiops_logo.svg
   custom_dir: overrides
   font: 
       false
@@ -112,16 +112,16 @@ nav:
     - User Guide:
       - Quickstart: setup/quickstart.md
       - API Reference : https://khiopsml.github.io/khiops-python/index.html
+      - Starter Tutorials:
+        - Single Table Classifier: advanced/Notebooks/single_table_classifier.ipynb
+        - Train, Evaluate et Deploy a classifier: advanced/Notebooks/Sklearn Basics 1 - Train, Evaluate and Deploy a Classifier.ipynb
+        - Train a Classifier on a Star Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 2 - Train a Classifier on a Star Multi-Table Dataset.ipynb
+        - Train a Classifier on a Snowflake Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 3 - Train a Classifier on a Snowflake Multi-Table Dataset.ipynb
       - Technical benefits: 
         - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb 
         - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
         - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
-      #  - Out of core: advanced/Notebooks/outofcore.ipynb
-      - Starter Tutorials:
-        - Train, Evaluate et Deploy a classifier: advanced/Notebooks/Sklearn Basics 1 - Train, Evaluate and Deploy a Classifier.ipynb
-        - Train a Classifier on a Star Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 2 - Train a Classifier on a Star Multi-Table Dataset.ipynb
-        - Train a Classifier on a Snowflake Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 3 - Train a Classifier on a Snowflake Multi-Table Dataset.ipynb
-    #  - Advanced use cases:
+      #  - Out of core: advanced/Notebooks/outofcore.ipynb    #  - Advanced use cases:
       #  - GO / No Go: advanced/gonogo.md
       #  - Time Series: advanced/timeseries.md
       #  - NLP: advanced/nlp.md
