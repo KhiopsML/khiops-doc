@@ -117,7 +117,7 @@ nav:
         - Train, Evaluate et Deploy a classifier: advanced/Notebooks/Sklearn Basics 1 - Train, Evaluate and Deploy a Classifier.ipynb
         - Train a Classifier on a Star Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 2 - Train a Classifier on a Star Multi-Table Dataset.ipynb
         - Train a Classifier on a Snowflake Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 3 - Train a Classifier on a Snowflake Multi-Table Dataset.ipynb
-      - Technical benefits: 
+      - Advanced Tutorials: 
         - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb 
         - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
         - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
