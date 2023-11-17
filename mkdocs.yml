@@ -20,11 +20,12 @@ theme:
   font: 
       false
   features:
-    - navigation.indexes
     - navigation.tabs
     - navigation.path
     - navigation.tabs.sticky
-    - navigation.sections
+    #- navigation.sections
+    - navigation.expand
+    - navigation.indexes
     - content.code.copy
 
 markdown_extensions:
@@ -99,9 +100,9 @@ plugins:
   - search
 
 nav:
-    - Home: index.md
+    - index.md
     - Installation:
-      - Overview: setup/installation.md
+      - setup/index.md
       - Packages:
         - conda: setup/conda.md
         - pip: setup/pip.md
@@ -109,14 +110,12 @@ nav:
       - Standalone Applications: 
         - Khiops Desktop: setup/nocode.md
         - Khiops Visualization: setup/visualization.md
-    - User Guide:
+    - Tutorials:
       - Quickstart: setup/quickstart.md
-      - API Reference : https://khiopsml.github.io/khiops-python/index.html
+      - API Python : https://khiopsml.github.io/khiops-python/index.html
       - Starter Tutorials:
         - Single Table Classifier: advanced/Notebooks/single_table_classifier.ipynb
-        - Train, Evaluate et Deploy a classifier: advanced/Notebooks/Sklearn Basics 1 - Train, Evaluate and Deploy a Classifier.ipynb
-        - Train a Classifier on a Star Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 2 - Train a Classifier on a Star Multi-Table Dataset.ipynb
-        - Train a Classifier on a Snowflake Multi-Table Dataset: advanced/Notebooks/Sklearn Basics 3 - Train a Classifier on a Snowflake Multi-Table Dataset.ipynb
+        - Multi Table Classifier: advanced/Notebooks/multi_table_classifier.ipynb
       - Advanced Tutorials: 
         - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb 
         - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
@@ -130,7 +129,7 @@ nav:
       #  - Model calibration: advanced/calibration.md 
       #  - Variable importance with Shapley:  advanced/shapley.md 
       #  - Advanced notebook examples: advanced/notebooks.md 
-    - Understanding: 
+    - Foundations: 
         - What makes Khiops different: learn/understand.md
         - An original formalism: learn/modl.md
         - Optimal Encoding: learn/preprocessing.md
@@ -140,6 +139,3 @@ nav:
         - Bibliography: references.md
     - Blog:
       - blog/index.md
-   # - To Do List: todo.md
-
-
