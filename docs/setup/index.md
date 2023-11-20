@@ -1,4 +1,4 @@
-# Installation Options
+# Installation Options {label="Overview"}
 
 Khiops was originally launched as a desktop application. As we move to open source, we are diversifying the installation options to meet different needs:
 

@@ -1,6 +1,6 @@
-
-
 # Auto Feature Engineering
+
+## Multi-table feature construction
 
 Auto Feature Engineering corresponds to the first **(A)** step of the Auto-ML pipeline implemented by Khiops. It is an optional pre-processing step to handle multi-table input data. Feature engineering is usually performed manually by data scientists, and is a time-consuming and risky task that can lead to overfitting. Khiops is able to automatically extract a large amount of aggregates from the secondary tables which are constructed and selected to avoid overfitting. These aggregates are all informative for the learning task at hand.
 
@@ -18,7 +18,7 @@ In the rest of the pipeline, the aggregates are recoded in [step (B)][preprocess
 [learning_models]: learning_models.md
 [a_unique_formalism]: modl.md
 
-## Definition 
+### Definition 
 
 The Auto Feature Engineering task, also known as [propositionalization:octicons-link-external-16:][propositionalization]{:target="_blank"}, consists in *"flattening"* multi-table data by summarizing the useful information contained in the secondary tables, through new columns inserted in the main table.
 
@@ -40,7 +40,7 @@ The purpose of Auto Feature Engineering is to enrich the root table with informa
     Auto Feature Engineering is a **supervised learning task**  aiming at finding the most useful aggregates to predict the target variable. 
 
 
-## Model Parameters
+### Model Parameters
 
 As before, the first modeling step is to define the family of models $\mathcal{H}$ which contains all the learnable hypotheses $h \in \mathcal{H}$. In the case of Auto Feature Engineering, this family is an extension of the [optimal encoding][preprocessing] models which perform two tasks: (i) choosing the variable to be encoded, which can either be a native variable or an aggregate generated from the secondary tables; (ii) encoding this variable by a discretization model or a grouping model depending on its type.  
 
@@ -100,7 +100,7 @@ As shown in the previous examples, the generated aggregates can be more or less 
 !!! success "Key idea #3"
     The **cardinality** of the family of models $\mathcal{H}$ is not bounded, and can potentially be **infinite**. There is therefore a risk of **overfitting** and the complexity of the generated aggregates must be regularized.
 
-## Optimization Criterion 
+### Optimization Criterion 
 
 [Information theory:octicons-link-external-16:][information_theory]{:target="_blank"} provides the same interpretation for both optimization criteria previously described for [discretization][discretization] and [grouping][grouping] models. Indeed, these two criteria can be rewritten as follows:
 
@@ -138,7 +138,7 @@ Notice that $L(h_a) = \log(K)$ if a native variable is selected instead of gener
 
 
 
-## Sampling Algorithm
+### Sampling Algorithm
 
 Two different algorithms are successively executed to implement Auto Feature Engineering: 
 
@@ -176,7 +176,7 @@ The user specifies a number of candidate aggregates one wants to generate, and t
 
 [publications]: ../references.md#publications
 
-## Technical benefits 
+### Technical benefits 
 
 !!! tip "Use in any Machine Learning pipeline "
     Only part of the Khiops Auto ML pipeline can be reused. In particular, the Auto Feature Engineering step can be integrated into any Machine Learning pipeline. This saves a lot of time in data science projects by automatically generating a large number of informative aggregates. Then, any Machine Learning model can be trained from the root table enriched by the aggregates.  

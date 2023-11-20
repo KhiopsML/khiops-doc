@@ -19,7 +19,7 @@ As an input of this step, the learning algorithm is provided with the [encoding 
 [publications]: ../references.md#publications
 [a_unique_formalism]: modl.md
 
-# From Naive to Non-naive Bayes 
+## From Naive to Non-naive Bayes 
 
 Khiops provides very competitive models which are both accurate and parsimonious, i.e. selecting very few variables (or aggregates). And yet, these models are derived from the Naïve Bayes classifier which is not exactly recognized for its performance. This section focuses on the important improvements made by Khiops to these models, which are far from being naive 😉.
 
@@ -34,7 +34,7 @@ Khiops provides very competitive models which are both accurate and parsimonious
     </picture>
 
 
-## Background
+### Background
 
 First of all, the expression "Naïve" refers to an hypothesis made about the explicative variables. They are supposed to be independent from each other given the target, which is very rarely the case in real life, hence this pejorative nickname. This assumption is materialized by the <span style="color:red">red</span> term in the following equation, which shows how is estimated the probability $p(y_j | \{x_k\}_{k \in [1, K]})$ that a new example $\{x_k\}_{k \in [1, K]}$ belongs to a particular class $y_j$:
 
@@ -72,7 +72,7 @@ Indeed, this product is performed on probabilities relative to each explicative 
 
 
 
-## Khiops Brings Major Improvements
+### Khiops Brings Major Improvements
 
 Each of these shortcomings is addressed:
 
@@ -91,7 +91,7 @@ Now, we come to the most important improvement which is developed in the rest of
 !!! example "Learning Task of Parsimonious Training"
     The Parsimonious Training step consists in **selecting** the subset of variables (native or aggregates) that are both (i) as **informative** as possible, (ii) and as **independent** as possible. More specifically, the selected variables are **weighted** to reduce the effect of their remaining dependencies on the model's performance.        
 
-# Model Parameters 
+## Model Parameters 
 
 Khiops implements a robust and well-performing model, called *"Selective Non-naive Bayes"* (SNB), which takes advantage of the improvements described above **(1,2,3)** and optimizes variable selection and weighting **(4)** in the following way: 
 
@@ -101,7 +101,7 @@ where $\{w_k\}_{k \in [1,K]}$ is a vector of weights associated to the $K$ expli
 
  
 
-# Optimization Criterion
+## Optimization Criterion
 
 As in the other steps of the Auto ML pipeline, the optimization criterion used to learn the SNB model is based on the MODL approach. A variable weighting model $h$ is entirely defined by the weight vector $\{w_k\}_{k \in [1,K]}$. And the most probable model given the training set $d$ is obtained by minimizing the following criterion:
 
@@ -142,7 +142,7 @@ The **regularization parameter** $\gamma$ weighs the relative importance of the 
 
 
 
-# Optimization Algorithm 
+## Optimization Algorithm 
 
 !!! example "Algorithmic Challenge"
     This optimizing problem is very hard, since $\{w_k\}_{k \in [1,K]}$ is a vector of floating-point values, for which there are an infinite number of candidate solutions.
@@ -168,7 +168,7 @@ The following figure illustrates the main steps of this algorithm:
 
 
 
-# Technical Benefits 
+## Technical Benefits 
 
 
 !!! tip "Model Interpretability"

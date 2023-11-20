@@ -26,7 +26,7 @@ Installing the `khiops-core` binary is a prerequisite.
 
     Then, you can run the following `pip` command:
     ```sh
-    pip install 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1'
+    pip install "khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1"
     ```
 
 === "CentOS"
