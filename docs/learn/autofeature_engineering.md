@@ -224,7 +224,7 @@ A MODL binary decision tree model is defined by its structure, the distribution 
 - the distribution of the classes in each leaf l: $\{N_{l.j}
 \}_{1≤j≤J}$
 
-#### Optimization Criterion
+### Optimization Criterion
 
 !!! success "Key idea #1"
     **The MODL decision tree criterion simply result from the expansion of the Bayes' formula.** 
