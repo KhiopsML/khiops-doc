@@ -67,7 +67,7 @@ Installing Khiops using pip requires installing the `khiops-core` binary first.
 
     Then, you can run the following `pip` command:
     ```sh
-    pip install 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1'
+    pip install "khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1"
     ```
 
 === "CentOS"
