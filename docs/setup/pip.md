@@ -1,10 +1,10 @@
-# Install Khiops using pip <small>  Advanced </small> 
+# Install the Khiops library using pip <small>  Advanced </small> 
 
-Installing the `khiops-core` binary is a prerequisite. 
+Installing the `khiops` binary is a prerequisite. 
 
 === "Ubuntu"
     
-    You need to download and install the `khiops-core` package and then the python library. You can do it using the single following command:
+    You need to download and install the `khiops-core` package (via `apt-get`) and then the Khiops library (via `pip`). You can do it using the single following command:
     ``` sh
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB="$(mktemp)" && \
@@ -16,7 +16,7 @@ Installing the `khiops-core` binary is a prerequisite.
 
 
 === "Windows"
-    You need to download and install the Khiops Application first:
+    You need to download and install Khiops Desktop first:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-10.1.1-setup.exe">
         <button class="btn btn-light btn-sm">
@@ -31,7 +31,7 @@ Installing the `khiops-core` binary is a prerequisite.
 
 === "CentOS"
     
-    You need to download and install the `khiops-core` package and then the python library. You can do it using the single following command:
+    You need to download and install the `khiops-core` package (via `yum`) and then the Khiops library (via `pip`). You can do it using the single following command:
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp)" && \

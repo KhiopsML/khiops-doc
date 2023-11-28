@@ -1,4 +1,4 @@
-# Install Khiops using conda <small>  🚧 Beta 🚧 </small>
+# Install the Khiops library using conda <small>  🚧 Beta 🚧 </small>
 
 The `conda` installation guarantees optimal performance since it handles installing or upgrading the MPI library on your system. 
 

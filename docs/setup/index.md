@@ -2,7 +2,7 @@
 
 Khiops was originally launched as a desktop application. As we move to open source, we are diversifying the installation options to meet different needs:
 
-  - **Python Library**:
+  - **Khiops Python Library**:
     - Packaging via [`conda`][conda]
     - Packaging via [`pip`][pip]
     - Running our [khiops-notebook][notebooks] container
@@ -22,7 +22,7 @@ We fully support the following operating systems:
 
 <br>
 
-## Install Khiops using conda <small>  🚧 Beta 🚧 </small> {#with-conda data-toc-label="Install Khiops via conda"}
+## Install the Khiops Library using conda <small>  🚧 Beta 🚧 </small> {#with-conda data-toc-label="Install Khiops via conda"}
 
 The `conda` contains all the necessary components. 
 
@@ -40,9 +40,9 @@ The `conda` contains all the necessary components.
 
 <br>
 
-## Install Khiops using pip {#with-pip data-toc-label="Install Khiops via pip"}
+## Install the Khiops library using pip {#with-pip data-toc-label="Install Khiops via pip"}
 
-Installing Khiops using pip requires installing the `khiops-core` binary first.
+Installing the library using pip requires installing the `khiops` binary first.
 
 === "Ubuntu"
     
@@ -57,7 +57,7 @@ Installing Khiops using pip requires installing the `khiops-core` binary first.
 
 
 === "Windows"
-    You need to download and install the Khiops Application first:
+    You need to download and install Khiops Desktop:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-10.1.1-setup.exe">
         <button class="btn btn-light btn-sm">
