@@ -4,7 +4,7 @@ Installing the `khiops` binary is a prerequisite.
 
 === "Ubuntu"
     
-    You need to download and install the `khiops-core` package (via `apt-get`) and then the Khiops library (via `pip`). You can do it using the single following command:
+    You need to download and install the `khiops-core` package (via `apt-get`) and then the Khiops library (via `pip`). You can do this through the following command:
     ``` sh
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB="$(mktemp)" && \
@@ -31,7 +31,7 @@ Installing the `khiops` binary is a prerequisite.
 
 === "CentOS"
     
-    You need to download and install the `khiops-core` package (via `yum`) and then the Khiops library (via `pip`). You can do it using the single following command:
+    You need to download and install the `khiops-core` package (via `yum`) and then the Khiops library (via `pip`). You can do this through the following command:
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp)" && \
@@ -42,18 +42,18 @@ Installing the `khiops` binary is a prerequisite.
     ```
 
 
-## User guide
+## User Guide
 
-- Users who want to understand how to manage their python packages can read the  [**pip user guide**][pip-tuto]. It will also help the ones behind **a company proxy**.
+- Users who want to understand how to manage their Python packages can read the  [**pip user guide**][pip-tuto]. It will also help the ones behind **a company proxy**.
 
 [pip-tuto]: https://pip.pypa.io/en/stable/user_guide/
 
-- We encourage also our users to use virtual environnements. If you are not familiar with it, you can read this [**python documentation page**][venv].
+- We also encourage our users to use virtual environments. If you are not familiar with them, you can read this [**Python documentation page**][venv].
 
 [venv]: https://docs.python.org/3/library/venv.html
 
 
-## What you should know
+## What You Should Know
 
 You can consult the limitations or known problems corresponding to your operating system:
 
@@ -68,4 +68,4 @@ You can consult the limitations or known problems corresponding to your operatin
 
 === "Users on :material-apple: Mac"
     !!! warning
-        The `khiops-core` binary is not yet available for Mac OS, meaning you cannot install Khiops using `pip` for now. You can use `conda` or run our container (Intel x86-64).
+        The `khiops-core` binary is not yet available for Mac OS, meaning you cannot install Khiops using `pip` for now. You can use `conda` or run our container (Intel x86-64 only).

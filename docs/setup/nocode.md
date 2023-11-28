@@ -17,7 +17,7 @@ To get started with the Khiops Desktop Application, follow the procedure appropr
 
 
 === "Windows"
-    The :material-microsoft-windows: Khiops installer automatically installs all your needs, including the Khiops samples et the Khiops Visualization application.
+    The :material-microsoft-windows: Khiops installer automatically installs all your needs, including the Khiops samples and the Khiops Visualization application.
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-10.1.1-setup.exe">
         <button class="btn btn-light btn-sm">

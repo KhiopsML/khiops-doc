@@ -24,5 +24,5 @@ Some limitations regarding architecture:
 
 === "Users on ARM architecture"
     !!! warning 
-        Our Jupyter Docker image is not yet build for ARM architecture. Running it will be extremly slow on :simple-raspberrypi: Raspberry or :material-apple: Apple Silicon.
+        Our Jupyter Docker image is not yet build for ARM architecture. Running it will be extremely slow on :simple-raspberrypi: Raspberry or :material-apple: Apple Silicon.
 
