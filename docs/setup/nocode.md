@@ -1,14 +1,14 @@
-# Khiops Desktop (No Code)
+# The Khiops Desktop Application (No-Code Environment)
 
 ## Simplifying Data Science for Everyone
 
-Welcome to the Khiops Desktop Application download page. Our intuitive, user-friendly desktop interface is designed for those who may not be familiar with Python or scikit-learn, as well as for users who prefer the convenience of a Graphical User Interface (GUI) for data manipulation. With Khiops Desktop, advanced data analytics is now just a few clicks away.
+Welcome to the Khiops desktop application download page. Our intuitive, user-friendly desktop interface is designed for those who may not be familiar with Python or scikit-learn, as well as for users who prefer the convenience of a Graphical User Interface (GUI) for data manipulation. With the Khiops desktop application, advanced data analytics is now just a few clicks away.
 
 
 
 ## Download & Installation
 
-To get started with the Khiops Desktop Application, follow the procedure appropriate for your operating system. Please click on the relevant operating system after reading [README.txt][readme], [install.txt][install] and [whatsnew.txt][whatsnew]:
+To get started with the Khiops desktop application, follow the relevant procedure for your operating system. Please click on the relevant operating system after reading [README.txt][readme], [install.txt][install] and [whatsnew.txt][whatsnew]:
 
 [releases]: https://github.com/KhiopsML/khiops/releases
 [readme]: README.txt
@@ -17,7 +17,7 @@ To get started with the Khiops Desktop Application, follow the procedure appropr
 
 
 === "Windows"
-    The :material-microsoft-windows: Khiops installer automatically installs all your needs, including the Khiops samples and the Khiops Visualization application.
+    The :material-microsoft-windows: Khiops installer automatically installs the Khiops desktop application, all its dependencies, plus the Khiops samples and the Khiops Visualization application.
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-10.1.1-setup.exe">
         <button class="btn btn-light btn-sm">
@@ -26,7 +26,7 @@ To get started with the Khiops Desktop Application, follow the procedure appropr
     </a>
 
 === "Ubuntu"
-    The installation of Khiops Desktop requires two packages: `khiops-core` and `khiops` (containing the GUI). 
+    The installation of the Khiops desktop application involves two packages: `khiops-core` and `khiops` (containing the GUI). 
     
     You can run the following command:
     
@@ -40,42 +40,49 @@ To get started with the Khiops Desktop Application, follow the procedure appropr
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
-    If you need the Khiops samples, you can add the following package:
+    If you need the Khiops samples, you can install the `khiops-samples` package:
     ```sh
-    https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-samples_10.1.1-0+${CODENAME}_all.deb
+    TEMP_DEB_SAMPLES="$(mktemp)" && \
+    wget -O "$TEMP_DEB_SAMPLES" "https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-samples_10.1.1-0+${CODENAME}_all.deb" && \
+    sudo dpkg -i "$TEMP_DEB_SAMPLES" || sudo apt-get -f -y install && \
+    rm -f $TEMP_DEB_SAMPLES
     ```
 
 === "CentOS"
-    The installation of Khiops Desktop requires two packages: `khiops-core` and `khiops` (containing the GUI). 
+    The installation of the Khiops desktop application requires two packages: `khiops-core` and `khiops` (containing the GUI). 
     
     You can run the following command:
     
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp)" && \
-    TEMP_DEB_KHIOPS="$(mktemp)" && \
+    TEMP_RPM_KHIOPS="$(mktemp)" && \
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-core-10.1.1-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-10.1.1-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum localinstall "$TEMP_RPM" "$TEMP_DEB_KHIOPS" -y && \
-    rm -f $TEMP_RPM $TEMP_DEB_KHIOPS    
+    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-10.1.1-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    sudo yum localinstall "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
+    rm -f $TEMP_RPM $TEMP_RPM_KHIOPS
     ```
 
-    If you need the Khiops samples, you can add the following package:
+    If you need the Khiops samples, you can install the `khiops-samples` package:
+
     ```sh
-    https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-samples-10.1.1-1.el${CENTOS_VERSION}.x86_64.rpm
+    TEMP_RPM_SAMPLES="$(mktemp)" && \
+    wget -O "$TEMP_RPM_SAMPLES" https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-samples-10.1.1-1.el${CENTOS_VERSION}.x86_64.rpm && \
+    sudo yum localinstall "$TEMP_RPM_SAMPLES" -y && \
+    rm -f $TEMP_RPM_SAMPLES
     ```
 
 You can find the all versions on the [releases page][releases].
 
 ## Documentation
-For a comprehensive guide on how to use the Khiops Desktop Application, please download our [**PDF Documentation**][Documentation]. 
+For a comprehensive guide on how to use the Khiops desktop application, please download our [**PDF Documentation**][Documentation]. 
 
 The users already familiar with the CoClustering approach will find the dedicated documentation [**here**][coclustering].
 
 [Documentation]: KhiopsGuide.pdf
 [coclustering]: KhiopsCoclusteringGuide.pdf
 
-A tutorial is also [**available**][tutorial] to help you understand and grasp the tool.
+A tutorial is also [**available**][tutorial] to help you understand and grasp the Khiops desktop application.
 
 [tutorial]: KhiopsTutorial.pdf
 
