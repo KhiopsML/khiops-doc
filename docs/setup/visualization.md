@@ -6,7 +6,7 @@ Welcome to the Khiops Visualization page, our plug-in to facilitate an in-depth 
 
 ## Download Khiops Visualization
 
-The visualisation tool is available standalone. You can find all versions on the [the following link][repo-visu] or download the latest stable version below:
+The visualization tool is available as a standalone application. You can find all versions on the [the following link][repo-visu] or download the latest stable version below:
 
 [repo-visu]: https://github.com/khiopsrelease/kv-release/releases
 
@@ -20,7 +20,7 @@ The visualisation tool is available standalone. You can find all versions on the
           Download for CentOS </a>
 
 ## Download Khiops CoVisualization
-All versions of the Covisualization tool are available [here][repo-covisualisation] or download the latest stable version below:
+All versions of the CoVisualization tool are available [here][repo-covisualisation] or download the latest stable version below:
 
 [repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v10.2.4
 

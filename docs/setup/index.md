@@ -6,7 +6,7 @@ Khiops was originally launched as a desktop application. As we move to open sour
     - Packaging via [`conda`][conda]
     - Packaging via [`pip`][pip]
     - Running our [khiops-notebook][notebooks] container
-  - **Desktop Version**: Maintaining its original form for easy GUI access.
+  - **Desktop Version**: Maintaining its original form for easy local GUI access.
 
   [conda]: #with-conda
   [pip]: #with-pip
@@ -18,11 +18,11 @@ We fully support the following operating systems:
 - Ubuntu 18.04 or later (x86-64) 
 - CentOS 7 and 8 (x86-64)
 - Windows 7 or later (x86-64)
-- macOS 10 or later,  for Intel (`conda` + `docker`) and :material-apple: Apple Silicon (`conda` **exclusively**)
+- macOS 10 or later, for Intel (`conda` + `docker`) and :material-apple: Apple Silicon (`conda` **exclusively**)
 
 <br>
 
-## Install the Khiops Library using conda <small>  🚧 Beta 🚧 </small> {#with-conda data-toc-label="Install Khiops via conda"}
+## Install the Khiops Library using Conda <small>  🚧 Beta 🚧 </small> {#with-conda data-toc-label="Install Khiops via conda"}
 
 The `conda` contains all the necessary components. 
 
