@@ -2,11 +2,11 @@
 
 ## Simplifying Data Visualization 
 
-Welcome to the Khiops Visualization page, our plug-in to facilitate an in-depth exploration of your data. It offers an intuitive visualization of all analysis results, ensuring a streamlined interpretation of discovered patterns. Dive deeper into your data, leveraging the outstanding capabilities of Khiops, such as variable encoding, feature engineering, and parsimonious training.
+Welcome to the Khiops Visualization page, our value proposition to facilitate an in-depth exploration of your data. It offers an intuitive visualization of all analysis results, ensuring a streamlined interpretation of discovered patterns. Dive deeper into your data, leveraging the outstanding capabilities of Khiops, such as variable encoding, feature engineering, and parsimonious training.
 
-## Download Khiops Visualization
+## Download the Khiops Visualization Desktop Application
 
-The visualization tool is available as a standalone application. You can find all versions on the [the following link][repo-visu] or download the latest stable version below:
+The visualization tool is available as a standalone desktop application. You can find all versions on the [the following link][repo-visu] or download the latest stable version below:
 
 [repo-visu]: https://github.com/khiopsrelease/kv-release/releases
 
@@ -19,8 +19,8 @@ The visualization tool is available as a standalone application. You can find al
 - <a href="https://github.com/khiopsrelease/kv-release/releases/download/v11.0.2/khiops-visualization-11.0.2.x86_64.rpm">
           Download for CentOS </a>
 
-## Download Khiops CoVisualization
-All versions of the CoVisualization tool are available [here][repo-covisualisation] or download the latest stable version below:
+## Download the Khiops CoVisualization Desktop Application
+For users familiar with Khiops co-clustering, co-clustering analysis results ca be visualized with the CoVisualization desktop application. All versions of this application are available [here][repo-covisualisation]. The latest stable version can be downloaded below:
 
 [repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v10.2.4
 
@@ -36,7 +36,7 @@ All versions of the CoVisualization tool are available [here][repo-covisualisati
 ## Documentation
 For a comprehensive guide on how to use the Khiops Visualization Application, please download our [**PDF Documentation**][Documentation]. 
 
-The users already familiar with the CoClustering approach will find the CoVisualization documentation [**here**][coviz].
+The users already familiar with the co-clustering approach will find the CoVisualization documentation [**here**][coviz].
 
 [Documentation]: KhiopsVisualizationGuide.pdf
 [coviz]: KhiopsCovisualizationGuide.pdf
