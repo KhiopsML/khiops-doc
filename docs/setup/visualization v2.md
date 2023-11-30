@@ -1,6 +1,6 @@
 # Khiops Visualization
 
-The visualization tool is available as a standalone application. You can find all versions on the [the following link][windows visu] or download the latest stable version below:
+The Khiops visualization tool is available as a standalone desktop application. You can find all versions on the [the following link][windows visu] or download the latest stable version below:
 
 [windows visu]: https://github.com/khiopsrelease/kv-release/releases/tag/v10.2.8
 
@@ -26,11 +26,11 @@ The visualization tool is available as a standalone application. You can find al
 </a>
 
 ## Introduction
-The results of the Khiops analysis are stored in a dedicated report (with the .khj extension) with a JSON file structure. The user can parse this report to build custom visualizations, but the most useful insights can be easily accessed through a dedicated interactive visualization interface. The interface is invoked by double-clicking on the icon of a .khj file or by launching the Khiops visualization application and opening the file from the "File" menu.
+The results of the analysis performed by the Khiops Auto-ML pipeline when fitting your data are stored in a dedicated report (with the .khj extension) in a JSON format. The user can parse this report to build custom visualizations, but the most useful insights can be easily accessed through a dedicated interactive visualization interface. The interface is invoked by double-clicking on the icon of a .khj file or by launching the Khiops visualization application and opening the file from the "File" menu.
 
 The interface is organized as a set of tabs, each showing specific information in dedicated panels. Some panels come with (hopefully) self-explanatory controls; information about a control can be obtained by pointing the mouse to it. The list of controls and their function is given at the end of this document.
 
-As supervised and non-supervised (hereafter descriptive) analyses have different goals and produce different kinds of results, their visualization interfaces and tab contents are slightly different.
+As supervised and unsupervised (hereafter descriptive) analyses have different goals and produce different kinds of results, their visualization interfaces and tab contents are slightly different.
 
 
 ## Descriptive Analysis Visualization
@@ -45,7 +45,7 @@ Unless otherwise specified, we used the Adult database for the figures below.
 ### Preparation Tab
 The general layout of this tab is as follows (see the two figures below): panel A shows some information related to the data and the analysis (left) and the histogram of the target modalities (right). Panel B stores the list of the variables as a table together with some descriptive statistics information. 
 
-Clicking on a line of the table in panel B displays the histogram of the corresponding variable in panel C and information about the variable (Name and derivation rule(if any)) in panel D. Clicking on a bin of the histogram displays information about this bin in panel E. 
+Clicking on a row of the table in panel B displays the histogram of the corresponding variable in panel C and information about the variable (Name and derivation rule(if any)) in panel D. Clicking on a bin of the histogram displays information about this bin in panel E. 
 
 Categorical and numerical variables have different histograms.
 
@@ -55,7 +55,7 @@ The Coverage/Frequency toggle allows the display of either the coverage (in %, l
 
 <img style="width: -webkit-fill-available;" src="/assets/images/Categorical preparation.png" ;></img>
 
-The figure above shows the histogram of the variable "native_country" with 41 modalities. The default group is selected, and its content is displayed in panel E.
+The figure above shows the histogram of the variable `native_country` with 41 modalities. The default group is selected, and its content is displayed in panel E.
 
 For numerical variables, the bounds of the bins are also automatically set to their optimal value from an MDL approach.
 

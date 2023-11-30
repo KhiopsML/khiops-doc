@@ -1,10 +1,10 @@
-# Install the Khiops library using pip <small>  Advanced </small> 
+# Install the Khiops Library Using Pip <small>  Advanced </small> 
 
-Installing the `khiops` binary is a prerequisite. 
+Installing the `khiops` binaries is a prerequisite. 
 
 === "Ubuntu"
     
-    You need to download and install the `khiops-core` package (via `apt-get`) and then the Khiops library (via `pip`). You can do this through the following command:
+    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB="$(mktemp)" && \
@@ -16,7 +16,7 @@ Installing the `khiops` binary is a prerequisite.
 
 
 === "Windows"
-    You need to download and install Khiops Desktop first:
+    You need to download and install the Khiops desktop application first:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-10.1.1-setup.exe">
         <button class="btn btn-light btn-sm">
@@ -24,14 +24,14 @@ Installing the `khiops` binary is a prerequisite.
         </button>
     </a>
 
-    Then, you can run the following `pip` command:
+    Then, you can run the following Pip command:
     ```sh
     pip install "khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1"
     ```
 
 === "CentOS"
     
-    You need to download and install the `khiops-core` package (via `yum`) and then the Khiops library (via `pip`). You can do this through the following command:
+    You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp)" && \
@@ -44,7 +44,7 @@ Installing the `khiops` binary is a prerequisite.
 
 ## User Guide
 
-- Users who want to understand how to manage their Python packages can read the  [**pip user guide**][pip-tuto]. It will also help the ones behind **a company proxy**.
+- Users who want to understand how to manage their Python packages can read the  [**Pip user guide**][pip-tuto]. It will also help those who work behind **a company proxy**.
 
 [pip-tuto]: https://pip.pypa.io/en/stable/user_guide/
 
@@ -59,13 +59,13 @@ You can consult the limitations or known problems corresponding to your operatin
 
 === "Users on :simple-linux: Linux"
     !!! warning
-        The `khiops-core` binary will install or upgrade the system-wide `MPICH` library in your system. If you depend on another version of `MPICH`, please favor an installation using `conda`.
+        The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH`, please prefer an installation using Conda.
 
 
 === "Users on :material-microsoft-windows: Windows"
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
 
-=== "Users on :material-apple: Mac"
+=== "Users on :material-apple: macOS"
     !!! warning
-        The `khiops-core` binary is not yet available for Mac OS, meaning you cannot install Khiops using `pip` for now. You can use `conda` or run our container (Intel x86-64 only).
+        The `khiops-core` binary is not yet available for macOS, meaning you cannot install Khiops using Pip for now. You can use Conda or run our Docker container (x86-64 only).
