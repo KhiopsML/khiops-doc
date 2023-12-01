@@ -10,13 +10,13 @@ The visualization tool is available as a standalone desktop application. You can
 
 [repo-visu]: https://github.com/khiopsrelease/kv-release/releases
 
-- <a href="https://github.com/khiopsrelease/kv-release/releases/download/v11.0.2/khiops-visualization-Setup-11.0.2.exe">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-Setup-11.0.2.exe">
           Download for Windows </a>
-- <a href="https://github.com/khiopsrelease/kv-release/releases/download/v11.0.2/khiops-visualization-11.0.2.dmg">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-11.0.2.dmg">
           Download for Mac OS </a>  
-- <a href="https://github.com/khiopsrelease/kv-release/releases/download/v11.0.2/khiops-visualization_11.0.2_amd64.deb">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization_11.0.2_amd64.deb">
           Download for Ubuntu </a>
-- <a href="https://github.com/khiopsrelease/kv-release/releases/download/v11.0.2/khiops-visualization-11.0.2.x86_64.rpm">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-11.0.2.x86_64.rpm">
           Download for CentOS </a>
 
 ## Download the Khiops CoVisualization Desktop Application
@@ -24,14 +24,16 @@ For users familiar with Khiops co-clustering, co-clustering analysis results ca 
 
 [repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v10.2.4
 
-- <a href="https://github.com/khiopsrelease/kc-release/releases/download/v11.0.3/khiops-covisualization-Setup-11.0.3.exe">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v10.2.4/khiops-covisualization-Setup-10.2.4.exe">
           Download for Windows </a>
-- <a href="https://github.com/khiopsrelease/kc-release/releases/download/v11.0.3/khiops-covisualization-11.0.3.dmg">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v10.2.4/khiops-covisualization-10.2.4.dmg">
           Download for Mac OS </a>  
-- <a href="https://github.com/khiopsrelease/kc-release/releases/download/v11.0.3/khiops-covisualization_11.0.3_amd64.deb">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v10.2.4/khiops-covisualization_10.2.4_amd64.deb">
           Download for Ubuntu </a>
+<!--- 
 - <a href="https://github.com/khiopsrelease/kc-release/releases/download/v11.0.3/khiops-covisualization-11.0.3.x86_64.rpm">
           Download for CentOS </a>
+-->
 
 ## Documentation
 For a comprehensive guide on how to use the Khiops Visualization Application, please download our [**PDF Documentation**][Documentation]. 
