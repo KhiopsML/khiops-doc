@@ -91,12 +91,13 @@ extra_css:
 # Add JS for Material plugins
 extra_javascript:
   - assets/javascripts/mathjax.min.js
+  - assets/javascripts/khiops-webcomponents.bundle.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
   - mkdocs-jupyter
-  - blog
+#  - blog
   - search
 
 nav:
@@ -112,7 +113,6 @@ nav:
         - Khiops Visualization: setup/visualization.md
     - Tutorials:
       - Quickstart: setup/quickstart.md
-      - API Python : https://khiopsml.github.io/khiops-python/index.html
       - Starter Tutorials:
         - Single Table Classifier: advanced/Notebooks/single_table_classifier.ipynb
         - Multi Table Classifier: advanced/Notebooks/multi_table_classifier.ipynb
@@ -129,6 +129,7 @@ nav:
       #  - Model calibration: advanced/calibration.md 
       #  - Variable importance with Shapley:  advanced/shapley.md 
       #  - Advanced notebook examples: advanced/notebooks.md 
+    - API Docs : https://khiopsml.github.io/khiops-python/index.html
     - Foundations: 
         - What makes Khiops different: learn/understand.md
         - An original formalism: learn/modl.md
@@ -137,5 +138,5 @@ nav:
         - Parsimonious Training: learn/learning_models.md
         - Auto Hardware Adaptation: learn/hardware_adaptation.md
         - Bibliography: references.md
-    - Blog:
-      - blog/index.md
+#    - Blog:
+#      - blog/index.md
