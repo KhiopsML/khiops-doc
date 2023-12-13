@@ -11,7 +11,7 @@ Installing the `khiops` binaries is a prerequisite.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1'
+    pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0'
     ```
 
 
@@ -26,7 +26,7 @@ Installing the `khiops` binaries is a prerequisite.
 
     Then, you can run the following Pip command:
     ```sh
-    pip install "khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1"
+    pip install "khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0"
     ```
 
 === "CentOS"
@@ -38,7 +38,7 @@ Installing the `khiops` binaries is a prerequisite.
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum localinstall "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1'
+    pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0'
     ```
 
 
