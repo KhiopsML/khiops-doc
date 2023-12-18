@@ -55,7 +55,6 @@ Installing the library using Pip requires installing the `khiops` binaries first
     pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0+0'
     ```
 
-
 === "Windows"
     You need to download and install the Khiops desktop application:
 
@@ -122,7 +121,6 @@ This version contains a Graphical User Interface (GUI).
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
-
 
 === "CentOS"
     
