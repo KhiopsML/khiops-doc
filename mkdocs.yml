@@ -10,12 +10,12 @@ copyright: Copyright &copy; 2023 Orange S.A.
 
 theme:
   name: material
-  logo: assets/images/new_khiops_logo.png
+  logo: assets/images/Small_Logo_RGB.png
   icon:
     repo: fontawesome/brands/github
   palette:
     primary: black
-  favicon: assets/images/new_khiops_logo.svg
+  favicon: assets/images/Small_Logo_RGB.svg
   custom_dir: overrides
   font: 
       false
