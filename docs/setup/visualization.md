@@ -4,7 +4,7 @@
 
 Welcome to the Khiops Visualization page, our value proposition to facilitate an in-depth exploration of your data. It offers an intuitive visualization of all analysis results, ensuring a streamlined interpretation of discovered patterns. Dive deeper into your data, leveraging the outstanding capabilities of Khiops, such as variable encoding, feature engineering, and parsimonious training.
 
-!!! example "You can try the Khiops Visualization tool [on this page][demo-visualisation] (modeling the adult.txt dataset)"
+!!! example "You can try the Khiops Visualization tool [on this page!][demo-visualisation]"
 
 [demo-visualisation]: demovisualization.md
 
