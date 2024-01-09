@@ -15,7 +15,7 @@ theme:
     repo: fontawesome/brands/github
   palette:
     primary: black
-  favicon: assets/images/Small_Logo_RGB.svg
+  favicon: assets/images/Small_Logo_RGB.png
   custom_dir: overrides
   font: 
       false
