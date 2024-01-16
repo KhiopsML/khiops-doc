@@ -55,20 +55,32 @@ To get started with the Khiops desktop application, follow the relevant procedur
     
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp)" && \
-    TEMP_RPM_KHIOPS="$(mktemp)" && \
+    TEMP_RPM="$(mktemp).rpm" && \
+    TEMP_RPM_KHIOPS="$(mktemp).rpm" && \
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum localinstall "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
+    sudo yum install "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
     rm -f $TEMP_RPM $TEMP_RPM_KHIOPS
     ```
+
+    In order to finalize the installation, elect `mpich` as the module that provides MPI support for the current shell session, by running the following commands:
+
+    ``` sh
+    source /etc/profile.d/modules.sh
+    module unload mpi
+    MPICH_MODULE=$(module avail |& sed -E -e 's/[[:blank:]]/\n/g' | grep mpich
+    | sort | tail -1)
+    module load $MPICH_MODULE
+    ```
+
+    These commands need to be executed upon each launch of a shell process. Hence, it can be practical to put them into a file that is automatically sourced upon shell launch, such as `~/.bashrc`.
 
     If you need the Khiops samples, you can install the `khiops-samples` package:
 
     ```sh
     TEMP_RPM_SAMPLES="$(mktemp)" && \
     wget -O "$TEMP_RPM_SAMPLES" https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-samples-10.1.1-1.el${CENTOS_VERSION}.x86_64.rpm && \
-    sudo yum localinstall "$TEMP_RPM_SAMPLES" -y && \
+    sudo yum install "$TEMP_RPM_SAMPLES" -y && \
     rm -f $TEMP_RPM_SAMPLES
     ```
 
