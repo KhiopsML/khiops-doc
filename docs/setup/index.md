@@ -23,9 +23,9 @@ Legend: :white_check_mark: fully tested, :warning: works with known limitations,
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
 | Windows 7 or later       | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | Ubuntu 18 LTS or later        | :no_entry_sign:  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Debian 10 or later   | :no_entry_sign:  | [:white_check_mark:][pip_page] (10, 12) :no_entry_sign: (11) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10, 12) :no_entry_sign: (11)  |
+| Debian 10 or later   | :no_entry_sign:  | [:white_check_mark:][pip_page] (10, 12) :no_entry_sign: (11) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10, 12) :no_entry_sign: (11)  |
 | CentOS 7 and 8    | :no_entry_sign:  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon), :no_entry_sign: (Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel), [:warning:][notebooks_page] (Apple Silicon)  | :no_entry_sign:  |
+| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon) :no_entry_sign: (Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel) [:warning:][notebooks_page] (Apple Silicon)  | :no_entry_sign:  |
 
   [conda_page]: /setup/conda/
   [pip_page]: /setup/pip/

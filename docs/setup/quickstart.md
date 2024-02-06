@@ -134,7 +134,7 @@ This dictionary includes three attributes:
 - `tables` describing all tables, 
 - `relations` specifying the links between tables. 
 
-`main table` is itself a dictionary, composed of one record per table. For each record, the *key* corresponds to the table name and the *value* is a tuple associating a Pandas Dataframe and a list of keys (first the main key, then the secondary keys). And `relations` is a list of tuples, which indicate the links between tables.
+`tables` is itself a dictionary, composed of one record per table. For each record, the *key* corresponds to the table name and the *value* is a tuple associating a Pandas Dataframe and a list of keys (first the main key, then the secondary keys). And `relations` is a list of tuples, which indicate the links between tables.
 
 ### 🚀 Just fit it ... as usual
 
