@@ -4,7 +4,7 @@ hide:
   - navigation
 ---
 
-# Khiops Visualization Demo
+# Interactive Khiops Visualization Demo
 
 Explore the capabilities of the Khiops Visualization Tool through three interactive analyses:
 
