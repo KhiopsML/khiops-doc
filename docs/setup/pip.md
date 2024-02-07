@@ -34,9 +34,9 @@ Installing the `khiops` binaries is a prerequisite.
     You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp)" && \
+    TEMP_RPM="$(mktemp).rpm" && \
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum localinstall "$TEMP_RPM" -y && \
+    sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
     pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0+0'
     ```
