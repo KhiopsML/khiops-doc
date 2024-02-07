@@ -78,7 +78,7 @@ One of the strengths of Khiops lies in its automation of this complex step. By l
 
 !!! example "See what Khiops-built aggregates look like using our tutorials [here][tuto_aggregates]."
 
-[tuto_aggregates]: /advanced/Notebooks/Use_in_any_ML_pipeline/
+[tuto_aggregates]: ../advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
 
 ## Interpretability
 
@@ -93,7 +93,7 @@ Khiops emphasizes interpretability throughout its implementation pipeline, align
 Khiops is coupled with an interactive [**visualization tool**][visu], providing direct access to extensive pipeline results from a notebook or a dedicated application. The upcoming section offers a glimpse into visualizing variable encodings.
 
 
- [visu]:/setup/visualization/
+ [visu]: ../setup/visualization.md
 
 
 !!! info "This section only introduces the concept. For technical details, please refer to the :orange_book: [optimal encoding][preprocessing] and :orange_book: [visualization tool][visu] sections."

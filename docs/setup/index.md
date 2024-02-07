@@ -25,11 +25,11 @@ Legend: :white_check_mark: supported, :warning: works with known limitations, :n
 | Ubuntu 18 LTS or later        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | Debian 10 or later   | :no_entry_sign:  | [:white_check_mark:][pip_page] (10) :no_entry_sign: (11,12) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10) :no_entry_sign: (11, 12)  |
 | CentOS 7 and 8    | [:white_check_mark:][conda_page]  | :no_entry_sign:  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon, Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel) [:warning:][notebooks_page] (Apple Silicon)  | :no_entry_sign:  |
+| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon, Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel) [:warning:][notebooks_page] (slow on Apple Silicon)  | :no_entry_sign:  |
 
-  [conda_page]: /setup/conda/
-  [pip_page]: /setup/pip/
-  [notebooks_page]: /setup/khiops-notebook/
+  [conda_page]: conda.md
+  [pip_page]: pip.md
+  [notebooks_page]: khiops-notebook.md
   [nocode]: nocode.md
 
 <br>
@@ -53,7 +53,7 @@ The Conda package contains all the necessary components.
     conda install -c conda-forge -c khiops khiops
     ```
 
-[:material-cursor-default-click-outline: See the Conda Installation Page](/setup/conda/){ .md-button .md-button--primary }
+[:material-cursor-default-click-outline: See the Conda Installation Page](conda.md){ .md-button .md-button--primary }
 
 <br>
 
@@ -97,7 +97,7 @@ Installing the library using Pip requires installing the `khiops` binary first.
     pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0+0'
     ```
 
-[:material-cursor-default-click-outline: See the Pip Installation Page](/setup/pip/){ .md-button .md-button--primary }
+[:material-cursor-default-click-outline: See the Pip Installation Page](pip.md){ .md-button .md-button--primary }
 
 <br>
 
@@ -109,7 +109,7 @@ For a quick and easy way to get started with Khiops, you can use our Docker cont
 docker pull khiopsml/khiops-notebook
 ```
 
-[:material-cursor-default-click-outline: See the Docker notebooks Installation Page](/setup/khiops-notebook/){ .md-button .md-button--primary }
+[:material-cursor-default-click-outline: See the Docker notebooks Installation Page](khiops-notebook.md){ .md-button .md-button--primary }
 
 <br>
   
@@ -151,4 +151,4 @@ This version contains a Graphical User Interface (GUI).
     rm -f $TEMP_RPM $TEMP_DEB_KHIOPS    ```
     ```
     
-[:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](/setup/nocode/){ .md-button .md-button--primary }
+[:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }

@@ -8,7 +8,7 @@ The user-friendly Khiops Python library provides a unique [Auto-ML pipeline][wha
 
 To find out more, read the page ["What makes Khiops different"][what_makes_khiops_different].
 
-[what_makes_khiops_different]: /learn/understand
+[what_makes_khiops_different]: ../learn/understand.md
 
 ## Auto-ML as Simple as a Regular Classifier 
 
@@ -21,9 +21,9 @@ Ultimately, all you need to do is use the standard Scikit-Learn syntax, and Khio
 
 A minimal code sample is shown below. More detailed [tutorials][tuto] are available.
 
-[original_formalism]: /learn/modl
-[no_data_preparation]: /advanced/Notebooks/No_data_Cleaning
-[encoding]: /advanced/Notebooks/Optimal_Encoding
+[original_formalism]: ../learn/modl.md
+[no_data_preparation]: ../advanced/Notebooks/No_data_Cleaning.ipynb
+[encoding]: ../advanced/Notebooks/Optimal_Encoding.ipynb
 [tuto]: https://khiopsml.github.io/khiops-python/tutorials/index.html
 
 
@@ -93,7 +93,7 @@ pred = clf.predict(X_test)
 
 [Feature Engineering][Auto_feature_engineering] aims to build a training set from multi-table data, by summarizing the useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecommunications operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *''call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
 
-[Auto_feature_engineering]: /learn/autofeature_engineering
+[Auto_feature_engineering]: ../learn/autofeature_engineering.md
 
 In practice, when undertaken manually, Feature Engineering is an extremely time-consuming task which is not efficient and risks over-fitting (i.e. when using over-complex aggregates). Just feed multi-table data into the Khiops Auto-ML pipeline to trigger an ultra-efficient [automatic Feature Engineering algorithm][Auto_feature_engineering]. All you need to do is describe the structure of the input multi-table data with a dictionary.
 
@@ -102,14 +102,11 @@ In practice, when undertaken manually, Feature Engineering is an extremely time-
 Below, we only show the `syntax` to be used when describing multi-table data. For a running code sample, please refer to the [dedicated page][full_pipeline].
 We continue with the previous example, where the multi-table data describes the customers of a telecommunications operator and where the goal is to predict the churn:
 
-[full_pipeline]: /advanced/Notebooks/Use_in_any_ML_pipeline
-
 <img src="/assets/images/simple_multi_table_data.png" style="width:400px;"/>
 
-Khiops allows users to describe multi-table data as a Python dictionary ([a running sample is available][MT_tutorial]). Here's an example: 
+Khiops allows users to describe multi-table data as a Python dictionary ([a running sample is available][full_pipeline]). Here's an example: 
 
-[MT_tutorial]: /advanced/Notebooks/Use_in_any_ML_pipeline/
-
+[full_pipeline]: ../advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
 
 ```python
 X_train = {
@@ -151,9 +148,9 @@ clf.fit(X_train, y_train)
 
 The analysis report contains details on the features obtained by the Khiops Auto Feature Engineering algorithm, the encoding of variables, the selection of variables and their importance for predictions. 
 
-You can open and visualize the report using the standalone visualization desktop application on several operating systems. More details on this visualization desktop application can be found on the [dedicated page][visu].
+You can open and visualize the report using the standalone visualization desktop application on several operating systems. More details on this visualization desktop application can be found on the [dedicated page][visu]. 
 
-[visu]: /setup/visualization
+[visu]: ../setup/visualization.md
 
 To generate the analysis report, you need to specify the `output_dir` parameter when creating the `KhiopsClassifier` estimator object instance: 
 

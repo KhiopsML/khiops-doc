@@ -174,7 +174,7 @@ The following figure illustrates the main steps of this algorithm:
 !!! tip "Model Interpretability"
     The **parsimony** of the SNB model, which selects a small subset of variables (native or aggregates), combined with the fact that the aggregates generated in the previous Auto Feature Engineering step have **explicit names**, make the models produced by Khiops very easy to interpret. A [**visualization tool**][visu] is provided for this purpose, making it possible to understand and visualize the entire Auto ML pipeline, from optimal encoding to model evaluation.    
 
-[visu]:/setup/visualization/
+    [visu]: ../setup/visualization.md
 
 
 !!! tip "Fast Predict"
