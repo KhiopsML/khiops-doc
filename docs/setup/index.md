@@ -17,15 +17,15 @@ Khiops was originally developed as a desktop application. As we move to open sou
 
 Refer to the following table to select the appropriate installation method for your operating system.
 
-Legend: :white_check_mark: fully tested, :warning: works with known limitations, :no_entry_sign: not supported yet.
+Legend: :white_check_mark: tested, :warning: works with known limitations, :no_entry_sign: not supported yet.
 
 | OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
 | Windows 7 or later       | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Ubuntu 18 LTS or later        | :no_entry_sign:  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Debian 10 or later   | :no_entry_sign:  | [:white_check_mark:][pip_page] (10, 12) :no_entry_sign: (11) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10, 12) :no_entry_sign: (11)  |
-| CentOS 7 and 8    | :no_entry_sign:  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon) :no_entry_sign: (Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel) [:warning:][notebooks_page] (Apple Silicon)  | :no_entry_sign:  |
+| Ubuntu 18 LTS or later        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| Debian 10 or later   | :no_entry_sign:  | [:white_check_mark:][pip_page] (10) :no_entry_sign: (11,12) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10) :no_entry_sign: (11, 12)  |
+| CentOS 7 and 8    | [:white_check_mark:][conda_page]  | :no_entry_sign:  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon, Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel) [:warning:][notebooks_page] (Apple Silicon)  | :no_entry_sign:  |
 
   [conda_page]: /setup/conda/
   [pip_page]: /setup/pip/

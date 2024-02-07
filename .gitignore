@@ -1,2 +1,3 @@
 .DS_Store
 docs/advanced/Notebooks/logs.log
+.cache
