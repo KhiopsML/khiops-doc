@@ -38,12 +38,17 @@ Legend: :white_check_mark: supported, :warning: works with known limitations, :n
 
 The Conda package contains all the necessary components. 
 
-=== "All x86-64 OSes"
+=== "Linux"
+    ``` sh
+    conda install -c conda-forge -c khiops khiops
+    ```
+    
+=== "Windows"
     ``` sh
     conda install -c khiops khiops
     ```
 
-=== ":material-apple: Apple Silicon (ARM64)"
+=== "macOS"
     ``` sh
     conda install -c conda-forge -c khiops khiops
     ```
