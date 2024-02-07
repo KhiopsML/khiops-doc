@@ -17,7 +17,7 @@ Khiops was originally developed as a desktop application. As we move to open sou
 
 Refer to the following table to select the appropriate installation method for your operating system.
 
-Legend: :white_check_mark: tested, :warning: works with known limitations, :no_entry_sign: not supported yet.
+Legend: :white_check_mark: supported, :warning: works with known limitations, :no_entry_sign: not supported yet.
 
 | OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
@@ -52,9 +52,9 @@ The Conda package contains all the necessary components.
 
 <br>
 
-## Install the Khiops Python library using Pip {#with-pip data-toc-label="Install Khiops via pip"}
+## Install the Khiops Python library using Pip  <small> :tools: Advanced :tools: </small> {#with-pip data-toc-label="Install Khiops via pip"}
 
-Installing the library using Pip requires installing the `khiops` binaries first.
+Installing the library using Pip requires installing the `khiops` binary first.
 
 === "Ubuntu"
     
@@ -114,7 +114,7 @@ This version contains a Graphical User Interface (GUI).
 
 
 === "Windows"
-    You need to download and install the Khiops Desktop Application first:
+    The :material-microsoft-windows: Khiops installer automatically installs the Khiops desktop application, all its dependencies, plus the Khiops samples and the Khiops Visualization application:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-setup.exe">
         <button class="btn btn-light btn-sm">

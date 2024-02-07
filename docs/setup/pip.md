@@ -1,6 +1,6 @@
-# Install the Khiops Library Using Pip <small>  Advanced </small> 
+# Install the Khiops Library Using Pip <small> :tools: Advanced :tools: </small>
 
-Installing the `khiops` binaries is a prerequisite. 
+Installing the `khiops` binary is a prerequisite. 
 
 === "Ubuntu"
     
