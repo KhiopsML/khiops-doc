@@ -1,6 +1,6 @@
-# Install the Khiops Library Using Pip <small>  Advanced </small> 
+# Install the Khiops Library Using Pip <small> :tools: Advanced :tools: </small>
 
-Installing the `khiops` binaries is a prerequisite. 
+Installing the `khiops` binary is a prerequisite. 
 
 === "Ubuntu"
     
@@ -11,7 +11,7 @@ Installing the `khiops` binaries is a prerequisite.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1'
+    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
     ```
 
 
@@ -26,7 +26,7 @@ Installing the `khiops` binaries is a prerequisite.
 
     Then, you can run the following Pip command:
     ```sh
-    pip install "khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1"
+    pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0b2"
     ```
 
 === "CentOS"
@@ -34,12 +34,14 @@ Installing the `khiops` binaries is a prerequisite.
     You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp)" && \
+    TEMP_RPM="$(mktemp).rpm" && \
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum localinstall "$TEMP_RPM" -y && \
+    sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install --no-cache-dir 'khiops @ git+https://github.com/khiopsml/khiops-python@v10.2.0b1'
+    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
     ```
+
+!!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
 
 
 ## User Guide

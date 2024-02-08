@@ -4,16 +4,20 @@ The Conda package installation guarantees optimal performance since it handles i
 
 ## Instructions
 
-=== "x86-64"
+=== "Linux"
+    ``` sh
+    conda install -c conda-forge -c khiops khiops
+    ```
+    
+=== "Windows"
     ``` sh
     conda install -c khiops khiops
     ```
 
-=== ":material-apple: Apple Silicon (ARM64)"
+=== "macOS"
     ``` sh
     conda install -c conda-forge -c khiops khiops
     ```
-
 
 ## User Guide
 
