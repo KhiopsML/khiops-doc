@@ -41,6 +41,8 @@ Installing the `khiops` binary is a prerequisite.
     pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
     ```
 
+!!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+
 
 ## User Guide
 

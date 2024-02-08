@@ -28,6 +28,8 @@ To get started with the Khiops desktop application, follow the relevant procedur
 === "Ubuntu"
     The installation of the Khiops desktop application involves two packages: `khiops-core` and `khiops` (containing the GUI). 
     
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+
     You can run the following command:
     
     ``` sh
@@ -51,6 +53,8 @@ To get started with the Khiops desktop application, follow the relevant procedur
 === "CentOS"
     The installation of the Khiops desktop application requires two packages: `khiops-core` and `khiops` (containing the GUI). 
     
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+
     You can run the following command:
     
     ``` sh

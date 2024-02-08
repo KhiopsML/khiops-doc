@@ -73,7 +73,7 @@ Installing the library using Pip requires installing the `khiops` binary first.
     ```
 
 === "Windows"
-    You need to download and install the Khiops desktop application:
+    First, you need to download and install the Khiops desktop application:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-setup.exe">
         <button class="btn btn-light btn-sm">
@@ -96,6 +96,8 @@ Installing the library using Pip requires installing the `khiops` binary first.
     rm -f $TEMP_RPM && \
     pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
     ```
+
+!!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
 
 [:material-cursor-default-click-outline: See the Pip Installation Page](pip.md){ .md-button .md-button--primary }
 
@@ -139,6 +141,9 @@ This version contains a Graphical User Interface (GUI).
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+
+
 === "CentOS"
     
     ``` sh
@@ -150,5 +155,8 @@ This version contains a Graphical User Interface (GUI).
     sudo yum localinstall "$TEMP_RPM" "$TEMP_DEB_KHIOPS" -y && \
     rm -f $TEMP_RPM $TEMP_DEB_KHIOPS    ```
     ```
+
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+
     
 [:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }
