@@ -168,4 +168,4 @@ This version contains a Graphical User Interface (GUI).
 
 Please refer to the dedicated page to install the visualization or co-visualization tool according to your sytem. 
 
-[:material-cursor-default-click-outline: See the Khiops Visualization Page](visualization.md){ .md-button .md-button--primary } [:octicons-graph-16: Try or Interactive Demo](demovisualization.md){ .md-button .md-button--secondary }
+[:material-cursor-default-click-outline: See the Khiops Visualization Page](visualization.md){ .md-button .md-button--primary } [:octicons-graph-16: Try our Interactive Demo](demovisualization.md){ .md-button .md-button--secondary }
