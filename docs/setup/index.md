@@ -6,7 +6,8 @@ Khiops was originally developed as a desktop application. As we move to open sou
     - Packaged via [`conda`][conda]
     - Packaged via [`pip`][pip]
     - Packaged in our [khiops-notebook][notebooks] container
-  - **Khiops Desktop Application**: Maintained in its original form for easy local GUI access.
+  - **Khiops Desktop Application**: Maintained in its original form for easy local GUI access (includes Khiops Visualization)
+  - **Khiops Visualization Application**: for intuitive visualization of all analysis results
 
   [conda]: #with-conda
   [pip]: #with-pip
@@ -160,3 +161,11 @@ This version contains a Graphical User Interface (GUI).
 
     
 [:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }
+
+<br>
+
+## Install the Khiops Visualization Applications
+
+Please refer to the dedicated page to install the visualization or co-visualization tool according to your sytem. 
+
+[:material-cursor-default-click-outline: See the Khiops Visualization Page](visualization.md){ .md-button .md-button--primary } [:octicons-graph-16: Try or Interactive Demo](demovisualization.md){ .md-button .md-button--secondary }
