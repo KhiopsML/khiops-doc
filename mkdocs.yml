@@ -100,7 +100,7 @@ plugins:
   - mkdocs-jupyter
 #  - blog
   - search
-  - privacy
+#  - privacy ## not usable with mathjax script
 
 nav:
     - index.md
