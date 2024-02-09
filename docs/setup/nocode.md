@@ -25,7 +25,7 @@ To get started with the Khiops desktop application, follow the relevant procedur
         </button>
     </a>
 
-=== "Ubuntu"
+=== "Ubuntu/Debian"
     The installation of the Khiops desktop application involves two packages: `khiops-core` and `khiops` (containing the GUI). 
     
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
@@ -50,6 +50,7 @@ To get started with the Khiops desktop application, follow the relevant procedur
     rm -f $TEMP_DEB_SAMPLES
     ```
 
+<!--- 
 === "CentOS"
     The installation of the Khiops desktop application requires two packages: `khiops-core` and `khiops` (containing the GUI). 
     
@@ -87,7 +88,7 @@ To get started with the Khiops desktop application, follow the relevant procedur
     sudo yum install "$TEMP_RPM_SAMPLES" -y && \
     rm -f $TEMP_RPM_SAMPLES
     ```
-
+--->
 You can find the all versions on the [releases page][releases].
 
 ## Documentation

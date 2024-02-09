@@ -2,7 +2,7 @@
 
 Installing the `khiops` binary is a prerequisite. 
 
-=== "Ubuntu"
+=== "Ubuntu/Debian"
     
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
@@ -29,6 +29,7 @@ Installing the `khiops` binary is a prerequisite.
     pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0b2"
     ```
 
+<!--- 
 === "CentOS"
     
     You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
@@ -40,7 +41,7 @@ Installing the `khiops` binary is a prerequisite.
     rm -f $TEMP_RPM && \
     pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
     ```
-
+--->
 !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
 
 

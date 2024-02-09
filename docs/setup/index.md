@@ -22,11 +22,11 @@ Legend: :white_check_mark: supported, :warning: works with known limitations, :n
 
 | OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
-| Windows 7 or later       | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Ubuntu 18 LTS or later        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Debian 10 or later   | :no_entry_sign:  | [:white_check_mark:][pip_page] (10) :no_entry_sign: (11,12) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10) :no_entry_sign: (11, 12)  |
-| CentOS 7 and 8    | [:white_check_mark:][conda_page]  | :no_entry_sign:  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon, Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel) [:warning:][notebooks_page] (slow on Apple Silicon)  | :no_entry_sign:  |
+| Windows 7 or later<br>(+ WSL) | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| Ubuntu 20 or 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| Debian 10 or later   | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] (10)<br>:no_entry_sign: (11,12) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10)<br>:no_entry_sign: (11, 12)  |
+| CentOS 7 and 8    | [:white_check_mark:][conda_page]  | :no_entry_sign:  | [:white_check_mark:][notebooks_page]  | :no_entry_sign:  |
+| macOS 10 or later    | [:white_check_mark:][conda_page] (Apple Silicon, Intel)  | :no_entry_sign:  | [:white_check_mark:][notebooks_page] (Intel)<br>[:warning:][notebooks_page] (slow on Apple Silicon)  | :no_entry_sign:  |
 
   [conda_page]: conda.md
   [pip_page]: pip.md
@@ -62,7 +62,7 @@ The Conda package contains all the necessary components.
 
 Installing the library using Pip requires installing the `khiops` binary first.
 
-=== "Ubuntu"
+=== "Ubuntu/Debian"
     
     ``` sh
     CODENAME=$(lsb_release -cs) && \
@@ -87,6 +87,7 @@ Installing the library using Pip requires installing the `khiops` binary first.
     pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0b2"
     ```
 
+<!--- 
 === "CentOS"
     
     ``` sh
@@ -97,6 +98,7 @@ Installing the library using Pip requires installing the `khiops` binary first.
     rm -f $TEMP_RPM && \
     pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
     ```
+--->
 
 !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
 
@@ -130,7 +132,7 @@ This version contains a Graphical User Interface (GUI).
         </button>
     </a>
     
-=== "Ubuntu"
+=== "Ubuntu/Debian"
     
     ``` sh
     CODENAME=$(lsb_release -cs) && \
@@ -144,7 +146,7 @@ This version contains a Graphical User Interface (GUI).
 
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
 
-
+<!--- 
 === "CentOS"
     
     ``` sh
@@ -158,7 +160,7 @@ This version contains a Graphical User Interface (GUI).
     ```
 
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
-
+--->
     
 [:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }
 
