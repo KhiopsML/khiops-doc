@@ -6,7 +6,7 @@ Khiops was originally developed as a desktop application. As we move to open sou
     - Packaged via [`conda`][conda]
     - Packaged via [`pip`][pip]
     - Packaged in our [khiops-notebook][notebooks] container
-  - **Khiops Desktop Application**: Maintained in its original form for easy local GUI access (includes Khiops Visualization)
+  - **Khiops Desktop Application**: for advanced data analytics with just a few clicks using a GUI (includes Khiops Visualization)
   - **Khiops Visualization Application**: for intuitive visualization of all analysis results
 
   [conda]: #with-conda
@@ -35,7 +35,7 @@ Legend: :white_check_mark: supported, :warning: works with known limitations, :n
 
 <br>
 
-## Install the Khiops Python library using Conda <small>  🚧 Beta 🚧 </small> {#with-conda data-toc-label="Install Khiops via conda"}
+## Install the Khiops Python library using Conda {#with-conda data-toc-label="Install Khiops via conda"}
 
 The Conda package contains all the necessary components. 
 
@@ -58,55 +58,9 @@ The Conda package contains all the necessary components.
 
 <br>
 
-## Install the Khiops Python library using Pip  <small> :tools: Advanced :tools: </small> {#with-pip data-toc-label="Install Khiops via pip"}
 
-Installing the library using Pip requires installing the `khiops` binary first.
 
-=== "Ubuntu/Debian"
-    
-    ``` sh
-    CODENAME=$(lsb_release -cs) && \
-    TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
-    sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
-    rm -f $TEMP_DEB && \
-    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
-    ```
-
-=== "Windows"
-    First, you need to download and install the Khiops desktop application:
-
-    <a href="https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-setup.exe">
-        <button class="btn btn-light btn-sm">
-          Download for Windows
-        </button>
-    </a>
-
-    Then, you can run the following Pip command:
-    ```sh
-    pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0b2"
-    ```
-
-<!--- 
-=== "CentOS"
-    
-    ``` sh
-    CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp)" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum localinstall "$TEMP_RPM" -y && \
-    rm -f $TEMP_RPM && \
-    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
-    ```
---->
-
-!!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
-
-[:material-cursor-default-click-outline: See the Pip Installation Page](pip.md){ .md-button .md-button--primary }
-
-<br>
-
-## Run Khiops with Jupyter Docker Stacks <small>  🚧 Beta 🚧 </small> { #with-jupyter  data-toc-label="Using Khiops on Jupyter notebooks"}
+## Run Khiops with Jupyter Docker Stacks { #with-jupyter  data-toc-label="Using Khiops on Jupyter notebooks"}
 
 For a quick and easy way to get started with Khiops, you can use our Docker container. 
 
@@ -171,3 +125,12 @@ This version contains a Graphical User Interface (GUI).
 Please refer to the dedicated page to install the visualization or co-visualization tool according to your sytem. 
 
 [:material-cursor-default-click-outline: See the Khiops Visualization Page](visualization.md){ .md-button .md-button--primary } [:octicons-graph-16: Try our Interactive Demo](demovisualization.md){ .md-button .md-button--secondary }
+
+<br>
+
+## Install the Khiops Python library using Pip  <small> :tools: For Advanced users :tools: </small> {#with-pip data-toc-label="Install Khiops via pip"}
+
+Using `pip` for installation is best suited for experienced users, especially those integrating Khiops into specific environments or requiring advanced configuration. **This method offers flexibility, but requires familiarity with operating systems specifics, Python-based environments and dependency management.**
+
+[:material-cursor-default-click-outline: See the Pip Installation Page](pip.md){ .md-button .md-button--primary }
+

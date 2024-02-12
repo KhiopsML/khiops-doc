@@ -1,6 +1,8 @@
-# Install the Khiops Library Using Pip <small> :tools: Advanced :tools: </small>
+# Install the Khiops Library Using Pip <small> :tools: For Advanced users :tools: </small>
 
-Installing the `khiops` binary is a prerequisite. 
+Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosystem and an understanding of operating system specifics. This approach, while offering adaptability for custom setups, necessitates knowledge of environment setup and dependency handling.
+
+The `khiops` binary must be installed as a prerequisite, which also ensures the installation of the appropriate version of `MPICH` required for the library.
 
 === "Ubuntu/Debian"
     
