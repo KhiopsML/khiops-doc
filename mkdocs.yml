@@ -27,6 +27,7 @@ theme:
     - navigation.expand
     - navigation.indexes
     - content.code.copy
+    - content.tooltips
 
 markdown_extensions:
   - attr_list

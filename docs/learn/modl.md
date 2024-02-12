@@ -4,13 +4,13 @@ The [MODL][publications] approach is an essential component that gives Khiops th
 
 This section introduces and compares MODL with conventional approaches. Exploring this scientific framework is a crucial point, as it fundamentally influences the functioning of Khiops. A deeper understanding of this original formalism will highlight the unique features that set Khiops apart in the machine learning landscape.
 
-[publications]: ../references.md#publications
+[publications]: ../references.md#publications "See scientific references"
 
 ## Standard Machine Learning Approaches
 
 Most machine learning approaches are derived from [statistical learning theory:octicons-link-external-16:][statistical-learning-theory]{:target="_blank"}. This section shows how these approaches rely on optimization of hyperparameters to limit overfitting, and how Khiops contrasts with them. Indeed, Khiops is freed from the complexity of hyperparameter optimization, which offers a significant advantage over other machine learning approaches.
 
-[statistical-learning-theory]: https://en.wikipedia.org/wiki/Statistical_learning_theory
+[statistical-learning-theory]: https://en.wikipedia.org/wiki/Statistical_learning_theory "Visit the Wikipedia page"
 
 ### A Closer Look at Empirical Risk Minimization {#regularization}
 
@@ -20,7 +20,7 @@ For any given training example, a **loss function**, $\mathcal{L}(h(x_i),y_i)$ (
 
 The average value of the loss function given all the training examples $\{(x_i,y_i)\}_{i \in [1,n]}$ is the **empirical risk**. Under the assumption of independence and equal distribution among the training examples, this empirical risk provides an approximation of the **actual risk** the model will face when dealing with new data, corresponding to the mathematical expectation. For instance, using the squared error loss function, the associated empirical error is defined as $\frac{1}{n} \sum^n_{i=1} (y_i - h(x_i))^2$. This is known as the method of the [Least squares:octicons-link-external-16:][least-squares]{:target="_blank"}.
 
-[least-squares]: https://en.wikipedia.org/wiki/Least_squares
+[least-squares]: https://en.wikipedia.org/wiki/Least_squares "Visit the Wikipedia page"
 
 The concept of empirical risk might suggest that a model that correctly explains the training examples and minimizes the empirical risk would be an ideal one. However, an exclusive focus on minimizing the empirical risk can lead to overfitting, where the model doesn't generalize well to new data. To address this, most machine learning approaches use a **regularization** term, $Reg(h)$, as part of the optimization criterion:
 
@@ -34,8 +34,8 @@ Looking at the equation presented above, it is clear that the **empirical risk**
 
 This issue necessitates a trial-and-error process, which involves validating possible values of $\gamma$ and assessing the candidate model $h$ using a dedicated validation set of examples. This process is typically repeated multiple times for robustness against sampling variation, a method known as [cross-validation:octicons-link-external-16:][cross-validation]{:target="_blank"}.
 
-[hyperparameters]: https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)
-[cross-validation]: https://en.wikipedia.org/wiki/Cross-validation_(statistics)
+[hyperparameters]: https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning) "Visit the Wikipedia page"
+[cross-validation]: https://en.wikipedia.org/wiki/Cross-validation_(statistics) "Visit the Wikipedia page"
 
 In real-world applications, standard machine learning methods don't have just one, but numerous hyperparameters, the optimal values of which can't be figured out by the learning algorithm itself. These hyperparameters may include the depth and minimum number of examples in the leaves for decision trees, or the number of layers, the size of layers, and the transfer functions for neural networks.
 
@@ -56,7 +56,7 @@ To discover the best set of hyperparameters, it's necessary to test all possible
 
 !!! danger "Standard approaches are limited in their scaling by the empirical optimization of hyperparameters, which remains necessary to fight against overfitting."
 
-[grid-search]: https://en.wikipedia.org/wiki/Hyperparameter_optimization
+[grid-search]: https://en.wikipedia.org/wiki/Hyperparameter_optimization "Visit the Wikipedia page"
 
 ## Khiops
 
@@ -81,7 +81,7 @@ All the MODL optimization criteria are designed in the same way (optimal encodin
 - model training by optimizing the final criterion just once.
 
 
-[Bayes]: https://en.wikipedia.org/wiki/Bayes%27_theorem
+[Bayes]: https://en.wikipedia.org/wiki/Bayes%27_theorem "Visit the Wikipedia page"
 
 ### Link with Information Theory 
 
@@ -97,8 +97,8 @@ $$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}}
 
 In this encoding problem, the model is transmitted over the telecommunication channel first, followed by the training data. The [Minimum Description Length:octicons-link-external-16:][MDL]{:target="_blank"} (MDL) principle aims to select the most **compact** model describing the data, and it is applied in the MODL approach by the choice of a **hierarchical prior** representing successive choices on the model parameters.
 
-[InformationTheory]: https://en.wikipedia.org/wiki/Information_theory
-[MDL]: https://en.wikipedia.org/wiki/Minimum_description_length
+[InformationTheory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
+[MDL]: https://en.wikipedia.org/wiki/Minimum_description_length "Visit the Wikipedia page"
 
 ### Let's Dive Deeper with the Analogy of Density Estimation
 

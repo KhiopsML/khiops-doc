@@ -36,7 +36,7 @@ As shown in the following figure, a **finer** division of the file grid can be d
 - or due to the availability of **numerous CPUs**, in order to distribute the processing over the cores of a single computer, or over the workers of a computer cluster (using [Message Passing Interface (MPI):octicons-link-external-16:][mpi]{:target="_blank"}).
   
 
-[mpi]: https://en.wikipedia.org/wiki/Message_Passing_Interface
+[mpi]: https://en.wikipedia.org/wiki/Message_Passing_Interface "Visit the Wikipedia page"
 
 <video autoplay loop muted playsinline style="max-width:1280px;width: -webkit-fill-available;">
 <source src="/assets/images/auto-hardware-2.mp4" type="video/mp4">

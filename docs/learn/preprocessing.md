@@ -78,7 +78,7 @@ MODL is a **Bayesian** model selection approach. The goal of the optimization cr
 $$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}} 
 + \underbrace{L(d|h)}_{\textbf{Likelihood}} $$
 
-[information_theory]: https://en.wikipedia.org/wiki/Information_theory
+[information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
 
 Given the model parameters introduced above, the optimization criterion used to select the most probable discretization model can be expressed as follows:
 
@@ -104,7 +104,7 @@ $$L(d|h) = \sum\limits_{i=1}^I \log \binom{N_i}{N_{i1},N_{i2},\dots,N_{iJ}} $$
 
 This term estimates the probability of a particular training set consistent with the model's description (i.e., given the parameters of the model), which turns out to be a [multinomial problem:octicons-link-external-16:][multinomial]{:target="_blank"}. For each interval, the multinomial coefficient counts the number of distinct ways to permute the ${N_i}$ training examples (the dataset) where the number of examples ${N_{ij}}_{j \in [1, J]}$ of each of the $J$ classes is known (the multiplicity). Optimizing the likelihood aims to create **intervals that are as homogeneous (or pure) as possible**, i.e., ideally containing only a single class.
 
-[multinomial]: https://en.wikipedia.org/wiki/Multinomial_theorem
+[multinomial]: https://en.wikipedia.org/wiki/Multinomial_theorem "Visit the Wikipedia page"
 
 !!! success "There's a natural balance between the prior and the likelihood in this approach, preventing overfitting"
     While the particular shape of the prior distribution naturally leans towards models with fewer intervals, the likelihood tends to support more complex models that accurately describe the training data (i.e., more intervals). Given that both terms are consistent, there is no need to weigh one against the other. This inherent balance is what makes MODL **hyperparameter-free**.
@@ -187,7 +187,7 @@ It is defined as previously discussed, i.e.:
 
 $$L(d|h) = \sum\limits_{i=1}^I \log \binom{N_i}{N_{i1}, N_{i1}, \dots, N_{iJ}} $$
 
-[stirling_number]: https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind
+[stirling_number]: https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind "Visit the Wikipedia page"
 
 ### Optimization Algorithm
 

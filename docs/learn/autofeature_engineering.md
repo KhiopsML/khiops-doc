@@ -46,7 +46,7 @@ As before, the first modeling step is to define the family of models $\mathcal{H
 
 Khiops uses a language similar to SQL to build aggregates. Formally, it is a collection of functions that can be [composed:octicons-link-external-16:][composition]{:target="_blank"} with each other an unlimited number of times, provided that the operand and return types of each function are consistent. Here are the main functions used:    
 
-[composition]: https://en.wikipedia.org/wiki/Function_composition
+[composition]: https://en.wikipedia.org/wiki/Function_composition "Visit the Wikipedia page"
 
 | Name        | Return type | Operands    | Description    |
 | ----------- | ----------- | ----------- | -------------- |
@@ -104,7 +104,7 @@ As shown in the previous examples, the generated aggregates can be more or less 
 
 [Information theory:octicons-link-external-16:][information_theory]{:target="_blank"} provides the same interpretation for both optimization criteria previously described for [discretization][discretization] and [grouping][grouping] models. Indeed, these two criteria can be rewritten as follows:
 
-[information_theory]: https://en.wikipedia.org/wiki/Information_theory
+[information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
 [discretization]: preprocessing.md#discretization
 [grouping]: preprocessing.md#grouping
 
@@ -250,7 +250,7 @@ The last term represents the **Likelihood** $-\log(P(d|T))$ which enumerates the
 
 
 
-[information_theory]: https://en.wikipedia.org/wiki/Information_theory
+[information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
 [discretization]: preprocessing.md#discretization
 [grouping]: preprocessing.md#grouping
 [publications]: ../references.md#publications

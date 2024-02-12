@@ -60,7 +60,7 @@ Indeed, this product is performed on probabilities relative to each explicative 
 
 - The term $p(\{x_k\}_{k \in [1, K]})$ represents the probability of observing the example at hand, and is not related to the target variable. To estimate calibrated conditional probabilities, this term can be replaced by the [normalization:octicons-link-external-16:][proba_total]{:target="_blank"} factor represented in <span style="color:blue">blue</span> in the above equation.   
 
-[proba_total]: https://en.wikipedia.org/wiki/Law_of_total_probability
+[proba_total]: https://en.wikipedia.org/wiki/Law_of_total_probability "Visit the Wikipedia page"
 
 !!! danger "Weakness of standard Naïve Bayes"
     When implemented in an basic way, the Naïve Bayes classifier does not perform very well as the assumption of independence between variables is often not valid in real-life situations. The following weakness needs to be mitigated: 
