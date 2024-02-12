@@ -2,7 +2,7 @@
 
 ## Multi-table Feature Construction
 
-Auto Feature Engineering corresponds to the first **(A)** step of the Auto-ML pipeline implemented by Khiops. It is an optional pre-processing step to handle multi-table input data. Feature engineering is usually performed manually by data scientists, and is a time-consuming and risky task that can lead to overfitting. Khiops is able to automatically extract a large amount of aggregates from the secondary tables which are constructed and selected to avoid overfitting. These aggregates are all informative for the learning task at hand.
+Auto Feature Engineering corresponds to the first **(A)** step of the Auto-ML pipeline implemented by Khiops. It is an optional pre-processing step to handle multi-table input data. Feature engineering is usually performed manually by data scientists, and is a time-consuming and risky task that can lead to overfitting. Khiops is able to automatically extract a large amount of aggregates from the secondary tables which are constructed and selected to avoid overfitting. These selected aggregates are all informative for the learning task at hand.
 
 <picture>
   <source srcset="/assets/images/auto-ml-pipeline-A.webp" type="image/webp">
@@ -44,7 +44,7 @@ The purpose of Auto Feature Engineering is to enrich the root table with informa
 
 As before, the first modeling step is to define the family of models $\mathcal{H}$ which contains all the learnable hypotheses $h \in \mathcal{H}$. In the case of Auto Feature Engineering, this family is an extension of the [optimal encoding][preprocessing] models which perform two tasks: (i) choosing the variable to encode, which can either be a native variable or an aggregate generated from the secondary tables; (ii) encoding this variable by a discretization model or a grouping model depending on its type.  
 
-Khiops uses a language similar to SQL to build aggregates. Formally, it is a collection of functions that can be [composed:octicons-link-external-16:][composition]{:target="_blank"} with each other an unlimited number of times, provided that the operand and return types of each function are consistent. Here is the list of functions used:    
+Khiops uses a language similar to SQL to build aggregates. Formally, it is a collection of functions that can be [composed:octicons-link-external-16:][composition]{:target="_blank"} with each other an unlimited number of times, provided that the operand and return types of each function are consistent. Here are the main functions used:    
 
 [composition]: https://en.wikipedia.org/wiki/Function_composition
 
@@ -229,7 +229,7 @@ A MODL binary decision tree model is defined by its structure, the distribution 
 !!! success "Key idea #1"
     **The MODL decision tree criterion simply result from the expansion of the Bayes' formula.** 
 
-As MODL discretization the objective of the optimization criterion is to select the most probable model given the training data, denoted $T$, by maximizing the probability $P(T|d)=P(T).P(d|T)/p(d)$.  
+As MODL discretization the objective of the optimization criterion is to select the most probable model given the training data, denoted $T$, by maximizing the probability $P(T|d)=P(T).P(d|T)/P(d)$.  
 The optimization criterion used to select the most probable supervised decision tree model can easily be interpreted: 
 
 $$-\log(P(T).P(d|T)) = \overbrace{\underbrace{ \vphantom{\sum\limits_{k=1}^K}  \log(K+1) +\log \binom{K+K_T-1}{K_T-1} }_{\textbf{level 1}} + \underbrace{ \sum_{I_s=0,X_s Num. } \log (2K_T (N_{s.}+1))}_{\textbf{level 2}}+\underbrace{ \sum_{I_s=1, X_s Cat.} \log (2K_TB(G_{X_s},2))}_{\textbf{level 3}} + \underbrace{\sum\limits_{l} \log 2+\log \binom{N_l + J -1}{J-1}}_{\textbf{level 4}}}^{\textbf{Prior}} 

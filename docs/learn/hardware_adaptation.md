@@ -33,10 +33,10 @@ To do this, Khiops slices the data into a **grid of files**, each file represent
 As shown in the following figure, a **finer** division of the file grid can be decided for two reasons:
 
 - either due to a **lack of RAM**, with the goal of loading slices in turn into memory and processing them sequentially. 
-- or due to the availability of **numerous CPUs**, in order to distribute the processing over the cores of a single computer, or over the workers of a computer cluster (using [Open MPI:octicons-link-external-16:][open_mpi]{:target="_blank"}).
+- or due to the availability of **numerous CPUs**, in order to distribute the processing over the cores of a single computer, or over the workers of a computer cluster (using [Message Passing Interface (MPI):octicons-link-external-16:][mpi]{:target="_blank"}).
   
 
-[open_mpi]: https://www.open-mpi.org
+[mpi]: https://en.wikipedia.org/wiki/Message_Passing_Interface
 
 <video autoplay loop muted playsinline style="max-width:1280px;width: -webkit-fill-available;">
 <source src="/assets/images/auto-hardware-2.mp4" type="video/mp4">

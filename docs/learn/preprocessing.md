@@ -13,7 +13,7 @@ Khiops' Auto-ML pipeline recognizes this pivotal role of encoding and designates
 
 In this crucial phase:
 
-- **Numerical** variables go through an encoding process known as [**discretization**][discretization]which converts continuous variables into discrete ones;
+- **Numerical** variables go through an encoding process known as [**discretization**][discretization] which converts continuous variables into discrete ones;
 - **Categorical** variables are further refined and encoded through a [**grouping**][grouping] method, which ensures their optimal categorization.
 
 These transformations are not simply heuristic-based adjustments. The univariate models created at this stage become essential building blocks for the next stage of the pipeline, where they are selectively combined to form a parsimonious multivariate Bayesian classifier.
@@ -170,11 +170,11 @@ In a very similar way to the discretization, the following criterion must be min
 
 It has the same hierarchical and uniform shape as for discretization, but it differs slightly:
 
-$$-\log(P(h).P(d|h)) = \overbrace{\underbrace{ \vphantom{\sum\limits_{g=1}^G}  \log M}_{\textbf{level 1}} + \underbrace{ \vphantom{\sum\limits_{g=1}^G} \log \left ( {\color{red} \sum\limits_{g=1}^G S(M,g)} \right )}_{\textbf{level 2}} + \underbrace{\sum\limits_{g=1}^G \log \binom{N_g + J -1}{J-1}}_{\textbf{level 3}}}^{\textbf{Prior}} $$
+$$-\log(P(h).P(d|h)) = \overbrace{\underbrace{ \vphantom{\sum\limits_{g=1}^G}  \log M}_{\textbf{level 1}} + \underbrace{ \vphantom{\sum\limits_{g=1}^G} \log \left (  \sum\limits_{g=1}^G S(M,g) \right )}_{\textbf{level 2}} + \underbrace{\sum\limits_{g=1}^G \log \binom{N_g + J -1}{J-1}}_{\textbf{level 3}}}^{\textbf{Prior}} $$
 
 
-- **level 1**: probability of a particular number of groups, all the values $G \in [1, N]$ being equiprobable,
-- **level 2**: probability of a particular <span style="color:red">composition</span> of groups, given the value of $G$,
+- **level 1**: probability of a particular number of groups, all the values $G \in [1, M]$ being equiprobable,
+- **level 2**: probability of a particular composition of groups, given the value of $G$,
 - **level 3**: probability of a particular class distribution given the previous parameters.
 
 Unlike numerical variables, which can be arranged in a specific order, categorical variables have distinct values which cannot be inherently ranked. Consequently, the **level 2** term in our optimization criterion enumerates the possible configurations for forming $G$ groups from $M$ distinct modalities. Specifically, this term quantifies the probability associated with a particular index function $\{g(x)\}$, given a fixed number of groups $G$. It assumes that all possible indexes are equally probable. The count of these possible configurations is determined by the sum of the [Stirling numbers of the second kind:octicons-link-external-16:][stirling_number]{:target="_blank"}, denoted as $S(M,g)$.

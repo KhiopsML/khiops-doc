@@ -102,7 +102,7 @@ In this encoding problem, the model is transmitted over the telecommunication ch
 
 ### Let's Dive Deeper with the Analogy of Density Estimation
 
-To illustrate the model selection performed by Khiops, we draw an analogy with a very simple problem: estimating the density of a numerical variable using histograms. Here, the histogram takes on the role of the model under training. This is a **discretization** model (i.e. dividing the domain of the variable under study into intervals of varying size) that is instantiated by first defining the number of intervals, then the positioning of their bounds. For the sake of illustration, consider a dataset drawn from a Gaussian distribution. 
+To illustrate the model selection performed by Khiops, we draw an analogy with a very simple problem: estimating the density of a numerical variable using histograms. Here, the histogram takes on the role of the model under training. This is a **discretization** model (i.e. dividing the domain of the variable under study into intervals of varying size) that is instantiated by first defining the number of intervals, then the frequency and bounds of each interval. For the sake of illustration, consider a dataset drawn from a Gaussian distribution. 
 
 The MODL approach selects the most probable model based on the data, among all possible models, i.e. histograms with a more or less important number of intervals, and varying interval sizes. As shown in the following figure, the key is to choose the right number of intervals. An insufficient number of intervals leads to oversimplification and thus to a loss of information. Conversely, an excessive number of intervals introduces unnecessary complexity and sensitivity to outliers and noisy values.
 
