@@ -1,27 +1,19 @@
 # Quickstart Guide
 
-The user-friendly Khiops Python library provides a unique [Auto-ML pipeline][what_makes_khiops_different]. Khiops offers significant practical advantages, based on an original formalism: 
+The user-friendly Khiops Python library provides a unique Auto-ML pipeline. Khiops offers significant practical advantages, based on an original formalism: 
 
 - Advanced Automation
 - Model Interpretability
 - Outstanding Scalability
 
-To find out more, read the page ["What makes Khiops different"][what_makes_khiops_different].
-
-[what_makes_khiops_different]: ../learn/understand.md
-
 ## Auto-ML as Simple as a Regular Classifier 
 
 The Khiops Python library allows users to set-up Auto-ML pipelines which automate supervised Machine Learning, e.g. for classifying input examples into predefined groups, each identified by a label. Common applications include predicting customer churn (Yes or No), the severity of a failure (Minor, Major, Critical) etc. 
 
-Featuring [unique learning algorithms][original_formalism], Khiops automates many steps seamlessly for the user. For example, there's no longer any need to prepare training data, as [missing values, noise, outliers and unbalanced classes][no_data_preparation] are handled for you. [Encoding categorical variables][encoding] is also no longer a problem. 
+Featuring **unique learning algorithms**, Khiops automates many steps seamlessly for the user. For example, there's no longer any need to prepare training data, as [missing values, noise, outliers and unbalanced classes][no_data_preparation] are handled for you. [Encoding categorical variables][encoding] is also no longer a problem. 
 
 Ultimately, all you need to do is use the standard Scikit-Learn syntax, and Khiops takes care of handling poor-quality raw data, producing competitive, robust and interpretable models.  
 
-
-A minimal code sample is shown below. More detailed [tutorials][tuto] are available.
-
-[original_formalism]: ../learn/modl.md
 [no_data_preparation]: ../advanced/Notebooks/No_data_Cleaning.ipynb
 [encoding]: ../advanced/Notebooks/Optimal_Encoding.ipynb
 [tuto]: https://khiopsml.github.io/khiops-python/tutorials/index.html
@@ -91,20 +83,19 @@ pred = clf.predict(X_test)
 
 ## Auto Feature Engineering as Simple as Writing a Dictionary 
 
-[Feature Engineering][Auto_feature_engineering] aims to build a training set from multi-table data, by summarizing the useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecommunications operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *''call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
-
-[Auto_feature_engineering]: ../learn/autofeature_engineering.md
+**Feature Engineering** aims to build a training set from multi-table data, by summarizing the useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecommunications operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *''call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
 
 In practice, when undertaken manually, Feature Engineering is an extremely time-consuming task which is not efficient and risks over-fitting (i.e. when using over-complex aggregates). Just feed multi-table data into the Khiops Auto-ML pipeline to trigger an ultra-efficient [automatic Feature Engineering algorithm][Auto_feature_engineering]. All you need to do is describe the structure of the input multi-table data with a dictionary.
 
 ### 🖋️ Simply describe your multi-table data
 
-Below, we only show the `syntax` to be used when describing multi-table data. For a running code sample, please refer to the [dedicated page][full_pipeline].
+Below, we only show the `syntax` to be used when describing multi-table data. 
+
 We continue with the previous example, where the multi-table data describes the customers of a telecommunications operator and where the goal is to predict the churn:
 
 <img src="/assets/images/simple_multi_table_data.png" style="width:400px;"/>
 
-Khiops allows users to describe multi-table data as a Python dictionary ([a running sample is available][full_pipeline]). Here's an example: 
+Khiops allows users to describe multi-table data as a Python dictionary (**a running sample is [available here][full_pipeline]**). Here's an example: 
 
 [full_pipeline]: ../advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
 

@@ -1,6 +1,6 @@
 # What makes Khiops different
 
-Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), natively and effortlessly handling intricate Data Science time-consuming tasks. These include feature engineering (A), data cleaning and encoding (B), and the training of [parsimonious models][parsimonious_models] (C).
+Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), natively and effortlessly handling intricate Data Science time-consuming tasks. These include feature engineering (A), data cleaning and encoding (B), and the training of parsimonious_models (C).
 
 <picture>
   <source srcset="/assets/images/auto-ml-pipeline.webp" type="image/webp">
@@ -18,9 +18,6 @@ The distinctiveness of Khiops lies in its departure from typical AutoML solution
   <img style="max-width:400px;width: -webkit-fill-available;margin-top:30px" src="/assets/images/Khiops-advantages.png" alt="Khiops-advantages" loading="lazy"> 
 </picture>
 
-[informative_aggregates]: autofeature_engineering.md
-[encoding]: preprocessing.md
-[parsimonious_models]: learning_models.md
 
 ## Advanced Automation 
 
@@ -32,11 +29,6 @@ Khiops significantly enhances the productivity of data scientists by seamlessly 
 - **Efficient Variable Selection Algorithms**: Khiops employs two sophisticated variable selection techniques. Firstly, during the optimal encoding phase (B), it weeds out variables that lack correlation with the target using Compression Gain. Secondly, during the parsimonious learning step (C), it handpicks a compact subset of the most informative and mutually independent variables.
 
 The remainder of the section introduces the **auto-features engineering** step.
-
-[encoding_benefits]: preprocessing.md#benefits
-[grouping]: preprocessing.md#grouping
-[training]: learning_models.md
-
 
 !!! info "This section only introduces the concept. For technical details, please refer to the :orange_book: [Auto features engineering][auto_features_enginnering] section."
  [auto_features_enginnering]: autofeature_engineering.md
