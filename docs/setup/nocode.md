@@ -8,11 +8,10 @@ Welcome to the Khiops desktop application download page. Our intuitive, user-fri
 
 ## Download & Installation
 
-To get started with the Khiops desktop application, follow the relevant procedure for your operating system. Please click on the relevant operating system after reading [README.txt][readme], [install.txt][install] and [whatsnew.txt][whatsnew]:
+To get started with the Khiops desktop application, follow the relevant procedure for your operating system. Please click on the relevant operating system after reading [README.txt][readme], and [whatsnew.txt][whatsnew]:
 
 [releases]: https://github.com/KhiopsML/khiops/releases
 [readme]: README.txt
-[install]: install.txt
 [whatsnew]: whatsnewV10.1.txt
 
 
