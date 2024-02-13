@@ -85,7 +85,7 @@ pred = clf.predict(X_test)
 
 **Feature Engineering** aims to build a training set from multi-table data, by summarizing the useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecommunications operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *''call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
 
-In practice, when undertaken manually, Feature Engineering is an extremely time-consuming task which is not efficient and risks over-fitting (i.e. when using over-complex aggregates). Just feed multi-table data into the Khiops Auto-ML pipeline to trigger an ultra-efficient [automatic Feature Engineering algorithm][Auto_feature_engineering]. All you need to do is describe the structure of the input multi-table data with a dictionary.
+In practice, when undertaken manually, Feature Engineering is an extremely time-consuming task which is not efficient and risks over-fitting (i.e. when using over-complex aggregates). Just feed multi-table data into the Khiops Auto-ML pipeline to trigger an ultra-efficient automatic Feature Engineering algorithm. All you need to do is describe the structure of the input multi-table data with a dictionary.
 
 ### 🖋️ Simply describe your multi-table data
 
