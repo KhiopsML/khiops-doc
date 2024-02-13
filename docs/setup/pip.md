@@ -46,6 +46,15 @@ The `khiops` binary must be installed as a prerequisite, which also ensures the 
 --->
 !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
 
+??? tip "Important Note for Users Upgrading from the previous pyKhiops package (up to 10.1)"
+    
+    If you are upgrading from a version prior to Khiops 10.2, it is essential to first uninstall the `pykhiops` package. This step ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
+
+    To uninstall pykhiops, please execute the following command in your terminal or command prompt:
+
+    ```sh
+    pip uninstall pykhiops -y
+    ```
 
 ## User Guide
 
@@ -65,6 +74,16 @@ You can consult the limitations or known problems corresponding to your operatin
 === "Users on :simple-linux: Linux"
     !!! warning
         The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH`, please prefer an installation using Conda.
+
+    !!! warning 
+
+        The installation of Khiops will utilize MPICH version 3.4.3 due to compatibility issues. 
+        This is why you need to use a dedicated command:
+        ``` sh
+        conda install -c conda-forge -c khiops khiops
+        ```
+            
+        Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
 
 
 === "Users on :material-microsoft-windows: Windows"
