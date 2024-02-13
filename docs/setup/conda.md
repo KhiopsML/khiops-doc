@@ -48,7 +48,7 @@ You can consult the limitations or known problems corresponding to your operatin
 
 === "Users on :material-apple: Apple Silicon"
     !!! warning 
-        On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets. To avoid these popups and ensure optimal performance, please run the following commands:
+        On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets. To avoid these popups and ensure optimal performance, please configure Khiops to not accept incoming connections with the following commands:
 
         ``` sh
         FW=/usr/libexec/ApplicationFirewall/socketfilterfw 
