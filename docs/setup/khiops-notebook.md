@@ -1,4 +1,4 @@
-# Run Khiops with Jupyter Docker Stacks <small>  🚧 Beta 🚧 </small>
+# Run Khiops with Jupyter Docker Stacks 
 
 For a quick and easy way to get started with Khiops, you can use our pre-built container. 
 

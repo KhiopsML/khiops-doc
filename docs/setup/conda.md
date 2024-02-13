@@ -1,4 +1,4 @@
-# Install the Khiops Library Using Conda <small>  🚧 Beta 🚧 </small>
+# Install the Khiops Library Using Conda 
 
 The Conda package installation guarantees optimal performance since it handles installing or upgrading all Khiops dependencies, including the MPI library, in your Conda environment. 
 

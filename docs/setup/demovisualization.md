@@ -21,17 +21,17 @@ Click on the corresponding button to choose the case you want to explore:
 		visuMenu([
 			{
 				title: "Single Table",
-				description: "Adult file",
+				description: "Adult dataset",
 				file: "/assets/mock/AdultReport.json"
 			},
 			{
 				title: "Single Table with Trees",
-				description: "Adult file",
+				description: "Adult dataset",
 				file: "/assets/mock/AdultWithTreesReport.json"
 			},
 			{
 				title: "Multi-Table",
-				description: "Adult file",
+				description: "Accident dataset with three tables",
 				file: "/assets/mock/AccidentReport.json"
 			}
 		])
