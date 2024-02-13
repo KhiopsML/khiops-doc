@@ -25,11 +25,12 @@ To get started with the Khiops desktop application, follow the relevant procedur
     </a>
 
 === "Ubuntu/Debian"
-    The installation of the Khiops desktop application involves two packages: `khiops-core` and `khiops` (containing the GUI). 
+    The installation of the Khiops desktop application involves two packages: 
     
-    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+     - `khiops-core`: This is a lightweight package without GUI and documentation. It is intended to be used on servers and dockers images.
+     - `khiops`: This package requires khiops-core and is the full version of Khiops containing the GUI and the documentation.
 
-    You can run the following command:
+    You can install the both packages as follow:
     
     ``` sh
     CODENAME=$(lsb_release -cs) && \
@@ -41,13 +42,17 @@ To get started with the Khiops desktop application, follow the relevant procedur
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
-    If you need the Khiops samples, you can install the `khiops-samples` package:
+    If you need the Khiops samples, you can run the following commands:
     ```sh
-    TEMP_DEB_SAMPLES="$(mktemp)" && \
-    wget -O "$TEMP_DEB_SAMPLES" "https://github.com/KhiopsML/khiops/releases/download/v10.1.1/khiops-samples_10.1.1-0+${CODENAME}_all.deb" && \
-    sudo dpkg -i "$TEMP_DEB_SAMPLES" || sudo apt-get -f -y install && \
-    rm -f $TEMP_DEB_SAMPLES
+    TEMP_SAMPLES="$(mktemp)" && \
+    wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/v10.2.0/khiops-samples-v10.2.0.zip" && \
+    mkdir -p ~/khiops_data/samples && \
+    unzip "$TEMP_SAMPLES" -d ~/khiops_data/samples && \
+    rm -f $TEMP_SAMPLES
     ```
+
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+
 
 <!--- 
 === "CentOS"
@@ -105,6 +110,17 @@ A tutorial is also [**available**][tutorial] to help you understand and grasp th
 !!! info "For users on Khiops versions prior to 10.1, the license support is available via [khiops.tech.orange][khiopslegacy]"
 
 [khiopslegacy]: https://khiops.tech.orange
+
+## What You Should Know
+
+You can consult the limitations or known problems corresponding to your operating system:
+
+=== "Users on :material-microsoft-windows: Windows"
+    !!! warning 
+        The Khiops installer relies on embedded installers for Java and MPI. Windows Defender or any other antivirus software may remove excutable files (.exe, .jar) during installation. In this case, **you should add exceptions to your antivirus or disable it during installation.** 
+    !!! warning 
+        The java installer results in a system reboot on some systems (eg. on Windows Server 2008)
+    
 
 ## Screenshots 
 

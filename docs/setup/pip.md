@@ -89,6 +89,10 @@ You can consult the limitations or known problems corresponding to your operatin
 === "Users on :material-microsoft-windows: Windows"
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
+    !!! warning 
+        The Khiops installer relies on embedded installers for Java and MPI. Windows Defender or any other antivirus software may remove excutable files (.exe, .jar) during installation. In this case, **you should add exceptions to your antivirus or disable it during installation.** 
+    !!! warning 
+        The java installer results in a system reboot on some systems (eg. on Windows Server 2008)
 
 === "Users on :material-apple: macOS"
     !!! warning

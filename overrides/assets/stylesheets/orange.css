@@ -576,9 +576,9 @@
   opacity: 1;
 }
 
-/* Modification police 0.8 to 0.7rem */
+
 .md-typeset {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 .md-content a {
