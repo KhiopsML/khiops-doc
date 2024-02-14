@@ -46,7 +46,7 @@ The Conda package installation guarantees optimal performance since it handles i
 
 You can consult the limitations or known problems corresponding to your operating system:
 
-=== "Users on :material-apple: Apple Silicon"
+=== "Users on :material-apple: macOS"
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets. To avoid these popups and ensure optimal performance, please configure Khiops to not accept incoming connections with the following commands:
 
