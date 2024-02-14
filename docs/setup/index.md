@@ -22,7 +22,7 @@ Legend: :white_check_mark: supported, :warning: works with known limitations, :n
 
 | OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
-| Windows 7 or later<br>(+ WSL) | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| Windows 10 or later<br>(+ WSL) | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | Ubuntu 20 or 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | Debian 10 or later   | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] (10)<br>:no_entry_sign: (11,12) | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode] (10)<br>:no_entry_sign: (11, 12)  |
 | CentOS 7 and 8    | [:white_check_mark:][conda_page]  | :no_entry_sign:  | [:white_check_mark:][notebooks_page]  | :no_entry_sign:  |
