@@ -1,6 +1,6 @@
 # Installation Options {label="Overview"}
 
-Khiops was originally developed as a desktop application. As we move to open source, we are diversifying the installation options to meet different needs:
+Khiops supports a diversified set of installation options, to meet different needs:
 
   - **Khiops Python Library**:
     - Packaged via [`conda`][conda]
@@ -27,7 +27,7 @@ Refer to the following table to select the appropriate installation method for y
 | Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
 | macOS 10 and later    | [:white_check_mark:][conda_page]   |   | [:white_check_mark:][notebooks_page] |   |
 
-For users on :simple-kaggle: **Kaggle Notebooks** or :simple-googlecolab: **Google Colaboratory**, we have tested and recommend using the :simple-anaconda: **Conda** package for installing Khiops.
+The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users need to install the Khiops the :simple-anaconda: **Conda** package.
 
   [conda_page]: conda.md
   [pip_page]: pip.md
@@ -36,7 +36,7 @@ For users on :simple-kaggle: **Kaggle Notebooks** or :simple-googlecolab: **Goog
 
 <br>
 
-## Install the Khiops Python library using Conda {#with-conda data-toc-label="Install Khiops via conda"}
+## Install the Khiops Python Library Using Conda {#with-conda data-toc-label="Install Khiops via conda"}
 
 The Conda package contains all the necessary components. 
 
@@ -76,7 +76,7 @@ docker pull khiopsml/khiops-notebook
   
 ## Install the Khiops Desktop Application
 
-This version contains a Graphical User Interface (GUI). 
+This version contains a standalone Graphical User Interface (GUI). 
 
 
 === "Windows"
@@ -124,7 +124,7 @@ This version contains a Graphical User Interface (GUI).
 
 ## Install the Khiops Visualization Applications
 
-Please refer to the dedicated page to install the visualization or co-visualization tool according to your sytem. 
+Please refer to the dedicated page to install the visualization or co-visualization tool according to your needs and host operating system. 
 
 [:material-cursor-default-click-outline: See the Khiops Visualization Page](visualization.md){ .md-button .md-button--primary } [:octicons-graph-16: Try our Interactive Demo](demovisualization.md){ .md-button .md-button--secondary }
 
