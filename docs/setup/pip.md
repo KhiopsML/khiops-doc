@@ -4,6 +4,8 @@ Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosy
 
 The `khiops` binary must be installed as a prerequisite, which also ensures the installation of the appropriate version of `MPICH` required for the library.
 
+We support :simple-python: **Python from 3.8 to 3.11**. For users on :simple-kaggle: **Kaggle Notebooks** or :simple-googlecolab: **Google Colaboratory**, we have tested and recommend using the :simple-anaconda: **Conda** package for installing Khiops.
+
 === "Ubuntu/Debian"
     
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following command:
@@ -13,7 +15,7 @@ The `khiops` binary must be installed as a prerequisite, which also ensures the 
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
+    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0.0'
     ```
 
 
@@ -28,7 +30,7 @@ The `khiops` binary must be installed as a prerequisite, which also ensures the 
 
     Then, you can run the following Pip command:
     ```sh
-    pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0b2"
+    pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0.0"
     ```
 
 <!--- 
@@ -41,7 +43,7 @@ The `khiops` binary must be installed as a prerequisite, which also ensures the 
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0b2'
+    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0.0'
     ```
 --->
 !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."

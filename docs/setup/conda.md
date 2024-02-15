@@ -4,6 +4,8 @@ The Conda package installation guarantees optimal performance since it handles i
 
 ## Instructions
 
+We support :simple-python: **Python from 3.8 to 3.11**. If your current environment is compatible with this requirement, you can proceed as follows:
+
 === "Linux"
     ``` sh
     conda install -c conda-forge -c khiops khiops
@@ -20,6 +22,23 @@ The Conda package installation guarantees optimal performance since it handles i
     ```
 
 <br>
+
+If your default Conda environment uses a non-compatible Python version (e.g., Python 3.12) or if you need to use a specific python version for ensuring compatibility with other third-party packages, **you can create a new Conda environment for Khiops**, for example, with Python 3.8 (or any version from 3.8 to 3.11 that suits your needs). You can do so by using the command:
+
+```sh
+conda create --name khiops_env python=3.8
+```
+
+After creating the environment, activate it using:
+
+```sh
+conda activate khiops_env
+```
+
+Then, proceed with the installation of the Khiops library within this environment.
+
+<br>
+
 
 ??? tip "Important Note for Users Upgrading from the previous pyKhiops package (up to 10.1)"
     
