@@ -20,12 +20,12 @@ Refer to the following table to select the appropriate installation method for y
 
 | OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
-| Windows 10 and later<br>(+ WSL) | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Ubuntu 20 and 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Debian 10  | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
-| Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
-| macOS 10 and later    | [:white_check_mark:][conda_page]   |   | [:white_check_mark:][notebooks_page] |   |
+| [:material-microsoft-windows:] Windows 10 and later | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| [:material-apple:] macOS 10 and later    | [:white_check_mark:][conda_page]   |   | [:white_check_mark:][notebooks_page] |   |
+| [:simple-linux:] Ubuntu 20 and 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| [:simple-linux:] Debian 10  | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| [:simple-linux:] Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
+| [:simple-linux:] Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users need to install the Khiops the :simple-anaconda: **Conda** package.
 
