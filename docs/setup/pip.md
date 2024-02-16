@@ -33,17 +33,7 @@ We support :simple-python: **Python from 3.8 to 3.11**.
     pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0.0"
     ```
 
-!!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
 
-??? tip "Important Note for users upgrading from the pre-10.2.0 versions of the `pyKhiops` package"
-    
-    If you are upgrading from a version prior to Khiops 10.2.0, it is essential to first make sure the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
-
-    To uninstall pykhiops, please execute the following command in your terminal or command prompt, in your Python environment:
-
-    ```sh
-    pip uninstall pykhiops -y
-    ```
 
 ## User Guide
 
@@ -61,6 +51,27 @@ We support :simple-python: **Python from 3.8 to 3.11**.
 You can consult the limitations or known issues for your operating system:
 
 === "Users on :simple-linux: Linux"
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
+
+    ??? tip "Important Note for users upgrading from the pre-10.2.0 versions of the `pyKhiops` package"
+    
+        If you are upgrading from a version prior to Khiops 10.2.0, it is essential to first make sure the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
+
+        To uninstall pykhiops, please execute the following command in your terminal or command prompt, in your Python environment (use **admin rights** if necessary):
+
+        ```sh
+        pip uninstall pykhiops -y
+        ```
+    ??? danger "Pip and Conda Khiops installations **should not be mixed.**"
+
+        If the users wish to switch from a Pip-based installation to a Conda-based installation, they need to deactivate the Python virtual environment Khiops had been installed into, via Pip. Or, if no virtual environment has been used, the users need to uninstall the Khiops Python package:
+
+        ``` sh
+        pip uninstall khiops
+        ```
+
+        Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
+        
     !!! warning
         The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH` for other programs, please prefer an installation using Conda.
 
@@ -76,6 +87,27 @@ You can consult the limitations or known issues for your operating system:
 
 
 === "Users on :material-microsoft-windows: Windows"
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
+
+    ??? tip "Important Note for users upgrading from the pre-10.2.0 versions of the `pyKhiops` package"
+    
+        If you are upgrading from a version prior to Khiops 10.2.0, it is essential to first make sure the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
+
+        To uninstall pykhiops, please execute the following command in your terminal or command prompt, in your Python environment (use **admin rights** if necessary):
+
+        ```sh
+        pip uninstall pykhiops -y
+        ```
+    ??? danger "Pip and Conda Khiops installations **should not be mixed.**"
+
+        If the users wish to switch from a Pip-based installation to a Conda-based installation, they need to deactivate the Python virtual environment Khiops had been installed into, via Pip. Or, if no virtual environment has been used, the users need to uninstall the Khiops Python package:
+
+        ``` sh
+        pip uninstall khiops
+        ```
+
+        Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
+        
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
     !!! warning 
@@ -86,16 +118,6 @@ You can consult the limitations or known issues for your operating system:
 === "Users on :material-apple: macOS"
     !!! warning
         Native packages for the Khiops binaries are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
-<br>
-At any rate, Pip and Conda Khiops installations **should not be mixed.**
-
-If the users wish to switch from a Pip-based installation to a Conda-based installation, they need to deactivate the Python virtual environment Khiops had been installed into, via Pip. Or, if no virtual environment has been used, the users need to uninstall the Khiops Python package:
-
-    ``` sh
-    pip uninstall khiops
-    ```
-!!! note Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
-
-
 
 <br>
+
