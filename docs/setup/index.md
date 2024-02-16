@@ -3,7 +3,7 @@
 Khiops was originally developed as a desktop application. As we move to open source, we are diversifying the installation options to meet different needs:
 
   - **Khiops Python Library**:
-    - Packaged via [`conda`][conda]
+    - Packaged via [`conda`][conda] (recommended)
     - Packaged via [`pip`][pip]
     - Packaged in our [khiops-notebook][notebooks] container
   - **Khiops Desktop Application**: for advanced data analytics with just a few clicks using a GUI (includes Khiops Visualization)
@@ -36,7 +36,7 @@ For users on :simple-kaggle: **Kaggle Notebooks** or :simple-googlecolab: **Goog
 
 <br>
 
-## Install the Khiops Python library using Conda {#with-conda data-toc-label="Install Khiops via conda"}
+## Install the Khiops Python library using Conda <small> Recommended </small> {#with-conda data-toc-label="Install Khiops via conda"}
 
 The Conda package contains all the necessary components. 
 
@@ -123,8 +123,6 @@ This version contains a Graphical User Interface (GUI).
 <br>
 
 ## Install the Khiops Visualization Applications
-
-Please refer to the dedicated page to install the visualization or co-visualization tool according to your sytem. 
 
 [:material-cursor-default-click-outline: See the Khiops Visualization Page](visualization.md){ .md-button .md-button--primary } [:octicons-graph-16: Try our Interactive Demo](demovisualization.md){ .md-button .md-button--secondary }
 
