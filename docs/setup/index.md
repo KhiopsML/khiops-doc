@@ -27,7 +27,7 @@ Refer to the following table to select the appropriate installation method for y
 | :simple-linux: Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
 | :simple-linux: Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
 
-The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops the :simple-anaconda: **Conda** package, which has been tested in these environments.
+The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
   [conda_page]: conda.md
   [pip_page]: pip.md
@@ -100,23 +100,8 @@ This version contains a standalone Graphical User Interface (GUI).
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
-    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
 
-<!--- 
-=== "CentOS"
-    
-    ``` sh
-    CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp)" && \
-    TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum localinstall "$TEMP_RPM" "$TEMP_DEB_KHIOPS" -y && \
-    rm -f $TEMP_RPM $TEMP_DEB_KHIOPS    ```
-    ```
-
-    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
---->
     
 [:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }
 
@@ -133,6 +118,8 @@ Please refer to the dedicated page to install the visualization or co-visualizat
 ## Install the Khiops Python library using Pip  <small> :tools: For Advanced users :tools: </small> {#with-pip data-toc-label="Install Khiops via pip"}
 
 Using `pip` for installation is best suited for experienced users, especially those integrating Khiops into specific environments or requiring advanced configuration. **This method offers flexibility, but requires familiarity with operating systems specifics, Python-based environments and dependency management.**
+
+!!! warning At any rate, Pip and Conda Khiops installations **should not be mixed.**
 
 [:material-cursor-default-click-outline: See the Pip Installation Page](pip.md){ .md-button .md-button--primary }
 
