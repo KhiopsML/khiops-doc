@@ -86,3 +86,16 @@ You can consult the limitations or known issues for your operating system:
 === "Users on :material-apple: macOS"
     !!! warning
         Native packages for the Khiops binaries are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
+<br>
+At any rate, Pip and Conda Khiops installations **should not be mixed.**
+
+If the users wish to switch from a Pip-based installation to a Conda-based installation, they need to deactivate the Python virtual environment Khiops had been installed into, via Pip. Or, if no virtual environment has been used, the users need to uninstall the Khiops Python package:
+
+    ``` sh
+    pip uninstall khiops
+    ```
+!!! note Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
+
+
+
+<br>

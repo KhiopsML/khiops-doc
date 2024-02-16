@@ -119,5 +119,7 @@ Please refer to the dedicated page to install the visualization or co-visualizat
 
 Using `pip` for installation is best suited for experienced users, especially those integrating Khiops into specific environments or requiring advanced configuration. **This method offers flexibility, but requires familiarity with operating systems specifics, Python-based environments and dependency management.**
 
+!!! warning At any rate, Pip and Conda Khiops installations **should not be mixed.**
+
 [:material-cursor-default-click-outline: See the Pip Installation Page](pip.md){ .md-button .md-button--primary }
 

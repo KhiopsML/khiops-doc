@@ -111,8 +111,16 @@ You can consult the limitations or known problems corresponding to your operatin
             
         Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
 
+<br>
 
-    
+At any rate, Pip and Conda Khiops installations **should not be mixed.**
+
+If the users wish to switch from a Conda-based installation to a Pip-based installation, they need to, first, deactivate the Conda environment Khiops is installed into. Or, alternatively, they need to uninstall the Khiops Conda package:
+
+    ``` sh
+    conda remove khiops
+    ```
+
 
 
 <br>
