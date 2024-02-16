@@ -53,8 +53,7 @@ X = df.drop("class", axis=1)
 
 
 ```python
-# Extract the "class" column to create the target labels y (useful for
-performance analysis of the models).
+# Extract the "class" column to create the target labels y (useful for performance analysis of the models).
 y = df["class"].map({'less': 0, 'more': 1})
 ```
 

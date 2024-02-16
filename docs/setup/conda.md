@@ -56,6 +56,10 @@ Then, proceed with the installation of the Khiops library within this environmen
 
 [conda-user-guide]: https://conda.io/projects/conda/en/latest/user-guide/getting-started.html
 
+- For :simple-googlecolab: **Google Colaboratory** colab users, please follow usual conda installation procedure as documented [**here**][conda-colab]
+
+[conda-colab]: https://github.com/conda-incubator/condacolab
+
 - If you use Conda behind **a company proxy**, you may encounter an HTTP and SSL error. In this case, you can read [**Using Anaconda behind a company proxy**][proxy-conda] 
 
 [proxy-conda]: https://docs.anaconda.com/free/anaconda/configurations/proxy/
