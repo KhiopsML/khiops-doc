@@ -1,6 +1,6 @@
 # Quickstart Guide
 
-The user-friendly Khiops Python library provides a unique Auto-ML pipeline. Khiops offers significant practical advantages, based on an original formalism: 
+The user-friendly Khiops Python library provides a unique Auto-ML solution. Khiops offers significant practical advantages, based on an original formalism: 
 
 - Advanced Automation
 - Model Interpretability
@@ -24,12 +24,13 @@ Ultimately, all you need to do is use the standard Scikit-Learn syntax, and Khio
 
 ```python
 # Straightforward installation using conda.
-#!conda install -c khiops khiops
+#!conda install -c khiops khiops # On Windows
+#!conda install -c conda-forge -c khiops khiops # On Linux and macOS
 ```
 
 
 ```python
-# Import of the used packages.
+# Import relevant packages
 import pandas as pd
 
 from khiops.sklearn import KhiopsClassifier
@@ -40,20 +41,20 @@ from sklearn.model_selection import train_test_split
 
 
 ```python
-# Loading and reading the data file into a Pandas DataFrame.
+# Load and read the data file into a Pandas DataFrame
 url = "https://raw.githubusercontent.com/KhiopsML/khiops-samples/main/Adult/Adult.txt"
 df = pd.read_csv(url, delimiter='\t',index_col="Label")
 ```
 
 
 ```python
-# Drop the "class" column to create the feature set (X).
+# Drop the "class" column to create the feature set (X)
 X = df.drop("class", axis=1)
 ```
 
 
 ```python
-# Extract the "class" column to create the target labels y (useful for performance analysis of the models).
+# Extract the "class" column to create the target labels y (useful for performance analysis of the models)
 y = df["class"].map({'less': 0, 'more': 1})
 ```
 
@@ -67,7 +68,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y)
 
 
 ```python
-# Declare classifier object and train the Auto-ML pipeline
+# Declare Khiops Auto-ML classifier object and fit it to the training dataset
 clf = KhiopsClassifier()
 clf.fit(X_train, y_train)
 ```
@@ -76,21 +77,21 @@ clf.fit(X_train, y_train)
 
 
 ```python
-# Predict labels on the testing set
+# Predict labels on the testing dataset
 pred = clf.predict(X_test)
 ```
 
-## Auto Feature Engineering as Simple as Writing a Dictionary 
+## Auto Feature Engineering as Simple as Creating a Dictionary 
 
-**Feature Engineering** aims to build a training set from multi-table data, by summarizing the useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecommunications operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *''call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
+**Feature Engineering** aims to build a training dataset from multi-table data, by summarizing useful information from the secondary tables. For example, let's consider multi-table data where the root table describes the customers of a telecommunications operator (with one record per customer) and the secondary tables each describe call details, services used, contracts (with a varying number of records per customer). In this case, the *''call rate to foreign countries''* could be a useful aggregate for predicting customer churn.
 
-In practice, when undertaken manually, Feature Engineering is an extremely time-consuming task which is not efficient and risks over-fitting (i.e. when using over-complex aggregates). Just feed multi-table data into the Khiops Auto-ML pipeline to trigger an ultra-efficient automatic Feature Engineering algorithm. All you need to do is describe the structure of the input multi-table data with a dictionary.
+In practice, when undertaken manually, Feature Engineering is an extremely time-consuming task which is not efficient and risks over-fitting (i.e. when using over-complex aggregates). Just feed multi-table data into the Khiops Auto-ML solution to trigger an ultra-efficient automatic Feature Engineering algorithm. All you need to do is describe the structure of the input multi-table data with a dictionary.
 
-### 🖋️ Simply describe your multi-table data
+### 🖋️ Simply Describe Your Multi-Table Data
 
-Below, we only show the `syntax` to be used when describing multi-table data. 
+Below, we show the relevant `syntax` for describing multi-table data. 
 
-We continue with the previous example, where the multi-table data describes the customers of a telecommunications operator and where the goal is to predict the churn:
+We continue with the previous example, where the multi-table data describes the customers of a telecommunications operator and where the goal is to predict customer churn:
 
 <img src="/assets/images/simple_multi_table_data.png" style="width:400px;"/>
 
@@ -121,15 +122,15 @@ This dictionary includes three attributes:
 - `tables` describing all tables, 
 - `relations` specifying the links between tables. 
 
-`tables` is itself a dictionary, composed of one record per table. For each record, the *key* corresponds to the table name and the *value* is a tuple associating a Pandas Dataframe and a list of keys (first the main key, then the secondary keys). And `relations` is a list of tuples, which indicate the links between tables.
+`tables` is itself a dictionary, composed of one record per table. For each record, the *key* corresponds to the table name and the *value* is a tuple associating a Pandas Dataframe and a list of keys (first the main key, then the secondary keys). And `relations` is a list of tuples, which contain pairs of names of the linked tables (one pair per link).
 
-### 🚀 Just fit it ... as usual
+### 🚀 Just Fit It ... as Usual
 
-Once you've described the multi-table input data, no further effort is required.
+Once you have described the multi-table input data, no further effort is required.
 
 
 ```python
-# Declare the classifier declaration and train the full pipeline
+# Declare the classifier and train it
 clf = KhiopsClassifier()
 clf.fit(X_train, y_train)
 ```
@@ -138,14 +139,14 @@ clf.fit(X_train, y_train)
 
 The analysis report contains details on the features obtained by the Khiops Auto Feature Engineering algorithm, the encoding of variables, the selection of variables and their importance for predictions. 
 
-You can open and visualize the report using the standalone visualization desktop application on several operating systems. More details on this visualization desktop application can be found on the [dedicated page][visu]. 
+You can open and visualize the report using the standalone Khiops visualization desktop application on several operating systems. More details on this visualization desktop application can be found on the [dedicated page][visu]. 
 
 [visu]: ../setup/visualization.md
 
 To generate the analysis report, you need to specify the `output_dir` parameter when creating the `KhiopsClassifier` estimator object instance: 
 
 ```python
-# Classifier declaration with a specifed output directory
+# Declare the classifier with a specifed output directory and train it
 clf = KhiopsClassifier(output_dir="User/Documents/test_khiops")
 clf.fit(X_train, y_train)
 ```

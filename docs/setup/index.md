@@ -1,6 +1,6 @@
 # Installation Options {label="Overview"}
 
-Khiops was originally developed as a desktop application. As we move to open source, we are diversifying the installation options to meet different needs:
+Khiops supports a diversified set of installation options, to meet different needs:
 
   - **Khiops Python Library**:
     - Packaged via [`conda`][conda]
@@ -20,14 +20,14 @@ Refer to the following table to select the appropriate installation method for y
 
 | OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
-| Windows 10 and later<br>(+ WSL) | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Ubuntu 20 and 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Debian 10  | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
-| Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
-| macOS 10 and later    | [:white_check_mark:][conda_page]   |   | [:white_check_mark:][notebooks_page] |   |
+| :material-microsoft-windows: Windows 10 and later | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| :material-apple: macOS 10 and later    | [:white_check_mark:][conda_page]   |   | [:white_check_mark:][notebooks_page] |   |
+| :simple-linux: Ubuntu 20 and 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| :simple-linux: Debian 10  | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
+| :simple-linux: Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
+| :simple-linux: Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
 
-For users on :simple-kaggle: **Kaggle Notebooks** or :simple-googlecolab: **Google Colaboratory**, we have tested and recommend using the :simple-anaconda: **Conda** package for installing Khiops.
+The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
   [conda_page]: conda.md
   [pip_page]: pip.md
@@ -36,7 +36,7 @@ For users on :simple-kaggle: **Kaggle Notebooks** or :simple-googlecolab: **Goog
 
 <br>
 
-## Install the Khiops Python library using Conda {#with-conda data-toc-label="Install Khiops via conda"}
+## Install the Khiops Python Library Using Conda {#with-conda data-toc-label="Install Khiops via conda"}
 
 The Conda package contains all the necessary components. 
 
@@ -76,7 +76,7 @@ docker pull khiopsml/khiops-notebook
   
 ## Install the Khiops Desktop Application
 
-This version contains a Graphical User Interface (GUI). 
+This version contains a standalone Graphical User Interface (GUI). 
 
 
 === "Windows"
@@ -100,23 +100,8 @@ This version contains a Graphical User Interface (GUI).
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
-    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
 
-<!--- 
-=== "CentOS"
-    
-    ``` sh
-    CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp)" && \
-    TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum localinstall "$TEMP_RPM" "$TEMP_DEB_KHIOPS" -y && \
-    rm -f $TEMP_RPM $TEMP_DEB_KHIOPS    ```
-    ```
-
-    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
---->
     
 [:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }
 
@@ -124,7 +109,7 @@ This version contains a Graphical User Interface (GUI).
 
 ## Install the Khiops Visualization Applications
 
-Please refer to the dedicated page to install the visualization or co-visualization tool according to your sytem. 
+Please refer to the dedicated page to install the visualization or co-visualization tool according to your needs and host operating system. 
 
 [:material-cursor-default-click-outline: See the Khiops Visualization Page](visualization.md){ .md-button .md-button--primary } [:octicons-graph-16: Try our Interactive Demo](demovisualization.md){ .md-button .md-button--secondary }
 

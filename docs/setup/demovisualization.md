@@ -6,7 +6,7 @@ hide:
 
 # Interactive Khiops Visualization Demo
 
-Explore the capabilities of the Khiops Visualization Tool through three interactive analyses:
+Explore the capabilities of the Khiops Visualization tool through three interactive analyses:
 
 - **Single Table (Adult dataset)**: A straightforward supervised analysis demonstrating model performance and feature importance (and encoding) in a single-table context;
 - **Single Table with Trees (Adult dataset)**: Enhances the first analysis by integrating trees;

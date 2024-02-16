@@ -40,15 +40,7 @@ Then, proceed with the installation of the Khiops library within this environmen
 <br>
 
 
-??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
-    
-    If you are upgrading from a version prior to Khiops 10.2, it is essential to first uninstall the `pykhiops` package. This step ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
 
-    To uninstall pykhiops, please execute the following command in your terminal or command prompt:
-
-    ```sh
-    pip uninstall pykhiops -y
-    ```
 
 ## User Guide
 
@@ -56,7 +48,7 @@ Then, proceed with the installation of the Khiops library within this environmen
 
 [conda-user-guide]: https://conda.io/projects/conda/en/latest/user-guide/getting-started.html
 
-- For :simple-googlecolab: **Google Colaboratory** colab users, please follow usual conda installation procedure as documented [**here**][conda-colab]
+- For :simple-googlecolab: **Google Colaboratory** Colab users, please follow usual Conda installation procedure as documented [**here**][conda-colab]
 
 [conda-colab]: https://github.com/conda-incubator/condacolab
 
@@ -70,8 +62,28 @@ Then, proceed with the installation of the Khiops library within this environmen
 You can consult the limitations or known problems corresponding to your operating system:
 
 === "Users on :material-apple: macOS"
+    ??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
+        
+        If you are upgrading from a version prior to Khiops 10.2, it is essential that the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
+
+        To uninstall pykhiops, please execute the following command in your terminal or command prompt (use **admin rights** if necessary):
+
+        ```sh
+        pip uninstall pykhiops -y
+        ```
+
+        Alternatively, you can just create a new, fresh Conda environment and install the Khiops Conda package therein.
+    
+    ??? danger "Pip and Conda Khiops installations **should not be mixed.**"
+
+        If the users wish to switch from a Conda-based installation to a Pip-based installation, they need to, first, deactivate the Conda environment Khiops is installed into. Or, alternatively, they need to uninstall the Khiops Conda package:
+
+        ``` sh
+        conda remove khiops
+        ```
+
     !!! warning 
-        On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets. To avoid these popups and ensure optimal performance, please configure Khiops to not accept incoming connections with the following commands:
+        On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets. To avoid these popups and ensure optimal performance, please configure Khiops to not accept incoming connections. To this end, enter the following commands in your shell:
 
         ``` sh
         FW=/usr/libexec/ApplicationFirewall/socketfilterfw 
@@ -91,6 +103,26 @@ You can consult the limitations or known problems corresponding to your operatin
         Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
 
 === "Users on :material-microsoft-windows: Windows"
+    ??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
+        
+        If you are upgrading from a version prior to Khiops 10.2, it is essential that the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
+
+        To uninstall pykhiops, please execute the following command in your terminal or command prompt (use **admin rights** if necessary):
+
+        ```sh
+        pip uninstall pykhiops -y
+        ```
+
+        Alternatively, you can just create a new, fresh Conda environment and install the Khiops Conda package therein.
+        
+    ??? danger "Pip and Conda Khiops installations **should not be mixed.**"
+
+        If the users wish to switch from a Conda-based installation to a Pip-based installation, they need to, first, deactivate the Conda environment Khiops is installed into. Or, alternatively, they need to uninstall the Khiops Conda package:
+
+        ``` sh
+        conda remove khiops
+        ```
+
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
 
@@ -99,9 +131,29 @@ You can consult the limitations or known problems corresponding to your operatin
 
 
 === "Users on Linux"
+    ??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
+        
+        If you are upgrading from a version prior to Khiops 10.2, it is essential that the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
+
+        To uninstall pykhiops, please execute the following command in your terminal or command prompt (use **admin rights** if necessary):
+
+        ```sh
+        pip uninstall pykhiops -y
+        ```
+
+        Alternatively, you can just create a new, fresh Conda environment and install the Khiops Conda package therein.
+    
+    ??? danger "Pip and Conda Khiops installations **should not be mixed.**"
+
+        If the users wish to switch from a Conda-based installation to a Pip-based installation, they need to, first, deactivate the Conda environment Khiops is installed into. Or, alternatively, they need to uninstall the Khiops Conda package:
+
+        ``` sh
+        conda remove khiops
+        ```
+
     !!! warning 
 
-        The installation of Khiops will utilize MPICH version 3.4.3 due to compatibility issues. 
+        The installation of Khiops will utilize MPICH version 4.0.3 due to compatibility issues. 
         This is why you need to use a dedicated command:
         ``` sh
         conda install -c conda-forge -c khiops khiops
@@ -109,8 +161,5 @@ You can consult the limitations or known problems corresponding to your operatin
             
         Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
 
-
-    
-
-
 <br>
+
