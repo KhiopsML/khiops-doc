@@ -2,13 +2,13 @@
 
 Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosystem and an understanding of operating system specifics. This approach, while offering adaptability for custom setups, necessitates knowledge of environment setup and dependency handling.
 
-The `khiops` binary must be installed as a prerequisite, which also ensures the installation of the appropriate version of `MPICH` required for the library.
+The Khiops binaries must be installed as a prerequisite. This also ensures the installation of the appropriate version of `MPICH` library.
 
-We support :simple-python: **Python from 3.8 to 3.11**. For users on :simple-kaggle: **Kaggle Notebooks** or :simple-googlecolab: **Google Colaboratory**, we have tested and recommend using the :simple-anaconda: **Conda** package for installing Khiops.
+We support :simple-python: **Python from 3.8 to 3.11**. 
 
 === "Ubuntu/Debian"
     
-    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following command:
+    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB="$(mktemp)" && \
@@ -33,26 +33,13 @@ We support :simple-python: **Python from 3.8 to 3.11**. For users on :simple-kag
     pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0.0"
     ```
 
-<!--- 
-=== "CentOS"
-    
-    You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
-    ``` sh
-    CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum install "$TEMP_RPM" -y && \
-    rm -f $TEMP_RPM && \
-    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0.0'
-    ```
---->
-!!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
+!!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
 
-??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
+??? tip "Important Note for users upgrading from the pre-10.2.0 versions of the `pyKhiops` package"
     
-    If you are upgrading from a version prior to Khiops 10.2, it is essential to first uninstall the `pykhiops` package. This step ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
+    If you are upgrading from a version prior to Khiops 10.2.0, it is essential to first make sure the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
 
-    To uninstall pykhiops, please execute the following command in your terminal or command prompt:
+    To uninstall pykhiops, please execute the following command in your terminal or command prompt, in your Python environment:
 
     ```sh
     pip uninstall pykhiops -y
@@ -71,11 +58,11 @@ We support :simple-python: **Python from 3.8 to 3.11**. For users on :simple-kag
 
 ## What You Should Know
 
-You can consult the limitations or known problems corresponding to your operating system:
+You can consult the limitations or known issues for your operating system:
 
 === "Users on :simple-linux: Linux"
     !!! warning
-        The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH`, please prefer an installation using Conda.
+        The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH` for other programs, please prefer an installation using Conda.
 
     !!! warning 
 
@@ -92,10 +79,10 @@ You can consult the limitations or known problems corresponding to your operatin
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
     !!! warning 
-        The Khiops installer relies on embedded installers for Java and MPI. Windows Defender or any other antivirus software may remove excutable files (.exe, .jar) during installation. In this case, **you should add exceptions to your antivirus or disable it during installation.** 
+        The Khiops installer relies on embedded installers for Java and MPI. Antivirus software may remove executable files (.exe, .jar) during installation. In this case, **you should add exceptions to your antivirus software or disable it during installation.** 
     !!! warning 
-        The java installer results in a system reboot on some systems (eg. on Windows Server 2008)
+        The java installer results in a system reboot on some systems (e.g. on Windows Server 2008)
 
 === "Users on :material-apple: macOS"
     !!! warning
-        The `khiops-core` binary is not yet available for macOS, meaning you cannot install Khiops using Pip for now. You can use Conda or run our Docker container (x86-64 only).
+        Native packages for the Khiops binaries are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
