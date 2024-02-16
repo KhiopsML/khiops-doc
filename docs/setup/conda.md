@@ -40,7 +40,7 @@ Then, proceed with the installation of the Khiops library within this environmen
 <br>
 
 
-??? tip "Important Note for Users Upgrading from the previous pyKhiops package (up to 10.1)"
+??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
     
     If you are upgrading from a version prior to Khiops 10.2, it is essential to first uninstall the `pykhiops` package. This step ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
 

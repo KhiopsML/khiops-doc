@@ -48,7 +48,7 @@ We support :simple-python: **Python from 3.8 to 3.11**. For users on :simple-kag
 --->
 !!! info "Currently, our packages are released on GitHub. In the coming weeks, we'll transition to official repositories."
 
-??? tip "Important Note for Users Upgrading from the previous pyKhiops package (up to 10.1)"
+??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
     
     If you are upgrading from a version prior to Khiops 10.2, it is essential to first uninstall the `pykhiops` package. This step ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
 
