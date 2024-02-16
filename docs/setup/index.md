@@ -27,7 +27,7 @@ Refer to the following table to select the appropriate installation method for y
 | :simple-linux: Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
 | :simple-linux: Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
 
-The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users need to install the Khiops the :simple-anaconda: **Conda** package.
+The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops the :simple-anaconda: **Conda** package, which has been tested in these environments.
 
   [conda_page]: conda.md
   [pip_page]: pip.md
