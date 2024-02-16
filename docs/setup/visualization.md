@@ -18,6 +18,8 @@ You can find all versions of the Khiops Visualization tool on the [the following
           Download for Mac OS </a>  
 - <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization_11.0.2_amd64.deb">
           Download for Ubuntu </a>
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-11.0.2.x86_64.rpm">
+          Download for CentOS </a>
 
 ## Download the Khiops CoVisualization Desktop Application
 For users familiar with Khiops co-clustering, co-clustering analysis results ca be visualized with the CoVisualization desktop application. All versions of this application are available [here][repo-covisualisation]. The latest stable version can be downloaded from the URLs shown below:
