@@ -81,6 +81,7 @@ You can consult the limitations or known problems corresponding to your operatin
         ``` sh
         conda remove khiops
         ```
+        **Note**:  If the standard uninstallation process fails, it may be necessary to add `--force`. This option forces the removal, potentially bypassing dependency conflicts or other issues preventing the package from being uninstalled normally. However, users should be cautious as forcing the removal can impact the stability of their Conda environment and affect other packages.
 
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets. To avoid these popups and ensure optimal performance, please configure Khiops to not accept incoming connections. To this end, enter the following commands in your shell:
@@ -122,6 +123,9 @@ You can consult the limitations or known problems corresponding to your operatin
         ``` sh
         conda remove khiops
         ```
+        
+        **Note**:  If the standard uninstallation process fails, it may be necessary to add `--force`. This option forces the removal, potentially bypassing dependency conflicts or other issues preventing the package from being uninstalled normally. However, users should be cautious as forcing the removal can impact the stability of their Conda environment and affect other packages.
+
 
     !!! warning 
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
@@ -150,6 +154,9 @@ You can consult the limitations or known problems corresponding to your operatin
         ``` sh
         conda remove khiops
         ```
+        
+        **Note**:  If the standard uninstallation process fails, it may be necessary to add `--force`. This option forces the removal, potentially bypassing dependency conflicts or other issues preventing the package from being uninstalled normally. However, users should be cautious as forcing the removal can impact the stability of their Conda environment and affect other packages.
+
 
     !!! warning 
 

@@ -15,7 +15,7 @@ We support :simple-python: **Python from 3.8 to 3.11**.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install --no-cache-dir 'git+https://github.com/khiopsml/khiops-python@v10.2.0.0'
+    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/v10.2.0.0/khiops-10.2.0.0.tar.gz'
     ```
 
 
@@ -30,7 +30,7 @@ We support :simple-python: **Python from 3.8 to 3.11**.
 
     Then, you can run the following Pip command:
     ```sh
-    pip install "git+https://github.com/khiopsml/khiops-python@v10.2.0.0"
+    pip install "https://github.com/KhiopsML/khiops-python/releases/download/v10.2.0.0/khiops-10.2.0.0.tar.gz"
     ```
 
 
