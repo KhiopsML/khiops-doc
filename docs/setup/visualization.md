@@ -14,7 +14,7 @@ You can find all versions of the Khiops Visualization tool on the [the following
 
 - <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-Setup-11.0.2.exe">
           Download for Windows </a>
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-11.0.2.dmg">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.3/khiops-visualization-11.0.3.dmg">
           Download for Mac OS </a>  
 - <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization_11.0.2_amd64.deb">
           Download for Ubuntu </a>
