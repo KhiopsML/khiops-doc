@@ -10,7 +10,6 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
-    # Install pre-requisites (if not already installed on the host system)
     sudo apt-get update -y && sudo apt-get install wget lsb-release -y && \
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB="$(mktemp)" && \
@@ -39,7 +38,6 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     
     You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
-    # Install pre-requisites (if not already installed on the host system)
     sudo yum update -y && sudo yum install wget python3-pip -y && \
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
