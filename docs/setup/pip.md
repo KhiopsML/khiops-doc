@@ -6,7 +6,7 @@ The Khiops binaries must be installed as a prerequisite. This also ensures the i
 
 We support :simple-python: **Python from 3.8 to 3.12**. 
 
-=== "Ubuntu/Debian"
+=== "Ubuntu 20-22 / Debian 10"
     
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
@@ -34,7 +34,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     pip install "https://github.com/KhiopsML/khiops-python/releases/download/10.2.0.0/khiops-10.2.0.0.tar.gz"
     ```
 
-=== "Rocky Linux"
+=== "Rocky 9"
     
     You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
