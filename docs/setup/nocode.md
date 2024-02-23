@@ -24,7 +24,7 @@ To get started with the Khiops desktop application, follow the relevant procedur
         </button>
     </a>
 
-=== "Ubuntu/Debian"
+=== "Ubuntu 20, 22 / Debian 10"
     The installation of the Khiops desktop application involves two packages:
     
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
