@@ -80,6 +80,8 @@ You can consult the limitations or known problems for your operating system:
         The Khiops installer relies on embedded installers for Java and MPI. Antivirus software may remove executable files (.exe, .jar) during installation. In this case, **you should add exceptions to your antivirus software or disable it during installation.** 
     !!! warning 
         The java installer results in a system reboot on some systems (e.g. on Windows Server 2008)
+    !!! warning
+        On some machines, re-installing Khiops may unexpectedly result in just discarding the existing Khiops installation directory. In that case, install Khiops again.
     
 
 ## Screenshots 
