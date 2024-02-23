@@ -25,7 +25,7 @@ Refer to the following table to select the appropriate installation method for y
 | :simple-linux: Ubuntu 20 and 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | :simple-linux: Debian 10  | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | :simple-linux: Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
-| :simple-linux: Rocky 9    | [:white_check_mark:][conda_page]  |  [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  |   |
+| :simple-linux: Rocky Linux 9    | [:white_check_mark:][conda_page]  |  [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  |   |
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
