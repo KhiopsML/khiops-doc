@@ -16,7 +16,7 @@ Khiops supports a diversified set of installation options, to meet different nee
 
 <br>
 
-Refer to the following table to select the appropriate installation method for your operating system. <br>We support :simple-python: **Python from 3.8 to 3.11.**
+Refer to the following table to select the appropriate installation method for your operating system. <br>We support :simple-python: **Python from 3.8 to 3.12.**
 
 | OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
 | ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
@@ -25,7 +25,7 @@ Refer to the following table to select the appropriate installation method for y
 | :simple-linux: Ubuntu 20 and 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | :simple-linux: Debian 10  | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
 | :simple-linux: Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
-| :simple-linux: Rocky Linux 7 and 8    | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |   |
+| :simple-linux: Rocky Linux 8 and 9    | [:white_check_mark:][conda_page]  |  [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  |   |
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
@@ -54,7 +54,7 @@ The Conda package contains all the necessary components.
     ``` sh
     conda install -c conda-forge -c khiops khiops
     ```
-**We support :simple-python: Python from 3.8 to 3.11**. If you are using a different version of Python in your current environment, we recommend visiting our Conda Installation Page for instructions on creating a new environment tailored for Khiops:
+**We support :simple-python: Python from 3.8 to 3.12**. If you are using a different version of Python in your current environment, we recommend visiting our Conda Installation Page for instructions on creating a new environment tailored for Khiops:
 
 [:material-cursor-default-click-outline: See the Conda Installation Page](conda.md){ .md-button .md-button--primary }
 
@@ -82,7 +82,7 @@ This version contains a standalone Graphical User Interface (GUI).
 === "Windows"
     The :material-microsoft-windows: Khiops installer automatically installs the Khiops desktop application, all its dependencies, plus the Khiops samples and the Khiops Visualization application:
 
-    <a href="https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-setup.exe">
+    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-10.2.0-setup.exe">
         <button class="btn btn-light btn-sm">
           Download for Windows
         </button>
@@ -94,8 +94,8 @@ This version contains a standalone Graphical User Interface (GUI).
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB_CORE="$(mktemp)" && \
     TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops_10.2.0-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops_10.2.0-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
