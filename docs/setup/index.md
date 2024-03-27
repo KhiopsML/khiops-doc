@@ -8,24 +8,26 @@ Khiops supports a diversified set of installation options, to meet different nee
     - Packaged in our [khiops-notebook][notebooks] container
   - **Khiops Desktop Application**: for advanced data analytics with just a few clicks using a GUI (includes Khiops Visualization)
   - **Khiops Visualization Application**: for intuitive visualization of all analysis results
+  - **Khiops Native Interface**: to deploy Khiops models with a lightweight shared libabry. 
 
   [conda]: #with-conda
   [pip]: #with-pip
   [notebooks]: #with-jupyter
   [nocode]: nocode.md
+  [kni]: kni.md
 
 <br>
 
 Refer to the following table to select the appropriate installation method for your operating system. <br>We support :simple-python: **Python from 3.8 to 3.12.**
 
-| OS | :simple-anaconda: Conda | Binary + :simple-python: pip | :simple-docker: Khiops-notebook |  :material-remote-desktop: Desktop app    |
-| ----------- | --------------------- | --------------------- | ----------------------- | -------------------------- |
-| :material-microsoft-windows: Windows 10 and later | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| :material-apple: macOS 10 and later    | [:white_check_mark:][conda_page]   |   | [:white_check_mark:][notebooks_page] |   |
-| :simple-linux: Ubuntu 20 and 22 (LTS)        | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page]  | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| :simple-linux: Debian 10  | [:white_check_mark:][conda_page]  | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  | [:white_check_mark:][nocode]  |
-| :simple-linux: Debian 11 and 12   | [:white_check_mark:][conda_page]  |   | [:white_check_mark:][notebooks_page]  |  |
-| :simple-linux: Rocky Linux 9    | [:white_check_mark:][conda_page]  |  [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page]  |   |
+| OS                                                | :simple-anaconda: Conda          | Binary + :simple-python: pip   | :simple-docker: Khiops-notebook      | :material-remote-desktop: Desktop app | KNI                       |
+| ------------------------------------------------- | -------------------------------- | ------------------------------ | ------------------------------------ | ------------------------------------- | ------------------------- |
+| :material-microsoft-windows: Windows 10 and later | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] | [:white_check_mark:][nocode]          | [:white_check_mark:[kni]] |
+| :material-apple: macOS 10 and later               | [:white_check_mark:][conda_page] |                                | [:white_check_mark:][notebooks_page] |                                       | [:white_check_mark:[kni]] |
+| :simple-linux: Ubuntu 20 and 22 (LTS)             | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] | [:white_check_mark:][nocode]          | [:white_check_mark:[kni]] |
+| :simple-linux: Debian 10                          | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] | [:white_check_mark:][nocode]          | [:white_check_mark:[kni]] |
+| :simple-linux: Debian 11 and 12                   | [:white_check_mark:][conda_page] |                                | [:white_check_mark:][notebooks_page] |                                       | [:white_check_mark:[kni]] |
+| :simple-linux: Rocky Linux 9                      | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] |                                       | [:white_check_mark:[kni]] |
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 

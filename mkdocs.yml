@@ -6,7 +6,7 @@ repo_name: KhiopsML/Khiops
 repo_url: https://github.com/KhiopsML/khiops
 
 # Copyright
-copyright: Copyright &copy; 2023 Orange S.A. 
+copyright: Copyright &copy; 2023 Orange S.A.
 
 theme:
   name: material
@@ -17,8 +17,7 @@ theme:
     primary: black
   favicon: assets/images/Small_Logo_RGB.png
   custom_dir: overrides
-  font: 
-      false
+  font: false
   features:
     - navigation.tabs
     - navigation.path
@@ -44,10 +43,10 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.arithmatex:
       generic: true
@@ -59,7 +58,7 @@ extra:
       link: https://github.com/KhiopsML/khiops
   consent:
     title: Cookie consent
-    description: >- 
+    description: >-
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
@@ -78,7 +77,7 @@ extra:
         - icon: material/emoticon-sad-outline
           name: This page could be improved
           data: 0
-          note: >- 
+          note: >-
             Thanks for your feedback! Help us improve this page by
             using our <a href="https://msurvey.orange.com/khiopsdoc" target="_blank" rel="noopener">feedback form</a>.
 
@@ -89,7 +88,6 @@ extra_css:
   - assets/stylesheets/orange.css
   - assets/stylesheets/main.css
 
-
 # Add JS for Material plugins
 extra_javascript:
   - assets/javascripts/mathjax.min.js
@@ -99,47 +97,48 @@ extra_javascript:
 
 plugins:
   - mkdocs-jupyter
-#  - blog
+  #  - blog
   - search
 #  - privacy ## not usable with mathjax script
 
 nav:
-    - index.md
-    - Installation:
+  - index.md
+  - Installation:
       - setup/index.md
       - Packages:
-        - conda: setup/conda.md
-        - pip: setup/pip.md
-        - docker notebook: setup/khiops-notebook.md
-      - Standalone Applications: 
-        - Khiops Desktop: setup/nocode.md
-        - Khiops Visualization: setup/visualization.md
-    - Tutorials:
+          - conda: setup/conda.md
+          - pip: setup/pip.md
+          - docker notebook: setup/khiops-notebook.md
+      - Standalone Applications:
+          - Khiops Desktop: setup/nocode.md
+          - Khiops Visualization: setup/visualization.md
+          - Khiops shared library: setup/kni.md
+  - Tutorials:
       - Quickstart: setup/quickstart.md
       - Starter Tutorials:
-        - Single Table Classifier: advanced/Notebooks/single_table_classifier.ipynb
-        - Multi Table Classifier: advanced/Notebooks/multi_table_classifier.ipynb
-      - Advanced Tutorials: 
-        - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb 
-        - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
-        - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
-      #  - Out of core: advanced/Notebooks/outofcore.ipynb    #  - Advanced use cases:
-      #  - GO / No Go: advanced/gonogo.md
-      #  - Time Series: advanced/timeseries.md
-      #  - NLP: advanced/nlp.md
-      #  - Anomaly detection: advanced/anomaly.md 
-      #  - Drift  detection: advanced/drift.md
-      #  - Model calibration: advanced/calibration.md 
-      #  - Variable importance with Shapley:  advanced/shapley.md 
-      #  - Advanced notebook examples: advanced/notebooks.md 
-    - API Docs : https://khiopsml.github.io/khiops-python/index.html
-    - Foundations: 
-        - What makes Khiops different: learn/understand.md
-        - An original formalism: learn/modl.md
-        - Optimal Encoding: learn/preprocessing.md
-        - Auto Feature Engineering: learn/autofeature_engineering.md
-        - Parsimonious Training: learn/learning_models.md
-        - Auto Hardware Adaptation: learn/hardware_adaptation.md
-        - Bibliography: references.md
+          - Single Table Classifier: advanced/Notebooks/single_table_classifier.ipynb
+          - Multi Table Classifier: advanced/Notebooks/multi_table_classifier.ipynb
+      - Advanced Tutorials:
+          - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb
+          - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
+          - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
+    #  - Out of core: advanced/Notebooks/outofcore.ipynb    #  - Advanced use cases:
+    #  - GO / No Go: advanced/gonogo.md
+    #  - Time Series: advanced/timeseries.md
+    #  - NLP: advanced/nlp.md
+    #  - Anomaly detection: advanced/anomaly.md
+    #  - Drift  detection: advanced/drift.md
+    #  - Model calibration: advanced/calibration.md
+    #  - Variable importance with Shapley:  advanced/shapley.md
+    #  - Advanced notebook examples: advanced/notebooks.md
+  - API Docs: https://khiopsml.github.io/khiops-python/index.html
+  - Foundations:
+      - What makes Khiops different: learn/understand.md
+      - An original formalism: learn/modl.md
+      - Optimal Encoding: learn/preprocessing.md
+      - Auto Feature Engineering: learn/autofeature_engineering.md
+      - Parsimonious Training: learn/learning_models.md
+      - Auto Hardware Adaptation: learn/hardware_adaptation.md
+      - Bibliography: references.md
 #    - Blog:
 #      - blog/index.md
