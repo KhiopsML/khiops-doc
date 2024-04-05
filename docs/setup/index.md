@@ -31,10 +31,13 @@ Refer to the following table to select the appropriate installation method for y
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
+For other platforms, please :material-send: **[Contact Us][contact]**.
+
   [conda_page]: conda.md
   [pip_page]: pip.md
   [notebooks_page]: khiops-notebook.md
   [nocode]: nocode.md
+  [contact]: ../contact.md
 
 <br>
 
