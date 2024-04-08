@@ -35,7 +35,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     ```
 
 === "Rocky Linux 8 and 9"
-    The default Python version on Rocky Linux 8 does not meet our requirements (Python 3.6), **please ensure a compatible Python version is installed before continuing**. 
+    The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.8), **please ensure a compatible Python version is installed before continuing**. 
     
     Then, you need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
