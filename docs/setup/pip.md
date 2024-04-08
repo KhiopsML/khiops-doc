@@ -16,7 +16,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.0.0/khiops-10.2.0.0.tar.gz'
+    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz'
     ```
 
 
@@ -31,12 +31,13 @@ We support :simple-python: **Python from 3.8 to 3.12**.
 
     Then, you can run the following Pip command:
     ```sh
-    pip install "https://github.com/KhiopsML/khiops-python/releases/download/10.2.0.0/khiops-10.2.0.0.tar.gz"
+    pip install "https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz"
     ```
 
-=== "Rocky Linux 9"
+=== "Rocky Linux 8 and 9"
+    The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.8), **please ensure a compatible Python version is installed before continuing**. 
     
-    You need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
+    Then, you need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
     ``` sh
     sudo yum update -y && sudo yum install wget python3-pip -y && \
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
@@ -44,7 +45,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.0.0/khiops-10.2.0.0.tar.gz'
+    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz'
     ```
 
 
