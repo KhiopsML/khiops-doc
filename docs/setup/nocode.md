@@ -56,16 +56,16 @@ To get started with the Khiops desktop application, follow the relevant procedur
 You can find the all versions on the [releases page][releases].
 
 ## Documentation
-For a comprehensive guide on how to use the Khiops desktop application, please download our [**PDF Documentation**][Documentation]. 
 
-The users already familiar with the co-clustering approach will find the dedicated documentation [**here**][coclustering].
+- **Khiops guide**: Download our comprehensive guide to using the Khiops desktop application [**here**][Documentation].
 
-[Documentation]: KhiopsGuide.pdf
-[coclustering]: KhiopsCoclusteringGuide.pdf
+- **Khiops Co-Clustering guide**: Find dedicated documentation for users already familiar with the co-clustering approach [**here**][coclustering].
 
-A tutorial is also [**available**][tutorial] to help you understand the Khiops desktop application.
+- **Tutorial**: Access a tutorial designed to help you navigate the Khiops desktop application [**here**][tutorial].
 
 [tutorial]: KhiopsTutorial.pdf
+[Documentation]: KhiopsGuide.pdf
+[coclustering]: KhiopsCoclusteringGuide.pdf
 
 !!! info "Users of pre-10.2.0 Khiops versions should refer to the **legacy** Khiops [web site][khiopslegacy]"
 
