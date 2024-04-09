@@ -34,9 +34,9 @@ For users familiar with Khiops co-clustering, co-clustering analysis results ca 
           Download for Ubuntu </a>
 
 ## Documentation
-For a comprehensive guide on how to use the Khiops Visualization Application, please download our [**PDF Documentation**][Documentation]. 
 
-The users already familiar with the co-clustering approach will find the CoVisualization documentation [**here**][coviz].
+- **Khiops Visualization Guide**: Download our comprehensive guide on using the Khiops Visualization Application [**here**][Documentation].
+- **Khiops Co-Visualization Guide**: Find documentation for users already familiar with the co-clustering approach [**here**][coviz].
 
 [Documentation]: KhiopsVisualizationGuide.pdf
 [coviz]: KhiopsCovisualizationGuide.pdf
