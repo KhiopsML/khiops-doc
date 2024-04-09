@@ -57,11 +57,11 @@ You can find the all versions on the [releases page][releases].
 
 ## Documentation
 
-- **Khiops guide**: Download our comprehensive guide to using the Khiops desktop application [**here**][Documentation].
+For a comprehensive guide on how to use the Khiops application and its GUI:
 
-- **Khiops Co-Clustering guide**: Find dedicated documentation for users already familiar with the co-clustering approach [**here**][coclustering].
-
-- **Tutorial**: Access a tutorial designed to help you navigate the Khiops desktop application [**here**][tutorial].
+- [**Khiops Guide**][Documentation], for supervised analysis
+- [**Khiops Coclustering Guide**][coclustering], for unsupervised analysis
+- [**Tutorial**][tutorial]
 
 [tutorial]: KhiopsTutorial.pdf
 [Documentation]: KhiopsGuide.pdf
