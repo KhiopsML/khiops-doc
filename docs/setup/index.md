@@ -6,7 +6,7 @@ Khiops supports a diversified set of installation options, to meet different nee
     - Packaged via [`conda`][conda] (recommended)
     - Packaged via [`pip`][pip]
     - Packaged in our [khiops-notebook][notebooks] container
-  - **Khiops Application**: for advanced data analytics  with just a few clicks using a graphical user interface (includes Khiops Visualization). This application is also the basis for easy integration into different systems (all programming languages, docker, servers, etc.).
+  - **Khiops Application**: for advanced data analytics with just a few clicks using a graphical user interface. This application is also the basis for easy integration into different systems (all programming languages, docker, servers, etc.).
   - **Khiops Visualization Application**: for intuitive visualization of all analysis results
   - **Khiops Native Interface (KNI)**: to deploy Khiops models with a lightweight shared library. 
 
