@@ -110,7 +110,7 @@ nav:
           - pip: setup/pip.md
           - docker notebook: setup/khiops-notebook.md
       - Standalone Applications:
-          - Khiops Desktop: setup/nocode.md
+          - Khiops Application: setup/nocode.md
           - Khiops Visualization: setup/visualization.md
           - Khiops shared library: setup/kni.md
   - Tutorials:

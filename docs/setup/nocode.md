@@ -1,14 +1,13 @@
-# The Khiops Desktop Application (No-Code Environment)
+# The Khiops Application (No-Code Environment)
 
 ## Simplifying Data Science for Everyone
 
-Welcome to the Khiops desktop application download page. Our intuitive, user-friendly desktop interface is designed for those who may not be familiar with Python or scikit-learn, as well as for users who prefer the convenience of a standalone Graphical User Interface (GUI) for data manipulation. With the Khiops desktop application, advanced data analytics is now just a few clicks away.
-
+Welcome to the Khiops application download page. Our intuitive, user-friendly desktop interface is designed for those who may not be familiar with Python or scikit-learn, as well as for users who prefer the convenience of a standalone Graphical User Interface (GUI) for data manipulation. With the Khiops application, advanced data analytics is now just a few clicks away, together with easy system integration.
 
 
 ## Download & Installation
 
-To get started with the Khiops desktop application, follow the relevant procedure for your operating system. Please click on the relevant operating system. For further details, you may refer to [README.txt][readme], and [whatsnew.txt][whatsnew]:
+To get started with the Khiops application, follow the relevant procedure for your operating system. Please click on the relevant operating system. For further details, you may refer to [README.txt][readme], and [whatsnew.txt][whatsnew]:
 
 [releases]: https://github.com/KhiopsML/khiops/releases
 [readme]: README.txt
@@ -16,7 +15,7 @@ To get started with the Khiops desktop application, follow the relevant procedur
 
 
 === "Windows"
-    The :material-microsoft-windows: Khiops installer automatically installs the Khiops desktop application, all its dependencies, plus some data samples formatted as expected by Khiops, and the Khiops Visualization application.
+    The :material-microsoft-windows: Khiops installer automatically installs the Khiops application, all its dependencies, plus some data samples formatted as expected by Khiops, and the Khiops Visualization application.
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-10.2.0-setup.exe">
         <button class="btn btn-light btn-sm">
@@ -63,9 +62,15 @@ For a comprehensive guide on how to use the Khiops application and its GUI:
 - [**Khiops Coclustering Guide**][coclustering], for unsupervised analysis
 - [**Tutorial**][tutorial]
 
+For easy system integration: 
+
+- [**Khiops Scenarios**][scenario], based on recording and replaying Khiops scenarios in batch mode from any programming language."
+
+
 [tutorial]: KhiopsTutorial.pdf
 [Documentation]: KhiopsGuide.pdf
 [coclustering]: KhiopsCoclusteringGuide.pdf
+[scenario]: KhiopsScenarios-v10.2.0.pdf    
 
 !!! info "Users of pre-10.2.0 Khiops versions should refer to the **legacy** Khiops [web site][khiopslegacy]"
 
