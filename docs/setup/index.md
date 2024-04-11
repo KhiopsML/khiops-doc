@@ -6,7 +6,7 @@ Khiops supports a diversified set of installation options, to meet different nee
     - Packaged via [`conda`][conda] (recommended)
     - Packaged via [`pip`][pip]
     - Packaged in our [khiops-notebook][notebooks] container
-  - **Khiops Desktop Application**: for advanced data analytics with just a few clicks using a GUI (includes Khiops Visualization)
+  - **Khiops Application**: for advanced data analytics  with just a few clicks using a graphical user interface (includes Khiops Visualization). This application is also the basis for easy integration into different systems (all programming languages, docker, servers, etc.).
   - **Khiops Visualization Application**: for intuitive visualization of all analysis results
   - **Khiops Native Interface (KNI)**: to deploy Khiops models with a lightweight shared library. 
 
@@ -79,13 +79,13 @@ docker pull khiopsml/khiops-notebook
 
 <br>
   
-## Install the Khiops Desktop Application
+## Install the Khiops Application
 
 This version contains a standalone Graphical User Interface (GUI). 
 
 
 === "Windows"
-    The :material-microsoft-windows: Khiops installer automatically installs the Khiops desktop application, all its dependencies, plus the Khiops samples and the Khiops Visualization application:
+    The :material-microsoft-windows: Khiops installer automatically installs the Khiops application, all its dependencies, plus the Khiops samples and the Khiops Visualization application:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-10.2.0-setup.exe">
         <button class="btn btn-light btn-sm">
