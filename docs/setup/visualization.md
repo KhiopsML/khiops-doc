@@ -12,13 +12,13 @@ You can find all versions of the Khiops Visualization tool on the [the following
 
 [repo-visu]: https://github.com/khiopsrelease/kv-release/releases
 
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-Setup-11.0.2.exe">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.5/khiops-visualization-Setup-11.0.5.exe">
           Download for Windows </a>
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.3/khiops-visualization-11.0.3.dmg">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.5/khiops-visualization-11.0.5.dmg">
           Download for Mac OS </a>  
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization_11.0.2_amd64.deb">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.5/khiops-visualization_11.0.5_amd64.deb">
           Download for Ubuntu </a>
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.2/khiops-visualization-11.0.2.x86_64.rpm">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.5/khiops-visualization-11.0.5.x86_64.rpm">
           Download for CentOS </a>
 
 ## Download the Khiops CoVisualization Desktop Application
