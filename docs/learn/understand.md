@@ -1,6 +1,6 @@
 # What makes Khiops different
 
-Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), natively and effortlessly handling intricate Data Science time-consuming tasks. These include feature engineering (A), data cleaning and encoding (B), and the training of parsimonious_models (C).
+Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), natively and effortlessly handling intricate Data Science time-consuming tasks. These include feature engineering (A), data cleaning and encoding (B), and the training of parsimonious models (C).
 
 <picture>
   <source srcset="/assets/images/auto-ml-pipeline.webp" type="image/webp">
