@@ -24,14 +24,16 @@ You can find all versions of the Khiops Visualization tool on the [the following
 ## Download the Khiops CoVisualization Desktop Application
 For users familiar with Khiops co-clustering, co-clustering analysis results ca be visualized with the CoVisualization desktop application. All versions of this application are available [here][repo-covisualisation]. The latest stable version can be downloaded from the URLs shown below:
 
-[repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v10.2.4
+[repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v11.1.0
 
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v10.2.4/khiops-covisualization-Setup-10.2.4.exe">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.0/khiops-covisualization-Setup-11.1.0.exe">
           Download for Windows </a>
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v10.2.4/khiops-covisualization-10.2.4.dmg">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.0/khiops-covisualization-11.1.0-arm64.dmg">
           Download for Mac OS </a>  
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v10.2.4/khiops-covisualization_10.2.4_amd64.deb">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.0/khiops-covisualization_11.1.0_amd64.deb">
           Download for Ubuntu </a>
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.0/khiops-covisualization-11.1.0.x86_64.rpm">
+          Download for CentOS </a>
 
 ## Documentation
 
