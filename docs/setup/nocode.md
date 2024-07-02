@@ -23,7 +23,7 @@ To get started with the Khiops application, follow the relevant procedure for yo
         </button>
     </a>
 
-=== "Ubuntu 20, 22 / Debian 10, 11, 12"
+=== "Ubuntu / Debian"
     The installation of the Khiops desktop application involves two packages:
     
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
@@ -52,7 +52,7 @@ To get started with the Khiops application, follow the relevant procedure for yo
 
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
 
-=== "Rocky Linux 8 and 9"
+=== "Rocky Linux"
     The installation of the Khiops desktop application involves two packages:
     
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.

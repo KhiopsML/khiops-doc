@@ -104,7 +104,7 @@ This version contains a standalone Graphical User Interface (GUI).
 
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
 
-=== "Rocky Linux 8 and 9"
+=== "Rocky Linux"
 
     ``` sh
     sudo yum update -y && sudo yum install wget python3-pip -y && \
