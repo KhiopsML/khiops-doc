@@ -104,6 +104,19 @@ This version contains a standalone Graphical User Interface (GUI).
 
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
 
+=== "Rocky Linux 8 and 9"
+
+    ``` sh
+    sudo yum update -y && sudo yum install wget python3-pip -y && \
+    CENTOS_VERSION=$(rpm -E %{rhel}) && \
+    TEMP_RPM="$(mktemp)" && \
+    TEMP_DEB_KHIOPS="$(mktemp)" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    sudo yum localinstall "$TEMP_RPM" "$TEMP_DEB_KHIOPS" -y && \
+    rm -f $TEMP_RPM $TEMP_DEB_KHIOPS    ```
+    ```
+
     
 [:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }
 
