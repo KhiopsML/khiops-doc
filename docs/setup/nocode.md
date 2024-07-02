@@ -23,7 +23,7 @@ To get started with the Khiops application, follow the relevant procedure for yo
         </button>
     </a>
 
-=== "Ubuntu 20, 22 / Debian 10"
+=== "Ubuntu 20, 22 / Debian 10, 11, 12"
     The installation of the Khiops desktop application involves two packages:
     
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
@@ -51,6 +51,25 @@ To get started with the Khiops application, follow the relevant procedure for yo
     ```
 
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
+
+=== "Rocky Linux 8 and 9"
+    The installation of the Khiops desktop application involves two packages:
+    
+     - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
+     - `khiops`: This package requires `khiops-core` and is the full version of Khiops containing the GUI and the documentation.
+
+    You can install both packages as follows:
+
+    ``` sh
+    sudo yum update -y && sudo yum install wget python3-pip -y && \
+    CENTOS_VERSION=$(rpm -E %{rhel}) && \
+    TEMP_RPM="$(mktemp)" && \
+    TEMP_DEB_KHIOPS="$(mktemp)" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/v10.2.0/khiops-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    sudo yum localinstall "$TEMP_RPM" "$TEMP_DEB_KHIOPS" -y && \
+    rm -f $TEMP_RPM $TEMP_DEB_KHIOPS    ```
+    ```
 
 You can find the all versions on the [releases page][releases].
 

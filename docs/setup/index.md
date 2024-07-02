@@ -18,7 +18,7 @@ Khiops supports a diversified set of installation options, to meet different nee
 
 <br>
 
-We support :simple-python: **Python from 3.8 to 3.12.** and the following operating systems:
+We support :simple-python: **Python from 3.8 to 3.12** and the following operating systems:
 
 - Windows 10 or later
 - Ubuntu 20 and 22 (LTS)

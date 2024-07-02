@@ -6,7 +6,7 @@ The Khiops binaries must be installed as a prerequisite. This also ensures the i
 
 We support :simple-python: **Python from 3.8 to 3.12**. 
 
-=== "Ubuntu 20, 22 / Debian 10"
+=== "Ubuntu 20, 22 / Debian 10, 11, 12"
     
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
