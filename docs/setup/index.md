@@ -18,16 +18,13 @@ Khiops supports a diversified set of installation options, to meet different nee
 
 <br>
 
-Refer to the following table to select the appropriate installation method for your operating system. <br>We support :simple-python: **Python from 3.8 to 3.12.**
+We support :simple-python: **Python from 3.8 to 3.12.** and the following operating systems:
 
-| OS                                                | :simple-anaconda: Conda          | Binary + :simple-python: pip   | :simple-docker: Khiops-notebook      | :material-remote-desktop: Desktop app | KNI                       |
-| ------------------------------------------------- | -------------------------------- | ------------------------------ | ------------------------------------ | ------------------------------------- | ------------------------- |
-| :material-microsoft-windows: Windows 10 and later | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] | [:white_check_mark:][nocode]          | [:white_check_mark:][kni] |
-| :material-apple: macOS 10 and later               | [:white_check_mark:][conda_page] |                                | [:white_check_mark:][notebooks_page] |                                       | [:white_check_mark:][kni] |
-| :simple-linux: Ubuntu 20 and 22 (LTS)             | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] | [:white_check_mark:][nocode]          | [:white_check_mark:][kni] |
-| :simple-linux: Debian 10                          | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] | [:white_check_mark:][nocode]          | [:white_check_mark:][kni] |
-| :simple-linux: Debian 11 and 12                   | [:white_check_mark:][conda_page] |                                | [:white_check_mark:][notebooks_page] |                                       | [:white_check_mark:][kni] |
-| :simple-linux: Rocky Linux 8 and 9                      | [:white_check_mark:][conda_page] | [:white_check_mark:][pip_page] | [:white_check_mark:][notebooks_page] |                                       | [:white_check_mark:][kni] |
+- Windows 10 or later
+- Ubuntu 20 and 22 (LTS)
+- Debian 10, 11 and 12 
+- Rocky Linux 8 and 9
+- macOS 11 or later, on Intel (conda + docker) and :material-apple: ARM64 Apple Silicon (conda exclusively)
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
