@@ -16,7 +16,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi_10.2.2-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz'
+    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.2.0/khiops-10.2.2.0.tar.gz'
     ```
 
 
@@ -31,7 +31,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
 
     Then, you can run the following Pip command:
     ```sh
-    pip install "https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz"
+    pip install "https://github.com/KhiopsML/khiops-python/releases/download/10.2.2.0/khiops-10.2.2.0.tar.gz"
     ```
 
 === "Rocky Linux"
@@ -45,7 +45,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz'
+    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.2.0/khiops-10.2.2.0.tar.gz'
     ```
 
 
