@@ -13,7 +13,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     sudo apt-get update -y && sudo apt-get install wget lsb-release -y && \
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi_10.2.2-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
     pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz'
@@ -23,7 +23,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
 === "Windows"
     You need to download and install the Khiops desktop application first:
 
-    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-10.2.0-setup.exe">
+    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-setup.exe">
         <button class="btn btn-light btn-sm">
           Download for Windows
         </button>
@@ -42,7 +42,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     sudo yum update -y && sudo yum install wget python3-pip -y && \
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-core-10.2.0-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
     pip install 'https://github.com/KhiopsML/khiops-python/releases/download/10.2.1.0/khiops-10.2.1.0.tar.gz'
