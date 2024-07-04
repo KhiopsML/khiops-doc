@@ -24,7 +24,7 @@ We support :simple-python: **Python from 3.8 to 3.12** and the following operati
 - Ubuntu 20 and 22 (LTS)
 - Debian 10, 11 and 12 
 - Rocky Linux 8 and 9
-- macOS 11 or later, on Intel (conda + docker) or ARM64 Apple Silicon (conda for optimal native performance, docker possible but not optimized).
+- macOS 11 or later, only via :simple-anaconda: **Conda**.
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
