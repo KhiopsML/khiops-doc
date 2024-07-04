@@ -17,13 +17,13 @@ To get started with the Khiops application, follow the relevant procedure for yo
 === "Windows"
     The :material-microsoft-windows: Khiops installer automatically installs the Khiops application, all its dependencies, plus some data samples formatted as expected by Khiops, and the Khiops Visualization application.
 
-    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-10.2.0-setup.exe">
+    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-setup.exe">
         <button class="btn btn-light btn-sm">
           Download for Windows
         </button>
     </a>
 
-=== "Ubuntu 20, 22 / Debian 10"
+=== "Ubuntu / Debian"
     The installation of the Khiops desktop application involves two packages:
     
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
@@ -35,8 +35,8 @@ To get started with the Khiops application, follow the relevant procedure for yo
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB_CORE="$(mktemp)" && \
     TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops-core_10.2.0-1-${CODENAME}.amd64.deb" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.0/khiops_10.2.0-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi_10.2.2-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops_10.2.2-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
@@ -51,6 +51,25 @@ To get started with the Khiops application, follow the relevant procedure for yo
     ```
 
     !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
+
+=== "Rocky Linux"
+    The installation of the Khiops desktop application involves two packages:
+    
+     - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
+     - `khiops`: This package requires `khiops-core` and is the full version of Khiops containing the GUI and the documentation.
+
+    You can install both packages as follows:
+
+    ``` sh
+    sudo yum update -y && sudo yum install wget python3-pip -y && \
+    CENTOS_VERSION=$(rpm -E %{rhel}) && \
+    TEMP_RPM="$(mktemp).rpm" && \
+    TEMP_RPM_KHIOPS="$(mktemp).rpm" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    sudo yum install "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
+    rm -f $TEMP_RPM $TEMP_RPM_KHIOPS
+    ```
 
 You can find the all versions on the [releases page][releases].
 
