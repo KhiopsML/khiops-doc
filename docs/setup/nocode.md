@@ -64,11 +64,11 @@ To get started with the Khiops application, follow the relevant procedure for yo
     sudo yum update -y && sudo yum install wget python3-pip -y && \
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
-    TEMP_DEB_KHIOPS="$(mktemp)" && \
+    TEMP_RPM_KHIOPS="$(mktemp).rpm" && \
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum install "$TEMP_RPM" "$TEMP_DEB_KHIOPS" -y && \
-    rm -f $TEMP_RPM $TEMP_DEB_KHIOPS
+    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    sudo yum install "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
+    rm -f $TEMP_RPM $TEMP_RPM_KHIOPS
     ```
 
 You can find the all versions on the [releases page][releases].
