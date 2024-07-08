@@ -7,11 +7,13 @@ Welcome to the Khiops application download page. Our intuitive, user-friendly de
 
 ## Download & Installation
 
-To get started with the Khiops application, follow the relevant procedure for your operating system. Please click on the relevant operating system. For further details, you may refer to [README.txt][readme], and [whatsnew.txt][whatsnew]:
+To get started with the Khiops application, follow the relevant procedure for your operating system. Please click on the relevant operating system. Note that our Application **is not yet available on :material-apple: macOS**.
+
+For further details, you may refer to [README.txt][readme], and [whatsnew.txt][whatsnew]:
 
 [releases]: https://github.com/KhiopsML/khiops/releases
 [readme]: README.txt
-[whatsnew]: whatsnewV10.1.txt
+[whatsnew]: WHATSNEW.txt
 
 
 === "Windows"
@@ -105,7 +107,7 @@ You can consult the limitations or known problems for your operating system:
     !!! warning 
         The java installer results in a system reboot on some systems (e.g. on Windows Server 2008)
     !!! warning
-        On some machines, re-installing Khiops may unexpectedly result in just discarding the existing Khiops installation directory. In that case, install Khiops again.
+        On some machines, re-installing Khiops may unexpectedly result in just discarding the existing Khiops installation directory. In that case, uninstall Khiops before reinstalling it.
     
 
 ## Screenshots 
