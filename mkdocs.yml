@@ -119,25 +119,26 @@ nav:
       - Standalone Applications:
           - Khiops Application: setup/nocode.md
           - Khiops Visualization: setup/visualization.md
-          - Khiops shared library: setup/kni.md
-  - Tutorials:
-      - Quickstart: setup/quickstart.md
-      - Starter Tutorials:
-          - Single Table Classifier: advanced/Notebooks/single_table_classifier.ipynb
-          - Multi Table Classifier: advanced/Notebooks/multi_table_classifier.ipynb
-      - Advanced Tutorials:
-          - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb
-          - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
-          - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
-    #  - Out of core: advanced/Notebooks/outofcore.ipynb    #  - Advanced use cases:
-    #  - GO / No Go: advanced/gonogo.md
-    #  - Time Series: advanced/timeseries.md
-    #  - NLP: advanced/nlp.md
-    #  - Anomaly detection: advanced/anomaly.md
-    #  - Drift  detection: advanced/drift.md
-    #  - Model calibration: advanced/calibration.md
-    #  - Variable importance with Shapley:  advanced/shapley.md
-    #  - Advanced notebook examples: advanced/notebooks.md
+          - Khiops Shared Library: setup/kni.md
+  - How to:
+      - Data Science needs: tutorials/introduction.md
+      - Introduction to AutoML:
+          - Sklearn-like interface:  tutorials/quickstart.md
+          - Single Table Classifier: tutorials/Notebooks/single_table_classifier.ipynb
+          - No need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
+          - Variable Encoding: tutorials/Notebooks/Optimal_Encoding.ipynb
+          - Multi Table Classifier: tutorials/Notebooks/multi_table_classifier.ipynb
+          - SNB: tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
+      - Advanced AutoML:
+          - Khiops dictionaries: tutorials/dictionaries.md
+          - Syntax and usages: tutorials/kdic_howto.md
+          - Business knowledge: tutorials/kdic_examples.md
+          - Mapping data sources: tutorials/---.md
+          - Scalability & Out of core: tutorials/scenario.md
+      - Production ready:
+          - Easy deployment: tutorials/---.md
+          - Cloud Storages: tutorials/storage.md
+          - Khiops on Kubernetes: tutorials/k8s.md
   - Reference:
       - Python API Docs: api-docs/python-api.md
       - Dictionary Rules:
@@ -165,8 +166,6 @@ nav:
             - Recoding Rules: api-docs/kdic/recoding-rules.md
             - Predictor Rules: api-docs/kdic/predictor-rules.md
             - Coclustering Rules: api-docs/kdic/coclustering-rules.md
-
-
   - Foundations:
       - What makes Khiops different: learn/understand.md
       - An original formalism: learn/modl.md
