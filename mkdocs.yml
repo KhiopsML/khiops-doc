@@ -135,11 +135,17 @@ nav:
   - Foundations:
       - What makes Khiops different: learn/understand.md
       - An original formalism: learn/modl.md
-      - Optimal Encoding: learn/preprocessing.md
-      - Auto Feature Engineering: learn/autofeature_engineering.md
-      - Parsimonious Training: learn/learning_models.md
-      - Auto Hardware Adaptation: learn/hardware_adaptation.md
-      - Bibliography: references.md
+      - Supervised pipeline:
+        - Optimal Encoding: learn/preprocessing.md
+        - Auto Feature Engineering: learn/autofeature_engineering.md
+        - Parsimonious Training: learn/learning_models.md
+      - Unsupervised algorithms:
+        - Coclustering: learn/coclustering.md
+        - Coclustering indi X var: learn/coclustering_indi_var.md
+        - Univariate hystograms: learn/histogram.md
+      - Other resources:
+        - Auto Hardware Adaptation: learn/hardware_adaptation.md
+        - Bibliography: references.md
   - Contact Us: contact.md
 #    - Blog:
 #      - blog/index.md
