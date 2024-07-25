@@ -29,7 +29,7 @@ The use of Khiops dictionaries significantly accelerates the release of Machine 
     Dictionaries are written using a declarative programming language dedicated to both data **definition** and **manipulation**. Thus, a dictionary includes a **specification** of the data itself (i.e. definition), as well as the transformations to be applied (i.e. manipulation).  
 
 
-## How dictionary are used ? 
+## How dictionaries are used ? 
 
 This section illustrates how dictionaries are used throughout the Auto-ML pipeline: (i) who writes the dictionaries; (ii) what are they used for.   
 
