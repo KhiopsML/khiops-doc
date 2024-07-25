@@ -121,20 +121,18 @@ nav:
           - Khiops Visualization: setup/visualization.md
           - Khiops Shared Library: setup/kni.md
   - How to:
-      - Data Science needs: tutorials/introduction.md
-      - Introduction to AutoML:
-          - Sklearn-like interface:  tutorials/quickstart.md
+      - Two APIs for different needs: tutorials/introduction.md
+      - Sklearn-like API:
+          - Quickstart Guide:  tutorials/quickstart.md
           - Single Table Classifier: tutorials/Notebooks/single_table_classifier.ipynb
           - No need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
           - Variable Encoding: tutorials/Notebooks/Optimal_Encoding.ipynb
           - Multi Table Classifier: tutorials/Notebooks/multi_table_classifier.ipynb
           - SNB: tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
-      - Advanced AutoML:
-          - Khiops dictionaries: tutorials/dictionaries.md
-          - Syntax and usages: tutorials/kdic_howto.md
-          - Business knowledge: tutorials/kdic_examples.md
-          - Mapping data sources: tutorials/---.md
-          - Scalability & Out of core: tutorials/scenario.md
+      - Core API & Dictionaries:
+          - Start using dictionaries: tutorials/kdic_intro.md
+          - Single-Table Learning: tutorials/kdic_single_table.md
+          - Multi-Table Learning: tutorials/kdic_multi_table.md
       - Production ready:
           - Easy deployment: tutorials/---.md
           - Cloud Storages: tutorials/storage.md

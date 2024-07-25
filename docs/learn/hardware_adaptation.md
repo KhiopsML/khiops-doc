@@ -1,9 +1,14 @@
 
 # Auto Hardware Adaptation
 
+This section presents the strategy implemented in Khiops for adapting the algorithms to the available hardware resources. 
+Please note that this feature requires the use of [Khiops dictionaries][dico].
+
+[dico]: ../tutorials/dictionaries.md
+
 ## General principles
 
-This section presents the strategy implemented in Khiops for adapting the algorithms to the available hardware resources. 
+
 
 !!! success "Key idea #1: **Divide and conquer**"
     Khiops divides the data into a more or less fine-grained **grid of files**, depending on the learning task at hand and the available hardware resources. 
