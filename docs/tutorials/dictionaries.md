@@ -19,7 +19,7 @@ The use of Khiops dictionaries significantly accelerates the release of Machine 
 <figure markdown>
 <picture>
   <source srcset="/assets/images/dictionary_as_a_program.webp" type="image/webp">
-  <img style="width:45%;" src="/assets/images/dictionary_as_a_program.png" alt="dictionary_as_a_program" loading="lazy"> 
+  <img style="width:48%;" src="/assets/images/dictionary_as_a_program.png" alt="dictionary_as_a_program" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
