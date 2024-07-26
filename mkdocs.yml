@@ -123,11 +123,11 @@ nav:
           - Multi Table Classifier: tutorials/Notebooks/multi_table_classifier.ipynb
           - SNB: tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
       - Advanced AutoML:
-          - Khiops dictionaries: tutorials/dictionaries.md
-          - Syntax and usages: tutorials/kdic_howto.md
-          - Business knowledge: tutorials/kdic_examples.md
-          - Mapping data sources: tutorials/---.md
-          - Scalability & Out of core: tutorials/scenario.md
+          - Khiops dictionaries: tutorials/kdic_intro.md
+          - Syntax and usages: tutorials/kdic_syntax.md
+          - Business knowledge: tutorials/kdic_buisness_knowledge.md
+          - Mapping data sources: tutorials/kdic_mapping_sources.md
+          - Scalability & Out of core: tutorials/kdic_out_of_core.md
       - Production ready:
           - Easy deployment: tutorials/---.md
           - Cloud Storages: tutorials/storage.md
