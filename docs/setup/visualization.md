@@ -28,15 +28,15 @@ For users familiar with Khiops co-clustering, co-clustering analysis results ca 
 
 [repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v11.1.1
 
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.1/khiops-covisualization-Setup-11.1.2.exe">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-Setup-11.1.2.exe">
           **Windows** </a>
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.1/khiops-covisualization-11.1.2.dmg">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-11.1.2.dmg">
           **macOS x86-64**  </a>  (Intel-based)  
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.1/khiops-covisualization-11.1.2-arm64.dmg">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-11.1.2-arm64.dmg">
           **macOS ARM** </a>   (:material-apple: Apple Silicon - M1/M2/M3) 
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.1/khiops-covisualization_11.1.2_amd64.deb">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization_11.1.2_amd64.deb">
           **Ubuntu** </a>
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.1/khiops-covisualization-11.1.2.x86_64.rpm">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-11.1.2.x86_64.rpm">
           **Rocky Linux** </a>
 
 ## Documentation
