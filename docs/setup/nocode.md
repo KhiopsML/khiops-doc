@@ -46,7 +46,7 @@ For further details, you may refer to [README.txt][readme], and [whatsnew.txt][w
     If you need the Khiops samples, you can run the following commands:
     ```sh
     TEMP_SAMPLES="$(mktemp)" && \
-    wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/v10.2.0/khiops-samples-v10.2.0.zip" && \
+    wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/10.2.0/khiops-samples-10.2.0.zip" && \
     mkdir -p ~/khiops_data/samples && \
     unzip "$TEMP_SAMPLES" -d ~/khiops_data/samples && \
     rm -f $TEMP_SAMPLES
