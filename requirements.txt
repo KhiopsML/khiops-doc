@@ -1,3 +1,4 @@
+pre-commit
 mkdocs
 mkdocs-jupyter
 mkdocs-macros-plugin
