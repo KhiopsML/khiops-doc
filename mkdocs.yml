@@ -6,7 +6,7 @@ repo_name: KhiopsML/Khiops
 repo_url: https://github.com/KhiopsML/khiops
 
 # Copyright
-copyright: Copyright &copy; 2023 Orange S.A.
+copyright: Copyright &copy; 2023-2025 Orange S.A.
 
 theme:
   name: material
@@ -102,11 +102,12 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
-  - mkdocs-jupyter
   - macros
   - search
-  #  - blog
-  #  - privacy ## not usable with mathjax script
+  - mkdocs-jupyter:
+      ignore_h1_titles: True
+#  - blog
+#  - privacy ## not usable with mathjax script
 
 nav:
   - index.md
@@ -125,10 +126,10 @@ nav:
       - Sklearn-like API:
           - Quickstart Guide:  tutorials/quickstart.md
           - Single Table Classifier: tutorials/Notebooks/single_table_classifier.ipynb
-          - No need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
-          - Variable Encoding: tutorials/Notebooks/Optimal_Encoding.ipynb
-          - Multi Table Classifier: tutorials/Notebooks/multi_table_classifier.ipynb
-          - SNB: tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
+          - No Need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
+          - Interpretable Variable Encoding: tutorials/Notebooks/Optimal_Encoding.ipynb
+          - Multi-Table Classifier: tutorials/Notebooks/multi_table_classifier.ipynb
+          - "Auto Feature Engineering & More": tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
       - Core API & Dictionaries:
           - Start using dictionaries: tutorials/kdic_intro.md
           - Single-Table Learning: tutorials/kdic_single_table.md
