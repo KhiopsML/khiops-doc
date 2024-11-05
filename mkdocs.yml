@@ -123,7 +123,7 @@ nav:
           - Khiops Shared Library: setup/kni.md
   - How to:
       - Two APIs for different needs: tutorials/introduction.md
-      - Sklearn-like API:
+      - Scikit-learn API:
           - Quickstart Guide:  tutorials/quickstart.md
           - Single Table Classifier: tutorials/Notebooks/single_table_classifier.ipynb
           - No Need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
@@ -132,8 +132,10 @@ nav:
           - "Auto Feature Engineering & More": tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
       - Core API & Dictionaries:
           - Start using dictionaries: tutorials/kdic_intro.md
+          - Single Table Classifier: tutorials/Notebooks/single_table_classifier_core.ipynb
           - Single-Table Learning: tutorials/kdic_single_table.md
           - Multi-Table Learning: tutorials/kdic_multi_table.md
+          - Multi-Table Classifier: tutorials/Notebooks/multi_table_classifier_core.ipynb
       - Production ready:
           - Easy deployment: tutorials/---.md
           - Cloud Storages: tutorials/storage.md
