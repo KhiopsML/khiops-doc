@@ -1,2 +1,0 @@
-
-kdic_out_of_core

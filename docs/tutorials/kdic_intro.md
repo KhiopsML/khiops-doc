@@ -1,8 +1,7 @@
 
+Using the Khiops Core API, in particular by manipulating Khiops dictionaries, significantly accelerates the release of machine learning models into production, by enabling users to easily describe data and express their business knowledge during the data preparation step. What's more, the dictionaries record all the manual and automatic processing required for model training, and are executed by Khiops during the inference phase. The main user benefits include:
 
-The use of Khiops dictionaries significantly accelerates the release of machine learning models into production, by enabling users to easily describe data and express their business knowledge during the data preparation step. What's more, the dictionaries record all the manual and automatic processing required for model training, and are executed by Khiops during the inference phase. The main user benefits include:
-
-- **Meaningful data handling**: in its simplest form, the dictionary describes the variables in a single training data table, with their names and types. With more complex data, for instance spread over several tables, the power of dictionaries represents a major advantage. Starting from a multitude of disorganized data sources, the user can easily describe and structure training data into a comprehensible relational schema. 
+- **Meaningful data description**: in its simplest form, the dictionary describes the variables in a single training data table, with their names and types. With more complex data, for instance spread over several tables, the power of dictionaries represents a major advantage. Starting from a multitude of disorganized data sources, the user can easily describe and structure training data into a comprehensible relational schema. 
   
 - **Meaningful data preparation**: then, the user simply expresses his business knowledge by selecting the relevant information for the problem at hand, and by enriching data with relevant user-defined variables.  
   
