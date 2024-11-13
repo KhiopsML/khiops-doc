@@ -49,7 +49,7 @@ The Conda package contains all the necessary components.
     
 === "Windows"
     ``` sh
-    conda install -c khiops khiops
+    conda install -c conda-forge -c khiops khiops
     ```
 
 === "macOS"
