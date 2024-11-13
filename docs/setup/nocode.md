@@ -88,10 +88,10 @@ For easy system integration:
 - [**Khiops Scenarios**][scenario], based on recording and replaying Khiops scenarios in batch mode from any programming language."
 
 
-[tutorial]: KhiopsTutorial.pdf
-[Documentation]: KhiopsGuide.pdf
-[coclustering]: KhiopsCoclusteringGuide.pdf
-[scenario]: KhiopsScenarios-v10.2.0.pdf    
+[tutorial]: KhiopsTutorial-10.2.3.pdf
+[Documentation]: KhiopsGuide-10.2.3.pdf
+[coclustering]: KhiopsCoclusteringGuide-10.2.3.pdf
+[scenario]: KhiopsScenarios-10.2.3.pdf
 
 !!! info "Users of pre-10.2.0 Khiops versions should refer to the **legacy** Khiops [web site][khiopslegacy]"
 
