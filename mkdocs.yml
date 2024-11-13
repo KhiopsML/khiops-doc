@@ -36,9 +36,10 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
@@ -137,7 +138,33 @@ nav:
     #  - Model calibration: advanced/calibration.md
     #  - Variable importance with Shapley:  advanced/shapley.md
     #  - Advanced notebook examples: advanced/notebooks.md
-  - API Docs: https://khiopsml.github.io/khiops-python/index.html
+  - Reference:
+      - Python API Docs: api-docs/python-api.md
+      - Dictionary Rules:
+          - Basic:
+            - Numerical Comparisons: api-docs/kdic/numerical-comparisons.md
+            - Categorical Comparisons: api-docs/kdic/categorical-comparisons.md
+            - Logical Operators: api-docs/kdic/logical-operators.md
+            - Data Copy and Conversion: api-docs/kdic/data-copy-and-conversion.md
+            - String Rules: api-docs/kdic/string-rules.md
+            - Math Rules: api-docs/kdic/math-rules.md
+            - Date Rules: api-docs/kdic/date-rules.md
+            - Time Rules: api-docs/kdic/time-rules.md
+            - Timestamp Rules: api-docs/kdic/timestamp-rules.md
+            - TimestampTZ Rules: api-docs/kdic/timestamp-tz-rules.md
+          - Multi-Table:
+            - Introduction: api-docs/kdic/multi-table-rules-introduction.md
+            - Entity Rules: api-docs/kdic/entity-rules.md
+            - Table Rules: api-docs/kdic/table-rules.md
+            - Table Management Rules: api-docs/kdic/table-management-rules.md
+          - Technical Structures & Rules:
+            - Introduction: api-docs/kdic/structures-introduction.md
+            - Vector Rules: api-docs/kdic/vector-rules.md
+            - Hash Map Rules: api-docs/kdic/hash-map-rules.md
+            - Data Preparation Rules: api-docs/kdic/data-preparation-rules.md
+            - Recoding Rules: api-docs/kdic/recoding-rules.md
+
+
   - Foundations:
       - What makes Khiops different: learn/understand.md
       - An original formalism: learn/modl.md
