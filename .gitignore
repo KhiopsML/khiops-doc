@@ -7,3 +7,9 @@
 # Other
 docs/advanced/Notebooks/logs.log
 .cache
+<<<<<<< HEAD
+=======
+# Python
+__pycache__
+*.egg-info
+>>>>>>> a49547f (Add kdic pygments lexer)
