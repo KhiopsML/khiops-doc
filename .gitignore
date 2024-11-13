@@ -1,3 +1,6 @@
 .DS_Store
 docs/advanced/Notebooks/logs.log
 .cache
+# Python
+__pycache__
+*.egg-info
