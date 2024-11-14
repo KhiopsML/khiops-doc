@@ -21,7 +21,7 @@ Khiops supports a diversified set of installation options, to meet different nee
 We support :simple-python: **Python from 3.8 to 3.12** and the following operating systems:
 
 - Windows 10 or later
-- Ubuntu 20 and 22 (LTS)
+- Ubuntu 20, 22 and 24 (LTS)
 - Debian 10, 11 and 12 
 - Rocky Linux 8 and 9
 - macOS 12 or later, only via :simple-anaconda: **Conda**.
