@@ -21,10 +21,10 @@ Khiops supports a diversified set of installation options, to meet different nee
 We support :simple-python: **Python from 3.8 to 3.12** and the following operating systems:
 
 - Windows 10 or later
-- Ubuntu 20 and 22 (LTS)
+- Ubuntu 20, 22 and 24 (LTS)
 - Debian 10, 11 and 12 
 - Rocky Linux 8 and 9
-- macOS 12 or later, only via :simple-anaconda: **Conda**.
+- macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for ARM architectures, limited support for x86-64 architectures.
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
@@ -49,7 +49,7 @@ The Conda package contains all the necessary components.
     
 === "Windows"
     ``` sh
-    conda install -c khiops khiops
+    conda install -c conda-forge -c khiops khiops
     ```
 
 === "macOS"
@@ -84,7 +84,7 @@ This version contains a standalone Graphical User Interface (GUI).
 === "Windows"
     The :material-microsoft-windows: Khiops installer automatically installs the Khiops application, all its dependencies, plus the Khiops samples and the Khiops Visualization application:
 
-    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-setup.exe">
+    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-10.2.3-setup.exe">
         <button class="btn btn-light btn-sm">
           Download for Windows
         </button>
@@ -96,8 +96,8 @@ This version contains a standalone Graphical User Interface (GUI).
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB_CORE="$(mktemp)" && \
     TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi_10.2.2-1-${CODENAME}.amd64.deb" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops_10.2.2-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-core-openmpi_10.2.3-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops_10.2.3-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
@@ -111,8 +111,8 @@ This version contains a standalone Graphical User Interface (GUI).
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
     TEMP_RPM_KHIOPS="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-core-openmpi-10.2.3-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-10.2.3-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
     rm -f $TEMP_RPM $TEMP_RPM_KHIOPS    ```
     ```
