@@ -155,6 +155,8 @@ nav:
             - Hash Map Rules: api-docs/kdic/hash-map-rules.md
             - Data Preparation Rules: api-docs/kdic/data-preparation-rules.md
             - Recoding Rules: api-docs/kdic/recoding-rules.md
+            - Predictor Rules: api-docs/kdic/predictor-rules.md
+            - Coclustering Rules: api-docs/kdic/coclustering-rules.md
 
 
   - Foundations:
