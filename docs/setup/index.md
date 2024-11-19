@@ -8,7 +8,7 @@ Khiops supports a diversified set of installation options, to meet different nee
     - Packaged in our [khiops-notebook][notebooks] container
   - **Khiops Application**: for advanced data analytics with just a few clicks using a graphical user interface. This application is also the basis for easy integration into different systems (all programming languages, docker, servers, etc.).
   - **Khiops Visualization Application**: for intuitive visualization of all analysis results
-  - **Khiops Native Interface (KNI)**: to deploy Khiops models with a lightweight shared library. 
+  - **Khiops Native Interface (KNI)**: to deploy Khiops models with a lightweight shared library.
 
   [conda]: #with-conda
   [pip]: #with-pip
@@ -22,7 +22,7 @@ We support :simple-python: **Python from 3.8 to 3.12** and the following operati
 
 - Windows 10 or later
 - Ubuntu 20, 22 and 24 (LTS)
-- Debian 10, 11 and 12 
+- Debian 10, 11 and 12
 - Rocky Linux 8 and 9
 - macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for ARM architectures, limited support for x86-64 architectures.
 
@@ -38,15 +38,16 @@ For other platforms, please :material-send: **[Contact Us][contact]**.
 
 <br>
 
-## Install the Khiops Python Library Using Conda <small> Recommended </small> {#with-conda data-toc-label="Install Khiops via conda"}
 
-The Conda package contains all the necessary components. 
+## Install the Khiops Python Library Using Conda <small> Recommended </small> { #with-conda data-toc-label="Install Khiops via conda" }
+
+The Conda package contains all the necessary components.
 
 === "Linux"
     ``` sh
     conda install -c conda-forge -c khiops khiops
     ```
-    
+
 === "Windows"
     ``` sh
     conda install -c conda-forge -c khiops khiops
@@ -75,29 +76,29 @@ docker pull khiopsml/khiops-notebook
 [:material-cursor-default-click-outline: See the Docker notebooks Installation Page](khiops-notebook.md){ .md-button .md-button--primary }
 
 <br>
-  
+
 ## Install the Khiops Application
 
-This version contains a standalone Graphical User Interface (GUI). 
+This version contains a standalone Graphical User Interface (GUI).
 
 
 === "Windows"
     The :material-microsoft-windows: Khiops installer automatically installs the Khiops application, all its dependencies, plus the Khiops samples and the Khiops Visualization application:
 
-    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-10.2.3-setup.exe">
+    <a href="https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe">
         <button class="btn btn-light btn-sm">
           Download for Windows
         </button>
     </a>
-    
+
 === "Ubuntu/Debian"
-    
+
     ``` sh
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB_CORE="$(mktemp)" && \
     TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-core-openmpi_10.2.3-1-${CODENAME}.amd64.deb" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops_10.2.3-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
@@ -111,13 +112,13 @@ This version contains a standalone Graphical User Interface (GUI).
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
     TEMP_RPM_KHIOPS="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-core-openmpi-10.2.3-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-10.2.3-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
     rm -f $TEMP_RPM $TEMP_RPM_KHIOPS    ```
     ```
 
-    
+
 [:material-cursor-default-click-outline: See the Khiops Desktop Installation Page](nocode.md){ .md-button .md-button--primary }
 
 <br>
@@ -128,7 +129,7 @@ This version contains a standalone Graphical User Interface (GUI).
 
 <br>
 
-## Install the Khiops Python library using Pip  <small> :tools: For Advanced users :tools: </small> {#with-pip data-toc-label="Install Khiops via pip"}
+## Install the Khiops Python library using Pip  <small> :tools: For Advanced users :tools: </small> { #with-pip data-toc-label="Install Khiops via pip" }
 
 Using `pip` for installation is best suited for experienced users, especially those integrating Khiops into specific environments or requiring advanced configuration. **This method offers flexibility, but requires familiarity with operating systems specifics, Python-based environments and dependency management.**
 

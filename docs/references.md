@@ -1,7 +1,7 @@
 ---
 hide: toc
 ---
-# Bibliography {#publications}
+# Bibliography { #publications }
 
 To go further, here's a selection of **scientific papers** organized according to a reading path which facilitates the understanding of the Auto-ML pipeline. It is highly recommended to read these papers in the suggested order, after reading the documentation presented on this website. The <span style="color:gray">**gray**</span> lines indicate additional information, which can be read at a later stage, and which will not prevent you from gaining an overall understanding of the pipeline. 
 
