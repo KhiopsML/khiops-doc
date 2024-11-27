@@ -12,7 +12,7 @@ Most machine learning approaches are derived from [statistical learning theory:o
 
 [statistical-learning-theory]: https://en.wikipedia.org/wiki/Statistical_learning_theory "Visit the Wikipedia page"
 
-### A Closer Look at Empirical Risk Minimization {#regularization}
+### A Closer Look at Empirical Risk Minimization { #regularization }
 
 In the field of machine learning, the goal of learning algorithms is to identify the optimal model, represented as $\hat{h}$, from a set of possible models, denoted as $\mathcal{H}$. This identification relies on a sample of training examples, denoted by $\{(x_i,y_i)\}_{i \in [1,n]}$, with each example associating input variables $x$ with their corresponding ground truths $y$ to be predicted.
 
@@ -62,7 +62,7 @@ To discover the best set of hyperparameters, it's necessary to test all possible
 
 Khiops operates on a different paradigm from conventional machine learning approaches, which focus primarily on minimizing empirical risk. It uses the [MODL][publications] approach, which is based on a Bayesian model selection principle. This approach gives Khiops an advantage, freeing it from the constraints of optimizing hyperparameters and enhancing its robustness against overfitting. The following discussion clarifies the underlying principles of the MODL approach, drawing attention to its inner workings and the benefits it brings to machine learning.
 
-### A Bayesian Model Selection Approach {#bayes}
+### A Bayesian Model Selection Approach { #bayes }
 
 The MODL approach aims at **selecting** the most probable model given the training data. The [Bayes formula:octicons-link-external-16:][Bayes]{:target="_blank"} is thus the starting point for deriving the optimization criteria used, whose general form is the following:
 
@@ -83,7 +83,7 @@ All the MODL optimization criteria are designed in the same way (optimal encodin
 
 [Bayes]: https://en.wikipedia.org/wiki/Bayes%27_theorem "Visit the Wikipedia page"
 
-### Link with Information Theory 
+### Link with Information Theory { #info-theory }
 
 In [Information Theory:octicons-link-external-16:][InformationTheory]{:target="_blank"}, the **model selection** problem described above can be translated into an **encoding** problem, whose purpose is to find the most compact way of encoding an information source for transmission over a telecommunication channel. Let's consider an information source emitting symbols [e.g. a, b, c, etc.] whose alphabet is known. In information theory, the *negative logarithm of the probability* that a symbol is emitted [e.g. $-log(P(a))$] represents its optimal **coding length**, denoted by $L$ and expressed in bits. According to Shannon's intuition, the most efficient encoding strategy assigns a short coding length to the most frequent symbols.
 

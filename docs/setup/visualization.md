@@ -12,15 +12,15 @@ You can find all versions of the Khiops Visualization tool on the [the following
 
 [repo-visu]: https://github.com/khiopsrelease/kv-release/releases
 
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.9/khiops-visualization-Setup-11.0.9.exe">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-Setup-{{ KHIOPS_VIZ_VERSION }}.exe">
            **Windows** </a>
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.9/khiops-visualization-11.0.9.dmg">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-{{ KHIOPS_VIZ_VERSION }}.dmg">
           **macOS x86-64**  </a>  (Intel-based)
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.9/khiops-visualization-11.0.9-arm64.dmg">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-{{ KHIOPS_VIZ_VERSION }}-arm64.dmg">
           **macOS ARM** </a>   (:material-apple: Apple Silicon - M1/M2/M3)
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.9/khiops-visualization_11.0.9_amd64.deb">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization_{{ KHIOPS_VIZ_VERSION }}_amd64.deb">
           **Ubuntu** </a>
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v11.0.9/khiops-visualization-11.0.9.x86_64.rpm">
+- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-{{ KHIOPS_VIZ_VERSION }}.x86_64.rpm">
           **Rocky Linux** </a>
 
 ## Download the Khiops CoVisualization Desktop Application
@@ -28,15 +28,15 @@ For users familiar with Khiops co-clustering, co-clustering analysis results ca 
 
 [repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v11.1.1
 
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-Setup-11.1.2.exe">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-Setup-{{ KHIOPS_COVIZ_VERSION }}.exe">
           **Windows** </a>
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-11.1.2.dmg">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-{{ KHIOPS_COVIZ_VERSION }}.dmg">
           **macOS x86-64**  </a>  (Intel-based)  
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-11.1.2-arm64.dmg">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-{{ KHIOPS_COVIZ_VERSION }}-arm64.dmg">
           **macOS ARM** </a>   (:material-apple: Apple Silicon - M1/M2/M3) 
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization_11.1.2_amd64.deb">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization_{{ KHIOPS_COVIZ_VERSION }}_amd64.deb">
           **Ubuntu** </a>
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization-11.1.2.x86_64.rpm">
+- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-{{ KHIOPS_COVIZ_VERSION }}.x86_64.rpm">
           **Rocky Linux** </a>
 
 ## Documentation

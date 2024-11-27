@@ -53,6 +53,11 @@ markdown_extensions:
   - tables
 
 extra:
+  KHIOPS_VERSION: 10.2.3
+  KHIOPS_PYTHON_VERSION: 10.2.3.0
+  KHIOPS_SAMPLES_VERSION: 10.2.0
+  KHIOPS_VIZ_VERSION: 11.0.9
+  KHIOPS_COVIZ_VERSION: 11.1.2
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/KhiopsML/khiops
@@ -97,9 +102,10 @@ extra_javascript:
 
 plugins:
   - mkdocs-jupyter
-  #  - blog
+  - macros
   - search
-#  - privacy ## not usable with mathjax script
+  #  - blog
+  #  - privacy ## not usable with mathjax script
 
 nav:
   - index.md

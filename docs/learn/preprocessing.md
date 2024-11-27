@@ -29,7 +29,7 @@ These transformations are not simply heuristic-based adjustments. The univariate
 
 The remainder of this page focuses on two primary sections: Discretization techniques and Modality Grouping methods.
 
-## Discretization {#discretization}
+## Discretization { #discretization }
 
 Building on the principles of the MODL formalism discussed in the [*Original Formalism*][a_unique_formalism] section, this section elaborates on its application to univariate discretization. Univariate discretization transforms continuous variables into discrete intervals, which simplifies analysis and enhances model interpretability. 
 
@@ -64,6 +64,7 @@ In this context, a discretization model is uniquely described by the following p
 
 
 It is crucial to notice two characteristics:
+
 
 - **Cardinality**: The size of $\mathcal{H}$ is directly influenced by the number of examples, denoted by $N$, in our training dataset. Specifically, our first parameter $I$, which denotes the number of intervals, can take any value between 1 and $N$. This unusual property,  where the model's possible configurations are tied to the size of the dataset, is atypical in a Bayesian context. As we will see later, this unique feature of the MODL approach has a significant impact on regularization (to prevent overfitting).
 - **Hierarchy**: When defining a model, decisions are made in cascade across levels 1, 2, and 3; i.e., decisions made at an earlier level influence the number of possibilities at the subsequent level. Level 1 determines the number of intervals, which in level 2 drives the choices for positioning the $I-1$ boundaries between the intervals within the $N$ examples. Notably, MODL leverages rank statistics, using example counts in intervals to define interval boundaries. Lastly, level 3 summarizes the conditional distribution $P(y|x)$, by specifying the class distributions within each interval that is defined by the boundaries set in Level 2. The number of available choices for this distribution is influenced by the parameters ${ I, { N_i}}$ from levels 1 and 2.
@@ -142,7 +143,7 @@ The algorithm operates in two distinct steps, as illustrated in the following fi
 For an efficient coding, it is necessary to keep in memory the sorted lists of all possible transformations, ordered by the improvement of the optimization criteria. These lists must be updated for each transformation that is performed on the model.   
 
 
-## Modality Grouping {#grouping}
+## Modality Grouping { #grouping }
 
 Modality grouping operates as an essential mechanism for categorizing and simplifying categorical variables, thereby improving the efficiency and interpretability of subsequent analysis processes. This section is organized similarly to the discretization section, covering model parameters, optimization criteria, and the optimization algorithm.
 
@@ -206,7 +207,7 @@ For this reason, an exhaustive optimization algorithm is not feasible, as it wou
 
 For an efficient coding, it is necessary to keep in memory the sorted lists of all possible *moves* and *merges*, ordered by improvement of the optimization criteria. As before, these lists must be updated for each transformation performed on the model.   
 
-## Summary of Technical Benefits {#benefits}
+## Summary of Technical Benefits { #benefits }
 
 
 !!! tip "Optimal Encoding"
