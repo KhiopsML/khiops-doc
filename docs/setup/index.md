@@ -1,3 +1,6 @@
+<!-- Transform the pre-release version for the Rocky package
+{% set ROCKY_KHIOPS_VERSION = KHIOPS_VERSION.replace("-", "_") %}
+-->
 # Installation Options {label="Overview"}
 
 Khiops supports a diversified set of installation options, to meet different needs:
@@ -112,8 +115,8 @@ This version contains a standalone Graphical User Interface (GUI).
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
     TEMP_RPM_KHIOPS="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ ROCKY_KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ ROCKY_KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
     rm -f $TEMP_RPM $TEMP_RPM_KHIOPS    ```
     ```

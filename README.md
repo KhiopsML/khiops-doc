@@ -25,7 +25,7 @@ To update various versions in the website, you only have to change the following
 - `KHIOPS_PYTHON_VERSION`: Khiops Python Library
 - `KHIOPS_SAMPLES_VERSION`: Khiops Sample Datasets
 - `KHIOPS_VIZ_VERSION`: Khiops Visualization App
-- `KHIOP_COVIZ_VERSION`: Khiops Co-Visualization App
+- `KHIOPS_COVIZ_VERSION`: Khiops Co-Visualization App
 
 
 ## Deploy to khiops.org

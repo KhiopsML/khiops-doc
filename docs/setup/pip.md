@@ -1,3 +1,8 @@
+<!-- Transform the pre-release versions for the rocky and python packages
+{% set TARGZ_KHIOPS_PYTHON_VERSION = KHIOPS_PYTHON_VERSION.replace("-rc.", "rc").replace("-b.", "b").replace("-a.", "a") %}
+{% set ROCKY_KHIOPS_VERSION = KHIOPS_VERSION.replace("-", "_") %}
+-->
+
 # Install the Khiops Library Using Pip <small> :tools: For Advanced users :tools: </small>
 
 Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosystem and an understanding of operating system specifics. This approach, while offering adaptability for custom setups, necessitates knowledge of environment setup and dependency handling.
@@ -16,7 +21,7 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ KHIOPS_PYTHON_VERSION }}.tar.gz'
+    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ TARGZ_KHIOPS_PYTHON_VERSION }}.tar.gz'
     ```
 
 
@@ -30,22 +35,24 @@ We support :simple-python: **Python from 3.8 to 3.12**.
     </a>
 
     Then, you can run the following Pip command:
+
     ```sh
-    pip install "https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ KHIOPS_PYTHON_VERSION }}.tar.gz"
+    pip install "https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ TARGZ_KHIOPS_PYTHON_VERSION }}.tar.gz"
     ```
 
 === "Rocky Linux"
     The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.8), **please ensure a compatible Python version is installed before continuing**.
 
     Then, you need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
-    ``` sh
+
+    ```sh
     sudo yum update -y && sudo yum install wget python3-pip -y && \
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ ROCKY_KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ KHIOPS_PYTHON_VERSION }}.tar.gz'
+    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ TARGZ_KHIOPS_PYTHON_VERSION }}.tar.gz'
     ```
 
 
