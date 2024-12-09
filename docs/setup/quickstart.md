@@ -42,7 +42,7 @@ from sklearn.model_selection import train_test_split
 
 ```python
 # Load and read the data file into a Pandas DataFrame
-url = "https://raw.githubusercontent.com/KhiopsML/khiops-samples/main/Adult/Adult.txt"
+url = "https://raw.githubusercontent.com/KhiopsML/khiops-samples/{{ KHIOPS_SAMPLES_VERSION }}/Adult/Adult.txt"
 df = pd.read_csv(url, delimiter='\t',index_col="Label")
 ```
 
