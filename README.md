@@ -44,4 +44,5 @@ To update various versions in the website, you only have to change the following
 
 
 ## Deploy to khiops.org
-Once you have committed and pushed your changes. Use the `ci` workflow in the repo's actions.
+Once you have committed and pushed your changes, go to the "Actions" tab on Github and execute the
+`Website` workflow on the `main` branch.
