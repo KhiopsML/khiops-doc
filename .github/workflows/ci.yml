@@ -1,29 +1,42 @@
-name: ci 
+---
+name: Website
 on:
-  push:
-    branches:
-      - master 
-      - main
+  workflow_dispatch:
+    inputs:
+      deploy-gh-pages:
+        description: Deploy to GH Pages
+        required: true
+        type: boolean
+        default: true
+  pull_request:
 permissions:
   contents: write
 jobs:
-  deploy:
+  build-or-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Install requirements
+        run: pip install -r requirements.txt
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
-      - uses: actions/cache@v3
+      - name: Set Cache ID
+        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - name: Cache mkdocs-material
+        uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-jupyter
-      - run: mkdocs gh-deploy --force
+      - name: Build site (PR)
+        if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
+        run: mkdocs build
+      - name: Deploy site to GH pages (Manual)
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == true
+        run: mkdocs gh-deploy --force
