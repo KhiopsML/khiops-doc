@@ -13,7 +13,7 @@ We support :simple-python: **Python from 3.8 to 3.12**. If your current environm
     
 === "Windows"
     ``` sh
-    conda install -c khiops khiops
+    conda install -c conda-forge -c khiops khiops
     ```
 
 === "macOS"

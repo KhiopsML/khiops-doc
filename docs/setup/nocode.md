@@ -19,7 +19,7 @@ For further details, you may refer to [README.txt][readme], and [whatsnew.txt][w
 === "Windows"
     The :material-microsoft-windows: Khiops installer automatically installs the Khiops application, all its dependencies, plus some data samples formatted as expected by Khiops, and the Khiops Visualization application.
 
-    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-setup.exe">
+    <a href="https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-10.2.3-setup.exe">
         <button class="btn btn-light btn-sm">
           Download for Windows
         </button>
@@ -37,8 +37,8 @@ For further details, you may refer to [README.txt][readme], and [whatsnew.txt][w
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB_CORE="$(mktemp)" && \
     TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi_10.2.2-1-${CODENAME}.amd64.deb" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops_10.2.2-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-core-openmpi_10.2.3-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops_10.2.3-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
@@ -46,7 +46,7 @@ For further details, you may refer to [README.txt][readme], and [whatsnew.txt][w
     If you need the Khiops samples, you can run the following commands:
     ```sh
     TEMP_SAMPLES="$(mktemp)" && \
-    wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/v10.2.0/khiops-samples-v10.2.0.zip" && \
+    wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/10.2.0/khiops-samples-10.2.0.zip" && \
     mkdir -p ~/khiops_data/samples && \
     unzip "$TEMP_SAMPLES" -d ~/khiops_data/samples && \
     rm -f $TEMP_SAMPLES
@@ -67,8 +67,8 @@ For further details, you may refer to [README.txt][readme], and [whatsnew.txt][w
     CENTOS_VERSION=$(rpm -E %{rhel}) && \
     TEMP_RPM="$(mktemp).rpm" && \
     TEMP_RPM_KHIOPS="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-core-openmpi-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.2/khiops-10.2.2-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-core-openmpi-10.2.3-1.el${CENTOS_VERSION}.x86_64.rpm" && \
+    wget -O "$TEMP_RPM_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/10.2.3/khiops-10.2.3-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" "$TEMP_RPM_KHIOPS" -y && \
     rm -f $TEMP_RPM $TEMP_RPM_KHIOPS
     ```
@@ -88,10 +88,10 @@ For easy system integration:
 - [**Khiops Scenarios**][scenario], based on recording and replaying Khiops scenarios in batch mode from any programming language."
 
 
-[tutorial]: KhiopsTutorial.pdf
-[Documentation]: KhiopsGuide.pdf
-[coclustering]: KhiopsCoclusteringGuide.pdf
-[scenario]: KhiopsScenarios-v10.2.0.pdf    
+[tutorial]: KhiopsTutorial-10.2.3.pdf
+[Documentation]: KhiopsGuide-10.2.3.pdf
+[coclustering]: KhiopsCoclusteringGuide-10.2.3.pdf
+[scenario]: KhiopsScenarios-10.2.3.pdf
 
 !!! info "Users of pre-10.2.0 Khiops versions should refer to the **legacy** Khiops [web site][khiopslegacy]"
 
