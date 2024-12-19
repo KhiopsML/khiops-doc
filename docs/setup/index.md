@@ -27,7 +27,7 @@ We support :simple-python: **Python from 3.8 to 3.12** and the following operati
 - Ubuntu 20, 22 and 24 (LTS)
 - Debian 10, 11 and 12
 - Rocky Linux 8 and 9
-- macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for ARM architectures, limited support for x86-64 architectures.
+- macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for macOS 13 or later on ARM architectures, limited support for macOS 12 or for x86-64 architectures.
 
 The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
