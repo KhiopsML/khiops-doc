@@ -46,8 +46,8 @@ For a comprehensive guide on how to use the Khiops Visualization application:
 - [**Khiops Visualization Guide**][Documentation], for supervised analysis
 - [**Khiops Co-Visualization Guide**][coviz], for unsupervised analysis
 
-[Documentation]: KhiopsVisualizationGuide-10.2.3.pdf
-[coviz]: KhiopsCovisualizationGuide-10.2.3.pdf
+[Documentation]: KhiopsVisualizationGuide.pdf
+[coviz]: KhiopsCovisualizationGuide.pdf
 
 ## Screenshots 
 

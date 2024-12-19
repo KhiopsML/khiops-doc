@@ -9,7 +9,7 @@ Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosy
 
 The Khiops binaries must be installed as a prerequisite. This also ensures the installation of the appropriate version of `MPICH` library.
 
-We support :simple-python: **Python from 3.8 to 3.12**.
+We support :simple-python: **Python from 3.8 to 3.13**.
 
 === "Ubuntu / Debian"
 

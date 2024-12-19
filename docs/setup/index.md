@@ -21,15 +21,15 @@ Khiops supports a diversified set of installation options, to meet different nee
 
 <br>
 
-We support :simple-python: **Python from 3.8 to 3.12** and the following operating systems:
+We support :simple-python: **Python from 3.8 to 3.13** and the following operating systems:
 
 - Windows 10 or later
 - Ubuntu 20, 22 and 24 (LTS)
 - Debian 10, 11 and 12
 - Rocky Linux 8 and 9
-- macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for ARM architectures, limited support for x86-64 architectures.
+- macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for macOS 13 or later on ARM architectures, limited support for macOS 12 or for x86-64 architectures.
 
-The :simple-kaggle: **Kaggle Notebooks** and :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
+The :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda: **Conda** package, which has been tested in these environments.
 
 For other platforms, please :material-send: **[Contact Us][contact]**.
 
@@ -46,21 +46,10 @@ For other platforms, please :material-send: **[Contact Us][contact]**.
 
 The Conda package contains all the necessary components.
 
-=== "Linux"
-    ``` sh
-    conda install -c conda-forge -c khiops khiops
-    ```
-
-=== "Windows"
-    ``` sh
-    conda install -c conda-forge -c khiops khiops
-    ```
-
-=== "macOS"
-    ``` sh
-    conda install -c conda-forge -c khiops khiops
-    ```
-**We support :simple-python: Python from 3.8 to 3.12**. If you are using a different version of Python in your current environment, we recommend visiting our Conda Installation Page for instructions on creating a new environment tailored for Khiops:
+```sh
+conda install -c conda-forge -c khiops khiops
+```
+**We support :simple-python: Python from 3.8 to 3.13**. If you are using a different version of Python in your current environment, we recommend visiting our Conda Installation Page for instructions on creating a new environment tailored for Khiops:
 
 [:material-cursor-default-click-outline: See the Conda Installation Page](conda.md){ .md-button .md-button--primary }
 

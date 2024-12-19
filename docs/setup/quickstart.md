@@ -23,9 +23,8 @@ Ultimately, all you need to do is use the standard Scikit-Learn syntax, and Khio
 
 
 ```python
-# Straightforward installation using conda.
-#!conda install -c khiops khiops # On Windows
-#!conda install -c conda-forge -c khiops khiops # On Linux and macOS
+# Straightforward installation using Conda.
+#!conda install -c conda-forge -c khiops khiops
 ```
 
 
