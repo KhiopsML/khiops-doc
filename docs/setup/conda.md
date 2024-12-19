@@ -38,7 +38,7 @@ Then, proceed with the installation of the Khiops library within this environmen
 
 - If you use Conda behind **a company proxy**, you may encounter an HTTP and SSL error. In this case, you can read [**Using Anaconda behind a company proxy**][proxy-conda] 
 
-[proxy-conda]: https://docs.anaconda.com/working-with-conda/reference/security/#using-anaconda-behind-a-company-proxy
+[proxy-conda]: https://docs.anaconda.com/working-with-conda/reference/proxy/
 
 
 ## What You Should Know
