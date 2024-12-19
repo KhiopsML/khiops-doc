@@ -46,20 +46,9 @@ For other platforms, please :material-send: **[Contact Us][contact]**.
 
 The Conda package contains all the necessary components.
 
-=== "Linux"
-    ``` sh
-    conda install -c conda-forge -c khiops khiops
-    ```
-
-=== "Windows"
-    ``` sh
-    conda install -c conda-forge -c khiops khiops
-    ```
-
-=== "macOS"
-    ``` sh
-    conda install -c conda-forge -c khiops khiops
-    ```
+```sh
+conda install -c conda-forge -c khiops khiops
+```
 **We support :simple-python: Python from 3.8 to 3.12**. If you are using a different version of Python in your current environment, we recommend visiting our Conda Installation Page for instructions on creating a new environment tailored for Khiops:
 
 [:material-cursor-default-click-outline: See the Conda Installation Page](conda.md){ .md-button .md-button--primary }
