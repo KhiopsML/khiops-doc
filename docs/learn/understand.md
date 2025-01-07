@@ -30,8 +30,8 @@ Khiops significantly enhances the productivity of data scientists by seamlessly 
 
 The remainder of the section introduces the **auto-features engineering** step.
 
-!!! info "This section only introduces the concept. For technical details, please refer to the :orange_book: [Auto features engineering][auto_features_enginnering] section."
- [auto_features_enginnering]: autofeature_engineering.md
+!!! info "This section only introduces the concept. For technical details, please refer to the :orange_book: [Auto features engineering][auto_features_engineering] section."
+ [auto_features_engineering]: autofeature_engineering.md
 
 **Relational data structures are common in many professional environments**, encompassing data on users (e.g., call or payment logs) or production data where each step generates its records. In such contexts, we deal with a primary table of statistical individuals (potentially the targets for supervised learning) and secondary tables that contain the related logs.
 

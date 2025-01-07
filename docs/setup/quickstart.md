@@ -145,7 +145,7 @@ You can open and visualize the report using the standalone Khiops visualization 
 To generate the analysis report, you need to specify the `output_dir` parameter when creating the `KhiopsClassifier` estimator object instance: 
 
 ```python
-# Declare the classifier with a specifed output directory and train it
+# Declare the classifier with a specified output directory and train it
 clf = KhiopsClassifier(output_dir="User/Documents/test_khiops")
 clf.fit(X_train, y_train)
 ```

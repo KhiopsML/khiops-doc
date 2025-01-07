@@ -33,7 +33,7 @@ pre-commit run --verbose --all-files
 ```
 
 
-## Maintainance
+## Maintenance
 To update various versions in the website, you only have to change the following attributes in the
 `extra` section of the `mkdocs.yml`:
 - `KHIOPS_VERSION`: Khiops Core Executables
