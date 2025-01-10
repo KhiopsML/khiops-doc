@@ -137,7 +137,15 @@ nav:
           - Easy deployment: tutorials/---.md
           - Cloud Storages: tutorials/storage.md
           - Khiops on Kubernetes: tutorials/k8s.md
-  - Reference:
+  - Foundations:
+      - What makes Khiops different: learn/understand.md
+      - An original formalism: learn/modl.md
+      - Optimal Encoding: learn/preprocessing.md
+      - Auto Feature Engineering: learn/autofeature_engineering.md
+      - Parsimonious Training: learn/learning_models.md
+      - Auto Hardware Adaptation: learn/hardware_adaptation.md
+      - Bibliography: references.md
+  - API Reference:
       - Python API Docs: api-docs/python-api.md
       - Dictionary Rules:
           - Basic:
@@ -164,14 +172,7 @@ nav:
             - Recoding Rules: api-docs/kdic/recoding-rules.md
             - Predictor Rules: api-docs/kdic/predictor-rules.md
             - Coclustering Rules: api-docs/kdic/coclustering-rules.md
-  - Foundations:
-      - What makes Khiops different: learn/understand.md
-      - An original formalism: learn/modl.md
-      - Optimal Encoding: learn/preprocessing.md
-      - Auto Feature Engineering: learn/autofeature_engineering.md
-      - Parsimonious Training: learn/learning_models.md
-      - Auto Hardware Adaptation: learn/hardware_adaptation.md
-      - Bibliography: references.md
+  - Discussions: https://github.com/orgs/KhiopsML/discussions
   - Contact Us: contact.md
 #    - Blog:
 #      - blog/index.md
