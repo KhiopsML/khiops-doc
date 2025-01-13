@@ -131,18 +131,18 @@ nav:
           - Multi-Table Classifier: tutorials/Notebooks/multi_table_classifier.ipynb
           - "Auto Feature Engineering & More": tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
       - Core API & Dictionaries:
-          - Start using dictionaries: tutorials/kdic_intro.md
+          - Start Using Dictionaries: tutorials/kdic_intro.md
           - Single Table Classifier: tutorials/Notebooks/single_table_classifier_core.ipynb
           - Single-Table Learning: tutorials/kdic_single_table.md
           - Multi-Table Learning: tutorials/kdic_multi_table.md
           - Multi-Table Classifier: tutorials/Notebooks/multi_table_classifier_core.ipynb
       - Production ready:
-          - Easy deployment: tutorials/---.md
+          - Easy Deployment: tutorials/---.md
           - Cloud Storages: tutorials/storage.md
           - Khiops on Kubernetes: tutorials/k8s.md
   - Foundations:
-      - What makes Khiops different: learn/understand.md
-      - An original formalism: learn/modl.md
+      - What Makes Khiops Different: learn/understand.md
+      - An Original Formalism: learn/modl.md
       - Optimal Encoding: learn/preprocessing.md
       - Auto Feature Engineering: learn/autofeature_engineering.md
       - Parsimonious Training: learn/learning_models.md
