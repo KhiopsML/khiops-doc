@@ -66,7 +66,7 @@ However, in most industrial applications more advanced dictionaries are required
 !!! abstract "The user write ✍️"
     The **user** write a dictionary for data preparation that consists in **describing** (i) the mapping of available data sources with tables; (ii) the selection of relevant tables and variables; (iii) the links between tables; (iv) the types of each variables.
      
-    Then, the **manipulation** of data is specified, with (i) the selection of training examples (e.g. according to a time periode); and (ii) the coding user-defined variables to reflect business knowledge.
+    Then, the **manipulation** of data is specified, with (i) the selection of training examples (e.g. according to a time period); and (ii) the coding user-defined variables to reflect business knowledge.
  
 
 ### Training stage 

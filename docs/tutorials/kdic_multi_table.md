@@ -16,7 +16,7 @@ Khiops offers a truly scalable alternative which avoids the loading of tables in
 
 Thanks to Khiops, the usually high cost of data management disappears, and versioning is greatly facilitated. In fact, dictionaries encode end-to-end data transformation flows, from user data description, through Auto Feature Engineering, to final target modeling.
 
-The following sections introduce the syntax required to describe multi-table data in a disctionary file. Simple relational shemas are introduced first, and the examples shown become progressively richer.   
+The following sections introduce the syntax required to describe multi-table data in a dictionary file. Simple relational schemas are introduced first, and the examples shown become progressively richer.   
 
 ### Simple Star Relational Schema
 
@@ -31,7 +31,7 @@ This first example shows a star schema describing a company's customers.
 ```
 
 Note that a customer has only one address, which may be missing (relation 0:1), and has zero or several services (relation 0:n).
-Here's the dictionnary file describing this relational data:
+Here's the dictionary file describing this relational data:
  
 !!! success "Dictionary file of a star schema"
     ```kdic
@@ -72,7 +72,7 @@ The important syntax elements for understanding this dictionary file are as foll
 - `Table(dictionaryName)` designates a 0-N relationship between the statistical units of the table where it is used (i.e. Customer) and the records of a secondary table whose structure is described by the `dictionaryName` dictionary. In the case of a 0-N relationship, each statistical unit in the origin table (i.e. Customer) refers a table of records in the secondary table (i.e. customerServices).  
 
 
-### Snowfalke Relational Schema
+### Snowflake Relational Schema
 
 This second example presents a snowflake relational schema, which unlike star schemas, has several levels of secondary tables. This example is very similar to the previous one, with the additional type `Usages` describing each customer's use of a particular service:   
 ```
@@ -86,9 +86,9 @@ This second example presents a snowflake relational schema, which unlike star sc
 ``` 
 
 Note that a customer can use the same service several times (relation 0:n). 
-Here's the dictionnary file describing this relational data:
+Here's the dictionary file describing this relational data:
 
-!!! success "Dictionary file of a snowfalke relational schema"
+!!! success "Dictionary file of a snowflake relational schema"
     ```kdic
     Dictionary Customer (customer_id)
     {
@@ -133,9 +133,9 @@ Here's the dictionnary file describing this relational data:
 
 The only new syntax feature is that **several keys** are used in the `Services` and `Usages` dictionaries, in order to identify the usage array linked to a particular service that is used by a particular customer. Finally, as the number of secondary table levels increases in a snowflake schema, the identification key becomes longer and is made up of the concatenation of multiple identifier variables (i.e. customer_id and service_id). 
 
-### Snowfalke Schema with External Tables 
+### Snowflake Schema with External Tables 
 
-This third example, similar to the previous one, adds an external table whose type is `City`, allowing the `Adress` type to be completed with information specific to the city (e.g. the time zone). The relational schema considered is represented as follows:   
+This third example, similar to the previous one, adds an external table whose type is `City`, allowing the `Address` type to be completed with information specific to the city (e.g. the time zone). The relational schema considered is represented as follows:   
 ```
     Customer
     |
@@ -148,9 +148,9 @@ This third example, similar to the previous one, adds an external table whose ty
         |-- Usages
 ``` 
 
-As this is an external table, cities can appear in multiple customer addresses. The information contained in an external table does not relate to the main statistical units (i.e. customers) but completes a descriptive variable (i.e. cities). Finally, the customer addresses refer the city information based on the zip-code, without the need to duplicate the information describing the cities. Here's the dictionnary file describing this relational data: 
+As this is an external table, cities can appear in multiple customer addresses. The information contained in an external table does not relate to the main statistical units (i.e. customers) but completes a descriptive variable (i.e. cities). Finally, the customer addresses refer the city information based on the zip-code, without the need to duplicate the information describing the cities. Here's the dictionary file describing this relational data: 
 
-!!! success "Snowfalke schemal with external table"
+!!! success "Snowflake schemal with external table"
     ```kdic
     Root Dictionary Customer (customer_id)
     {
@@ -335,7 +335,7 @@ Notice that in the command `TableSelection(.,.)`, the first argument designates 
 ### Table concatenation
 
 In practice, large data tables are sometimes split into several sub-tables for easier storage. This is often the case for secondary tables containing a large number of records (e.g. Log data). In this case, one of the necessary data management steps is to rebuild the secondary table by concatenating the sub-tables. 
-The following dictionary file gives an example of usage sub-tables divided up according to time of year (i.e. usagesQuater1, usagesQuater2, usagesQuater3, usagesQuater4). These sub-tables are concatenated using the `TableUnion` function and the `Unused` keyword is placed before every sub-table to be ignored during analysis.
+The following dictionary file gives an example of usage sub-tables divided up according to time of year (i.e. usagesQuarter1, usagesQuarter2, usagesQuarter3, usagesQuarter4). These sub-tables are concatenated using the `TableUnion` function and the `Unused` keyword is placed before every sub-table to be ignored during analysis.
 Dictionaries offer great flexibility, especially when it comes to updating models as new sub-tables become available during the year.
 
 !!! success "The TableUnion function"
@@ -356,13 +356,13 @@ Dictionaries offer great flexibility, especially when it comes to updating model
         Categorical name;	
         Numerical cost;
         Date purchaseDate;	
-    Unused    Table(Usage)	usagesQuater1; 
-    Unused    Table(Usage)	usagesQuater2;
-    Unused    Table(Usage)	usagesQuater3;
-    Unused    Table(Usage)	usagesQuater4;	  
+    Unused    Table(Usage)	usagesQuarter1; 
+    Unused    Table(Usage)	usagesQuarter2;
+    Unused    Table(Usage)	usagesQuarter3;
+    Unused    Table(Usage)	usagesQuarter4;	  
 
         // concatenation of 4 files, divided for volume purposes
-    Unused Table(Usage)	allUsages = TableUnion(usagesQuater1, usagesQuater2, usagesQuater3, usagesQuater4);	 
+    Unused Table(Usage)	allUsages = TableUnion(usagesQuarter1, usagesQuarter2, usagesQuarter3, usagesQuarter4);	 
     
         // selection of usages > 10 minutes
         Table(Usage)	studiedUsages = TableSelection(allServiceUsages, GE(duration,10));	 
