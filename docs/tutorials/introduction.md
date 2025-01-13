@@ -24,7 +24,7 @@ Khiops simplifies the data science pipeline, enabling you to focus on the most i
 
 Below, we illustrate how Khiops enhances the stages of the well-known CRISP-DM process:
 
-- **Data Preparation**: Khiops works directly with raw data whether it is from a single table or a relational dataset with several tables. The feature enginnering and variable encoding steps are automated and our singular formalism guarantee we do not loss information (which happens when it is done manually).
+- **Data Preparation**: Khiops works directly with raw data whether it is from a single table or a relational dataset with several tables. The feature engineering and variable encoding steps are automated and our singular formalism guarantee we do not loss information (which happens when it is done manually).
 - **Modeling**: Khiops automates the modeling process. No hyperparameter tuning is needed.
 - **Deployment**: Khiops models are production-ready. The platform’s efficient handling of large datasets ensures scalability, whether for batch processing or real-time applications.
 
@@ -61,7 +61,7 @@ The core API unleashes the full power of Khiops, offering unmatched scalability 
 - Rich data description: The dictionary formalism provides a structured, detailed way to describe the data and especially the multi-table data relationships, enabling efficient data processing on the fly;
 - Advanced data management: Automates business-level transformations, such as aggregate creation, variable selection, and example filtering, all within the API. It can also act as a highly efficient ETL tool;
 - Facilitated Versioning: Dictionaries serve as centralized, versionable configurations for data transformations and model definitions, ensuring traceability;
-- Seamless Production Deployment: Models trained with the core API are ready for deployment (through the output dictionnary file), ensuring robust integration into production workflows;
+- Seamless Production Deployment: Models trained with the core API are ready for deployment (through the output dictionary file), ensuring robust integration into production workflows;
 - Out-of-Core Processing: Optimized for hardware resource usage, handling datasets that exceed memory limits efficiently.
 
 **Limitations**:

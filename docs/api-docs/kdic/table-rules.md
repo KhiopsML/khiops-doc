@@ -412,7 +412,7 @@ Min of numerical values in a table.
 
     === "Diff from Base Example"
         ```kdic
-        // Mininum product cost for a customer's sales
+        // Minimum product cost for a customer's sales
         Numerical saleMinCost = TableMin(sales, cost);
         ```
 
@@ -425,7 +425,7 @@ Min of numerical values in a table.
           Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
-          // Mininum product cost for a customer's sales
+          // Minimum product cost for a customer's sales
           Numerical saleMinCost = TableMin(sales, cost);
         };
 
