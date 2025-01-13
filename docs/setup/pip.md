@@ -26,7 +26,8 @@ We support :simple-python: **Python from 3.8 to 3.13**.
 
 
 === "Windows"
-    You need to download and install the Khiops desktop application first:
+    
+    To install the Khiops binaries, required for the Khiops Python library to operate, you must first install the Khiops application before executing the `pip` installation command:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe">
         <button class="btn btn-light btn-sm">
