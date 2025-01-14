@@ -4,8 +4,11 @@ Welcome to the hands-on section of the Khiops documentation! This guide will hel
 
 Here’s what this page covers:
 
-- Accelerating your workflow: Discover how Khiops simplifies and speeds up the entire data science process, enabling you to focus on what truly matters - understanding your data and solving business problems.
-- Choosing the right API: Learn the differences between Khiops’ two APIs —sklearn-like for quick prototyping and core for industrial-scale applications—and find the best fit for your needs.
+- [**Accelerating your workflow**][crisp-dm]: Discover how Khiops simplifies and speeds up the entire data science process, enabling you to focus on what truly matters - understanding your data and solving business problems.
+- [**Choosing the right API**][two-apis]: Learn the differences between Khiops’ two APIs —sklearn-like for quick prototyping and core for industrial-scale applications—and find the best fit for your needs.
+
+[crisp-dm]: #how-khiops-fits-into-the-data-science-workflow
+[two-apis]: #two-apis-for-different-needs
 
 !!! info
     Some components around Khiops are not documented yet, so this “How To” section is still in progress. For example, a documentation on deploying Khiops natively on Kubernetes is coming soon. 
@@ -25,10 +28,10 @@ Khiops simplifies the data science pipeline, enabling you to focus on the most i
 Below, we illustrate how Khiops enhances the stages of the well-known CRISP-DM process:
 
 - **Data Preparation**: Khiops works directly with raw data whether it is from a single table or a relational dataset with several tables. The feature engineering and variable encoding steps are automated and our singular formalism guarantee we do not loss information (which happens when it is done manually).
-- **Modeling**: Khiops automates the modeling process. No hyperparameter tuning is needed.
+- **Modeling**: Khiops is based on a singular formalism applied end-to-end, no hyperparameter tuning is needed.
 - **Deployment**: Khiops models are production-ready. The platform’s efficient handling of large datasets ensures scalability, whether for batch processing or real-time applications.
 
-By saving a lot of time on the steps above, you can spend more on the more value-added one:
+By saving a lot of time on the steps above, you can spend more on the value-added one:
 
 - **Business and data understanding**: Khiops accelerates data exploration by providing interpretable univariate analyses (i.e. correlation of each variable with the target) or insights into missing values, outliers, or variable importance. In addition to the explicit and interpretal models, it bridges the gap between technical work and business needs.
 - **Evaluation**: Comprehensive evaluation reports (including metrics like ROC curves, confusion matrices) help you quickly validate your model’s performance. Plus, the interpretability of the model gives you a clear picture of its behavior.
