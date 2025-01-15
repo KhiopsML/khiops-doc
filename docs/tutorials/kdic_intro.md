@@ -1,20 +1,29 @@
 
 ## Benefits of using Khiops dictionary
 
-Using the Khiops Core API, in particular by manipulating Khiops dictionaries, significantly accelerates the release of machine learning models into production, by enabling users to easily describe data and express their business knowledge during the data preparation step. What's more, the dictionaries record all the manual and automatic processing required for model training, and are executed by Khiops during the inference phase. The main user benefits include:
+Using the Khiops Core API, particularly through the manipulation of Khiops dictionaries, significantly accelerates the deployment of machine learning models into production. By enabling users to easily describe their data and incorporate business knowledge during the data preparation step, dictionaries streamline workflows and enhance efficiency. Moreover, they serve as a comprehensive record of all manual and automated processing steps required for model training, and are executed seamlessly by Khiops during inference.
 
-- **Meaningful data description**: in its simplest form, the dictionary describes the variables in a single training data table, with their names and types. With more complex data, for instance spread over several tables, the power of dictionaries represents a major advantage. Starting from a multitude of disorganized data sources, the user can easily describe and structure training data into a comprehensible relational schema. 
+The main user benefits include:
+
+- **Meaningful data description**: In its simplest form (a single training data table), the dictionary describes the variables, with their names and types. For more complex data spread across multiple tables, the dictionary also encodes relationships by linking tables, treating a secondary table as a “variable” of the table to which it is linked. This approach allows users to easily define and structure data into a comprehensible relational schema, even for advanced setups such as snowflake schemas (see examples in the [multi-table learning page][kdic_multi_table]).
   
-- **Meaningful data preparation**: then, the user simply expresses his business knowledge by selecting the relevant information for the problem at hand, and by enriching data with relevant user-defined variables.  
-  
-During training the dictionary, initially provided by the user, is automatically completed for describing the entire data transformation flow of the Auto-ML pipeline, from mapping available data sources to predicting the target variable. The main technical benefits include:
+[kdic_multi_table]: kdic_multi_table.md
 
-- **Agile model release**: a single dictionary file encodes an entire data transformation flow. Thus, updating a model simply involves replacing a file, enabling predictions to be made directly from the raw data. 
+- **Meaningful data preparation**: The user simply expresses their business knowledge by selecting the relevant information for the problem at hand and enriching data with relevant user-defined variables. These enrichment rules are similar to SQL expressions, allowing users to define new variables with intuitive logic (e.g. using the mathematic rules described [here][math-rules]). 
 
-- **On-the-fly processing**: data transformation is implemented in a very efficient way, as it is processed on the fly. For example, user-defined variables and those resulting from the Auto Feature Engineering step are instantiated only when the model is used. This enables fast computations and efficient use of RAM and storage capacity.  
+ [math-rules]: ../api-docs/kdic/math-rules.md
 
-- **Distributed computing and Out-of-core**: the use of dictionaries enables Khiops to process large amounts of data very efficiently. [Advanced strategies][auto-adaptation] for adapting learning algorithms to available hardware resources are implemented. The initial learning task is divided into sub-tasks, either due to a lack of RAM (out-of-core processing loads sub-parts of data sequentially), or in order to distribute processing over a cluster of computers. 
+During training, the dictionary provided by the user is automatically enriched to document the entire data transformation flow of the Auto-ML pipeline, from mapping available data sources to predicting the target variable. For instance, during the automated feature engineering phase, new aggregates are generated and added to the dictionary as variables (the predefined functions used to create these aggregates are listed [here][auto_feature_engineering]).
 
+[auto_feature_engineering]: ../learn/autofeature_engineering.md#model-parameters
+
+The main technical benefits include:
+
+- **Agile model release**: A single dictionary file encodes an entire data transformation flow, enabling predictions to be made directly from the raw data. Furthermore, updating a model simply involves replacing a file, what ensures straightforward versioning, traceability, and easy rollbacks using standard tools like `git`.
+
+- **On-the-fly processing**: Data transformation is implemented dynamically, meaning variables are computed only when required during runtime, rather than being precomputed and stored. For instance, the aggregates defined during the Auto Feature Engineering step are instantiated just-in-time for predictions. This minimizes RAM usage, avoids storage overhead, and ensures scalability for large-scale datasets. 
+
+- **Distributed computing and Out-of-core**: Khiops’ low-level implementation ensures data transformations are executed with exceptional efficiency, dynamically adapting to [available hardware resources][auto-adaptation]. The initial learning task is divided into sub-tasks, either due to limited RAM (out-of-core processing sequentially loads sub-parts of the data) or to distribute processing across a cluster of computers. This makes Khiops not only a powerful modeling tool but also a lightweight solution for scalable data transformation.
 
 [auto-adaptation]: ../learn/hardware_adaptation.md
  
@@ -53,7 +62,7 @@ In the standard case of machine learning, where training data is encoded in a si
     };
     ```
 
-However, in most industrial applications more advanced dictionaries are required, as the raw data is made up of a multitude of disorganized data sources. To be read by Khiops, these sources must provide formatted data, typically csv, log or text files. At the end of this stage, the aim is to obtain structured and enriched data that can be easily understood by business units, and that carries business knowledge.       
+However, in most industrial applications, raw data is scattered across multiple, disorganized sources. In these cases, dictionaries play a crucial role in organizing the data. To be read by Khiops, these sources must provide formatted data, typically csv, log or text files. At this stage, the goal is to produce structured and enriched data that reflects business knowledge and is comprehensible to stakeholders.    
 
 <figure markdown>
 <picture>
@@ -63,15 +72,18 @@ However, in most industrial applications more advanced dictionaries are required
   <figcaption></figcaption>
 </figure>
 
-!!! abstract "The user write ✍️"
-    The **user** write a dictionary for data preparation that consists in **describing** (i) the mapping of available data sources with tables; (ii) the selection of relevant tables and variables; (iii) the links between tables; (iv) the types of each variables.
+!!! abstract "What the user writes ✍️"
+    
+    The **user** writes an initial dictionary to describe and prepare the data:
+    
+    - **Description:** (i) Mapping available data sources to tables, (ii) selecting relevant tables and variables, (iii) defining relationships between tables, and (iv) specifying variable types.
      
-    Then, the **manipulation** of data is specified, with (i) the selection of training examples (e.g. according to a time period); and (ii) the coding user-defined variables to reflect business knowledge.
+    - **Manipulation:** (i) Selecting training examples (e.g., filtering by time period), and (ii) coding new user-defined variables to integrate business knowledge.
  
 
 ### Training stage 
 
-During training, the Auto-ML pipeline is executed in two stages. First, pre-processing is performed, including both [auto feature engineering][auto_FE] and [optimal encoding][optimal_encoding]. Then, in the [parsimonious training][parcimonious_train] stage, the unvariate preprocessings are combined to obtain a multivariate predictive model.   
+During training, the Auto-ML pipeline is executed in two stages. First, pre-processing is performed, including both [auto feature engineering][auto_FE] and [optimal encoding][optimal_encoding]. Then, the [parsimonious training][parcimonious_train] stage combines the unvariate preprocessings to obtain a multivariate predictive model.   
 
 [auto_FE]: ../learn/autofeature_engineering.md
 [optimal_encoding]: ../learn/preprocessing.md
@@ -87,8 +99,9 @@ During training, the Auto-ML pipeline is executed in two stages. First, pre-proc
   <figcaption></figcaption>
 </figure>
 
-!!! abstract "Now, Khiops writes automatically ✍️"
-    The dictionary provided by the user during the data preparation stage is **automatically enriched** in order to (i) compute a large number of informative aggregate variables; (ii) to define the rules used to encode each variable into intervals or groups.
+!!! abstract "What Khiops writes automatically ✍️"
+    
+    The dictionary initially provided by the user is **automatically enriched** in order to (i) compute a large number of informative aggregate variables, and (ii) to define the rules used to encode each variable into intervals or groups.
 
 **2) Parsimonious training**
 
@@ -100,12 +113,17 @@ During training, the Auto-ML pipeline is executed in two stages. First, pre-proc
   <figcaption></figcaption>
 </figure>
 
-!!! abstract "Khiops is still writing ✍️"
-    Finally, this dictionary is modified (i) to select a subset of informative and independent variables; and (ii) to compute target prediction based on the encoded variables. 
+!!! abstract "What Khiops continues to write ✍️"
+    
+    Finally, this dictionary is modified (i) to select a subset of informative and independent variables, and (ii) to compute target prediction based on the encoded variables. 
 
 ### Release the model into production
 
-At the end of training, predictions are made directly from the raw data, which facilitates model production in two respects. First, putting a new model into production consists in replacing one dictionary file with another, without changing anything in the IT project, provided raw data remain the same. Secondly, the archiving of a trained model includes the entire data transformation flow, which avoids the need to archive the program used to prepare the data, thus preventing the risk of a version change.  
+At the end of training, predictions can be made directly from raw data, which facilitates model production in two aspects. 
+
+- Updating a model involves simply replacing the dictionary file, as long as the raw data format remains unchanged, without changing anything else in the project. 
+
+- The trained model’s archive includes the complete data transformation flow, eliminating the need to maintain external preprocessing code and mitigating risks from versioning conflicts 
 
 <figure markdown>
 <picture>
@@ -115,8 +133,9 @@ At the end of training, predictions are made directly from the raw data, which f
   <figcaption></figcaption>
 </figure>
 
-!!! abstract "The user and Khiops wrote together the final dictionary"
-    At production time, the exploited dictionary both describes (i) all the **data-preparation** steps provided by the user, and (ii) all the **data flow processing** used by Khiops during training.  
+!!! abstract "What the user and Khiops wrote together"
+    
+    The final dictionary integrates both the **data preparation** provided by the user and the **data transformation flow** applied by Khiops during training.
     
 
 
