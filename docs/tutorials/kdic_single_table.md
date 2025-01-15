@@ -7,19 +7,31 @@ This section introduces the use of dictionaries to easily implement the data-man
 
 ## Data Description 
 
-One of the very first steps in data management is to specify the types of each variable in the training table, to ensure that they will be processed correctly in the rest of the pipeline. 
+One of the very first steps in data management is to **specify the types of each variable** in the training table, to ensure that they will be processed correctly in the rest of the pipeline. 
 
-For the purposes of prototyping, the usual practice of data scientists is to first load the data into memory, in a Pandas Dataframe or equivalent. Then, they check the types that have been extracted automatically.  
+In prototyping, the usual practice of data scientists is to first load data into memory (e.g. as a Pandas Dataframe) and check the types automatically inferred. While this approach works for small datasets, it becomes inefficient for large scale datasets in production contexts. This is where Khiops dictionaries offer a much more efficient alternative.
 
-In a production context, dictionaries offer a much more efficient alternative, since there's no need to load data into memory. The dictionary itself is a file specifying types. It is read by Khiops at the same time as the training data, with strategies for managing very large volumes of data, including I/O optimization, out-of-core processing and distributed processing. 
+A dictionary is a standalone file that specifies variable types and is read alongside the data during processing. **This eliminates the need to load data into memory upfront and enables advanced features** such as:
 
-In addition, an advanced algorithm for detecting data formatting errors takes advantage of the dictionary, as it provides the data specification beforehand. Thus, unreadable values are replaced by missing values on the fly, and records with an incorrect number of fields are ignored (there are no column shifts). Thanks to dictionaries, Khiops is able to read poor-quality data sources, while guaranteeing the correct execution of the processing that follows.    
+- I/O optimization;
+- Out-of-core processing for handling datasets that exceed memory limits;
+- Distributed processing for scaling across multiple machines.
 
-Here's an example of a dictionary used to specify the types of variables in the Iris dataset. Dictionary syntax is very compact, with the meaning of each attribute depending on its position.    
 
-!!! success "First example of dictionary file"
+Additionally, **dictionaries enable robust error handling**. By providing a data specification beforehand, Khiops can:
+
+- **Replace on the fly unreadable values with missing values** (which Khiops can leverage effectively to extract meaningful insights, as shown in this [tutorial][no-data-cleaning]);
+- **Ignore records with an incorrect number of fields**, avoiding column shifts and ensuring consistent data.
+
+[no-data-cleaning]: ../tutorials/Notebooks/No_data_Cleaning.ipynb
+
+This approach allows Khiops to process even poor-quality data sources reliably, while preserving the integrity and value of subsequent computations.
+
+Here’s an example of a dictionary for the Iris dataset:
+
+!!! success "Example: A simple dictionary for the Iris dataset"
     ```kdic
-    Dictionary	iris
+    Dictionary	Iris
     {
         Numerical	SepalLength	;
         Numerical	SepalWidth		;
@@ -29,15 +41,17 @@ Here's an example of a dictionary used to specify the types of variables in the 
     };
     ```
 
-- The field "*iris*" indicates the name of the dictionary; 
-- Fields at "*SepalLength, SepalWidth ... Class*" indicate variable names; 
-- The keywords "*Numerical*" and "*Categorical*" indicate the corresponding variable types. 
+- `Iris` indicates the name of the dictionary; 
+- `SepalLength`, `SepalWidth` ... `Class` indicate variable names; 
+- The keywords `Numerical` and `Categorical` define the corresponding variable types. 
 
-Dictionaries also enable advanced and flexible management of time data, with support for numerous types *(i.e. Date, Time, Timestamp, TimestampTZ, and custom time format)*. Detailed descriptions of these types are provided on the dictionary [reference page][reference_page]. 
+**Dictionaries also enable advanced and flexible management of time variables**, with support for numerous types (i.e. Date, Time, Timestamp, TimestampTZ, and custom time format). Detailed descriptions of these types are provided on the dictionary [reference page][reference_page]. 
 
-Khiops dictionaries can be manipulated programmatically through the Python language, using the Core API. The following example shows how the matching of a data table and the dictionary that describes it can be verified: 
+### Programmatic Manipulation with the Core API
 
-!!! example "Check database using the Core API"
+Khiops dictionaries can be manipulated programmatically using the Khiops Python library, using the Core API. This includes checking the consistency of a dataset given a dictionary.
+
+!!! example "Example: Checking a database using the Core API"
     ```python
     # Imports
     import os
@@ -58,9 +72,9 @@ Khiops dictionaries can be manipulated programmatically through the Python langu
     )
     ```
 
-Khiops also offers automatic type extraction from the training data file, as shown in the following example: 
+Khiops also offers **automatic type extraction** from the training data file, as shown in the following example: 
 
-!!! example "Build dictionary from data table using the core API"
+!!! example "Example: Building a dictionary from a data table"
     ```python
     # Imports
     import os
@@ -81,19 +95,19 @@ Khiops also offers automatic type extraction from the training data file, as sho
 
 
 
-## Filtering Out-of-scope Variables
+## Filtering out-of-scope variables
 
-Another important step in data management is to define the scope of the analysis to be carried out. Frequently, the data available is too extensive, and only part of it is relevant to the analysis. In the very simple case of single-table training data discussed here, this step takes the form of filtering out variables that fall outside the scope of the analysis.  
+Another important step in data management is to define the scope of the analysis. Often, the available data contains variables irrelevant to the task at hand, making it necessary to filter out these out-of-scope variables. In the case of single-table training data, this involves selecting only the variables relevant to the analysis and ignoring the rest.  
 
-As before, the usual practice of datascientists is to load the entire data set into memory, then eliminate unwanted variables. This practice assumes that the data is not too large with regard to the available RAM memory, and with regard to the maximum size managed by the Pandas Dataframe (or equivalent). In addition, the data scientist often needs to make several trial/error runs for this filtering, and may be tempted to record different versions of the data. This practice has the effect of overloading storage space, and can be very costly in cloud environments.  
+Rather than loading the entire dataset into memory and manually dropping unnecessary columns, as is common in small-scale prototyping, dictionaries enable a more efficient approach. Khiops directly filters out unwanted variables during the data reading phase. By specifying these variables as `Unused` in the dictionary, only the relevant columns are loaded into memory, regardless of the dataset size. This avoids excessive RAM usage and simplifies workflows, especially when trial-and-error is needed during data preparation.
 
-In an industrial context, where volumes of data can be very large and storage space needs to be carefully managed, dictionaries are an excellent way of filtering out unwanted variables on the fly. Basically, only useful columns from the input file are loaded into memory by Khiops. In addition, dictionaries are very light to be versioned, which is much more economical than versioning data. 
+Using dictionaries also minimizes storage overhead. Instead of versioning large datasets for each modification, you can simply version the lightweight dictionary file, which encodes all filtering logic. This is particularly cost-effective in cloud environments where storage can be expensive.
 
-The following example shows how the **Unused** keyword can be used in dictionaries to filter out unwanted variables:
+The following example shows how the `Unused` keyword can be used in dictionaries to filter irrelevant variables:
 
-!!! success "The Unused keyword"
+!!! success "Example: Using the `Unused` keyword in a dictionary"
     ```kdic
-    Dictionary	iris
+    Dictionary	Iris
     {
     Unused Numerical	SepalLength	;
     Unused Numerical	SepalWidth		;
@@ -102,21 +116,21 @@ The following example shows how the **Unused** keyword can be used in dictionari
         Categorical	Class	;	
     };
     ```
-
+In this example, the variables `SepalLength` and `SepalWidth` are marked as `Unused`, meaning they will not be loaded into memory. Only the columns `PetalLength`, `PetalWidth`, and `Class` will be processed.
 
 ## User-defined Variables
 
-In many situations, data stored in databases is difficult for business experts to understand. This raw data does not always accurately reflect their business knowledge. An important step in data management is to express the experts' knowledge by manually defining new variables calculated from the raw data. For example, in a medical application, the body mass index can be calculated from the patient's height and weight.       
+In many cases, raw data stored in databases does not align with business experts’ understanding. This occurs because the data often lacks the transformations needed to reflect domain knowledge. A crucial step in data management is translating this knowledge into manually defined variables calculated from the raw data. For example, in a medical application, a variable such as the body mass index (BMI) can be derived from a patient’s height and weight.    
 
-Once again, the common practice of datascientists is to load the entire data set into memory, then calculate the new variables transcribing the business knowledge and add them to the Pandas Dataframe (or equivalent) stored in memory. This practice is very costly, as it involves intensive use of RAM and storage space, especially if the user makes a large number of trial-error runs during the feature engineering stage. Data versioning becomes a big deal.  
+Typically, data scientists handle this by loading the entire dataset into memory and manually calculating these variables within tools like Pandas. While effective for small-scale prototyping, this approach is resource-intensive, requiring substantial RAM and storage, especially when numerous trial-and-error iterations are performed during feature engineering. Data versioning also becomes cumbersome, as changes must be tracked across multiple files and scripts.
 
-When industrializing datascience projects, it is recommended to use dictionaries to add user-defined variables to the raw data. These new variables are calculated on the fly when the data file is read. Versioning is always limited to the dictionary itself, since it encodes the entire data transformation flow, from raw data to trained model predictions.  
+For industrial-scale projects, dictionaries provide an efficient and scalable alternative. User-defined variables are calculated on the fly when the raw data is read, reducing memory overhead and eliminating the need for precomputed transformations. Additionally, since the entire data transformation flow is encoded within the dictionary, versioning is limited to a single text file, which can be managed by `git`.
 
 The following dictionary example shows the calculation of a user-defined variable representing the area of sepals, in the Iris dataset: 
 
-!!! success "User-defined variable"
+!!! success "Example: Calculating a user-defined variable"
     ```kdic
-    Dictionary	iris
+    Dictionary	Iris
     {
         Numerical	SepalLength	;
         Numerical	SepalWidth		;
@@ -127,13 +141,14 @@ The following dictionary example shows the calculation of a user-defined variabl
     };
     ```
 
-- As previously, the field "*iris*" indicates the name of the dictionary; 
-- And the fields "*SepalLength, SepalWidth ... Class*" indicate variable names;
-- The primitive "*Product*" is used to calculate the user-defined variable; 
-- Finally, "*SepalLength, SepalWidth*" correspond to the operands of the primitive, which can either be variables names, constant values, or results of other primitives
+- As previously, the field `Iris` indicates the name of the dictionary; 
+- And the fields `SepalLength`, `SepalWidth` ... `Class` indicate variable names;
+- The primitive `Product` is used to calculate the user-defined variable; 
+- Finally, `SepalLength`, `SepalWidth` correspond to the operands of the primitive, which can either be variables names, constant values, or results of other primitives.
 
-Khiops implements a highly expressive data transformation language, for easy construction of user-defined variables. An exhaustive description of available primitives is provided on the [reference page][reference_page]. 
-In cases where numerous user-defined variables need to be specified, it is possible to use the Core API to add them to a dictionary programmatically, as shown in the following example:   
+Khiops offers a highly expressive data transformation language, making it easy to define user-defined variables. An exhaustive list of available primitives is available on the [reference page][reference_page].
+
+For cases requiring numerous user-defined variables, the Core API allows programmatic addition of these variables to a dictionary, as shown in the following example:
 
 !!! example "Add user-defined variables programmatically using the core API"
     ```python
@@ -159,15 +174,14 @@ In cases where numerous user-defined variables need to be specified, it is possi
 
 ## Example Selection 
 
-Another possibility for defining the scope of an analysis is to select a certain part of the training examples (i.e. the rows of the training dataset). For instance, a model designed to predict the risk of unemployment must be trained on the working population, excluding retirees and miners. 
+Another possibility for defining the scope of an analysis involves selecting a subset of training examples (i.e. the rows of the dataset). For instance, when building a model to predict unemployment risk, the training dataset should exclude retirees and minors, focusing only on the working population.
 
-As mentioned above, the usual practices of datascientists are very costly in the case of large amounts of data. The pitfall to avoid is always the same: loading the entire data set into RAM, before eliminating unwanted training examples... 
+Khiops makes example selection efficient and scalable, even for large datasets. By defining a selection criterion directly in the dictionary, **filtering is done on the fly** during data processing, avoiding the need to load the entire dataset into memory.
 
-In an industrial context, and in the face of big data, the selection of examples must be carried out on the fly using a dictionary. The first step is to add a user-defined variable to serve as a selection variable, and then run Khiops to actually perform the selection. 
+For example, in the Iris dataset, rows where the Class is “Iris-setosa” can be excluded by adding a user-defined selection variable to the dictionary:
 
-Here's an example of a dictionary used to select examples from the iris dataset, which do not belong to the *Iris-Setosa* class.
 
-!!! success "User-defined Selection Variable"
+!!! success "Example: Using a selection variable in a dictionary"
     ```kdic
     Dictionary	iris
     {
@@ -175,16 +189,17 @@ Here's an example of a dictionary used to select examples from the iris dataset,
         Numerical	SepalWidth;
         Numerical	PetalLength;
         Numerical	PetalWidth;
-    Unused  Numerical Selection = NEQc(Class, "Iris-setosa"); // discade the setosa class from the training set 
+    Unused  Numerical Selection = NEQc(Class, "Iris-setosa"); // exclude the "Iris-setosa" class from the training set 
         Categorical	Class;	
     };
     ```
 
-Note that the new selection variable is not actually employed in the analysis, which explains the presence of the *Unused* keyword. You'll also notice that the selection variable simply takes the form of a user-defined variable.
+- `Selection` is a user-defined variable calculated with the NEQc (not-equal-to constant) primitive;
+- The `Unused` keyword ensures the variable is not part of the analysis but is used only for filtering the examples.
 
-The following example shows how the Core API can be used to run Khiops for actual example selection:
+Once defined, this selection variable—containing 0s and 1s—can be exploited programmatically during training with the Khiops Python Core API. The following example demonstrates how to filter examples by retaining only rows where the selection variable equals 1 while training a predictive model:
 
-!!! example "Train a predictor model using the core API"
+!!! example "Train a predictive model using the core API"
     ```python
     # Imports
     import os
