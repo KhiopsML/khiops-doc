@@ -21,7 +21,7 @@ The main technical benefits include:
 
 - **Agile model release**: A single dictionary file encodes an entire data transformation flow, enabling predictions to be made directly from the raw data. Furthermore, updating a model simply involves replacing a file, what ensures straightforward versioning, traceability, and easy rollbacks using standard tools like `git`.
 
-- **On-the-fly processing**: Data transformation is implemented on an as-needed basis, meaning that variables are only computing when required during execution, rather than being pre-computed and stored. For instance, the aggregates defined during the Auto Feature Engineering step are instantiated just-in-time for predictions. This minimizes RAM usage, avoids storage overhead, and ensures scalability for large-scale datasets. 
+- **On-the-fly processing**: Data transformation is implemented dynamically, meaning variables are computed only when required during runtime, rather than being precomputed and stored. For instance, the aggregates defined during the Auto Feature Engineering step are instantiated just-in-time for predictions. This minimizes RAM usage, avoids storage overhead, and ensures scalability for large-scale datasets. 
 
 - **Distributed computing and Out-of-core**: Khiops’ low-level implementation ensures data transformations are executed with exceptional efficiency, dynamically adapting to [available hardware resources][auto-adaptation]. The initial learning task is divided into sub-tasks, either due to limited RAM (out-of-core processing sequentially loads sub-parts of the data) or to distribute processing across a cluster of computers. This makes Khiops not only a powerful modeling tool but also a lightweight solution for scalable data transformation.
 
@@ -119,7 +119,7 @@ During training, the Auto-ML pipeline is executed in two stages. First, pre-proc
 
 ### Release the model into production
 
-At the end of training, predictions can be made directly from raw data, which facilitates model production in two aspects: 
+At the end of training, predictions can be made directly from raw data, which facilitates model production in two aspects. 
 
 - Updating a model involves simply replacing the dictionary file, as long as the raw data format remains unchanged, without changing anything else in the project. 
 
