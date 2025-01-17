@@ -9,7 +9,7 @@ At the same time, this singular approach may feel unfamiliar to those accustomed
 Here’s what you’ll find in this page:
 
 - How Khiops [**accelerates your workflow**][crisp-dm]: Learn how Khiops transforms the traditional data science pipeline by simplifying complex processes and letting you focus on high-value tasks.
-- Choosing [**the right API**][two-apis]: Explore Khiops’ two APIs—sklearn-like for rapid experimentation and core for production-scale applications—and determine which best suits your needs.
+- Choosing [**the right API**][two-apis]: Explore Khiops’ two APIs—**sklearn-like** for rapid experimentation and **core** for production-scale applications—and determine which best suits your needs.
 
 [crisp-dm]: #how-khiops-fits-into-the-data-science-workflow
 [two-apis]: #two-apis-for-different-needs
@@ -39,7 +39,7 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
 - **Skip Variable Encoding**: Before using variables in a machine learning model, they often need to be transformed into a format the algorithm can process (e.g. categorical variables must be converted into numerical representations). Khiops eliminates this complexity with its MODL formalism, which automatically encodes categorical and numerical variables into statistically optimal groups or intervals.
 
-    For example, instead of manually binning a variable like `age`, Khiops will determine ranges like [0-18], [19-35], [36-50], etc. These intervals are not arbitrary but are optimally chosen according to the target variable, effectively building a univariate classifier.
+    For example, instead of manually binning a variable like `age`, Khiops will determine ranges like [0,18], ]18, 35], ]35, 50], etc. These intervals are not arbitrary but are optimally chosen according to the target variable, effectively building a univariate classifier.
 
     !!! example "Explore the [**Optimal Encoding**][optimal_encoding] tutorial and learn more about the concept on the [**Optimal Encoding**][encoding_foundations] foundations page."
 
@@ -48,7 +48,7 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
 - **Skip Feature Engineering**: When working with multi-table datasets (arguably the most common scenario in real-world business use cases), feature engineering often becomes one of the most labor-intensive stages. Traditionally, it requires significant domain expertise and trial-and-error to create meaningful features. Khiops automates this process entirely, saving you time and delivering optimal results.
 
-    Khiops performs feature engineering in a supervised manner, ensuring that new features are relevant to the target variable, with pseudo-linear complexity that enables scaling efficiently to large datasets. By balancing model complexity with statistical significance, Khiops avoids overfitting while generating informative aggregates.
+    Khiops performs feature engineering in a supervised manner, ensuring that new features are relevant to the target variable, with super-linear complexity that enables scaling efficiently to large datasets. By balancing model complexity with statistical significance, Khiops avoids overfitting while generating informative aggregates.
 
     For example, Khiops can automatically calculate metrics like “total purchases per customer” or “average transaction amount per week” when working with a sales dataset. 
 
@@ -68,7 +68,7 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
     Khiops is also robust by nature. If your data lacks meaningful information for the target variable, Khiops won’t generate a model, ensuring you can trust the output. This gives you confidence that issues in performance stem from the data, not the modeling process itself.
 
-    For easy model evaluation, Khiops includes a native visualization tool that helps you interpret your results. With this tool, you can explore ROC curves, confusion matrices, and variable importance, gaining clear insights into your model’s behavior and reliability.
+    For easy model evaluation, Khiops includes a native visualization tool that helps you interpret your results. With this tool, you can explore lift curves, confusion matrices, and variable importance, gaining clear insights into your model’s behavior and reliability.
 
     !!! example "Try the [**Visualization Tool demo**][demo_viz] and set it up with [**these instructions**][setup_viz]."
 
@@ -89,7 +89,7 @@ The sklearn-like API is ideal for data scientists familiar with Python and the s
 |-----|-----------------|
 | **Familiar syntax**: Designed for immediate use with standard sklearn workflows, making onboarding effortless.       | **High I/O requirements**: Data loading and processing rely on Python and Pandas, which can be memory-intensive.     |
 | **Ecosystem integration**: Acts as a standard sklearn estimator, enabling easy integration with other tools (e.g., pyCaret for benchmarking). | **Scalability constraints**: Not optimized for large-scale datasets as it does not support Khiops out-of-core processing. |
-| **Feature testing**: Lets you explore Khiops’ multi-table capabilities and auto feature engineering, supporting star or snowflake schemas (with some limitations). |                                                                                                                 |
+| **Feature testing**: Lets you explore Khiops’ multi-table capabilities and auto feature engineering, supporting star or snowflake schemas (with some limitations). |  **Limited support for key Khiops features**: limited expressiveness of multi-table schemas and data management capabilities.                                                                                                               |
 
 ### Core API: Production-ready and scalability
 

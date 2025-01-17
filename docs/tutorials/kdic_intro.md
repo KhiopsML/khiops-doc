@@ -13,7 +13,7 @@ The main user benefits include:
 
  [math-rules]: ../api-docs/kdic/math-rules.md
 
-During training, the dictionary provided by the user is automatically enriched to document the entire data transformation flow of the Auto-ML pipeline, from mapping available data sources to predicting the target variable. For instance, during the automated feature engineering phase, new aggregates are generated and added to the dictionary as variables (the predefined functions used to create these aggregates are listed [here][auto_feature_engineering]).
+During training, the dictionary provided by the user is automatically enriched to implement the entire data transformation flow of the Auto-ML pipeline, from mapping available data sources to predicting the target variable. For instance, during the automated feature engineering phase, new aggregates are generated and added to the dictionary as variables (the predefined functions used to create these aggregates are listed [here][auto_feature_engineering]).
 
 [auto_feature_engineering]: ../learn/autofeature_engineering.md#model-parameters
 
@@ -21,7 +21,7 @@ The main technical benefits include:
 
 - **Agile model release**: A single dictionary file encodes an entire data transformation flow, enabling predictions to be made directly from the raw data. Furthermore, updating a model simply involves replacing a file, what ensures straightforward versioning, traceability, and easy rollbacks using standard tools like `git`.
 
-- **On-the-fly processing**: Data transformation is implemented dynamically, meaning variables are computed only when required during runtime, rather than being precomputed and stored. For instance, the aggregates defined during the Auto Feature Engineering step are instantiated just-in-time for predictions. This minimizes RAM usage, avoids storage overhead, and ensures scalability for large-scale datasets. 
+- **On-the-fly processing**: Data transformation is implemented dynamically, which means that variables are computed only when required during execution, rather than being precomputed and stored. For instance, the aggregates defined during the Auto Feature Engineering step are instantiated just-in-time for predictions. This minimizes RAM usage, avoids storage overhead, and ensures scalability for large-scale datasets. 
 
 - **Distributed computing and Out-of-core**: Khiops’ low-level implementation ensures data transformations are executed with exceptional efficiency, dynamically adapting to [available hardware resources][auto-adaptation]. The initial learning task is divided into sub-tasks, either due to limited RAM (out-of-core processing sequentially loads sub-parts of the data) or to distribute processing across a cluster of computers. This makes Khiops not only a powerful modeling tool but also a lightweight solution for scalable data transformation.
 

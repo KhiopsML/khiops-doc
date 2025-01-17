@@ -103,29 +103,6 @@ The following example shows how the **Unused** keyword can be used in dictionari
     };
     ```
 
-And the following example shows how this dictionary can be used via the Core API to learn a predictive model (in this case, a classifier) without Python even needing to load the data into memory: 
-
-!!! example "Train a predictor model using the core API"
-    ```python
-    # Imports
-    import os
-    from khiops import core as kh
-
-    # Set the file paths
-    dictionary_file_path = os.path.join(kh.get_samples_dir(), "Iris", "Iris.kdic")
-    data_table_path = os.path.join(kh.get_samples_dir(), "Iris", "Iris.txt")
-    results_dir = os.path.join("kh_samples", "train_predictor")
-
-    # Train the predictor
-    kh.train_predictor(
-        dictionary_file_path,
-        "Iris",
-        data_table_path,
-        "Class",
-        results_dir,
-        max_trees=0,
-    )
-    ```
 
 ## User-defined Variables
 
@@ -153,12 +130,32 @@ The following dictionary example shows the calculation of a user-defined variabl
 - As previously, the field "*iris*" indicates the name of the dictionary; 
 - And the fields "*SepalLength, SepalWidth ... Class*" indicate variable names;
 - The primitive "*Product*" is used to calculate the user-defined variable; 
-- Finally, "*SepalLength, SepalWidth*" correspond to the operands of the primitive, which can either be variable names, or results of others primitive.     
+- Finally, "*SepalLength, SepalWidth*" correspond to the operands of the primitive, which can either be variables names, constant values, or results of other primitives
 
 Khiops implements a highly expressive data transformation language, for easy construction of user-defined variables. An exhaustive description of available primitives is provided on the [reference page][reference_page]. 
 In cases where numerous user-defined variables need to be specified, it is possible to use the Core API to add them to a dictionary programmatically, as shown in the following example:   
 
-**TODO Vladimir**
+!!! example "Add user-defined variables programmatically using the core API"
+    ```python
+    import os
+    from khiops import core as kh
+
+    # Set path to the dictionary
+    dictionary_file_path = os.path.join(kh.get_samples_dir(), "Iris", "Iris.kdic")
+
+    # Load the learning dictionary object
+    domain = kh.read_dictionary_file(dictionary_file_path)
+    dictionary = domain.get_dictionary("Iris")
+
+    # Add 10 unused supplemental numerical variables to the learning dictionary
+    number_of_supplemental_variables = 10
+    for variable_index in range(1, number_of_supplemental_variables + 1):
+        supplemental_variable = kh.Variable()
+        supplemental_variable.name = "SupplementalVariable" + str(variable_index)
+        supplemental_variable.type = "Numerical"
+    supplemental_variable.used = False
+    dictionary.add_variable(supplemental_variable)
+    ```
 
 ## Example Selection 
 
