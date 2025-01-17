@@ -122,7 +122,7 @@ nav:
           - Khiops Visualization: setup/visualization.md
           - Khiops Shared Library: setup/kni.md
   - How to:
-      - Two APIs for different needs: tutorials/introduction.md
+      - tutorials/introduction.md
       - Scikit-learn API:
           - Quickstart Guide:  tutorials/quickstart.md
           - Single Table Classifier: tutorials/Notebooks/single_table_classifier.ipynb
@@ -136,10 +136,10 @@ nav:
           - Single-Table Learning: tutorials/kdic_single_table.md
           - Multi-Table Learning: tutorials/kdic_multi_table.md
           - Multi-Table Classifier: tutorials/Notebooks/multi_table_classifier_core.ipynb
-      - Production ready:
-          - Easy Deployment: tutorials/---.md
-          - Cloud Storages: tutorials/storage.md
-          - Khiops on Kubernetes: tutorials/k8s.md
+#      - Deployment & Integration:
+#          - Model Deployment: tutorials/---.md
+#          - Cloud Storages: tutorials/storage.md
+#          - Khiops on Kubernetes: tutorials/k8s.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
       - An Original Formalism: learn/modl.md
