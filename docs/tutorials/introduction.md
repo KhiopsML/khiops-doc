@@ -48,7 +48,7 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
 - **Skip Feature Engineering**: When working with multi-table datasets (arguably the most common scenario in real-world business use cases), feature engineering often becomes one of the most labor-intensive stages. Traditionally, it requires significant domain expertise and trial-and-error to create meaningful features. Khiops automates this process entirely, saving you time and delivering optimal results.
 
-    Khiops performs feature engineering in a supervised manner, ensuring that new features are relevant to the target variable, with super-linear complexity that enables scaling efficiently to large datasets. By balancing model complexity with statistical significance, Khiops avoids overfitting while generating informative aggregates.
+    Khiops performs feature engineering in a supervised manner, ensuring that new features are relevant to the target variable, with quasilinear complexity that enables scaling efficiently to large datasets. By balancing model complexity with statistical significance, Khiops avoids overfitting while generating informative aggregates.
 
     For example, Khiops can automatically calculate metrics like “total purchases per customer” or “average transaction amount per week” when working with a sales dataset. 
 
