@@ -125,17 +125,17 @@ nav:
       - tutorials/introduction.md
       - Scikit-learn API:
           - Quickstart Guide:  tutorials/quickstart.md
-          - Single Table Classifier: tutorials/Notebooks/single_table_classifier.ipynb
+          - Single-Table Tutorial: tutorials/Notebooks/single_table_classifier.ipynb
           - No Need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
           - Interpretable Variable Encoding: tutorials/Notebooks/Optimal_Encoding.ipynb
-          - Multi-Table Classifier: tutorials/Notebooks/multi_table_classifier.ipynb
+          - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier.ipynb
           - "Auto Feature Engineering & More": tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
       - Core API & Dictionaries:
           - Start Using Dictionaries: tutorials/kdic_intro.md
-          - Single Table Classifier: tutorials/Notebooks/single_table_classifier_core.ipynb
-          - Single-Table Learning: tutorials/kdic_single_table.md
-          - Multi-Table Learning: tutorials/kdic_multi_table.md
-          - Multi-Table Classifier: tutorials/Notebooks/multi_table_classifier_core.ipynb
+          - Single-Table Concepts: tutorials/kdic_single_table.md
+          - Single-Table Tutorial: tutorials/Notebooks/single_table_classifier_core.ipynb
+          - Multi-Table Concepts: tutorials/kdic_multi_table.md
+          - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier_core.ipynb
 #      - Deployment & Integration:
 #          - Model Deployment: tutorials/---.md
 #          - Cloud Storages: tutorials/storage.md

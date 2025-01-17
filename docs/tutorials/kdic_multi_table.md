@@ -1,27 +1,21 @@
-
-This section introduces the use of dictionaries to easily implement the data-management steps of a typical datascience project, where the training set consists of a multi-table data. For full documentation, please refer to the dictionaries [reference page][reference_page]. 
+This section introduces the use of Khiops dictionaries for **managing data preparation with multi-table datasets**, a frequent scenario in real-world business applications. Khiops eliminates the need for labor-intensive preprocessing and manual handling of relationships between tables, offering a scalable and automated solution for relational data. For full documentation, please refer to the dictionaries [reference page][reference_page]. 
 
 [reference_page]:../api-docs/kdic/numerical-comparisons.md
 
 
-## Data Description 
+## Relational Data Description 
 
-The first data management step in a datascience project handling relational (or multi-table) data is to describe the different tables and how they are linked together. The types of variables in each table must also be described.  
+When working with relational (multi-table) data, a key step is defining relationships between tables and their respective variables. Traditional libraries require manual table joins, ad hoc data management, and domain expertise to prepare data for analysis. This is time-consuming, prone to errors, and becomes infeasible for large scale datasets (which occurs more rapidly with such multi-table datasets).
 
-When using the conventional tools, data scientists load each data table in memory into a Pandas Dataframe or equivalent, and then model the links between tables by specific code. For each project, the user must perform ad hoc data-management (e.g. table joins) ahead of the feature engineering step, which requires time and expertise. 
+Khiops uses a dictionary-based language that **naturally describes the relational schema** without flattening the data. Relationships between tables are encoded directly in the dictionary, enabling efficient and interpretable processing. Key benefits include:
 
-Compared with single-table data, multi-table data is much more complex, since it contains detailed information (e.g. call reports from a cell phone operator's customers). In an industrial context, multi-table data is often extremely large, making in-memory processing almost impossible with conventional tools. The costs are prohibitive, in terms of engineering, development time and hardware resources. 
-
-Khiops offers a truly scalable alternative which avoids the loading of tables into memory. The dictionary exhaustively describes the multi-table data, as well as the data transformation steps required by the user. Data is then processed as it is read from the hard disk, with strategies for managing very large volumes of data, including I/O optimization, out-of-core processing and distributed processing.
-
-Thanks to Khiops, the usually high cost of data management disappears, and versioning is greatly facilitated. In fact, dictionaries encode end-to-end data transformation flows, from user data description, through Auto Feature Engineering, to final target modeling.
-
-The following sections introduce the syntax required to describe multi-table data in a dictionary file. Simple relational schemas are introduced first, and the examples shown become progressively richer.   
+- **Scalability**: Process large datasets without loading tables into memory, leveraging I/O optimizations, out-of-core and distributed processing.
+- **Streamlined Versioning**: End-to-end data transformations are recorded in the dictionary, eliminating the need for versioning large intermediary datasets.
 
 ### Simple Star Relational Schema
 
-This first example shows a star schema describing a company's customers. 
-`Customer` designates the data type of the main statistical units studied, `Address` and `Services` correspond to the types of their secondary records. 
+Let's start by a example of a star schema describing a company’s customers, their addresses, and the services they use:
+
 ```
     Customer
     |
@@ -29,11 +23,11 @@ This first example shows a star schema describing a company's customers.
     |
     |-- Services 
 ```
+`Customer` designates the data type of the main statistical units studied, `Address` and `Services` correspond to the types of their secondary records. 
 
-Note that a customer has only one address, which may be missing (relation 0:1), and has zero or several services (relation 0:n).
-Here's the dictionary file describing this relational data:
+The corresponding Khiops dictionary will be:
  
-!!! success "Dictionary file of a star schema"
+!!! success "Example: Dictionary for a star schema"
     ```kdic
     Dictionary Customer (customer_id)
     {
@@ -42,7 +36,7 @@ Here's the dictionary file describing this relational data:
         Categorical sex;
         Categorical marketingSegment;
         Entity(Address) customerAddress; // 0-1 relationship
-        Table(Services) customerServices;               // 0-n relationship
+        Table(Services) customerServices;               // 0-N relationship
     };
 
     Dictionary Address (customer_id)
@@ -64,17 +58,19 @@ Here's the dictionary file describing this relational data:
     };
     ```
 
-The important syntax elements for understanding this dictionary file are as follows: 
+In this example:
 
-- Each `Dictionary` corresponds to a user-defined data structure (i.e. Customer, Address, Services) which can be considered as a data type. 
-- The categorical variable `customer_id` takes on the role of a key identifying both the statistical units in the main table (i.e. customers) and the records in the secondary tables associated with each statistical unit (i.e. a customer's services and address). 
-- `Entity(dictionaryName)` designates a 0-1 relationship between the table where it is used (i.e. Customer) and the records of a secondary table whose structure is described by the `dictionaryName` dictionary. In the case of a 0-N relationship, each statistical unit in the origin table (i.e. Customer) links to a single record in the secondary table (i.e. customerAddress).  
-- `Table(dictionaryName)` designates a 0-N relationship between the statistical units of the table where it is used (i.e. Customer) and the records of a secondary table whose structure is described by the `dictionaryName` dictionary. In the case of a 0-N relationship, each statistical unit in the origin table (i.e. Customer) refers a table of records in the secondary table (i.e. customerServices).  
+- Each `Dictionary` corresponds to a user-defined data structure (`Customer`, `Address`, `Services`), effectively serving as a data type; 
+- The categorical variable `customer_id` acts as the key, uniquely identifying the statistical units in the main table (i.e., `Customer`) and linking their associated records in the secondary tables (i.e., `Services` and `Address`). 
+- `Entity(Address)` designates a 0-1 relationship (e.g., each customer has **one** address **or none**).   
+- `Table(Services)` designates a 0-N relationship (e.g., each customer can have multiple services). Each statistical unit in the main table `Customer` refers to a table of records in the secondary table `Services`.  
 
 
 ### Snowflake Relational Schema
 
-This second example presents a snowflake relational schema, which unlike star schemas, has several levels of secondary tables. This example is very similar to the previous one, with the additional type `Usages` describing each customer's use of a particular service:   
+This example extends the previous star schema by introducing a snowflake relational schema, where secondary tables are expanded with additional hierarchical levels. In this case, the schema includes a new `Usages` table, which describes how customers use specific `Services`.
+
+ 
 ```
     Customer
     |
@@ -85,10 +81,11 @@ This second example presents a snowflake relational schema, which unlike star sc
         |-- Usages
 ``` 
 
-Note that a customer can use the same service several times (relation 0:n). 
+Note that a customer can use each service several times (relation 0-N). This additional complexity reflects real-world scenarios, such as tracking multiple transactions or interactions linked to a single entity.
+
 Here's the dictionary file describing this relational data:
 
-!!! success "Dictionary file of a snowflake relational schema"
+!!! success "Example: Dictionary file of a snowflake relational schema"
     ```kdic
     Dictionary Customer (customer_id)
     {
@@ -97,7 +94,7 @@ Here's the dictionary file describing this relational data:
         Categorical sex;
         Categorical marketingSegment;
         Entity(Address) customerAddress; // 0-1 relationship
-        Table(Services) customerServices;               // 0-n relationship
+        Table(Services) customerServices;               // 0-N relationship
     };
 
     Dictionary Address (customer_id)
@@ -131,11 +128,17 @@ Here's the dictionary file describing this relational data:
     };
     ```
 
-The only new syntax feature is that **several keys** are used in the `Services` and `Usages` dictionaries, in order to identify the usage array linked to a particular service that is used by a particular customer. Finally, as the number of secondary table levels increases in a snowflake schema, the identification key becomes longer and is made up of the concatenation of multiple identifier variables (i.e. customer_id and service_id). 
+The only new syntax feature in this example is the use of **a multiple-field key** in the `Services` and `Usages` dictionaries. These keys allow Khiops to efficiently associate multiple levels of data, such as linking usage records to specific services used by specific customers. As the number of table levels increases in a snowflake schema, the identification key becomes longer, consisting of a concatenation of multiple identifier variables (e.g., customer_id and service_id).
+
+This structure enables **hierarchical feature engineering**. For example, Khiops can calculate aggregates like “Total usage duration per customer” by traversing multiple levels. 
 
 ### Snowflake Schema with External Tables 
 
-This third example, similar to the previous one, adds an external table whose type is `City`, allowing the `Address` type to be completed with information specific to the city (e.g. the time zone). The relational schema considered is represented as follows:   
+This example introduces the concept of an external table. **External tables** are used to enrich descriptive variables in other tables without duplicating information. Unlike standard secondary tables, external tables are not directly linked to the main statistical units (e.g., `customer_id`) but instead provide additional descriptive information for a specific variable. 
+
+For instance, the `City` table in the following schema adds information such as the city name, country, and time zone to the `Address` table, without repeating the same city details across multiple rows. Instead, the `Address` table references the `City` table using the `zipcode` key. This approach ensures efficiency and consistency, especially in large scale datasets.
+
+The relational schema is structured as follows:
 ```
     Customer
     |
@@ -148,9 +151,9 @@ This third example, similar to the previous one, adds an external table whose ty
         |-- Usages
 ``` 
 
-As this is an external table, cities can appear in multiple customer addresses. The information contained in an external table does not relate to the main statistical units (i.e. customers) but completes a descriptive variable (i.e. cities). Finally, the customer addresses refer the city information based on the zip-code, without the need to duplicate the information describing the cities. Here's the dictionary file describing this relational data: 
+Here’s the dictionary file that defines this relational schema:
 
-!!! success "Snowflake schemal with external table"
+!!! success "Example: Dictionary file for a snowflake schema with an external table"
     ```kdic
     Root Dictionary Customer (customer_id)
     {
@@ -200,22 +203,21 @@ As this is an external table, cities can appear in multiple customer addresses. 
     };
     ```
 
-Here, the new syntax feature is the **declaration of an external table** which is a kind of `Entity`, since it implies a 0-1 relation. This declaration takes the following form: `Entity(dictionaryName) variableName[id_variable]`. Where the identifier variable is added in square brackets juste after the name of the created variable. In our example, `zipcode` is a variable of type `Address` which takes on the role of the city identifier key. Finally, the declaration in our example is `Entity(City) city[zipcode]`. 
+An external table **behaves like an Entity**, creating a 0-1 relationship. The syntax starts with `Entity(City)`. And because it provides additional information for a specific descriptive variable rather than statistical units, square brackets `[zipcode]` are used to specify the linking key.
 
-The `ROOT` keyword is also needed to declare an external table, as it indicates that the key variable (i.e. zipcode) **uniquely** identifies the records.
-It is also advisable to add this keyword to the main table, in order to specify that statistical units must be unique, and thus force this check upstream.  
+The `Root` keyword is required for external tables, as it indicates that the key variable (e.g., zipcode) uniquely identifies the records in that table.
 
 ## Filtering Out-of-scope Tables and Variables
 
-Defining the scope of the analysis is an important step in data management, and aims to select useful information from the often too extensive available data. In the case of the multi-table training data, this step takes the form of filtering out tables and variables that do not fall within the scope of the analysis.
+In data management, defining the scope of an analysis is crucial to focus on the most relevant information while avoiding the overhead of processing unnecessary data. For multi-table datasets, this involves filtering out tables and variables that do not contribute to the analysis.
 
-As with single-table data, the usual practice is to load selected tables into memory, then discard unwanted variables. This practice assumes that the data is not too large in relation to available RAM memory and the maximum size managed by Pandas Dataframe (or equivalent). In addition, it is often necessary to carry out several trial-and-error operations for this selection of tables and variables. This raises the question of versioning these trials and the associated specific code. This practice tends to overload storage space and can prove very costly in cloud environments. 
+With conventional tools, data scientists often load entire datasets into memory before manually discarding irrelevant variables or tables. This approach is manageable for small datasets but becomes inefficient and costly for larger, multi-table datasets. It can also lead to excessive trial-and-error runs, creating versioning challenges and increasing storage costs, especially in cloud environments.
 
-In an industrial context, where multi-table data can be very large and complex, dictionaries are an excellent way of filtering out unwanted tables and variables on the fly. Basically, only useful columns from selected files are loaded into memory by Khiops. In addition, dictionaries are very light to be versioned, which is much more economical than versioning data and the associated specific data management codes. 
+Khiops dictionaries provide a more efficient solution by enabling on-the-fly filtering. Only the relevant columns and tables are loaded into memory during processing. This eliminates unnecessary overhead and makes dictionaries lightweight and easy to version, offering a scalable alternative for industrial use cases.
 
-The following example shows how the **Unused** keyword can be used in dictionaries to filter out unwanted tables and variables:
+The `Unused` keyword in Khiops dictionaries allows you to specify variables and tables that should be excluded from analysis. Here’s an example:
  
-!!! success "The Unused keyword applied to tables and variables"
+!!! success "Example: Filtering with the Unused keyword"
     ```kdic
     Dictionary Customer (customer_id)
     {
@@ -248,17 +250,27 @@ The following example shows how the **Unused** keyword can be used in dictionari
 
 ## User-defined Relational Schema
 
-Most of the time, databases are organized according to technical constraints (e.g. processing speed of the most frequent queries). Data is stored in a form that is difficult to understand for business experts. It is therefore necessary to reorganize the data, so that it accurately reflects their knowledge of the problem at hand. This is an important step in data management, which involves expressing the experts' knowledge by manually redefining the relational schema.
+In many cases, databases are designed with technical constraints in mind (e.g., optimizing query speed or storage efficiency), often at the expense of usability for business experts. As a result, the stored data can be difficult to interpret or align with the experts’ knowledge of the problem. Reorganizing this data to better reflect the business context is a critical step in data management.
 
-Usually, this is a laborious, manual job of coding project-specific data-management steps, with the same versioning problems already mentioned. 
-Dictionaries offer a much more efficient and economical alternative, thanks to their data manipulation language (see the [reference page][reference_page]). 
-The next three subsections provide examples of data manipulation, with (i) redefining the scope of statistical units; (ii) concatenating tables; (iii) advanced selection of training examples. 
+Traditionally, this process involves manually coding project-specific data management workflows—a time-consuming and error-prone task, compounded by the challenges of versioning multiple scripts and iterations.
+
+Khiops dictionaries offer a powerful alternative. By using their built-in data manipulation language (see the [reference page][reference_page]), you can streamline this process and encode business knowledge directly into a reusable, versionable format. This not only simplifies data management but also ensures alignment between technical implementation and business understanding.
+ 
+The next three subsections illustrate how dictionaries can facilitate data manipulation through:
+
+- Redefining the scope of statistical units;
+- Concatenating tables;
+- Advanced selection of training examples.
 
 ### Redefining the scope of statistical units
 
-In many applications, the statistical units under study are not initially stored in the database and need to be defined from the raw data. For example, it may be necessary to clean noisy data containing a large number of insignificant secondary records.     
-The following example dictionary file redefines the scope of statistical units by selecting only the secondary records in the `Usage` table corresponding to durations of use greater than ten minutes (i.e. `GE(duration,10)`).  
+In many real-world applications, the statistical units of interest are not directly stored in the database and need to be derived from raw data. For instance, it may be necessary to eliminate noisy or insignificant records to focus on meaningful information. This process is essential for reducing complexity, saving computational resources, and ensuring the analysis is targeted.
+
+Khiops makes this process seamless using the `TableSelection` function, which allows you to filter secondary records based on specified criteria, directly within the dictionary. This eliminates the need for pre-processing steps in Python or SQL, enabling scalable and efficient data management.
+
+**Example 1: Filter by Duration of Use**
  
+The following example redefines the scope of statistical units by selecting only the records in the `Usage` table where the duration exceeds ten minutes `(GE(duration,10))`:
 
 !!! success "The TableSelection function applied to secondary records"
     ```kdic
@@ -295,9 +307,15 @@ The following example dictionary file redefines the scope of statistical units b
     };
     ```
 
-Notice that in the command `TableSelection(.,.)`, the first argument designates the name of a table and the second argument is a selection rule applied in the scope of this table. Alternatively, variables from the origin table can be handled using the **"`.`"** operator (which can even be repeated several times). The following dictionary file example selects secondary records from the `Usage` table that are less than one month old after the subscription date. As the `purchaseDate` variable belongs to the origin table, the point is used in the function `TableSelection(allServiceUsages, LE(DiffDate(date, .purchaseDate),30))`.  
+This command identifies and retains only the relevant records from the Usage table, streamlining the analysis process by discarding unnecessary data.
 
-!!! success "The point operator"
+Notice that in the rule `TableSelection(.,.)`, the first operand designates the name of a table and the second operand is a selection rule applied in the scope of this table. 
+
+**Example 2: Filter by Time Relative to a Parent Variable**
+
+In more advanced scenarios, filtering may require conditions that depend on variables from a parent table. For instance, the following example filters records from the `Usage` table to include only those occurring within 30 days of the `purchaseDate` from the `Services` table:  
+
+!!! success "The . scope operator"
     ```kdic
     Root Dictionary Customer (customer_id)
     {
@@ -332,11 +350,13 @@ Notice that in the command `TableSelection(.,.)`, the first argument designates 
     };
     ```
 
+In this example, the second operand in the rule `LE(DiffDate(date, .purchaseDate), 30)` operates within the scope of the `Usage` dictionary, where it directly uses the `date` variable. It also accesses the `purchaseDate` variable from the parent `Services` dictionary using the `.` scope operator to establish the relationship between the two tables.
+
 ### Table concatenation
 
-In practice, large data tables are sometimes split into several sub-tables for easier storage. This is often the case for secondary tables containing a large number of records (e.g. Log data). In this case, one of the necessary data management steps is to rebuild the secondary table by concatenating the sub-tables. 
-The following dictionary file gives an example of usage sub-tables divided up according to time of year (i.e. usagesQuarter1, usagesQuarter2, usagesQuarter3, usagesQuarter4). These sub-tables are concatenated using the `TableUnion` function and the `Unused` keyword is placed before every sub-table to be ignored during analysis.
-Dictionaries offer great flexibility, especially when it comes to updating models as new sub-tables become available during the year.
+In many production environments, large data tables are often divided into multiple chunks for easier storage and management. This is especially common for secondary tables with a high volume of records, such as log data or transactional details. While this practice improves storage efficiency and system performance, it introduces the challenge of reconstructing the original table for analysis or model training.
+
+Khiops provides an efficient solution for this scenario through the `TableUnion` rule, which allows you to seamlessly concatenate these chunks. In the example below, `Usage` table is divided into quarterly chunks (`usagesQuarter1`, `usagesQuarter2`, etc.). These chunks are unified into a single table using `TableUnion`. To prevent duplicates during analysis, the `Unused` keyword is applied to each chunk sub-table, as the concatenated table already contains all the records.
 
 !!! success "The TableUnion function"
     ```kdic
@@ -383,8 +403,7 @@ Dictionaries offer great flexibility, especially when it comes to updating model
 
 The selection of training examples is an important step in data management, enabling the scope of the analysis to be defined. In the case of multi-table data, this step can become complex, requiring laborious manual work and coding. Here again, dictionaries offer an effective alternative, and greatly facilitate versioning. 
 
-The following example shows the selection of a particular marketing segment consisting of housewives under 50 who have used the VOD service at least 10 times. 
-This selection criterion is complex so it is written on several lines:
+The following example shows the selection of a particular marketing segment consisting of housewives under 50 who have used the VOD service at least 10 times. As this selection criterion is complex, it is written on several lines:
 
 - **line 1:** selection of customers < 50 years old  
 - **line 2:** selection of women
