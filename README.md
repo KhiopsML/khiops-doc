@@ -21,6 +21,28 @@ restart the server every time because the site will refresh itself when you modi
 The previous step will also install the `pre-commit` tool. This allows to automatize some tasks such
 as formatting and cleaning of the notebooks.
 
+## Highlighting Khiops Dictionary Code
+The Khiops Dictionary Language code can be highlighted by using the `kdic` syntax in code blocks:
+````md
+```kdic
+Dictionary Example
+{
+  Categorical target;
+  Numerical feature;
+};
+```
+````
+
+The rule signatures can be highlighted with the `kdic-api-docs` syntax:
+````md
+```kdic-api-docs
+Numerical Diff(Numerical value1, Numerical value2);
+```
+````
+
+## Deploy to khiops.org
+Once you have committed and pushed your changes. Use the `ci` workflow in the repo's actions.
+
 To use it, it is necessary to install it locally:
 ```bash
 pre-commit install

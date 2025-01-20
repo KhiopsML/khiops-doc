@@ -6,7 +6,7 @@ repo_name: KhiopsML/Khiops
 repo_url: https://github.com/KhiopsML/khiops
 
 # Copyright
-copyright: Copyright &copy; 2023 Orange S.A.
+copyright: Copyright &copy; 2023-2025 Orange S.A.
 
 theme:
   name: material
@@ -36,9 +36,10 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
@@ -101,11 +102,12 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
-  - mkdocs-jupyter
   - macros
   - search
-  #  - blog
-  #  - privacy ## not usable with mathjax script
+  - mkdocs-jupyter:
+      ignore_h1_titles: True
+#  - blog
+#  - privacy ## not usable with mathjax script
 
 nav:
   - index.md
@@ -118,34 +120,62 @@ nav:
       - Standalone Applications:
           - Khiops Application: setup/nocode.md
           - Khiops Visualization: setup/visualization.md
-          - Khiops shared library: setup/kni.md
-  - Tutorials:
-      - Quickstart: setup/quickstart.md
-      - Starter Tutorials:
-          - Single Table Classifier: advanced/Notebooks/single_table_classifier.ipynb
-          - Multi Table Classifier: advanced/Notebooks/multi_table_classifier.ipynb
-      - Advanced Tutorials:
-          - No Data Preparation: advanced/Notebooks/No_data_Cleaning.ipynb
-          - Variable Encoding: advanced/Notebooks/Optimal_Encoding.ipynb
-          - SNB: advanced/Notebooks/Use_in_any_ML_pipeline.ipynb
-    #  - Out of core: advanced/Notebooks/outofcore.ipynb    #  - Advanced use cases:
-    #  - GO / No Go: advanced/gonogo.md
-    #  - Time Series: advanced/timeseries.md
-    #  - NLP: advanced/nlp.md
-    #  - Anomaly detection: advanced/anomaly.md
-    #  - Drift  detection: advanced/drift.md
-    #  - Model calibration: advanced/calibration.md
-    #  - Variable importance with Shapley:  advanced/shapley.md
-    #  - Advanced notebook examples: advanced/notebooks.md
-  - API Docs: https://khiopsml.github.io/khiops-python/index.html
+          - Khiops Shared Library: setup/kni.md
+  - How to:
+      - tutorials/introduction.md
+      - Scikit-learn API:
+          - Quickstart Guide:  tutorials/quickstart.md
+          - Single-Table Tutorial: tutorials/Notebooks/single_table_classifier.ipynb
+          - No Need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
+          - Interpretable Variable Encoding: tutorials/Notebooks/Optimal_Encoding.ipynb
+          - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier.ipynb
+          - "Auto Feature Engineering & More": tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
+      - Core API & Dictionaries:
+          - Start Using Dictionaries: tutorials/kdic_intro.md
+          - Single-Table Concepts: tutorials/kdic_single_table.md
+          - Single-Table Tutorial: tutorials/Notebooks/single_table_classifier_core.ipynb
+          - Multi-Table Concepts: tutorials/kdic_multi_table.md
+          - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier_core.ipynb
+#      - Deployment & Integration:
+#          - Model Deployment: tutorials/---.md
+#          - Cloud Storages: tutorials/storage.md
+#          - Khiops on Kubernetes: tutorials/k8s.md
   - Foundations:
-      - What makes Khiops different: learn/understand.md
-      - An original formalism: learn/modl.md
+      - What Makes Khiops Different: learn/understand.md
+      - An Original Formalism: learn/modl.md
       - Optimal Encoding: learn/preprocessing.md
       - Auto Feature Engineering: learn/autofeature_engineering.md
       - Parsimonious Training: learn/learning_models.md
       - Auto Hardware Adaptation: learn/hardware_adaptation.md
       - Bibliography: references.md
+  - API Reference:
+      - Python API Docs: api-docs/python-api.md
+      - Dictionary Rules:
+          - Basic:
+            - Numerical Comparisons: api-docs/kdic/numerical-comparisons.md
+            - Categorical Comparisons: api-docs/kdic/categorical-comparisons.md
+            - Logical Operators: api-docs/kdic/logical-operators.md
+            - Data Copy and Conversion: api-docs/kdic/data-copy-and-conversion.md
+            - String Rules: api-docs/kdic/string-rules.md
+            - Math Rules: api-docs/kdic/math-rules.md
+            - Date Rules: api-docs/kdic/date-rules.md
+            - Time Rules: api-docs/kdic/time-rules.md
+            - Timestamp Rules: api-docs/kdic/timestamp-rules.md
+            - TimestampTZ Rules: api-docs/kdic/timestamp-tz-rules.md
+          - Multi-Table:
+            - Introduction: api-docs/kdic/multi-table-rules-introduction.md
+            - Entity Rules: api-docs/kdic/entity-rules.md
+            - Table Rules: api-docs/kdic/table-rules.md
+            - Table Management Rules: api-docs/kdic/table-management-rules.md
+          - Technical Structures & Rules:
+            - Introduction: api-docs/kdic/structures-introduction.md
+            - Vector Rules: api-docs/kdic/vector-rules.md
+            - Hash Map Rules: api-docs/kdic/hash-map-rules.md
+            - Data Preparation Rules: api-docs/kdic/data-preparation-rules.md
+            - Recoding Rules: api-docs/kdic/recoding-rules.md
+            - Predictor Rules: api-docs/kdic/predictor-rules.md
+            - Coclustering Rules: api-docs/kdic/coclustering-rules.md
+  - Discussions: https://github.com/orgs/KhiopsML/discussions
   - Contact Us: contact.md
 #    - Blog:
 #      - blog/index.md

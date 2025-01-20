@@ -4,3 +4,4 @@ mkdocs-jupyter
 mkdocs-macros-plugin
 mkdocs-material
 mistune==3.0.1
+./python/kdic_lexer
