@@ -5,7 +5,7 @@ This section summarizes the derivation rules that are used internally by Khiops 
 - store data preparation and predictor models in dictionary files, and
 - to compute any model output values such as variable recoding, prediction, density estimation.
 
-**The rules in this section are intended to be used by the user to construct new variables**, but
+**The rules in this section are not intended to be used by the user to construct new variables**, but
 rather to have a quick understanding of them.
 
 ## Overview

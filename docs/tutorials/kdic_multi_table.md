@@ -14,7 +14,7 @@ Khiops uses a dictionary-based language that **naturally describes the relationa
 
 ### Simple Star Relational Schema
 
-Let's start by a example of a star schema describing a company’s customers, their addresses, and the services they use:
+Let's start with a example of a star schema describing a company’s customers, their addresses, and the services they use:
 
 ```
     Customer
@@ -25,7 +25,7 @@ Let's start by a example of a star schema describing a company’s customers, th
 ```
 `Customer` designates the data type of the main statistical units studied, `Address` and `Services` correspond to the types of their secondary records. 
 
-The corresponding Khiops dictionary will be:
+The corresponding Khiops dictionary is:
  
 !!! success "Example: Dictionary for a star schema"
     ```kdic
@@ -205,7 +205,7 @@ Here’s the dictionary file that defines this relational schema:
 
 An external table **behaves like an Entity**, creating a 0-1 relationship. The syntax starts with `Entity(City)`. And because it provides additional information for a specific descriptive variable rather than statistical units, square brackets `[zipcode]` are used to specify the linking key.
 
-The `Root` keyword is required for external tables, as it indicates that the key variable (e.g., zipcode) uniquely identifies the records in that table.
+The `Root` keyword is required for external tables, as it indicates that the key variable (e.g., zipcode) uniquely identifies the records in that table. For the `Customer` table, the `Root` keyword is *optional* and simply tags the main dictionary representing the statistical units under study.
 
 ## Filtering Out-of-scope Tables and Variables
 
@@ -429,7 +429,7 @@ For full documentation on dictionary language, please refer to the [reference pa
         // -- VOD
         // -- and with more than 10 uses
 
-    Unused Numerical selectionVariable = And(LE(age,50),   
+    Unused Numerical selectionVariable = And(L(age,50),   
                                             EQc(sex,"F"),
                                             EQ(TableCount(TableSelection(services, 
                                                                             And(EQc(name,"VOD"), 

@@ -144,7 +144,7 @@ The following dictionary example shows the calculation of a user-defined variabl
 - As previously, the field `Iris` indicates the name of the dictionary; 
 - And the fields `SepalLength`, `SepalWidth` ... `Class` indicate variable names;
 - The primitive `Product` is used to calculate the user-defined variable; 
-- Finally, `SepalLength`, `SepalWidth` correspond to the operands of the primitive, which can either be variables names, constant values, or results of other primitives.
+- Finally, `SepalLength`, `SepalWidth` correspond to the operands of the primitive, which can either be variable names, constant values, or results of other primitives.
 
 Khiops offers a highly expressive data transformation language, making it easy to define user-defined variables. An exhaustive list of available primitives is available on the [reference page][reference_page].
 
@@ -194,7 +194,7 @@ For example, in the Iris dataset, rows where the Class is “Iris-setosa” can 
     };
     ```
 
-- `Selection` is a user-defined variable calculated with the NEQc (not-equal-to constant) primitive;
+- `Selection` is a user-defined variable calculated with the `NEQc` primitive (`NEQc` stands for a not-equal-to primitive, with categorical operands);
 - The `Unused` keyword ensures the variable is not part of the analysis but is used only for filtering the examples.
 
 Once defined, this selection variable—containing 0s and 1s—can be exploited programmatically during training with the Khiops Python Core API. The following example demonstrates how to filter examples by retaining only rows where the selection variable equals 1 while training a predictive model:

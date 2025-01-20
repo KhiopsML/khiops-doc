@@ -85,7 +85,7 @@ Khiops offers two APIs tailored to different use cases: the sklearn-like API and
 
 The sklearn-like API is ideal for data scientists familiar with Python and the sklearn ecosystem. It provides an accessible entry point for experimenting with Khiops’ key features, including multi-table support and automated feature engineering.
 
-| **Advantages** | **Limitations**   |
+| :white_check_mark: **Advantages** | :red_square: **Limitations**   |
 |-----|-----------------|
 | **Familiar syntax**: Designed for immediate use with standard sklearn workflows, making onboarding effortless.       | **High I/O requirements**: Data loading and processing rely on Python and Pandas, which can be memory-intensive.     |
 | **Ecosystem integration**: Acts as a standard sklearn estimator, enabling easy integration with other tools (e.g., pyCaret for benchmarking). | **Scalability constraints**: Not optimized for large-scale datasets as it does not support Khiops out-of-core processing. |
@@ -95,7 +95,7 @@ The sklearn-like API is ideal for data scientists familiar with Python and the s
 
 The core API unleashes the full power of Khiops, offering unmatched scalability and flexibility for industrial-scale projects. Its rich dictionary-based formalism supports complex multi-table databases and facilitates streamlined data management for production use.
 
-| **Advantages**                                                                 | **Limitations**                                                                                   |
+| :white_check_mark: **Advantages**                                                                 | :red_square: **Limitations**                                                                                   |
 |-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
 | **Rich data description**: The dictionary formalism provides a structured, detailed way to describe data and especially multi-table relationships, enabling efficient data processing on the fly. | **Learning Curve**: The dictionary formalism introduces new concepts, requiring users to invest time in learning its syntax and structure. |
 | **Advanced data management**: Automates business-level transformations such as aggregate creation, variable selection, and example filtering, all within the API. It can also act as a highly efficient ETL tool. |                                                                                                  |
