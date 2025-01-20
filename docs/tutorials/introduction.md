@@ -6,17 +6,17 @@ Unlike traditional machine learning libraries, Khiops is built on **a unique for
 
 At the same time, this singular approach may feel unfamiliar to those accustomed to standard tools and libraries. This section provides a comprehensive introduction to Khiops, enabling you to make the most of its strengths and integrate it into your projects with confidence.
 
-Here’s what you’ll find in this page:
+Here's what you'll find in this page:
 
 - How Khiops [**accelerates your workflow**][crisp-dm]: Learn how Khiops transforms the traditional data science pipeline by simplifying complex processes and letting you focus on high-value tasks.
-- Choosing [**the right API**][two-apis]: Explore Khiops’ two APIs—**sklearn-like** for rapid experimentation and **core** for production-scale applications—and determine which best suits your needs.
+- Choosing [**the right API**][two-apis]: The **sklearn-like** API is ideal for rapid experimentation, while the **core** API excels in production-scale applications. Determine which best suits your needs.
 
 [crisp-dm]: #how-khiops-fits-into-the-data-science-workflow
 [two-apis]: #two-apis-for-different-needs
 
-This introduction will guide you through the foundational points and help you navigate the tutorials that follow. Here’s an overview of the sections:
+This introduction will guide you through the foundational points and help you navigate the tutorials that follow. Here's an overview of the sections:
 
-- **Sklearn-like API tutorials**: Learn the basics of Khiops with examples on quickstarts, single- and multi-table examples, and hands-on notebooks that showcase Khiops’ technical advantages, such as automated data preparation and multi-table processing.
+- **Sklearn-like API tutorials**: Learn the basics of Khiops with examples on quickstarts, single- and multi-table examples, and hands-on notebooks that showcase Khiops' technical advantages, such as automated data preparation and multi-table processing.
 - **Core API & dictionaries**: Dive deeper into advanced capabilities, including dictionary usage for scalable, production-ready workflows.
 
 In the coming weeks, we will introduce a new “**Deployment & Integration**” section to cover advanced features that are already developed but still in the process of being documented. This will include native deployment on Kubernetes, as well as drivers for reading directly from HDFS, GCS, or S3 buckets.
@@ -27,9 +27,9 @@ In the coming weeks, we will introduce a new “**Deployment & Integration**” 
 [contact-form]: ../contact.md
 [discussions]: https://github.com/orgs/KhiopsML/discussions
 
-## How Khiops fits into the data science workflow
+## How Khiops Fits into the Data Science Workflow
 
-Khiops introduces a streamlined and effective approach to data science, **simplifying every stage of the process** while providing advanced automation and robust formalism. Unlike traditional tools, Khiops enables you **to focus on what truly matters**: understanding your data, interpreting insights (the story your data tells), solving business problems, and deploying reliable models. Here’s how you can leverage Khiops’ unique features step by step:
+Khiops introduces a streamlined and effective approach to data science, **simplifying every stage of the process** while providing advanced automation and robust formalism. Unlike traditional tools, Khiops enables you **to focus on what truly matters**: understanding your data, interpreting insights (the story your data tells), solving business problems, and deploying reliable models. Here's how you can leverage Khiops' unique features step by step:
 
 - **Skip Data Cleaning**: Forget about spending hours on cleaning and formatting your data. Khiops reads raw data directly and handles common issues like missing values, inconsistent formats, or noisy inputs. For example, if your dataset contains missing values, Khiops automatically treats them as meaningful signals when training models.
 
@@ -66,30 +66,30 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
 - **Evaluate Models with Confidence**: Khiops enables you to assess your models with clarity and trust. Thanks to its unique formalism, every transformation (variable encoding or feature engineering) is explicit and interpretable by design. The resulting models are parsimonious, allowing you to understand the precise contribution of each feature to the predictions.
 
-    Khiops is also robust by nature. If your data lacks meaningful information for the target variable, Khiops won’t generate a model, ensuring you can trust the output. This gives you confidence that issues in performance stem from the data, not the modeling process itself.
+    Khiops is also robust by nature. If your data lacks meaningful information for the target variable, Khiops won't generate a model, ensuring you can trust the output. This gives you confidence that issues in performance stem from the data, not the modeling process itself.
 
-    For easy model evaluation, Khiops includes a native visualization tool that helps you interpret your results. With this tool, you can explore lift curves, confusion matrices, and variable importance, gaining clear insights into your model’s behavior and reliability.
+    For easy model evaluation, Khiops includes a native visualization tool that helps you interpret your results. With this tool, you can explore lift curves, confusion matrices, and variable importance, gaining clear insights into your model's behavior and reliability.
 
     !!! example "Try the [**Visualization Tool demo**][demo_viz] and set it up with [**these instructions**][setup_viz]."
 
 [demo_viz]: ../setup/demovisualization.md
 [setup_viz]: ../setup/visualization.md
 
-With Khiops simplifying every stage of the data science workflow, the next step is choosing the right API for your needs. Whether you’re exploring datasets or preparing for industrial-scale deployments, Khiops offers two powerful options: the sklearn-like API and the core API. Let’s dive into their differences and find the best fit for your projects.
+With Khiops simplifying every stage of the data science workflow, the next step is choosing the right API for your needs. Whether you're exploring datasets or preparing for industrial-scale deployments, Khiops offers two powerful options: the sklearn-like API and the core API. Let's dive into their differences and find the best fit for your projects.
 
 ## Two APIs for different needs
 
-Khiops offers two APIs tailored to different use cases: the sklearn-like API and the core API. While both leverage Khiops’ unique strengths, they are optimized for distinct stages of the data science workflow and scaling requirements.
+Khiops offers two APIs tailored to different use cases: the sklearn-like API and the core API. While both leverage Khiops' unique strengths, they are optimized for distinct stages of the data science workflow and scaling requirements.
 
 ### Sklearn-like API: Quick prototyping and integration
 
-The sklearn-like API is ideal for data scientists familiar with Python and the sklearn ecosystem. It provides an accessible entry point for experimenting with Khiops’ key features, including multi-table support and automated feature engineering.
+The sklearn-like API is ideal for data scientists familiar with Python and the sklearn ecosystem. It provides an accessible entry point for experimenting with Khiops' key features, including multi-table support and automated feature engineering.
 
 | :white_check_mark: **Advantages** | :red_square: **Limitations**   |
 |-----|-----------------|
 | **Familiar syntax**: Designed for immediate use with standard sklearn workflows, making onboarding effortless.       | **High I/O requirements**: Data loading and processing rely on Python and Pandas, which can be memory-intensive.     |
 | **Ecosystem integration**: Acts as a standard sklearn estimator, enabling easy integration with other tools (e.g., pyCaret for benchmarking). | **Scalability constraints**: Not optimized for large-scale datasets as it does not support Khiops out-of-core processing. |
-| **Feature testing**: Lets you explore Khiops’ multi-table capabilities and auto feature engineering, supporting star or snowflake schemas (with some limitations). |  **Limited support for key Khiops features**: limited expressiveness of multi-table schemas and data management capabilities.                                                                                                               |
+| **Feature testing**: Lets you explore Khiops' multi-table capabilities and auto feature engineering, supporting star or snowflake schemas (with some limitations). |  **Limited support for key Khiops features**: limited expressiveness of multi-table schemas and data management capabilities.                                                                                                               |
 
 ### Core API: Production-ready and scalability
 
@@ -107,6 +107,6 @@ The core API unleashes the full power of Khiops, offering unmatched scalability 
 
 Choosing the Right API:
 
-- Start with the sklearn-like API if you’re exploring Khiops’ capabilities on small datasets or need a quick, familiar way to test models within the Python ecosystem.
+- Start with the sklearn-like API if you're exploring Khiops' capabilities on small datasets or need a quick, familiar way to test models within the Python ecosystem.
 - Move to the core API for production-grade scalability, complex data management needs, or when working with large, multi-table datasets.
 

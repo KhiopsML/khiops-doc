@@ -22,7 +22,7 @@ The previous step will also install the `pre-commit` tool. This allows to automa
 as formatting and cleaning of the notebooks.
 
 ## Highlighting Khiops Dictionary Code
-The Khiops Dictionary Language code maybe highlighted by using the `kdic` syntax in code blocks:
+The Khiops Dictionary Language code can be highlighted by using the `kdic` syntax in code blocks:
 ````md
 ```kdic
 Dictionary Example

@@ -9,9 +9,6 @@ docs/advanced/Notebooks/logs.log
 docs/tutorials/Notebooks/st_results
 docs/tutorials/Notebooks/mt_results
 .cache
-<<<<<<< HEAD
-=======
 # Python
 __pycache__
 *.egg-info
->>>>>>> a49547f (Add kdic pygments lexer)
