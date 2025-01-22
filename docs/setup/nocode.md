@@ -96,10 +96,6 @@ For easy system integration:
 [coclustering]: KhiopsCoclusteringGuide.pdf
 [scenario]: KhiopsScenarios.pdf
 
-!!! info "Users of pre-10.2.0 Khiops versions should refer to the **legacy** Khiops [web site][khiopslegacy]"
-
-[khiopslegacy]: https://khiops.tech.orange
-
 ## What You Should Know
 
 You can consult the limitations or known problems for your operating system:
