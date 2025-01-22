@@ -3,16 +3,11 @@ hide: toc
 ---
 # Bibliography { #publications }
 
+!!! note "More than a hundred articles about Khiops are available [on this page:octicons-link-external-16:][home_page_marc]{:target="_blank"}. "
+
 To go further, here's a selection of **scientific papers** organized according to a reading path which facilitates the understanding of the Auto-ML pipeline. It is highly recommended to read these papers in the suggested order, after reading the documentation presented on this website. The <span style="color:gray">**gray**</span> lines indicate additional information, which can be read at a later stage, and which will not prevent you from gaining an overall understanding of the pipeline. 
 
 [home_page_marc]: http://www.marc-boulle.fr/author/Marc.Boulle-eng.html
-
-<picture>
-  <source srcset="/assets/images/auto-ml-pipeline.webp" type="image/webp">
-  <img style="max-width:945px;width: -webkit-fill-available;" src="/assets/auto-ml-pipeline.png" alt="auto-ml-pipeline" loading="lazy"> 
-</picture>
-
-!!! note "More than a hundred articles about Khiops are available [on this page:octicons-link-external-16:][home_page_marc]{:target="_blank"}. "
 
 ## Optimal Encoding 
 
@@ -36,8 +31,8 @@ To go further, here's a selection of **scientific papers** organized according t
 
 ## Parsimonious Training
 
-1. **Previous versions:** Compression-Based Averaging of Selective Naive Bayes Classifiers - [download:octicons-link-external-16:][paper_snb]{:target="_blank"}
-2. **Currently, from Khiops V10:** *an article is currently being written on the parsimonious Bayesian classifier as presented in the documentation.*
+1. **Fractional Naive Bayes (FNB):** Non-convex optimization for a parsimonious weighted selective naive Bayes classifier - [download:octicons-link-external-16:][paper_fnb]{:target="_blank"}
+2. **Previous versions (Khiops <v10):** Compression-Based Averaging of Selective Naive Bayes Classifiers - [download:octicons-link-external-16:][paper_snb]{:target="_blank"}
 
 [paper_snb]: http://www.marc-boulle.fr/publications/BoulleJMLR07.pdf
-
+[paper_fnb]: https://arxiv.org/abs/2409.11100
