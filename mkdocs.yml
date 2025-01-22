@@ -113,14 +113,14 @@ nav:
   - index.md
   - Installation:
       - setup/index.md
-      - Packages:
+      - Khiops Python Library:
           - conda: setup/conda.md
           - pip: setup/pip.md
           - docker notebook: setup/khiops-notebook.md
-      - Standalone Applications:
+      - Applications:
           - Khiops Application: setup/nocode.md
           - Khiops Visualization: setup/visualization.md
-          - Khiops Shared Library: setup/kni.md
+          - Khiops Native Interface (KNI): setup/kni.md
   - How to:
       - tutorials/introduction.md
       - Scikit-learn API:
