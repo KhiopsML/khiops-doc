@@ -107,7 +107,8 @@ You can consult the limitations or known problems for your operating system:
         The java installer results in a system reboot on some systems (e.g. on Windows Server 2008)
     !!! warning
         On some machines, re-installing Khiops may unexpectedly result in just discarding the existing Khiops installation directory. In that case, uninstall Khiops before reinstalling it.
-
+    !!! warning
+        In some companies, programs are blocked by the Windows AppLocker group policy. In this case, install Khiops in a recommended directory or run it as administrator.
 
 ## Screenshots
 
