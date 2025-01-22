@@ -120,7 +120,7 @@ nav:
       - Standalone Applications:
           - Khiops Application: setup/nocode.md
           - Khiops Visualization: setup/visualization.md
-          - Khiops Shared Library: setup/kni.md
+          - Khiops Native Interface (KNI): setup/kni.md
   - How to:
       - tutorials/introduction.md
       - Scikit-learn API:
