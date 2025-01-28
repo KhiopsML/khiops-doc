@@ -4,7 +4,7 @@
 This section presents the strategy implemented in Khiops for adapting the algorithms to the available hardware resources. 
 Please note that this feature requires the use of [Khiops dictionaries][dico].
 
-[dico]: ../tutorials/dictionaries.md
+[dico]: ../tutorials/kdic_intro.md
 
 ## General principles
 
