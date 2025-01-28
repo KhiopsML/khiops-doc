@@ -70,7 +70,7 @@ One of the strengths of Khiops lies in its automation of this complex step. By l
 
 !!! example "See what Khiops-built aggregates look like using our tutorials [here][tuto_aggregates]."
 
-[tuto_aggregates]: ../advanced/Notebooks/Use_in_any_ML_pipeline.ipynb "See the Jupyter Notebook"
+[tuto_aggregates]: ../tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb "See the Jupyter Notebook"
 
 ## Interpretability
 
