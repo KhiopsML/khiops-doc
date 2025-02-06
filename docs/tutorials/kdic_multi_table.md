@@ -408,9 +408,9 @@ The selection of training examples is an important step in data management, whic
 
 The following example shows the selection of a particular marketing segment consisting of housewives under 50 who have used the VOD service at least 10 times. As this selection criterion is complex, it is written on several lines:
 
-- **line 1:** selection of customers < 50 years old
-- **line 2:** selection of women
-- **line 3:** selection of services that are both (i) VOD and (ii) with more than 10 uses
+- **condition 1:** selection of customers < 50 years old
+- **condition 2:** selection of women
+- **condition 3:** selection of services that are both (i) VOD and (ii) with more than 10 uses
 
 For full documentation on the dictionary language, please refer to the [reference page][reference_page].
 
@@ -424,30 +424,30 @@ For full documentation on the dictionary language, please refer to the [referenc
         Categorical marketingSegment;
         Table(Services) services;
 
-        // Selection of housewives under 50 who have used VOD at least 10 times.
-        // This complex selection criterion is written on several lines:
-        // - line 1: selection of customers < 50 years old
-        // - line 2: selection of women
-        // - line 3: selection of services that are both
-        // -- VOD
-        // -- and with more than 10 uses
+        // Selection of women under 50 that have used VOD at least 10 times.
+        // This complex selection criterion is written on three conditions:
+        // - condition 1: selection of customers < 50 years old, AND
+        // - condition 2: selection of women, AND
+        // - condition 3: selection of services that:
+        //   - sub-condition 3-1: service is VOD, AND
+        //   - sub-condition 3-2: have at least 10 uses
         Unused Numerical selectionVariable = And(
-            L(age,50),
-            EQc(sex,"F"),
+            L(age, 50),     // condition 1
+            EQc(sex, "F"),  // condition 2
+            // condition 3
             EQ(
-                TableCount(
-                    TableSelection(
-                        services,
-                        And(
-                            EQc(name,"VOD"),
-                            GE(TableCount(allServiceUsages), 10)
-                        )
+                TableCount(TableSelection(
+                    services,
+                    And(
+                        EQc(name, "VOD"),                    // sub-condition 3-1
+                        GE(TableCount(allServiceUsages), 10) // sub-condition 3-2
                     )
-                ),
+                )),
                 1
             )
+            // end of condition 3
         );
-        };
+    };
 
     Dictionary Services (customer_id, service_id)
     {
