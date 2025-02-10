@@ -12,11 +12,11 @@ Welcome to the Khiops application download page. Our intuitive, user-friendly de
 
 To get started with the Khiops application, follow the relevant procedure for your operating system. Please click on the relevant operating system. Note that our Application **is not yet available on :material-apple: macOS**.
 
-For further details, you may refer to [README.txt][readme], and [whatsnew.txt][whatsnew]:
+For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][whatsnew]:
 
 [releases]: https://github.com/KhiopsML/khiops/releases
-[readme]: README.txt
-[whatsnew]: WHATSNEW.txt
+[readme]: https://github.com/KhiopsML/khiops/blob/{{ KHIOPS_VERSION }}/packaging/common/khiops/README.txt
+[whatsnew]: https://github.com/KhiopsML/khiops/blob/{{ KHIOPS_VERSION }}/packaging/common/khiops/WHATSNEW.txt
 
 
 === "Windows"
