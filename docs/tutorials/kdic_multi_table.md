@@ -1,9 +1,9 @@
-This section introduces the use of Khiops dictionaries for **managing data preparation with multi-table datasets**, a frequent scenario in real-world business applications. Khiops eliminates the need for labor-intensive pre-processing and manual handling of relationships between tables, offering a scalable and automated solution for relational data. For full documentation, please refer to the dictionaries [reference page][reference_page]. 
+This section introduces the use of Khiops dictionaries for **managing data preparation with multi-table datasets**, a frequent scenario in real-world business applications. Khiops eliminates the need for labor-intensive pre-processing and manual handling of relationships between tables, offering a scalable and automated solution for relational data. For full documentation, please refer to the dictionaries [reference page][reference_page].
 
 [reference_page]:../api-docs/kdic/numerical-comparisons.md
 
 
-## Relational Data Description 
+## Relational Data Description
 
 When working with relational (multi-table) data, a key step is defining relationships between tables and their respective variables. Traditional libraries require manual table joins, *ad-hoc* data management, and domain expertise to prepare the data for analysis. This is time-consuming, error-prone, and becomes infeasible for large-scale datasets (which occurs more rapidly with such multi-table datasets).
 
@@ -19,14 +19,14 @@ Let's start with an example of a star schema describing the customers of a compa
 ```
     Customer
     |
-    |-- Address 
+    +-- Address
     |
-    |-- Services 
+    +-- Services
 ```
-`Customer` designates the data type of the main statistical units under study, `Address` and `Services` correspond to the types of their secondary records. 
+`Customer` designates the data type of the main statistical units under study, `Address` and `Services` correspond to the types of their secondary records.
 
 The corresponding Khiops dictionary is:
- 
+
 !!! success "Example: Dictionary for a star schema"
     ```kdic
     Dictionary Customer (customer_id)
@@ -35,8 +35,8 @@ The corresponding Khiops dictionary is:
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-        Entity(Address) customerAddress; // 0-1 relationship
-        Table(Services) customerServices;               // 0-N relationship
+        Entity(Address) customerAddress;  // 0-1 relationship
+        Table(Services) customerServices; // 0-n relationship
     };
 
     Dictionary Address (customer_id)
@@ -60,26 +60,26 @@ The corresponding Khiops dictionary is:
 
 In this example:
 
-- Each `Dictionary` corresponds to a user-defined data structure (`Customer`, `Address`, `Services`), effectively serving as a data type; 
-- The categorical variable `customer_id` acts as the key, uniquely identifying the statistical units in the main table (i.e., `Customer`) and linking their associated records in the secondary tables (i.e., `Services` and `Address`). 
-- `Entity(Address)` designates a 0-1 relationship (e.g., each customer has **one** address **or none**).   
-- `Table(Services)` designates a 0-N relationship (e.g., each customer can have multiple services). Each statistical unit in the main table `Customer` refers to a set of records in the secondary table `Services`.  
+- Each `Dictionary` corresponds to a user-defined data structure (`Customer`, `Address`, `Services`), effectively serving as a data type;
+- The categorical variable `customer_id` acts as the key, uniquely identifying the statistical units in the main table (i.e., `Customer`) and linking their associated records in the secondary tables (i.e., `Services` and `Address`).
+- `Entity(Address)` designates a 0-1 relationship (e.g., each customer has **one** address **or none**).
+- `Table(Services)` designates a 0-N relationship (e.g., each customer can have multiple services). Each statistical unit in the main table `Customer` refers to a set of records in the secondary table `Services`.
 
 
 ### Snowflake Relational Schemas
 
 This example extends the previous star schema by introducing a snowflake relational schema, where secondary tables are expanded with additional hierarchical levels. In this case, the schema includes a new `Usages` table, which describes how customers use specific `Services`.
 
- 
+
 ```
     Customer
     |
-    |-- Address
+    +-- Address
     |
-    |-- Services
+    +-- Services
         |
-        |-- Usages
-``` 
+        +-- Usages
+```
 
 Note that a customer can use each service several times (relation 0-N). This additional complexity reflects real-world scenarios, such as tracking multiple transactions or interactions linked to a single entity.
 
@@ -93,8 +93,8 @@ Here's the dictionary file describing this relational data:
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-        Entity(Address) customerAddress; // 0-1 relationship
-        Table(Services) customerServices;               // 0-N relationship
+        Entity(Address) customerAddress;  // 0-1 relationship
+        Table(Services) customerServices; // 0-n relationship
     };
 
     Dictionary Address (customer_id)
@@ -107,34 +107,34 @@ Here's the dictionary file describing this relational data:
         Categorical State;
     };
 
-    Dictionary	Services	(customer_id, service_id)
+    Dictionary Services (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;	
-        Categorical name;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical name;
         Numerical cost;
-        Date purchaseDate;	
-        Table(Usages)	serviceUsages;	      // 0-n relationship
+        Date purchaseDate;
+        Table(Usages) serviceUsages; // 0-n relationship
     };
 
-    Dictionary	Usages	(customer_id, service_id)
+    Dictionary Usages (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;
-        Categorical usageType;	
-        Date	date;	
-        Time	time;	
-        Numerical	duration;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical usageType;
+        Date date;
+        Time time;
+        Numerical duration;
     };
     ```
 
 The only new syntax feature in this example is the use of **a multiple-field key** in the `Services` and `Usages` dictionaries. These keys allow Khiops to efficiently associate multiple levels of data, such as linking usage records to specific services used by specific customers. As the number of table levels increases in a snowflake schema, the identification key becomes longer, consisting of a concatenation of multiple identifier variables (e.g., `customer_id` and `service_id`).
 
-This structure enables **hierarchical feature engineering**. For example, Khiops can compute aggregates like "Total usage duration per customer" by traversing multiple levels. 
+This structure enables **hierarchical feature engineering**. For example, Khiops can compute aggregates like "Total usage duration per customer" by traversing multiple levels.
 
-### Snowflake Schema with External Tables 
+### Snowflake Schema with External Tables
 
-This example introduces the concept of an external table. **External tables** are used to enrich descriptive variables in other tables without duplicating information. Unlike standard secondary tables, external tables are not directly linked to the main statistical units (e.g., `customer_id`) but instead provide additional descriptive information for a specific variable. 
+This example introduces the concept of an external table. **External tables** are used to enrich descriptive variables in other tables without duplicating information. Unlike standard secondary tables, external tables are not directly linked to the main statistical units (e.g., `customer_id`) but instead provide additional descriptive information for a specific variable.
 
 For instance, the `City` table in the following schema adds information such as the city name, country, and time zone to the `Address` table, without repeating the same city details across multiple rows. Instead, the `Address` table references the `City` table using the `zipcode` key. This approach ensures efficiency and consistency, especially in large datasets.
 
@@ -142,14 +142,14 @@ The relational schema is structured as follows:
 ```
     Customer
     |
-    |-- Address
+    +-- Address
     |   |
-    |   |-- City
+    |   +-- City
     |
-    |-- Services
+    +-- Services
         |
-        |-- Usages
-``` 
+        +-- Usages
+```
 
 Here's the dictionary file that defines this relational schema:
 
@@ -161,8 +161,8 @@ Here's the dictionary file that defines this relational schema:
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-        Entity(Address) customerAddress;    // 0-1 relationship
-        Table(Services) services;            // 0-n relationship
+        Entity(Address) customerAddress; // 0-1 relationship
+        Table(Services) services;        // 0-n relationship
     };
 
     Dictionary Address (customer_id)
@@ -171,35 +171,35 @@ Here's the dictionary file that defines this relational schema:
         Categorical streetNumber;
         Categorical streetName;
         Categorical zipcode;
-        Entity(City) city[zipcode];	
+        Entity(City) city[zipcode];
     };
 
-    Root	Dictionary	City	(zipcode)
+    Root Dictionary City (zipcode)
     {
-	    Categorical	zipcode;	
-	    Categorical	name;	
-	    Categorical	country;	
-	    Categorical timeZone;	
+       Categorical zipcode;
+       Categorical name;
+       Categorical country;
+       Categorical timeZone;
     };
 
-    Dictionary	Services	(customer_id, service_id)
+    Dictionary Services (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;	
-        Categorical name;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical name;
         Numerical cost;
-        Date purchaseDate;	
-        Table(Usage)	Usages;	 // 0-n relationship
+        Date purchaseDate;
+        Table(Usage) Usages; // 0-n relationship
     };
 
-    Dictionary	Usage	(customer_id, service_id)
+    Dictionary Usage (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;
-        Categorical usageType;	
-        Date	date;	
-        Time	time;	
-        Numerical	duration;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical usageType;
+        Date date;
+        Time time;
+        Numerical duration;
     };
     ```
 
@@ -216,7 +216,7 @@ With conventional tools, data scientists often load entire datasets into memory 
 Khiops dictionaries provide a more efficient solution by enabling on-the-fly filtering. Only the relevant columns and tables are loaded into memory during processing. This eliminates unnecessary overhead and makes dictionaries lightweight and easy to version, offering a scalable alternative for industrial use cases.
 
 The `Unused` keyword in Khiops dictionaries allows you to specify variables and tables that should be excluded from analysis. Here's an example:
- 
+
 !!! success "Example: Filtering with the Unused keyword"
     ```kdic
     Dictionary Customer (customer_id)
@@ -225,9 +225,9 @@ The `Unused` keyword in Khiops dictionaries allows you to specify variables and 
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-    Unused    Entity(Address) customerAddress; // Unused entity
-        Table(Services) customerServices;               
-    };    
+        Unused Entity(Address) customerAddress; // Unused entity
+        Table(Services) customerServices;
+    };
 
     Dictionary Address (customer_id)
     {
@@ -243,7 +243,7 @@ The `Unused` keyword in Khiops dictionaries allows you to specify variables and 
     {
         Categorical customer_id;
         Categorical name;
-    Unused    Numerical cost; // Unused variable
+        Unused Numerical cost; // Unused variable
         Date purchaseDate;
     };
     ```
@@ -255,7 +255,7 @@ In many cases, databases are designed with technical constraints in mind (e.g., 
 Traditionally, this process involves manually coding project-specific data management workflows - a time-consuming and error-prone task, compounded by the challenges of versioning multiple scripts and iterations.
 
 Khiops dictionaries offer a powerful alternative. By using their built-in data manipulation language (see the [reference page][reference_page]), you can streamline this process and encode business knowledge directly into a reusable, versionable format. This not only simplifies data management but also ensures alignment between technical implementation and business understanding.
- 
+
 The next three subsections illustrate how dictionaries can facilitate data manipulation through:
 
 - Redefining the scope of statistical units;
@@ -269,7 +269,7 @@ In many real-world applications, the statistical units of interest are not direc
 Khiops makes this process seamless using the `TableSelection` function, which allows users to filter secondary records based on specified criteria, directly within the dictionary. This eliminates the need for pre-processing steps in Python or SQL, thus enabling scalable and efficient data management.
 
 **Example 1: Filter by Duration of Use**
- 
+
 The following example redefines the scope of statistical units by selecting only the records in the `Usage` table where the duration exceeds ten minutes `(GE(duration,10))`:
 
 !!! success "The TableSelection function applied to secondary records"
@@ -280,40 +280,40 @@ The following example redefines the scope of statistical units by selecting only
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-        Table(Services) services;            
+        Table(Services) services;
     };
 
-    Dictionary	Services	(customer_id, service_id)
+    Dictionary Services (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;	
-        Categorical name;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical name;
         Numerical cost;
-        Date purchaseDate;	
-    Unused    Table(Usage)	allServiceUsages;	
+        Date purchaseDate;
+        Unused Table(Usage) allServiceUsages;
 
         // selection of usages > 10 minutes
-        Table(Usage)	studiedUsages = TableSelection(allServiceUsages, GE(duration,10));	 
+        Table(Usage) studiedUsages = TableSelection(allServiceUsages, GE(duration,10));
     };
 
-    Dictionary	Usage	(customer_id, service_id)
+    Dictionary Usage (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;
-        Categorical usageType;	
-        Date	date;	
-        Time	time;	
-        Numerical	duration;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical usageType;
+        Date date;
+        Time time;
+        Numerical duration;
     };
     ```
 
 This selection rule function identifies and retains only the relevant records from the `Usage` table, streamlining the analysis process by discarding unnecessary data.
 
-Notice that in the rule `TableSelection(.,.)`, the first operand designates the name of a table and the second operand is a selection rule applied in the scope of this table. 
+Notice that in the rule `TableSelection(.,.)`, the first operand designates the name of a table and the second operand is a selection rule applied in the scope of this table.
 
 **Example 2: Filter by Time Relative to a Parent Variable**
 
-In more advanced scenarios, filtering can require conditions that depend on variables from a parent table. For instance, the following example filters records from the `Usage` table to include only those occurring within 30 days of the `purchaseDate` from the `Services` table:  
+In more advanced scenarios, filtering can require conditions that depend on variables from a parent table. For instance, the following example filters records from the `Usage` table to include only those occurring within 30 days of the `purchaseDate` from the `Services` table:
 
 !!! success "The . scope operator"
     ```kdic
@@ -323,30 +323,32 @@ In more advanced scenarios, filtering can require conditions that depend on vari
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-        Table(Services) services;            
+        Table(Services) services;
     };
 
-    Dictionary	Services	(customer_id, service_id)
+    Dictionary Services (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;	
-        Categorical name;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical name;
         Numerical cost;
-        Date purchaseDate;	
-    Unused    Table(Usage)	allServiceUsages;
+        Date purchaseDate;
+        Unused Table(Usage) allServiceUsages;
 
         // selection of usages within 30 days after subscription
-        Table(Usage)	studiedUsages = TableSelection(allServiceUsages, LE(DiffDate(date, .purchaseDate),30));	 
+        Table(Usage) studiedUsages = TableSelection(
+            allServiceUsages, LE(DiffDate(date, .purchaseDate),30)
+        );
     };
 
-    Dictionary	Usage	(customer_id, service_id)
+    Dictionary Usage (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;
-        Categorical usageType;	
-        Date	date;	
-        Time	time;	
-        Numerical	duration;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical usageType;
+        Date date;
+        Time time;
+        Numerical duration;
     };
     ```
 
@@ -366,50 +368,51 @@ Khiops provides an efficient solution for this scenario through the `TableUnion`
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-        Table(Services) services;            
+        Table(Services) services;
     };
 
-    Dictionary	Services	(customer_id, service_id)
+    Dictionary Services (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;	
-        Categorical name;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical name;
         Numerical cost;
-        Date purchaseDate;	
-    Unused    Table(Usage)	usagesQuarter1; 
-    Unused    Table(Usage)	usagesQuarter2;
-    Unused    Table(Usage)	usagesQuarter3;
-    Unused    Table(Usage)	usagesQuarter4;	  
+        Date purchaseDate;
+        Unused Table(Usage) usagesQuarter1;
+        Unused Table(Usage) usagesQuarter2;
+        Unused Table(Usage) usagesQuarter3;
+        Unused Table(Usage) usagesQuarter4;
 
-        // concatenation of 4 files, divided for volume purposes
-    Unused Table(Usage)	allUsages = TableUnion(usagesQuarter1, usagesQuarter2, usagesQuarter3, usagesQuarter4);	 
-    
-        // selection of usages > 10 minutes
-        Table(Usage)	studiedUsages = TableSelection(allUsages, GE(duration,10));	 
+        // Concatenation of 4 files, divided for volume purposes
+        Unused Table(Usage) allUsages =
+          TableUnion(usagesQuarter1, usagesQuarter2, usagesQuarter3, usagesQuarter4);
+
+        // Selection of usages > 10 minutes
+        Table(Usage) studiedUsages = TableSelection(allUsages, GE(duration,10));
     };
 
-    Dictionary	Usage	(customer_id, service_id)
+    Dictionary Usage (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;
-        Categorical usageType;	
-        Date	date;	
-        Time	time;	
-        Numerical	duration;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical usageType;
+        Date date;
+        Time time;
+        Numerical duration;
     };
     ```
 
-## Advanced Example Selection 
+## Advanced Example Selection
 
-The selection of training examples is an important step in data management, which allows users to define the scope of the analysis. In the case of multi-table data, this step can become complex, requiring laborious manual work and coding. Here again, dictionaries offer an effective alternative, and greatly facilitate versioning. 
+The selection of training examples is an important step in data management, which allows users to define the scope of the analysis. In the case of multi-table data, this step can become complex, requiring laborious manual work and coding. Here again, dictionaries offer an effective alternative, and greatly facilitate versioning.
 
 The following example shows the selection of a particular marketing segment consisting of housewives under 50 who have used the VOD service at least 10 times. As this selection criterion is complex, it is written on several lines:
 
-- **line 1:** selection of customers < 50 years old  
-- **line 2:** selection of women
-- **line 3:** selection of services that are both (i) VOD and (ii) with more than 10 uses
+- **condition 1:** selection of customers < 50 years old
+- **condition 2:** selection of women
+- **condition 3:** selection of services that are both (i) VOD and (ii) with more than 10 uses
 
-For full documentation on the dictionary language, please refer to the [reference page][reference_page]. 
+For full documentation on the dictionary language, please refer to the [reference page][reference_page].
 
 !!! success "Complex criteria for selecting examples"
     ```kdic
@@ -419,43 +422,50 @@ For full documentation on the dictionary language, please refer to the [referenc
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
-        Table(Services) services;            
+        Table(Services) services;
 
-        // Selection of housewives under 50 who have used VOD at least 10 times.
-        // This complex selection criterion is written on several lines:
-        // - line 1: selection of customers < 50 years old  
-        // - line 2: selection of women
-        // - line 3: selection of services that are both 
-        // -- VOD
-        // -- and with more than 10 uses
-
-    Unused Numerical selectionVariable = And(L(age,50),   
-                                             EQc(sex,"F"),
-                                             EQ(TableCount(TableSelection(services, 
-                                                                          And(EQc(name,"VOD"), 
-                                                                                GE(TableCount(allServiceUsages),10))))
-                                                ,1)
-                                            );     
+        // Selection of women under 50 that have used VOD at least 10 times.
+        // This complex selection criterion is written on three conditions:
+        // - condition 1: selection of customers < 50 years old, AND
+        // - condition 2: selection of women, AND
+        // - condition 3: selection of services that:
+        //   - sub-condition 3-1: service is VOD, AND
+        //   - sub-condition 3-2: have at least 10 uses
+        Unused Numerical selectionVariable = And(
+            L(age, 50),     // condition 1
+            EQc(sex, "F"),  // condition 2
+            // condition 3
+            EQ(
+                TableCount(TableSelection(
+                    services,
+                    And(
+                        EQc(name, "VOD"),                    // sub-condition 3-1
+                        GE(TableCount(allServiceUsages), 10) // sub-condition 3-2
+                    )
+                )),
+                1
+            )
+            // end of condition 3
+        );
     };
 
-    Dictionary	Services	(customer_id, service_id)
+    Dictionary Services (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;	
-        Categorical name;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical name;
         Numerical cost;
-        Date purchaseDate;	
-        Table(Usage)	allServiceUsages;	         
+        Date purchaseDate;
+        Table(Usage) allServiceUsages;
     };
 
-    Dictionary	Usage	(customer_id, service_id)
+    Dictionary Usage (customer_id, service_id)
     {
-        Categorical	customer_id;	
-        Categorical	service_id;
-        Categorical usageType;	
-        Date	date;	
-        Time	time;	
-        Numerical	duration;	
+        Categorical customer_id;
+        Categorical service_id;
+        Categorical usageType;
+        Date date;
+        Time time;
+        Numerical duration;
     };
     ```
-
