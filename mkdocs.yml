@@ -141,7 +141,7 @@ nav:
       - Deployment & Integration:
           - Cloud Storages: tutorials/storage.md
           - Running Khiops with Docker: tutorials/docker.md
-          - Khiops in Kubernetes: tutorials/kubernetes.md
+          - Khiops in Kubernetes: tutorials/k8s.md
           - Real-time Deployment: tutorials/kni.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
