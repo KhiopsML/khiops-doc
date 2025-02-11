@@ -8,7 +8,7 @@ With these drivers, Khiops treats cloud storage **just like a local filesystem**
     On **Windows** and *macOS*, Khiops drivers are only supported through Conda. If you are using another installation method on these operating systems, consider switching to a Conda environment to enable driver support.
     On **Linux**, Khiops drivers are supported through both Conda (Python only) and by using the binary installation method (compatible with the [Khiops Application][nocode] and Python via pip). 
 
-[nocode]: nocode.md
+[nocode]: ../setup/nocode.md
 
 ## Using Khiops with Google Cloud Storage (GCS)
 
