@@ -15,8 +15,8 @@ To get started with the Khiops application, follow the relevant procedure for yo
 For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][whatsnew]:
 
 [releases]: https://github.com/KhiopsML/khiops/releases
-[readme]: https://github.com/KhiopsML/khiops/blob/{{ KHIOPS_VERSION }}/packaging/common/khiops/README.txt
-[whatsnew]: https://github.com/KhiopsML/khiops/blob/{{ KHIOPS_VERSION }}/packaging/common/khiops/WHATSNEW.txt
+[readme]: https://raw.githubusercontent.com/KhiopsML/khiops/refs/tags/{{ KHIOPS_VERSION }}/packaging/common/khiops/README.txt
+[whatsnew]: https://raw.githubusercontent.com/KhiopsML/khiops/refs/tags/{{ KHIOPS_VERSION }}/packaging/common/khiops/WHATSNEW.txt
 
 
 === "Windows"
