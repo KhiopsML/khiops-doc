@@ -1,8 +1,9 @@
 # Running Khiops with Docker
 
-Docker provides an easy and reproducible way to run Khiops in a controlled environment without the need for complex installations. This is particularly useful for running Khiops on different operating systems, ensuring consistency across development and production setups.
+Docker provides a convenient way to run Khiops in a consistent and documented environment, making it easier to manage dependencies and ensure clarity across different systems. This is particularly useful for running Khiops on different operating systems, ensuring consistency across development and production setups.
 
-With Khiops’ official Docker images, you can execute Khiops commands in isolated environments while benefiting from containerization’s flexibility and portability. 
+With Khiops official Docker images, you can execute Khiops commands in isolated environments while benefiting from containerization’s flexibility and portability. 
+
 ## Why Use Docker for Khiops?
 
 Using Docker to run Khiops offers several advantages:
@@ -52,7 +53,7 @@ This command mounts your current directory to `/my_volume` in the container and 
 
 ### Service Usage
 
-You can run the container as a Khiops service, allowing it to process multiple scenarios without restarting the container. Here’s how to set it up:
+You can run the container as a Khiops service, allowing it to process multiple scenarios without restarting the container. Here's how to set it up:
 
 ```bash
 docker run -v $PWD:/my_data -p 11000:11000 \
@@ -73,4 +74,4 @@ curl -k -X POST -d "{\"scenario\": \"/my_data/my_scenario.kh\"}" "https://localh
 This command submits a job to the Khiops service to process the specified scenario file. The API definition is available at https://localhost:11000.
 
 ## Conclusion
-Using Docker with Khiops simplifies deployment and ensures a consistent environment across different systems. Whether you're running specific commands or using it as a service, Docker provides the flexibility to integrate Khiops seamlessly into your workflow. For more advanced usage, such as distributed execution on Kubernetes, stay tuned for our upcoming guides.
+Using Docker with Khiops simplifies deployment and ensures a consistent environment across different systems. Whether you're running specific commands or using it as a service, Docker provides the flexibility to integrate Khiops seamlessly into your workflow. 

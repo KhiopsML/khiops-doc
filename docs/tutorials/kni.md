@@ -99,7 +99,7 @@ Once compiled, you can run the `KNIRecodeFile` application to recode a dataset. 
    ```
     using the following inputs:
 
-    - `data/ModelingIris.kdic`: The [dictionary][dico] file that describes both the data transformation process and the trained model;
+    - `data/ModelingIris.kdic`: The [dictionary][dico] file that describes the model;
     - `SNB_Iris`: The name of the dictionary within the [dictionary][dico] file;
     - `data/Iris.txt`: The input data file containing the data to be recoded;
     - `R_Iris.txt`: The output file where the recoded (scored) data will be saved.
