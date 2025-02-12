@@ -1,4 +1,4 @@
-# Read Data Directly from S3 & GCS
+# Cloud Storages
 
 Khiops seamlessly integrates with cloud storage services, enabling **direct reading and writing of datasets stored in AWS S3 and Google Cloud Storage (GCS)** buckets. By using Khiops dedicated cloud storage drivers, you can process large-scale datasets **without having to manually download or transfer files**, significantly improving efficiency and scalability in cloud-based workflows.
 
@@ -54,7 +54,7 @@ You should see an output indicating that the GCS driver is loaded and ready to u
 
 
 ```sh
-Khiops 10.2.4
+Khiops {{ KHIOPS_VERSION }}
 
 Drivers:
     'GCS driver' for URI scheme 'gs'
@@ -149,7 +149,7 @@ You should see an output indicating that the GCS driver is loaded and ready to u
 
 
 ```sh
-Khiops 10.2.4
+Khiops {{ KHIOPS_VERSION }}
 
 Drivers:
     'S3 driver' for URI scheme 's3'

@@ -33,7 +33,7 @@ To run a specific scenario file located in your local directory, use the followi
 ```bash
 docker run -v $PWD:/my_data \
   -it khiopsml/khiops-ubuntu
-  khiops -b -i /my_data/my_scenario.kh
+  khiops -b -i /my_data/my_scenario._kh
 ```
 
 This command mounts your current directory (`$PWD`) to `/my_data` in the container and runs the specified scenario file using Khiops.
@@ -67,7 +67,7 @@ This command maps port 11000 on your host to the container, enabling you to subm
 To process a scenario, send a POST request to the REST endpoint using standard HTTP tools (cURL, wget, postman...):
 
 ```bash
-curl -k -X POST -d "{\"scenario\": \"/my_data/my_scenario.kh\"}" "https://localhost:11000/v1/batch" \
+curl -k -X POST -d "{\"scenario\": \"/my_data/my_scenario._kh\"}" "https://localhost:11000/v1/batch" \
  -H "accept: application/json"
 ```
 

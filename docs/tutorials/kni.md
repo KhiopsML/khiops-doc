@@ -1,4 +1,4 @@
-# Real-Time Deployment with KNI
+# Real-Time Deployment
 
 The **Khiops Native Interface (KNI)** is a lightweight dynamically-linked library (DLL) that provides an ANSI C interface which enables the seamless integration of Khiops models directly into your applications. Unlike the standalone Khiops executable, KNI facilitates direct in-memory model inference, eliminating the need for temporary files or external calls.
 
