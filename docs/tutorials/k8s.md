@@ -78,7 +78,7 @@ spec:
 
 ### Explanation
 
-- **slotsPerWorker**: Defines the number of processes per worker pod. It's recommended to set this equal to the number of CPU cores requested for optimal performance.
+- **slotsPerWorker**: Defines the number of processes per worker pod (must be set to **at least 2** for Khiops to function correctly). It's recommended t**o set this equal to the number of CPU cores** requested for optimal performance. In the example, each of the 2 worker pods runs 4 virtual cpus, totaling 8 processes.
 - **runPolicy**: Specifies policies for cleaning up pods and setting a time-to-live for finished jobs.
 - **mpiReplicaSpecs**: Defines the specifications for the launcher and worker pods. The launcher initiates the job, while workers perform the computations.
 

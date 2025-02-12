@@ -110,6 +110,4 @@ The output file (`R_Iris.txt`) will contain the recoded data, which includes the
 
 ## Conclusion
 
-KNI provides a powerful and flexible solution for real-time deployment of Khiops models. Its efficiency, versatility, and ease of integration make it an ideal choice for developers and integrators looking to enhance their data science workflows with real-time scoring capabilities. By leveraging KNI, you can ensure that your applications are responsive, efficient, and capable of handling complex data processing tasks in real-time. Additionally, KNI can be used in conjunction with Khiops [drivers][drivers] to seamlessly access and process data stored in cloud storage solutions, further enhancing its utility in diverse deployment scenarios.
-
-[drivers]: ./storage.md
+KNI provides a powerful and flexible solution for real-time deployment of Khiops models. Its efficiency, versatility, and ease of integration make it an ideal choice for developers and integrators looking to enhance their data science workflows with real-time scoring capabilities. By leveraging KNI, you can ensure that your applications are responsive, efficient, and capable of handling complex data processing tasks in real-time. 
