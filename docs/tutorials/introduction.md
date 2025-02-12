@@ -18,8 +18,9 @@ This introduction will guide you through the foundational points and help you na
 
 - **Scikit-learn-like API tutorials**: Learn the basics of Khiops with examples on quickstarts, single- and multi-table examples, and hands-on notebooks that showcase Khiops' technical advantages, such as automated data preparation and multi-table processing.
 - **Core API & dictionaries**: Dive deeper into advanced capabilities, including dictionary usage for scalable, production-ready workflows.
+- **Deployment & Integration**: Learn how to deploy Khiops models efficiently in real-world environments, with support for cloud storage, containerized execution, and real-time inference.
 
-In the coming weeks, we will introduce a new "**Deployment & Integration**" section to cover advanced features that are already developed but still in the process of being documented. This will include native deployment on Kubernetes, as well as drivers for reading directly from HDFS, GCS, or S3 buckets.
+Whether you’re exploring Khiops for rapid prototyping or integrating it into large-scale industrial workflows, this section will provide you with the necessary guidance to leverage its full potential.
 
 !!! info    
     Questions about deploying Khiops in specific environments (e.g. Hadoop, Openshift, K8s) can be addressed in our [Q&A section][discussions] or through our [contact form][contact-form].
