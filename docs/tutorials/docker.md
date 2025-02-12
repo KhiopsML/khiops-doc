@@ -2,7 +2,7 @@
 
 Docker provides a convenient way to run Khiops in a consistent and documented environment, making it easier to manage dependencies and ensure clarity across different systems. This is particularly useful for running Khiops on different operating systems, ensuring consistency across development and production setups.
 
-With Khiops official Docker images, you can execute Khiops commands in isolated environments while benefiting from containerization’s flexibility and portability. 
+With Khiops official Docker images, you can execute Khiops commands in isolated environments while benefiting from containerization's flexibility and portability. 
 
 ## Why Use Docker for Khiops?
 
