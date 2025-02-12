@@ -59,6 +59,8 @@ extra:
   KHIOPS_SAMPLES_VERSION: 10.2.4
   KHIOPS_VIZ_VERSION: 11.0.9
   KHIOPS_COVIZ_VERSION: 11.1.2
+  KHIOPS_GCS_DRIVER_VERSION: 0.0.11
+  KHIOPS_S3_DRIVER_VERSION: 0.0.13
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/KhiopsML/khiops
@@ -136,10 +138,11 @@ nav:
           - Single-Table Tutorial: tutorials/Notebooks/single_table_classifier_core.ipynb
           - Multi-Table Concepts: tutorials/kdic_multi_table.md
           - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier_core.ipynb
-#      - Deployment & Integration:
-#          - Model Deployment: tutorials/---.md
-#          - Cloud Storages: tutorials/storage.md
-#          - Khiops on Kubernetes: tutorials/k8s.md
+      - Deployment & Integration:
+          - Cloud Storages: tutorials/storage.md
+          - Running Khiops with Docker: tutorials/docker.md
+          - Khiops on Kubernetes: tutorials/k8s.md
+          - Real-time Deployment: tutorials/kni.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
       - An Original Formalism: learn/modl.md
