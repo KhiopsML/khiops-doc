@@ -22,7 +22,7 @@ If you installed Khiops through Conda as recommended, you can install the driver
 conda install -c khiops khiops-driver-gcs
 ```
 
-??? warning "If you installed Khiops using `pip` **on Linux**"
+??? warning "If you installed Khiops using `pip` **on Linux**... "
     === "Ubuntu / Debian"
 
         ```sh
@@ -117,7 +117,7 @@ To start using Khiops with your data on S3, install the S3 driver package alongs
 conda install -c khiops khiops-driver-s3
 ```
 
-??? warning "If you installed Khiops using `pip` **on Linux**"
+??? warning "If you installed Khiops using `pip` **on Linux**..."
     === "Ubuntu / Debian"
 
         ```sh
