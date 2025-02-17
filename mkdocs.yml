@@ -139,9 +139,9 @@ nav:
           - Multi-Table Concepts: tutorials/kdic_multi_table.md
           - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier_core.ipynb
       - Deployment & Integration:
-          - Cloud Storages: tutorials/storage.md
+          - Cloud Storage: tutorials/storage.md
           - Running Khiops with Docker: tutorials/docker.md
-          - Khiops on Kubernetes: tutorials/k8s.md
+          - Distibuted execution with k8s: tutorials/k8s.md
           - Real-time Deployment: tutorials/kni.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md

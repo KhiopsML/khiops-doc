@@ -1,4 +1,4 @@
-# Running Khiops on Kubernetes
+# Distibuted execution with k8s
 
 Kubernetes is a powerful platform for managing containerized applications, and it's an excellent choice for deploying Khiops in a **scalable and distributed manner**. One of the most remarkable features of Khiops is its ability to run seamlessly across multiple machines, thanks to its usage of MPI (Message Passing Interface). This means you can effortlessly scale your Khiops deployments using the same [docker image][dockerhub] across a Kubernetes cluster, making it incredibly straightforward to leverage distributed computing resources.
 
