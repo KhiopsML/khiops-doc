@@ -1,4 +1,4 @@
-# Cloud Storages
+# Cloud Storage
 
 Khiops seamlessly integrates with cloud storage services, enabling **direct reading and writing of datasets stored in AWS S3 and Google Cloud Storage (GCS)** buckets. By using Khiops dedicated cloud storage drivers, you can process large-scale datasets **without having to manually download or transfer files**, significantly improving efficiency and scalability in cloud-based workflows.
 
@@ -12,7 +12,7 @@ With these drivers, Khiops treats cloud storage **just like a local filesystem**
 
 ## Using Khiops with Google Cloud Storage (GCS)
 
-Khiops can read and write datasets stored in GCS buckets using the `khiopsdriver-gcs` driver. Once configured, you can reference GCS paths directly in Khiops commands, scenarios and the GUI (where applicable) using the format `gs://<bucket-name>/path/to/file.csv`.
+Khiops can read and write datasets stored in GCS buckets using the `khiopsdriver-gcs` package. Once configured, you can reference GCS paths directly in Khiops commands, scenarios and the GUI (where applicable) using the format `gs://<bucket-name>/path/to/file.csv`.
 
 ### Installation
 
@@ -145,7 +145,7 @@ To verify the installation, run:
 khiops -s
 ```
 
-You should see an output indicating that the GCS driver is loaded and ready to use for data files following the URI `s3` scheme, as follow:
+You should see an output indicating that the S3 driver is loaded and ready to use for data files following the URI `s3` scheme, as follows:
 
 
 ```sh
