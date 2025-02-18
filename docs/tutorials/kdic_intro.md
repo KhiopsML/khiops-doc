@@ -1,4 +1,3 @@
-
 ## Benefits of Using Khiops Dictionaries
 
 Using the Khiops Core API, particularly through the manipulation of Khiops dictionaries, significantly accelerates the deployment of machine learning models into production. By enabling users to easily describe their data and incorporate business knowledge during the data preparation step, dictionaries streamline workflows and enhance efficiency. Moreover, they serve as a comprehensive record of all manual and automated processing steps required for model training, and are executed seamlessly by Khiops during inference.
@@ -51,14 +50,14 @@ This section illustrates how dictionaries are used throughout the machine learni
 In the standard case of machine learning, where training data is encoded in a single-table format, the dictionary file provided by the user takes its simplest form, just describing the variables with their names and types.
 
 !!! success "Example of a simple dictionary describing a single training table"
-    ```python
+    ```kdic
     Dictionary	iris
     {
         Numerical	SepalLength	;
         Numerical	SepalWidth		;
         Numerical	PetalLength		;
         Numerical	PetalWidth		;
-        Categorical	Class	;	
+        Categorical	Class	;
     };
     ```
 
