@@ -141,7 +141,7 @@ nav:
       - Deployment & Integration:
           - Cloud Storage: tutorials/storage.md
           - Running Khiops with Docker: tutorials/docker.md
-          - Distibuted execution with k8s: tutorials/k8s.md
+          - Distibuted Execution with k8s: tutorials/k8s.md
           - Real-time Deployment: tutorials/kni.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
@@ -153,6 +153,9 @@ nav:
       - Bibliography: references.md
   - API Reference:
       - Python API Docs: api-docs/python-api.md
+      - Inputs-outputs:
+          - Database Files: api-docs/kdic/database-files.md
+          - Dictionary Files: api-docs/kdic/dictionary-files.md
       - Dictionary Rules:
           - Basic:
             - Numerical Comparisons: api-docs/kdic/numerical-comparisons.md
@@ -178,6 +181,31 @@ nav:
             - Recoding Rules: api-docs/kdic/recoding-rules.md
             - Predictor Rules: api-docs/kdic/predictor-rules.md
             - Coclustering Rules: api-docs/kdic/coclustering-rules.md
+  - UI Reference:
+      - Khiops:
+        - Dictionary File: ui-docs/khiops/dictionary.md
+        - Train Database: ui-docs/khiops/train.md
+        - Parameters : ui-docs/khiops/parameters.md
+        - Results: ui-docs/khiops/results.md
+        - Tools Menu: ui-docs/khiops/tools.md
+        - Help Menu: ui-docs/khiops/help.md
+      - Khiops Coclustering:
+        - Presentation: ui-docs/coclustering/presentation.md
+        - Dictionary File: ui-docs/coclustering/dictionary.md
+        - Database: ui-docs/coclustering/train.md
+        - Parameters : ui-docs/coclustering/parameters.md
+        - Results: ui-docs/coclustering/results.md
+        - Tools Menu: ui-docs/coclustering/tools.md
+        - Help Menu: ui-docs/coclustering/help.md
+      - Khiops Visualization:
+        - First Steps: ui-docs/visualization/intro.md
+        - Functionalities: ui-docs/visualization/functionalities.md
+        - Technical Limits: ui-docs/visualization/limits.md
+      - Khiops Covisualization:
+        - First Steps: ui-docs/covisualization/intro.md
+        - Views and Features: ui-docs/covisualization/features.md
+        - Managing 3 dimensions and more: ui-docs/covisualization/high-dimensions.md
+        - Technical Limits: ui-docs/covisualization/limits.md
   - Discussions: https://github.com/orgs/KhiopsML/discussions
   - Contact Us: contact.md
 #    - Blog:
