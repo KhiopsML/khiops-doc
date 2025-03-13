@@ -227,4 +227,6 @@ For an efficient coding, it is necessary to keep in memory the sorted lists of a
 !!! tip "Data Cleaning Not Required"
     Khiops eliminates the need for cleaning your training data, and even discourages it to avoid introducing bias into the data. The library incorporates the missing values as predictive features rather than discarding them. In the case of discretization models, missing values are treated as an extreme value, while for modality grouping models, they are treated as a distinct modality. This enables the model to capture informative patterns the missing values might offer for classifying the target variable. During inference, any unknown modalities encountered are automatically categorized as missing values.
    
-
+!!! tip "Invariance to Monotonic Transformations"
+    **Khiops’ discretization is based on value ranks**, meaning it is invariant to any monotonic transformation (log, square root, square, exponential, etc.). Whether a numerical feature is directly used or transformed, the resulting discretization remains **unchanged**.
+    As a result, **users do not need to apply transformations like log-scaling or standardization**.
