@@ -12,3 +12,5 @@ docs/tutorials/Notebooks/mt_results
 # Python
 __pycache__
 *.egg-info
+# VS
+.vs

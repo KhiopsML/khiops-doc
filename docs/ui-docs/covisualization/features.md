@@ -1,6 +1,7 @@
 #  The different views and features
 
-We will now explore the various features offered by Khiops Covisualization using a two dimensional example. Khiops covisualization allows to explore coclustering of more than 2 dimensions: these features are detailed in the section “5. Managing three dimensions or more”.
+We will now explore the various features offered by Khiops Covisualization using a two dimensional example. 
+Khiops covisualization allows to explore coclustering of more than 2 dimensions: these features are detailed in the section [`Managing three dimensions or more`](high-dimensions.md).
 
 ##  Hierarchy
 
@@ -14,7 +15,7 @@ A cluster is represented in three ways:
 
   - ![](../../assets/images-khiops-guides/covisualization/image22.png)A folded cluster: it contains clusters that are not visible in this unfolding. You can open this cluster.
 
-  - ![](../../assets/images-khiops-guides/covisualization/image23.png)A “terminal” cluster: it does not contain any clusters. You can neither open nor close it.
+  - ![](../../assets/images-khiops-guides/covisualization/image23.png)A "terminal" cluster: it does not contain any clusters. You can neither open nor close it.
 
 Navigation, selection, folding and unfolding can be done via the arrow keys.
 
@@ -25,13 +26,13 @@ Clusters can be renamed by double-clicking on the cluster name. To restore its o
 ## ![](../../assets/images-khiops-guides/covisualization/image8.png)  
 Unfold Hierarchy
 
-The best way to fold or unfold hierarchies is to use the “Unfold hierarchy” view. The button “Unfold hierarchy” on the top of the user interface opens a new window.
+The best way to fold or unfold hierarchies is to use the "Unfold hierarchy" view. The button "Unfold hierarchy" on the top of the user interface opens a new window.
 
 This window allows choosing the best number of clusters on both dimensions: optimal unfolding of each partition so as to keep the most informative model. The top chart shows the evolution of the level according to the number of clusters, that is the percentage of information kept at each granularity of the hierarchy. This allows obtaining a simplified and easily interpretable hierarchy with few clusters while keeping most of the information. In real cases, 80% of the information often comes from a small fraction of the clusters.
 
 The bottom chart shows the detailed number of clusters for each dimension (a mouse-click on the legend highlights the corresponding curve).
 
-Once the number of clusters is chosen (and therefore the information kept with the coclustering), by clicking the button “Ok”, you return to the main window where the hierarchies are now unfolded.
+Once the number of clusters is chosen (and therefore the information kept with the coclustering), by clicking the button "Ok", you return to the main window where the hierarchies are now unfolded.
 
 The checkboxes on the bottom of this view allow selecting which hierarchy to unfold. By default all hierarchies are unfolded.
 
@@ -39,7 +40,7 @@ The checkboxes on the bottom of this view allow selecting which hierarchy to unf
 
 ##  Save Current Hierarchy
 
-Once you have chosen the desired granularity of the coclustering, you can generate a simplified coclustering corresponding to the current unfolding via the menu “Save current hierarchy...”.
+Once you have chosen the desired granularity of the coclustering, you can generate a simplified coclustering corresponding to the current unfolding via the menu "Save current hierarchy...".
 
 ![](../../assets/images-khiops-guides/covisualization/image25.png)
 
@@ -53,15 +54,15 @@ Given a selected cluster in the hierarchy view, the composition view presents in
 
 ![](../../assets/images-khiops-guides/covisualization/image26.png)
 
-This table has one line per item, the value of which is displayed in the column “Value”. The column “Cluster” contains the cluster that contains the item in the current unfolding.
+This table has one line per item, the value of which is displayed in the column "Value". The column "Cluster" contains the cluster that contains the item in the current unfolding.
 
-The column “Terminal Cluster” contains the smallest cluster in the hierarchy that contains the item. This is not necessarily a cluster visible in the hierarchy view unless the hierarchy is completely unfolded.
+The column "Terminal Cluster" contains the smallest cluster in the hierarchy that contains the item. This is not necessarily a cluster visible in the hierarchy view unless the hierarchy is completely unfolded.
 
-The column “Rank” provides the ordering of the clusters in the hierarchy view. A cluster with a rank value of 1 is the first one visible in the hierarchy.
+The column "Rank" provides the ordering of the clusters in the hierarchy view. A cluster with a rank value of 1 is the first one visible in the hierarchy.
 
-The “Typicality” of an item is a value between 0 and 1: items with typicality close to 1 are the most representative of the cluster, while items with low typicality are the least representative.
+The "Typicality" of an item is a value between 0 and 1: items with typicality close to 1 are the most representative of the cluster, while items with low typicality are the least representative.
 
-The search edit box allows finding values in the selected cluster. You can find all items containing the substring entered in the search edit box. In the example below, the user finds the item with value “Adm-clerical”. In the hierarchy, the cluster “Adm-clerical, Protec ..” is highlighted; this is the cluster that owns this item.
+The search edit box allows finding values in the selected cluster. You can find all items containing the substring entered in the search edit box. In the example below, the user finds the item with value "Adm-clerical". In the hierarchy, the cluster "Adm-clerical, Protec .." is highlighted; this is the cluster that owns this item.
 
 ![](../../assets/images-khiops-guides/covisualization/image27.JPG)
 
@@ -73,7 +74,7 @@ This table is a flat view of the hierarchy. Each line of the table contains a te
 
 ![](../../assets/images-khiops-guides/covisualization/image28.png)
 
-The “Current Cluster” view gives useful informations on clusters:
+The "Current Cluster" view gives useful informations on clusters:
 
   - Father: the cluster containing this cluster.
 
@@ -93,7 +94,7 @@ By default, the columns Father, Hierarchical Level and Rank are hidden but they 
 
 This view allows visualizing the distribution of a dimension on the selected cluster of the other dimension.
 
-In the example below, the upper histogram represents the distribution of “occupation” for the selected cluster “Masters” of education. The lower histogram represents the distribution of “education” for the selected cluster “B11” of “occupation”.
+In the example below, the upper histogram represents the distribution of "occupation" for the selected cluster "Masters" of education. The lower histogram represents the distribution of "education" for the selected cluster "B11" of "occupation".
 
 ![](../../assets/images-khiops-guides/covisualization/image29.JPG)
 
@@ -107,13 +108,13 @@ The different views are interactive: when one unfolds a hierarchy, it modifies t
 
 ![](../../assets/images-khiops-guides/covisualization/image30.JPG)
 
-##  Dimensions
+## Dimensions
 
 This view gives a global view of the state of the coclustering at the current level of unfolding: for each dimension it shows the selected cluster and the number of cluster for the current unfolding.
 
 ![](../../assets/images-khiops-guides/covisualization/image31.png)
 
-##  Co-occurrence matrix
+## Co-occurrence matrix
 
 ![](../../assets/images-khiops-guides/covisualization/image32.png)
 
@@ -123,7 +124,7 @@ Accordingly, the content of the matrix is modified if you fold or unfold the hie
 
 Selecting a cell in the matrix (by clicking) amounts to select two clusters, one on each hierarchy. And *vice versa*, selecting a cluster in the hierarchy view amounts to select another cell in the matrix. You can zoom in the matrix with the mouse wheel, by click and drag, or by clicking on the ‘+’ and ‘-‘magnifying glass icons.
 
-###  Criteria
+### Criteria
 
 The matrix allows visualizing five criteria. The visualized criterion is chosen by clicking on the combo on the top of the matrix.
 
@@ -145,37 +146,37 @@ These informations are also displayed on a tooltip by moving the mouse over the 
 
 ![](../../assets/images-khiops-guides/covisualization/image36.png)
 
-###  Axis representation
+### Axis representation
 
-By default, the axis of the matrix represent the cluster size: range of the interval in case of a numerical cluster and number of values in the group in case of a categorical cluster. You can choose another representation with the button below the matrix. By choosing “Frequency”, the axis represent the frequency of the clusters.
+By default, the axis of the matrix represent the cluster size: range of the interval in case of a numerical cluster and number of values in the group in case of a categorical cluster. You can choose another representation with the button below the matrix. By choosing "Frequency", the axis represent the frequency of the clusters.
 
 ![](../../assets/images-khiops-guides/covisualization/image37.png)
 
-###  Contrast
+### Contrast
 
 The slide bar located at the right of the matrix increases the color contrast in the matrix : the red cells are redder and blue cells are bluer. The picture bellow shows the same matrix with different contrasts.
 
 ![](../../assets/images-khiops-guides/covisualization/image38.png)![](../../assets/images-khiops-guides/covisualization/image39.png)
 
-###  Summary
+### Summary
 
 ![](../../assets/images-khiops-guides/covisualization/image40.png)
 
-##  Annotation
+## Annotation
 
 This view is a simple text box that allows annotating each cluster. The annotation is saved int the khcj file.
 
-##  External data
+## External data
 
 ![](../../assets/images-khiops-guides/covisualization/image41.JPG)
 
-Khiops Covisualization can integrate external data associated to each cluster element. The selection of an item in the composition view display the corresponding data in the “External data” view. There are 3 types of data fields: textual, numerical and categorical. The display is optimized according to the data type. Several fields can be associated for each item.
+Khiops Covisualization can integrate external data associated to each cluster element. The selection of an item in the composition view display the corresponding data in the "External data" view. There are 3 types of data fields: textual, numerical and categorical. The display is optimized according to the data type. Several fields can be associated for each item.
 
 ![](../../assets/images-khiops-guides/covisualization/image42.png)
 
-###  How to import external data
+### How to import external data
 
-The external data is imported via text files. There is one file for each dimension. The external data files are tab-separated value files; the first line of these files contains the column labels. There is one column for each data field and a “key” column to link data to items.
+The external data is imported via text files. There is one file for each dimension. The external data files are tab-separated value files; the first line of these files contains the column labels. There is one column for each data field and a "key" column to link data to items.
 
 The following table shows a sample of an external data file. It associates three fields to each item: a text, the age and the weight.
 
@@ -184,7 +185,7 @@ The following table shows a sample of an external data file. It associates three
 | Bachelors | Some text | 25  | 60     |
 | Masters   | ...       | ... | ...    |
 
-Importing the external files into Khiops Covisualization is performed by clicking on the button “External data...”
+Importing the external files into Khiops Covisualization is performed by clicking on the button "External data..."
 
 ![](../../assets/images-khiops-guides/covisualization/image43.png)
 
@@ -192,19 +193,19 @@ A new window appears, to choose the location of the external data file.
 
 ![](../../assets/images-khiops-guides/covisualization/image44.JPG)
 
-Once the file location is filled, you have to choose the join key among the columns of the file and the dimension to which the data belongs. After the import (“Load datas” button), Khiops Covisualization displays these data in the “external data” view.
+Once the file location is filled, you have to choose the join key among the columns of the file and the dimension to which the data belongs. After the import ("Load datas" button), Khiops Covisualization displays these data in the "external data" view.
 
 ![](../../assets/images-khiops-guides/covisualization/image45.JPG)
 
-###  Details on the format of external data files
+### Details on the format of external data files
 
 As presented above, the external data files are tab-separated value files. The text type has a special format. This format allows you to display multiple lines in a text field for an item.
 
 All characters are allowed, however three characters have a special role:
 
-  - The field separator : “\\t” (tab)
+  - The field separator : "\\t" (tab)
 
-  - The new line character : “\\n” (eol)
+  - The new line character : "\\n" (eol)
 
   - The beginning or end of field indicator : «"» (double-quote)
 
@@ -243,7 +244,7 @@ If a field contains the tab character and/or the new line character, this field 
 </tbody>
 </table>
 
-##  Interaction between views
+## Interaction between views
 
 All views are interactive : an action on a view often changes several other views. Screenshots bellows present several interactions.
 

@@ -30,7 +30,10 @@ A section is selected when it is surrounded by blue lines.
 
 ![](../../assets/images-khiops-guides/covisualization/image13.png)
 
-Using ![](../../assets/images-khiops-guides/covisualization/image14.png) (or \[Ctrl-C\]) you get a picture in bitmap format that you can import in any image editing tool. Using ![](../../assets/images-khiops-guides/covisualization/image15.png) (or \[Ctrl-D\]) you get the raw data (a table in CSV format), that you can import in any text editing tool.
+<!--- TODO revoir l'insertion des images iamge14 et image 15 pour supprimer le passage a la ligne --->
+
+Using ![](../../assets/images-khiops-guides/covisualization/image14.png) (or [Ctrl-C\]) you get a picture in bitmap format that you can import in any image editing tool.
+Using ![](../../assets/images-khiops-guides/covisualization/image15.png) (or \[Ctrl-D\]) you get the raw data (a table in CSV format), that you can import in any text editing tool. 
 
 ##  Table display
 

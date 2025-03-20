@@ -18,4 +18,4 @@ Depending on the analysis type, the panes and their contents are not the same. K
 
   - Evaluation: displays on one pane the test, train and evaluation reports.
 
-The description of all these reports can be found in section 3.3. of Khiops Guide.
+The description of the criteria used in these reports can be found [`here`](criteria.md).

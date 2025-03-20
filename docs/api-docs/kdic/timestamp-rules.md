@@ -33,9 +33,9 @@ Recodes a categorical value into a timestamp value using a timestamp format.
 
 !!! example
 
-  ```kdic
-  AsTimestamp(“2014-01-15 18:25:00”, “YYYY-MM-DD HH:MM:SS”).
-  ```
+    ```kdic
+    AsTimestamp("2014-01-15 18:25:00", "YYYY-MM-DD HH:MM:SS").
+    ```
 
 ## GetDate
 

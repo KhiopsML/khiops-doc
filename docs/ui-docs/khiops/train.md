@@ -1,6 +1,6 @@
 # Train database
 
-![](../../assets/images-khiops-guides/khiops/image12.png)
+![](../../assets/images-khiops-guides/khiops/DataDictionary_TrainDatabase.png)
 
 **Database files**: name of the database files to analyse.
 
@@ -32,16 +32,23 @@ Another way to build train or test samples is to use a selection variable and a 
 
 - None: no test database is used.
 
-![](../../assets/images-khiops-guides/khiops/image7.png)For multi-table databases, there are potentially several lines in the array of database files. The data path (Data root, Path) represents the semantic path of the table, that is, its source dictionary followed by the chain of variable names leading to it. All these names separated by a backquote " \` " form the data path. In the GUI, data paths are automatically build, and one data table file must be specified per data path in the multi-table dictionary. Each data table file must be sorted by key. In root tables, keys play for role of identifiers, so that root entities must be unique per key. This is not the case for sub-entities in zero to many relationship with the root entity.
+<!---[](../../assets/images-khiops-guides/khiops/Multi-tablePicto.png)--->
+For *multi-table* databases, there are potentially several lines in the array of database files. 
+The data path (Data root, Path) represents the semantic path of the table, that is, its source dictionary followed by the chain of variable names leading to it. 
+All these names separated by a backquote " \` " form the data path. In the GUI, data paths are automatically build, and one data table file must be specified per 
+data path in the multi-table dictionary. Each data table file must be sorted by key. In root tables, keys play for role of identifiers, so that root entities must 
+be unique per key. This is not the case for sub-entities in zero to many relationship with the root entity.
 
-### Inspect test database settings
+## Inspect test database settings
 
 This action allows to inspect the test database parameters.
 
 The test parameters are editable only in the case of a specific test database.
 
-![](../../assets/images-khiops-guides/khiops/image13.png)
+![](../../assets/images-khiops-guides/khiops/TestDatabase.png)
 
 The test database is defined exactly in the same way as the train database.
 
-In the case of a specific database, there is an additional button to import the train database parameters. It allows to fill all the test database fields, by copying them from the 'Train database' pane. The only change is the 'Sampling mode' which value is inverted in the test parameters, in order to get a test sample that is the exact complementary of the train sample.
+In the case of a specific database, there is an additional button to import the train database parameters. 
+It allows to fill all the test database fields, by copying them from the 'Train database' pane. 
+The only change is the 'Sampling mode' which value is inverted in the test parameters, in order to get a test sample that is the exact complementary of the train sample.

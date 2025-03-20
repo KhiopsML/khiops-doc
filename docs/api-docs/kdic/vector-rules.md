@@ -1,4 +1,4 @@
-## Vector Rules
+# Vector Rules
 
 ## VectorC
 
