@@ -1,4 +1,4 @@
-##  Results
+#  Results
 
 ![](../../assets/images-khiops-guides/coclustering/image14.png)
 

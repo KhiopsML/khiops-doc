@@ -34,7 +34,7 @@ Recode a categorical value into a date using a date format.
 !!! example
 
     ```kdic
-    AsDate(“2014-01-15”, “YYYY-MM-DD”).
+    AsDate("2014-01-15", "YYYY-MM-DD").
     ```
 
 ## Year

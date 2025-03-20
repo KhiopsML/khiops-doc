@@ -156,6 +156,7 @@ nav:
       - Inputs-outputs:
           - Database Files: api-docs/kdic/database-files.md
           - Dictionary Files: api-docs/kdic/dictionary-files.md
+          - Technical Limits: api-docs/kdic/limits.md
       - Dictionary Rules:
           - Basic:
             - Numerical Comparisons: api-docs/kdic/numerical-comparisons.md
@@ -181,6 +182,11 @@ nav:
             - Recoding Rules: api-docs/kdic/recoding-rules.md
             - Predictor Rules: api-docs/kdic/predictor-rules.md
             - Coclustering Rules: api-docs/kdic/coclustering-rules.md
+          - Block and sparse data Rules: 
+            - Introduction : api-docs/kdic/intro-block.md
+            - Blocks of variables : api-docs/kdic/block-sparse-rules.md
+            - Sparse data format : api-docs/kdic/sparse-format.md
+            - Variable block rules : api-docs/kdic/block-rules.md
   - UI Reference:
       - Khiops:
         - Dictionary File: ui-docs/khiops/dictionary.md
@@ -200,6 +206,7 @@ nav:
       - Khiops Visualization:
         - First Steps: ui-docs/visualization/intro.md
         - Functionalities: ui-docs/visualization/functionalities.md
+        - Criteria Definitions: ui-docs/visualization/criteria.md
         - Technical Limits: ui-docs/visualization/limits.md
       - Khiops Covisualization:
         - First Steps: ui-docs/covisualization/intro.md

@@ -1,6 +1,6 @@
-##  Parameters
+#  Parameters
 
-###  Coclustering parameters
+##  Coclustering parameters
 
 ![](../../assets/images-khiops-guides/coclustering/image13.png)
 
@@ -10,7 +10,7 @@ There must be at least two numerical or categorical input coclustering variables
 
 **Frequency variable**: optional field. Name of a variable that contains the frequency of the records. Using the frequency variable is equivalent to duplicating the records in the input database, where the number of duplicates per record is equal to the frequency.
 
-###  System parameters
+##  System parameters
 
 **Max number of error messages in log**: allows to control the size of the log, by limiting the number of messages, warning or errors (default: 20).
 

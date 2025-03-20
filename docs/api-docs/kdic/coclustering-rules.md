@@ -1,4 +1,4 @@
-## Coclustering Rules
+# Coclustering Rules
 
 A coclustering model is stored using a `DataGrid` structure. With a `DataGridDeployment` structure,
 it can be deployed on a given dimension variable, for a distribution conditional on the values on

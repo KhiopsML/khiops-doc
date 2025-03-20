@@ -1,36 +1,26 @@
-##  Tools
+#  Tools
 
 ![](../../assets/images-khiops-guides/coclustering/image16.png)
 
-The actions available from the tools menu are
+The actions available from the tools menu are :
 
-  - **Train coclustering** 
+- Train coclustering : 
+trains a coclustering model given the coclustering parameters
 
-> trains a coclustering model given the coclustering parameters
+- Simplify coclustering... :
+builds a simplified coclustering model and opens a new window named *Coclustering simplification*
 
-  - **Simplify coclustering…**
+- Extract clusters... :
+extracts clusters in a text file for a given coclustering variable and opens a new window named *Cluster extraction*
 
-> builds a simplified coclustering model 
-> 
-> opens a new window named *Coclustering simplification*
-
-  - **Extract clusters…**
-
-> extracts clusters in a text file for a given coclustering variable
-> 
-> opens a new window named *Cluster extraction*
-
-  - **Prepare deployment…**
-
-> enables the deployment of a coclustering model by the means of a Khiops deployment dictionary 
-> 
-> opens a new window named *Coclustering deployment preparation*
+- Prepare deployment... :
+enables the deployment of a coclustering model by the means of a Khiops deployment dictionary and opens a new window named *Coclustering deployment preparation*
 
 The first action, which trains a coclustering model from the data, is the main functionality of the tool. The required memory and computation time grow with the size of the data. As a rule of thumb, around 1 GB RAM is required per millions of data records and about one hour per million records is necessary to train the first coclustering model. This action is anytime: coclustering models are computed and continuously improved, with new solutions saved as soon as improvements are reached. The intermediate solutions can be used without waiting for the final solution, and the process can be stopped at any time to keep the last best solution.
 
 The three last application actions exploit an existing coclustering model. They use an input coclustering model as well as granularity constraints that indicate whether the coclustering should be exploited at fine or coarse grain level.
 
-###  Coclustering simplification
+##  Coclustering simplification
 
 This window enables the simplification of a coclustering model given granularity constraints.
 
@@ -44,7 +34,7 @@ Use the button **Simplify coclustering** to build the simplified coclustering re
 
 The input coclustering is simplified using a bottom-up hierarchical agglomeration of the parts, until all the active simplification constraints are fulfilled (max cell number, max preserved information and max part number per variable).
 
-####  Simplification parameters
+###  Simplification parameters
 
 **Simplification parameters**: recall of some coclustering statistics (read-only fields) and post-processing parameters to simplify the coclustering
 
@@ -60,7 +50,7 @@ The input coclustering is simplified using a bottom-up hierarchical agglomeratio
 
   - **Max preserved information** : max percentage of information to keep in the simplified coclustering (0 : no constraint). Low percentages correspond to weakly informative coarse models whereas high percentages correspond to highly informative detailed models.
 
-  - **Total part number**
+  - Total part number
 
   - **Max total part number : max number of total part number to keep in the simplified coclustering (0 : no constraint)**
 
@@ -76,7 +66,7 @@ The input coclustering is simplified using a bottom-up hierarchical agglomeratio
 
   - Frequency variable
 
-####  Results
+###  Results
 
 **Result files directory**
 
@@ -84,7 +74,7 @@ The input coclustering is simplified using a bottom-up hierarchical agglomeratio
 
 **Simplified coclustering report**: (default: SimplifiedCoclustering.khcj) name of the simplified coclustering report, that is the most detailed version of the input coclustering report that meets all the simplification constraints.
 
-###  Cluster extraction
+##  Cluster extraction
 
 This window enables the extraction of clusters for a given coclustering variable and given granularity constraints.
 
@@ -98,15 +88,15 @@ Use the button **Extract clusters** to extract the clusters from the input coclu
 
 The clusters are extracted for a given variable from the simplified coclustering (provided that simplification parameters are specified).
 
-####  Simplification parameters
+###  Simplification parameters
 
-See 2.5.1.1. Simplification parameters.
+See [`Simplification parameters`](#simplification-parameters)
 
-####  Cluster parameters
+###  Cluster parameters
 
 **Coclustering variable**: name of the coclustering variable containing the clusters to extract
 
-####  Results
+###  Results
 
 **Result files directory**
 
@@ -116,7 +106,7 @@ See 2.5.1.1. Simplification parameters.
 
 The cluster file is a text file with a header line, on record per line with tabulation as field separator.
 
-In case of a categorical variable, the fields are:
+In case of a *categorical* variable, the fields are:
 
   - Cluster: name of the cluster (group of values)
 
@@ -126,19 +116,22 @@ In case of a categorical variable, the fields are:
 
   - Typicality: interest measure of the value within its cluster
 
-> The special value “ \* ” represents any value not seen during training the coclustering.
+!!! warning "Star value"
 
-In case of a numerical variable, the fields are:
+    The special value '` * `' represents any value not seen during training the coclustering.
+    Please note that this special value cannot be used in a join operation.
+
+In case of a *numerical* variable, the fields are:
 
   - Cluster: name of the cluster (interval of values)
 
   - Lower bound: lower bound (excluded) of the interval
 
-  - upper bound: upper bound (included) of the interval
+  - Upper bound: upper bound (included) of the interval
 
-> Infinite lower and upper bounds are represented by empty fields. A cluster containing the missing value has empty fields for both the lower and upper bounds.
+Infinite lower and upper bounds are represented by empty fields. A cluster containing the missing value has empty fields for both the lower and upper bounds.
 
-###  Prepare deployment
+##  Prepare deployment
 
 This dialog box deals with the preparation of the deployment of a coclustering model by the means of a Khiops deployment dictionary. Deploying a coclustering model consists in associating each instance of one variable of a coclustering model to the label of its cluster, as well as creating new variables such as the distance of the instance of each cluster.
 
@@ -150,7 +143,7 @@ The obtained coclustering deployment dictionary allows the user to update a data
 
 **Input dictionary file**: name of the dictionary file, that corresponds to the deployment database.
 
-The input dictionary file must be opened from the main window using the “Dictionary file” menu.
+The input dictionary file must be opened from the main window using the "Dictionary file" menu.
 
 Use the button **Select input coclustering** to choose an input coclustering report.
 
@@ -160,39 +153,41 @@ To deploy a coclustering, use the **Deploy model** functionality of the **Khiops
 
 A coclustering model is able to extract correlation information between two or more variables, such as Text\*Word for a text corpus, Cookie\*Page for a web log corpus, Curve\*X\*Y for a curve corpus. Let us take the example of a curve corpus, represented by a database of points with three variables, CurveId, X and Y and one record for each point in the curve corpus. The coclustering model builds clusters of curves and intervals of X and Y, such that curves distributed similarly on the intervals of X and Y tend to be grouped together. When new curves are available, it is interesting to deploy them on the basis of the trained coclustering model. Deploying a new curve consists in creating new variables to enrich the curve description: closest cluster of curve, distance to each cluster of curves, number of points per interval of X or Y.
 
-####  Simplification parameters
+###  Simplification parameters
 
-See 2.5.1.1. Simplification parameters.
+See [`Simplification parameters`](#simplification-parameters)
 
-####  Deployment parameters
+###  Deployment parameters
 
 ![](../../assets/images-khiops-guides/coclustering/image20.png)
 
-**Input dictionary: name of the dictionary** that corresponds to the deployment database that contains the instances of interest.
+*Input dictionary*: name of the dictionary that corresponds to the deployment database that contains the instances of interest.
 
-**Input table variable: name of the table variable in the input dictionary that contains the detailed record for each instance of interest**.
+*Input table variable*: name of the table variable in the input dictionary that contains the detailed record for each instance of interest.
 
-**Coclustering deployed variable: name of the deployed variable, i.e. one of the coclustering variables, which represents the entity of interest**.
+*Coclustering deployed variable*: name of the deployed variable, i.e. one of the coclustering variables, which represents the entity of interest.
 
-**Build predicted cluster variable: indicates that the deployment model must generate a new variable containing the label of the cluster of the entity of interest**.
+*Build predicted cluster variable*: indicates that the deployment model must generate a new variable containing the label of the cluster of the entity of interest.
 
-**Build inter-cluster variables: indicates that the deployment model must generate new variables representing the distance of the entity of interest to each cluster**.
+*Build inter-cluster variables*: indicates that the deployment model must generate new variables representing the distance of the entity of interest to each cluster.
 
-**Build frequency recoding variables: indicates that the deployment model must generate new variables representing the frequency per cluster of the other coclustering variables**.
+*Build frequency recoding variables*: indicates that the deployment model must generate new variables representing the frequency per cluster of the other coclustering variables.
 
-**Output variable prefix: (default: P\_) prefix added to the deployment variables in the deployment dictionary**.
+*Output variable prefix*: (default: P\_) prefix added to the deployment variables in the deployment dictionary.
 
-![](../../assets/images-khiops-guides/coclustering/image21.png)Khiops guide with multi-table functionality is a prerequisite to the deployment of coclustering model.
+![](../../assets/images-khiops-guides/coclustering/image21.png)
+
+Multi-table functionality is a prerequisite to the deployment of coclustering model. See [`here`](../../api-docs/kdic/dictionary-files.md) for details.
 
 In the case of a curve corpus, curves are represented using a multi-table schema, with curves as the root entity, in 0 to n relationship with their points.
 
-  - Root entity: dictionary Curve(CurveId), with two variables
+- Root entity: dictionary Curve(CurveId), with two variables
     
       - Categorical CurveId
     
       - Table(Point) curvePoints
 
-  - Secondary entity: dictionary Point(CurveId), with three variables
+- Secondary entity: dictionary Point(CurveId), with three variables
     
       - Categorical CurveId
     
@@ -208,15 +203,15 @@ The input dictionary is *Curve*, the input table variable is *curvePoints* and t
 
   - P\_CurveIdPredictedLabel: predicted cluster label for variable CurveId
 
-  - P\_CurveIdDistance\<*CurveCluster*\>: distance to curve cluster, for each cluster of curves \<*CurveCluster*\>
+  - P\_CurveIdDistance <*CurveCluster*\>: distance to curve cluster, for each cluster of curves <*CurveCluster*\>
 
-  - P\_XFrequency\<*IntervalX*\>: number of points per interval for each interval of X \<*IntervalX*\>
+  - P\_XFrequency <*IntervalX*\>: number of points per interval for each interval of X <*IntervalX*\>
 
-  - P\_YFrequency\<*IntervalY*\>: number of points per interval for each interval of Y \<*IntervalY*\>
+  - P\_YFrequency <*IntervalY*\>: number of points per interval for each interval of Y <*IntervalY*\>
 
-Using the Khiops tool with its “Deploy model” functionality, a curve dataset can be deployed by the mean of the coclustering deployment model.
+Using the Khiops tool with its "Deploy model" functionality, a curve dataset can be deployed by the mean of the coclustering deployment model.
 
-####  Results
+###  Results
 
 **Result files directory**
 

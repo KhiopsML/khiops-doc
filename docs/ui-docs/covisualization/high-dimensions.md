@@ -8,7 +8,7 @@ The two dimensions of the co-occurrence matrix are always the main dimensions. B
 
 The indicators of the cells can be computed in two ways :
 
-  - If the “Conditional on context” button is checked, the indicators are computed with the instances associated to the context selected cluster
+  - If the "Conditional on context" button is checked, the indicators are computed with the instances associated to the context selected cluster
 
   - If it is not checked, the indicators are computed with all the instances (and have the same values whatever the context selected cluster)
 

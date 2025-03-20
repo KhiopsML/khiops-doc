@@ -1,4 +1,4 @@
-##  Database
+#  Database
 
 ![](../../assets/images-khiops-guides/coclustering/image12.png)
 
