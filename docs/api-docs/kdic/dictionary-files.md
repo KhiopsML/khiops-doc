@@ -1,68 +1,80 @@
-## Format of the dictionary files
+# Format of the dictionary files
 
-### Dictionary file
+## Dictionary file
 
 A dictionary file is a text file with extension .kdic, containing the definition of one or many dictionaries.
 
-### Dictionary
+## Dictionary
 
 A dictionary allows to define the name and type of native variables in a data table file, as well as the constructed variables described by means of derivation rules.
 
-```cpp
+```kdic
 Dictionary name
 {
-    {Variable definition}*
+    {Variable definition};
 };
 ```
 
 A dictionary is defined by its name and by the list of its variables, and optionally meta-data and a label.
 
-Variables within a dictionary can be organized into *variables blocks*. This advanced feature, used internally by Khiops for the management of sparse data, is detailed in section 8. Appendix: variable blocks and sparse data management.
+Variables within a dictionary can be organized into *variables blocks*. This advanced feature, used internally by Khiops for the management of sparse data, 
+is detailed [`here`](block-sparse-rules.md). 
 
-Meta-data is a list of keys or key value pairs (*\<key\>* or *\<key=value\>* for numerical or categorical constant values). Meta-data is used internally by Khiops to store information related to dictionaries or variables (to annotate the results of analysis). It is also used to store the external format of Date, Time and Timestamp variables, in case where the default format is not used. In the following example, the three predefined meta-data keys *DateFormat*, *TimeFormat, TimestampFormat* and *TimestampTZFormat* are used to specify the input and output format of the related variables:
+Meta-data is a list of keys or key value pairs (*<key>* or *<key=value>* for numerical or categorical constant values). 
+Meta-data is used internally by Khiops to store information related to dictionaries or variables (to annotate the results of analysis). 
+It is also used to store the external format of Date, Time and Timestamp variables, in case where the default format is not used. 
 
-```bash
-Date MyDate ; <DateFormat="DD/MM/YYYY">*
-Time MyTime ; <TimeFormat="HH.MM">
-Timestamp MyTimestamp ; <TimestampFormat="YYYY-MM-DD_HH:MM:SS">
-TimestampTZ MyTimestampTZ ; <TimestampTZFormat="YYYY-MM-DD_HH:MM:SS.zzzzz">
-```
+!!! example
+    
+    The four predefined meta-data keys *DateFormat*, *TimeFormat*, **TimestampFormat* and *TimestampTZFormat* are used to specify the input and 
+    output format of the related variables:
+    ```kdic
+    Date MyDate ; <DateFormat="DD/MM/YYYY">
+    Time MyTime ; <TimeFormat="HH.MM">
+    Timestamp MyTimestamp ; <TimestampFormat="YYYY-MM-DD_HH:MM:SS">
+    TimestampTZ MyTimestampTZ ; <TimestampTZFormat="YYYY-MM-DD_HH:MM:SS.zzzzz">
+    ```
 
 Each variable is defined by its type, its name and other optional information.
 
-```
+```kdic
 [Unused] type name [= derivation rule]; [meta-data] [// label]
 ```
 
-A variable can be ignored in the data processing (memory loading, modeling, deployment) if the keyword *Unused* is specified before the variable definition. Even though, Khiops is still aware of the variable, which allows to construct new variables derived from the ignored variable.
+A variable can be ignored in the data processing (memory loading, modeling, deployment) if the keyword *Unused* is specified before the variable definition. 
+Even though, Khiops is still aware of the variable, which allows to construct new variables derived from the ignored variable.
 
 The types are Categorical, Numerical, Date, Time or Timestamp for native variables.
 
-The names are case sensitive and are limited to 128 characters. In the case where they use characters other than alphanumeric characters, they must be surrounded by back-quotes. Tabulations are not allowed inside variables names (replace by blank characters). Back-quotes inside variable names must be doubled.
+The names are case sensitive and are limited to 128 characters. In the case where they use characters other than alphanumeric characters, 
+they must be surrounded by back-quotes. Tabulations are not allowed inside variables names (replace by blank characters). 
+Back-quotes inside variable names must be doubled.
 
-Derivation rules are formulas that allow to compute the value of variable from other values coming from other variables, rules, or constants.
+*Derivation rules* are formulas that allow to compute the value of variable from other values coming from other variables, rules, or constants.
 
 Each line in the definition of a dictionary can be commented, using "//" as a prefix.
 
 Some technical types are used by Khiops to specify prepocessing or modeling methods: for example Structure(DataGrid), Structure(Classifier).
 
-Example: dictionary file Iris.kdic with a constructed variable PetalArea
+!!! example
 
-```cpp
-Dictionary Iris
-{
-    Unused Numerical SepalLength;
-    Numerical SepalWidth;
-    Numerical PetalLength;
-    Numerical PetalWidth;
-    Numerical PetalArea = Product(PetalLength, PetalWidth);
-    Categorical Class; // Class variable
-};
-```
+    A dictionary file with a constructed variable *PetalArea*
+    ```kdic
+    Dictionary Iris
+    {
+        Unused Numerical SepalLength;
+        Numerical SepalWidth;
+        Numerical PetalLength;
+        Numerical PetalWidth;
+        Numerical PetalArea = Product(PetalLength, PetalWidth);
+        Categorical Class; // Class variable
+    };
+    ```
 
-### ![](../../assets/images-khiops-guides/khiops/image7.png) Multi-table dictionary
+## ![](../../assets/images-khiops-guides/khiops/image7.png) Multi-table dictionary
 
-Whereas most data mining tools work on instances\*variables flat tables, real data often have a structure coming from databases. Khiops allows to analyse multi-table databases, where the data come from several tables, with zero to one or zero to many relation between the tables.
+Whereas most data mining tools work on instances * variables flat tables, real data often have a structure coming from databases. 
+Khiops allows to analyse multi-table databases, where the data come from several tables, with zero to one or zero to many relation between the tables.
 
 To analyse multi-table databases, Khiops relies on:
 
@@ -74,7 +86,7 @@ To analyse multi-table databases, Khiops relies on:
 
 In this section, we present star schema, snowflake schemas, external tables, then give a summary.
 
-#### Star schema
+### Star schema
 
 For each dictionary, one or several key fields have to be specified in the first line of the dictionary definition, using parenthesis (e.g. *Dictionary Customer (id\_customer)*). In case of multiple key fields, they must be separated by commas (e.g. *Dictionary Customer (id\_country, id\_customer)*). The key fields must be chosen among the Categorical variables and must not be derived from a rule.
 
@@ -92,41 +104,44 @@ There must be one table file per table use in the schema. All tables must be sor
 
 ![Customer3tables.emf](../../assets/images-khiops-guides/khiops/image30.emf)
 
-Example: dictionary file Customer.kdic with a root dictionary *Customer* and a 0-1 relation with address and a 0-n relation with sales. A multi-table database related to this multi-table dictionary consists of three data table files, sorted by their key fields.
+!!! example
 
-```cpp
-Root Dictionary Customer(id_customer)
-{
-    Categorical id_customer;
-    Categorical Name;
-    Entity(Address) Address; // 0-1 relationship*
-    Table(Usage) Usages; // 0-n relationship*
-};
+    A dictionary file with a root dictionary *Customer*, a 0-1 relation with *Address* and a 0-n relation with *Usages* 
+    A multi-table database related to this multi-table dictionary consists of three data table files, sorted by their key fields.
 
-Dictionary Address(id_customer)
-{
-    Categorical id_customer;
-    Numerical StreetNumber;
-    Categorical StreetName;
-    Categorical City;
-};
+    ```kdic
+    Root Dictionary Customer(id_customer)
+    {
+        Categorical id_customer;
+        Categorical Name;
+        Entity(Address) Address; // 0-1 relationship
+        Table(Usage) Usages; // 0-n relationship
+    };
 
-Dictionary Usage(id_customer)
-{
-    Categorical id_customer;
-    Categorical Product
-    Timestamp Time;
-    Numerical Duration
-};
-```
+    Dictionary Address(id_customer)
+    {
+        Categorical id_customer;
+        Numerical StreetNumber;
+        Categorical StreetName;
+        Categorical City;
+    };
 
-#### Snowflake schema
+    Dictionary Usage(id_customer)
+    {
+        Categorical id_customer;
+        Categorical Product;
+        Timestamp Time;
+        Numerical Duration;
+    };
+    ```
 
-The example in the preceding section illustrates the case of a star schema, with the customer in a root table and its address and sales in secondary tables. Secondary tables can themselves be in relation to sub-entities, leading to a snowflake schema. In this case, the number of key fields must increase with the depth of the schema (but not necessarily at the last depth).
+### Snowflake schema
+
+The example in the preceding section illustrates the case of a star schema, with the customer in a root table and its address and usages in secondary tables. Secondary tables can themselves be in relation to sub-entities, leading to a snowflake schema. In this case, the number of key fields must increase with the depth of the schema (but not necessarily at the last depth).
 
 ![CustomerSF4tables.emf](../../assets/images-khiops-guides/khiops/image31.emf)
 
-#### External tables
+### External tables
 
 External tables can also be used, to reuse common tables that are shared by all the analysis entities. In the following schema, the products can be referenced from the services of a customer.
 
@@ -140,35 +155,27 @@ The related table file will be fully loaded in memory for efficient direct acces
 
 Whereas the joins between the tables of the same folder are implicit, on the basis of the table keys, the join with an external table must be explicit in the dictionary, using a key (into brackets) from the referencing entity.
 
-> *Dictionary Service (id\_customer, id\_product)*
-> 
-> *{*
-> 
-> *Categorical id\_customer ;*
-> 
-> *Categorical id\_product ;*
-> 
-> *Entity(Product) Product \[id\_product\] ;*
-> 
-> *Table(Usage) Usages ;*
-> 
-> *};*
-> 
-> *Root Dictionary Product (id\_product)*
-> 
-> *{*
-> 
-> *Categorical id\_product ;*
-> 
-> *Categorical Name ;*
-> 
-> *Numerical Price ;*
-> 
-> *};*
+!!! example
 
-Examples of datasets with multi-table schemas and external tables, are given in the “samples” directory of the Khiops package (%PUBLIC%\\khiops\_data\\samples in windows, $HOME/khiops\_data/samples in Linux) .
+    ```kdic
+    Dictionary Service (id_customer, id_product)
+    { 
+        Categorical id_customer;
+        Categorical id_product;
+        Entity(Product) Product [id_product];
+        Table(Usage) Usages;
+    };
+    Root Dictionary Product (id_product)
+    {
+        Categorical id_product;
+        Categorical Name;
+        Numerical Price;
+    };
+    ```
 
-#### Summary
+Examples of datasets with multi-table schemas and external tables are given in the “samples” directory of the Khiops package (%PUBLIC%\\khiops\_data\\samples in Windows, $HOME/khiops\_data/samples in Linux) .
+
+### Summary
 
 Khiops allow to analyse multi-table databases, from standard mono-table to complex schema.
 
@@ -231,7 +238,7 @@ Khiops allow to analyse multi-table databases, from standard mono-table to compl
 </tbody>
 </table>
 
-### Edition of dictionary files by means of Excel
+## Edition of dictionary files by means of Excel
 
 The dictionary files, which are text files with tabulation separators, could be easily edited using Excel. Unfortunately, the use of derivation rules or categorical constants (surrounded by double quotes) is error prone in Excel (due to automatic data conversion in Excel). However, Excel can be used safely with the following process:
 
@@ -245,7 +252,7 @@ The dictionary files, which are text files with tabulation separators, could be 
 
 Editing the variables using Excel allows to display the variables properties (Unused keyword, User type, Type, Name, Derivation rule, Comment, Level…) in Excel columns. This is then easy to perform sorts and modify the definition of variables.
 
-### Derivation rules
+## Derivation rules
 
 The derivation rules allow to construct new variables in a dictionary. The operands in a derivation rule can be a variable (specified by its name), a constant numerical or categorical value, or the result of another derivation rule. The derivation rules can be used recursively.
 
@@ -253,11 +260,11 @@ A constant categorical value must be surrounded by double quotes. A double quote
 
 A constant numerical value can be specified using scientific notation (for example: 1.3E7). The decimal separator is the dot. The missing value is represented as \#Missing when used in a derivation rule.
 
-There are no Date, Time Timestamp constants, but they can be produced using conversion rules (see appendix: e.g. *AsDate(“2014-01-15”, “YYYY-MM-DD”)*);
+There are no Date, Time or Timestamp constants, but they can be produced using conversion rules (see [`Date Rules`](date-rules.md): e.g. *AsDate(“2014-01-15”, “YYYY-MM-DD”)*);
 
-The list of available derivation rules is given in appendix.
+The list of available derivation rules is given in Dictionary Rules section.
 
-#### Derivation rules for multi-table schemas
+### Derivation rules for multi-table schemas
 
 Derivation rules can be used to extract information from other tables in a multi-table schema. In this case, they use variables of different scopes:
 
@@ -265,66 +272,52 @@ Derivation rules can be used to extract information from other tables in a multi
 
 - Next operands, in the scope of the secondary table (ex: Pos, Char).
 
-In the following example, the “MeanPos” and “MostFrequentChar” extract information from a DNA sequence in the secondary table. The derivation rules (TableMean and TableMode) have a first operand that is a Table variable in the scope of SpliceJunction, while their second operand is in the scope of SpliceJunctionDNA.
+!!! example
 
-> *Root Dictionary SpliceJunction(SampleId)*
-> 
-> *{*
-> 
-> *Categorical SampleId;*
-> 
-> *Categorical Class;*
-> 
-> *Table(SpliceJunctionDNA) DNA;*
-> 
-> *Numerical MeanPos = TableMean(DNA, Pos); // Mean position in the DNA sequence*
-> 
-> *Categorical MostFrequentChar = TableMode(DNA, Char); // Most frequent char in the DNA sequence*
-> 
-> *};*
-> 
-> *Dictionary SpliceJunctionDNA(SampleId)*
-> 
-> *{*
-> 
-> *Categorical SampleId;*
-> 
-> *Numerical Pos;*
-> 
-> *Categorical Char;*
-> 
-> *};*
+    The “MeanPos” and “MostFrequentChar” extract information from a DNA sequence in the secondary table. 
+    The derivation rules (TableMean and TableMode) have a first operand that is a Table variable in the scope of SpliceJunction, 
+    while their second operand is in the scope of SpliceJunctionDNA.
 
-#### Derivation rules with multiple scope operands
+    ```kdic
+    Root Dictionary SpliceJunction(SampleId)
+    {
+        Categorical SampleId;
+        Categorical Class;
+        Table(SpliceJunctionDNA) DNA;
+        Numerical MeanPos = TableMean(DNA, Pos); // Mean position in the DNA sequence
+        Categorical MostFrequentChar = TableMode(DNA, Char); // Most frequent char in the DNA sequence
+    };
+    Dictionary SpliceJunctionDNA(SampleId)
+    {
+        Categorical SampleId;
+        Numerical Pos;
+        Categorical Char;
+    };
+    ```
+
+### Derivation rules with multiple scope operands
 
 For operands in the scope of a secondary table, it is possible to use variables from the scope of the current dictionary, which is in the “upper” scope of the secondary table. In this case, the scope operator “.” must be used.
 
-In the following example, the “FrequentDNA” selects the record of the “DNA” table, where the Char variable (in secondary table) is equal to the “MostFrequentChar” variable (with the scope operator “;”, as it in the scope of the current dictionary. And the “MostFrequentCharFrequency” computes the frequency of this selected sub-table.
+!!! example
 
-> *Root Dictionary SpliceJunction(SampleId)*
-> 
-> *{*
-> 
-> *Categorical SampleId;*
-> 
-> *Categorical Class;*
-> 
-> *Table(SpliceJunctionDNA) DNA;*
-> 
-> *Categorical MostFrequentChar = TableMode(DNA, Char);*
-> 
-> *Table(SpliceJunctionDNA) FrequentDNA = TableSelection(DNA, EQc(Char, .MostFrequentChar));*
-> 
-> *Numerical MostFrequentCharFrequency = TableCount(FrequentDNA);*
-> 
-> *};*
+    The “FrequentDNA” selects the record of the “DNA” table, where the Char variable (in secondary table) is equal to the “MostFrequentChar” variable 
+    (with the scope operator “;”, as it in the scope of the current dictionary. 
+    The “MostFrequentCharFrequency” computes the frequency of this selected sub-table.
 
-Note that the resulting “MostFrequentCharFrequency” could be computed using one single formula:
+    ```kdic
+    Root Dictionary SpliceJunction(SampleId)
+    {
+        Categorical SampleId;
+        Categorical Class;
+        Table(SpliceJunctionDNA) DNA;
+        Categorical MostFrequentChar = TableMode(DNA, Char);
+        Table(SpliceJunctionDNA) FrequentDNA = TableSelection(DNA, EQc(Char, .MostFrequentChar));
+        Numerical MostFrequentCharFrequency = TableCount(FrequentDNA);
+    };
+    ```
 
-> *Numerical MostFrequentCharFrequency = TableCount(*
-> 
-> *TableSelection(DNA,*
-> 
-> *EQc(Char,*
-> 
-> *.TableMode(DNA, Char))));*
+    Note that the resulting “MostFrequentCharFrequency” could be computed using one single formula:
+    ```kdic
+    Numerical MostFrequentCharFrequency = TableCount(TableSelection(DNA, EQc(Char,.TableMode(DNA, Char))));
+    ```

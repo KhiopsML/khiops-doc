@@ -6,10 +6,8 @@
 `TimestampTZ` values consist of a local timestamp value together with time zone information, using
 the ISO 8601 time zone format:
 
-- `<Timestamp format>zzzzz`:
-    - Basic time zone format (Z or +hhmm or –hhmm)
-- `<Timestamp format>zzzzzz`:
-    - Extended time zone format (Z or +hh:mm or –hh:mm), with hours and
+- `<Timestamp format>zzzzz`: Basic time zone format (Z or +hhmm or –hhmm)
+- `<Timestamp format>zzzzzz`: Extended time zone format (Z or +hh:mm or –hh:mm), with hours and
   minutes separated by `:`
 
 `TimestampTZ` values are time zone-aware whereas Timestamp values are not.
