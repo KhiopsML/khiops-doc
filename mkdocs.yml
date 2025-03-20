@@ -181,6 +181,7 @@ nav:
             - Recoding Rules: api-docs/kdic/recoding-rules.md
             - Predictor Rules: api-docs/kdic/predictor-rules.md
             - Coclustering Rules: api-docs/kdic/coclustering-rules.md
+            - Block and sparse data Rules: api-docs/kdic/block-sparse-rules.md
   - UI Reference:
       - Khiops:
         - Dictionary File: ui-docs/khiops/dictionary.md

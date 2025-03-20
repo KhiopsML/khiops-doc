@@ -1,6 +1,6 @@
 # Results
 
-![](../../assets/images-khiops-guides/khiops/image23.png)
+![](../../assets/images-khiops-guides/khiops/DataDictionary_Results.png)
 
 **Result files directory**: name of the directory where the results files are stored (default: empty). By default, the results files are stored in the directory of the train database. If a result directory is specified, it can be:
 
