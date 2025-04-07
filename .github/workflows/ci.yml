@@ -36,7 +36,7 @@ jobs:
             mkdocs-material-
       - name: Build site (PR)
         if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
-        run: mkdocs build --strict
+        run: mkdocs build --strict --verbose
       - name: Deploy site to GH pages (Manual)
         if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == true
         run: mkdocs gh-deploy --strict --force

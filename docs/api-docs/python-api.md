@@ -1,1 +1,1 @@
-The documentation for the Khiops Python API is available [here](https://khiopsml.github.io/khiops-python/index.html)
+The documentation for the Khiops Python API is available [here]({{ KHIOPS_PYTHON_API_DOC_URI }}).
