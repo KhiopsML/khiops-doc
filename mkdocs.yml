@@ -145,10 +145,15 @@ nav:
           - Real-time Deployment: tutorials/kni.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
-      - An Original Formalism: learn/modl.md
-      - Optimal Encoding: learn/preprocessing.md
-      - Auto Feature Engineering: learn/autofeature_engineering.md
-      - Parsimonious Training: learn/learning_models.md
+      - An Original Formalism: learn/modl.md  
+      - Auto-ML pipeline:
+        - Optimal Encoding: learn/preprocessing.md
+        - Auto Feature Engineering: learn/autofeature_engineering.md
+        - Parsimonious Training: learn/learning_models.md
+      - Unsupervised approaches:
+        - Optimal histograms: learn/histograms.md
+        - Co-clustering: learn/coclustering.md
+        - Co-clustering indi x var: learn/coclustering_indi_var.md
       - Auto Hardware Adaptation: learn/hardware_adaptation.md
       - Bibliography: references.md
   - API Reference:
