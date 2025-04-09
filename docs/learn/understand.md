@@ -139,8 +139,34 @@ Furthermore, **Khiops can seamlessly transition between out-of-core and distribu
  [publications]: ../references.md#publications "See scientific references"
 
 
+## Unsupervised algorithms 
 
 
+For data **exploratory analysis**, Khiops implements three unsupervised algorithms that enable your data to reveal itself **without any bias**. These approaches push the limits of **automation** in unsupervised analysis by avoiding the need for the user to make a priori choices in the methodology employed, such as the choice of a distance in standard clustering algorithms, or a number of bins in a histogram describing the distribution of a numerical variable... With Khiops, **users have total freedom** to explore their data without worrying about possible biases in the methodology employed. 
+
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/unsupervised_algorithms.webp" type="image/webp">
+  <img style="width:100%;" src="/assets/images/unsupervised_algorithms.png" alt="unsupervised_algorithms" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure>
+
+The three original unsupervised algorithms provided by Khiops are listed below: 
+
+1. **Optimal histograms** estimates the density of a numerical variable by automatically adjusting the number of intervals and their bounds. In practice, this approach is able to **highlight parterns at very different scales**, which would not be visible with standard approaches. Indeed, this approach is able to scale down the width of the intervals to precisely describe the areas of the density carrying information, right down to identifying peaks that could be mistaken for noise.   
+
+2. **Co-clustering** which estimates the joint density between two (or more) variables, whether numerical or categorical, by discretizing them jointly. This approach reveals **how the variables under study are dependent** on each other. For a fixed number of observations, the split of variables will become finer and finer as the correlation between variables increases. In contrast, for independent variables, this approach guarantees that the variables will not be split. Even for unsupervised analyses, Khiops avoids overfitting! 
+ 
+3. **Co-clustering Individuals X Variables** can be used as a **clustering** algorithm that groups similar individuals. As well as grouping individuals, this approach breaks down each variable into **parts of variable** (i.e. value intervals for numerical variables and modality groups for categorical variables). Finally, this type of model is a form of co-clustering between individuals and parts of variable coming from any of the original variables. The notion of distance between individuals is substituted by co-occurrences between individuals and parts of variables. This approach is fully automatic and offers solid **guarantees against overfitting**: no risk of creating groups of individuals for nothing! The user is not required to make any impacting choices in the methodology, such as setting a distance or the number of groups.  
+
+
+These unsupervised approaches are based on the [MODL][publications] formalism which is free of hyperparameters to be adjusted. These fully automated approaches are **invaluable tools for exploratory data analysis**, which is a prerequisite for any data science project. A **visualization tool** is available for easy interpretation of the unsupervised models provided by Khiops, and for pedagogical interaction with business units. 
+
+Another possible use for these unsupervised approaches is to train **generative models**, which is particularly helpful in applications where **privacy** has to be guaranteed. Indeed, these types of unsupervised models can be seen as piecewise constant density estimators and can therefore be used naturally for this purpose. 
+
+!!! info "Scalability"
+    The problems addressed by the coclustering (2) and the coclustering individual X variable (3) are intrinsically **much more complex** than those addressed by standard non-supervised algorithms. Despite Khiops' advanced optimizations and all our efforts to push the limits of scalability, the result is a longer computation time than for standard unsupervised approaches.
 
 !!! abstract "Deep Dive into MODL: An Overview and Guide"
     The remainder of this documentation's **Understanding** section aims to demystify the MODL approach and illustrate its applications across the Auto ML pipeline. The content is presented pedagogically, so it is crucial to maintain the prescribed reading sequence. Those seeking a more thorough scientific comprehension should browse the collection of bibliographic [references][references], organized as a reading guide.
