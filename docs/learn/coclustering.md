@@ -1,10 +1,10 @@
   
 ## This is not clustering 
 
-Parmi les approches non-supervisées, les algorithmes de **clustering** sont sans doute les plus connus. Mais ne vous y méprendrenez pas, le **co-clustering** est un problème bien différent. Pour y voir plus clair dans cette distinction entre clustering et co-clustering, commençons par distinguer leurs objectifs respectifs: 
+Among unsupervised approaches, **clustering** algorithms are undoubtedly the best known. But make no mistake, **co-clustering** is a very different problem. To clarify the distinction between clustering and co-clustering, let's start by distinguishing their respective objectives: 
 
-!!! example "Objectif du clustering"
-    Regrouper les lignes d’un *jeu de données* en *groupes d’individus* homogènes.
+!!! example "Objective of clustering"
+    Group the rows of a *data set* into homogeneous *groups of individuals*.
 
 <figure markdown>
 <picture>
@@ -14,10 +14,10 @@ Parmi les approches non-supervisées, les algorithmes de **clustering** sont san
   <figcaption></figcaption>
 </figure>
 
-Comme le montre cette figure, les algorithmes de clustering sont utilisés pour trouver des **sous-poputations homogènes** au sein d'un **jeu de donnés**. Ces algorithmes sont généralement basés sur une **distance** qui peut prendre différentes formes et qui est utilisée pour identifier des groupes: (i) les plus éloignés les uns des autres; (i) à l'interieur desquels les individus sont les plus proches possible. En pratique, le choix de cette distance a un impact important sur les resultats d'un clustering, car elle constitue une sorte de **connaissance apriori** utilisée pour simplifier le problème et rendre les algorithmes efficaces en temps de calcul. Notons également que les algorithmes de clustering impliquent généralement de choisir le **nombre de groupes** à former, sans garantie qu'il y existe réellement ces sous-populations identifiables dans le jeu de données. 
+As shown in this figure, clustering algorithms are used to find **homogeneous subpopulations** within a **data set**. These algorithms are generally based on a **distance**, which can take various forms and which is used to identify groups: (i) as far away as possible from each other; (i) whose individuals are as close as possible to each other. In practice, the choice of this distance has a significant impact on clustering results, as it constitutes a kind of **apriori knowledge** used to simplify the problem and make algorithms computationally efficient. It should also be noted that clustering algorithms generally involve choosing the **number of groups** to be formed, with no guarantee that there are actually identifiable sub-populations in the dataset.
 
-!!! example "Objectif du coclustering"
-    Regrouper les *lignes* et les *colonnes* d’une *matrice* pour étudier la **dépendance** entre ses deux dimensions. 
+!!! example "Objective of coclustering"
+    Group *rows* and *columns* of a *matrix* to study the *dependency* between its two dimensions.  
 
 <figure markdown>
 <picture>
@@ -27,12 +27,12 @@ Comme le montre cette figure, les algorithmes de clustering sont utilisés pour 
   <figcaption></figcaption>
 </figure>
 
-Les algorithmes de coclustering regroupent simultanément les **lignes** et les **colonnes** d'une matrice, généralement une **matrice de contingence** décrivant les coocurrences de deux variables catégorielles. Cette matrice de contingence contient le nombre individus pour chaque combinaison de modalité des deux variables catégorielles étudiées. Le croisement (i.e. le produit cartésien) des groupes formés sur les deux dimentions de la matrice constituent un ensemble de **coclusters** (représentés par les bins dans la figure ci-dessus). Un cocluster caractérise une **sous-partie** de la matrice en aggrégant l'information qu'elle contient, i.e. le nombre d'individus dont les combinaisons de modalités sur les deux variables appartiennent au cocluster. Finalement, un modèle de coclustering donne une vue aggrégée d'une matrice de contingence décrivant le lien de **dépendance** entre les deux variables étudiées, il peut être vu comme une modésilation de la **densité jointe** des deux variables.   
+Coclustering algorithms simultaneously group the **rows** and **columns** of a matrix, usually a **contingency matrix** describing the co-occurrences of two categorical variables. This contingency matrix contains the number of individuals for each modality combination of the two categorical variables studied. The intersection (i.e. the cartesian product) of the groups formed on the two dimentions of the matrix constitute a set of **coclusters** (represented by the bins in the figure above). A cocluster characterizes a **sub-part** of the matrix by aggregating the information it contains, i.e. the number of individuals whose combinations of modalities on the two variables belong to the cocluster. Finally, a coclustering model gives an aggregated view of a contingency matrix describing the **dependency** between the two variables under study, and it can be seen as a model of the **joined density** of the two variables.  
 
 
 
-!!! info "Ce qu'il faut retenir"
-    Comme le **clusterring**, le **coclustering** est un outil puissant pour l'annalyse exploratoire, mais ces deux types d'approches s'appliquent sur des **données différentes** (comme le montre la figure ci-dessous) et leur **finalité** ne sont pas les mêmes.
+!!! info "What you need to know"
+    Like **clusterring**, **coclustering** is a powerful tool for exploratory annalysis, but these two types of approach apply to different kinds of **data** (as shown in the figure below) and their **objectives** are not the same.
 
 <figure markdown>
 <picture>
@@ -42,28 +42,46 @@ Les algorithmes de coclustering regroupent simultanément les **lignes** et les 
   <figcaption>Two different kinds of data used</figcaption>
 </figure> 
 
-Le problème du coclustering est également connu sous le vocable **biclustering** en raison des deux seules dimensions de la matrice traitées. En tant que tel, le coclustering est un problème relativement **limité** se restreignant à l'étude de deux variables catégorielles. 
+## A wide range of applications
 
-!!! example "MODL généralise le coclustering"
-    - Extention aux **variables numériques**
-    - **Mixte** entre variables numériques et catégorielles
-    - Extention à **plus de deux** variables
+The coclustering problem is also known as **biclustering**, because only two dimensions of the input matrix are involved. As such, coclustering is a relatively **limited** problem, restricted to the study of two categorical variables.
+
+!!! example "MODL generalizes coclustering"
+    - Extension to **numerical variables**.
+    - **Mixing** numerical and categorical variables.
+    - Generalization to **more than two** variables.
 
 
-Grâce aux extentions permises par le formalisme MODL, le coclustering peut s'appliquer à un **large éventaille d'applications** impliquant des données de nature très différentes. En voici quelques exemples:   
+Thanks to the extensions allowed by the MODL formalism, coclustering can be applied to a **large range of applications** involving data of very different kinds. Here are just a few examples:    
+ 
+**Time series**: Khiops coclustering can be applied to time series by **encoding each measurement** of the series with the following three variables: (i) the identifier of the time series (**id**: categorical); (ii) the measurement value (**x**: numerical); (iii) a time variable representing the time of day (**t**: numerical). In this case, the coclustering algorithm discretizes the three dimensions jointly, clustering time series on the *id* dimension, and forming intervals of values on the other two dimensions *x* and *t*. The following figure shows an example of a group formed using household electricity consumption, which is a very chaotic kind of time series. Each group of series is then represented by a joint density describing the distrition of *measurements* as a function of *time* (left-hand side of the figure below). Being very chaotic, the time series belonging to this group would have been considered **far** from each other by a clustering algorithm based on a **distance**, such as the Euclidean distance (right-hand side of the figure below). Finally, this example illustrates one of the advantages of Khiops coclustering, which does not require a priori choosing a distance function.
 
-- Text / mots  
-- Séries temporelles -> cluster caractérisé par une densité jointes entre valeurs et timestamp
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/ex_coclustering_timeseries.webp" type="image/webp">
+  <img style="width:75%;" src="/assets/images/ex_coclustering_timeseries.png" alt="ex_coclustering_timeseries" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure> 
+
 - Graphs -> détection de cliques et d'anti-cliques
      
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/ex_coclustering_graph.webp" type="image/webp">
+  <img style="width:75%;" src="/assets/images/ex_coclustering_graph.png" alt="ex_coclustering_graph" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure> 
+
+
+## Intuition du critère 
 
 !!! example "MODL sécurise l'utilisation du coclustering"
     - Pas de choix a priori sur le **nombre de groupes**
     - Garantie de ne **pas former de groupe** en cas **d'indépendance** des variables
     - Garantie contre le **surajustement**
 
-
-## Intuition du critère 
 
 ## Modèle parameter 
 
