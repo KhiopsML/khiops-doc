@@ -29,7 +29,7 @@ conda install -c khiops khiops-driver-gcs
         CODENAME=$(lsb_release -cs) && \
         TEMP_DEB="$(mktemp)" && \
         wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-gcs/releases/download/{{ KHIOPS_GCS_DRIVER_VERSION }}/khiops-driver-gcs_{{ KHIOPS_GCS_DRIVER_VERSION }}-1-${CODENAME}.amd64.deb" && \
-        sudo dpkg -i "$TEMP_DEB && \
+        sudo dpkg -i "$TEMP_DEB" && \
         rm -f $TEMP_DEB
         ```
 
@@ -124,7 +124,7 @@ conda install -c khiops khiops-driver-s3
         CODENAME=$(lsb_release -cs) && \
         TEMP_DEB="$(mktemp)" && \
         wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-s3/releases/download/{{ KHIOPS_S3_DRIVER_VERSION }}/khiops-driver-s3_{{ KHIOPS_S3_DRIVER_VERSION }}-1-${CODENAME}.amd64.deb" && \
-        sudo dpkg -i "$TEMP_DEB && \
+        sudo dpkg -i "$TEMP_DEB" && \
         rm -f $TEMP_DEB
         ```
 
