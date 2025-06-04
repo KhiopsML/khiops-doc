@@ -46,7 +46,7 @@ coclustering algorithms simultaneously group the **rows** and **columns** of a m
 
 The coclustering problem is also known as **biclustering**, because only two dimensions of the input matrix are involved. As such, coclustering is a relatively **limited** problem, restricted to the study of two categorical variables.
 
-!!! example "MODL generalizes coclustering"
+!!! success "MODL generalizes coclustering"
     - Extension to **numerical variables**.
     - **Mixing** numerical and categorical variables.
     - Generalization to **more than two** variables.
@@ -85,9 +85,11 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
 - **Textual data** can also be analyzed using coclustering, especially to uncover relationships between *documents* and the *words* they contain. For example, in a collection of documents, each word can be encoded by two categorical variables: (i) the identifier of the document to which it belongs, and (ii) the word itself. The coclustering algorithm then simultaneously groups sets of documents and sets of words, revealing both underlying **themes or topics** and **document groups** that share common **vocabulary**, while also highlighting the words that characterize each group. Unlike traditional clustering algorithms, Khiops coclustering does **not require** predefining the **number** of topics and document groups, nor even a **distance** between texts (only the co-occurrence of words in texts matters). It is particularly useful for exploring large text collections, such as scientific articles, forums, or social media data, providing a structured and intuitive view of the relationships between content and vocabulary. 
 
 
-## Intuition du critère 
+## Intuitions 
 
 
+!!! question "How is the best model selected?"
+    Even for unsupervised approaches, MODL avoids overfitting by selecting the most probable model given the data.
 
 <figure markdown>
 <picture>
@@ -97,7 +99,26 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
   <figcaption></figcaption>
 </figure> 
 
+Like other algorithms based on the MODL (Minimum Description Length) approach, **co-clustering** involves selecting the most probable model given the data. 
+During training, a compromise is made to select the best model. 
+On one hand, **overly detailed models** are discarded because they tend to **overfit**, capturing noise rather than significat patterns (right side of the figure above). 
+On the other hand, **coarse models** are avoided because they **underfit**, missing important dependencies between variables (left side of the figure above).
 
+The optimization criterion used to navigate this trade-off combines two antagonistic components:
+
+- **Prior**: penalizes complex models to prevent overfitting, thanks to its **hierarchical and uniform** structure.
+- **Likelihood**: plays the oposite role by favoring models that accurately describe the data.
+
+The most probable model represents a balance point between these opposing objectives, allowing it to properly explain the data — i.e., the dependencies between variables — without unnecessary complexity or overfitting risk. This automatic model selection is entirely driven by the optimization criterion, without requiring the user to specify the number of coclusters which is deduced from data. More generally, MODL coclustering is hyper-parameter free and does not rely on a predefined distance measure, avoiding biases that could influence the results.
+
+!!! question "What is a valuable cocluster in MODL's eyes?"
+    Coclustering models describe how data deviate from the independence assumption.
+
+Co-clustering models aim to describe how the training data **deviate** from the **assumption of independence** between variables. 
+Coclusters are formed to capture sub-parts of data that are either over-represented or under-represented relative to this independence hypothesis.
+The **likelihood** term of the MODL optimization criterion seeks to **maximize this contrast**, effectively highlighting dependencies and structures that differ from what would be expected under independence. Conversely, the **prior** term ensures **robustness** and prevents overfitting by penalizing overly complex models.
+
+The figure below illustrates **when a cocluster provides valuable information** within a coclustering model. Consider a candidate cocluster formed by (i) a group of rows representing 5% of the observations and (ii) a group of columns representing 20%. Under the independence assumption, the expected number of observations in this cocluster would be 1% (calculated by multiplying the probabilities of belonging to each group). If the observed count in this cocluster **deviates** from this expectation — either over-represented or under-represented — it indicates that forming this cocluster **captures meaningful information** about the relationship between the variables described by the model.
 
 <figure markdown>
 <picture>
@@ -107,7 +128,7 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
   <figcaption></figcaption>
 </figure>
 
-!!! example "MODL sécurise l'utilisation du coclustering"
+!!! info "The MODL formalism offers a number of guarantees for data exploration"
     - Pas de choix a priori sur le **nombre de groupes**
     - Garantie de ne **pas former de groupe** en cas **d'indépendance** des variables
     - Garantie contre le **surajustement**
