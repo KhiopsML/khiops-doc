@@ -1,7 +1,7 @@
   
 ## This is not clustering 
 
-Among unsupervised approaches, **clustering** algorithms are undoubtedly the best known. But make no mistake, **co-clustering** is a very different problem. To clarify the distinction between clustering and co-clustering, let's start by distinguishing their respective objectives: 
+Among unsupervised approaches, **clustering** algorithms are undoubtedly the best known. But make no mistake, **coclustering** is a very different problem. To clarify the distinction between clustering and coclustering, let's start by distinguishing their respective objectives. 
 
 !!! example "Objective of clustering"
     Group the rows of a *data set* into homogeneous *groups of individuals*.
@@ -27,7 +27,7 @@ As shown in this figure, clustering algorithms are used to find **homogeneous su
   <figcaption></figcaption>
 </figure>
 
-Coclustering algorithms simultaneously group the **rows** and **columns** of a matrix, usually a **contingency matrix** describing the co-occurrences of two categorical variables. This contingency matrix contains the number of individuals for each modality combination of the two categorical variables studied. The intersection (i.e. the cartesian product) of the groups formed on the two dimentions of the matrix constitute a set of **coclusters** (represented by the bins in the figure above). A cocluster characterizes a **sub-part** of the matrix by aggregating the information it contains, i.e. the number of individuals whose combinations of modalities on the two variables belong to the cocluster. Finally, a coclustering model gives an aggregated view of a contingency matrix describing the **dependency** between the two variables under study, and it can be seen as a model of the **joined density** of the two variables.  
+coclustering algorithms simultaneously group the **rows** and **columns** of a matrix, usually a **contingency matrix** describing the co-occurrences of two categorical variables. This contingency matrix contains the number of individuals for each modality combination of the two categorical variables studied. The intersection (i.e. the cartesian product) of the groups formed on the two dimentions of the matrix constitute a set of **coclusters** (represented by the bins in the figure above). A cocluster characterizes a **sub-part** of the matrix by aggregating the information it contains, i.e. the number of individuals whose combinations of modalities on the two variables belong to the cocluster. Finally, a coclustering model gives an aggregated view of a contingency matrix describing the **dependency** between the two variables under study, and it can be seen as a model of the **joined density** of the two variables.  
 
 
 
@@ -54,18 +54,26 @@ The coclustering problem is also known as **biclustering**, because only two dim
 
 Thanks to the extensions allowed by the MODL formalism, coclustering can be applied to a **large range of applications** involving data of very different kinds. Here are just a few examples:    
  
-**Time series**: Khiops coclustering can be applied to time series by **encoding each measurement** of the series with the following three variables: (i) the identifier of the time series (**id**: categorical); (ii) the measurement value (**x**: numerical); (iii) a time variable representing the time of day (**t**: numerical). In this case, the coclustering algorithm discretizes the three dimensions jointly, clustering time series on the *id* dimension, and forming intervals of values on the other two dimensions *x* and *t*. The following figure shows an example of a group formed using household electricity consumption, which is a very chaotic kind of time series. Each group of series is then represented by a joint density describing the distrition of *measurements* as a function of *time* (left-hand side of the figure below). Being very chaotic, the time series belonging to this group would have been considered **far** from each other by a clustering algorithm based on a **distance**, such as the Euclidean distance (right-hand side of the figure below). Finally, this example illustrates one of the advantages of Khiops coclustering, which does not require a priori choosing a distance function.
+- **Time series** can be [studied:octicons-link-external-16:][coclustering_timeseries]{:target="_blank"} using Khiops coclustering by **encoding each measurement** of the series with the following three variables: (i) the identifier of the time series (*id*: categorical); (ii) the measurement value (*x*: numerical); (iii) a time variable representing the time of day (*t*: numerical). In this case, the coclustering algorithm discretizes the three dimensions jointly, clustering time series on the *id* dimension, and forming intervals of values on the other two dimensions *x* and *t*. The following figure shows an example of a group formed using household electricity consumption, which is a very chaotic kind of time series. Each group of series is then represented by a joint density describing the distrition of *measurements* as a function of *time* (left-hand side of the figure below). Being very chaotic, the time series belonging to this group would have been considered **far** from each other by a clustering algorithm based on a **distance**, such as the Euclidean distance (right-hand side of the figure below). Finally, this example illustrates one of the advantages of Khiops coclustering, which does not require a priori choosing a distance function.
+
+[coclustering_timeseries]: https://www.researchgate.net/profile/Asma-Dachraoui-2/publication/283548750_Realistic_and_Very_Fast_Simulation_of_Individual_Electricity_Consumptions/links/563e799b08aec6f17ddaaa0b/Realistic-and-Very-Fast-Simulation-of-Individual-Electricity-Consumptions.pdf
 
 <figure markdown>
 <picture>
   <source srcset="/assets/images/ex_coclustering_timeseries.webp" type="image/webp">
   <img style="width:75%;" src="/assets/images/ex_coclustering_timeseries.png" alt="ex_coclustering_timeseries" loading="lazy"> 
 </picture>
-  <figcaption></figcaption>
+  <figcaption>An example of a time series group</figcaption>
 </figure> 
 
-- Graphs -> détection de cliques et d'anti-cliques
-     
+- **Graphs** are an expressive form of data, which can be employed to describe complex systems such as a telecom network, by encoding the interactions between each of the devices that make it up, or the customers of a telephone operator, by characterizing the interactions between users. Khiops coclustering is an excellent tool for exploring the structure of [large graphs:octicons-link-external-16:][coclustering_graph]. For example, the **arcs of a directed graph** can be encoded by the following two categorical variables: (i) the identifier of the source node; (ii) and the identifier of the target node. In this case, the coclustering algorithm jointly builds groups of source nodes and groups of target nodes, describing the joint density of oriented arcs. The following figure shows an example of how Khiops coclustering can be used to partition a graph. It's important to note that Khiops identifies both groups of nodes that are **strongly connected** to each other, and groups of nodes in which the **interconnections are abnormally weak** compared to the rest of the graph. By extension, [temporal graphs:octicons-link-external-16:][coclustering_temporal_graph] can also be studied by the Khiops coclusring, simply by adding a third **time** variable to the description of the arcs. For example, daily self-service bicycle trips were studied in the city of Paris.
+
+
+[coclustering_graph]:http://www.marc-boulle.fr/publications/BoulleOPTE04.pdf
+
+[coclustering_temporal_graph]: http://www.marc-boulle.fr/publications/GuigouresEtAlADAC18.pdf
+
+
 <figure markdown>
 <picture>
   <source srcset="/assets/images/ex_coclustering_graph.webp" type="image/webp">
@@ -74,8 +82,30 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
   <figcaption></figcaption>
 </figure> 
 
+- **Textual data** can also be analyzed using coclustering, especially to uncover relationships between *documents* and the *words* they contain. For example, in a collection of documents, each word can be encoded by two categorical variables: (i) the identifier of the document to which it belongs, and (ii) the word itself. The coclustering algorithm then simultaneously groups sets of documents and sets of words, revealing both underlying **themes or topics** and **document groups** that share common **vocabulary**, while also highlighting the words that characterize each group. Unlike traditional clustering algorithms, Khiops coclustering does **not require** predefining the **number** of topics and document groups, nor even a **distance** between texts (only the co-occurrence of words in texts matters). It is particularly useful for exploring large text collections, such as scientific articles, forums, or social media data, providing a structured and intuitive view of the relationships between content and vocabulary. 
+
 
 ## Intuition du critère 
+
+
+
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/coclustering-model-selection.webp" type="image/webp">
+  <img style="width:90%;" src="/assets/images/coclustering-model-selection.png" alt="coclustering model selection" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure> 
+
+
+
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/cocluster-selection.webp" type="image/webp">
+  <img style="width:90%;" src="/assets/images/cocluster-selection.png" alt="cocluster interest" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure>
 
 !!! example "MODL sécurise l'utilisation du coclustering"
     - Pas de choix a priori sur le **nombre de groupes**
