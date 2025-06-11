@@ -78,9 +78,9 @@ To analyse multi-table databases, Khiops relies on:
 
 - an extension of the dictionaries, to describe multi-tables schemas, (this section)
 
-- databases that are stored in one data file per table in a multi-table schema (cf. [`Train database`](../../ui-docs/khiops/train.md)),
+- databases that are stored in one data file per table in a multi-table schema (cf. [`Train database`](../../ui-docs/khiops.md#train-database)),
 
-- automatic feature construction to build a flat analysis table(cf. [`Variable construction parameters`](../../ui-docs/khiops/parameters.md#variable-construction-parameters)).
+- automatic feature construction to build a flat analysis table(cf. [`Variable construction parameters`](../../ui-docs/khiops.md#advanced-predictor-parameters)).
 
 In this section, we present star schema, snowflake schemas, external tables, then give a summary.
 

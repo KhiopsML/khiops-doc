@@ -168,7 +168,7 @@ In very rare cases, errors in the Khiops execution will corrupt the temporary fi
 
 # Known problems
 
-Memory overflow: in spite of conservative evaluation of required memory, Khiops may crash down with memory overflow. In this case, a "memory overflow" message is present in the tool log file. Asking Khiops to use less memory (see [`System parameters`](../../ui-docs/khiops/parameters.md) is likely to solve this problem.
+Memory overflow: in spite of conservative evaluation of required memory, Khiops may crash down with memory overflow. In this case, a "memory overflow" message is present in the tool log file. Asking Khiops to use less memory (see [`System parameters`](../../ui-docs/khiops.md#advanced-predictor-parameters) is likely to solve this problem.
 
 Some file with UTF-8 encoding may cause problems in rare and unusual cases. Actually, the encoding of the characters differs between the data files and the user interface of Khiops, written in Java. In this case, use Khiops in batch mode rather than in user interface mode.
 

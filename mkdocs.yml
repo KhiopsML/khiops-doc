@@ -22,7 +22,6 @@ theme:
     - navigation.tabs
     - navigation.path
     - navigation.tabs.sticky
-    #- navigation.sections
     - navigation.expand
     - navigation.indexes
     - content.code.copy
@@ -108,11 +107,9 @@ plugins:
   - search
   - mkdocs-jupyter:
       ignore_h1_titles: True
-#  - blog
-#  - privacy ## not usable with mathjax script
+
 
 nav:
-  - index.md
   - Installation:
       - setup/index.md
       - Khiops Python Library:
@@ -143,16 +140,10 @@ nav:
           - Running Khiops with Docker: tutorials/docker.md
           - Distibuted Execution with k8s: tutorials/k8s.md
           - Real-time Deployment: tutorials/kni.md
-  - Foundations:
-      - What Makes Khiops Different: learn/understand.md
-      - An Original Formalism: learn/modl.md
-      - Optimal Encoding: learn/preprocessing.md
-      - Auto Feature Engineering: learn/autofeature_engineering.md
-      - Parsimonious Training: learn/learning_models.md
-      - Auto Hardware Adaptation: learn/hardware_adaptation.md
-      - Bibliography: references.md
-  - API Reference:
+  - API Python:
       - Python API Docs: api-docs/python-api.md
+  - API Dictionary: 
+      - Introduction to Dictionaries: tutorials/kdic_intro.md     
       - Inputs-outputs:
           - Database Files: api-docs/kdic/database-files.md
           - Dictionary Files: api-docs/kdic/dictionary-files.md
@@ -187,33 +178,13 @@ nav:
             - Blocks of variables : api-docs/kdic/block-sparse-rules.md
             - Sparse data format : api-docs/kdic/sparse-format.md
             - Variable block rules : api-docs/kdic/block-rules.md
-  - UI Reference:
-      - Khiops:
-        - Dictionary File: ui-docs/khiops/dictionary.md
-        - Train Database: ui-docs/khiops/train.md
-        - Parameters : ui-docs/khiops/parameters.md
-        - Results: ui-docs/khiops/results.md
-        - Tools Menu: ui-docs/khiops/tools.md
-        - Help Menu: ui-docs/khiops/help.md
-      - Khiops Coclustering:
-        - Presentation: ui-docs/coclustering/presentation.md
-        - Dictionary File: ui-docs/coclustering/dictionary.md
-        - Database: ui-docs/coclustering/train.md
-        - Parameters : ui-docs/coclustering/parameters.md
-        - Results: ui-docs/coclustering/results.md
-        - Tools Menu: ui-docs/coclustering/tools.md
-        - Help Menu: ui-docs/coclustering/help.md
-      - Khiops Visualization:
-        - First Steps: ui-docs/visualization/intro.md
-        - Functionalities: ui-docs/visualization/functionalities.md
-        - Criteria Definitions: ui-docs/visualization/criteria.md
-        - Technical Limits: ui-docs/visualization/limits.md
-      - Khiops Covisualization:
-        - First Steps: ui-docs/covisualization/intro.md
-        - Views and Features: ui-docs/covisualization/features.md
-        - Managing 3 dimensions and more: ui-docs/covisualization/high-dimensions.md
-        - Technical Limits: ui-docs/covisualization/limits.md
+  - Foundations:
+      - What Makes Khiops Different: learn/understand.md
+      - An Original Formalism: learn/modl.md
+      - Optimal Encoding: learn/preprocessing.md
+      - Auto Feature Engineering: learn/autofeature_engineering.md
+      - Parsimonious Training: learn/learning_models.md
+      - Auto Hardware Adaptation: learn/hardware_adaptation.md
+      - Bibliography: references.md
   - Discussions: https://github.com/orgs/KhiopsML/discussions
   - Contact Us: contact.md
-#    - Blog:
-#      - blog/index.md

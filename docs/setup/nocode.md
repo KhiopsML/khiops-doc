@@ -7,6 +7,8 @@
 
 Welcome to the Khiops application download page. Our intuitive, user-friendly desktop interface is designed for those who may not be familiar with Python or scikit-learn, as well as for users who prefer the convenience of a standalone Graphical User Interface (GUI) for data manipulation. With the Khiops application, advanced data analytics is now just a few clicks away, together with easy system integration.
 
+[:material-bookshelf:  Khiops Guide](../ui-docs/khiops.md){ .md-button .md-button--light }
+[:material-bookshelf: Khiops Coclustering Guide](../ui-docs/coclustering.md){ .md-button .md-button--light }
 
 ## Download & Installation
 
@@ -92,8 +94,8 @@ For easy system integration:
 
 
 [tutorial]: KhiopsTutorial.pdf
-[Documentation]: KhiopsGuide.pdf
-[coclustering]: KhiopsCoclusteringGuide.pdf
+[Documentation]: ../ui-docs/khiops.md
+[coclustering]: ../ui-docs/coclustering.md
 [scenario]: KhiopsScenarios.pdf
 
 ## What You Should Know
