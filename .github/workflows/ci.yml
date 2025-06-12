@@ -1,5 +1,7 @@
 ---
 name: Website
+env:
+  DEFAULT_KHIOPS_PYTHON_VERSION: 10.3.1.0
 on:
   workflow_dispatch:
     inputs:
@@ -8,6 +10,9 @@ on:
         required: true
         type: boolean
         default: true
+      khiops-python-version:
+        default: 10.3.1.0
+        description: Version of the Khiops Python library to fetch the API docs
   pull_request:
 permissions:
   contents: write
@@ -34,6 +39,31 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
+      - name: Fetch Khiops Python API docs
+        run: |
+          # Install required dependencies
+          sudo apt-get install wget libarchive-tools
+
+          # Set Khiops Python version for API doc fetching
+          KHIOPS_PYTHON_VERSION=${{ inputs.khiops-python-version || env.DEFAULT_KHIOPS_PYTHON_VERSION }}
+
+          # Fetch the API docs
+          wget -O khiops_api_docs.zip "https://github.com/KhiopsML/khiops-python/releases/download/$KHIOPS_PYTHON_VERSION/khiops-api-docs-$KHIOPS_PYTHON_VERSION.zip"
+
+          # Put Python API docs into the site source dir, as it is *untraced by
+          # Git*, hence it will get built *and* deployed (see
+          # https://www.mkdocs.org/user-guide/deploying-your-docs/)
+          # After build, the Python API docs are in the
+          # site/api-docs/python-api/api folder.
+          mkdir -p docs/api-docs/python-api/api
+
+          # Unzip the API doc into the docs/python-api/api/ folder, while
+          # stripping the doc/_build/html sub-directories and excluding the
+          # doc/_build/html/_downloads subdirectory
+          bsdtar --strip-components=3 --exclude '_downloads/' -C docs/api-docs/python-api/api -xvf khiops_api_docs.zip
+
+          # Remove the Khiops Python API ZIP archive
+          rm -f khiops_api_docs.zip
       - name: Build site (PR)
         if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
         run: mkdocs build --strict --verbose
