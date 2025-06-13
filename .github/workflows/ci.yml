@@ -67,6 +67,12 @@ jobs:
       - name: Build site (PR)
         if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
         run: mkdocs build --strict --verbose
+      - name: Upload the site docs as an artifact (PR)
+        if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
+        uses: actions/upload-artifact@v4
+        with:
+          name: khiops-doc
+          path: ./site/
       - name: Deploy site to GH pages (Manual)
         if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == true
         run: mkdocs gh-deploy --strict --force
