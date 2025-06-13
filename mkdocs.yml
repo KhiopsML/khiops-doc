@@ -61,7 +61,7 @@ extra:
   KHIOPS_COVIZ_VERSION: 11.1.2
   KHIOPS_GCS_DRIVER_VERSION: 0.0.11
   KHIOPS_S3_DRIVER_VERSION: 0.0.13
-  KHIOPS_PYTHON_API_DOC_URI: https://khiopsml.github.io/khiops-python/index.html
+  KHIOPS_PYTHON_API_DOC_URI: python-api/api/index.html
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/KhiopsML/khiops
