@@ -129,14 +129,47 @@ The figure below illustrates **when a cocluster provides valuable information** 
 </figure>
 
 !!! info "The MODL formalism offers a number of guarantees for data exploration"
-    - Pas de choix a priori sur le **nombre de groupes**
-    - Garantie de ne **pas former de groupe** en cas **d'indépendance** des variables
-    - Garantie contre le **surajustement**
+    - No choice of **group number** by the user.
+    - Guarantee of **no grouping modalities** in case of **independence** of variables.
+    - Guaranteed against **overfitting**.
+    - No **predefined distance**, only co-occurrences guide model optimization.
+  
+## Model parameters 
 
+The rest of this page presents the co-clustering approach in the simple case of two categorical variables. For extensions to numerical variables and to the case of more than two variables, please refer to this article [REF]. Here, the aim is to jointly group the modalities of two categorical variables in an optimal way, in order to model their dependency. A coclustering model $M$ is entirely defined by the following parameters:
 
-## Modèle parameter 
+1. $J_1$ and $J_2$ the number of groups for each variable,
+2. $\{j_1(v_1)\}$ and $\{j_2(v_2)\}$ the group indexes containing the modalities $v_1$ and $v_2$ of both variables,
+3. $\{N_{j_1 j_2}\}$ the observations counts within each cocluster of the model,
+4. $\{n_{v_1}\}$ and $\{n_{v_2}\}$ the observations counts for each modality of both variables.
+
+The figure above shows an example of a coclustering model describing the dependency of two variables, the first representing *letters* and the second *symbols*. This figure details all the parameters that define the coclustering model.     
+
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/example_coclustering_model.webp" type="image/webp">
+  <img style="width:99%;" src="/assets/images/example_coclustering_model.png" alt="coclustering model example" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure>
+
+The role of each parameter can be easily interpreted:
+
+1. the first parameter corresponds to the model's **granularity** on the two variables,
+2. the second parameter defines the **group composition** on the two dimensions,
+3. the third parameter describes how the observations are **distributed** across the model's **coclusters**,
+4. the last parameter retains the **modality count** information of the original variables.
 
 ## Optimisation criterion 
+
+The core of the coclustering approach is its optimization criterion, which balances model complexity and data fit to select the most probable model given the training data. Building on the intuitions introduced earlier, this section presents the optimization criterion in detail.
+
+**The prior:**
+
+
+
+**The likelywood:**
+
 
 ## Algorithme 
 
