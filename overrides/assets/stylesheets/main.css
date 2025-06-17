@@ -175,3 +175,12 @@ footer .mention a:hover {
   padding: 0;
 }
 
+/* Hide the latest release version from GitHub, as this is not compatible with
+ * a multi-version site; see
+ * https://github.com/squidfunk/mkdocs-material/issues/2481#issuecomment-804046887 */
+.md-source__fact--version {
+  display: none;
+}
+.md-source__fact:nth-child(1n+2)::before {
+  margin-left: 0;
+}
