@@ -148,7 +148,7 @@ The figure above shows an example of a coclustering model describing the depende
 <figure markdown>
 <picture>
   <source srcset="/assets/images/example_coclustering_model.webp" type="image/webp">
-  <img style="width:99%;" src="/assets/images/example_coclustering_model.png" alt="coclustering model example" loading="lazy"> 
+  <img style="width:90%;" src="/assets/images/example_coclustering_model.png" alt="coclustering model example" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -164,12 +164,51 @@ The role of each parameter can be easily interpreted:
 
 The core of the coclustering approach is its optimization criterion, which balances model complexity and data fit to select the most probable model given the training data. Building on the intuitions introduced earlier, this section presents the optimization criterion in detail.
 
+----
+
+MODL is a **Bayesian** model selection approach. The goal of the optimization criterion is to select the most probable model given the training data, denoted by $d$. Based on what is introduced in the [*Original Formalism*][a_unique_formalism] section and referring to [information theory:octicons-link-external-16:][information_theory]{:target="_blank"}, the optimization criterion can be expressed as: 
+
+$$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}} 
++ \underbrace{L(d|h)}_{\textbf{Likelihood}} $$
+
+[information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
+[a_unique_formalism]: modl.md
+
+Given the model parameters introduced above, the optimization criterion used to select the most probable discretization model can be expressed as follows:
+
 **The prior:**
 
+$$P(h) = P(\underbrace{J_1, J_2}_{A}, \underbrace{\{j_1(v_1)\}, \{j_2(v_2)\}}_{B}, \underbrace{\{N_{j_1 j_2}\}}_{C}, \underbrace{\{n_{v_1}\}, \{n_{v_2}\}}_{D})$$
 
+$$P(h) = P(A) \times P(B|A) \times P(C|B,A) \times P(D|A,B,C)$$
+
+$$P(A) = \frac{1}{V_1 \times V_2}$$
+
+$$P(B|A) = \frac{1}{B(V_1,J_1) \times B(V_2,J_2)}$$
+
+$$P(C|A,B) = \frac{1}{\binom{N+J_1.J_2-1}{J_1.J_2-1}}$$
+
+$$P(D|A,B,C) = \prod^{J_1}_{j_1 = 1} \frac{1}{\binom{N_{j_1}+m_{j_1}-1}{m_{j_1}-1}} \times \prod^{J_2}_{j_2 = 1} \frac{1}{\binom{N_{j_2}+m_{j_2}-1}{m_{j_2}-1}}$$
+
+
+\begin{equation} \label{eq1}
+\begin{split}
+L(h) & = -\log(P(h)) \\
+& = \log V_1 + \log V_2 + \log B(V_1,J_1)  + \log B(V_2,J_2)  + log  \binom{N+J_1.J_2-1}{J_1.J_2-1} \\
+ & \:\:\:\:\:\: + \sum^{J_1}_{j_1 = 1} \log \binom{N_{j_1}+m_{j_1}-1}{m_{j_1}-1} + \sum^{J_2}_{j_2 = 1} \log \binom{N_{j_2}+m_{j_2}-1}{m_{j_2}-1}
+\end{split}
+\end{equation}
 
 **The likelywood:**
 
+$$P(d|h) = \underbrace{ \frac{1}{\frac{N!}{\prod^{J_1}_{j_1 = 1}\prod^{J_2}_{j_2 = 1}  N_{j_1 j_2}!}}}_{A} \times \underbrace{  \frac{1}{ \prod^{J_1}_{j_1 = 1} \frac{N_{j_1}!}{\prod^{V_1}_{v_1 = 1} n_{v_1}!} \times \prod^{J_2}_{j_2 = 1} \frac{N_{j_2}!}{\prod^{V_2}_{v_2 = 1} n_{v_2}!}}}_{B} $$
+
+\begin{equation} 
+\begin{split}
+L(d|h) & = -\log P(d|h) \\
+& = \underbrace{ \log N! - \sum^{J_1}_{j_1 = 1}\sum^{J_2}_{j_2 = 1} \log N_{j_1 j_2}!}_{A} + \underbrace{\sum^{J_1}_{j_1 = 1} \log N_{j_1}! + \sum^{J_2}_{j_2 = 1} \log N_{j_2}! - \sum^{V_1}_{v_1 = 1} \log n_{v_1}! - \sum^{V_2}_{v_2 = 1} \log n_{v_2}!}_{B}
+\end{split}
+\end{equation}
 
 ## Algorithme 
 
