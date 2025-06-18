@@ -89,3 +89,10 @@ runs:
         rm -f docs/versions.md
         # Checkout the mkdocs file so that the Git repo state is clean
         git checkout mkdocs.yml
+    # The following step is needed to ensure that the post-action steps take the
+    # same versions of the build-doc action into account
+    - name: Checkout doc sources to the current repository reference
+      uses: actions/checkout@v4
+      with:
+        # Keep versions.md
+        clean: false
