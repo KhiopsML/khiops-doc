@@ -20,10 +20,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Prepare the versions markdown file
@@ -65,6 +61,10 @@ jobs:
         with:
           name: khiops-doc
           path: ./site/
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - name: Deploy site to GH pages (Manual)
         if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == true
         run: mkdocs gh-deploy --strict --force
