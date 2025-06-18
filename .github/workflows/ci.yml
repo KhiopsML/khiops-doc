@@ -24,15 +24,6 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Set Cache ID
-        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - name: Cache mkdocs-material
-        uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Prepare the versions markdown file
