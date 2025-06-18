@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.x
+      - name: Checkout doc sources (to get the current environment)
+        uses: actions/checkout@v4
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Prepare the versions markdown file
