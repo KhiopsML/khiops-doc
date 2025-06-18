@@ -162,11 +162,7 @@ The role of each parameter can be easily interpreted:
 
 ## Optimisation criterion 
 
-The core of the coclustering approach is its optimization criterion, which balances model complexity and data fit to select the most probable model given the training data. Building on the intuitions introduced earlier, this section presents the optimization criterion in detail.
-
-----
-
-MODL is a **Bayesian** model selection approach. The goal of the optimization criterion is to select the most probable model given the training data, denoted by $d$. Based on what is introduced in the [*Original Formalism*][a_unique_formalism] section and referring to [information theory:octicons-link-external-16:][information_theory]{:target="_blank"}, the optimization criterion can be expressed as: 
+The core of the coclustering approach is its optimization criterion, rooted in the MODL formalism. Its purpose is to identify the most probable model given the training data, denoted by $d$. Building on the concepts introduced in the [*Original Formalism*][a_unique_formalism] section and referring to [information theory:octicons-link-external-16:][information_theory]{:target="_blank"}, this criterion can be expressed as:
 
 $$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}} 
 + \underbrace{L(d|h)}_{\textbf{Likelihood}} $$
@@ -174,15 +170,24 @@ $$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}}
 [information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
 [a_unique_formalism]: modl.md
 
-Given the model parameters introduced above, the optimization criterion used to select the most probable discretization model can be expressed as follows:
+Given the model parameters introduced above, the optimization criterion used to select the most probable coclustering model can be formalized as follows.
 
 **The prior:**
 
+La distribution a priori des modèles est **uniforme** et **hiérachique**, comme dans tous les critères MODL. Les paramètres des modèles suivent une hiérarchie à quatre niveaux (A,B,C,D) et le nombre de choix possibles à chaque niveau et déterminé par les choix des paramètre aux niveaux précédents:
+
 $$P(h) = P(\underbrace{J_1, J_2}_{A}, \underbrace{\{j_1(v_1)\}, \{j_2(v_2)\}}_{B}, \underbrace{\{N_{j_1 j_2}\}}_{C}, \underbrace{\{n_{v_1}\}, \{n_{v_2}\}}_{D})$$
+
+La distribution des paramètres se décompose de la manière suivantes.  
 
 $$P(h) = P(A) \times P(B|A) \times P(C|B,A) \times P(D|A,B,C)$$
 
+Le *premier terme* $P(A)$ représente la distribution a priori du *nombre de groupes* sur chaque variable, i.e. $P(A)=P(J_1,J_2)$. Les deux variables d'origine ayant respectivement $V_1$ et $V_2$ modalités, et le choix de ces paramètres étant indépendant l'un de l'autre, tous les choix possibles pour ces deux paramètres sont équiprobables, tel que:     
+
 $$P(A) = \frac{1}{V_1 \times V_2}$$
+
+Le *deuxième terme* $P(B|A)$ correspond au prior sur la *composition des groupes* de modalités sur chaque variable, i.e. $P(B) = P(\{j_1(v_1)\},\{j_2(v_2)\}|A)$. $B(V, I)$ is the number of divisions of V values into I groups (with eventually empty groups). When I= V , B(V, I) is the Bell number. In the general case, B(V, I) can be written as B(V, I) = I
+i=1 S(V, i), where S(V, i) is the Stirling number of the second kind (see Abramowitz and Stegun, 1970), which stands for the number of ways of partitioning a set of V elements into i nonempty sets.
 
 $$P(B|A) = \frac{1}{B(V_1,J_1) \times B(V_2,J_2)}$$
 
