@@ -26,6 +26,9 @@ inputs:
   khiops-s3-driver-version:
     description: Version of the Khiops S3 driver
     required: true
+  add-versions-to-the-menu:
+    description: Add the versions.md to the menu
+    default: 'true'
 runs:
   using: composite
   steps:
@@ -39,6 +42,7 @@ runs:
       shell: bash
       run: pip install -r requirements.txt
     - name: Add versions to the menu
+      if: inputs.add-versions-to-the-menu == 'true'
       shell: bash
       run: |
         # Copy the versions file to the docs folder

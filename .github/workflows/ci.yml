@@ -3,6 +3,11 @@ name: Website
 on:
   workflow_dispatch:
     inputs:
+      build-other-version:
+        description: Build the other version
+        required: true
+        type: boolean
+        default: false
       deploy-gh-pages:
         description: Deploy to GH Pages
         required: true
@@ -25,6 +30,7 @@ jobs:
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Prepare the versions markdown file
+        if: inputs.build-other-version
         run: |
           echo "# Current version: [${{ env.KHIOPS_VERSION }}][current_version]" >> versions.md
           echo "# Other versions:" >> versions.md
@@ -32,6 +38,7 @@ jobs:
           echo "[current_version]: /" >> ./versions.md
           echo "[other_version]: /${{ env.KHIOPS_OTHER_VERSION }}/" >> versions.md
       - name: Build other version site
+        if: inputs.build-other-version
         uses: ./.github/actions/build-doc
         with:
           khiops-doc-ref: ${{ env.KHIOPS_DOC_OTHER_REF }}
@@ -43,6 +50,7 @@ jobs:
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_OTHER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_OTHER_VERSION }}
       - name: Move other version site to dedicated folder
+        if: inputs.build-other-version
         run: mv site ${{ env.KHIOPS_OTHER_VERSION }}
       - name: Build current version site
         uses: ./.github/actions/build-doc
@@ -55,7 +63,9 @@ jobs:
           khiops-coviz-version: ${{ env.KHIOPS_COVIZ_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
+          add-versions-to-the-menu: ${{ inputs.build-other-version }}
       - name: Move other version site inside the main site
+        if: inputs.build-other-version
         run: mv ${{ env.KHIOPS_OTHER_VERSION }} site/
       - name: Upload the site docs as an artifact (PR)
         if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
