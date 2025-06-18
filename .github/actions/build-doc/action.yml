@@ -65,18 +65,16 @@ runs:
 
         # Remove the Khiops Python API ZIP archive
         rm -f khiops_api_docs.zip
-    - name: Set-up environment variables for mkdocs build
-      shell: bash
-      run: |
-        echo "KHIOPS_VERSION=${{ inputs.khiops-version }}" >> "$GITHUB_ENV"
-        echo "KHIOPS_PYTHON_VERSION=${{ inputs.khiops-python-version }}" >> "$GITHUB_ENV"
-        echo "KHIOPS_SAMPLES_VERSION=${{ inputs.khiops-samples-version }}" >> "$GITHUB_ENV"
-        echo "KHIOPS_VIZ_VERSION=${{ inputs.khiops-viz-version }}" >> "$GITHUB_ENV"
-        echo "KHIOPS_COVIZ_VERSION=${{ inputs.khiops-coviz-version }}" >> "$GITHUB_ENV"
-        echo "KHIOPS_GCS_DRIVER_VERSION=${{ inputs.khiops-gcs-driver-version }}" >> "$GITHUB_ENV"
-        echo "KHIOPS_S3_DRIVER_VERSION=${{ inputs.khiops-s3-driver-version }}" >> "$GITHUB_ENV"
     - name: Build site
       shell: bash
+      env:
+        KHIOPS_VERSION: ${{ inputs.khiops-version }}
+        KHIOPS_PYTHON_VERSION: ${{ inputs.khiops-python-version }}
+        KHIOPS_SAMPLES_VERSION: ${{ inputs.khiops-samples-version }}
+        KHIOPS_VIZ_VERSION: ${{ inputs.khiops-viz-version }}
+        KHIOPS_COVIZ_VERSION: ${{ inputs.khiops-coviz-version }}
+        KHIOPS_GCS_DRIVER_VERSION: ${{ inputs.khiops-gcs-driver-version }}
+        KHIOPS_S3_DRIVER_VERSION: ${{ inputs.khiops-s3-driver-version }}
       run: mkdocs build --strict --verbose
     - name: Clean the Git doc repo state
       shell: bash
