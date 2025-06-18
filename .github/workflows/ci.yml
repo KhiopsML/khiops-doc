@@ -1,7 +1,5 @@
 ---
 name: Website
-env:
-  DEFAULT_KHIOPS_PYTHON_VERSION: 10.3.1.0
 on:
   workflow_dispatch:
     inputs:
@@ -10,22 +8,18 @@ on:
         required: true
         type: boolean
         default: false
-      khiops-python-version:
-        default: 10.3.1.0
-        description: Version of the Khiops Python library to fetch the API docs
-  pull_request:
 permissions:
   contents: write
 jobs:
   build-or-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Install required system dependencies
+        run: sudo apt-get install wget libarchive-tools
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - name: Install requirements
-        run: pip install -r requirements.txt
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
@@ -39,34 +33,41 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - name: Fetch Khiops Python API docs
+      - name: Set up the version information in the environment
+        run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
+      - name: Prepare the versions markdown file
         run: |
-          # Install required dependencies
-          sudo apt-get install wget libarchive-tools
-
-          # Set Khiops Python version for API doc fetching
-          KHIOPS_PYTHON_VERSION=${{ inputs.khiops-python-version || env.DEFAULT_KHIOPS_PYTHON_VERSION }}
-
-          # Fetch the API docs
-          wget -O khiops_api_docs.zip "https://github.com/KhiopsML/khiops-python/releases/download/$KHIOPS_PYTHON_VERSION/khiops-api-docs-$KHIOPS_PYTHON_VERSION.zip"
-
-          # Put Python API docs into the site source dir, as it is *untraced by
-          # Git*, hence it will get built *and* deployed (see
-          # https://www.mkdocs.org/user-guide/deploying-your-docs/)
-          # After build, the Python API docs are in the
-          # site/api-docs/python-api/api folder.
-          mkdir -p docs/api-docs/python-api/api
-
-          # Unzip the API doc into the docs/python-api/api/ folder, while
-          # stripping the doc/_build/html sub-directories and excluding the
-          # doc/_build/html/_downloads subdirectory
-          bsdtar --strip-components=3 --exclude '_downloads/' -C docs/api-docs/python-api/api -xvf khiops_api_docs.zip
-
-          # Remove the Khiops Python API ZIP archive
-          rm -f khiops_api_docs.zip
-      - name: Build site (PR)
-        if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
-        run: mkdocs build --strict --verbose
+          echo "# Current version: [${{ env.KHIOPS_VERSION }}][current_version]" >> versions.md
+          echo "# Other versions:" >> versions.md
+          echo "  - [${{ env.KHIOPS_OTHER_VERSION }}][other_version]" >> versions.md
+          echo "[current_version]: /" >> ./versions.md
+          echo "[other_version]: /${{ env.KHIOPS_OTHER_VERSION }}/" >> versions.md
+      - name: Build other version site
+        uses: ./.github/actions/build-doc
+        with:
+          khiops-doc-ref: ${{ env.KHIOPS_DOC_OTHER_REF }}
+          khiops-version: ${{ env.KHIOPS_OTHER_VERSION }}
+          khiops-python-version: ${{ env.KHIOPS_PYTHON_OTHER_VERSION }}
+          khiops-samples-version: ${{ env.KHIOPS_SAMPLES_OTHER_VERSION }}
+          khiops-viz-version: ${{ env.KHIOPS_VIZ_OTHER_VERSION }}
+          khiops-coviz-version: ${{ env.KHIOPS_COVIZ_OTHER_VERSION }}
+          khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_OTHER_VERSION }}
+          khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_OTHER_VERSION }}
+      - name: Move other version site to dedicated folder
+        run: mv site ${{ env.KHIOPS_OTHER_VERSION }}
+      - name: Build current version site
+        uses: ./.github/actions/build-doc
+        with:
+          # khiops-doc-ref is '', that is, the current branch ref
+          khiops-version: ${{ env.KHIOPS_VERSION }}
+          khiops-python-version: ${{ env.KHIOPS_PYTHON_VERSION }}
+          khiops-samples-version: ${{ env.KHIOPS-SAMPLES_VERSION }}
+          khiops-viz-version: ${{ env.KHIOPS_VIZ_VERSION }}
+          khiops-coviz-version: ${{ env.KHIOPS_COVIZ_VERSION }}
+          khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
+          khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
+      - name: Move other version site inside the main site
+        run: mv ${{ env.KHIOPS_OTHER_VERSION }} site/
       - name: Upload the site docs as an artifact (PR)
         if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
         uses: actions/upload-artifact@v4

@@ -1,0 +1,89 @@
+---
+name: Build Khiops Documentation
+description: Action to build the Khiops documentation web site
+inputs:
+  khiops-version:
+    description: Version of Khiops core
+    required: true
+  khiops-python-version:
+    description: Version of the Khiops Python library
+    required: true
+  khiops-doc-ref:
+    description: Revision of the Khiops documentation web site
+    default: ''
+  khiops-samples-version:
+    description: Version of the Khiops samples
+    required: true
+  khiops-viz-version:
+    description: Version of the Khiops visualization tool
+    required: true
+  khiops-coviz-version:
+    description: Version of the Khiops covisualization tool
+    required: true
+  khiops-gcs-driver-version:
+    description: Version of the Khiops GCS driver
+    required: true
+  khiops-s3-driver-version:
+    description: Version of the Khiops S3 driver
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Checkout doc sources
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.khiops-doc-ref }}
+        # Keep versions.md
+        clean: false
+    - name: Install requirements
+      shell: bash
+      run: pip install -r requirements.txt
+    - name: Add versions to the menu
+      shell: bash
+      run: |
+        # Copy the versions file to the docs folder
+        cp versions.md docs/
+        # Add the versions file to the menu
+        echo -e "\n  - ${{ inputs.khiops-version }}: versions.md" >> mkdocs.yml
+    - name: Fetch Khiops Python API docs
+      shell: bash
+      run: |
+        # Fetch the API docs
+        wget -O khiops_api_docs.zip "https://github.com/KhiopsML/khiops-python/releases/download/${{ inputs.khiops-python-version }}/khiops-api-docs-${{ inputs.khiops-python-version }}.zip"
+
+        # Put Python API docs into the site source dir, as it is *untraced by
+        # Git*, hence it will get built *and* deployed (see
+        # https://www.mkdocs.org/user-guide/deploying-your-docs/)
+        # After build, the Python API docs are in the
+        # site/api-docs/python-api/api folder.
+        mkdir -p docs/api-docs/python-api/api
+
+        # Unzip the API doc into the docs/python-api/api/ folder, while
+        # stripping the doc/_build/html sub-directories and excluding the
+        # doc/_build/html/_downloads subdirectory
+        bsdtar --strip-components=3 --exclude '_downloads/' -C docs/api-docs/python-api/api -xvf khiops_api_docs.zip
+
+        # Remove the Khiops Python API ZIP archive
+        rm -f khiops_api_docs.zip
+    - name: Set-up environment variables for mkdocs build
+      shell: bash
+      run: |
+        echo "KHIOPS_VERSION=${{ inputs.khiops-version }}" >> "$GITHUB_ENV"
+        echo "KHIOPS_PYTHON_VERSION=${{ inputs.khiops-python-version }}" >> "$GITHUB_ENV"
+        echo "KHIOPS_SAMPLES_VERSION=${{ inputs.khiops-samples-version }}" >> "$GITHUB_ENV"
+        echo "KHIOPS_VIZ_VERSION=${{ inputs.khiops-viz-version }}" >> "$GITHUB_ENV"
+        echo "KHIOPS_COVIZ_VERSION=${{ inputs.khiops-coviz-version }}" >> "$GITHUB_ENV"
+        echo "KHIOPS_GCS_DRIVER_VERSION=${{ inputs.khiops-gcs-driver-version }}" >> "$GITHUB_ENV"
+        echo "KHIOPS_S3_DRIVER_VERSION=${{ inputs.khiops-s3-driver-version }}" >> "$GITHUB_ENV"
+    - name: Build site
+      shell: bash
+      run: mkdocs build --strict --verbose
+    - name: Clean the Git doc repo state
+      shell: bash
+      run: |
+        # Remove source Python API docs
+        rm -fr docs/api-docs/python-api/api
+        # Remove added markdown file
+        rm -f docs/versions.md
+        # Checkout the mkdocs file so that the Git repo state is clean
+        git checkout mkdocs.yml
