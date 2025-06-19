@@ -136,12 +136,14 @@ The figure below illustrates **when a cocluster provides valuable information** 
   
 ## Model parameters 
 
-The rest of this page presents the co-clustering approach in the simple case of two categorical variables. For extensions to numerical variables and to the case of more than two variables, please refer to this article [REF]. Here, the aim is to jointly group the modalities of two categorical variables in an optimal way, in order to model their dependency. A coclustering model $M$ is entirely defined by the following parameters:
+The rest of this page presents the co-clustering approach in the simple case of two categorical variables. For extensions to numerical variables and to the case of more than two variables, please refer to [this article:octicons-link-external-16:][article_functional_data]. Here, the aim is to jointly group the modalities of two categorical variables in an optimal way, in order to model their dependency. A coclustering model $h$ is entirely defined by the following parameters:
 
 1. $J_1$ and $J_2$ the number of groups for each variable,
 2. $\{j_1(v_1)\}$ and $\{j_2(v_2)\}$ the group indexes containing the modalities $v_1$ and $v_2$ of both variables,
 3. $\{N_{j_1 j_2}\}$ the observations counts within each cocluster of the model,
 4. $\{n_{v_1}\}$ and $\{n_{v_2}\}$ the observations counts for each modality of both variables.
+
+[article_functional_data]: http://www.marc-boulle.fr/publications/BoullePR12.pdf
 
 The figure above shows an example of a coclustering model describing the dependency of two variables, the first representing *letters* and the second *symbols*. This figure details all the parameters that define the coclustering model.     
 
@@ -174,7 +176,7 @@ Given the model parameters introduced above, the optimization criterion used to 
 
 **The prior:**
 
-La distribution a priori des modèles est **uniforme** et **hiérachique**, comme dans tous les critères MODL. Les paramètres des modèles suivent une hiérarchie à quatre niveaux (A,B,C,D) et le nombre de choix possibles à chaque niveau et déterminé par les choix des paramètre aux niveaux précédents:
+Comme dans tous les critères MODL, la distribution a priori des modèles est **uniforme** et **hiérachique**. Les paramètres des modèles suivent une hiérarchie à quatre niveaux (A,B,C,D) et le nombre de choix possibles à chaque niveau est déterminé par les choix des paramètres aux niveaux précédents:
 
 $$P(h) = P(\underbrace{J_1, J_2}_{A}, \underbrace{\{j_1(v_1)\}, \{j_2(v_2)\}}_{B}, \underbrace{\{N_{j_1 j_2}\}}_{C}, \underbrace{\{n_{v_1}\}, \{n_{v_2}\}}_{D})$$
 
@@ -182,19 +184,25 @@ La distribution des paramètres se décompose de la manière suivantes.
 
 $$P(h) = P(A) \times P(B|A) \times P(C|B,A) \times P(D|A,B,C)$$
 
-Le *premier terme* $P(A)$ représente la distribution a priori du *nombre de groupes* sur chaque variable, i.e. $P(A)=P(J_1,J_2)$. Les deux variables d'origine ayant respectivement $V_1$ et $V_2$ modalités, et le choix de ces paramètres étant indépendant l'un de l'autre, tous les choix possibles pour ces deux paramètres sont équiprobables, tel que:     
+Le **premier terme** $P(A)$ représente la distribution a priori du *nombre de groupes* sur chaque variable. Les deux variables d'origine ont respectivement $V_1$ et $V_2$ modalités, les choix de ces paramètres sont indépendants l'un de l'autre, et tous les choix possibles pour ces deux paramètres sont équiprobables. Le premier terme s'écrit donc comme suit:     
 
 $$P(A) = \frac{1}{V_1 \times V_2}$$
 
-Le *deuxième terme* $P(B|A)$ correspond au prior sur la *composition des groupes* de modalités sur chaque variable, i.e. $P(B) = P(\{j_1(v_1)\},\{j_2(v_2)\}|A)$. $B(V, I)$ is the number of divisions of V values into I groups (with eventually empty groups). When I= V , B(V, I) is the Bell number. In the general case, B(V, I) can be written as B(V, I) = I
-i=1 S(V, i), where S(V, i) is the Stirling number of the second kind (see Abramowitz and Stegun, 1970), which stands for the number of ways of partitioning a set of V elements into i nonempty sets.
+Le **deuxième terme** $P(B|A)$ correspond au prior sur la *composition des groupes* de modalités sur chaque variable. The function $B(V, J)$ enumerates the possible divisions of $V$ values into $J$ groups (with eventually empty groups). This function is defined as $B(V, I) =  \sum^I_{i=1} S(V, i)$, where $S(V, i)$ is the [Stirling number of the second kind:octicons-link-external-16:][stirling_number_of_the_second_kind]. Étant donné les nombres de groupes $J_1$ et $J_2$ fixés pour chaque variable, toutes les compositions de groupe possibles sont équiprobables, le deuxième terme $P(B|A)$ s'écrit donc de la manière suivante:   
+
+[stirling_number_of_the_second_kind]: https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind
 
 $$P(B|A) = \frac{1}{B(V_1,J_1) \times B(V_2,J_2)}$$
 
+Le **troisième terme** $P(C|A,B)$ représente la distribution des comptes d'observations dans les coclusters du modèle. Le dénominateur du troisième terme dénombre les répartitions possibles des $N$ observations des données d'entrainement dans les $J_1.J_2$ coclusters du modèle:
+
 $$P(C|A,B) = \frac{1}{\binom{N+J_1.J_2-1}{J_1.J_2-1}}$$
+
+Enfin, le **quatrième terme** $P(D|A,B,C)$ correspond à la distribution des comptes d'observations sur les modalités des deux variables d'origine, à l'intérieur des groupes. Dans l'expression suivante, les deux termes binomiaux dénombrent (dans chaque groupe de chaque variable) les distributions possibles des observations du groupe sur les modalités de la variable d'origine:    
 
 $$P(D|A,B,C) = \prod^{J_1}_{j_1 = 1} \frac{1}{\binom{N_{j_1}+m_{j_1}-1}{m_{j_1}-1}} \times \prod^{J_2}_{j_2 = 1} \frac{1}{\binom{N_{j_2}+m_{j_2}-1}{m_{j_2}-1}}$$
 
+Du point de vue de la théorie de l'infoamtion, la partie **prior** du critère d'optimisation $L(h)$ correspond à la longeur de codage nécessaire pour décrire le modèle:  
 
 \begin{equation} \label{eq1}
 \begin{split}
@@ -203,6 +211,8 @@ L(h) & = -\log(P(h)) \\
  & \:\:\:\:\:\: + \sum^{J_1}_{j_1 = 1} \log \binom{N_{j_1}+m_{j_1}-1}{m_{j_1}-1} + \sum^{J_2}_{j_2 = 1} \log \binom{N_{j_2}+m_{j_2}-1}{m_{j_2}-1}
 \end{split}
 \end{equation}
+
+Par construction, ce prior **hiérachique** et **uniforme** à chaque niveau de la hiérarchie favorise des modèles simple, i.e. comportant peu de groupes pour chaque variable. 
 
 **The likelywood:**
 
