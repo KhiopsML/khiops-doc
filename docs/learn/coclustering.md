@@ -172,37 +172,39 @@ $$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}}
 [information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
 [a_unique_formalism]: modl.md
 
+where $L(h)$ is the description length of the model *(the prior)* and $L(d|h)$ the description length of the trainig data given the model *(the likelihood)*.
 Given the model parameters introduced above, the optimization criterion used to select the most probable coclustering model can be formalized as follows.
 
 **The prior:**
 
-Comme dans tous les critères MODL, la distribution a priori des modèles est **uniforme** et **hiérachique**. Les paramètres des modèles suivent une hiérarchie à quatre niveaux (A,B,C,D) et le nombre de choix possibles à chaque niveau est déterminé par les choix des paramètres aux niveaux précédents:
+As with all MODL criteria, the a priori distribution of the models is **uniform** and **hierarchical**. The model parameters follow a four-level hierarchy (A,B,C,D), with the number of options at each level determined by the choices made at the previous levels:
 
 $$P(h) = P(\underbrace{J_1, J_2}_{A}, \underbrace{\{j_1(v_1)\}, \{j_2(v_2)\}}_{B}, \underbrace{\{N_{j_1 j_2}\}}_{C}, \underbrace{\{n_{v_1}\}, \{n_{v_2}\}}_{D})$$
 
-La distribution des paramètres se décompose de la manière suivantes.  
+The distribution of parameters can be decomposed as follows. 
 
 $$P(h) = P(A) \times P(B|A) \times P(C|B,A) \times P(D|A,B,C)$$
 
-Le **premier terme** $P(A)$ représente la distribution a priori du *nombre de groupes* sur chaque variable. Les deux variables d'origine ont respectivement $V_1$ et $V_2$ modalités, les choix de ces paramètres sont indépendants l'un de l'autre, et tous les choix possibles pour ces deux paramètres sont équiprobables. Le premier terme s'écrit donc comme suit:     
+
+- **First level:** $P(A)$ is a uniform prior over the number of groups $J_1, J_2$ for each variable. Since the original variables have $V_1$ and $V_2$ modalities respectively, the choices of these parameters are independent, and all choices are equally probable, we have:    
 
 $$P(A) = \frac{1}{V_1 \times V_2}$$
-
-Le **deuxième terme** $P(B|A)$ correspond au prior sur la *composition des groupes* de modalités sur chaque variable. The function $B(V, J)$ enumerates the possible divisions of $V$ values into $J$ groups (with eventually empty groups). This function is defined as $B(V, I) =  \sum^I_{i=1} S(V, i)$, where $S(V, i)$ is the [Stirling number of the second kind:octicons-link-external-16:][stirling_number_of_the_second_kind]. Étant donné les nombres de groupes $J_1$ et $J_2$ fixés pour chaque variable, toutes les compositions de groupe possibles sont équiprobables, le deuxième terme $P(B|A)$ s'écrit donc de la manière suivante:   
+ 
+- **Second level:** $P(B|A)$ is a uniform prior over the *partitioning* of each variable's modalities into $J_1$ and $J_2$ groups. The function $B(V, J)$ counts the number of ways to partition $V$ values into $J$ (possibly empty) groups, defined as a sum of [Stirling number of the second kind:octicons-link-external-16:][stirling_number_of_the_second_kind], such that $B(V, I) = \sum^I_{i=1} S(V, i)$. Assuming all partitions are equiprobable, the probability of a specific partition is:
 
 [stirling_number_of_the_second_kind]: https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind
 
 $$P(B|A) = \frac{1}{B(V_1,J_1) \times B(V_2,J_2)}$$
 
-Le **troisième terme** $P(C|A,B)$ représente la distribution des comptes d'observations dans les coclusters du modèle. Le dénominateur du troisième terme dénombre les répartitions possibles des $N$ observations des données d'entrainement dans les $J_1.J_2$ coclusters du modèle:
+- **Third level:** $P(C|A,B)$ is a uniform prior on the distribution of observations across the model's coclusters. The total number of ways to distribute $N$ observations into $J_1.J_2$ coclusters is given by the following denominator term:
 
 $$P(C|A,B) = \frac{1}{\binom{N+J_1.J_2-1}{J_1.J_2-1}}$$
 
-Enfin, le **quatrième terme** $P(D|A,B,C)$ correspond à la distribution des comptes d'observations sur les modalités des deux variables d'origine, à l'intérieur des groupes. Dans l'expression suivante, les deux termes binomiaux dénombrent (dans chaque groupe de chaque variable) les distributions possibles des observations du groupe sur les modalités de la variable d'origine:    
+- **Fourth level:**  $P(D|A,B,C)$ is a uniform prior over how observations are assigned to the original variables modalities. For each group of both variables, the number of ways to distribute $N_{j_i}$ observations over $m_{j_i}$ modalities is enumerated, such that:
 
 $$P(D|A,B,C) = \prod^{J_1}_{j_1 = 1} \frac{1}{\binom{N_{j_1}+m_{j_1}-1}{m_{j_1}-1}} \times \prod^{J_2}_{j_2 = 1} \frac{1}{\binom{N_{j_2}+m_{j_2}-1}{m_{j_2}-1}}$$
 
-Du point de vue de la théorie de l'infoamtion, la partie **prior** du critère d'optimisation $L(h)$ correspond à la longeur de codage nécessaire pour décrire le modèle:  
+From an information theory perspective, this *prior* corresponds to the coding length needed to describe the model: 
 
 \begin{equation} \label{eq1}
 \begin{split}
@@ -212,7 +214,7 @@ L(h) & = -\log(P(h)) \\
 \end{split}
 \end{equation}
 
-Par construction, ce prior **hiérachique** et **uniforme** à chaque niveau de la hiérarchie favorise des modèles simple, i.e. comportant peu de groupes pour chaque variable. 
+This **hierarchical** and **uniform** prior naturally favors simpler models with fewer groups per variable.
 
 **The likelywood:**
 
