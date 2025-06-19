@@ -171,7 +171,9 @@ In a very similar way to the discretization, the following criterion must be min
 
 It has the same hierarchical and uniform shape as for discretization, but it differs slightly:
 
-$$-\log(P(h).P(d|h)) = \overbrace{\underbrace{ \vphantom{\sum\limits_{g=1}^G}  \log M}_{\textbf{level 1}} + \underbrace{ \vphantom{\sum\limits_{g=1}^G} \log \left (  \sum\limits_{g=1}^G S(M,g) \right )}_{\textbf{level 2}} + \underbrace{\sum\limits_{g=1}^G \log \binom{N_g + J -1}{J-1}}_{\textbf{level 3}}}^{\textbf{Prior}} $$
+$$-\log(P(h).P(d|h)) = \overbrace{\underbrace{ \vphantom{\sum\limits_{g=1}^G}  \log M}_{\textbf{level 1}} + \underbrace{ \vphantom{\sum\limits_{g=1}^G} \log \left (  \sum\limits_{g=1}^G S(M,g) \right )}_{\textbf{level 2}}}^{\textbf{Prior}} + \overbrace{\underbrace{\sum\limits_{g=1}^G \log \binom{N_g + J -1}{J-1}}_{\textbf{level 3}}}^{\textbf{Likelihood}} $$
+
+
 
 
 - **level 1**: probability of a particular number of groups, all the values $G \in [1, M]$ being equiprobable,
