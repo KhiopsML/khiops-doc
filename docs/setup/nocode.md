@@ -36,6 +36,8 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
      - `khiops`: This package requires `khiops-core` and is the full version of Khiops containing the GUI and the documentation.
 
+    Unlike the Windows installer, **the Khiops Visualization application is not included.**
+
     You can install both packages as follows:
 
     ``` sh
@@ -64,6 +66,8 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
 
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
      - `khiops`: This package requires `khiops-core` and is the full version of Khiops containing the GUI and the documentation.
+
+    Unlike the Windows installer, **the Khiops Visualization application is not included.**
 
     You can install both packages as follows:
 
