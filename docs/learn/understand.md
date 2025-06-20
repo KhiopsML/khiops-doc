@@ -1,6 +1,6 @@
 # What makes Khiops different
 
-Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), natively and effortlessly handling intricate Data Science time-consuming tasks. These include feature engineering (A), data cleaning and encoding (B), and the training of parsimonious models (C).
+Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), natively handling many time-consuming Data Science tasks—not through brute-force automation, but through a rigorous formalism that makes many manual steps unnecessary. These include feature engineering (A), data cleaning and encoding (B), and the training of parsimonious models (C).
 
 <picture>
   <source srcset="/assets/images/auto-ml-pipeline.webp" type="image/webp">
@@ -10,7 +10,7 @@ Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), na
 
 The Auto-ML capability allows Khiops to expertly process tabular data, regardless of whether it comes in single-table format, or in the form of **relational data sets**, including those with complex "snowflake" schemas. This becomes a distinctive asset in various situations, particularly when addressing use-cases with multiple records per statistical individual (such as calls, transactions, or production logs). Khiops handles these scenarios seamlessly and automatically, **making it an invaluable tool for extracting rich insights from complex datasets**.
 
-The distinctiveness of Khiops lies in its departure from typical AutoML solutions that often run an expensive range of complex algorithms over putative sets of parameters in a grid search manner. Instead, Khiops employs **an original formalism** called [MODL][publications] (which is hyperparameter-free), enabling it to push boundaries by enhancing automation levels. As a result, it can build high-performance models that retain simplicity for **ease of interpretation**. Moreover, this approach supports impressive **scalability**, setting a new benchmark in machine learning.
+The distinctiveness of Khiops lies in its departure from typical AutoML solutions that rely on heavy computation and exhaustive hyperparameter tuning. Instead, Khiops employs **an original formalism** called [MODL][publications] (which is hyperparameter-free) that naturally eliminates the need for manual steps such as data cleaning, variable encoding, and handcrafted feature engineering. This principled approach allows Khiops to automate the entire ML pipeline in a robust and efficient manner, **without sacrificing interpretability**. By design, it produces high-performance, parsimonious models and achieves scalability without brute force, setting a new standard for structured data learning.
 
 
 <picture>
@@ -21,7 +21,7 @@ The distinctiveness of Khiops lies in its departure from typical AutoML solution
 
 ## Advanced Automation 
 
-Khiops significantly enhances the productivity of data scientists by seamlessly automating numerous time-intensive tasks. Key benefits include:
+Automation in Khiops is not based on brute-force exploration or trial-and-error heuristics. Instead, it emerges from a formal, principled methodology that reduces or eliminates preprocessing steps altogether. Khiops significantly enhances the productivity of data scientists by making many traditionally time-intensive tasks unnecessary through formal automation. Key benefits include:
 
 - **Automated Data Cleaning**: Khiops alleviates the need for manual data cleaning, and the training of models remains unaffected by outliers. It minimizes the need for intricate preprocessing and outlier detection, saving valuable time.
 - **Native Processing of Variables**: Khiops adeptly manages all data types without requiring manual encoding. Categorical variables are naturally grouped, and numerical variables are cleverly divided into intervals, making it easier for the models to find patterns and relationships. 

@@ -2,7 +2,7 @@
 
 Welcome to the practical guide to using Khiops. Whether you are exploring its capabilities for the first time or preparing for industrial-scale deployments, this section will help you understand **how Khiops streamlines and enhances your data science workflows**.
 
-Unlike traditional machine learning libraries, Khiops is built on **a unique formalism and advanced automation capabilities** that fundamentally reshape the data science process. By automating tedious, repetitive and technically complex steps, Khiops allows users to **focus on the core objectives of data science**: understanding their data and solving meaningful business problems.
+Unlike traditional machine learning libraries, Khiops is built on a unique formalism that inherently **reduces or eliminates traditional preprocessing tasks**, avoiding exhaustive brute-force automation. This allows users to skip tedious, repetitive, and technically complex steps and instead **focus on understanding their data and solving meaningful business problems**.
 
 At the same time, this singular approach may feel unfamiliar to those accustomed to standard tools and libraries. This section provides a comprehensive introduction to Khiops, enabling you to make the most of its strengths and integrate it into your projects with confidence.
 
@@ -33,7 +33,7 @@ Whether you’re exploring Khiops for rapid prototyping or integrating it into l
 Khiops introduces a streamlined and effective approach to data science, **simplifying every stage of the process** while providing advanced automation and a robust formalism. Unlike traditional tools, Khiops enables you **to focus on what truly matters**: understanding your data, interpreting insights (the story your data tells), solving business problems, and deploying reliable models. Here's how you can leverage Khiops' unique features step by step:
 
 
-- **Skip Data Cleaning and Preparation**: Forget about spending hours on cleaning and formatting your data. Khiops reads raw data directly and handles common issues like missing values, inconsistent formats, or noisy inputs. For example, if your dataset contains missing values, Khiops automatically treats them as meaningful signals when training models. It also removes the need for transformations like log scaling or standardization, as its value rank-based encoding is inherently invariant to monotonic transformations.
+- **Skip Data Cleaning and Preparation**: Forget about spending hours on cleaning and formatting your data. Khiops reads raw data directly because its underlying formalism inherently handles issues like missing values or inconsistent formats without requiring explicit preprocessing. For example, if your dataset contains missing values, Khiops automatically treats them as meaningful signals when training models. It also removes the need for transformations like log scaling or standardization, as its value rank-based encoding is inherently invariant to monotonic transformations.
 
     !!! example "Follow the [**No Need for Data Preparation**][no_data_cleaning] tutorial to see this in action."
 
