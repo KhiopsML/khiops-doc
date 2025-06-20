@@ -15,9 +15,9 @@ Numerical InInterval(Structure(IntervalBounds) interval, Numerical inputValue)
 
 Returns `1` if the input value belongs to the interval, `0` otherwise. The interval bounds must
 contain exactly two bounds, for intervals of type `]lowerBound; upperBound]`. For left-open or
-right-open intervals, use comparison derivation rules, such as [`G`](numerical-comparisons.md/#g),
-[`GE`](numerical-comparisons.md/#ge), [`L`](numerical-comparisons.md/#l) or
-[`LE`](numerical-comparisons.md/#le).
+right-open intervals, use comparison derivation rules, such as [`G`](numerical-comparisons.md#g),
+[`GE`](numerical-comparisons.md#ge), [`L`](numerical-comparisons.md#l) or
+[`LE`](numerical-comparisons.md#le).
 
 ## InGroup
 

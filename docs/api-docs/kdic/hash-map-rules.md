@@ -7,7 +7,7 @@ Structure(HashMapC) HashMapC(Structure(VectorC) keyVector, Structure(VectorC) va
 ```
 
 Builds a hash map of `Categorical` values indexed by `Categorical` keys. The operands must come from
-[`VectorC`](vector-rules.md/#vectorc) rules of the same size, with unique keys in the
+[`VectorC`](vector-rules.md#vectorc) rules of the same size, with unique keys in the
 `keyVector`.
 
 ## TableHashMapC

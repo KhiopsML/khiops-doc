@@ -6,6 +6,9 @@ Welcome to the Khiops Visualization tool! It facilitates an in-depth exploration
 
 [:octicons-graph-16: Try or Interactive Demo](demovisualization.md){ .md-button .md-button--primary }
 
+[:material-bookshelf:  Visualization Guide](../ui-docs/visualization.md){ .md-button .md-button--light }
+[:material-bookshelf: Covisualization Guide](../ui-docs/covisualization.md){ .md-button .md-button--light }
+
 ## Download the Khiops Visualization Desktop Application
 
 You can find all versions of the Khiops Visualization tool on the [the following link][repo-visu] or download the latest stable version for your operating system from the URLs shown below:
@@ -46,8 +49,8 @@ For a comprehensive guide on how to use the Khiops Visualization application:
 - [**Khiops Visualization Guide**][Documentation], for supervised analysis
 - [**Khiops Co-Visualization Guide**][coviz], for unsupervised analysis
 
-[Documentation]: KhiopsVisualizationGuide.pdf
-[coviz]: KhiopsCovisualizationGuide.pdf
+[Documentation]: ../ui-docs/visualization.md
+[coviz]: ../ui-docs/covisualization.md
 
 ## Screenshots 
 

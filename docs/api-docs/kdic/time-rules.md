@@ -37,7 +37,7 @@ Recodes a categorical value into a time using a time format.
 !!! example
 
     ```kdic
-    AsTime(“18:25:00”, “HH:MM:SS”)
+    AsTime("18:25:00", "HH:MM:SS")
     ```
 
 ## Hour
