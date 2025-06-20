@@ -143,7 +143,7 @@ nav:
   - API Python:
       - Python API Docs: api-docs/python-api.md
   - API Dictionary: 
-      - Introduction to Dictionaries: tutorials/kdic_intro.md     
+      - Introduction to Dictionaries: api-docs/kdic_intro.md     
       - Inputs-outputs:
           - Database Files: api-docs/kdic/database-files.md
           - Dictionary Files: api-docs/kdic/dictionary-files.md
