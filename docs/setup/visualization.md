@@ -5,6 +5,7 @@
 Welcome to the Khiops Visualization tool! It facilitates an in-depth exploration of your data. In a standalone desktop application, it provides an intuitive visualization of all analysis results, ensuring a streamlined interpretation of discovered patterns. Dive deeper into your data, leveraging the outstanding capabilities of Khiops, such as variable encoding, feature engineering, and parsimonious training.
 
 [:octicons-graph-16: Try or Interactive Demo](demovisualization.md){ .md-button .md-button--primary }
+
 [:material-bookshelf:  Visualization Guide](../ui-docs/visualization.md){ .md-button .md-button--light }
 [:material-bookshelf: Covisualization Guide](../ui-docs/covisualization.md){ .md-button .md-button--light }
 
