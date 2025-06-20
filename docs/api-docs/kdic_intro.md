@@ -6,7 +6,7 @@ The main user benefits include:
 
 - **Meaningful data description**: In its simplest form (a single training data table), the dictionary describes the variables, with their names and types. For more complex data spread across multiple tables, the dictionary also encodes relationships by linking tables, treating a secondary table as a "variable" of the table it is linked to. This approach allows users to easily define and structure data into a comprehensible relational schema, even for advanced setups such as snowflake schemas (see examples in the [multi-table learning page][kdic_multi_table]).
   
-[kdic_multi_table]: kdic_multi_table.md
+[kdic_multi_table]: ../tutorials/kdic_multi_table.md
 
 - **Meaningful data preparation**: The user simply expresses their business knowledge by selecting the relevant information for the problem at hand and enriching data with relevant user-defined variables. These enrichment rules are similar to SQL expressions, allowing users to define new variables with intuitive logic (e.g. using the mathematical rules described [here][math-rules]). 
 
