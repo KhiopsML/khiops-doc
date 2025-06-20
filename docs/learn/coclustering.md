@@ -204,7 +204,7 @@ $$P(C|A,B) = \frac{1}{\binom{N+J_1.J_2-1}{J_1.J_2-1}}$$
 
 $$P(D|A,B,C) = \prod^{J_1}_{j_1 = 1} \frac{1}{\binom{N_{j_1}+m_{j_1}-1}{m_{j_1}-1}} \times \prod^{J_2}_{j_2 = 1} \frac{1}{\binom{N_{j_2}+m_{j_2}-1}{m_{j_2}-1}}$$
 
-From an information theory perspective, this *prior* corresponds to the coding length needed to describe the model: 
+From an information theory perspective, this *prior* relates to the coding length $L(h)$ needed to describe the model. As a reminder, the minus logarithm is used in this context to transform the probability into quantity of information. Thus, the sum of levels 1, 2, 3 and 4 finally expressed a product of independent probabilities corresponding to successive choices at each level: 
 
 \begin{equation} \label{eq1}
 \begin{split}
@@ -214,7 +214,7 @@ L(h) & = -\log(P(h)) \\
 \end{split}
 \end{equation}
 
-This **hierarchical** and **uniform** prior naturally favors simpler models with fewer groups per variable.
+It is also important to note that the prior assesses the probability of hypotheses $h$ based on the combinatorial space of possible coclustering models, **regardless of the training data**. Simpler models, with fewer groups, are favored because increasing the number of groups expands the space of possible *group compositions* as well as the potential *distributions of observations* across the coclusters, thereby reducing the model's prior probability.
 
 **The likelywood:**
 
