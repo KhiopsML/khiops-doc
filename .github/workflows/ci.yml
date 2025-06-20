@@ -74,9 +74,15 @@ jobs:
           name: khiops-doc
           path: ./site/
       - name: Configure Git Credentials
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == true
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - name: Deploy site to GH pages (Manual)
         if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == true
-        run: mkdocs gh-deploy --strict --force
+        run: |
+          # Install tool for pushing to GH pages
+          pip install ghp-import
+
+          # Push built site directory contents to GH pages
+          ghp-import -m "Deployed ${GITHUB_SHA:0:7}" --push --force --no-jekyll ./site/
