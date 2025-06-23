@@ -68,7 +68,6 @@ Some technical types are used by Khiops to specify prepocessing or modeling meth
     };
     ```
 
-<!---## ![](../../assets/images-khiops-guides/khiops/Multi-tablePicto.png)---> 
 ## Multi-table dictionary
 
 Whereas most data mining tools work on instances * variables flat tables, real data often have a structure coming from databases. 
