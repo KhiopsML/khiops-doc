@@ -878,7 +878,7 @@ interpretation, reinforcement, or other purposes.
 It can also be used to recode data according to the deployment dictionary's specifications,
 resulting in variables that are used, discarded, or newly created through various derivation rules.
 
-The **Build deployment dictionary** action creates an output dictionary that enables to read and analyses the output files: it contains the deployed variables only, 
+The **Build deployed dictionary** action creates an output dictionary that enables to read and analyses the output files: it contains the deployed variables only, 
 without any derivation rule in the dictionary.
 
 
