@@ -79,7 +79,11 @@ runs:
         KHIOPS_COVIZ_VERSION: ${{ inputs.khiops-coviz-version }}
         KHIOPS_GCS_DRIVER_VERSION: ${{ inputs.khiops-gcs-driver-version }}
         KHIOPS_S3_DRIVER_VERSION: ${{ inputs.khiops-s3-driver-version }}
-      run: mkdocs build --strict --verbose
+      run: |
+        # Build the site pages into the site/ directory
+        mkdocs build --strict --verbose
+        # Hide the logo from the Python files
+        find site/api-docs/python-api/api -name "*.html" -print0 | xargs -0 sed -i 's/div class="sidebar-logo-container"/div class="sidebar-logo-container" style="visibility: hidden; max-height: 0"/g'
     - name: Clean the Git doc repo state
       shell: bash
       run: |
