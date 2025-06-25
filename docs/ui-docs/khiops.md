@@ -3,30 +3,83 @@ hide:
   - navigation
 ---
 
-Khiops is an automatic data preparation and scoring tool for supervised learning and unsupervised learning in the case of 
-large multi-tables databases. 
+This documentation describes the Khiops GUI Application, which allows users to access Khiops functionalities 
+without writing any code. 
+It provides a straightforward interface for the entire data mining process, including data preparation, modeling, evaluation, 
+interpretation, and deployment of both supervised and unsupervised models on large multi-table databases.
 
-It compute univariate and bivariate descriptive statistics and evaluated the predictive importance of explanatory variables, 
-using optimal discretization of numerical variables and grouping of categorical variables to recode the input data. 
-Additionally, it supports multi-table relational mining with automatic variable construction and 
-natively handles text variables through automatic tokenization.
+## Quick start
 
-Khiops also produces scoring models for supervised learning tasks, using a Selective Naive Bayes approach extended with decision trees,
-for both classification and regression.
-It facilitates interpretation of scoring models through interpretation models that accurately compute Shapley values,
-and it improves prediction scores by exploit reinforcement models based on lever variables.
+### Fast path
 
-Khiops run on multi-cores machines under multiple platforms. It is available both in user interface mode and in batch mode, such that it can easily be embedded as a software component in a data mining deployment project. 
+**Explore you data**
 
-This documentation describes the parameters of Khiops GUI Application and all its functionalities.
-The management of the data dictionaries and the list of derivation rules are described on the dictionary [`Dictionary files`](../api-docs/kdic/dictionary-files.md).
+- Enter the name of the file in the **Data table file** field of the **Train database** pane 
+
+- Click on the **Train model** button 
+
+- Click on the **Visualize results** button in the **Results** pane 
+
+**Build a classification model**
+
+- Enter the name of the input file in the **Data table file** field of the **Train database** pane 
+
+- Enter the name of the variable to predict in the **Target variable** field of the **Parameters** pane. 
+
+- Click on the **Train model** button 
+
+- Click on the **Visualize results** button in the **Results** pane 
+
+### What is a data dictionary? 
+
+A data dictionary allows you to define the type and name of variables in a data file, with additional key features:
+
+- selecting variables to include or exclude from analysis,
+
+- organizing data within a multi-table schema, such as a star schema or snowflake schema,
+    
+- creating new variables through derivation rules,
+
+- storing data transformation workflows derived from machine learning model outputs,
+
+- facilitating data transformation of the input database via the **Deploy model** feature, which includes:
+   
+    - deploying prediction scores using a prediction model,
+
+    - recoding data with a recoder model,
+     
+    - generating interpretation indicators with an interpreter model,
+     
+    - deploying or reinforcing scores using a reinforcer model,
+     
+    - ...
+
+For comprehensive information on dictionaries, refer to [`Start Using Dictionaries`](../tutorials/kdic_intro.md).
+
+A dictionary file contains one or several dictionaries; details about their format can be found in [`Dictionary files`](../api-docs/kdic/dictionary-files.md).
+
+
+### Standard path 
+
+**Manage data dictionaries**
+
+- Click on the **Manage dictionaries** sub-menu of the **Data dictionary** menu 
+  A dialog box appears, which allows you to build a dictionary from a data file and edit the dictionaries of a dictionary file. 
+
+**Use a data dictionary**
+
+- Click on the **Open** sub-menu of the **Data dictionary** menu 
+
+- Choose the dictionary file (extentions .kdic) 
+
+- Enter the name the dictionary in the **Analysis dictionary** field of the **Train database** pane 
 
 
 ## Train database
 
 ![](../assets/images-khiops-guides/khiops/Khiops_TrainDatabase.png) 
 
-**Analysis dictionary**: name of dictionary to analyse. Automaticcally generated from data table file if not specified.
+**Analysis dictionary**: name of dictionary to analyse. Automatically generated from data table file if not specified.
 
 ***Dictionary file***: (read-only) name of the current dictionary file.
 
@@ -85,6 +138,8 @@ Another way to build train or test samples is to use a selection variable and a 
     
     ***Dictionary***: name of the dictionary that describes the data table.
 
+    For in-depth information about multi-table dictionaries, see [`Multi-table Concepts`](../tutorials/kdic_multi_table.md)
+
 
 ### Specification of test database
 
@@ -129,13 +184,16 @@ Khiops performs automatic feature engineering by constructing variables from mul
 
 **Max number of constructed variables**: max number of variables to construct (default: 1000). The constructed variables allow to extract numerical or categorical values resulting from computing formula applied to existing variable (e.g. YearDay of a Date variable, Mean of a Numerical Variable from a Table Variable).
 
-**Max number of text features**: max number of text features to construct (default: 10,000). Text features are constructed from variables of type Text or TextList available in the main table or any secondary tables. By default, features are created using words.
+**Max number of text features**: max number of text features to construct (default: 10,000). Text features are constructed from variables of type Text or TextList available in the main table or any secondary tables. 
+By default, features are created using words.
 
 **Max number of trees**: max number of trees to construct. The constructed trees allow to combine variables, either native or constructed (default: 10).
 
 **Max number of pairs of variables**: max number of pairs of variables to analyze during data preparation (default: 0). The pairs of variables are preprocessed using a bivariate discretization method. Pairs of variables are not available in regression analysis.
 
-By default, few features are constructed to get a good trade-off between accuracy, interpretability and deployment speed. Maximum interpretability and deployment speed can be achieved by choosing no feature to be built. Conversely, choosing more feature to construct allows to train more accurate predictors at the cost of computation time and loss of interpretability.
+By default, few features are constructed to get a good trade-off between accuracy, interpretability and deployment speed. 
+Maximum interpretability and deployment speed can be achieved by choosing no feature to be built. 
+Conversely, choosing more features to construct allows to train more accurate predictors at the cost of computation time and loss of interpretability.
 
 - Variable construction
 
@@ -149,13 +207,13 @@ By default, few features are constructed to get a good trade-off between accurac
 
 - Text features
 
-    - allows to exploit text variables defines in the main table or any secondary tables, by tokenizing them into list of tokens,
+    - allows to exploit text variables defined in the main table or any secondary tables, by tokenizing them into list of tokens,
   
     - eliminates the need for manual preprocessing or feature engineering, making the process faster, easier, and fully interpretable,
 
     - this is particularly valuable for databases where text data is embedded within tabular datasets and can complement other variables,
   
-    - while Khiops’ approach to text data is not designed to replace specialized models (e.g. LLMs), it provides a lightweight, automated, and interpretable solution for incorporating textual insights into tabular analyses, with minimal effort.
+    - while Khiops approach to text data is not designed to replace specialized models (e.g. LLMs), it provides a lightweight, automated, and interpretable solution for incorporating textual insights into tabular analyses, with minimal effort.
 
 - Trees
   
@@ -179,7 +237,7 @@ By default, few features are constructed to get a good trade-off between accurac
   
     - recommendation: build variable pairs for exploratory analysis of correlations rather than to improve the accuracy of predictors.
 
-Constructed variables are stored in the output dictionaries (recoding or modeling dictionary), with formula that allow to compute their values during model deployment.
+Constructed variables are stored in the output dictionaries (recoding or modeling dictionary), with formulae that allow to compute their values during model deployment.
 
 !!! note
 
@@ -264,7 +322,7 @@ If the number of pairs specified is greater than this maximum value, the pairs a
 
 **All pairs**: Analyzes all possible variable pairs.
 
-**Specific variables pairs**: Allows to specify a specific list of variables pairs. A variable pair can be specified with a single variable to indicate that all pairs involving that variable should be analyzed.
+**Specific variables pairs**: Allows to specify a list of variables pairs. A variable pair can be specified with a single variable to indicate that all pairs involving that variable should be analyzed.
 
 - **Insert pair**: Adds a variable pair
 
@@ -300,7 +358,7 @@ Khiops builds recoders in case of a supervised or unsupervised learning task, to
 
 **Categorical recoding method**: (default: part Id)
 
-- part Id: identifier of the part (interval, group of values or cell in case of bivariate recoded variable)
+- part Id: identifier of the part (group of values)
 
 - part label: comprehensible label of the part, like in reports
 
@@ -425,33 +483,6 @@ The JSON file is useful to inspect the modeling results from any external tool.
 
 ![](../assets/images-khiops-guides/khiops/Khiops_DataDictionary_menu.png)
 
-A dictionary file is a text file with the extension *.kdic*. 
-It contains the definition of one or several dictionaries, each specifying the set of variables to use in data analysis.
-
-A data dictionary allows you to define the type and name of variables in a data file, with additional key features:
-
-- selecting variables to include or exclude from analysis,
-
-- organizing data within a multi-table schema, such as a star schema or snowflake schema,
-    
-- creating new variables through derivation rules,
-
-- storing data transformation workflows derived from machine learning model outputs,
-
-- facilitating data transformation of the input database via the *Deploy model* feature, which includes:
-   
-    - deploying prediction scores using a prediction model,
-
-    - recoding data with a recoder model,
-     
-    - generating interpretation indicators with an interpreter model,
-     
-    - deploying or reinforcing scores using a reinforcer model,
-     
-    - ...
-
-For more detailed information on the format of dictionary files, see [`Dictionary files`](../api-docs/kdic/dictionary-files.md).
-
 
 #### Open
 
@@ -462,6 +493,10 @@ In case of invalid dictionary file, the current dictionaries are kept in memory.
 #### Close
 
 The dictionaries are removed (from memory only). The potential pending modifications are lost if they have not been saved.
+
+#### Reload
+
+Reload the current dictionary file into memory
 
 #### Save
 
@@ -752,7 +787,7 @@ The formulae used to compute prediction variables are stored in the dictionaries
 enabling the deployment of prediction scores on unseen data. 
 The data miner can select or unselect variables to deploy using the "Unused" keyword in
 the modeling dictionary. 
-For example, to produce a score file, the data mining can select a key variable, in order to enable joins in databases, and the variable related to the probability of the class value of interest.
+For example, to produce a score file, the data miner can select a key variable, in order to enable joins in databases, and the variable related to the probability of the class value of interest.
 
 The main output variables in a classification dictionary with a target variable named <class\> are:
 
@@ -932,6 +967,12 @@ test databases, the *Evaluate model* action enables a deffered evaluation of pre
 ![](../assets/images-khiops-guides/khiops/InterpretModel.png)
 
 This action opens a dialog box allowing to build an interpretation dictionary from a predictor dictionary.
+The interpretation dictionary calculates the individual importance of predictor variables using 
+[Shapley values:octicons-link-external-16:][shapley-values]{:target="_blank"}.
+
+[shapley-values]: https://en.wikipedia.org/wiki/Shapley_value "Visit the Wikipedia page"
+
+
 The parameters of the dialog box are the following.
 
 **Predictor dictionary**: name of the predictor dictionary.
