@@ -1,28 +1,139 @@
-# Format of the dictionary files
+## Standard Dictionaries
 
-## Dictionary file
+Khiops dictionaries allow to describe the structure of the database to analyze and to enable the deployment of the data analysis trained models:
+see [`Start Using Dictionaries`](../../tutorials/kdic_intro.md).
 
-A dictionary file is a text file with extension .kdic, containing the definition of one or many dictionaries.
+A **dictionary file** is a text file with extension *.kdic*, containing the definition of one or many dictionaries.
 
-## Dictionary
+A **dictionary** allows to define the name and type of variables in a data table file, as illustrated in the following minimal example.
 
-A dictionary allows to define the name and type of native variables in a data table file, as well as the constructed variables described by means of derivation rules.
+!!! example "Example of a dictionary file"
+    
+    ```kdic
+    Dictionary	Iris
+    {
+        Numerical	SepalLength	;
+        Numerical	SepalWidth		;
+        Numerical	PetalLength		;
+        Numerical	PetalWidth		;
+        Categorical	Class	;
+    };
+    ```
 
-```kdic
-Dictionary name
-{
-    {Variable definition};
-};
-```
 
-A dictionary is defined by its name and by the list of its variables, and optionally meta-data and a label.
 
-Variables within a dictionary can be organized into *variables blocks*. This advanced feature, used internally by Khiops for the management of sparse data, 
-is detailed [`here`](block-sparse-rules.md). 
+It also allows define a label, comments, meta-data per variable, to select variables to use or not for analysis, to construct new variables
+ by means of derivation rules.
 
-Meta-data is a list of keys or key value pairs (*<key>* or *<key=value>* for numerical or categorical constant values). 
-Meta-data is used internally by Khiops to store information related to dictionaries or variables (to annotate the results of analysis). 
-It is also used to store the external format of Date, Time and Timestamp variables, in case where the default format is not used. 
+
+### Type
+
+The types available for native variables, those that can be stored directly in data table files, are:
+
+- Categorical, 
+
+- Text,
+
+- Numerical,
+
+- Date,
+
+- Time,
+
+- TimestampTZ,
+
+- TimestampTZ.
+
+
+Advanced types are provided for specialized usages:
+
+- Entity(name): represents a 0-1 relationship in a multi-table schema, referencing the specified dictionary,
+  
+- Table(name): represents a 0-n relationship in a multi-table schema, referencing the specified dictionary,
+  
+- TextList: derived from a list of Text variables, mainly to collect Text variable from a multi-table schema,
+
+- Structure(name): used for algorithmic structures that store model parameters (for internal use).
+
+### Name
+
+The names are case sensitive and are limited to 128 characters. 
+In the case where they use characters other than alphanumeric characters, 
+they must be surrounded by back-quotes.
+Back-quotes inside variable names must be doubled.
+
+### Unused variables
+
+A variable can be ignored in the data processing (memory loading, modeling, deployment) if the keyword *Unused* 
+is specified before the variable definition. 
+
+Even though, Khiops is still aware of the variable, which allows to construct new variables derived from the ignored variable.
+
+!!! example "Dictionary file with unused variables"
+    
+    ```kdic
+    Dictionary	Iris
+    {
+    Unused    Numerical	SepalLength	;
+    Unused    Numerical	SepalWidth		;
+        Numerical	PetalLength		;
+        Numerical	PetalWidth		;
+        Categorical	Class	;
+    };
+    ```
+
+### Comments and labels
+
+Labels and comments are lines that begin with //.
+
+- dictionary level:
+   
+    - the label is the first commented line before the dictionary definition,
+        
+    - internal comments can be added at the end of the variable block,
+
+- variable level:
+        
+    - the label must appear on the same line immediately after the variable definition,
+    
+    - multiple comment lines can precede the variable definition.
+
+Empty lines can be inserted anywhere to improve readability.
+
+!!! example "Dictionary file with comment and labels"
+    
+    ```kdic
+    // Iris Flower
+    // Definition of an iris flower
+    // Illustration with labels and comments
+    Dictionary	Iris
+    {
+        Numerical	SepalLength	    ;   // Length of sepal
+        Numerical	SepalWidth		;   // Width of sepal
+        Numerical	PetalLength		;   // Length of petal
+        Numerical	PetalWidth		;   // Width of petal
+
+
+        // The Class variable is the target to predict
+        // Since its type is Categorical, this is a classification problem
+        Categorical	Class	; // Type of Iris flower
+
+        // Note that this sample is quite verbose
+    };
+    ```
+
+### Meta-data
+
+Meta-data is a list of keys or key value pairs:
+
+- *<key\>* for boolean values,
+
+- *<key=value\>* for numerical values,
+
+- *<key="value"\>* for string values. 
+
+Meta-data is used internally by Khiops to store information related to dictionaries or variables, such as annotations for modeling results.
+Additionally, it is used to store the external format of Date, Time, Timestamp, or TimestampTZ variables when a format other than the default is specified.
 
 !!! example "Example of four predefined meta-data keys : DateFormat, TimeFormat, TimestampFormat and TimestampTZFormat"
     
@@ -33,26 +144,21 @@ It is also used to store the external format of Date, Time and Timestamp variabl
     TimestampTZ MyTimestampTZ ; <TimestampTZFormat="YYYY-MM-DD_HH:MM:SS.zzzzz">
     ```
 
-Each variable is defined by its type, its name and other optional information.
+### Derivation rules
 
-```kdic
-[Unused] type name [= derivation rule]; [meta-data] [// label]
-```
+*Derivation rules* enable the construction of new variables within a dictionary. 
+Operands in a derivation can be existing variables (by name), numerical or categorical constants, or the result of other derivation rules, allowing recursive definitions.
 
-A variable can be ignored in the data processing (memory loading, modeling, deployment) if the keyword *Unused* is specified before the variable definition. 
-Even though, Khiops is still aware of the variable, which allows to construct new variables derived from the ignored variable.
+Categorical constants must be enclosed in double quotes, with internal double quotes doubled. 
+If a value is too long, it can be split into sub-values concatenated with '+' characters.
 
-The types are Categorical, Numerical, Date, Time or Timestamp for native variables.
+Numerical constants can be expressed in scientific notation (e.g., 1.3E7), using a dot as the decimal separator. 
+The special value *#Missing* indicates a missing numerical value.
 
-The names are case sensitive and are limited to 128 characters. In the case where they use characters other than alphanumeric characters, 
-they must be surrounded by back-quotes. Tabulations are not allowed inside variables names (replace by blank characters). 
-Back-quotes inside variable names must be doubled.
+Date, Time, Timestamp or TimestampTZ constants are not directly supported but can be generated via conversion rules
+(see [`Date Rules`](date-rules.md): e.g. AsDate("2014-01-15", "YYYY-MM-DD")).
 
-*Derivation rules* are formulas that allow to compute the value of variable from other values coming from other variables, rules, or constants.
-
-Each line in the definition of a dictionary can be commented, using "//" as a prefix.
-
-Some technical types are used by Khiops to specify prepocessing or modeling methods: for example Structure(DataGrid), Structure(Classifier).
+A complete list of derivation rules is provided in the [`Dictionary Rules`](numerical-comparisons.md) section.
 
 !!! example "Example of a dictionary file with a constructed variable PetalArea"
 
@@ -68,6 +174,56 @@ Some technical types are used by Khiops to specify prepocessing or modeling meth
     };
     ```
 
+### Grammar
+
+We present a formal grammar summarizing all features of the dictionary.
+
+Dictionary grammar:
+
+- it is defined by a name, a list of variables, and an optional label,
+
+- the structure is enclosed within braces `{}` and terminated with a semicolon `;`,
+
+- label and comments:
+
+    - label: the first comment line before the dictionary declaration, serving as a title,
+
+    - comments: all comment lines appearing before the opening brace '{' of the dictionary block 
+      (for concision purpose, the grammar indicates only the first position where comments can appear),
+
+    - internal comments: comments lines that follow the last variable and appear before the closing brace '}',
+
+- for multi-table schemas, an optional 'Root' tag and key fields can be included (see [`Multi-table dictionary`](dictionary-files.md#multi-table-dictionary)).
+
+```kdic
+['//' <label> <EOL>]
+['//' <comment> <EOL>]* 
+'Root'? 'Dictionary' <name> [ '(' <key-fields> ')' ]
+'{'
+    [ <variable> ]*
+    ['//' <comment> <EOL>]* 
+'}' ';'
+```
+
+Variable grammar:
+
+- it is defined by a name, with optional 'Unused' tag, derivation, metadata, and label,
+
+- label and comments:
+
+    - label: an end-of-line comment positioned at the end of the variable declaration,
+
+    - comments: any line comments appearing before the variable declaration.
+     
+
+```kdic
+['//' <comment> <EOL>]* 
+'Unused'? <type> <name> [ '=' <derivation> ] ';' [ <meta-data> ] [ '//' <label> <EOL> ]
+```
+
+Variables within a dictionary can also be organized into *variables blocks*. 
+This advanced feature, used internally by Khiops for the management of sparse data, is detailed [`here`](intro-block.md). 
+
 ## Multi-table dictionary
 
 Whereas most data mining tools work on instances * variables flat tables, real data often have a structure coming from databases. 
@@ -81,13 +237,23 @@ To analyse multi-table databases, Khiops relies on:
 
 - automatic feature construction to build a flat analysis table(cf. [`Variable construction parameters`](../../ui-docs/khiops.md#advanced-predictor-parameters)).
 
-In this section, we present star schema, snowflake schemas, external tables, then give a summary.
+In this section, we present star schemas, snowflake schemas, external tables, then give a summary.
 
 ### Star schema
 
-For each dictionary, one or several key fields have to be specified in the first line of the dictionary definition, using parenthesis (e.g. *Dictionary Customer (id\_customer)*). In case of multiple key fields, they must be separated by commas (e.g. *Dictionary Customer (id\_country, id\_customer)*). The key fields must be chosen among the Categorical variables and must not be derived from a rule.
+For each dictionary, one or multiple *key fields* must be specified on the first line of the definition, enclosed in parentheses 
+(e.g. *Dictionary Customer (id\_customer)*). 
 
-One of the dictionaries has to be chosen as the Root dictionary, which represents the entities to analyze, using the Root flag (e.g. *Root Dictionary Customer (id\_customer)*).
+- when multiple key fields are used, they should be separated by commas (e.g. *Dictionary Customer (id\_country, id\_customer)*),
+
+- key fields must be selected from categorical variables and must not be derived from rules.
+
+One dictionary must be designated as the main dictionary, representing the entities to analyze:
+
+- this can be indicated using the optional *Root* tag (e.g. *Root Dictionary Customer (id\_customer)*),
+
+- the Root tag also signifies that entities must be unique according to their key, even in the case of a single-table schema.
+
 
 The relation between the dictionaries has to be specified by creating new Entity or Table relational variables
 
@@ -95,9 +261,11 @@ The relation between the dictionaries has to be specified by creating new Entity
 
 - e.g. in *Dictionary Customer*, a *Table(Usage) Usages* variable for a 0-n relationship between a customer and its usages (where *Usage* is the dictionary of the sub-entity).
 
-The keys in the dictionaries of the sub-entities must have at least the same number of fields as in the root dictionary, but these key fields do not need to have the same names.
+The keys in the dictionaries of the sub-entities must have at least the same number of fields as in the main dictionary,
+but these key fields do not need to have the same names.
 
-There must be one table file per table use in the schema. All tables must be sorted by key, and as for the root table, each record must have a unique key.
+There must be one table file per table used in the schema. 
+All tables must be sorted by key, and as for the main table, each record must have a unique key.
 
 <!--- TODO les fichers image30/31/32.emf ont ete convertis en .png : est ce un probleme pour la perte de definition des images ? --->
 
@@ -105,7 +273,7 @@ There must be one table file per table use in the schema. All tables must be sor
 
 !!! example "Example of a multi-table dictionary file"
 
-    A dictionary file with a root dictionary *Customer*, a 0-1 relation with *Address* and a 0-n relation with *Usages* 
+    A dictionary file with a main dictionary *Customer*, a 0-1 relation with *Address* and a 0-n relation with *Usages* 
     A multi-table database related to this multi-table dictionary consists of three data table files, sorted by their key fields.
 
     ```kdic
@@ -136,23 +304,31 @@ There must be one table file per table use in the schema. All tables must be sor
 
 ### Snowflake schema
 
-The example in the preceding section illustrates the case of a star schema, with the customer in a root table and its address and usages in secondary tables. Secondary tables can themselves be in relation to sub-entities, leading to a snowflake schema. In this case, the number of key fields must increase with the depth of the schema (but not necessarily at the last depth).
+The example in the preceding section illustrates the case of a star schema, with the customer in a main table and its address and usages in secondary tables. Secondary tables can themselves be in relation to sub-entities, leading to a snowflake schema. 
+In this case, the number of key fields must increase with the depth of the schema (but not necessarily at the last depth).
 
 ![CustomerSF4tables.png](../../assets/images-khiops-guides/khiops/image31.png)
 
 ### External tables
 
-External tables can also be used, to reuse common tables that are shared by all the analysis entities. In the following schema, the products can be referenced from the services of a customer.
+External tables can also be used, to share common tables accros multiple analysis entities.
+
+In the following schema, the products can be referenced from the services of a customer.
 
 ![CustomerSFE5tables.png](../../assets/images-khiops-guides/khiops/image32.png)
 
-Whereas the sub-entities of root entity Customer are all ***included*** in the customer ***folder*** (the address, services and usages per service belong to the folder), the products are ***referenced*** by the services.
+Whereas the sub-entities of the main entity Customer, such as address, services, and usages per service, 
+are all ***included*** within the customer ***folder***, products are ***referenced*** by the services.
 
-The dictionary of an external table must be a root dictionary, with a unique key.
+The dictionary defining an external table must include the *Root* tag,
+indicating that its records can be uniquely identified and referenced by key.
 
-The related table file will be fully loaded in memory for efficient direct access, whereas the entities of each folder can be loaded one at a time, for scalability reasons.
+The related table file will be fully loaded in memory for efficient direct access,
+whereas the entities of each folder can be loaded one at a time, for scalability reasons.
 
-Whereas the joins between the tables of the same folder are implicit, on the basis of the table keys, the join with an external table must be explicit in the dictionary, using a key (into brackets) from the referencing entity.
+Whereas the joins between the tables of the same folder are implicit, on the basis of the table keys,
+the join with an external table must be explicit in the dictionary, using a key (into brackets) from the referencing entity.
+Note that this key can be derived using derivation rules if necessary.
 
 !!! example
 
@@ -164,6 +340,7 @@ Whereas the joins between the tables of the same folder are implicit, on the bas
         Entity(Product) Product [id_product];
         Table(Usage) Usages;
     };
+
     Root Dictionary Product (id_product)
     {
         Categorical id_product;
@@ -180,41 +357,17 @@ Khiops allow to analyse multi-table databases, from standard mono-table to compl
 
 |   | Database format  |
 | -----| ----------|
-| ![](../../assets/images-khiops-guides/khiops/image33.png) | Mono-table : <br>  - standard representation <br> Fields types : <br>  - Numerical <br>  - Categorical <br> - Date <br> - Time <br> - Timestamps |
-| ![](../../assets/images-khiops-guides/khiops/image34.png) | Star schema standard representation : <br> - Multi-table extension <br> - Each table must have a key <br> - The root table is the main entity <br> Additional fields types in the *root* table : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
-| ![](../../assets/images-khiops-guides/khiops/image35.png) | Snowflake schema : <br> - Extended stard schema <br> - Each table must have a key <br> - The root table is the main entity <br> Additional fields types in *any* table of the schema : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
+| ![](../../assets/images-khiops-guides/khiops/image33.png) | Mono-table : <br>  - standard representation <br> Fields types : <br>  - Numerical, Categorical <br> - Text <br> - Date, Time, Timestamps, TimestampsTZ |
+| ![](../../assets/images-khiops-guides/khiops/image34.png) | Star schema standard representation : <br> - Multi-table extension <br> - Each table must have a key <br> - The main table can be tagged as *Root* <br> Additional fields types in the main table : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
+| ![](../../assets/images-khiops-guides/khiops/image35.png) | Snowflake schema : <br> - Extended stard schema <br> - Each table must have a key <br> - The main table can be tagged as *Root* <br> Additional fields types in *any* table of the schema : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
 | ![](../../assets/images-khiops-guides/khiops/image36.png) | External tables : <br> - External tables allow to reuse common tables referenced by all entities <br> - Must be root tables <br> - Must be referenced explicitely, using keys from the referencing entities | 
 
 
-## Edition of dictionary files by means of Excel
-
-The dictionary files, which are text files with tabulation separators, could be easily edited using Excel. Unfortunately, the use of derivation rules or categorical constants (surrounded by double quotes) is error prone in Excel (due to automatic data conversion in Excel). However, Excel can be used safely with the following process:
-
-- Open the dictionary file using a basic text editor (for example: Notepad),
-
-- Copy-past all or part of the defined variables to Excel,
-
-- Edit the variables in Excel (select, modify, sort…),
-
-- Copy-paste the edited variables back to the text editor.
-
-Editing the variables using Excel allows to display the variables properties (Unused keyword, User type, Type, Name, Derivation rule, Comment, Level…) in Excel columns. This is then easy to perform sorts and modify the definition of variables.
-
-## Derivation rules
-
-The derivation rules allow to construct new variables in a dictionary. The operands in a derivation rule can be a variable (specified by its name), a constant numerical or categorical value, or the result of another derivation rule. The derivation rules can be used recursively.
-
-A constant categorical value must be surrounded by double quotes. A double quote character inside a categorical value must be doubled. When the length of a categorical value is too important, the value can be split into sub-values, concatenated using '+' characters.
-
-A constant numerical value can be specified using scientific notation (for example: 1.3E7). The decimal separator is the dot. The missing value is represented as \#Missing when used in a derivation rule.
-
-There are no Date, Time or Timestamp constants, but they can be produced using conversion rules (see [`Date Rules`](date-rules.md): e.g. AsDate("2014-01-15", "YYYY-MM-DD"));
-
-The list of available derivation rules is given in Dictionary Rules section.
 
 ### Derivation rules for multi-table schemas
 
-Derivation rules can be used to extract information from other tables in a multi-table schema. In this case, they use variables of different scopes:
+Derivation rules can be used to extract information from other tables in a multi-table schema. 
+In this case, they use variables of different scopes:
 
 - First operand of type Entity or Table, in the current dictionary scope (ex: DNA),
 
@@ -235,6 +388,7 @@ Derivation rules can be used to extract information from other tables in a multi
         Numerical MeanPos = TableMean(DNA, Pos); // Mean position in the DNA sequence
         Categorical MostFrequentChar = TableMode(DNA, Char); // Most frequent char in the DNA sequence
     };
+
     Dictionary SpliceJunctionDNA(SampleId)
     {
         Categorical SampleId;
@@ -245,12 +399,13 @@ Derivation rules can be used to extract information from other tables in a multi
 
 ### Derivation rules with multiple scope operands
 
-For operands in the scope of a secondary table, it is possible to use variables from the scope of the current dictionary, which is in the "upper" scope of the secondary table. In this case, the scope operator "." must be used.
+For operands in the scope of a secondary table, it is possible to use variables from the scope of the current dictionary, 
+which is in the "upper" scope of the secondary table. In this case, the scope operator '.' must be used.
 
 !!! example
 
     The "FrequentDNA" selects the record of the "DNA" table, where the Char variable (in secondary table) is equal to the "MostFrequentChar" variable 
-    (with the scope operator ";", as it in the scope of the current dictionary. 
+    (with the scope operator '.', as it in the scope of the current dictionary. 
     The "MostFrequentCharFrequency" computes the frequency of this selected sub-table.
 
     ```kdic

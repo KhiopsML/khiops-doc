@@ -175,7 +175,7 @@ Categorical ReplaceAll(
 
 Replaces all substring in a categorical value.
 
-It is the same as the [`Replace`](#replace) rule, except that Replace applies only to the first
+It is the same as the [`Replace`](#replace) rule, except that `Replace` applies only to the first
 found searched values, whereas `ReplaceAll` applies to all found searched values
 
 ## RegexMatch

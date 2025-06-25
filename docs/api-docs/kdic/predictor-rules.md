@@ -14,8 +14,7 @@ input values, which allows the computation of conditional probabilities.
 
 ```kdic-api-docs
 Structure(Classifier) SNBClassifier(
-  Structure(Vector) variableWeights, Structure(DataGridStats) dataGridStats1, ...
-)
+	Structure(Vector) variableWeights, Structure(DataGridStats) dataGridStats1, ...)
 ```
 Builds a Selective Naive Bayes `Classifier` structure. The first parameter is weight
 [`Vector`](vector-rules.md/#vector) for the selected variables. The remaining parameters are the
@@ -67,8 +66,7 @@ Builds a Naive Bayes `RankRegressor` structure from a set of data grids stats.
 
 ```kdic-api-docs
 Structure(RankRegressor) SNBRankRegressor(
-  Structure(Vector) variableWeights, Structure(DataGridStats) dataGridStats1, ...
-)
+	Structure(Vector) variableWeights, Structure(DataGridStats) dataGridStats1, ...)
 ```
 
 Builds a Selective Naive Bayes `RankRegressor`. The first parameter is weight
@@ -114,8 +112,7 @@ Computes the `RankRegressor` probability that the target rank is below a given n
 
 ```kdic-api-docs
 Structure(Regressor) NBRegressor(
-  Structure(RankRegressor) nbRankRegressor, Structure(DataGrid) targetValues
-)
+	Structure(RankRegressor) nbRankRegressor, Structure(DataGrid) targetValues)
 ```
 
 Builds a Naive Bayes `Regressor` structure. The first parameter is a Naive Bayes `RankRegressor`.
@@ -126,8 +123,7 @@ numerical data grid based on a vector of values partition.
 
 ```kdic-api-docs
 Structure(Regressor) SNBRegressor(
-  Structure(RankRegressor) snbRankRegressor, Structure(DataGrid) targetValues
-)
+	Structure(RankRegressor) snbRankRegressor, Structure(DataGrid) targetValues)
 ```
 
 Builds a Selective Naive Bayes `Regressor` structure from a `RankRegressor`.The first parameter is

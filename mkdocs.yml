@@ -143,10 +143,9 @@ nav:
   - API Python:
       - Python API Docs: api-docs/python-api.md
   - API Dictionary: 
-      - Introduction to Dictionaries: api-docs/kdic_intro.md     
-      - Inputs-outputs:
-          - Database Files: api-docs/kdic/database-files.md
-          - Dictionary Files: api-docs/kdic/dictionary-files.md
+      - Databases and dictionaries:
+          - Databases: api-docs/kdic/database-files.md
+          - Dictionaries: api-docs/kdic/dictionary-files.md
           - Technical Limits: api-docs/kdic/limits.md
       - Dictionary Rules:
           - Basic:
@@ -154,8 +153,9 @@ nav:
             - Categorical Comparisons: api-docs/kdic/categorical-comparisons.md
             - Logical Operators: api-docs/kdic/logical-operators.md
             - Data Copy and Conversion: api-docs/kdic/data-copy-and-conversion.md
-            - String Rules: api-docs/kdic/string-rules.md
             - Math Rules: api-docs/kdic/math-rules.md
+            - String Rules: api-docs/kdic/string-rules.md
+            - Text Rules: api-docs/kdic/text-rules.md
             - Date Rules: api-docs/kdic/date-rules.md
             - Time Rules: api-docs/kdic/time-rules.md
             - Timestamp Rules: api-docs/kdic/timestamp-rules.md
@@ -165,6 +165,7 @@ nav:
             - Entity Rules: api-docs/kdic/entity-rules.md
             - Table Rules: api-docs/kdic/table-rules.md
             - Table Management Rules: api-docs/kdic/table-management-rules.md
+            - TextList Rules: api-docs/kdic/text-list-rules.md
           - Technical Structures & Rules:
             - Introduction: api-docs/kdic/structures-introduction.md
             - Vector Rules: api-docs/kdic/vector-rules.md
@@ -172,12 +173,16 @@ nav:
             - Data Preparation Rules: api-docs/kdic/data-preparation-rules.md
             - Recoding Rules: api-docs/kdic/recoding-rules.md
             - Predictor Rules: api-docs/kdic/predictor-rules.md
+            - Interpretation Rules: api-docs/kdic/interpretation-rules.md
+            - Reinforcement Rules: api-docs/kdic/reinforcement-rules.md
             - Coclustering Rules: api-docs/kdic/coclustering-rules.md
-          - Block and sparse data Rules: 
+          - Block and Sparse Data Rules: 
             - Introduction : api-docs/kdic/intro-block.md
-            - Blocks of variables : api-docs/kdic/block-sparse-rules.md
-            - Sparse data format : api-docs/kdic/sparse-format.md
-            - Variable block rules : api-docs/kdic/block-rules.md
+            - Basic Sparse Rules : api-docs/kdic/basic-sparse-rules.md
+            - Text Sparse Rules : api-docs/kdic/text-sparse-rules.md
+            - Preparation Sparse Rules : api-docs/kdic/preparation-sparse-rules.md
+            - Table Partition Rules : api-docs/kdic/table-partition-rules.md
+            - Table Block Rules : api-docs/kdic/table-block-rules.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
       - An Original Formalism: learn/modl.md

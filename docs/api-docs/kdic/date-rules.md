@@ -10,7 +10,7 @@ are available, that allow to convert categorical values to date values.
 | `YYYY-DD-MM` | `YYYY/DD/MM` | `YYYY.DD.MM` | `YYYYDDMM` |
 | `MM-DD-YYYY` | `MM/DD/YYYY` | `MM.DD.YYYY` | `MMDDYYYY` |
 
-Valid dates range from `0001-01-01` to `4000-12-31`, with validity according to Gregorian calendar.
+Valid dates range from `0001-01-01` to `9999-12-31`, with validity according to Gregorian calendar.
 `Date` rules return a missing value when their date operand is not valid or when a numerical operand
 is missing.
 
