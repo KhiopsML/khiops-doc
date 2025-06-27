@@ -21,9 +21,9 @@ Khiops Coclustering aims at detecting highly informative patterns by the mean of
   
   - ...
 
-A coclustering model summarizes the correlation between two or more variables by simultaneously partitioning the values of each variable, into groups of value in the categorical case and into intervals in the numerical case. The cross-product of these univariate partitions forms a multivariate partition, called data grid. By counting the frequencies in the multivariate parts (called cells) of this data grid, we obtain a nonparametric estimator of the joint density of the variables. Each partition is organized into hierarchies, so as to enable an exploratory analysis of the results at any grain level.
+A coclustering model summarizes the correlation between two or more variables by simultaneously partitioning the values of each variable, into groups of values in the categorical case and into intervals in the numerical case. The cross-product of these univariate partitions forms a multivariate partition, called data grid. By counting the frequencies in the multivariate parts (called cells) of this data grid, we obtain a nonparametric estimator of the joint density of the variables. Each partition is organized into hierarchies, so as to enable an exploratory analysis of the results at any grain level.
 
-For illustration purpose, let us consider the correlation between the education and occupation variables of the Adult database (coming from the US Census Bureau). This database contains about 50000 instances, with 14 values of occupation and 16 values of education.
+For illustration purpose, let us consider the correlation between the education and occupation variables of the Adult database (coming from the US Census Bureau). This database contains about 50,000 instances, with 14 values of occupation and 16 values of education.
 
 Applying the **Khiops Coclustering** back-end tool, we obtain a 10\*9 fine-grained data grid. The [`Khiops Covisualization`](covisualization.md) tool enables the exploration of the correlation between the two variables. Displaying the mutual information highlights the over-represented cells (in red), i.e. cells with a frequency higher than expected in case of independent variables, and the under-represented cells (in blue). In the screenshot below, the selected cell indicates a high concentration of education *Prof-school* or *Doctorate* jointly with occupation *Prof-specialty*.
 
@@ -39,7 +39,7 @@ Beyond the illustrative example, this kind of analysis provides insightful summa
 
 **Khiops Coclustering** is the back-end tool for training and managing coclustering models.
 
-The main functionalities are training a coclustering, simplifying a coclustering by applying granularity constraints and extracting of clusters index.
+The main functionalities are training a coclustering, simplifying a coclustering by applying granularity constraints and extracting clusters indices.
 
 ## Quick start
 
@@ -47,17 +47,42 @@ The main functionalities are training a coclustering, simplifying a coclustering
 
 Build a coclustering report :
 
-- Enter the name of the input file in the 'Data table file' field of the 'Database' pane,
+- Enter the name of the input file in the **Data table file** field of the **Database** pane,
 
-- Insert the coclustering variables to analyze in the 'Parameters' pane,
+- Insert the coclustering variables to analyze in the **Parameters** pane,
 
-- Click on the 'Train coclustering' button,
+- Click on the **Train coclustering** button,
 
-- Click on the 'Visualize results' button in the 'Results' pane.
+- Click on the **Visualize results** button in the **Results** pane.
 
 ### What is a data dictionary ?
 
-See [`Data dictionary of Khiops tool`](khiops.md#what-is-a-data-dictionary)
+A data dictionary allows you to define the type and name of variables in a data file, with additional key features:
+
+- selecting variables to include or exclude from analysis,
+
+- organizing data within a multi-table schema, such as a star schema or snowflake schema,
+    
+- creating new variables through derivation rules,
+
+- storing data transformation workflows derived from machine learning model outputs,
+
+- facilitating data transformation of the input database via the **Deploy model** feature, which includes:
+   
+    - deploying prediction scores using a prediction model,
+
+    - recoding data with a recoder model,
+     
+    - generating interpretation indicators with an interpreter model,
+     
+    - deploying or reinforcing scores using a reinforcer model,
+     
+    - ...
+
+For comprehensive information on dictionaries, refer to [`Start Using Dictionaries`](../tutorials/kdic_intro.md).
+
+A dictionary file contains one or several dictionaries; details about their format can be found in [`Dictionary files`](../api-docs/kdic/dictionary-files.md).
+
 ### Standard path 
 
 **Manage data dictionaries**
@@ -81,15 +106,12 @@ See [`Data dictionary of Khiops tool`](khiops.md#what-is-a-data-dictionary)
 
 ***Dictionary file***: (read-only) name of the current dictionary file.
 
-### Database
+**Database**: see [`Database`](khiops.md#database) in Khiops tool.
 
-See [`Database of Khiops tool`](khiops.md#database)
-### Sampling
+**Sampling**: see [`Sampling`](khiops.md#sampling) in Khiops tool.
 
-See [`Sampling of Khiops tool`](khiops.md#sampling)
-### Selection
+**Selection**: see [`Selection`](khiops.md#selection) in Khiops tool.
 
-See [`Selection of Khiops tool`](khiops.md#selection)
 ## Parameters
 
 ### Coclustering parameters
@@ -100,9 +122,9 @@ See [`Selection of Khiops tool`](khiops.md#selection)
 
 - **Variables coclustering**: based on the coclustering variables parameters,
 
-- **Instances * Variables coclustering**: based on an identifier on one dimension, and all the numerical and categorical variables on the other dimension. 
+- **Instances * Variables coclustering**: based on an identifier in one dimension, and all numerical and categorical variables in the other dimension. 
 If an identifier variable of the records is present in the data, it must be a key variable of the input dictionary and the data must be sorted and unique according to this key.
-If no identifier of the records, such a variable is automatically created.
+If no identifier exists, such a variable is automatically created.
 For the 'variables' dimension of the coclustering, all numerical and categorical variables used in the input dictionary are employed.
 
 **Coclustering variables**: list of input variables for the variables coclustering model.
@@ -113,7 +135,8 @@ There must be at least two numerical or categorical input coclustering variables
 
 ### System parameters
 
-See [`System parameters of Khiops tool`](khiops.md#system-parameters)
+See [`System parameters`](khiops.md#system-parameters) in Khiops tool.
+
 ## Results
 
 ![](../assets/images-khiops-guides/coclustering/Results.png)
@@ -124,11 +147,11 @@ The JSON file is useful to inspect the coclustering results from any external to
 
 **Short description**: (default: empty) brief description to summarize the current analysis, which will be included in the reports.
 
-**Visualize report**: visualize coclustering if available, using [`Khiops Covisualization tool`](covisualization.md)
+**Visualize report**: visualize coclustering if available, using [`Khiops Covisualization`](covisualization.md) tool.
 
 ## Data dictionary menu
 
-See [`Data dictionary menu of Khiops tool`](khiops.md#data-dictionary-menu)
+See [`Data dictionary menu`](khiops.md#data-dictionary-menu) in Khiops tool.
 
 ## Tools menu
 
@@ -136,14 +159,14 @@ See [`Data dictionary menu of Khiops tool`](khiops.md#data-dictionary-menu)
 
 ### Check database
 
-See [`Check database of Khiops tool`](khiops.md#check-database)
+See [`Check database`](khiops.md#check-database) in Khiops tool.
 
 ### Sort data table by key
 
 This action allows to sort a data table according to sort variables. 
 It is usefull for instance * variables coclustering, where the identifier variable must be a key variable and the data should be sorted accordingly.
 
-See [`Sort data table by key of Khiops tool`](khiops.md#sort-datatable-by-key)
+See [`Sort data table by key`](khiops.md#sort-datatable-by-key) in Khiops tool.
 
 ### Train coclustering 
 
@@ -185,13 +208,13 @@ The input coclustering is simplified using a bottom-up hierarchical agglomeratio
 
   - Cell number
 
-  - **Max cell number** : max number of cells to keep in the simplified coclustering (0 : no constraint)
+  - **Max cell number**: max number of cells to keep in the simplified coclustering (0 : no constraint)
 
-  - **Max preserved information** : max percentage of information to keep in the simplified coclustering (0 : no constraint). Low percentages correspond to weakly informative coarse models whereas high percentages correspond to highly informative detailed models.
+  - **Max preserved information**: max percentage of information to keep in the simplified coclustering (0 : no constraint). Low percentages correspond to weakly informative coarse models whereas high percentages correspond to highly informative detailed models.
 
   - Total part number
 
-  - **Max total part number : max number of total part number to keep in the simplified coclustering (0 : no constraint)**
+  - **Max total part number**: max number of total part number to keep in the simplified coclustering (0 : no constraint)
 
   - **Coclustering variables** (in the array)
     
@@ -201,7 +224,7 @@ The input coclustering is simplified using a bottom-up hierarchical agglomeratio
     
       - Part number
     
-      - **Max part number** : max number of parts to keep for this variable in the simplified coclustering (0 : no constraint)
+      - **Max part number**: max number of parts to keep for this variable in the simplified coclustering (0 : no constraint)
 
   - Frequency variable
 
@@ -253,7 +276,7 @@ See [`Simplification parameters`](#simplification-parameters)
 
 ### Prepare deployment
 
-!!! warning
+!!! warning "Advanced usage"
 
     Coclustering can only be deployed in special cases. A coclustering model is able to extract correlation information between two or more variables. Examples of specific cases eligible
     for deployment are Text\*Word for a text corpus, Cookie\*Page for a web log corpus, Curve\*X\*Y for a curve corpus. 
@@ -264,7 +287,7 @@ See [`Simplification parameters`](#simplification-parameters)
     number of points per interval of X or Y. This is made possible by the Prepare deployment functionality.
 
 Opens a new window named *Coclustering deployment preparation* to create a Khiops deployment dictionary. 
-Once the deployment dictionary has been built, use the [`Deploy model functionality`](#deploy-model).
+Once the deployment dictionary has been built, use the [`Deploy model`](#deploy-model) functionality.
 
 ![](../assets/images-khiops-guides/coclustering/PrepareDeployment.png)
 
@@ -303,45 +326,47 @@ See [`Simplification parameters`](#simplification-parameters)
 
 Multi-table functionality is a prerequisite to the deployment of coclustering model. See [`here`](../api-docs/kdic/dictionary-files.md) for details.
 
-In the case of a curve corpus, curves are represented using a multi-table schema, with curves as the root entity, in 0 to n relationship with their points.
+!!! example
 
-- Root entity: dictionary Curve(CurveId), with two variables
+    In the case of a curve corpus, curves are represented using a multi-table schema, with curves as the main entity, in 0 to n relationship with their points.
+
+    - Main entity: dictionary Curve(CurveId), with two variables
     
-      - Categorical CurveId
+        - Categorical CurveId
     
-      - Table(Point) curvePoints
+        - Table(Point) curvePoints
 
-- Secondary entity: dictionary Point(CurveId), with three variables
+    - Secondary entity: dictionary Point(CurveId), with three variables
     
-      - Categorical CurveId
+        - Categorical CurveId
     
-      - Numerical X
+        - Numerical X
     
-      - Numerical Y
+        - Numerical Y
 
-The curve database consists of two data tables: one for the curves and the other for the points.
+    The curve database consists of two data tables: one for the curves and the other for the points.
 
-In this case, the objective is to deploy new curves, unseen during training. 
-Whereas the coclustering model was trained using a single table point dataset, the deployments need a multi-table curve dataset, 
-since each curve to deploy is represented by an identifier in the root table and a set of points in the secondary table.
+    In this case, the objective is to deploy new curves, unseen during training. 
+    Whereas the coclustering model was trained using a single table point dataset, the deployments need a multi-table curve dataset, 
+    since each curve to deploy is represented by an identifier in the root table and a set of points in the secondary table.
 
-The input dictionary is *Curve*, the input table variable is *curvePoints* and the coclustering deployed variable is *CurveId*. 
-When the coclustering deployment model is prepared, it can be used to deploy new curves, that is to create new variables in the curve table:
+    The input dictionary is *Curve*, the input table variable is *curvePoints* and the coclustering deployed variable is *CurveId*. 
+    When the coclustering deployment model is prepared, it can be used to deploy new curves, that is to create new variables in the curve table:
 
-  - P\_CurveIdPredictedLabel: predicted cluster label for variable CurveId
+    - P\_CurveIdPredictedLabel: predicted cluster label for variable CurveId
 
-  - P\_CurveIdDistance <*CurveCluster*\>: distance to curve cluster, for each cluster of curves <*CurveCluster*\>
+    - P\_CurveIdDistance <*CurveCluster*\>: distance to curve cluster, for each cluster of curves <*CurveCluster*\>
 
-  - P\_XFrequency <*IntervalX*\>: number of points per interval for each interval of X <*IntervalX*\>
+    - P\_XFrequency <*IntervalX*\>: number of points per interval for each interval of X <*IntervalX*\>
 
-  - P\_YFrequency <*IntervalY*\>: number of points per interval for each interval of Y <*IntervalY*\>
+    - P\_YFrequency <*IntervalY*\>: number of points per interval for each interval of Y <*IntervalY*\>
 
-Using "Deploy model" functionality, a curve dataset can be deployed by the mean of the coclustering deployment model.
+    Using "Deploy model" functionality, a curve dataset can be deployed by the mean of the coclustering deployment model.
 
 ### Deploy model
 
-See [`Deploy model of Khiops tool`](khiops.md#deploy-model)
+See [`Deploy model`](khiops.md#deploy-model) in Khiops tool.
 
 ### Help menu
 
-See [`Help menu of Khiops tool`](khiops.md#help-menu)
+See [`Help menu`](khiops.md#help-menu) in Khiops tool.
