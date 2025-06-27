@@ -31,5 +31,7 @@ to specify the external format (see [`here`](dictionary-files.md)).
 Note that Khiops also exploits an extended tabular format with sparse fields. This advanced feature, used internally by Khiops for the management of sparse data, 
 is detailed [`here`](block-sparse-rules.md).
 
-For *multi-table* databases, database files must be sorted by key for efficiency reasons. 
-<!--- [](../../assets/images-khiops-guides/khiops/Multi-tablePicto.png) ---> 
+!!! note
+
+    For *multi-table* databases, database files must be sorted by key for efficiency reasons. 
+
