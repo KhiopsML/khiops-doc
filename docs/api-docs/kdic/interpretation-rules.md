@@ -1,6 +1,6 @@
 # Interpretation Rules
 
-The interpretation rules allow to calculates the individual importance of classifier variables using 
+The interpretation rules allow to calculate the individual importance of classifier variables using 
 [Shapley values:octicons-link-external-16:][shapley-values]{:target="_blank"}.
 
 [shapley-values]: https://en.wikipedia.org/wiki/Shapley_value "Visit the Wikipedia page"
@@ -23,7 +23,7 @@ Numerical ContributionAt(Structure(ClassifierInterpreter),
                          Categorical targetValue, Categorical classifierVariableName)
 ```
 
-Retuns the Shapley value for a given target value and classifier variable.
+Returns the Shapley value for a given target value and classifier variable.
 
 
 ## ContributionVariableAt

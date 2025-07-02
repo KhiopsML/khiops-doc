@@ -27,13 +27,13 @@ Space characters are removed from the beginning and end of fields, making catego
 
 Date values are stored using the YYYY-MM-DD format, Time values using the HH:MM:SS. format and Timestamp values using the YYYY-MM-DD HH:MM:SS. format. 
 Numerous other formats are available for [`Date`](date-rules.md), [`Time`](time-rules.md), [`Timestamp`](timestamp-rules.md) and [`TimestampTz`](timestamp-tz-rules.md) . 
-For these formats, the variable must be declared with a meta-data (with key DateFormat, TimeFormat, TimestampFormat or TimestampFormatTZ) 
-to specify the external format (see [`here`](dictionary-files.md)).
+For these formats, the variable must be declared with a [`meta-data`](dictionary-files.md#meta-data) (with key DateFormat, TimeFormat, TimestampFormat or TimestampFormatTZ) 
+to specify the external format.
 
 Note that Khiops also exploits an extended tabular format with sparse fields. This advanced feature, used internally by Khiops for the management of sparse data, 
 is detailed [`here`](intro-block.md).
 
 !!! note
 
-    For *multi-table* databases, database files must be sorted by key for efficiency reasons. 
+    For *multi-table* databases, database files must be sorted by key for efficiency reasons. This can be done using Khiops [`sort feature`](../../ui-docs/khiops.md#sort-data-table-by-key).
 

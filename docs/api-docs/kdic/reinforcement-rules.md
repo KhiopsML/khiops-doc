@@ -21,7 +21,7 @@ to compute reinforcement scores for each lever variable and target value.
 Numerical ReinforcementInitialScoreAt(Structure(ClassifierReinforcer), Categorical targetValue)
 ```
 
-Retuns the initial prediction score for the prediction of a given target value.
+Returns the initial prediction score for the prediction of a given target value.
 
 
 ## ReinforcementVariableAt

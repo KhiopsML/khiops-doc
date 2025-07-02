@@ -1,7 +1,7 @@
 # Basic Sparse Rules
 
-The following variable block rules allow to copy a block of variable within a dictionary (like Copy and CopyC), 
-or to obtain a copy of a block of variable defined in an Entity variable (like GetValue and GeValueC).
+The following variable block rules allow to copy a block of variables within a dictionary (like Copy and CopyC), 
+or to obtain a copy of a block of variables defined in an Entity variable (like GetValue and GeValueC).
 
 ## CopyBlock
 

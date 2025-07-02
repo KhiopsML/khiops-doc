@@ -57,7 +57,7 @@ Graphical Interface Issues:
 
 File names issues:
 
-- File names with non ANSI characters may not supported on some platforms.
+- File names with non ANSI characters may not be supported on some platforms.
 
 Data files and BOM:
 
@@ -177,7 +177,7 @@ Limitation of database deployment:
 
 Khiops uses temporary files for various internal tasks and stores them in the environment’s temporary directory (usually ‘\\Users\\{username}\\AppData\\Local\\Temp’ on Windows and ‘/tmp’ on Linux).
 
-Khiops prefix its temporary file names with a tilde (‘~’) and stores them in a sub-directory prefixed by ‘~Khiops’.
+Khiops prefixes its temporary file names with a tilde (‘~’) and stores them in a sub-directory prefixed by ‘~Khiops’.
 
 If Khiops exits successfully, it deletes all temporary files generated in the session. In case the application is forcibly killed or another uncontrollable event occurs (such as a power or disk failure), Khiops might not remove these files. When this happens, the following Khiops sessions will search for the ‘~~anchor~~’ file in old temporary directories, check the expiration date stored there and delete them if this date is before one day. If the undeleted files are too large and the user needs to free the space immediately, he can delete them manually.
 

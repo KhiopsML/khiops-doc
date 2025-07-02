@@ -81,7 +81,7 @@ Block(Numerical) TextTokens(Text value)
 
 Tokenization of a Text value into a bag of tokens.
 The tokens tokenization process simply uses the blank character as delimiter. 
-This method assumes that the text has been already preprocessed (eg. lemmatization).
+This method assumes that the text has been already preprocessed (e.g. lemmatization).
 
 !!! example 
 
@@ -114,7 +114,7 @@ Block(Numerical) TextListWords(TextList value)
 ```
 
 Tokenization of a TextList value into a bag of words.
-The tokenization method used is the same as that of [`TextWords`](text-sparse-rules.md#textwords)), applied each Text values within the TextList.
+The tokenization method used is the same as that of [`TextWords`](text-sparse-rules.md#textwords), applied each Text values within the TextList.
 
 ## TextListNgrams
 
@@ -123,7 +123,7 @@ Block(Numerical) TextListNgrams(TextList value)
 ```
 
 Tokenization of a TextList value into a bag of ngrams.
-The tokenization method used is the same as that of [`TextNgrams`](text-sparse-rules.md#textngrams)), applied each Text values within the TextList.
+The tokenization method used is the same as that of [`TextNgrams`](text-sparse-rules.md#textngrams), applied each Text values within the TextList.
 
 
 ## TextListTokens
@@ -133,4 +133,4 @@ Block(Numerical) TextListTokens(TextList value)
 ```
 
 Tokenization of a TextList value into a bag of tokens.
-The tokenization method used is the same as that of [`TextTokens`](text-sparse-rules.md#texttokens)), applied each Text values within the TextList.
+The tokenization method used is the same as that of [`TextTokens`](text-sparse-rules.md#texttokens), applied each Text values within the TextList.

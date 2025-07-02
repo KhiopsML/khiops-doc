@@ -2,6 +2,7 @@
 
 Khiops dictionaries allow to describe the structure of the database to analyze and to enable the deployment of the data analysis trained models:
 see [`Start Using Dictionaries`](../../tutorials/kdic_intro.md).
+<!-- probleme : la presentation n'est plus presente a ce lien -->
 
 A **dictionary file** is a text file with extension *.kdic*, containing the definition of one or many dictionaries.
 
@@ -41,7 +42,7 @@ The types available for native variables, those that can be stored directly in d
 - Time,
 
 - TimestampTZ,
-
+<!-- les deux lignes sont identiques : Timestamp au lieu de TimestampTZ pour la 1ere occurence ? -->
 - TimestampTZ.
 
 
@@ -235,7 +236,7 @@ To analyse multi-table databases, Khiops relies on:
 
 - databases that are stored in one data file per table in a multi-table schema (cf. [`Train database`](../../ui-docs/khiops.md#train-database)),
 
-- automatic feature construction to build a flat analysis table(cf. [`Variable construction parameters`](../../ui-docs/khiops.md#advanced-predictor-parameters)).
+- automatic feature construction to build a flat analysis table (cf. [`Variable construction parameters`](../../ui-docs/khiops.md#advanced-predictor-parameters)).
 
 In this section, we present star schemas, snowflake schemas, external tables, then give a summary.
 
@@ -353,13 +354,13 @@ Examples of datasets with multi-table schemas and external tables are given in t
 
 ### Summary
 
-Khiops allow to analyse multi-table databases, from standard mono-table to complex schema.
+Khiops allows to analyse multi-table databases, from standard mono-table to complex schema.
 
 |   | Database format  |
 | -----| ----------|
 | ![](../../assets/images-khiops-guides/khiops/image33.png) | Mono-table : <br>  - standard representation <br> Fields types : <br>  - Numerical, Categorical <br> - Text <br> - Date, Time, Timestamps, TimestampsTZ |
 | ![](../../assets/images-khiops-guides/khiops/image34.png) | Star schema standard representation : <br> - Multi-table extension <br> - Each table must have a key <br> - The main table can be tagged as *Root* <br> Additional fields types in the main table : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
-| ![](../../assets/images-khiops-guides/khiops/image35.png) | Snowflake schema : <br> - Extended stard schema <br> - Each table must have a key <br> - The main table can be tagged as *Root* <br> Additional fields types in *any* table of the schema : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
+| ![](../../assets/images-khiops-guides/khiops/image35.png) | Snowflake schema : <br> - Extended star schema <br> - Each table must have a key <br> - The main table can be tagged as *Root* <br> Additional fields types in *any* table of the schema : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
 | ![](../../assets/images-khiops-guides/khiops/image36.png) | External tables : <br> - External tables allow to reuse common tables referenced by all entities <br> - Must be root tables <br> - Must be referenced explicitely, using keys from the referencing entities | 
 
 
@@ -405,7 +406,7 @@ which is in the "upper" scope of the secondary table. In this case, the scope op
 !!! example
 
     The "FrequentDNA" selects the record of the "DNA" table, where the Char variable (in secondary table) is equal to the "MostFrequentChar" variable 
-    (with the scope operator '.', as it in the scope of the current dictionary. 
+    (with the scope operator '.'), as it in the scope of the current dictionary. 
     The "MostFrequentCharFrequency" computes the frequency of this selected sub-table.
 
     ```kdic

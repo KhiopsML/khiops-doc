@@ -6,7 +6,7 @@ Most text rules are similar to [`String Rules`](string-rules.md), with the main 
 Only three rules are specific to Text variables:
 [`FromText`](text-rules.md#fromtext), [`ToText`](text-rules.md#totext) and [`TextLoadFile`](text-rules.md#textloadfile), 
 
-As a reminder, Text values are limited to 1,000,000 characters, instead of 1,000 characteres for Categorical values.
+As a reminder, Text values are limited to 1,000,000 characters, instead of 1,000 characters for Categorical values.
 
 ## FromText
 

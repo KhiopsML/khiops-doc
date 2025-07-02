@@ -12,7 +12,7 @@ produces a block of Table variables from a secondary table and the partition spe
 
 **Computing statistics from blocks of Table variables**
 
-Blocks of Table parts can be then used to produce block of values by computing the statistics of a given secondary variable on each part defined in the block.
+Blocks of Table parts can then be used to produce block of values by computing the statistics of a given secondary variable on each part defined in the block.
 The sparse rules below allow to compute various statistic indicators from a block of Table parts.
 
 !!! example
@@ -83,7 +83,7 @@ The parameters are univariate partitions, chosen among IntervalBounds, ValueGrou
 Block(Table) TablePartition(Table table, Structure(Partition) partition)
 ```
 Builds a block of Table parts from a secondary Table and the specification of a partition. 
-Note that the block variable is potentially sparse, as only the non-empty parts are managed.
+Note that the block of variables is potentially sparse, as only the non-empty parts are managed.
 
 !!! example
 

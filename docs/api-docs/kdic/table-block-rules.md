@@ -1,7 +1,7 @@
 # Table Block Rules
 
 A block of values in a secondary table corresponds to a list of secondary variables managed in the same block. 
-Table rules such as TableMean, TableMode, TableStandard deviation are then extended to the case of a secondary block of variables to compute a block of values 
+Table rules such as TableMean, TableMode, TableStdDev are then extended to the case of a secondary block of variables to compute a block of values 
 for all variables in the secondary block.
 
 !!! example 

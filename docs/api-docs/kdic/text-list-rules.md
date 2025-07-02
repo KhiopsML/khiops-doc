@@ -49,7 +49,7 @@ TextList GetTextList(Entity entityValue, TextList value)
 
 Access to a `TextList` value of an entity. Returns an empty `TextList` value if the entity
 does not exist.
-This rule extends the [`Entity Rules`](entity-rules.md)) to `TextList` variables.
+This rule extends the [`Entity Rules`](entity-rules.md) to `TextList` variables.
 
 ## TableAllTexts
 
@@ -61,7 +61,7 @@ TextList TableAllTexts(Table table, TextList)
 ```
 
 Aggregates all `Text` values from a secondary variable in a `TextList`.
-This rule extends the [`Table Rules`](table-rules.md)) to `Text` variables.
+This rule extends the [`Table Rules`](table-rules.md) to `Text` variables.
 
 ## TableAllTextLists
 
@@ -70,4 +70,4 @@ TextList TextList(Text value, ...)
 ```
 
 Concatenates all `TextList` values from a secondary variable into a single `TextList`.
-This rule extends the [`Table Rules`](table-rules.md)) to `Text` variables.
+This rule extends the [`Table Rules`](table-rules.md) to `Text` variables.
