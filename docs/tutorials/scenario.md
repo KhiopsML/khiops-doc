@@ -63,7 +63,8 @@ Using the search and replace feature, they can be made more generic for seamless
 
 ### Recording a Scenario
 
-Begin by opening a Khiops shell, which can be done by selecting the `Shell Khiops` option from the `Khiops menu`, accessible via the `Start` button in Windows.
+Start by opening a command shell to enable launching Khiops via the command line.
+On Windows, this can be done by selecting the `Shell Khiops` option from the `Khiops` menu, accessible through the `Start` button.
 
 To record a scenario file using Khiops GUI: `khiops –o my_script._kh`.
 
@@ -236,6 +237,8 @@ using the search and replace feature (`-r`) available in the [`Khiops Command Li
 	  -e train_log.txt
 	```
 
+	Note: On Linux, replace the caret (`^`) used for line continuation in the previous commands with a backslash  (`\`).
+
 
 !!! note
 
@@ -312,8 +315,6 @@ A loop structure surrounds a block of scenario lines with:
 
 - `END LOOP`
 
-All lines within this block are repeated as many times as necessary, based on the input data.
-
 #### Conditional Test
 
 A conditional test surrounds a block of scenario lines with:
@@ -322,7 +323,6 @@ A conditional test surrounds a block of scenario lines with:
 
 - `END IF`
 
-Lines within this block are conditionally executed depending on the test result.
 
 ### Parameterization via a JSON File
 
@@ -337,22 +337,23 @@ The JSON file contains key/value pairs:
 	
 - Values of type **array**, related to a loop block (`LOOP`):
 
-  - The array key identifies (`<loop key>`) a list of scenario lines within a loop.
+	- The array key `<loop key>` identifies a list of scenario lines within a loop.
 	
-  - The array contains JSON objects with a consistent structure, each with key/value pairs of type **string**, **number** or **boolean**.
+    - The array contains JSON **object**s, each with a consistent structure of key/value pairs of type **string**, **number** or **boolean**.
 	
-  - Lines within the loop are duplicated for each object, with search/replace performed according to the current object's key/value pairs
+    - Lines within the loop are duplicated for each object, with search/replace performed according to the current object's key/value pairs
 	
 - Values of type **boolean**, related to a conditional block (`IF`),
 
-  - The boolean key identifies (`<if key>`) a list of scenario lines inside a conditional block.
+    - The boolean key `<if key>` identifies a list of scenario lines inside a conditional block.
 	
-  - The block is included or skipped based on the boolean value (`true` or `false`).
+    - The block is included or skipped based on the boolean value (`true` or `false`).
 
 ### Constraints
 
-The `-O <file>` command line option simplifies scenario debugging.
-It behaves like the `-o <file>` ption by executing all search and replace operations on the output scenario file, but without replaying the commands.
+The `-O <file>` command line option simplifies scenario debugging. 
+It must be used together with the `-ì` and `-j` options to process an input scenario and JSON parameter file.
+It behaves like the `-o <file>` option by executing all search and replace operations on the output scenario file, but without replaying the commands.
 Additionally, it performs extra consistency checks between the keys in the input scenario and those in the JSON parameter file.
 
 - Options `-r` (basic search/replace) and `-j` (json-driven search/replace) are mutually exclusive.
@@ -462,7 +463,6 @@ OK                             // Yes
 
 #### Input JSON file
 
-C:\Users\Public\khiops_data\samples\Iris\Iris.kdic
 
 ```json
 {
@@ -541,10 +541,10 @@ For example, considering a specific parameter (e.g., `dataFile`):
 - The JSON parameter file can contain two types of value representations:
 
 	- A UTF-8 string: the variable name and its value are directly in plain text, without encoding.  
-      Example: `"dataFile" = "/tmp/journées.txt"`.
+      Example: `"dataFile": "/tmp/journées.txt"`.
 
     - A byte string: the variable name is prefixed with `byte`, with the first letter capitalized, and the value is encoded in Base64.  
-      Example: `"byteDataFile" = "L3RtcC9qb3VybsOpZXMudHh0"` (where `L3RtcC9qb3VybsOpZXMudHh0` is the Base64-encoded value of `/tmp/journées.txt`).  
+      Example: `"byteDataFile": "L3RtcC9qb3VybsOpZXMudHh0"` (where `L3RtcC9qb3VybsOpZXMudHh0` is the Base64-encoded value of `/tmp/journées.txt`).  
 
 When writing the output scenario, Khiops looks for the key or its `byte` variant in the JSON file to 
 determine whether to decode the value during search and replace operations.
