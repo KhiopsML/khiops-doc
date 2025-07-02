@@ -276,7 +276,7 @@ From left to right:
 
   - allows to set some environments variables such as the number of significant digits or the clear/dark mode. These settings are kept across sessions;
 
-  - allows to copy the figure of a selected panel (select a panel by clicking in it ; a selected panel appears with a light blue border). This can be pasted in any other document;
+  - allows to copy the figure of a selected panel (select a panel by clicking in it ; a selected panel appears with a light orange border). This can be pasted in any other document;
 
   - allows to copy the data of a selected panel.
 
