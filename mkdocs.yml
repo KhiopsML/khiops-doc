@@ -138,7 +138,7 @@ nav:
       - Deployment & Integration:
           - Cloud Storage: tutorials/storage.md
           - Running Khiops with Docker: tutorials/docker.md
-          - Distibuted Execution with k8s: tutorials/k8s.md
+          - Distributed Execution with k8s: tutorials/k8s.md
           - Real-time Deployment: tutorials/kni.md
           - Scenario Recording and Replay: tutorials/scenario.md
   - API Python:

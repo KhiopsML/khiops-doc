@@ -70,12 +70,12 @@ To record a scenario file using Khiops GUI: `khiops –o my_script._kh`.
 
 This command launches the Khiops GUI, and all user interactions, such as entering data into fields or initiating actions via menus or buttons,
 are recorded into the scenario file.
-Each interaction is recorded using an internal tool key, the field value, and a comment prefixed by `//` that references the GUI GUI label or action associated with the interaction.
+Each interaction is recorded using an internal tool key, the field value, and a comment prefixed by `//` that references the GUI label or action associated with the interaction.
 
 
 !!!	example "Example"
 
-	For example, to train a classifier on the Iris dataset available in the sammples (see [`Khiops Guide`](../ui-docs/khiops.md)):
+	For example, to train a classifier on the Iris dataset available in the samples (see [`Khiops Guide`](../ui-docs/khiops.md)):
 
 	- Click on the **Open** sub-menu of the **Data dictionary** menu 
 
@@ -126,7 +126,7 @@ Each interaction is recorded using an internal tool key, the field value, and a 
 
 To replay a scenario file from a Khiops shell: `khiops –i my_script._kh`
 
-Alternatively, in Windows, you can replay a scenario by right-clicking the file in `File Explorer` and choosing `Execute Khiops Script`.
+Alternatively, on Windows, you can replay a scenario by right-clicking the file in `File Explorer` and choosing `Execute Khiops Script`.
 
 Note that the same functionalities  are available for  Khiops Coclustering tools, using the `._khc` suffix instead of `._kh`.
 
@@ -351,7 +351,7 @@ The JSON file contains key/value pairs:
 
 ### Constraints
 
-The `-O <file>` command line option simplifies scenario debugging. 
+The `-O <file>` command line option simplifies scenario debugging.
 It must be used together with the `-ì` and `-j` options to process an input scenario and JSON parameter file.
 It behaves like the `-o <file>` option by executing all search and replace operations on the output scenario file, but without replaying the commands.
 Additionally, it performs extra consistency checks between the keys in the input scenario and those in the JSON parameter file.
@@ -386,7 +386,7 @@ The JSON keys must align with the scenario parameters:
 - Each key in the JSON file corresponds to a parameter in the scenario, identified by the key enclosed in double underscores (__).
   For example, a JSON key `name` maps to the `__name__` parameter in the scenario file.
 
-- Every scenario parameter should be defined in the JSON file, aand vice versa.
+- Every scenario parameter should be defined in the JSON file, and vice versa.
         
 	- Exception: If a JSON key is missing or its value is `null`, the associated scenario lines will be ignored,
 	  either a single line for standard search/replace operations or a block of lines in the case of loops or conditional blocks.
