@@ -135,16 +135,5 @@ You can consult the limitations or known problems corresponding to your operatin
         
         **Note**:  If the standard uninstallation process fails, it may be necessary to add `--force`. This option forces the removal, potentially bypassing dependency conflicts or other issues preventing the package from being uninstalled normally. However, users should be cautious as forcing the removal can impact the stability of their Conda environment and affect other packages.
 
-
-    !!! warning 
-
-        The installation of Khiops will utilize MPICH version 4.0.3 due to compatibility issues. 
-        This is why you need to use a dedicated command:
-        ``` sh
-        conda install -c conda-forge -c khiops khiops
-        ```
-            
-        Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
-
 <br>
 
