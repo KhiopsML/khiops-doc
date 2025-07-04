@@ -77,11 +77,7 @@ You can consult the limitations or known problems corresponding to your operatin
     
     !!! warning 
 
-        The installation of Khiops will utilize MPICH version 3.4.3 due to compatibility issues. 
-        This is why you need to use a dedicated command:
-        ``` sh
-        conda install -c conda-forge -c khiops khiops
-        ```
+        The installation of Khiops will utilize MPICH version 4.0.3 due to compatibility issues. 
             
         Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
 
