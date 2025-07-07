@@ -1,4 +1,4 @@
-# Numerical precision
+## Numerical precision
 
 Numerical precision:
 
@@ -8,13 +8,38 @@ Numerical precision:
 
 - risk of loss of numerical precision during a database deployment if input values use a mantissa of more than 10 digits.
 
-# End of line encoding
+## End of line encoding
 
 Ends of line are encoded using CR (Carriage Return) LF (Line Feed) on Windows, LF on linux. Both formats are supported.
 
-But Mac OS Classic format (now deprecated, since Mac OS X in 2001) that encoded ends of lines using CR (without LF) is not supported.
+Mac OS Classic format (now deprecated, since Mac OS X in 2001) that encoded ends of lines using CR (without LF) is not supported.
 
-# Character encodings
+
+## String values
+
+String data read from files are stored in either Categorical or Text variables, subject to length restrictions:
+
+- Categorical values are limited to 1,000 characters
+
+- Text values are limited to 1,000,000 characters
+
+Values exceeding these limits are truncated accordingly.
+
+Values read from a data set are trimmed, which helps in clearly distinguishing string values but may result in the loss of some information:
+
+- For instance, "Mr", "<space\>Mr" or "Mr<space\>", "<space\><tab\>Mr" are all considered identical after trimming.
+
+- On the other hand, non-trimmed values can be generated using derivation rules (e.g., Concat("Mr", "<space\>")). 
+  While this can be useful for data transformation, it may cause inconsistencies in the data preparation and modeling processes, 
+  as preprocessing may handle non-trimmed values, whereas deployment relies on trimmed ones.
+
+Multi-line fields are intentionally not supported, as this encoding can be error-prone, 
+missing a single double quote may cause the entire file to be misread.
+
+Additionally, data table records larger than 8 MB are ignored.
+
+
+## Character encodings
 
 Management of categorical values:
 
@@ -32,15 +57,7 @@ Graphical Interface Issues:
 
 File names issues:
 
-- File names with non ANSI characters are not supported.
-
-Data sets and categorical values:
-
-- when a categorical value is read from a data set, it is trimmed and its tab characters are replaced by blanks,
-
-- this means for example that "Mr", "<space\>Mr" or "Mr<space\>", "<space\><tab\>Mr" are treated as the same value,
-
-- however, non-trimmed values can be created using derivation rules (ex: Concat("Mr", "<space\>"): this may be convenient for data transformation, but this results in an inconsistent behaviour in the data preparation and modelling processes, with preprocessing results based on non-trimmed values and deployment based on trimmed values
+- File names with non ANSI characters may not be supported on some platforms.
 
 Data files and BOM:
 
@@ -123,7 +140,7 @@ Character encoding of JSON files:
   
 		- "colliding\_utf8\_chars": The list of UTF-8 characters that collide with the Unicode representation some characters in "ansi\_chars". They are written as normal UTF-8 characters. Note that this field may be absent, if no character from the ANSI-as-UTF8 set with UTF-8 origin collides with an ansi character.
 
-# Scalability limits
+## Scalability limits
 
 Let N be the number of instances C the number of class values and K the number of variables. The RAM (in bytes) required for data analysis is about:
 
@@ -156,21 +173,21 @@ Limitation of database deployment:
 
 - no known limitation: the databases are processed one record at a time.
 
-# Temporary files
+## Temporary files
 
 Khiops uses temporary files for various internal tasks and stores them in the environment’s temporary directory (usually ‘\\Users\\{username}\\AppData\\Local\\Temp’ on Windows and ‘/tmp’ on Linux).
 
-Khiops prefix its temporary file names with a tilde (‘~’) and stores them in a sub-directory prefixed by ‘~Khiops’.
+Khiops prefixes its temporary file names with a tilde (‘~’) and stores them in a sub-directory prefixed by ‘~Khiops’.
 
 If Khiops exits successfully, it deletes all temporary files generated in the session. In case the application is forcibly killed or another uncontrollable event occurs (such as a power or disk failure), Khiops might not remove these files. When this happens, the following Khiops sessions will search for the ‘~~anchor~~’ file in old temporary directories, check the expiration date stored there and delete them if this date is before one day. If the undeleted files are too large and the user needs to free the space immediately, he can delete them manually.
 
 In very rare cases, errors in the Khiops execution will corrupt the temporary files and the tool will not work properly. If this is the case, the easiest solution is to exit Khiops and restart it.
 
-# Known problems
+## Known problems
 
-Memory overflow: in spite of conservative evaluation of required memory, Khiops may crash down with memory overflow. In this case, a "memory overflow" message is present in the tool log file. Asking Khiops to use less memory (see [`System parameters`](../../ui-docs/khiops.md#advanced-predictor-parameters) is likely to solve this problem.
+Memory overflow: in spite of conservative evaluation of required memory, Khiops may crash down with memory overflow. In this case, a "memory overflow" message is present in the tool log file. Asking Khiops to use less memory (see [`System parameters`](../../ui-docs/khiops.md#system-parameters)) is likely to solve this problem.
 
-Some file with UTF-8 encoding may cause problems in rare and unusual cases. Actually, the encoding of the characters differs between the data files and the user interface of Khiops, written in Java. In this case, use Khiops in batch mode rather than in user interface mode.
+Some files with UTF-8 encoding may cause problems in rare and unusual cases. Actually, the encoding of the characters differs between the data files and the user interface of Khiops, written in Java. In this case, use Khiops in batch mode rather than in user interface mode.
 
 The user interface, written in Java, may crash in some rare cases (sometimes in case of Java known bugs like screen savers with some graphic cards). In this case, use Khiops in batch mode rather than in user interface mode.
 

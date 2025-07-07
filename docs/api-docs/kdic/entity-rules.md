@@ -147,6 +147,16 @@ does not exist.
         };
         ```
 
+## GetText
+
+```kdic-api-docs
+Text GetText(Entity entityValue, Text value)
+```
+
+Access to a `Text` value of an entity. Returns an empty `Text` value if the entity
+does not exist.
+
+
 ## GetValueD
 
 ```kdic-api-docs

@@ -1,4 +1,4 @@
-# Format of the database files
+# Databases
 
 A database file is a text file, containing one line per record. By default, the first line contains the names of the variables. 
 If no header line is used, the fields in the database file must appear in the same order as the variables in the related dictionary.
@@ -17,21 +17,23 @@ Fields can contain separator chars provided that they are surrounded by double-q
   
 	- the end of line character cannot be used inside a field (multiple-line fields are not allowed).
 
+Note that multi-line fields are intentionally not supported, as this encoding can be error-prone, 
+missing a single double quote may cause the entire file to be misread.
+
 The numerical values may use the scientific notation (for example: 1.3E7). The decimal separator can be either the dot or the comma (the commas are recoded into dots). 
 Missing or erroneous numerical values are replaced by a missing system value ($- \infty$, to avoid collision with any valid value).
 
-Tabulations inside categorical values are replaced by blank characters, since they raise problem in visualisation tools that are based on text files with tabulation 
-separated fields. The special char Ctrl-Z (ascii 26) is also replaced by a blank character. Space characters are discarded at the beginning and end of categorical values.
+Space characters are removed from the beginning and end of fields, making categorical values easily distinguishable.
 
 Date values are stored using the YYYY-MM-DD format, Time values using the HH:MM:SS. format and Timestamp values using the YYYY-MM-DD HH:MM:SS. format. 
-Numerous other formats are available for [`Time`](time-rules.md), [`Timestamp`](timestamp-rules.md) and [`TimestampTz`](timestamp-tz-rules.md) . 
-For these formats, the variable must be declared with a meta-data (with key DateFormat, TimeFormat or TimestampFormat) 
-to specify the external format (see [`here`](dictionary-files.md)).
+Numerous other formats are available for [`Date`](date-rules.md), [`Time`](time-rules.md), [`Timestamp`](timestamp-rules.md) and [`TimestampTz`](timestamp-tz-rules.md) . 
+For these formats, the variable must be declared with a [`meta-data`](dictionary-files.md#meta-data) (with key DateFormat, TimeFormat, TimestampFormat or TimestampFormatTZ) 
+to specify the external format.
 
 Note that Khiops also exploits an extended tabular format with sparse fields. This advanced feature, used internally by Khiops for the management of sparse data, 
-is detailed [`here`](block-sparse-rules.md).
+is detailed [`here`](intro-block.md).
 
 !!! note
 
-    For *multi-table* databases, database files must be sorted by key for efficiency reasons. 
+    For *multi-table* databases, database files must be sorted by key for efficiency reasons. This can be done using Khiops [`sort feature`](../../ui-docs/khiops.md#sort-data-table-by-key).
 

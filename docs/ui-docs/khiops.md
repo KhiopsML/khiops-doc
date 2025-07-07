@@ -477,7 +477,8 @@ The JSON file is useful to inspect the modeling results from any external tool.
 
 - *.TestEvaluationReport.xls*: evaluation report produced after the evaluation of the predictors on the train database.
 
-**Visualize report**: visualize report if available, using Khiops visualization tool.
+**Visualize report**: visualize report if available, using [`Khiops Visualization`](visualization.md) tool.
+
 
 ## Data dictionary menu
 
@@ -1030,11 +1031,11 @@ The parameters of the dialog box are the following.
 
 - Used: indicates whether the variable is used as a lever variable,
 
-- Type
+- Type,
 
-- Name
+- Name,
 
-- Importance
+- Importance.
 
 **Build reinforcement dictionary**: builds a reinforcement dictionary that computes the reinforcement variables
 for the specified target value.
@@ -1053,8 +1054,13 @@ all of them exploiting the meta-data tag *<Target="target value"\>*:
   
     - final score after reinforcement, with meta-data tag *<ReinforcementFinalScoreRank=rank\>*,
 
-    - class change tag, with meta-data tag *<ReinforcementClassChangeTagRank=rank\>*.
+    - class change tag, with meta-data tag *<ReinforcementClassChangeTagRank=rank\>*:
 
+        - 0 indicates the initial predicted target value was already the target to reinforce,
+
+        - -1 indicates the final predicted target value remains different from the target to reinforce,
+
+        - 1 indicates the final predicted target value is now the target to reinforce.
 
 ## Help menu
 
