@@ -90,17 +90,9 @@ For a comprehensive guide on how to use the Khiops application and its GUI:
 
 - [**Khiops Guide**][Documentation], for supervised analysis
 - [**Khiops Coclustering Guide**][coclustering], for unsupervised analysis
-- [**Tutorial**][tutorial]
 
-For easy system integration:
-
-- [**Khiops Scenarios**][scenario], based on recording and replaying Khiops scenarios in batch mode from any programming language."
-
-
-[tutorial]: KhiopsTutorial.pdf
 [Documentation]: ../ui-docs/khiops.md
 [coclustering]: ../ui-docs/coclustering.md
-[scenario]: KhiopsScenarios.pdf
 
 ## What You Should Know
 
