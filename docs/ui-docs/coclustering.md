@@ -166,7 +166,7 @@ See [`Check database`](khiops.md#check-database) in Khiops tool.
 This action allows to sort a data table according to sort variables. 
 It is usefull for instance * variables coclustering, where the identifier variable must be a key variable and the data should be sorted accordingly.
 
-See [`Sort data table by key`](khiops.md#sort-datatable-by-key) in Khiops tool.
+See [`Sort data table by key`](khiops.md#sort-data-table-by-key) in Khiops tool.
 
 ### Train coclustering 
 
