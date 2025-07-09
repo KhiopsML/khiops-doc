@@ -140,10 +140,11 @@ nav:
           - Running Khiops with Docker: tutorials/docker.md
           - Distributed Execution with k8s: tutorials/k8s.md
           - Real-time Deployment: tutorials/kni.md
-          - Scenario Recording and Replay: tutorials/scenario.md
+          - Scenario-Based Execution: tutorials/scenario.md
   - API Python:
       - Python API Docs: api-docs/python-api.md
   - API Dictionary: 
+      - api-docs/index.md
       - Databases and dictionaries:
           - Databases: api-docs/kdic/database-files.md
           - Dictionaries: api-docs/kdic/dictionary-files.md
