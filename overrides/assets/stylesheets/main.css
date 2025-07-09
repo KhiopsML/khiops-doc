@@ -165,9 +165,13 @@ footer .mention a:hover {
   background-color: papayawhip;
 }
 
-.md-footer
+.md-footer 
 {
-  background-color: #ffd200;
+  background-color: gainsboro;
 }
 
+.md-footer__inner 
+{
+  padding: 0;
+}
 
