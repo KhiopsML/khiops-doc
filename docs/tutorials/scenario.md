@@ -1,4 +1,4 @@
-# Scenario Recording and Replay
+# Scenario-Based Execution
 
 Khiops can be operated in batch mode via the command line, allowing users to launch the tool from a shell session or integrate 
 it with various programming languages such as C, C++, Java, Python, and Matlab.
