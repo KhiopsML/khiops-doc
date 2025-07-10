@@ -123,3 +123,11 @@ restart the server every time but you need to refresh the pages when you modify 
 To deploy the web site to khiops.org, you need to check the "Deploy to GH pages"
 checkbox on the GitHub workflow user interface: go to the "Actions" tab and
 execute the "Website" workflow on the `main` branch.
+
+In order to deploy:
+- "current" v10 + "other" (beta) v11: the GH workflow must be launched from the
+  `dev-v10` branch;
+- "current" (beta) v11 + "other" v10: the GH workflow must be launched
+  from the `dev` branch.
+
+

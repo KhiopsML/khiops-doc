@@ -36,6 +36,9 @@ runs:
       uses: actions/checkout@v4
       with:
         ref: ${{ inputs.khiops-doc-ref }}
+        # Fetch all branches and tags
+        fetch-depth: 0
+        fetch-tags: true
         # Keep versions.md
         clean: false
     - name: Install requirements
