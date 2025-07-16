@@ -41,8 +41,8 @@ The types available for native variables, those that can be stored directly in d
 
 - Time,
 
-- TimestampTZ,
-<!-- les deux lignes sont identiques : Timestamp au lieu de TimestampTZ pour la 1ere occurence ? -->
+- Timestamp,
+
 - TimestampTZ.
 
 
