@@ -1,10 +1,10 @@
   
 ## This is not clustering 
 
-Among unsupervised approaches, **clustering** algorithms are undoubtedly the best known. But make no mistake, **coclustering** is a very different problem. To clarify the distinction between clustering and coclustering, let's start by distinguishing their respective objectives. 
+Among unsupervised approaches, **clustering** algorithms are undoubtedly the best known. But don't be fooled, **coclustering** is a very different problem. To clarify the distinction between clustering and coclustering, let's start by distinguishing their respective objectives. 
 
 !!! example "Objective of clustering"
-    Group the rows of a *data set* into homogeneous *groups of individuals*.
+    Group the rows of a *data set* into homogeneous *groups of instances*.
 
 <figure markdown>
 <picture>
@@ -14,7 +14,7 @@ Among unsupervised approaches, **clustering** algorithms are undoubtedly the bes
   <figcaption></figcaption>
 </figure>
 
-As shown in this figure, clustering algorithms are used to find **homogeneous subpopulations** within a **data set**. These algorithms are generally based on a **distance**, which can take various forms and which is used to identify groups: (i) as far away as possible from each other; (i) whose individuals are as close as possible to each other. In practice, the choice of this distance has a significant impact on clustering results, as it constitutes a kind of **apriori knowledge** used to simplify the problem and make algorithms computationally efficient. It should also be noted that clustering algorithms generally involve choosing the **number of groups** to be formed, with no guarantee that there are actually identifiable sub-populations in the dataset.
+As shown in this figure, clustering algorithms are used to find **homogeneous subpopulations** within a **data set**. These algorithms are generally based on a **distance**, which can take various forms and which is used to identify clusters: (i) as far away as possible from each other; (i) whose instances are as close as possible to each other. In practice, the choice of this distance has a significant impact on clustering results, as it constitutes a kind of **a priori knowledge** used to simplify the problem and make algorithms computationally efficient. It should also be noted that clustering algorithms generally involve choosing the **number of clusters** to be formed, with no guarantee that there are actually identifiable sub-populations in the dataset.
 
 !!! example "Objective of coclustering"
     Group *rows* and *columns* of a *matrix* to study the *dependency* between its two dimensions.  
@@ -27,7 +27,7 @@ As shown in this figure, clustering algorithms are used to find **homogeneous su
   <figcaption></figcaption>
 </figure>
 
-coclustering algorithms simultaneously group the **rows** and **columns** of a matrix, usually a **contingency matrix** describing the co-occurrences of two categorical variables. This contingency matrix contains the number of individuals for each modality combination of the two categorical variables studied. The intersection (i.e. the cartesian product) of the groups formed on the two dimentions of the matrix constitute a set of **coclusters** (represented by the bins in the figure above). A cocluster characterizes a **sub-part** of the matrix by aggregating the information it contains, i.e. the number of individuals whose combinations of modalities on the two variables belong to the cocluster. Finally, a coclustering model gives an aggregated view of a contingency matrix describing the **dependency** between the two variables under study, and it can be seen as a model of the **joined density** of the two variables.  
+Coclustering algorithms simultaneously group the **rows** and **columns** of a matrix, usually a **contingency matrix** describing the co-occurrences of two categorical variables. This contingency matrix contains the number of instances for each pair of modalities of the two categorical variables studied. The intersection (i.e. the cartesian product) of the groups formed on the two dimentions of the matrix constitute a set of **coclusters** (represented by the bins in the figure above). A cocluster characterizes a **sub-part** of the matrix by aggregating the information it contains, i.e. the number of instances whose modality pair of the two variables belongs to the cocluster. Finally, a coclustering model gives an aggregated view of a contingency matrix describing the **dependency** between the two variables under study, and it can be seen as a model of the **joined density** of the two variables.  
 
 
 
@@ -54,7 +54,7 @@ The coclustering problem is also known as **biclustering**, because only two dim
 
 Thanks to the extensions allowed by the MODL formalism, coclustering can be applied to a **large range of applications** involving data of very different kinds. Here are just a few examples:    
  
-- **Time series** can be [studied:octicons-link-external-16:][coclustering_timeseries]{:target="_blank"} using Khiops coclustering by **encoding each measurement** of the series with the following three variables: (i) the identifier of the time series (*id*: categorical); (ii) the measurement value (*x*: numerical); (iii) a time variable representing the time of day (*t*: numerical). In this case, the coclustering algorithm discretizes the three dimensions jointly, clustering time series on the *id* dimension, and forming intervals of values on the other two dimensions *x* and *t*. The following figure shows an example of a group formed using household electricity consumption, which is a very chaotic kind of time series. Each group of series is then represented by a joint density describing the distrition of *measurements* as a function of *time* (left-hand side of the figure below). Being very chaotic, the time series belonging to this group would have been considered **far** from each other by a clustering algorithm based on a **distance**, such as the Euclidean distance (right-hand side of the figure below). Finally, this example illustrates one of the advantages of Khiops coclustering, which does not require a priori choosing a distance function.
+- **Time series** can be [studied:octicons-link-external-16:][coclustering_timeseries]{:target="_blank"} using Khiops coclustering by **encoding each measurement** of the series with the following three variables: (i) the identifier of the time series (*id*: categorical); (ii) a time variable representing the time of day (*t*: numerical); (iii) the measurement value (*x*: numerical); . In this case, the coclustering algorithm discretizes the three dimensions jointly, clustering time series on the *id* dimension, and forming intervals of values on the other two dimensions *t* and *x*. The following figure shows an example of a group formed using household electricity consumption, which is a very chaotic kind of time series. Each group of series is then represented by a joint density describing the distribution of *measurements* as a function of *time* (left-hand side of the figure below). Being very chaotic, the time series belonging to this group would have been considered **far** from each other by a clustering algorithm based on a **distance**, such as the Euclidean distance (right-hand side of the figure below). Finally, this example illustrates one of the advantages of Khiops coclustering, which does not require a priori choosing a distance function.
 
 [coclustering_timeseries]: https://www.researchgate.net/profile/Asma-Dachraoui-2/publication/283548750_Realistic_and_Very_Fast_Simulation_of_Individual_Electricity_Consumptions/links/563e799b08aec6f17ddaaa0b/Realistic-and-Very-Fast-Simulation-of-Individual-Electricity-Consumptions.pdf
 
@@ -66,7 +66,7 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
   <figcaption>An example of a time series group</figcaption>
 </figure> 
 
-- **Graphs** are an expressive form of data, which can be employed to describe complex systems such as a telecom network, by encoding the interactions between each of the devices that make it up, or the customers of a telephone operator, by characterizing the interactions between users. Khiops coclustering is an excellent tool for exploring the structure of [large graphs:octicons-link-external-16:][coclustering_graph]. For example, the **arcs of a directed graph** can be encoded by the following two categorical variables: (i) the identifier of the source node; (ii) and the identifier of the target node. In this case, the coclustering algorithm jointly builds groups of source nodes and groups of target nodes, describing the joint density of oriented arcs. The following figure shows an example of how Khiops coclustering can be used to partition a graph. It's important to note that Khiops identifies both groups of nodes that are **strongly connected** to each other, and groups of nodes in which the **interconnections are abnormally weak** compared to the rest of the graph. By extension, [temporal graphs:octicons-link-external-16:][coclustering_temporal_graph] can also be studied by the Khiops coclusring, simply by adding a third **time** variable to the description of the arcs. For example, daily self-service bicycle trips were studied in the city of Paris.
+- **Graphs** are an expressive form of data, which can be employed to describe complex systems such as a telecom network, by encoding the interactions between each of the devices that make it up, or the customers of a telephone operator, by characterizing the interactions between users. Khiops coclustering is an excellent tool for exploring the structure of [large graphs:octicons-link-external-16:][coclustering_graph]. For example, the **arcs of a directed graph** can be encoded by the following two categorical variables: (i) the identifier of the source node; (ii) and the identifier of the target node. In this case, the coclustering algorithm jointly builds groups of source nodes and groups of target nodes, describing the joint density of oriented arcs. The following figure shows an example of how Khiops coclustering can be used to partition a graph. It's important to note that Khiops identifies both groups of nodes that are **strongly connected** to each other, and groups of nodes in which the **interconnections are abnormally weak** compared to the rest of the graph. By extension, [temporal graphs:octicons-link-external-16:][coclustering_temporal_graph] can also be studied by the Khiops coclusring, simply by adding a third **time** variable to the description of the arcs. For example, daily self-service bicycle trips were studied in the city of London.
 
 
 [coclustering_graph]:http://www.marc-boulle.fr/publications/BoulleOPTE04.pdf
@@ -99,8 +99,8 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
   <figcaption></figcaption>
 </figure> 
 
-Like other algorithms based on the MODL (Minimum Description Length) approach, **co-clustering** involves selecting the most probable model given the data. 
-During training, a compromise is made to select the best model. 
+Like other algorithms based on the MODL (Minimum Description Length) approach, **coclustering** involves selecting the most probable model given the data. 
+During training, a trade-off is made to select the best model. 
 On one hand, **overly detailed models** are discarded because they tend to **overfit**, capturing noise rather than significat patterns (right side of the figure above). 
 On the other hand, **coarse models** are avoided because they **underfit**, missing important dependencies between variables (left side of the figure above).
 
@@ -114,7 +114,7 @@ The most probable model represents a balance point between these opposing object
 !!! question "What is a valuable cocluster in MODL's eyes?"
     Coclustering models describe how data deviate from the independence assumption.
 
-Co-clustering models aim to describe how the training data **deviate** from the **assumption of independence** between variables. 
+Coclustering models aim to describe how the training data **deviate** from the **assumption of independence** between variables. 
 Coclusters are formed to capture sub-parts of data that are either over-represented or under-represented relative to this independence hypothesis.
 The **likelihood** term of the MODL optimization criterion seeks to **maximize this contrast**, effectively highlighting dependencies and structures that differ from what would be expected under independence. Conversely, the **prior** term ensures **robustness** and prevents overfitting by penalizing overly complex models.
 
@@ -130,8 +130,8 @@ The figure below illustrates **when a cocluster provides valuable information** 
 
 !!! info "The MODL formalism offers a number of guarantees for data exploration"
     - No choice of **group number** by the user.
-    - Guarantee of **no grouping modalities** in case of **independence** of variables.
-    - Guaranteed against **overfitting**.
+    - Guarantee of **no grouping** in case of **independence** of variables.
+    - Guarantee against **overfitting**.
     - No **predefined distance**, only co-occurrences guide model optimization.
   
 ## Model parameters 
@@ -145,7 +145,7 @@ The rest of this page presents the co-clustering approach in the simple case of 
 
 [article_functional_data]: http://www.marc-boulle.fr/publications/BoullePR12.pdf
 
-The figure above shows an example of a coclustering model describing the dependency of two variables, the first representing *letters* and the second *symbols*. This figure details all the parameters that define the coclustering model.     
+The figure above shows an example of a coclustering model describing the dependency of two variables, the first representing *text identifiers* and the second *words*. This figure details all the parameters that define the coclustering model.     
 
 <figure markdown>
 <picture>
@@ -157,10 +157,10 @@ The figure above shows an example of a coclustering model describing the depende
 
 The role of each parameter can be easily interpreted:
 
-1. the first parameter corresponds to the model's **granularity** on the two variables,
+1. the first parameter corresponds to the **group number** on the two variables,
 2. the second parameter defines the **group composition** on the two dimensions,
 3. the third parameter describes how the observations are **distributed** across the model's **coclusters**,
-4. the last parameter retains the **modality count** information of the original variables.
+4. the last parameter encodes the **modality count** information of the original variables.
 
 ## Optimisation criterion 
 
@@ -188,13 +188,13 @@ $$P(h) = P(A) \times P(B|A) \times P(C|B,A) \times P(D|A,B,C)$$
 
 - **First level:** $P(A)$ is a uniform prior over the number of groups $J_1, J_2$ for each variable. Since the original variables have $V_1$ and $V_2$ modalities respectively, the choices of these parameters are independent, and all choices are equally probable, we have:    
 
-$$P(A) = \frac{1}{V_1 \times V_2}$$
+$$P(A) = \frac{1}{V_1} \times \frac{1}{V_2}$$
  
 - **Second level:** $P(B|A)$ is a uniform prior over the *partitioning* of each variable's modalities into $J_1$ and $J_2$ groups. The function $B(V, J)$ counts the number of ways to partition $V$ values into $J$ (possibly empty) groups, defined as a sum of [Stirling number of the second kind:octicons-link-external-16:][stirling_number_of_the_second_kind], such that $B(V, I) = \sum^I_{i=1} S(V, i)$. Assuming all partitions are equiprobable, the probability of a specific partition is:
 
 [stirling_number_of_the_second_kind]: https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind
 
-$$P(B|A) = \frac{1}{B(V_1,J_1) \times B(V_2,J_2)}$$
+$$P(B|A) = \frac{1}{B(V_1,J_1)} \times \frac{1}{B(V_2,J_2)}$$
 
 - **Third level:** $P(C|A,B)$ is a uniform prior on the distribution of observations across the model's coclusters. The total number of ways to distribute $N$ observations into $J_1.J_2$ coclusters is given by the following denominator term:
 
@@ -216,9 +216,31 @@ L(h) & = -\log(P(h)) \\
 
 It is also important to note that the prior assesses the probability of hypotheses $h$ based on the combinatorial space of possible coclustering models, **regardless of the training data**. Simpler models, with fewer groups, are favored because increasing the number of groups expands the space of possible *group compositions* as well as the potential *distributions of observations* across the coclusters, thereby reducing the model's prior probability.
 
-**The likelywood:**
+**The likelihood:**
 
-$$P(d|h) = \underbrace{ \frac{1}{\frac{N!}{\prod^{J_1}_{j_1 = 1}\prod^{J_2}_{j_2 = 1}  N_{j_1 j_2}!}}}_{A} \times \underbrace{  \frac{1}{ \prod^{J_1}_{j_1 = 1} \frac{N_{j_1}!}{\prod^{V_1}_{v_1 = 1} n_{v_1}!} \times \prod^{J_2}_{j_2 = 1} \frac{N_{j_2}!}{\prod^{V_2}_{v_2 = 1} n_{v_2}!}}}_{B} $$
+The likelihood term estimates the probability of the observed training data given the parameters of a candidate coclustering model. Intuitively, estimating $p(d|h)$ involves counting all datasets compatible with the model's parameters and assuming that these datasets are equally probable. This corresponds to a **two-level [multinomial problem:octicons-link-external-16:][multinomial]** (see the following figure).
+
+[multinomial]: https://en.wikipedia.org/wiki/Multinomial_theorem "Visit the Wikipedia page"
+
+- **Level A** counts the number of distinct ways to permute the $N$ observations within the coclusters, each containing $N_{J_1 J_2}$ observations.
+- **Level B** counts the number of distinct ways to permute the modalities within each group for the observations belonging to those groups, considering the two variables independently.
+
+The optimization of the likelihood aims to describe **as precisely as possible the dependency** structure between the two variables by minimizing the number of possible permutations. 
+
+
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/vraisemblance_coclustering.webp" type="image/webp">
+  <img style="width:90%;" src="/assets/images/vraisemblance_coclustering.png" alt="likelywood of coclustering models" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure>
+
+Thus, the likelyhood can be written as follows:
+
+$$P(d|h) = \underbrace{ \frac{1}{\frac{N!}{\prod^{J_1}_{j_1 = 1}\prod^{J_2}_{j_2 = 1}  N_{j_1 j_2}!}}}_{A} \times \underbrace{  \frac{1}{ \prod^{J_1}_{j_1 = 1} \frac{N_{j_1}!}{\prod^{V_1}_{v_1 = 1} n_{v_1}! \times \mathbb{1}_{ \left \{ \{j_1(v_1)\} = j_1 \right \}} } \times \prod^{J_2}_{j_2 = 1} \frac{N_{j_2}!}{\prod^{V_2}_{v_2 = 1} n_{v_2}! \times \mathbb{1}_{ \left \{ \{j_2(v_2)\} = j_2 \right \}} }}}_{B} $$
+
+In information theory, *likelihood* is related to the coding length $L(d|h)$ needed to describe the training data, assuming the model is known:  
 
 \begin{equation} 
 \begin{split}
@@ -227,8 +249,10 @@ L(d|h) & = -\log P(d|h) \\
 \end{split}
 \end{equation}
 
-## Algorithme 
+## Optimization Algorithm
 
-
-
+<video autoplay loop muted playsinline style="max-width:839px;width: -webkit-fill-available;">
+  <source src="/assets/images/algo-coclustering.mp4" type="video/mp4">
+  <source src="/assets/images/algo-coclustering.gif" type="image/gif" media="(not type: video/mp4)">
+</video>
 

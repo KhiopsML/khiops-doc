@@ -194,8 +194,8 @@ nav:
         - Parsimonious Training: learn/learning_models.md
       - Unsupervised approaches:
         - Optimal histograms: learn/histograms.md
-        - Co-clustering: learn/coclustering.md
-        - Co-clustering indi x var: learn/coclustering_indi_var.md
+        - Coclustering: learn/coclustering.md
+        - Coclustering inst x var: learn/coclustering_indi_var.md
       - Auto Hardware Adaptation: learn/hardware_adaptation.md
       - Bibliography: references.md
   - Discussions: https://github.com/orgs/KhiopsML/discussions
