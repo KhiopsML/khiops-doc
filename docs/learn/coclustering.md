@@ -82,8 +82,15 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
   <figcaption></figcaption>
 </figure> 
 
-- **Textual data** can also be analyzed using coclustering, especially to uncover relationships between *documents* and the *words* they contain. For example, in a collection of documents, each word can be encoded by two categorical variables: (i) the identifier of the document to which it belongs, and (ii) the word itself. The coclustering algorithm then simultaneously groups sets of documents and sets of words, revealing both underlying **themes or topics** and **document groups** that share common **vocabulary**, while also highlighting the words that characterize each group. Unlike traditional clustering algorithms, Khiops coclustering does **not require** predefining the **number** of topics and document groups, nor even a **distance** between texts (only the co-occurrence of words in texts matters). It is particularly useful for exploring large text collections, such as scientific articles, forums, or social media data, providing a structured and intuitive view of the relationships between content and vocabulary. 
+- **Textual data** can also be analyzed using coclustering, especially to uncover relationships between *documents* and the *words* they contain. For example, in a collection of documents, each word can be encoded by two categorical variables: (i) the identifier of the document to which it belongs, and (ii) the word itself. The coclustering algorithm then simultaneously groups sets of documents and sets of words, revealing both underlying **themes or topics** and **document groups** that share common **vocabulary**, while also highlighting the words that characterize each group. Unlike traditional clustering algorithms, Khiops coclustering does **not require** predefining the **number** of topics and document groups, nor even a **distance** between texts (only the co-occurrence of words in texts matters). It is particularly useful for exploring large text collections, such as scientific articles, forums, or social media data, providing a structured and intuitive view of the relationships between content and vocabulary. The following list shows examples of word groups from a coclustering model trained on a public dataset (see [this paper][algo_paper]). It is noticeable that the formed groups are semantically homogeneous:
 
+<figure markdown>
+<picture>
+  <source srcset="/assets/images/ex_coclustering_word_groups.webp" type="image/webp">
+  <img style="width:85%;" src="/assets/images/ex_coclustering_word_groups.png" alt="ex_coclustering_word_groupsh" loading="lazy"> 
+</picture>
+  <figcaption></figcaption>
+</figure> 
 
 ## Intuitions 
 
@@ -277,3 +284,9 @@ The following figure gives an overview the step-by-step operation of this algori
 
 [encoding]: preprocessing.md  
 [VNS]: https://www.sciencedirect.com/science/article/abs/pii/S0377221700001004 
+
+!!! info "An anytime algorithm"
+    The coclustering optimization algorithm is implemented in an anytime manner, meaning that the current model is **saved multiple times** (in a [dictionary][dico] file) at various intermediate stages of the training process. The longer the algorithm runs, the more finely optimized the model becomes.
+
+
+[dico]: ../tutorials/kdic_intro.md
