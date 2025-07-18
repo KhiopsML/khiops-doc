@@ -286,7 +286,6 @@ The following figure gives an overview the step-by-step operation of this algori
 [VNS]: https://www.sciencedirect.com/science/article/abs/pii/S0377221700001004 
 
 !!! info "An anytime algorithm"
-    The coclustering optimization algorithm is implemented in an anytime manner, meaning that the current model is **saved multiple times** (in a [dictionary][dico] file) at various intermediate stages of the training process. The longer the algorithm runs, the more finely optimized the model becomes.
+    The coclustering optimization algorithm is implemented in an anytime manner, meaning that a **new version** of the model is saved **each time an improvement is found**. The longer the algorithm runs, the more finely optimized the model becomes.
 
 
-[dico]: ../tutorials/kdic_intro.md
