@@ -136,10 +136,10 @@ The figure below illustrates **when a cocluster provides valuable information** 
   
 ## Model parameters 
 
-The rest of this page presents the co-clustering approach in the simple case of two categorical variables. For extensions to numerical variables and to the case of more than two variables, please refer to [this article:octicons-link-external-16:][article_functional_data]. Here, the aim is to jointly group the modalities of two categorical variables in an optimal way, in order to model their dependency. A coclustering model $h$ is entirely defined by the following parameters:
+The rest of this page presents the coclustering approach in the simple case of two categorical variables. For extensions to numerical variables and to the case of more than two variables, please refer to [this article:octicons-link-external-16:][article_functional_data]. Here, the aim is to jointly group the modalities of two categorical variables in an optimal way, in order to model their dependency. A coclustering model $h$ is entirely defined by the following parameters:
 
 1. $J_1$ and $J_2$ the number of groups for each variable,
-2. $\{j_1(v_1)\}$ and $\{j_2(v_2)\}$ the group indexes containing the modalities $v_1$ and $v_2$ of both variables,
+2. $\{\mathscr{j}_1(v_1)\}$ and $\{\mathscr{j}_2(v_2)\}$ the group indexes containing the modalities $v_1$ and $v_2$ of both variables,
 3. $\{N_{j_1 j_2}\}$ the observations counts within each cocluster of the model,
 4. $\{n_{v_1}\}$ and $\{n_{v_2}\}$ the observations counts for each modality of both variables.
 
@@ -162,6 +162,13 @@ The role of each parameter can be easily interpreted:
 3. the third parameter describes how the observations are **distributed** across the model's **coclusters**,
 4. the last parameter encodes the **modality count** information of the original variables.
 
+
+!!! info "Parameter consistency"
+    The sum of the counts by modality $\{n_{v_1}\}$ equals the sum of the counts by cocluster $\{N_{j_1 j_2}\}$, both across rows and columns. For example, the first row in the figure above represents a group of three words: $\{dog,cat,fish\}$. The counts for each modality are as follows, $dog: 9$, $cat: 4$, $fish: 4$. Their total ($9 + 4 + 4 = 17$) matches the sum of the counts by cocluster in that row ($1 + 5 + 11 = 17$).
+
+
+
+
 ## Optimisation criterion 
 
 The core of the coclustering approach is its optimization criterion, rooted in the MODL formalism. Its purpose is to identify the most probable model given the training data, denoted by $d$. Building on the concepts introduced in the [*Original Formalism*][a_unique_formalism] section and referring to [information theory:octicons-link-external-16:][information_theory]{:target="_blank"}, this criterion can be expressed as:
@@ -179,7 +186,7 @@ Given the model parameters introduced above, the optimization criterion used to 
 
 As with all MODL criteria, the a priori distribution of the models is **uniform** and **hierarchical**. The model parameters follow a four-level hierarchy (A,B,C,D), with the number of options at each level determined by the choices made at the previous levels:
 
-$$P(h) = P(\underbrace{J_1, J_2}_{A}, \underbrace{\{j_1(v_1)\}, \{j_2(v_2)\}}_{B}, \underbrace{\{N_{j_1 j_2}\}}_{C}, \underbrace{\{n_{v_1}\}, \{n_{v_2}\}}_{D})$$
+$$P(h) = P(\underbrace{J_1, J_2}_{A}, \underbrace{\{\mathscr{j}_1(v_1)\}, \{\mathscr{j}_2(v_2)\}}_{B}, \underbrace{\{N_{j_1 j_2}\}}_{C}, \underbrace{\{n_{v_1}\}, \{n_{v_2}\}}_{D})$$
 
 The distribution of parameters can be decomposed as follows. 
 
@@ -225,8 +232,7 @@ The likelihood term estimates the probability of the observed training data give
 - **Level A** counts the number of distinct ways to permute the $N$ observations within the coclusters, each containing $N_{J_1 J_2}$ observations.
 - **Level B** counts the number of distinct ways to permute the modalities within each group for the observations belonging to those groups, considering the two variables independently.
 
-The optimization of the likelihood aims to describe **as precisely as possible the dependency** structure between the two variables by minimizing the number of possible permutations. 
-
+The optimization of the likelihood aims to describe **as precisely as possible the dependency** structure between the two variables by **minimizing the number of possible datasets** consistent whith the model's parameters (i.e. counted by the permutations of levels A and B). 
 
 <figure markdown>
 <picture>
@@ -238,7 +244,7 @@ The optimization of the likelihood aims to describe **as precisely as possible t
 
 Thus, the likelyhood can be written as follows:
 
-$$P(d|h) = \underbrace{ \frac{1}{\frac{N!}{\prod^{J_1}_{j_1 = 1}\prod^{J_2}_{j_2 = 1}  N_{j_1 j_2}!}}}_{A} \times \underbrace{  \frac{1}{ \prod^{J_1}_{j_1 = 1} \frac{N_{j_1}!}{\prod^{V_1}_{v_1 = 1} n_{v_1}! \times \mathbb{1}_{ \left \{ \{j_1(v_1)\} = j_1 \right \}} } \times \prod^{J_2}_{j_2 = 1} \frac{N_{j_2}!}{\prod^{V_2}_{v_2 = 1} n_{v_2}! \times \mathbb{1}_{ \left \{ \{j_2(v_2)\} = j_2 \right \}} }}}_{B} $$
+$$P(d|h) = \underbrace{ \frac{1}{\frac{N!}{\prod^{J_1}_{j_1 = 1}\prod^{J_2}_{j_2 = 1}  N_{j_1 j_2}!}}}_{A} \times \underbrace{  \frac{1}{ \prod^{J_1}_{j_1 = 1} \frac{N_{j_1}!}{\prod\limits^{V_1}_{\substack{v_1 = 1 \\ \mathscr{j}_1(v_1) = j_1}} n_{v_1}!} \times \prod^{J_2}_{j_2 = 1} \frac{N_{j_2}!}{\prod\limits^{V_2}_{\substack{v_2 = 1 \\ \mathscr{j}_2(v_2) = j_2}} n_{v_2}!}}}_{B} $$
 
 In information theory, *likelihood* is related to the coding length $L(d|h)$ needed to describe the training data, assuming the model is known:  
 
@@ -251,8 +257,23 @@ L(d|h) & = -\log P(d|h) \\
 
 ## Optimization Algorithm
 
+The goal of this algorithm is to find the best co-clustering mode by minimizing the optimization criterion. However, the number of candidate models increases **exponentially** with the size of the training data, making exhaustive exploration non-tractable. Consequently, the presented algorithm is a **heuristic** designed to find a high-quality approximate solution within a reasonable amount of time.
+
+The following figure gives an overview the step-by-step operation of this algorithm, for further details please refer to [this paper:octicons-link-external-16:][algo_paper].
+
+[algo_paper]: http://www.marc-boulle.fr/publications/BoulleHOPR10.pdf
+
 <video autoplay loop muted playsinline style="max-width:839px;width: -webkit-fill-available;">
   <source src="/assets/images/algo-coclustering.mp4" type="video/mp4">
   <source src="/assets/images/algo-coclustering.gif" type="image/gif" media="(not type: video/mp4)">
 </video>
 
+- **Initilization:** a “fine” model is randomly drawn, setting the number of groups for each variable so that coclusters contain an average of one instance.
+- **Step A:** a fast optimization is performed alternately for each variable, i.e. by freezing the other partition, the optimization criterion becomes univariate and the same algorithm as for [optimal encoding][encoding] is used.
+- **Step B:** next, a greedy algorithm merges the groups that degrade the optimization criterion as least as possible, until a single cocluster is obtained. The best evaluated model is selected for the next step.
+- **Step C:** similarly to step **A**, an in-depth alternate optimization is performed (i.e. with more iterations).
+- **Exploration:** in order to combat local optima, the current solution is randomly split and steps *A*, *B* and *C* are repeated. The number of random splits added to the current solution increases if the model does not improve (i.e. using the [Variable Neighborhood Search:octicons-link-external-16:][VNS] algorithm).
+- **Stop:** the algorithm stops when the model has not improved for too long.
+
+[encoding]: preprocessing.md  
+[VNS]: https://www.sciencedirect.com/science/article/abs/pii/S0377221700001004 
