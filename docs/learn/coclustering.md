@@ -66,10 +66,10 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
   <figcaption>An example of a time series group</figcaption>
 </figure> 
 
-- **Graphs** are an expressive form of data, which can be employed to describe complex systems such as a telecom network, by encoding the interactions between each of the devices that make it up, or the customers of a telephone operator, by characterizing the interactions between users. Khiops coclustering is an excellent tool for exploring the structure of [large graphs:octicons-link-external-16:][coclustering_graph]. For example, the **arcs of a directed graph** can be encoded by the following two categorical variables: (i) the identifier of the source node; (ii) and the identifier of the target node. In this case, the coclustering algorithm jointly builds groups of source nodes and groups of target nodes, describing the joint density of oriented arcs. The following figure shows an example of how Khiops coclustering can be used to partition a graph. It's important to note that Khiops identifies both groups of nodes that are **strongly connected** to each other, and groups of nodes in which the **interconnections are abnormally weak** compared to the rest of the graph. By extension, [temporal graphs:octicons-link-external-16:][coclustering_temporal_graph] can also be studied by the Khiops coclusring, simply by adding a third **time** variable to the description of the arcs. For example, daily self-service bicycle trips were studied in the city of London.
+- **Graphs** are an expressive form of data, which can be employed to describe complex systems such as a telecom network, by encoding the interactions between each of the devices that make it up, or the customers of a telephone operator, by characterizing the interactions between users. Khiops coclustering is an excellent tool for exploring the structure of [large graphs:octicons-link-external-16:][coclustering_graph]. For example, the **arcs of a directed graph** can be encoded by the following two categorical variables: (i) the identifier of the source node; (ii) and the identifier of the target node. In this case, the coclustering algorithm jointly builds groups of source nodes and groups of target nodes, describing the joint density of oriented arcs. The following figure shows an example of how Khiops coclustering can be used to partition a graph. It's important to note that Khiops identifies both groups of nodes that are **strongly connected** to each other, and groups of nodes in which the **interconnections are abnormally weak** compared to the rest of the graph. By extension, [temporal graphs:octicons-link-external-16:][coclustering_temporal_graph] can also be studied by the Khiops coclustering, simply by adding a third **time** variable to the description of the arcs. For example, daily self-service bicycle trips were studied in the city of London.
 
 
-[coclustering_graph]:http://www.marc-boulle.fr/publications/BoulleOPTE04.pdf
+[coclustering_graph]:http://www.marc-boulle.fr/publications/BoulleArxiv15.pdf
 
 [coclustering_temporal_graph]: http://www.marc-boulle.fr/publications/GuigouresEtAlADAC18.pdf
 
@@ -114,7 +114,7 @@ On the other hand, **coarse models** are avoided because they **underfit**, miss
 The optimization criterion used to navigate this trade-off combines two antagonistic components:
 
 - **Prior**: penalizes complex models to prevent overfitting, thanks to its **hierarchical and uniform** structure.
-- **Likelihood**: plays the oposite role by favoring models that accurately describe the data.
+- **Likelihood**: plays the opposite role by favoring models that accurately describe the data.
 
 The most probable model represents a balance point between these opposing objectives, allowing it to properly explain the data — i.e., the dependencies between variables — without unnecessary complexity or overfitting risk. This automatic model selection is entirely driven by the optimization criterion, without requiring the user to specify the number of coclusters which is deduced from data. More generally, MODL coclustering is hyper-parameter free and does not rely on a predefined distance measure, avoiding biases that could influence the results.
 
@@ -143,7 +143,7 @@ The figure below illustrates **when a cocluster provides valuable information** 
   
 ## Model parameters 
 
-The rest of this page presents the coclustering approach in the simple case of two categorical variables. For extensions to numerical variables and to the case of more than two variables, please refer to [this article:octicons-link-external-16:][article_functional_data]. Here, the aim is to jointly group the modalities of two categorical variables in an optimal way, in order to model their dependency. A coclustering model $h$ is entirely defined by the following parameters:
+The rest of this page presents the coclustering approach in the simple case of two categorical variables. For the processing of numerical variables and cases where there are more than two variables, you can refer for example to [this article:octicons-link-external-16:][article_functional_data]. Here, the aim is to jointly group the modalities of two categorical variables in an optimal way, in order to model their dependency. A coclustering model $h$ is entirely defined by the following parameters:
 
 1. $J_1$ and $J_2$ the number of groups for each variable,
 2. $\{\mathscr{j}_1(v_1)\}$ and $\{\mathscr{j}_2(v_2)\}$ the group indexes containing the modalities $v_1$ and $v_2$ of both variables,
@@ -178,13 +178,13 @@ The role of each parameter can be easily interpreted:
 
 ## Optimisation criterion 
 
-The core of the coclustering approach is its optimization criterion, rooted in the MODL formalism. Its purpose is to identify the most probable model given the training data, denoted by $d$. Building on the concepts introduced in the [*Original Formalism*][a_unique_formalism] section and referring to [information theory:octicons-link-external-16:][information_theory]{:target="_blank"}, this criterion can be expressed as:
+The core of the coclustering approach is its optimization criterion, rooted in the MODL formalism. Its purpose is to identify the most probable model given the training data, denoted by $d$. Building on the concepts introduced in the [*Original Formalism*][a_unique_formalism] section and referring to [information theory:octicons-link-external-16:][information_theory]{:target="_blank"} (and more specifically to the [MDL][MDL] principle), this criterion can be expressed as:
 
-$$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}} 
-+ \underbrace{L(d|h)}_{\textbf{Likelihood}} $$
+$$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}} + \underbrace{L(d|h)}_{\textbf{Likelihood}} $$
 
 [information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
 [a_unique_formalism]: modl.md
+[MDL]: https://en.wikipedia.org/wiki/Minimum_description_length
 
 where $L(h)$ is the description length of the model *(the prior)* and $L(d|h)$ the description length of the trainig data given the model *(the likelihood)*.
 Given the model parameters introduced above, the optimization criterion used to select the most probable coclustering model can be formalized as follows.
