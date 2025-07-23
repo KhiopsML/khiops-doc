@@ -140,20 +140,6 @@ nav:
           - Running Khiops with Docker: tutorials/docker.md
           - Distibuted Execution with k8s: tutorials/k8s.md
           - Real-time Deployment: tutorials/kni.md
-  - Foundations:
-      - What Makes Khiops Different: learn/understand.md
-      - An Original Formalism: learn/modl.md  
-      - Auto-ML pipeline:
-        - Optimal Encoding: learn/preprocessing.md
-        - Auto Feature Engineering: learn/autofeature_engineering.md
-        - Parsimonious Training: learn/learning_models.md
-      - Unsupervised approaches:
-        - Optimal histograms: learn/histograms.md
-        - Coclustering: learn/coclustering.md
-        - Coclustering inst x var: learn/coclustering_indi_var.md
-      - Auto Hardware Adaptation: learn/hardware_adaptation.md
-      - Bibliography: references.md
-  - API Reference:
   - API Python:
       - Python API Docs: api-docs/python-api.md
   - API Dictionary: 
@@ -194,10 +180,15 @@ nav:
             - Variable block rules : api-docs/kdic/block-rules.md
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
-      - An Original Formalism: learn/modl.md
-      - Optimal Encoding: learn/preprocessing.md
-      - Auto Feature Engineering: learn/autofeature_engineering.md
-      - Parsimonious Training: learn/learning_models.md
+      - An Original Formalism: learn/modl.md  
+      - Auto-ML pipeline:
+        - Optimal Encoding: learn/preprocessing.md
+        - Auto Feature Engineering: learn/autofeature_engineering.md
+        - Parsimonious Training: learn/learning_models.md
+      - Unsupervised approaches:
+        - Optimal histograms: learn/histograms.md
+        - Coclustering: learn/coclustering.md
+        - Coclustering inst x var: learn/coclustering_indi_var.md
       - Auto Hardware Adaptation: learn/hardware_adaptation.md
       - Bibliography: references.md
   - Discussions: https://github.com/orgs/KhiopsML/discussions
