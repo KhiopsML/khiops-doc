@@ -146,8 +146,8 @@ For data **exploratory analysis**, Khiops implements three unsupervised algorith
 
 <figure markdown>
 <picture>
-  <source srcset="/assets/images/unsupervised_algorithms.webp" type="image/webp">
-  <img style="width:100%;" src="/assets/images/unsupervised_algorithms.png" alt="unsupervised_algorithms" loading="lazy"> 
+  <source srcset="../../assets/images/unsupervised_algorithms.webp" type="image/webp">
+  <img style="width:100%;" src="../../assets/images/unsupervised_algorithms.png" alt="unsupervised_algorithms" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
