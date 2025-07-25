@@ -198,5 +198,8 @@ nav:
  #       - Coclustering inst x var: learn/coclustering_indi_var.md
       - Auto Hardware Adaptation: learn/hardware_adaptation.md
       - Bibliography: references.md
-  - Discussions: https://github.com/orgs/KhiopsML/discussions
-  - Contact Us: contact.md
+  - Community:
+      - How to Contribute: community/contributing.md
+      - Where to Report an Issue?: community/report.md
+      - Q&A: community/q-a.md
+      - Contact Form: community/contact.md
