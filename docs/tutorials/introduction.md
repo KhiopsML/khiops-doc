@@ -25,7 +25,7 @@ Whether you’re exploring Khiops for rapid prototyping or integrating it into l
 !!! info    
     Questions about deploying Khiops in specific environments (e.g. Hadoop, Openshift, K8s) can be addressed in our [Q&A section][discussions] or through our [contact form][contact-form].
 
-[contact-form]: ../contact.md
+[contact-form]: ../community/contact.md
 [discussions]: https://github.com/orgs/KhiopsML/discussions
 
 ## How Khiops Fits into the Data Science Workflow

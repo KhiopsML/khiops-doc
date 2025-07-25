@@ -26,7 +26,7 @@ These Q&As are designed to clarify how Khiops works under the hood and guide you
 
     We strongly recommend using *Conda*, which automatically installs all required components (Python bindings, C++ engine, MPI). It is the most reliable method, especially for first-time users.
 
-    Conda installation instructions are available here: [Install Khiops][conda]
+    Conda installation instructions are available here: [Install Khiops](/setup/conda/)
 
     **On jupyter environments without conda**
 
@@ -41,7 +41,6 @@ These Q&As are designed to clarify how Khiops works under the hood and guide you
     ! pip install "https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ KHIOPS_PYTHON_VERSION }}.tar.gz"
     ```
 
-    [conda]: ../../setup/conda/
 
 <br>
 
@@ -89,7 +88,7 @@ These Q&As are designed to clarify how Khiops works under the hood and guide you
     - Avoids arbitrary preprocessing decisions by tying encoding directly to the learning objective.
 
 
-    For more details and examples, see this [notebook tutorial](../../tutorials/Notebooks/No_data_Cleaning/) or read about [Optimal Encoding](../../learn/preprocessing/).
+    For more details and examples, see this [notebook tutorial](/tutorials/Notebooks/No_data_Cleaning/) or read about [Optimal Encoding](/learn/preprocessing/).
 
     This approach ensures that manual preprocessing is unnecessary (in fact, it is often counterproductive).
 
@@ -127,9 +126,7 @@ These Q&As are designed to clarify how Khiops works under the hood and guide you
 
     **How Khiops achieves this:**
 
-    Unlike standard models that rely on regularization parameters to control the trade-off between complexity and generalization, **Khiops achieves this balance intrinsically through a mechanism rooted in information theory**. [Our original formalism][modl] penalizes unnecessary complexity by favoring models that explain the data as simply as possible.
-
-    [modl]: ../../learn/modl/
+    Unlike standard models that rely on regularization parameters to control the trade-off between complexity and generalization, **Khiops achieves this balance intrinsically through a mechanism rooted in information theory**. [Our original formalism](/learn/modl/) penalizes unnecessary complexity by favoring models that explain the data as simply as possible.
 
     This ensures that every variable, interval, or aggregate is justified by the amount of information it provides, without requiring external tuning. For instance:
 
@@ -145,9 +142,7 @@ These Q&As are designed to clarify how Khiops works under the hood and guide you
 
     **Illustration**
 
-    The graph below shows how Khiops’ MODL approach handles the discretization of the “crenel pattern” Class = Sign(Sinus(100πx)), with 10% misclassified instances (as described in [Boulle, 2006, Figure 18][boulle-paperML06]). The x-axis represents the number of instances available in the dataset, while the y-axis shows the number of intervals created by the discretization process. This example is particularly illustrative because it demonstrates how MODL balances complexity and informativity, even in the presence of noise, while avoiding overfitting.
-
-    [boulle-paperML06]: ../../assets/papers/BoulleML06.pdf
+    The graph below shows how Khiops’ MODL approach handles the discretization of the “crenel pattern” Class = Sign(Sinus(100πx)), with 10% misclassified instances (as described in [Boulle, 2006, Figure 18](/assets/papers/BoulleML06.pdf)). The x-axis represents the number of instances available in the dataset, while the y-axis shows the number of intervals created by the discretization process. This example is particularly illustrative because it demonstrates how MODL balances complexity and informativity, even in the presence of noise, while avoiding overfitting.
 
     - **Insufficient or noisy data:** When there are too few instances or excessive noise, Khiops keeps only one interval, avoiding unnecessary complexity (such numerical variables will be ignored in the final model as they are considered uninformative).
     - **Optimal intervals:** As more data becomes available, Khiops adjusts dynamically, creating an optimal number of intervals to reflect the data’s structure.

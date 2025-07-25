@@ -38,6 +38,6 @@ Khiops supports a diversified set of installation options, to meet different nee
       [nocode]: nocode.md
       [vis]: visualization.md
       [demo-vis]: demovisualization.md
-      [contact]: ../contact.md
+      [contact]: ../community/contact.md
       [kni]: kni.md
 
