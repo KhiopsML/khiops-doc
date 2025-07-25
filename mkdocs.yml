@@ -200,6 +200,7 @@ nav:
       - Bibliography: references.md
   - Community:
       - How to Contribute: community/contributing.md
+      - Questions & Answers: community/q-a.md
+      - Projects & Use Cases: community/lab.md
       - Where to Report an Issue?: community/report.md
-      - Q&A: community/q-a.md
       - Contact Form: community/contact.md
