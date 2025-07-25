@@ -9,7 +9,7 @@ Khiops is organized into multiple open-source components. To ensure your issue i
 | Use case                                                                 | Repository                                                                 |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | Core engine issues (modeling, algorithms, CLI crashes)                  | [khiops-core](https://github.com/KhiopsML/khiops-core)                     |
-| Python package (pip/conda install, `khiops` or `khiops_coclustering` API) | [khiops-python](https://github.com/KhiopsML/khiops-python)                 |
+| Python package (pip/conda install, `core` or `sklearn` API) | [khiops-python](https://github.com/KhiopsML/khiops-python)                 |
 | Docker/Kubernetes packaging and CI/CD                                    | [khiops-docker](https://github.com/KhiopsML/khiops-docker)                 |
 | Cloud storage access (GCS, S3, Azure, HDFS...)                           | [khiops-drivers](https://github.com/KhiopsML/khiops-drivers)               |
 | Website content, tutorials, guides                                       | [khiops-doc](https://github.com/KhiopsML/khiops-doc)                       |
