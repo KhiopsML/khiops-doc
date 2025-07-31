@@ -24,7 +24,7 @@ Khiops supports a diversified set of installation options, to meet different nee
 
     - Windows 10 or later
     - Ubuntu 20, 22 and 24 (LTS)
-    - Debian 10, 11 and 12
+    - Debian 11 and 12
     - Rocky Linux 8 and 9
     - macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for macOS 13 or later on ARM architectures, limited support for macOS 12 or for x86-64 architectures.
 
