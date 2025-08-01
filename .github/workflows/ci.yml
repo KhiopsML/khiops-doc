@@ -60,7 +60,7 @@ jobs:
           # khiops-doc-ref is '', that is, the current branch ref
           khiops-version: ${{ env.KHIOPS_VERSION }}
           khiops-python-version: ${{ env.KHIOPS_PYTHON_VERSION }}
-          khiops-samples-version: ${{ env.KHIOPS-SAMPLES_VERSION }}
+          khiops-samples-version: ${{ env.KHIOPS_SAMPLES_VERSION }}
           khiops-viz-version: ${{ env.KHIOPS_VIZ_VERSION }}
           khiops-coviz-version: ${{ env.KHIOPS_COVIZ_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
