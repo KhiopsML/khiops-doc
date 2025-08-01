@@ -100,28 +100,27 @@ Khiops allows users to describe multi-table data as a Python dictionary (**a run
 
 ```python
 X_train = {
-    "main_table": "Customer",
-    "tables": {
-        "Customer": (customer_main_df, "CustomerId"),
+    "main_table": (customer_main_df, ["CustomerId"]),
+    "additional_data_tables": {
         "Call": (call_df, ["CustomerId", "CallId"]),
         "Service": (service_df, ["CustomerId", "ServiceId"]),
         "Contract": (contract_df, ["CustomerId", "ContractId"]),
     },
-    "relations": [
-        ("Customer", "Call"),
-        ("Customer", "Service"),
-        ("Customer", "Contract"),
-    ],
 }
 ```
 
-This dictionary includes three attributes: 
+This dictionary includes two attributes:
 
-- `main_table` indicating the name of the main table,
-- `tables` describing all tables, 
-- `relations` specifying the links between tables. 
-
-`tables` is itself a dictionary, composed of one record per table. For each record, the *key* corresponds to the table name and the *value* is a tuple associating a Pandas Dataframe and a list of keys (first the main key, then the secondary keys). And `relations` is a list of tuples, which contain pairs of names of the linked tables (one pair per link).
+- `main_table` is a tuple which associates a Pandas Dataframe and a list of
+  columns which constitute the table *key* which is itself a list of column
+  names that allow the unique identification of the table entries;
+- `additional_data_tables` is a dictionary which describes *secondary* tables,
+  one record per table; for each record, the *key* corresponds to the *data
+  path* from the main table to the secondary table, and the *value* is a tuple
+  associating a Pandas Dataframe and a table key, which is itself a list of column
+  names: first, the names of the columns in the main table which identify the
+  entries in that table, followed by the names of the columns in the secondary
+  table, which identify the entries in the secondary table.
 
 ### 🚀 Just Fit It ... as Usual
 
