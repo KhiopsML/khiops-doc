@@ -96,15 +96,15 @@ from khiops import core as kh
 # Set the file paths
 dictionary_file_path = "gs://mydatabucket/khiops_samples/Adult/Adult.kdic"
 data_table_path = "gs://mydatabucket/khiops_samples/Adult/Adult.kdic"
-results_dir = "khiops_output"
+report_path = "gs://mydatabucket/khiops_samples/Adult/AnalysisResults.khj"
 
 # Train the predictor
-kh.train_predictor(
+_, model_path = kh.train_predictor(
     dictionary_file_path,
     "Adult",
     data_table_path,
     "class",
-    results_dir,
+    report_path,
     max_trees=0,
 )
 ```
@@ -213,15 +213,15 @@ from khiops import core as kh
 # Set the file URIs
 dictionary_file_path = "s3://mydatabucket/khiops_samples/Adult/Adult.kdic"
 data_table_path = "s3://mydatabucket/khiops_samples/Adult/Adult.kdic"
-results_dir = "khiops_output"
+report_path = "s3://mydatabucket/khiops_samples/Adult/AnalysisResults.khj"
 
 # Train the predictor
-kh.train_predictor(
+_, model_path = kh.train_predictor(
     dictionary_file_path,
     "Adult",
     data_table_path,
     "class",
-    results_dir,
+    report_path,
     max_trees=0,
 )
 ```
