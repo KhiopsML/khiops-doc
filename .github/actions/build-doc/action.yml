@@ -29,6 +29,9 @@ inputs:
   add-versions-to-the-menu:
     description: Add the versions.md to the menu
     default: 'true'
+  execute-khiops-tutorials:
+    description: Execute the Khiops tutorials
+    required: true
 runs:
   using: composite
   steps:
@@ -105,6 +108,7 @@ runs:
         KHIOPS_GCS_DRIVER_VERSION: ${{ inputs.khiops-gcs-driver-version }}
         KHIOPS_S3_DRIVER_VERSION: ${{ inputs.khiops-s3-driver-version }}
         KHIOPS_SAMPLES_DIR: ./khiops_samples
+        EXECUTE_KHIOPS_TUTORIALS: ${{ inputs.execute-khiops-tutorials }}
       run: |
         # Build the site pages into the site/ directory
         mkdocs build --strict --verbose

@@ -3,6 +3,11 @@ name: Website
 on:
   workflow_dispatch:
     inputs:
+      execute-khiops-tutorials:
+        description: Execute Khiops Tutorials
+        required: true
+        type: boolean
+        default: false
       build-other-version:
         description: Build the other version
         required: true
@@ -51,6 +56,7 @@ jobs:
           khiops-coviz-version: ${{ env.KHIOPS_COVIZ_OTHER_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_OTHER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_OTHER_VERSION }}
+          execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
       - name: Move other version site to dedicated folder
         if: inputs.build-other-version
         run: mv site ${{ env.KHIOPS_OTHER_VERSION }}
@@ -66,6 +72,7 @@ jobs:
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
           add-versions-to-the-menu: ${{ inputs.build-other-version }}
+          execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
       - name: Move other version site inside the main site
         if: inputs.build-other-version
         run: mv ${{ env.KHIOPS_OTHER_VERSION }} site/
