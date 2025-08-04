@@ -110,6 +110,9 @@ runs:
         KHIOPS_SAMPLES_DIR: ./khiops_samples
         EXECUTE_KHIOPS_TUTORIALS: ${{ inputs.execute-khiops-tutorials }}
       run: |
+        # Set samples dir to the absolute path of KHIOPS_SAMPLES_DIR
+        KHIOPS_SAMPLES_DIR="$(cd $(dirname $KHIOPS_SAMPLES_DIR); pwd)/$(basename $KHIOPS_SAMPLES_DIR)"
+
         # Build the site pages into the site/ directory
         mkdocs build --strict --verbose
         # Hide the logo from the Python files
