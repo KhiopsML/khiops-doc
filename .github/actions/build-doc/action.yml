@@ -89,7 +89,7 @@ runs:
         sudo dpkg -i khiops_core.deb || sudo apt-get -f -y install
         rm -f khiops_core.deb
         # Install Khiops Python
-        KHIOPS_PYTHON_PACKAGE_VERSION=$(echo "$KHIOPS_PYTHON_VERSION" | tr -d '-' | sed -r 's/(.*)\.([^.]*)/\1\2/')
+        KHIOPS_PYTHON_PACKAGE_VERSION=$(echo "$KHIOPS_PYTHON_VERSION" | tr -d '-' | sed -r 's/(\(a|b|rc\).*)\.([^.]*)/\1\2/')
         pip install "https://github.com/KhiopsML/khiops-python/releases/download/${KHIOPS_PYTHON_VERSION}/khiops-${KHIOPS_PYTHON_PACKAGE_VERSION}.tar.gz"
         # Download samples
         wget -O khiops_samples.zip "https://github.com/KhiopsML/khiops-samples/releases/download/${KHIOPS_SAMPLES_VERSION}/khiops-samples-${KHIOPS_SAMPLES_VERSION}.zip"
