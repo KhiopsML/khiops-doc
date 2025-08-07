@@ -208,15 +208,16 @@ Once defined, this selection variable, containing 0s and 1s, can be exploited pr
     # Set the file paths
     dictionary_file_path = os.path.join(kh.get_samples_dir(), "Iris", "Iris.kdic")
     data_table_path = os.path.join(kh.get_samples_dir(), "Iris", "Iris.txt")
-    results_dir = os.path.join("kh_samples", "train_predictor")
+    report_file_path = os.path.join("kh_samples", "train_predictor",
+    "AnalysisResults.khj")
 
     # Train the predictor
-    kh.train_predictor(
+    _, model_file_path = kh.train_predictor(
         dictionary_file_path,
         "iris",
         data_table_path,
         "Class",
-        results_dir,
+        report_file_path,
         max_trees=0,
         selection_variable="Selection",
         selection_value=1

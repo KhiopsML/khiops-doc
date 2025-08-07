@@ -3,6 +3,11 @@ name: Website
 on:
   workflow_dispatch:
     inputs:
+      execute-khiops-tutorials:
+        description: Execute Khiops Tutorials
+        required: true
+        type: boolean
+        default: false
       build-other-version:
         description: Build the other version
         required: true
@@ -24,7 +29,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.x
+          python-version: 3.11
       - name: Checkout doc sources (to get the current environment)
         uses: actions/checkout@v4
       - name: Set up the version information in the environment
@@ -49,6 +54,7 @@ jobs:
           khiops-coviz-version: ${{ env.KHIOPS_COVIZ_OTHER_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_OTHER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_OTHER_VERSION }}
+          execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
       - name: Move other version site to dedicated folder
         if: inputs.build-other-version
         run: mv site ${{ env.KHIOPS_OTHER_VERSION }}
@@ -58,12 +64,13 @@ jobs:
           # khiops-doc-ref is '', that is, the current branch ref
           khiops-version: ${{ env.KHIOPS_VERSION }}
           khiops-python-version: ${{ env.KHIOPS_PYTHON_VERSION }}
-          khiops-samples-version: ${{ env.KHIOPS-SAMPLES_VERSION }}
+          khiops-samples-version: ${{ env.KHIOPS_SAMPLES_VERSION }}
           khiops-viz-version: ${{ env.KHIOPS_VIZ_VERSION }}
           khiops-coviz-version: ${{ env.KHIOPS_COVIZ_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
           add-versions-to-the-menu: ${{ inputs.build-other-version }}
+          execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
       - name: Move other version site inside the main site
         if: inputs.build-other-version
         run: mv ${{ env.KHIOPS_OTHER_VERSION }} site/
