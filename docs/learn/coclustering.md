@@ -264,7 +264,7 @@ L(d|h) & = -\log P(d|h) \\
 
 ## Optimization Algorithm
 
-The goal of this algorithm is to find the best co-clustering mode by minimizing the optimization criterion. However, the number of candidate models increases **exponentially** with the size of the training data, making exhaustive exploration non-tractable. Consequently, the presented algorithm is a **heuristic** designed to find a high-quality approximate solution within a reasonable amount of time.
+The goal of this algorithm is to find the best co-clustering mode by minimizing the optimization criterion. However, the number of candidate models increases **exponentially** with the size of the training data, making exhaustive exploration non-tractable. Consequently, the presented algorithm is a **heuristic** designed to find a high-quality approximate solution within a reasonable amount of time. 
 
 The following figure gives an overview the step-by-step operation of this algorithm, for further details please refer to [this paper:octicons-link-external-16:][algo_paper].
 
