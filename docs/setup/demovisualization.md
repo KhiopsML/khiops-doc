@@ -15,7 +15,7 @@ Explore the capabilities of the Khiops Visualization tool through three interact
 Click on the corresponding button to choose the case you want to explore:
 
 <div id="visu-menu"></div>
-<iframe name="visu-frame" id="visu-frame" src="/assets/khiops-visualization.html" style="width: 100%;height: 1024px;"></iframe>
+<iframe name="visu-frame" id="visu-frame" src="/assets/khiops-visualization.html" style="width: 100%; height: calc(100vh - 200px); border: 2px solid black; padding: 10px;"></iframe>
 <script>
 	document.addEventListener("DOMContentLoaded", () =>
 		visuMenu([
