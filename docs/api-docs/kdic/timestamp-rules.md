@@ -59,7 +59,10 @@ Time in a timestamp value.
 Numerical DecimalYearTS(Timestamp value)
 ```
 
-Year in a timestamp value, with decimal part for day in year, at a timestamp precision.
+Year in a timestamp value, including a decimal part for the day of the year and the time of day.
+
+Precisely, `DecimalYearTS = Year + (YearDay-1 + DecimalTime(time)/24)/365` (or 366 for leap years).
+
 
 ## AbsoluteSecond
 

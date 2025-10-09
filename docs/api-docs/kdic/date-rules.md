@@ -51,7 +51,7 @@ Year in a date value.
 Numerical Month(Date value)
 ```
 
-Month in a date value.
+Month in a date value, ranging from 1 (January) to 12 (December).
 
 ## Day
 
@@ -59,7 +59,7 @@ Month in a date value.
 Numerical Day(Date value)
 ```
 
-Day in a date value.
+Day in a date value, ranging from 1 to 31.
 
 ## YearDay
 
@@ -67,7 +67,7 @@ Day in a date value.
 Numerical YearDay(Date value)
 ```
 
-Day in year in a date value.
+Day in year in a date value, starting at 1 for January 1st and ending at 365 or 366 for December 31st, depending on whether it is a leap year.
 
 ## WeekDay
 
@@ -85,7 +85,10 @@ Returns 1 for Monday, 2 for Tuesday ..., 7 for Sunday.
 Numerical DecimalYear(Date value)
 ```
 
-Year in a date value, with decimal part for day in year.
+Year in a date value, including a decimal part representing the day of the year.
+
+Precisely, `DecimalYear = Year + (YearDay-1)/365` (or 366 for leap years).
+
 
 ## AbsoluteDay
 

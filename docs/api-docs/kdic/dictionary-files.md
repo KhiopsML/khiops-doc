@@ -91,7 +91,7 @@ Labels and comments are lines that begin with //.
 
     - the label is the first commented line before the dictionary definition,
     
-    - comments are the next commented lines before the dictionary definition; they can be interspersed with dictionary definition fragments (e.g.  key, meta-data),
+    - comments are the next commented lines before the dictionary definition; they can be interspersed with dictionary definition fragments (e.g. key, meta-data),
     
     - internal comments can be added at the end of the dictionary definition, before the closing curly brace `}`,
 
