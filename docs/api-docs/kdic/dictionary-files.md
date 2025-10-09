@@ -87,16 +87,18 @@ Even though, Khiops is still aware of the variable, which allows to construct ne
 
 Labels and comments are lines that begin with //.
 
-- dictionary level:
-   
-    - the label is the first commented line before the dictionary definition,
-        
-    - internal comments can be added at the end of the variable block,
+- at the dictionary level:
 
-- variable level:
-        
-    - the label must appear on the same line immediately after the variable definition,
+    - the label is the first commented line before the dictionary definition,
     
+    - comments are the next commented lines before the dictionary definition; they can be interspersed with dictionary definition fragments (e.g.  key, meta-data),
+    
+    - internal comments can be added at the end of the dictionary definition, before the closing curly brace `}`,
+
+- at the variable level:
+
+    - the label must appear on the same line, just after the variable definition,
+
     - multiple comment lines can precede the variable definition.
 
 Empty lines can be inserted anywhere to improve readability.

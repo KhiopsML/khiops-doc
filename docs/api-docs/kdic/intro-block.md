@@ -30,7 +30,7 @@ A variable block is defined as following:
 
 - a variable block can be computed from a block derivation rule, but variables within a block cannot be individually computed with their own derivation rule,
 
-- each variable within a variable block has **VarKey**, defined using meta-data :
+- each variable within a variable block has **VarKey**, defined using meta-data:
   
 	- it is an identifier of the variable locally to its block
   
@@ -40,11 +40,11 @@ A variable block is defined as following:
 
 - label and comments:
 
-    - label: an end-of-line comment positioned at the end of the variable block declaration,
-
-    - comments: all comment lines appearing before the opening brace { of the variable block,
-
-    - internal comments: comments lines that follow the last variable of the block and appear before the closing brace },
+	- the label is the first commented line before the variable block definition,
+   
+	- comments are the next commented lines before the variable block definition,
+    
+	- internal comments can be added at the end of the variable block definition, before the closing curly brace `}`.
 
 ```kdic
 ['//' <comment> <EOL>]* 
