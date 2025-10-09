@@ -264,6 +264,9 @@ Automatic variable construction exploits the set of construction rules specified
 
 ![](../assets/images-khiops-guides/khiops/VariableConstructionParameters.png)
 
+For details on each construction rule, see the related derivation rule. For example, to learn about WeekDay, visit
+[`WeekDay`](../api-docs/kdic/date-rules.md/#weekday).
+
 !!! warning
 
     The construction rules applied to Date, Time, Timestamps or TimestampsTZ variables enable the extraction of numerical values at various periodicities 
