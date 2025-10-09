@@ -306,7 +306,7 @@ Several heuristics are applied during the variable construction process, wheneve
 
 - tokens : text tokens whose interpretability and interest depend on the quality of the input text preprocessing.
 
-The **words** automatic tokenization process uses separator or control characters as delimiters.
+The **words** automatic tokenization process uses space or control characters as delimiters.
 The obtained words are either sequences of punctuation characters or sequences of any other character.
 
 The **tokens** tokenization process simply uses the blank character as delimiter.
