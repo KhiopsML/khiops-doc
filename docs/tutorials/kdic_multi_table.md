@@ -1,6 +1,6 @@
 This section introduces the use of Khiops dictionaries for **managing data preparation with multi-table datasets**, a frequent scenario in real-world business applications. Khiops eliminates the need for labor-intensive pre-processing and manual handling of relationships between tables, offering a scalable and automated solution for relational data. For full documentation, please refer to the dictionaries [reference page][reference_page].
 
-[reference_page]:../api-docs/kdic/numerical-comparisons.md
+[reference_page]:../api-docs/kdic/dictionary-files.md
 
 
 ## Relational Data Description
