@@ -112,7 +112,7 @@ You can consult the limitations or known problems corresponding to your operatin
         Windows users already having MSMPI installed may see an Anaconda warning suggesting to uninstall it; please ignore this message.
 
 
-=== "Users on Linux"
+=== "Users on :simple-linux: Linux"
     ??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"
         
         If you are upgrading from a version prior to Khiops 10.2, it is essential that the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
@@ -134,6 +134,31 @@ You can consult the limitations or known problems corresponding to your operatin
         ```
         
         **Note**:  If the standard uninstallation process fails, it may be necessary to add `--force`. This option forces the removal, potentially bypassing dependency conflicts or other issues preventing the package from being uninstalled normally. However, users should be cautious as forcing the removal can impact the stability of their Conda environment and affect other packages.
+
+=== "Users of :simple-jupyter: Jupyter Notebooks"
+    !!! warning
+        If you are using Khiops with Conda via a Jupyter environment and your
+        computer also has a version of MPI installed outside of Conda, this can
+        cause problems. The Khiops library might then detect the wrong version of
+        MPI, which could lead to runtime errors.
+
+        To prevent this, run the following Python code before using the Khiops
+        library in Jupyter notebooks within Conda environments:
+
+        ``` python
+        import os
+
+        from khiops import core as kh
+
+        kh.get_runner()._mpi_command_args[0] = os.path.join(
+
+            os.path.dirname(kh.get_runner().khiops_path), "mpiexec"
+
+        )
+        ```
+
+        This ensures that the MPI support specific to the Conda environment is
+        used and any potential MPI compatibility issue is thus avoided.
 
 <br>
 
