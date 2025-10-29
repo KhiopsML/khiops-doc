@@ -23,7 +23,7 @@ conda activate khiops_env
 Once the environment is activated, **you can install Khiops as follow**:
 
 ```sh
-conda install -c conda-forge -c khiops-dev khiops={{ CONDA_KHIOPS_PYTHON_VERSION }}
+conda install -c conda-forge khiops={{ CONDA_KHIOPS_PYTHON_VERSION }}
 ```
 
 <br>
