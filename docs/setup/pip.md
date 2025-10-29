@@ -7,7 +7,7 @@
 
 Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosystem and an understanding of operating system specifics. This approach, while offering adaptability for custom setups, necessitates knowledge of environment setup and dependency handling.
 
-The Khiops binaries must be installed as a prerequisite. This also ensures the installation of the appropriate version of `MPICH` library.
+The Khiops executables must be installed as a prerequisite. This also ensures the installation of the appropriate distribution and version of the MPI library.
 
 We support :simple-python: **Python from 3.8 to 3.13**.
 
@@ -27,7 +27,7 @@ We support :simple-python: **Python from 3.8 to 3.13**.
 
 === "Windows"
     
-    To install the Khiops binaries, required for the Khiops Python library to operate, you must first install the Khiops application before executing the `pip` installation command:
+    To install the Khiops executables, required for the Khiops Python library to operate, you must first install the Khiops application before executing the `pip` installation command:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe">
         <button class="btn btn-light btn-sm">
@@ -92,7 +92,7 @@ You can consult the limitations or known issues for your operating system:
         pip uninstall khiops
         ```
 
-        Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
+        Even though the Khiops executables would remain installed on the operating system, the Conda-based installation would take precedence over them.
 
     !!! warning
         The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH` for other programs, please prefer an installation using Conda.
@@ -128,7 +128,7 @@ You can consult the limitations or known issues for your operating system:
         pip uninstall khiops
         ```
 
-        Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
+        Even though the Khiops executables would remain installed on the operating system, the Conda-based installation would take precedence over them.
 
     !!! warning
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
@@ -139,7 +139,7 @@ You can consult the limitations or known issues for your operating system:
 
 === "Users on :material-apple: macOS"
     !!! warning
-        Native packages for the Khiops binaries are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
+        Native packages for the Khiops executables are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
 
 <br>
 
