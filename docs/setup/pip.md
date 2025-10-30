@@ -1,5 +1,5 @@
 <!-- Transform the pre-release versions for the rocky and python packages
-{% set TARGZ_KHIOPS_PYTHON_VERSION = KHIOPS_PYTHON_VERSION.replace("-rc.", "rc").replace("-b.", "b").replace("-a.", "a") %}
+{% set PIP_KHIOPS_PYTHON_VERSION = KHIOPS_PYTHON_VERSION.replace("-rc.", "rc").replace("-b.", "b").replace("-a.", "a") %}
 {% set ROCKY_KHIOPS_VERSION = KHIOPS_VERSION.replace("-", "_") %}
 -->
 
@@ -7,9 +7,9 @@
 
 Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosystem and an understanding of operating system specifics. This approach, while offering adaptability for custom setups, necessitates knowledge of environment setup and dependency handling.
 
-The Khiops binaries must be installed as a prerequisite. This also ensures the installation of the appropriate version of `MPICH` library.
+The Khiops executables must be installed as a prerequisite. This also ensures the installation of the appropriate distribution and version of the MPI library.
 
-We support :simple-python: **Python from 3.8 to 3.13**.
+We support :simple-python: **Python from 3.8 to 3.14**.
 
 === "Ubuntu / Debian"
 
@@ -21,13 +21,13 @@ We support :simple-python: **Python from 3.8 to 3.13**.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ TARGZ_KHIOPS_PYTHON_VERSION }}.tar.gz'
+    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
 
 === "Windows"
     
-    To install the Khiops binaries, required for the Khiops Python library to operate, you must first install the Khiops application before executing the `pip` installation command:
+    To install the Khiops executables, required for the Khiops Python library to operate, you must first install the Khiops application before executing the `pip` installation command:
 
     <a href="https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe">
         <button class="btn btn-light btn-sm">
@@ -38,7 +38,7 @@ We support :simple-python: **Python from 3.8 to 3.13**.
     Then, you can run the following Pip command:
 
     ```sh
-    pip install "https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ TARGZ_KHIOPS_PYTHON_VERSION }}.tar.gz"
+    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
 === "Rocky Linux"
@@ -53,7 +53,7 @@ We support :simple-python: **Python from 3.8 to 3.13**.
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ ROCKY_KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install 'https://github.com/KhiopsML/khiops-python/releases/download/{{ KHIOPS_PYTHON_VERSION }}/khiops-{{ TARGZ_KHIOPS_PYTHON_VERSION }}.tar.gz'
+    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
 
@@ -92,7 +92,7 @@ You can consult the limitations or known issues for your operating system:
         pip uninstall khiops
         ```
 
-        Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
+        Even though the Khiops executables would remain installed on the operating system, the Conda-based installation would take precedence over them.
 
     !!! warning
         The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH` for other programs, please prefer an installation using Conda.
@@ -128,7 +128,7 @@ You can consult the limitations or known issues for your operating system:
         pip uninstall khiops
         ```
 
-        Even though the Khiops binaries would remain installed on the operating system, the Conda-based installation would take precedence over them.
+        Even though the Khiops executables would remain installed on the operating system, the Conda-based installation would take precedence over them.
 
     !!! warning
         On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
@@ -139,7 +139,7 @@ You can consult the limitations or known issues for your operating system:
 
 === "Users on :material-apple: macOS"
     !!! warning
-        Native packages for the Khiops binaries are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
+        Native packages for the Khiops executables are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
 
 <br>
 
