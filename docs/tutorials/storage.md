@@ -19,7 +19,7 @@ Khiops can read and write datasets stored in GCS buckets using the `khiopsdriver
 If you installed Khiops through Conda as recommended, you can install the driver as follows:
 
 ```sh
-conda install -c khiops khiops-driver-gcs
+conda install -c conda-forge khiops-driver-gcs
 ```
 
 ??? warning "If you installed Khiops using `pip` **on Linux**... "
@@ -114,7 +114,7 @@ _, model_path = kh.train_predictor(
 To start using Khiops with your data on S3, install the S3 driver package alongside Khiops. If you installed Khiops through Conda as recommended, you can install the driver as follows:
 
 ```sh
-conda install -c khiops khiops-driver-s3
+conda install -c conda-forge khiops-driver-s3
 ```
 
 ??? warning "If you installed Khiops using `pip` **on Linux**..."
