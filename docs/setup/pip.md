@@ -1,4 +1,5 @@
-<!-- Transform the pre-release versions for the rocky packages
+<!-- Transform the pre-release versions for the rocky and python packages
+{% set PIP_KHIOPS_PYTHON_VERSION = KHIOPS_PYTHON_VERSION.replace("-rc.", "rc").replace("-b.", "b").replace("-a.", "a") %}
 {% set ROCKY_KHIOPS_VERSION = KHIOPS_VERSION.replace("-", "_") %}
 -->
 
@@ -20,7 +21,7 @@ We support :simple-python: **Python from 3.8 to 3.13**.
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
-    pip install khiops
+    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
 
@@ -37,7 +38,7 @@ We support :simple-python: **Python from 3.8 to 3.13**.
     Then, you can run the following Pip command:
 
     ```sh
-    pip install khiops
+    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
 === "Rocky Linux"
@@ -52,7 +53,7 @@ We support :simple-python: **Python from 3.8 to 3.13**.
     wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ ROCKY_KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
     sudo yum install "$TEMP_RPM" -y && \
     rm -f $TEMP_RPM && \
-    pip install khiops
+    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
 
