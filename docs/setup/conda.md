@@ -1,10 +1,14 @@
+<!-- Transform the pre-release versions to Conda version for Python packages
+{% set CONDA_KHIOPS_PYTHON_VERSION = KHIOPS_PYTHON_VERSION.replace("-rc.", "rc.").replace("-b.", "b.").replace("-a.", "a.") %}
+-->
+
 # Install the Khiops Library Using Conda 
 
 The Conda package installation guarantees optimal performance since it handles installing or upgrading all Khiops dependencies, including the MPI library, in your Conda environment. 
 
 ## Instructions
 
-Khiops supports :simple-python: **Python versions from 3.8 to 3.13**. By default, we recommend creating a dedicated Conda environment to ensure compatibility and avoid conflicts with other packages. To create an environment (for instance with Python 3.12), use the following command:
+Khiops supports :simple-python: **Python versions supported by `conda-forge`, up to 3.13**. By default, we recommend creating a dedicated Conda environment to ensure compatibility and avoid conflicts with other packages. To create an environment (for instance with Python 3.12), use the following command:
 
 ```sh
 conda create --name khiops_env python=3.12
@@ -19,7 +23,7 @@ conda activate khiops_env
 Once the environment is activated, **you can install Khiops as follow**:
 
 ```sh
-conda install -c conda-forge khiops
+conda install -c conda-forge khiops={{ CONDA_KHIOPS_PYTHON_VERSION }}
 ```
 
 <br>
