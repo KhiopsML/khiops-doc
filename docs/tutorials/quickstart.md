@@ -1,3 +1,7 @@
+<!-- Transform the pre-release versions to Conda version for Python packages
+{% set CONDA_KHIOPS_PYTHON_VERSION = KHIOPS_PYTHON_VERSION.replace("-rc.", "rc.").replace("-b.", "b.").replace("-a.", "a.") %}
+-->
+
 # Quickstart Guide
 
 The user-friendly Khiops Python library provides a unique Auto-ML solution. Khiops offers significant practical advantages, based on an original formalism: 
@@ -22,9 +26,9 @@ Ultimately, all you need to do is use the standard Scikit-Learn syntax, and Khio
 ### 🔧 Setup
 
 
-```python
+```sh
 # Straightforward installation using Conda.
-#!conda install -c conda-forge -c khiops khiops
+conda install -c conda-forge khiops={{ CONDA_KHIOPS_PYTHON_VERSION }}
 ```
 
 
