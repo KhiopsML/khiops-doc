@@ -51,7 +51,7 @@ The KNI is targeted primarily at system integrators which aim to deploy the scor
 === "conda"
 
     ```sh
-    conda install -c khiops kni
+    conda install -c conda-forge kni
     ```
 
 You can find the all versions on the [releases page][releases].
