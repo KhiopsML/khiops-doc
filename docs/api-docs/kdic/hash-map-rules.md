@@ -79,7 +79,7 @@ to efficiently recode a `Categorical` value into a `Numerical` one.
       Categorical Name;
       Categorical Sex;
       // Maps "male" -> 0 and "female" -> 1
-      Numerical NumericGender = ValueAtKeyC(HashMapC(VectorC("male", "female"), VectorC(0, 1)), Sex);
+      Numerical NumericGender = ValueAtKey(HashMap(VectorC("male", "female"), VectorC(0, 1)), Sex);
     }
     ```
 
