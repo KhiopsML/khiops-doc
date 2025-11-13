@@ -57,7 +57,7 @@ You should see an output indicating that the GCS driver is loaded and ready to u
 Khiops {{ KHIOPS_VERSION }}
 
 Drivers:
-    'GCS driver' for URI scheme 'gs'
+    GCS driver ({{ KHIOPS_GCS_DRIVER_VERSION }}) for URI scheme 'gs'
 Environment variables:
     None
 Internal environment variables:
@@ -152,7 +152,7 @@ You should see an output indicating that the S3 driver is loaded and ready to us
 Khiops {{ KHIOPS_VERSION }}
 
 Drivers:
-    'S3 driver' for URI scheme 's3'
+    S3 driver ({{ KHIOPS_S3_DRIVER_VERSION }}) for URI scheme 's3'
 Environment variables:
     None
 Internal environment variables:
