@@ -16,9 +16,9 @@ input values, which allows the computation of conditional probabilities.
 Structure(Classifier) SNBClassifier(
 	Structure(Vector) variableWeights, Structure(DataGridStats) dataGridStats1, ...)
 ```
-Builds a Selective Naive Bayes `Classifier` structure. The first parameter is weight
-[`Vector`](vector-rules.md/#vector) for the selected variables. The remaining parameters are the
-same as for the [`NBClassifier`](#nbclassifier) rule.
+Builds a Selective Naive Bayes `Classifier` structure. 
+The first parameter is a [`Vector`](vector-rules.md/#vector) of weights for the selected variables, provided as literal values.
+The remaining parameters are the same as for the [`NBClassifier`](#nbclassifier) rule.
 
 
 ## TargetValue
@@ -52,7 +52,7 @@ Categorical BiasedTargetValue(Structure(Classifier) classifier, Structure(Vector
 ```
 
 Computes the `Classifier` highest score target value, after adding a bias to each initial target
-value score.
+value score. The bias values are provided as literal values.
 
 ## NBRankRegressor
 
@@ -69,9 +69,9 @@ Structure(RankRegressor) SNBRankRegressor(
 	Structure(Vector) variableWeights, Structure(DataGridStats) dataGridStats1, ...)
 ```
 
-Builds a Selective Naive Bayes `RankRegressor`. The first parameter is weight
-[`Vector`](vector-rules.md/#vector) for the selected variables. The remaining parameters are the
-same as for the [`NBRankRegressor`](#nbrankregressor) rule.
+Builds a Selective Naive Bayes `RankRegressor`. 
+The first parameter is a [`Vector`](vector-rules.md/#vector) of weights for the selected variables, provided as literal values.
+The remaining parameters are the same as for the [`NBRankRegressor`](#nbrankregressor) rule.
 
 
 ## TargetRankMean

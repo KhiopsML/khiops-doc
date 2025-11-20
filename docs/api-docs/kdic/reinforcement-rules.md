@@ -11,7 +11,7 @@ Structure(ClassifierReinforcer) ClassifierReinforcer(Structure(Classifier),
                                                      Structure(VectorC) leverVariableNames)
 ```
 
-Builds a `ClassifierReinforcer` structure from a `Classifier` structure and a list of lever variables.
+Builds a `ClassifierReinforcer` structure from a `Classifier` structure and a list of lever variables, provided as literal values.
 The resulting `ClassifierReinforcer` contains all the necessary information
 to compute reinforcement scores for each lever variable and target value.
 

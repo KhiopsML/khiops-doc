@@ -6,8 +6,7 @@
 Structure(VectorC) VectorC(Categorical value1, ...)
 ```
 
-Builds a vector of `Categorical` values. The operands must be literal values (no variables or
-rules).
+Builds a vector of `Categorical` values.
 
 ## TableVectorC
 
@@ -32,7 +31,7 @@ index is out of bounds.
 Structure(Vector) Vector(Numerical value1, ...)
 ```
 
-Builds a vector of `Numerical` values. The operands must be literal values (no variables or rules).
+Builds a vector of `Numerical` values.
 
 ## TableVector
 
