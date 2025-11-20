@@ -427,3 +427,84 @@ which is in the "upper" scope of the secondary table. In this case, the scope op
     ```kdic
     Numerical MostFrequentCharFrequency = TableCount(TableSelection(DNA, EQc(Char,.TableMode(DNA, Char))));
     ```
+
+
+## Deeper Insights 
+
+### Khiops Hierarchical Schemas
+
+While traditional databases are designed for **efficient, reliable data storage and retrieval** 
+across various technologies, Khiops **extends the single-table data schema** typically used in data mining by a
+**hierarchical schema** that supports **domain knowledge encoding, automated feature engineering and predictive modeling**.
+This approach bridges the gap between raw relational data and the analytical needs of machine learning workflows.
+
+Database technologies cover a wide range of schema types, each suited to specific needs: simple storage, hierarchical, relational,
+object-oriented, document-oriented, columnar, in-memory, or distributed. 
+The choice depends on requirements related to performance, structure, scalability, and use cases
+(transactional, analytical, big data, etc.).
+
+Khiops cannot be directly mapped onto a relational database or any other traditional database technology. 
+However, transforming existing structured data into a Khiops hierarchical schema greatly enhances expressivity 
+in encoding domain knowledge. At the same time, it significantly simplifies the data miner's task by converting complex,
+structured data into a unified, single-table representation through Khiops' automated feature engineering.
+
+
+### In-Memory Instances
+
+In the **Customer** snowflake example above, the main entity is the *Customer*, with its main variables,
+along with relational variables that encode the hierarchical structure of a customer:
+
+
+- `Customer`: the main instance
+
+    - `Address`: a secondary instance
+  
+    - `Services`: an array of secondary instances associated with the customer
+  
+        - `Usages`: an array of secondary instances, one per service
+
+In memory, this hierarchical structure closely resembles objects in programming languages,
+which can be composed of sub-objects or arrays of sub-objects. 
+Khiops dictionaries provide a language that allows us to describe and formalize this structure concisely and in an expressive manner.
+
+
+### Reading Instances from Flat Files
+
+In the context of Khiops, **keys** are introduced within each dictionary solely to facilitate reading data from files
+and constructing hierarchical in-memory instances. 
+These keys are organized hierarchically according to the Khiops dictionary schema: the key fields of a parent entity are
+a subset of the key fields of its sub-entities.
+
+The mapping between in-memory instances and data stored on disk is managed using one tabular file per node in the hierarchical schema, 
+with each file sorted by its key. During data loading and processing, all data files are read simultaneously. 
+For each segment of the files where the key values start with the current main entity's key, an in-memory entity is
+reconstructed, processed, and then discarded from memory to make room for the next instance.
+
+This organization ensures scalable analysis, even with very large flat files that far exceed available RAM, 
+by enabling efficient sequential access and hierarchical reconstruction of data.
+
+!!! note
+
+    Khiops cannot directly interface with relational databases. Instead, it requires the data to be prepared
+    as one sorted data file per entity in a hierarchical schema. 
+    While this data preparation step is necessary, it is significantly simpler than the traditional feature engineering process,
+    which often involves transforming complex structured data into a single-table format for analysis.
+
+
+### Interest of External Tables
+
+Beyond their role in representing the conceptual data model, such as for example separating **customer** management and purchase **logs** 
+from referenced **products**, external tables provide important resource optimization benefits:
+
+- **In-Memory Loading for Speed:**  
+  External tables are fully loaded into memory to enable rapid access and sharing within each process.  
+    - Random disk access is impractical due to high latency, especially when dealing with millions of *customers* and billions of *logs*, each requiring *product* lookups among hundreds of thousands.  
+    - Pre-joining external data with main entity *logs* to avoid repeated disk access is highly costly in terms of storage space.
+
+- **Shared Data and Computations:**  
+  Loading external tables into memory allows for shared access to data and derived variables, which are computed once and reused within each process.  
+    - However, processing external tables is resource-intensive: it is not parallelized and must be performed separately for each process, unlike standard tables, which are processed in parallel with each process handling a subset of the table.
+    - This approach is unsuitable for very large external tables.  
+    - To maximize efficiency, external instances should be reused:  
+        - **Unfavorable case:** When there are more external instances than main instances, pre-filtering relevant external data can be beneficial.  
+        - **Favorable case:** When external instances are few and highly reused by main instances.
