@@ -167,6 +167,7 @@ Text TextTranslate(
 Replace substrings in a text value. The replacement is performed in sequence with each search
 value in the first parameter vector replaced by its corresponding value in the second parameter
 vector.
+Both vectors in the operands must contain only literal values (no variables or rules).
 
 !!! example
 
