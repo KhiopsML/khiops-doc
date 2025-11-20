@@ -121,7 +121,7 @@ Returns 1 if a `TimestampTZ` value is valid.
 ## BuildTimestampTZ
 
 ```kdic-api-docs
-TimestampTZ BuildTimestampTZ(Timestamp timestampValue, Time timeValue)
+TimestampTZ BuildTimestampTZ(Timestamp timestampValue, Numerical timezone)
 ```
 
 Builds a timestampTZ value from a timestamp value and time zone information in minutes. The minutes

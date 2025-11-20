@@ -264,6 +264,9 @@ Automatic variable construction exploits the set of construction rules specified
 
 ![](../assets/images-khiops-guides/khiops/VariableConstructionParameters.png)
 
+For details on each construction rule, see the related derivation rule. For example, to learn about `WeekDay`, visit
+[`WeekDay`](../api-docs/kdic/date-rules.md/#weekday).
+
 !!! warning
 
     The construction rules applied to Date, Time, Timestamps or TimestampsTZ variables enable the extraction of numerical values at various periodicities 
@@ -303,7 +306,7 @@ Several heuristics are applied during the variable construction process, wheneve
 
 - tokens : text tokens whose interpretability and interest depend on the quality of the input text preprocessing.
 
-The **words** automatic tokenization process uses separator or control characters as delimiters.
+The **words** automatic tokenization process uses space or control characters as delimiters.
 The obtained words are either sequences of punctuation characters or sequences of any other character.
 
 The **tokens** tokenization process simply uses the blank character as delimiter.

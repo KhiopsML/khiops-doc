@@ -13,7 +13,7 @@ corresponds to `09:30:08` with format `HH:MM:SS`):
 | `(H)H.(M)M.(S)S` | `(H)H.(M)M.(S)S.` | `(H)H.(M)M` |
 | `HHMMSS`         | `HHMMSS.`         | `HHMM`      |
 
-Valid times range from `00:00:00` to `23:59:59`, with optional fractions of seconds up to 1/10000 of
+Valid times range from `00:00:00` to `23:59:59`, with optional fractions of seconds up to 1/1000 of
 a second. Time rules return a missing value when their time operand is not valid or when a numerical
 operand is missing.
 
@@ -46,7 +46,7 @@ Recodes a categorical value into a time using a time format.
 Numerical Hour(Time value)
 ```
 
-Hour in a time value.
+Hour in a time value, ranging from 0 to 23.
 
 ## Minute
 
@@ -54,7 +54,7 @@ Hour in a time value.
 Numerical Minute(Time value)
 ```
 
-Minute in a time value.
+Minute in a time value, ranging from 0 to 59.
 
 ## Second
 
@@ -62,7 +62,11 @@ Minute in a time value.
 Numerical Second(Time value)
 ```
 
-Second in a time value.
+Second in a time value, ranging from 0 to 59.999.
+
+!!! note
+
+    Seconds can be precise up to one thousandth of a second (i.e., milliseconds).
 
 ## DaySecond
 
@@ -78,7 +82,7 @@ Total second in a time value, since 00:00:00.
 Numerical DecimalTime(Time value)
 ```
 
-Decimal day in a time value, between 0.0 and 23.9999.
+Decimal representation of the time within a day, ranging from 0.0 to approximately 23.999999 for 23:59:59.999.
 
 Precisely, `DecimalTime := DaySecond/(24 * 60 * 60)`.
 
