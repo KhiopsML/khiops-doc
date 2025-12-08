@@ -55,25 +55,6 @@ runs:
         cp versions.md docs/
         # Add the versions file to the menu
         echo -e "\n  - ${{ inputs.khiops-version }}: versions.md" >> mkdocs.yml
-    - name: Fetch Khiops Python API docs
-      shell: bash
-      run: |
-        # Fetch the API docs
-        wget -O khiops_api_docs.zip "https://github.com/KhiopsML/khiops-python/releases/download/${{ inputs.khiops-python-version }}/khiops-api-docs-${{ inputs.khiops-python-version }}.zip"
-
-        # Put Python API docs into the site source dir, as it is *untraced by
-        # Git*, hence it will get built *and* deployed (see
-        # https://www.mkdocs.org/user-guide/deploying-your-docs/)
-        # After build, the Python API docs are in the
-        # site/api-docs/python-api/api folder.
-        mkdir -p docs/api-docs/python-api/api
-
-        # Unzip the API doc into the docs/python-api/api/ folder, while
-        # stripping the doc/_build/html sub-directories
-        bsdtar --strip-components=3 -C docs/api-docs/python-api/api -xvf khiops_api_docs.zip
-
-        # Remove the Khiops Python API ZIP archive
-        rm -f khiops_api_docs.zip
     - name: Install Khiops-Related Requirements to Run the Tutorials
       shell: bash
       env:
@@ -114,13 +95,26 @@ runs:
 
         # Build the site pages into the site/ directory
         mkdocs build --strict --verbose
+    - name: Fetch Khiops Python API docs
+      shell: bash
+      run: |
+        # Fetch the API docs
+        wget -O khiops_api_docs.zip "https://github.com/KhiopsML/khiops-python/releases/download/${{ inputs.khiops-python-version }}/khiops-api-docs-${{ inputs.khiops-python-version }}.zip"
+
+        # Put Python API docs into the site target dir directly
+        mkdir -p site/api-docs/python-api/api
+
+        # Unzip the API doc into the docs/python-api/api/ folder, while
+        # stripping the doc/_build/html sub-directories
+        bsdtar --strip-components=3 -C site/api-docs/python-api/api -xvf khiops_api_docs.zip
+
+        # Remove the Khiops Python API ZIP archive
+        rm -f khiops_api_docs.zip
         # Hide the logo from the Python files
         find site/api-docs/python-api/api -name "*.html" -print0 | xargs -0 sed -i 's/div class="sidebar-logo-container"/div class="sidebar-logo-container" style="visibility: hidden; max-height: 0"/g'
     - name: Clean the Git doc repo state
       shell: bash
       run: |
-        # Remove source Python API docs
-        rm -fr docs/api-docs/python-api/api
         # Remove added markdown file
         rm -f docs/versions.md
         # Checkout the mkdocs file so that the Git repo state is clean
