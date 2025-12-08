@@ -69,9 +69,8 @@ runs:
         mkdir -p docs/api-docs/python-api/api
 
         # Unzip the API doc into the docs/python-api/api/ folder, while
-        # stripping the doc/_build/html sub-directories and excluding the
-        # doc/_build/html/_downloads subdirectory
-        bsdtar --strip-components=3 --exclude '_downloads/' -C docs/api-docs/python-api/api -xvf khiops_api_docs.zip
+        # stripping the doc/_build/html sub-directories
+        bsdtar --strip-components=3 -C docs/api-docs/python-api/api -xvf khiops_api_docs.zip
 
         # Remove the Khiops Python API ZIP archive
         rm -f khiops_api_docs.zip
