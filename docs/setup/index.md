@@ -20,7 +20,7 @@ Khiops supports a diversified set of installation options, to meet different nee
     - [**Khiops Native Interface (KNI)**][kni]: to deploy Khiops models with a lightweight shared library.
 
 !!! warning "Supported Platforms"
-    We support :simple-python: **Python from 3.8 to 3.13** and the following operating systems:
+    We support :simple-python: **Python from 3.10 to 3.14** on the following operating systems:
 
     - Windows 10 or later
     - Ubuntu 20, 22 and 24 (LTS) on x86-64 architectures

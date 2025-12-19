@@ -9,7 +9,8 @@ Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosy
 
 The Khiops executables must be installed as a prerequisite. This also ensures the installation of the appropriate distribution and version of the MPI library.
 
-We support :simple-python: **Python from 3.8 to 3.14**.
+We support :simple-python: **Python from 3.10 to 3.14**. Usage of previous
+versions of Python can be attempted, but there is no support for it.
 
 === "Ubuntu / Debian on x86-64 architectures"
 
@@ -54,7 +55,7 @@ We support :simple-python: **Python from 3.8 to 3.14**.
     ```
 
 === "Rocky Linux"
-    The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.8), **please ensure a compatible Python version is installed before continuing**.
+    The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.10), **please ensure a compatible Python version is installed before continuing**.
 
     Then, you need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
 
