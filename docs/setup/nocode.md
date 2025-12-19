@@ -30,7 +30,7 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
         </button>
     </a>
 
-=== "Ubuntu / Debian"
+=== "Ubuntu / Debian on x86-64 architectures"
     The installation of the Khiops desktop application involves two packages:
 
      - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
@@ -46,6 +46,37 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
     TEMP_DEB_KHIOPS="$(mktemp)" && \
     wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
     wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
+    sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
+    rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
+    ```
+
+    If you need the Khiops samples, you can run the following commands:
+    ```sh
+    TEMP_SAMPLES="$(mktemp)" && \
+    wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip" && \
+    mkdir -p ~/khiops_data/samples && \
+    unzip "$TEMP_SAMPLES" -d ~/khiops_data/samples && \
+    rm -f $TEMP_SAMPLES
+    ```
+
+    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
+
+=== "Ubuntu / Debian on ARM architectures"
+    The installation of the Khiops desktop application involves two packages:
+
+     - `khiops-core`: This is a lightweight package without GUI, documentation or samples. It is intended to be used in advanced settings, on servers and Docker images.
+     - `khiops`: This package requires `khiops-core` and is the full version of Khiops containing the GUI and the documentation.
+
+    Unlike the Windows installer, **the Khiops Visualization application is not included.**
+
+    You can install both packages as follows:
+
+    ``` sh
+    CODENAME=$(lsb_release -cs) && \
+    TEMP_DEB_CORE="$(mktemp)" && \
+    TEMP_DEB_KHIOPS="$(mktemp)" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.arm64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${CODENAME}.arm64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```

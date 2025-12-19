@@ -11,7 +11,7 @@ The Khiops executables must be installed as a prerequisite. This also ensures th
 
 We support :simple-python: **Python from 3.8 to 3.14**.
 
-=== "Ubuntu / Debian"
+=== "Ubuntu / Debian on x86-64 architectures"
 
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
@@ -24,6 +24,18 @@ We support :simple-python: **Python from 3.8 to 3.14**.
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
+=== "Ubuntu / Debian on ARM architectures"
+
+    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
+    ``` sh
+    sudo apt-get update -y && sudo apt-get install wget lsb-release -y && \
+    CODENAME=$(lsb_release -cs) && \
+    TEMP_DEB="$(mktemp)" && \
+    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.arm64.deb" && \
+    sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
+    rm -f $TEMP_DEB && \
+    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
+    ```
 
 === "Windows"
     
