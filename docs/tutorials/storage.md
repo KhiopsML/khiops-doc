@@ -6,7 +6,11 @@ With these drivers, Khiops treats cloud storage **just like a local filesystem**
 
 !!! info "Driver Installation Support"
     On **Windows** and *macOS*, Khiops drivers are only supported through Conda. If you are using another installation method on these operating systems, consider switching to a Conda environment to enable driver support.
-    On **Linux**, Khiops drivers are supported through both Conda (Python only) and by using the binary installation method (compatible with the [Khiops Application][nocode] and Python via pip). 
+    On **Linux**, Khiops drivers are supported through both Conda (Python only) and by using the native binary installation method (compatible with the [Khiops Application][nocode] and Python via pip). For native installation of the S3 and GCS drivers on Linux, the following operating systems are supported:
+    - Rocky Linux 9
+    - Debian 11, 12 and 13
+    - Ubuntu 20.04, 22.04 and 24.04 (LTS) on x86-64 architectures
+    - Ubuntu 22.04 and 24.04 (LTS) on ARM architectures.
 
 [nocode]: ../setup/nocode.md
 
@@ -23,12 +27,22 @@ conda install -c conda-forge khiops-driver-gcs
 ```
 
 ??? warning "If you installed Khiops using `pip` **on Linux**... "
-    === "Ubuntu / Debian"
+    === "Ubuntu / Debian" on x86-64 architectures
 
         ```sh
         CODENAME=$(lsb_release -cs) && \
         TEMP_DEB="$(mktemp)" && \
         wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-gcs/releases/download/{{ KHIOPS_GCS_DRIVER_VERSION }}/khiops-driver-gcs_{{ KHIOPS_GCS_DRIVER_VERSION }}-1-${CODENAME}.amd64.deb" && \
+        sudo dpkg -i "$TEMP_DEB" && \
+        rm -f $TEMP_DEB
+        ```
+
+    === "Ubuntu / Debian" on ARM architectures
+
+        ```sh
+        CODENAME=$(lsb_release -cs) && \
+        TEMP_DEB="$(mktemp)" && \
+        wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-gcs/releases/download/{{ KHIOPS_GCS_DRIVER_VERSION }}/khiops-driver-gcs_{{ KHIOPS_GCS_DRIVER_VERSION }}-1-${CODENAME}.arm64.deb" && \
         sudo dpkg -i "$TEMP_DEB" && \
         rm -f $TEMP_DEB
         ```
@@ -118,12 +132,22 @@ conda install -c conda-forge khiops-driver-s3
 ```
 
 ??? warning "If you installed Khiops using `pip` **on Linux**..."
-    === "Ubuntu / Debian"
+    === "Ubuntu / Debian" on x86-64 architectures
 
         ```sh
         CODENAME=$(lsb_release -cs) && \
         TEMP_DEB="$(mktemp)" && \
         wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-s3/releases/download/{{ KHIOPS_S3_DRIVER_VERSION }}/khiops-driver-s3_{{ KHIOPS_S3_DRIVER_VERSION }}-1-${CODENAME}.amd64.deb" && \
+        sudo dpkg -i "$TEMP_DEB" && \
+        rm -f $TEMP_DEB
+        ```
+
+    === "Ubuntu / Debian" on ARM architectures
+
+        ```sh
+        CODENAME=$(lsb_release -cs) && \
+        TEMP_DEB="$(mktemp)" && \
+        wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-s3/releases/download/{{ KHIOPS_S3_DRIVER_VERSION }}/khiops-driver-s3_{{ KHIOPS_S3_DRIVER_VERSION }}-1-${CODENAME}.arm64.deb" && \
         sudo dpkg -i "$TEMP_DEB" && \
         rm -f $TEMP_DEB
         ```
