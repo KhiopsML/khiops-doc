@@ -50,7 +50,9 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
-    If you need the Khiops samples, you can run the following commands:
+    If you need the Khiops samples, you can download them from 
+    <a href="https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip        ">
+    here</a>, or you can run the following commands:
     ```sh
     TEMP_SAMPLES="$(mktemp)" && \
     wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip" && \
@@ -81,7 +83,9 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
-    If you need the Khiops samples, you can run the following commands:
+    If you need the Khiops samples, you can download them from 
+    <a href="https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip        ">
+    here</a>, or you can run the following commands:
     ```sh
     TEMP_SAMPLES="$(mktemp)" && \
     wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip" && \
@@ -113,7 +117,9 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
     rm -f $TEMP_RPM $TEMP_RPM_KHIOPS
     ```
 
-    If you need the Khiops samples, you can run the following commands:
+    If you need the Khiops samples, you can download them from 
+    <a href="https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip        ">
+    here</a>, or you can run the following commands:
     ```sh
     TEMP_SAMPLES="$(mktemp)" && \
     wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip" && \
