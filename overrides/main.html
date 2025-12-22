@@ -1,1 +1,8 @@
 {% extends "base.html" %}
+
+{% block announce %}
+<strong>You are viewing the documentation for the new {{ config.extra.KHIOPS_VERSION }} stable Khiops version.</strong>
+  <a href="{{ '../' ~ base_url }}/{{ config.extra.KHIOPS_OTHER_VERSION }}">
+    <strong>Click here for the last legacy 10.x version {{ config.extra.KHIOPS_OTHER_VERSION }}.</strong>
+  </a>
+{% endblock %}
