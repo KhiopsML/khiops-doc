@@ -17,12 +17,3 @@ docker pull khiopsml/khiops-notebook
 
 [docker-guide]: https://docs.docker.com/get-started/
 
-
-## What you should know
-
-Some limitations regarding the target architecture:
-
-=== "Users on ARM architecture"
-    !!! warning 
-        Our Jupyter Docker image is not yet built for the ARM microprocessor architecture. Running it will be extremely slow on :simple-raspberrypi: Raspberry or :material-apple: Apple Silicon.
-
