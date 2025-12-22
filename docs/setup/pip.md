@@ -9,21 +9,22 @@ Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosy
 
 The Khiops executables must be installed as a prerequisite. This also ensures the installation of the appropriate distribution and version of the MPI library.
 
-We support :simple-python: **Python from 3.8 to 3.14**.
+We support :simple-python: **Python from 3.10 to 3.14**. Usage of previous
+versions of Python can be attempted, but there is no support for it.
 
 === "Ubuntu / Debian"
 
-    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
+    You need to install the `khiops-core` package (via Apt) from the Khiops PPA hosted on GitHub, and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
-    sudo apt-get update -y && sudo apt-get install wget lsb-release -y && \
-    CODENAME=$(lsb_release -cs) && \
-    TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
-    sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
-    rm -f $TEMP_DEB && \
+    curl -s --compressed "https://khiopsml.github.io/Khiops-PPA/ubuntu/KEY.gpg" \
+      | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/khiops.gpg >/dev/null
+    sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/khiops.gpg] \
+      https://khiopsml.github.io/Khiops-PPA/ubuntu ./" \
+      > /etc/apt/sources.list.d/khiops.list
+    sudo apt-get update
+    sudo apt-get install khiops-core-openmpi={{ KHIOPS_VERSION }}
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
-
 
 === "Windows"
     
@@ -42,7 +43,7 @@ We support :simple-python: **Python from 3.8 to 3.14**.
     ```
 
 === "Rocky Linux"
-    The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.8), **please ensure a compatible Python version is installed before continuing**.
+    The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.10), **please ensure a compatible Python version is installed before continuing**.
 
     Then, you need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
 

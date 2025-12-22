@@ -20,12 +20,13 @@ Khiops supports a diversified set of installation options, to meet different nee
     - [**Khiops Native Interface (KNI)**][kni]: to deploy Khiops models with a lightweight shared library.
 
 !!! warning "Supported Platforms"
-    We support :simple-python: **Python from 3.8 to 3.13** and the following operating systems:
+    We support :simple-python: **Python from 3.10 to 3.14** on the following operating systems:
 
     - Windows 10 or later
-    - Ubuntu 20, 22 and 24 (LTS)
-    - Debian 11 and 12
-    - Rocky Linux 8 and 9
+    - Ubuntu 20, 22 and 24 (LTS) on x86-64 architectures
+    - Ubuntu 22 and 24 (LTS) on ARM architectures
+    - Debian 11, 12 and 13
+    - Rocky Linux 8, 9 and 10
     - macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for macOS 13 or later on ARM architectures, limited support for macOS 12 or for x86-64 architectures.
 
     The :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda:**Conda** package, which has been tested in these environments.
