@@ -113,6 +113,15 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
     rm -f $TEMP_RPM $TEMP_RPM_KHIOPS
     ```
 
+    If you need the Khiops samples, you can run the following commands:
+    ```sh
+    TEMP_SAMPLES="$(mktemp)" && \
+    wget -O "$TEMP_SAMPLES" "https://github.com/KhiopsML/khiops-samples/releases/download/{{ KHIOPS_SAMPLES_VERSION }}/khiops-samples-{{ KHIOPS_SAMPLES_VERSION }}.zip" && \
+    mkdir -p ~/khiops_data/samples && \
+    unzip "$TEMP_SAMPLES" -d ~/khiops_data/samples && \
+    rm -f $TEMP_SAMPLES
+    ```
+
 You can find the all versions on the [releases page][releases].
 
 ## Documentation
