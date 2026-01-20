@@ -17,7 +17,7 @@ We support :simple-python: **Python from 3.8 to 3.13**.
     ``` sh
     sudo apt-get update -y && sudo apt-get install wget -y && \
     source /etc/os-release && \
-    ARCH=$(dpkg --print-architecture)
+    ARCH=$(dpkg --print-architecture) && \
     TEMP_DEB="$(mktemp)" && \
     wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.${ARCH}.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
