@@ -11,17 +11,17 @@ The Khiops executables must be installed as a prerequisite. This also ensures th
 
 We support :simple-python: **Python from 3.8 to 3.13**.
 
-=== "Ubuntu / Debian"
+=== "Ubuntu / Debian (ARM and x86)"
 
-    You need to install the `khiops-core` package (via Apt) from the Khiops PPA hosted on GitHub, and then the Khiops library (via Pip). You can do this through the following shell commands:
+    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
-    curl -s --compressed "https://khiopsml.github.io/Khiops-PPA/ubuntu/KEY.gpg" \
-      | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/khiops.gpg >/dev/null
-    sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/khiops.gpg] \
-      https://khiopsml.github.io/Khiops-PPA/ubuntu ./" \
-      > /etc/apt/sources.list.d/khiops.list
-    sudo apt-get update
-    sudo apt-get install khiops-core-openmpi={{ KHIOPS_VERSION }}
+    sudo apt-get update -y && sudo apt-get install wget -y && \
+    source /etc/os-release && \
+    ARCH=$(dpkg --print-architecture)
+    TEMP_DEB="$(mktemp)" && \
+    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.${ARCH}.deb" && \
+    sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
+    rm -f $TEMP_DEB && \
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
