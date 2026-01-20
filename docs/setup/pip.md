@@ -12,27 +12,15 @@ The Khiops executables must be installed as a prerequisite. This also ensures th
 We support :simple-python: **Python from 3.10 to 3.14**. Usage of previous
 versions of Python can be attempted, but there is no support for it.
 
-=== "Ubuntu / Debian on x86-64 architectures"
+=== "Ubuntu / Debian (ARM and x86)"
 
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
     sudo apt-get update -y && sudo apt-get install wget -y && \
     source /etc/os-release && \
+    ARCH=$(dpkg --print-architecture)
     TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.amd64.deb" && \
-    sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
-    rm -f $TEMP_DEB && \
-    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
-    ```
-
-=== "Ubuntu / Debian on ARM architectures"
-
-    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
-    ``` sh
-    sudo apt-get update -y && sudo apt-get install wget -y && \
-    source /etc/os-release && \
-    TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.arm64.deb" && \
+    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.${ARCH}.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
