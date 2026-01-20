@@ -16,10 +16,10 @@ versions of Python can be attempted, but there is no support for it.
 
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
-    sudo apt-get update -y && sudo apt-get install wget lsb-release -y && \
-    CODENAME=$(lsb_release -cs) && \
+    sudo apt-get update -y && sudo apt-get install wget -y && \
+    source /etc/os-release && \
     TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
@@ -29,10 +29,10 @@ versions of Python can be attempted, but there is no support for it.
 
     You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
     ``` sh
-    sudo apt-get update -y && sudo apt-get install wget lsb-release -y && \
-    CODENAME=$(lsb_release -cs) && \
+    sudo apt-get update -y && sudo apt-get install wget -y && \
+    source /etc/os-release && \
     TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.arm64.deb" && \
+    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.arm64.deb" && \
     sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB && \
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}

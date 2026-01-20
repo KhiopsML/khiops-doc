@@ -41,11 +41,12 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
     You can install both packages as follows:
 
     ``` sh
-    CODENAME=$(lsb_release -cs) && \
+    sudo apt-get update -y && sudo apt-get install wget -y && \
+    source /etc/os-release && \
     TEMP_DEB_CORE="$(mktemp)" && \
     TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.amd64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.amd64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
@@ -74,11 +75,12 @@ For further details, you may refer to [README.txt][readme], and [WHATSNEW.txt][w
     You can install both packages as follows:
 
     ``` sh
-    CODENAME=$(lsb_release -cs) && \
+    sudo apt-get update -y && sudo apt-get install wget -y && \
+    source /etc/os-release && \
     TEMP_DEB_CORE="$(mktemp)" && \
     TEMP_DEB_KHIOPS="$(mktemp)" && \
-    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${CODENAME}.arm64.deb" && \
-    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${CODENAME}.arm64.deb" && \
+    wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.arm64.deb" && \
+    wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.arm64.deb" && \
     sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
