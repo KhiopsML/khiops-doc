@@ -48,6 +48,7 @@ Numerical TextLength(Text value)
 
 Length in chars of a text value.
 
+
 ## TextLeft
 
 ```kdic-api-docs

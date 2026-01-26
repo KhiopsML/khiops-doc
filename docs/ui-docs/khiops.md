@@ -567,15 +567,16 @@ The values in the data table file are parsed in order to guess their type.
 
 - values with format YYYY-MM-DD HH:MM:SS.zzzzzz are recognized as TimestampTZ variables, with time zone information,
 
-- for other Date, Time, Timestamp or TimestampTZ formats (e.g. Date format DD/MM/YYYY), a specific meta-data value is used (see paragraph 3.2.2. Dictionary) to specify the format used for the variable,
+- for other Date, Time, Timestamp or TimestampTZ formats (e.g. Date format DD/MM/YYYY), 
+  a specific meta-data value is used (see [`Meta-data`](../api-docs/kdic/dictionary-files.md/#meta-data)) to specify the format used for the variable,
+
+    - DateFormat: see [`Date rules`](../api-docs/kdic/date-rules.md)
   
-  - DateFormat: see [`Date rules`](../api-docs/kdic/date-rules.md)
+    - TimeFormat: see [`Time rules`](../api-docs/kdic/time-rules.md)
   
-  - TimeFormat: see [`Time rules`](../api-docs/kdic/time-rules.md)
+    - TimestampFormat: see [`Timestamp rules`](../api-docs/kdic/timestamp-rules.md) 
   
-  - TimestampFormat: see [`Timestamp rules`](../api-docs/kdic/timestamp-rules.md) 
-  
-  - TimestampTZFormat: see [`TimestampTZ rules`](../api-docs/kdic/timestamp-tz-rules.md)
+    - TimestampTZFormat: see [`TimestampTZ rules`](../api-docs/kdic/timestamp-tz-rules.md)
 
 - other values with numerical format are recognized as Numerical values,
 

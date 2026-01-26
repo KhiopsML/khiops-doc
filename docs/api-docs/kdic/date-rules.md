@@ -1,7 +1,9 @@
 # Date Rules
 
-`Date` values are encoded in data table files using Khiops native format `YYYY-MM-DD`. Other formats
-are available, that allow to convert categorical values to date values.
+`Date` values are encoded in data table files using Khiops native format `YYYY-MM-DD`, or an alternative format specified by the
+`DateFormat` meta-data (see [`Meta-data`](../kdic/dictionary-files.md/#meta-data)).
+
+All available formats are described below:
 
 |              |              |              |            |
 | ------------ | ------------ | ------------ | ---------- |
