@@ -1,7 +1,9 @@
 # Timestamp Rules
 
-`Timestamp` values are encoded in data table files using Khiops native format `YYYY-MM-DD HH:MM:SS.`.
-Other formats are available, that allow to convert categorical values to timestamp values:
+`Timestamp` values are encoded in data table files using Khiops native format `YYYY-MM-DD HH:MM:SS.`, 
+or an alternative format specified by the `TimestampFormat` meta-data (see [`Meta-data`](../kdic/dictionary-files.md/#meta-data)).
+
+All available formats are described below:
 
 - `<Date format> <Time format>`: A date format followed by a blank and a time format
 - `<Date format>-<Time format>`: A date format followed by a `-` and a time format

@@ -1,6 +1,6 @@
 # Hash Map Rules
 
-## Structure
+## HashMapC
 
 ```kdic-api-docs
 Structure(HashMapC) HashMapC(Structure(VectorC) keyVector, Structure(VectorC) valueVector)

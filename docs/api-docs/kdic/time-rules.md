@@ -1,9 +1,14 @@
 # Time Rules
-`Time` values are encoded in data table files using Khiops native format `HH:MM:SS.`. Other formats
-are available, that allow to convert categorical values to time values. The `.` at the end of the
-format means that fractions of seconds are optional. The use of parenthesis in time formats means
+`Time` values are encoded in data table files using Khiops native format `HH:MM:SS.`,
+or an alternative format specified by the
+`TimeFormat` meta-data (see [`Meta-data`](../kdic/dictionary-files.md/#meta-data)).
+
+The `.` at the end of the format means that fractions of seconds are optional. The use of parenthesis in time formats means
 that the corresponding digit is optional when it is null (e.g. `9:30:8` with format `(H)H:(M)M:(S)S`
 corresponds to `09:30:08` with format `HH:MM:SS`):
+
+
+All available formats are described below:
 
 |                  |                   |             |
 | ---------------- | ----------------- | ----------- |

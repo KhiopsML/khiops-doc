@@ -76,6 +76,7 @@ Entity TableAtKey(Table table, Categorical keyField1, Categorical keyField2, ...
 
 Extraction of an entity of a table at a given key. The number of key fields must match that of the
 dictionary of the table.
+Returns the first entity in the table that matches the input key. If no entity is found, it returns nothing.
 
 ## TableExtraction
 
@@ -249,7 +250,7 @@ Table EntitySet(Entity entity1, Entity entity2, ...)
 
 Builds a table from a set of entities. All the entities in the operands must have the same
 `Dictionary` definition; the result table will also have the same `Dictionary` definition.
-
+Duplicate or missing entities are ignored, ensuring that the resulting table contains only distinct, existing entities.
 
 !!! example
 
