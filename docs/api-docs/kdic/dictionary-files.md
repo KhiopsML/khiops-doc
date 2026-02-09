@@ -210,7 +210,7 @@ Dictionary grammar:
 
 Variable grammar:
 
-- it is defined by a name, with optional 'Unused' tag, derivation, metadata, and label,
+- it is defined by a name, with optional 'Unused' tag, derivation, meta-data, and label,
 
 - label and comments:
 
