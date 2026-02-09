@@ -127,6 +127,15 @@ Text IfText(Numerical test, Text valueTrue, Text valueFalse)
 Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
 condition in the first operand.
 
+## IfText
+
+```kdic-api-docs
+Text IfText(Numerical test, Text valueTrue, Text valueFalse)
+```
+
+Ternary operator returning second operand (true) or third operand (false) according to the
+condition in first operand.
+
 ## Switch
 
 ```kdic-api-docs
