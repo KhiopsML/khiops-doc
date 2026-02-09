@@ -189,6 +189,13 @@ nav:
             - Table Rules: api-docs/kdic/table-rules.md
             - Table Management Rules: api-docs/kdic/table-management-rules.md
             - TextList Rules: api-docs/kdic/text-list-rules.md
+          - Instance building rules:
+            - Introduction: api-docs/kdic/instance-building-rules-introduction.md
+            - Basic building rules: api-docs/kdic/basic-building-rules.md
+            - View rules: api-docs/kdic/view-rules.md
+            - Temporal rules: api-docs/kdic/temporal-rules.md
+            - Json extraction rules: api-docs/kdic/json-extraction-rules.md
+            - List and Graph rules: api-docs/kdic/list-and-graph-rules.md
           - Technical Structures & Rules:
             - Introduction: api-docs/kdic/structures-introduction.md
             - Vector Rules: api-docs/kdic/vector-rules.md
