@@ -48,6 +48,14 @@ TimestampTZ CopyTSTZ(TimestampTZ value)
 
 Copy of a timestampTZ value.
 
+## CopyText
+
+```kdic-api-docs
+Text CopyText(Text value)
+```
+
+Copy of a text value.
+
 ## AsNumerical
 
 ```kdic-api-docs
