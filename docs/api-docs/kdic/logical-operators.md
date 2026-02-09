@@ -117,6 +117,15 @@ TimestampTZ IfTSTZ(Numerical test, TimestampTZ valueTrue, TimestampTZ valueFalse
 Ternary operator returning second operand (true) or third operand (false) according to the
 condition in first operand.
 
+## IfText
+
+```kdic-api-docs
+Text IfText(Numerical test, Text valueTrue, Text valueFalse)
+```
+
+Ternary operator returning second operand (true) or third operand (false) according to the
+condition in first operand.
+
 ## Switch
 
 ```kdic-api-docs
