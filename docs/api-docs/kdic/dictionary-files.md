@@ -150,9 +150,9 @@ Additionally, it is used to store the external format of Date, Time, Timestamp, 
 ### Derivation rules
 
 *Derivation rules* enable the construction of new variables within a dictionary. 
-Operands in a derivation can be existing variables (by name), numerical or categorical constants, or the result of other derivation rules, allowing recursive definitions.
+Operands in a derivation can be existing variables (by name), numerical or string constants, or the result of other derivation rules, allowing recursive definitions.
 
-Categorical constants must be enclosed in double quotes, with internal double quotes doubled. 
+String constants can be used for Categorical or Text operands. They must be enclosed in double quotes, with internal double quotes doubled. 
 If a value is too long, it can be split into sub-values concatenated with '+' characters.
 
 Numerical constants can be expressed in scientific notation (e.g., 1.3E7), using a dot as the decimal separator. 
