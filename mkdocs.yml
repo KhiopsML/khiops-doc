@@ -157,6 +157,7 @@ nav:
           - Single-Table Tutorial: tutorials/notebooks/single_table_classifier_core.md
           - Multi-Table Concepts: tutorials/kdic_multi_table.md
           - Multi-Table Tutorial: tutorials/notebooks/multi_table_classifier_core.md
+          - Conceptual vs Logical Schema: tutorials/conceptual_schema.md
       - Deployment & Integration:
           - Cloud Storage: tutorials/storage.md
           - Running Khiops with Docker: tutorials/docker.md
