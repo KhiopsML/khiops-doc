@@ -66,7 +66,12 @@ Ratio of two numerical values.
 Numerical Index()
 ```
 
-Integer index related to the line number of the current record from a data file (start at 1).
+Integer index related to the line number of the current record from a data file (start at 1 for the first line).
+
+In the case of in-memory instances created by [`Instance Building Rules`](../kdic/instance-building-rules-introduction.md), there is no corresponding record in a data file.
+In this case, the index is local to the current main instance, starting at 1 for each data path of the built instances.
+
+In the special case of [`External table`](../kdic/dictionary-files.md#external-tables), the index starts at 1 for the entire set of all main external instances.
 
 ## Random
 
