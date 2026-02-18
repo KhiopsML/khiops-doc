@@ -409,7 +409,7 @@ Khiops provides an efficient solution for this scenario through the `TableUnion`
     };
     ```
 
-## Advanced Example Selection
+### Advanced Example Selection
 
 The selection of training examples is an important step in data management, which allows users to define the scope of the analysis. In the case of multi-table data, this step can become complex, requiring laborious manual work and coding. Here again, dictionaries offer an effective alternative, and greatly facilitate versioning.
 
