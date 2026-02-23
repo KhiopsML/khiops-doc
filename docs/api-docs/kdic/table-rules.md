@@ -27,8 +27,8 @@ Size of a table.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Number of sales for a customer
@@ -77,8 +77,8 @@ a special value (empty) and counted as well.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Number of different products in customer's sales
@@ -128,8 +128,8 @@ table, and small in the case of few frequent values.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Entropy of the distribution of products of a customer's sales
@@ -178,8 +178,8 @@ returns the first value by lexicographic order.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Most frequent product in a customer's sales
@@ -227,8 +227,8 @@ beyond the number of different values.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Second most frequent product in a customer's sales
@@ -277,8 +277,8 @@ This rule (and the other similar ones) takes only the non missing values into ac
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Mean product cost for a customer's sales
@@ -326,8 +326,8 @@ Standard deviation of numerical values in a table.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Standard deviation of product costs for a customer's sales
@@ -374,8 +374,8 @@ Median of numerical values in a table.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Cost standard deviation for a customer's sales
@@ -421,8 +421,8 @@ Min of numerical values in a table.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Minimum product cost for a customer's sales
@@ -471,8 +471,8 @@ Max of numerical values in a table.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Maximum product cost for a customer's sales
@@ -521,8 +521,8 @@ Sum of numerical values in a table.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) sales;               // 0-n relationship
           // Total cost of a customer's sales
