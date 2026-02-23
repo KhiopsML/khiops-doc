@@ -36,8 +36,8 @@ Creation of a target table from a source table, by calculating the differences o
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
       Table(Sale) sales;
       Unused Table(Sale) sorted_sales = TableSort(sales, purchase_date);
       Table(DiffDateSale) diff_date_sales = BuildDiffTable(sorted_sales, purchase_date : diff_date);
@@ -66,8 +66,8 @@ Creation of a target table from a source table, by calculating the differences o
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
       Table(Sale) sales;
       Unused Table(Sale) sorted_sales = TableSort(sales, purchase_date);
       Table(DiffSale) diff_sales = BuildDiffTable(sorted_sales,
