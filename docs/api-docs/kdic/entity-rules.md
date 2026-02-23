@@ -26,8 +26,8 @@ Checks is an entity exists. Returns 0 or 1.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 1-1 relationship
           Table(Sale) sales;               // 1-n relationship
           // Value is 1 if the address exists for the customer
@@ -74,8 +74,8 @@ Access to a `Numerical` value of an entity. Returns a missing value if the entit
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 1-1 relationship
           Table(Sale) sales;               // 1-n relationship
           // Street name length
@@ -122,8 +122,8 @@ does not exist.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 1-1 relationship
           Table(Sale) sales;               // 1-n relationship
           Categorical city = GetValueC(customerAddress, city); // City from address

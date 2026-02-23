@@ -25,8 +25,8 @@ Using the `BuildEntity` rule, the main Customer entity is structured more clearl
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
       Unused Categorical customer_street;
       Unused Categorical customer_city;
       Unused Categorical customer_zipcode;
@@ -62,8 +62,8 @@ Using the `BuildEntity` rule, this unstructured data is transformed into a struc
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
     
       // Monthly purchase fields
       // Add more months as needed
@@ -114,8 +114,8 @@ Creation of a composite target table from multiple source tables.
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
       Table(Sale) sales;
 
       // Sorted sales table based on purchase date

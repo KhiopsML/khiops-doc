@@ -13,8 +13,8 @@ relationship (`Table`) with their owner.
 	Root Dictionary Customer (customer_id)
 	{
 	Categorical customer_id;
+	Categorical name;
 	Numerical age;
-	Categorical sex;
 	Entity(Address) customerAddress; // 0-1 relationship
 	Table(Sale) sales;               // 0-n relationship
 	};

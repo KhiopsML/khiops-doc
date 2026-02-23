@@ -6,8 +6,8 @@ We modify our `Customer` example by replacing the `sales` table with three table
 Root Dictionary Customer(customer_id)
 {
   Categorical customer_id;
+  Categorical name;
   Numerical age;
-  Categorical sex;
   Entity(Address) customerAddress; // 0-1 relationship
   Table(Sale) salesJanuary;        // 0-n relationship
   Table(Sale) salesFebruary;       // 0-n relationship
@@ -39,8 +39,8 @@ Extraction of an entity of a table at a given rank.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
@@ -99,8 +99,8 @@ Ranks below 1 or beyond the size of the table are ignored.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
@@ -149,8 +149,8 @@ Selection of a sub-table containing the entities of the table that meet the sele
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
@@ -203,8 +203,8 @@ and [`TableAt`](#tableat) rules at the first rank.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
@@ -267,8 +267,8 @@ Duplicate or missing entities are ignored, ensuring that the resulting table con
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
@@ -319,8 +319,8 @@ operands.
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
@@ -372,8 +372,8 @@ Intersection of a set of tables. The intersection table contains the entities th
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
@@ -430,8 +430,8 @@ Difference between two tables. The difference table contains the entities that b
         Root Dictionary Customer(customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
           Entity(Address) customerAddress; // 0-1 relationship
           Table(Sale) salesJanuary;        // 0-n relationship
           Table(Sale) salesFebruary;       // 0-n relationship
