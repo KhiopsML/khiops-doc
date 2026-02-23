@@ -32,6 +32,7 @@ The corresponding Khiops dictionary is:
     Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
@@ -90,6 +91,7 @@ Here's the dictionary file describing this relational data:
     Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
@@ -158,6 +160,7 @@ Here's the dictionary file that defines this relational schema:
     Root Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
@@ -222,6 +225,7 @@ The `Unused` keyword in Khiops dictionaries allows you to specify variables and 
     Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
@@ -277,6 +281,7 @@ The following example redefines the scope of statistical units by selecting only
     Root Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
@@ -320,6 +325,7 @@ In more advanced scenarios, filtering can require conditions that depend on vari
     Root Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
@@ -365,6 +371,7 @@ Khiops provides an efficient solution for this scenario through the `TableUnion`
     Root Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;
@@ -419,6 +426,7 @@ For full documentation on the dictionary language, please refer to the [referenc
     Root Dictionary Customer (customer_id)
     {
         Categorical customer_id;
+        Categorical name;
         Numerical age;
         Categorical sex;
         Categorical marketingSegment;

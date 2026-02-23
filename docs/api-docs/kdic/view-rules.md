@@ -25,8 +25,8 @@ This is particularly useful when applying automated multi-table feature engineer
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
       Unused Table(Sale) sales;
       Table(SaleCost) sale_costs = BuildTableView(sales); // View focussed on cost
       Table(SaleDate) sale_dates = BuildTableView(sales); // View focussed on purchase date
@@ -73,8 +73,8 @@ This distinction impacts rules like [`TableUnion`](../kdic/table-management-rule
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
       Table(Sale) sales;
       Numerical sales_count = TableCount(sales);
 
@@ -129,8 +129,8 @@ In the following example, `BuildTableAdvancedView` is used to merge two specific
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
 
       // Initial specific tables
       Unused Table(Sale) online_sales; // Online sale from e-commerce
@@ -180,8 +180,8 @@ The following examples demonstrate different approaches to renaming variables fr
         Root Dictionary Customer (customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
     
           // Initial table with variables in French
           Unused Table(Vente) sales_in_french;
@@ -217,8 +217,8 @@ The following examples demonstrate different approaches to renaming variables fr
         Root Dictionary Customer (customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
     
           // Initial table with variables in French
           Unused Table(Vente) sales_in_french;
@@ -257,8 +257,8 @@ The following examples demonstrate different approaches to renaming variables fr
         Root Dictionary Customer (customer_id)
         {
           Categorical customer_id;
+          Categorical name;
           Numerical age;
-          Categorical sex;
     
           // Initial table with variables in French
           Unused Table(Vente) sales_in_french;
