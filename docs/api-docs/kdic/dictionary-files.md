@@ -482,23 +482,6 @@ Note that all built entities in a multi-table schema can be identified by their 
 
 ## Deeper Insights 
 
-### Khiops Hierarchical Schemas
-
-While traditional databases are designed for **efficient, reliable data storage and retrieval** 
-across various technologies, Khiops **extends the single-table data schema** typically used in data mining by a
-**hierarchical schema** that supports **domain knowledge encoding, automated feature engineering and predictive modeling**.
-This approach bridges the gap between raw relational data and the analytical needs of machine learning workflows.
-
-Database technologies cover a wide range of schema types, each suited to specific needs: simple storage, hierarchical, relational,
-object-oriented, document-oriented, columnar, in-memory, or distributed. 
-The choice depends on requirements related to performance, structure, scalability, and use cases
-(transactional, analytical, big data, etc.).
-
-Khiops cannot be directly mapped onto a relational database or any other traditional database technology. 
-However, transforming existing structured data into a Khiops hierarchical schema greatly enhances expressivity 
-in encoding domain knowledge. At the same time, it significantly simplifies the data miner's task by converting complex,
-structured data into a unified, single-table representation through Khiops' automated feature engineering.
-
 
 ### In-Memory Instances
 
@@ -534,13 +517,6 @@ reconstructed, processed, and then discarded from memory to make room for the ne
 This organization ensures scalable analysis, even with very large flat files that far exceed available RAM, 
 by enabling efficient sequential access and hierarchical reconstruction of data.
 
-!!! note
-
-    Khiops cannot directly interface with relational databases. Instead, it requires the data to be prepared
-    as one sorted data file per entity in a hierarchical schema. 
-    While this data preparation step is necessary, it is significantly simpler than the traditional feature engineering process,
-    which often involves transforming complex structured data into a single-table format for analysis.
-
 
 ### Interest of External Tables
 
@@ -559,3 +535,196 @@ from referenced **products**, external tables provide important resource optimiz
     - To maximize efficiency, external instances should be reused:  
         - **Unfavorable case:** When there are more external instances than main instances, pre-filtering relevant external data can be beneficial.  
         - **Favorable case:** When external instances are few and highly reused by main instances.
+
+## Relation with Other Data Modeling Concepts
+
+A **Khiops dictionary** is a formal schema that allows data analysts to describe data at a conceptual level based on domain knowledge. It specifies variables, types, labels, metadata, and derivation rules, supporting hierarchical multi-table schemas to represent complex data structures. 
+
+It guides data loading, transformation, and interpretation, enabling efficient, end-to-end model deployment, including feature engineering, preprocessing, and modeling.
+
+Many concepts used in Khiops dictionaries are similar to existing data modeling concepts.  
+However, while these analogies can be helpful for data analysts familiar with such concepts, they may also be misleading.  
+This section aims to clarify the similarities and differences to ensure a better understanding.
+
+[data-dictionary]: https://en.wikipedia.org/wiki/Data_dictionary "Visit the Wikipedia page"  
+[entity-relationship-model]: https://en.wikipedia.org/wiki/Entity-relationship_model "Visit the Wikipedia page"  
+[data-model]: https://en.wikipedia.org/wiki/Data_model "Visit the Wikipedia page"  
+[database]: https://en.wikipedia.org/wiki/Database "Visit the Wikipedia page"  
+[hierarchical-database]: https://en.wikipedia.org/wiki/Hierarchical_database_model "Visit the Wikipedia page"  
+[nosql-database]: https://en.wikipedia.org/wiki/NoSQL "Visit the Wikipedia page"  
+[relational-database]: https://en.wikipedia.org/wiki/Relational_database "Visit the Wikipedia page"  
+[object-database]: https://en.wikipedia.org/wiki/Object_database "Visit the Wikipedia page"  
+[document-database]: https://en.wikipedia.org/wiki/Document-oriented_database "Visit the Wikipedia page"  
+[programming-language]: https://en.wikipedia.org/wiki/Programming_language "Visit the Wikipedia page"  
+[declarative-language]: https://en.wikipedia.org/wiki/Declarative_programming "Visit the Wikipedia page"  
+
+### Data Dictionary
+
+A **[data dictionary:octicons-link-external-16:][data-dictionary]{:target="_blank"}** 
+is an abstract framework that organizes data and their relationships. For example, it might define a customer with properties like name and age, and link the customer to various services with details such as type and amount.
+
+A **data dictionary** is a centralized repository that defines and describes the structure, contents, and format of data within a database or data system. It includes metadata such as variable names, types, labels, and relationships. 
+
+**In Khiops**, dictionaries serve a similar purpose: they define the data structure, specify variable types, and include metadata, labels and derivation rules.  
+However, they are specifically designed to facilitate the automation of the data mining process.
+They act as a formal schema that guides data loading, transformation, and analysis, ensuring consistency and efficiency throughout the workflow.
+
+### Entity-Relationship Model
+
+The **[entity-relationship model:octicons-link-external-16:][entity-relationship-model]{:target="_blank"}** 
+is a conceptual framework for representing data entities and their relationships, often used in database design.
+
+**In Khiops**, data is modeled using a **hierarchical schema**.  
+There is a main entity, with secondary entities described through `Entity` variables for 0-1 relationships and `Table` variables for 0-n relationships.
+All variables within a dictionary describe either the content of the related entity, using basic type variables (e.g., Numerical, Categorical, Date, Text), or its structure, using relation variables (`Entity` and `Table`).  
+This approach provides a clear, formal description of complex data schemas, supporting multi-table analysis and feature engineering.
+It also ensures efficiency and scalability, enabling the processing of data that cannot fit entirely into memory.
+
+### Data Modeling
+
+A **[data model:octicons-link-external-16:][data-model]{:target="_blank"}** involves creating abstract representations of data structures, relationships, and constraints within a system. It provides a blueprint for designing databases and data schemas.
+Data models can be of three types:
+
+- **Conceptual Model:** Abstract, high-level description of data entities and relationships (e.g., ER model).  
+
+- **Logical Model:** Detailed schema defining tables, columns, and relationships, often platform-independent.  
+
+- **Physical Model:** Implementation-specific schema optimized for storage and retrieval, including indexing and denormalization.
+
+**In Khiops**, hierarchical schemas are used to describe entities for analysis, similar to folders, enriching traditional flat data tables with relation variables that capture more complex details.  
+Another key goal is scalability, enabling the processing of large datasets that cannot fit entirely into memory.  
+Similarly to data models, Khiops dictionaries can be used at different levels:  
+
+- **Conceptual level:** To describe data using domain knowledge.  
+
+- **Logical level:** To specify data sources and their structure, while maintaining the mapping between conceptual and logiucal representations.  
+
+- **Physical level:** To manage actual data files stored locally or in the cloud.
+
+See [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_schema.md) for more details,
+including numerous examples of mapping between conceptual and logical schemas using Khiops dictionaries,
+as well as cases where data management is necessary to preprocess data according to Khiops requirements.
+
+### Databases
+
+A **[database:octicons-link-external-16:][database]{:target="_blank"}** is an organized collection of data stored and managed electronically.
+It enables efficient data retrieval, manipulation, and management through various database management systems (DBMS).
+
+Database technologies cover a broad spectrum of schema types, each suited to specific needs: simple storage, hierarchical, relational, object-oriented, document-oriented, columnar, in-memory, or distributed.
+The choice depends on performance, data structure, scalability, and use cases such as transactional processing, analytics, or big data.
+
+**In Khiops**, the traditional **single-table data schema** used in data mining is extended to support **hierarchical schemas**.
+This allows **domain knowledge encoding, automated feature engineering, and predictive modeling**, bridging the gap between raw relational data and machine learning workflows.  
+
+With Khiops dictionaries, data analysts can describe data at both the conceptual level, using domain knowledge, and at the logical level, to specify data sources and the mapping between the conceptual and logical schemas (see [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_schema.md)).
+
+The logical schemas definied using Khiops dictionaries share clear similarities with existing database technologies:
+
+- **[Hierarchical data base:octicons-link-external-16:][hierarchical-database]{:target="_blank"}:**  
+  Khiops logical schemas are hierarchical, but conceptual schemas can be non-hierarchical, supporting complex structures like double-link lists or graphs (see [`List and Graph Rules`](list-and-graph-rules.md)).
+
+- **[Relational data base:octicons-link-external-16:][relational-database]{:target="_blank"}:**  
+  Khiops dictionaries involved in multi-table schemas have keys similar to relational tables, but with notable differences:  
+  
+    - The schema is hierarchical, with keys organized along the hierarchy, increasing in length with depth but sharing prefixes.  
+  
+    - A single dictionary can describe multiple data tables, e.g., separate tables for retail and online services, using the same dictionary.  
+  
+    - References to external tables resemble foreign keys but can be dynamically computed via derivation rules rather than fixed variables.
+
+- **[Object-oriented data base:octicons-link-external-16:][object-database]{:target="_blank"}:**  
+  There is an analogy between Khiops dictionaries (considered as classes) and in-memory entities (similar to objects).
+  However, while object-oriented databases focus on complex data representation with database constraints, Khiops dictionaries are specifically designed for data mining, prioritizing efficiency, scalability, and the integration of domain knowledge.
+
+- **[NoSql data base:octicons-link-external-16:][nosql-database]{:target="_blank"}:**  
+  NoSQL systems ("Not only SQL" or "non-relational") store data differently from traditional relational tables.
+  In Khiops, mapping a multi-table schema to sorted data files based on consistent keys resembles a NoSQL-like processing approach.
+  This method enables sequential reading of files synchronized by entity keys, allowing structured entities
+  to be built incrementally, with related information stored contiguously for efficient access.
+
+- **[Document-oriented data base:octicons-link-external-16:][document-database]{:target="_blank"}:**  
+  These encode all information about an entity in formats like JSON or XML, enabling efficient access to complex structures.
+  Khiops offers partial support for this approach through derivation rules such as
+  [`BuildEntityFromJson`](json-extraction-rules.md#buildentityfromjson), which allows constructing hierarchical
+  in-memory entities from a JSON string.
+
+!!! note
+
+    Khiops cannot directly connect to relational databases.
+    Instead, data must be prepared as one sorted file per entity within a hierarchical schema after transforming from the [`logical to conceptual schema`](../../tutorials/conceptual_schema.md).  
+    While this data preparation step is necessary, it is much simpler than traditional feature engineering, which often involves converting complex structured data into a single-table format for analysis.
+
+### Programming Languages
+
+Khiops dictionaries are a specialized programming language designed for data mining tasks:
+
+- **First step: Data analyst's exploitation of Khiops dictionaries**
+
+    - **At the conceptual level**: describe the data based on domain knowledge.
+  
+    - **At the logical level**: describe data sources and establish the mapping between the conceptual and logical levels.
+
+- **Second step: automatic extension by the Khiops tool**  
+  The Khiops tool automatically extends this initial dictionary to enable end-to-end data processing, from data access to score production:
+
+    - **Feature engineering**: build a flat representation from a multi-table schema, extract tokens from text, and construct trees.
+  
+    - **Preprocessing**: obtain efficient univariate or bivariate density estimators through supervised discretization or value grouping.
+  
+    - **Feature selection**: select a sparse representation of the available data.
+  
+    - **Modeling**: generate prediction scores.
+
+Their syntax is similar to familiar languages such as `struct` in C or `class` in C++ and Java, making it intuitive for developers.
+A dictionary can be viewed as a class, in-memory instances as objects, variables of type `Entity` as sub-objects, and variables of type `Table` as arrays of sub-objects.
+
+!!! example "Khiops Iris dictionary"
+
+    ```kdic
+    Dictionary Iris
+    {
+        Numerical SepalLength;
+        Numerical SepalWidth;
+        Numerical PetalLength;
+        Numerical PetalWidth;
+        Categorical Class;
+    };
+    ```
+
+!!! example "C++ class for defining Iris objects"
+
+    ```cpp
+    class Iris {
+        double SepalLength;
+        double SepalWidth;
+        double PetalLength;
+        double PetalWidth;
+        std::string Class;
+    };
+    ```
+
+We present key features of Khiops dictionaries as a specialized programming language for data mining:
+
+- **Domain-specific language**: Designed explicitly for efficient, tailored data mining workflows.
+
+- **Intuitive syntax**: Similar to familiar languages like `struct` in C or `class` in C++/Java, facilitating learning and use.
+
+- **Hierarchical schemas**: Supports defining complex, nested data structures to accurately model real-world data.
+
+- **Declarative approach**: Focuses on specifying *what* to achieve, not *how*, simplifying workflow design.
+
+- **Strongly typed**: Variables have explicit types checked at compile time for correctness and optimization.
+
+- **Automatic memory management**: Efficiently handles memory using `strong pointers` for core hierarchical schema and `weak pointers` for references to existing entitie, inspired by modern languages, reducing manual effort.
+
+- **Automatic propagation of missing values**: Derived variables from missing data are automatically marked as missing, ensuring data integrity.
+
+- **Parallel processing**: Leverages available resources (cores, machines, RAM, disk) to maximize processing speed.
+
+- **Optimized for data mining**: Analyzes each dictionary to access only necessary data, parse relevant columns, and compute derivations on demand.
+
+- **Robust**: Handles large datasets gracefully, issuing warnings rather than crashing, in case of minor inconsistencies or massive instances.
+
+- **Portable**: Supports deployment across various environments and platforms, ensuring flexibility.
+
+- **Meta-programming**: Via the Khiops Python API, dictionaries can be programmatically read, created, or updated, enabling automation of complex tasks.
