@@ -32,8 +32,8 @@ This example demonstrates how to build a list of sales ordered by date and compu
     Root Dictionary Customer (customer_id)
     {
       Categorical customer_id;
+      Categorical name;
       Numerical age;
-      Categorical sex;
       Table(Sale) sales;
       Unused Table(Sale) sorted_sales = TableSort(sales, purchase_date);
 
