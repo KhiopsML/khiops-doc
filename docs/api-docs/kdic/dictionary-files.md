@@ -354,6 +354,37 @@ Note that this key can be derived using derivation rules if necessary.
 
 Examples of datasets with multi-table schemas and external tables are given in the "samples" directory of the Khiops package (%PUBLIC%\\khiops\_data\\samples in Windows, $HOME/khiops\_data/samples in Linux) .
 
+### Data path
+
+A multi-table schema is a hierarchical schema, with a **main dictionary** and relations to secondary dictionaries using `Entity` variables for 0-1 relationships and `Table` variables for 0-n relationships.
+
+Each entity can be uniquely identified by its **data path**, which is the sequence of relation variable names leading to the entity, separated by slashes (/):
+
+- The main entity has an empty data path.
+
+- In a star schema, the data paths are the names of Table or Entity variables for each secondary entity.
+
+- In a snowflake schema, data paths consist of a list of variable names separated by '/'.
+
+- External tables begin with a data root prefixed with '/', which refers to the name of the referenced root dictionary.
+
+**Note:** If an element of a data path contains the '/' character or the back-quote character, it must be surrounded by back-quotes, with internal back-quotes doubled, like for variable [`names`](#name).
+
+!!! example
+    In the snowflake example [`External tables`](#external-tables), if the Customer is chosen as the main entity to analyze, the data paths are:
+
+    - empty data path for the main entity Customer
+
+    - `Address`: for the Address secondary entity in a 0-1 relationship
+
+    - `Services`: for the Service secondary entities in a 0-n relationship
+
+    - `Services/Usages`: for the Usage secondary entities in a 0-n relationship, from the services
+
+    - `/Product`: for the Product entity used as an external table
+
+To build entities from data files, multi-table databases utilize a set of data table files, one per data path related to native (non-derived) entities within a schema.
+
 ### Summary
 
 Khiops allows to analyse multi-table databases, from standard mono-table to complex schema.
