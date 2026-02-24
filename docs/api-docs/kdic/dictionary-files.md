@@ -459,6 +459,26 @@ which is in the "upper" scope of the secondary table. In this case, the scope op
     Numerical MostFrequentCharFrequency = TableCount(TableSelection(DNA, EQc(Char,.TableMode(DNA, Char))));
     ```
 
+### Derivation Rules to Build New Entities
+
+In a multi-table schema, each memory instance is constructed and populated from a record in a data file.
+
+Rules such as `TableSelection` allow referencing existing entities.
+
+Other rules, such as `BuildEntity`, enable the creation of new entities.
+
+These rules:
+
+- Have a name prefixed by `Build`.
+
+- Are used to create and populate a variable of type `Entity` or `Table` for a specific **target dictionary**.
+
+- Can include additional specific output parameters, specified after the ':' separator in the list of rule parameters, to define the value of target variables.
+
+For more details, see [`Instance building rules`](../kdic/instance-building-rules-introduction.md).
+
+Note that all built entities in a multi-table schema can be identified by their [`data path`](#data-path), whether they are created from records or through instance building rules.
+
 
 ## Deeper Insights 
 
