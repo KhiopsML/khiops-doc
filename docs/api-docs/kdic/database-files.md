@@ -35,5 +35,6 @@ is detailed [`here`](intro-block.md).
 
 !!! note
 
-    For *multi-table* databases, database files must be sorted by key for efficiency reasons. This can be done using Khiops [`sort feature`](../../ui-docs/khiops.md#sort-data-table-by-key).
+    For *multi-table* databases, there is one data table file per [`data path`](dictionary-files.md#data-path) in the hierachical schema.
+	These data table files must be sorted by key for efficiency reasons. This can be done using Khiops [`sort feature`](../../ui-docs/khiops.md#sort-data-table-by-key).
 
