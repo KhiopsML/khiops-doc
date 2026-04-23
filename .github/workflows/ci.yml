@@ -27,11 +27,11 @@ jobs:
       - name: Install required system dependencies
         run: sudo apt-get install wget libarchive-tools
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.11
       - name: Checkout doc sources (to get the current environment)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Prepare the versions markdown file
@@ -76,7 +76,7 @@ jobs:
         run: mv ${{ env.KHIOPS_OTHER_VERSION }} site/
       - name: Upload the site docs as an artifact (PR)
         if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: khiops-doc
           path: ./site/
