@@ -54,7 +54,7 @@ runs:
         # Copy the versions file to the docs folder
         cp versions.md docs/
         # Add the versions file to the menu
-        echo -e "\n  - ${{ inputs.khiops-version }}: versions.md" >> mkdocs.yml
+        echo -e "\n  - Versions: versions.md" >> mkdocs.yml
     - name: Install Khiops-Related Requirements to Run the Tutorials
       shell: bash
       env:

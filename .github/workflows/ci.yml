@@ -37,9 +37,9 @@ jobs:
       - name: Prepare the versions markdown file
         if: inputs.build-other-version
         run: |
-          echo "# Current version: [${{ env.KHIOPS_VERSION }}][current_version]" >> versions.md
-          echo "# Other versions:" >> versions.md
-          echo "  - [${{ env.KHIOPS_OTHER_VERSION }}][other_version]" >> versions.md
+          echo "The latest version is [${{ env.KHIOPS_VERSION }}][current_version]" >> versions.md
+          echo "" >> versions.md
+          echo "The previous available version is [${{ env.KHIOPS_OTHER_VERSION }}][other_version]" >> versions.md
           echo "[current_version]: /" >> ./versions.md
           echo "[other_version]: /${{ env.KHIOPS_OTHER_VERSION }}/" >> versions.md
       - name: Build other version site
