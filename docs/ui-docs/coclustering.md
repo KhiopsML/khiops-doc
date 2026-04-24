@@ -133,9 +133,25 @@ There must be at least two numerical or categorical input coclustering variables
 
 **Frequency variable**: optional field, only for variables coclustering. Name of a variable that contains the frequency of the records. Using the frequency variable is equivalent to duplicating the records in the input database, where the number of duplicates per record is equal to the frequency.
 
+
 ### System parameters
 
-See [`System parameters`](khiops.md#system-parameters) in Khiops tool.
+![](../assets/images-khiops-guides/coclustering/KhiopsCoclustering_Parameters_SystemParameters.png)
+
+**Max number of error messages in log**: allows to control the size of the log, by limiting the number of messages, warning or errors (default: 20).
+
+**Min optimization time in seconds**: allows to specify the min amount of time for the optimization algorithms.
+By default, this parameter is 0 and the algorithm stops by itself when no significant improvement is expected.
+Otherwise, the optimization is performed at least as long as specified, then stops after the next built solution.
+
+**Memory limit in MB**: allows to specify the max amount of memory available for the data analysis algorithms. By default, this parameter is set to the limit of the available RAM. This parameter can be decreased in order to keep memory for the other applications.
+
+**Max number of processor cores**: allows to specify the max number of processor cores to use.
+
+**Temp file directory**: name of the directory to use for temporary files (default: none, the system default temp file directory is then used).
+
+The resources fields related to memory, processor cores and temp file directory allow the user to upper-bound the system resources used by Khiops. Given this, Khiops automatically manages the available system resources to perform at best the data analysis tasks.
+
 
 ## Results
 
