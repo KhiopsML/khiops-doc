@@ -11,13 +11,15 @@ hide:
 Khiops supports a diversified set of installation options, to meet different needs:
 
   - **Khiops Python Library**:
-    - Packaged via [`conda`][conda_page] (recommended)
-    - Packaged via [`pip`][pip_page]
+    - Packaged via [`pip`][pip_page] (recommended)
+    - Packaged via [`conda`][conda_page] 
     - Packaged in our [khiops-notebook][notebooks_page] container
   - **Applications**:
     - [**Khiops Application**][nocode] for advanced data analytics with just a few clicks using a graphical user interface. This application is also the basis for easy integration into different systems (all programming languages, docker, servers, etc.).
     - [**Khiops Visualization**][vis]: for intuitive visualization of all analysis results (**interactive demo available [here][demo-vis]**)
     - [**Khiops Native Interface (KNI)**][kni]: to deploy Khiops models with a lightweight shared library.
+  - **Cloud storage drivers and vendors Python SDKs**
+    - [**Drivers & Python SDKs**](drivers-and-vendors-python-sdk) 
 
 !!! warning "Supported Platforms"
     We support :simple-python: **Python from 3.10 to 3.14** on the following operating systems:

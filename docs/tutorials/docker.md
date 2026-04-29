@@ -20,7 +20,7 @@ Using Docker to run Khiops offers several advantages:
 You will find two images on dockerhub:
 
 - **khiopsml/khiops-ubuntu**: A minimal installation of Khiops on Ubuntu.
-- **khiopsml/khiops-python**: The same base image with Khiops-Python preinstalled.
+- **khiopsml/khiops-python**: The same base image with the Khiops Python library preinstalled.
  
 ### Basic Usage
 
@@ -41,7 +41,7 @@ This command mounts your current directory (`$PWD`) to `/my_data` in the contain
 
 **Running a Python Script**
 
-Similarly, you can use the Python image to run a Khiops-Python script:
+Similarly, you can use the Python image to run a script from the Khiops Python library:
 
 ```bash
 docker run -v $PWD:/my_volume \
