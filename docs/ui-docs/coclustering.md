@@ -25,14 +25,15 @@ A coclustering model summarizes the correlation between two or more variables by
 
 For illustration purpose, let us consider the correlation between the education and occupation variables of the Adult database (coming from the US Census Bureau). This database contains about 50,000 instances, with 14 values of occupation and 16 values of education.
 
-Applying the **Khiops Coclustering** back-end tool, we obtain a 10\*9 fine-grained data grid. The [`Khiops Covisualization`](covisualization.md) tool enables the exploration of the correlation between the two variables. Displaying the mutual information highlights the over-represented cells (in red), i.e. cells with a frequency higher than expected in case of independent variables, and the under-represented cells (in blue). In the screenshot below, the selected cell indicates a high concentration of education *Prof-school* or *Doctorate* jointly with occupation *Prof-specialty*.
+Applying the **Khiops Coclustering** back-end tool, we obtain a 9\*9 fine-grained data grid. The [`Khiops Visualization Desktop`](covisualization.md) tool enables the exploration of the correlation between the two variables. 
+Displaying the mutual information highlights the over-represented cells (in red), i.e. cells with a frequency higher than expected in case of independent variables, and the under-represented cells (in blue). 
+In the screenshot below, the selected cell indicates a high concentration of education *Prof-school* or *Doctorate* jointly with occupation *Prof-specialty* or *Armed-Forces*.
 
 ![](../assets/images-khiops-guides/coclustering/AdultCovizuOptimal.jpg)
 
 Folding down both hierarchies allows to obtain a simplified 3\*3 data grid which provides a quick summary with an easier interpretation.
 
-In the screenshot below, the selected cell indicates a high concentration of education *Bachelor*, *Master*, *Prof-school* or *Doctorate* jointly with occupation *Exec-managerial* or *Prof-specialty*.
-
+In the screenshot below, the selected cell indicates a high concentration of education *Bachelor*, *Master*, *Prof-school* or *Doctorate* jointly with occupation *Exec-managerial*, *Prof-specialty* or *Armed-Forces*.
 ![](../assets/images-khiops-guides/coclustering/AdultCovizu3-3.png)
 
 Beyond the illustrative example, this kind of analysis provides insightful summaries when applied to databases with millions of instances and variables with thousands of values.
@@ -163,7 +164,7 @@ The JSON file is useful to inspect the coclustering results from any external to
 
 **Short description**: (default: empty) brief description to summarize the current analysis, which will be included in the reports.
 
-**Visualize report**: visualize coclustering if available, using [`Khiops Covisualization`](covisualization.md) tool.
+**Visualize report**: visualize coclustering if available, using [`Khiops Visualization Desktop`](covisualization.md) tool.
 
 ## Data dictionary menu
 
