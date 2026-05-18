@@ -88,193 +88,97 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
     ```
 
 === "macOS" 
-    Khiops with its graphical user interface is not natively available on macOS.
-    You can still run it with Docker. However, Khiops Visualization must be installed directly on macOS. Follow this [link][vis] to download the DMG installers.
+    Khiops with its graphical user interface is not natively available on macOS. However, you can run it using Docker containers with X11 forwarding to display the GUI on your Mac.
 
-    Install the following prerequisites first:
+    **Note:** Khiops Visualization must be installed separately and directly on macOS. Follow this [link][vis] to download the DMG installers.
 
-    - [Homebrew](https://brew.sh): package manager for macOS
-    - [Colima](https://github.com/abiosoft/colima): lightweight alternative to Docker Desktop
-    - [XQuartz](https://www.xquartz.org): X Window System required to display the Khiops GUI
+    ### Prerequisites
 
-    Then create two scripts named `khiops` and `khiops_coclustering` with the following content:
+    The following software is required to run Khiops on macOS:
 
-    === "khiops"
-        ``` bash
-        #!/bin/bash
-    
-        set -e
+    - **[Homebrew](https://brew.sh)**: Package manager for macOS. Used to install other dependencies.
+    - **[Docker Client](https://docs.docker.com/desktop/setup/install/mac-install/)**: Docker client tools for container management.
+    - **[Colima](https://github.com/abiosoft/colima)**: Lightweight container runtime that provides a Docker-compatible environment without requiring Docker Desktop.
+    - **[XQuartz](https://www.xquartz.org)**: X Window System for macOS. Required to display the Khiops GUI from the Docker container.
 
-        APPLICATION=khiops
+    ### Step 1: Install Prerequisites
 
-        # Check if Colima is installed
-        if ! command -v colima &> /dev/null; then
-            echo "Error: Colima is not installed. Please install it with: brew install colima"
-            exit 1
-        fi
+    First, install Homebrew if you don't have it already. Open Terminal and run:
 
-        # Check brew dependency
-        if ! command -v brew &> /dev/null; then
-            echo "Error: brew is not installed. Please install it, go to: https://brew.sh"
-            exit 1
-        fi
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
 
-        # Check XQuartz dependency
-        if ! command -v Xquartz &> /dev/null; then
-            echo "Error: XQuartz is not installed. Please install it with: brew install xquartz"
-            exit 1
-        fi
+    Then use Homebrew to install Docker, Colima, and XQuartz:
 
-        # Check and configure XQuartz network connections property
-        CURRENT_VALUE=$(defaults read org.xquartz.X11.plist nolisten_tcp 2>/dev/null || echo "not-set")
+    ```bash
+    brew install docker colima xquartz
+    ```
 
-        if [[ "$CURRENT_VALUE" == "1" ||  "$CURRENT_VALUE" == "not-set" ]]; then
-            echo "XQuartz network connections are disabled. Reconfiguring..."
-            
-            # Stop XQuartz if running
-            if pgrep -q Xquartz; then
-                echo "Stopping XQuartz..."
-                killall Xquartz 2>/dev/null || true
-                sleep 2
-            fi
-            
-            # Set the property to allow network connections
-            defaults write org.xquartz.X11.plist nolisten_tcp -bool false
-            echo "XQuartz configured to allow network connections."
-        fi
+    ### Step 2: Download Launch Scripts
 
-        # Start XQuartz if not already running
-        if ! pgrep -q Xquartz; then
-            # Start XQuartz
-            open -a XQuartz
-            sleep 3
-        fi
+    Download the launch scripts that automate the setup and execution of Khiops:
 
-        # If not already started, start Colima using host CPU and memory,
-        # and a 5 GB disk (Khiops does not use the container disk heavily).
-        if ! colima status &> /dev/null; then
-            CPU_NUMBER=$(sysctl -n hw.ncpu)
-            echo "Allocating $CPU_NUMBER CPU cores to Khiops."
-            MEMORY_SIZE=$(sysctl -n hw.memsize | awk '{printf "%.0f", $1 / 1024 / 1024 / 1024}')
-            echo "Allocating $MEMORY_SIZE GB of memory to Khiops."
-            echo "Starting Colima..."
-            colima start --cpu $CPU_NUMBER --memory $MEMORY_SIZE --disk 5
-        fi
+    - [khiops](./khiops) - Launch script for Khiops
+    - [khiops_coclustering](./khiops-coclustering) - Launch script for Khiops Coclustering
 
-        # Allow local X11 connections
-        xhost +localhost &> /dev/null
+    Save these scripts to a convenient location (e.g., your home directory or a dedicated folder).
 
-        # Run Khiops in Docker with GUI forwarding. It starts in the macOS $HOME directory 
-        # and uses the macOS temporary directory for temporary files
-        docker run \
-            -e DISPLAY=host.docker.internal:0 \
-            -e KHIOPS_TMP_DIR=/macos-tmp \
-            -v /tmp/.X11-unix:/tmp/.X11-unix \
-            -v "$HOME":/macos-home \
-            -v /tmp:/macos-tmp \
-            khiopsml/khiops-desktop:11 bash -c "cd /macos-home && $APPLICATION" 
+    ### Step 3: Make Scripts Executable
 
-        # Revoke access to X11 after Khiops exits
-        xhost - &> /dev/null
-        ```
+    Open Terminal, navigate to the directory where you saved the scripts, and make them executable:
 
-    === "Khiops Coclustering"
-        ``` bash
-        #!/bin/bash
-    
-        set -e
-
-        APPLICATION=khiops_coclustering
-
-        # Check if Colima is installed
-        if ! command -v colima &> /dev/null; then
-            echo "Error: Colima is not installed. Please install it with: brew install colima"
-            exit 1
-        fi
-
-        # Check brew dependency
-        if ! command -v brew &> /dev/null; then
-            echo "Error: brew is not installed. Please install it, go to: https://brew.sh"
-            exit 1
-        fi
-
-        # Check XQuartz dependency
-        if ! command -v Xquartz &> /dev/null; then
-            echo "Error: XQuartz is not installed. Please install it with: brew install xquartz"
-            exit 1
-        fi
-
-        # Check and configure XQuartz network connections property
-        CURRENT_VALUE=$(defaults read org.xquartz.X11.plist nolisten_tcp 2>/dev/null || echo "not-set")
-
-        if [[ "$CURRENT_VALUE" == "1" ||  "$CURRENT_VALUE" == "not-set" ]]; then
-            echo "XQuartz network connections are disabled. Reconfiguring..."
-            
-            # Stop XQuartz if running
-            if pgrep -q Xquartz; then
-                echo "Stopping XQuartz..."
-                killall Xquartz 2>/dev/null || true
-                sleep 2
-            fi
-            
-            # Set the property to allow network connections
-            defaults write org.xquartz.X11.plist nolisten_tcp -bool false
-            echo "XQuartz configured to allow network connections."
-        fi
-
-        # Start XQuartz if not already running
-        if ! pgrep -q Xquartz; then
-            # Start XQuartz
-            open -a XQuartz
-            sleep 3
-        fi
-
-        # If not already started, start Colima using host CPU and memory,
-        # and a 5 GB disk (Khiops does not use the container disk heavily).
-        if ! colima status &> /dev/null; then
-            CPU_NUMBER=$(sysctl -n hw.ncpu)
-            echo "Allocating $CPU_NUMBER CPU cores to Khiops."
-            MEMORY_SIZE=$(sysctl -n hw.memsize | awk '{printf "%.0f", $1 / 1024 / 1024 / 1024}')
-            echo "Allocating $MEMORY_SIZE GB of memory to Khiops."
-            echo "Starting Colima..."
-            colima start --cpu $CPU_NUMBER --memory $MEMORY_SIZE --disk 5
-        fi
-
-        # Allow local X11 connections
-        xhost +localhost &> /dev/null
-
-        # Run Khiops in Docker with GUI forwarding. It starts in the macOS $HOME directory 
-        # and uses the macOS temporary directory for temporary files
-        docker run \
-            -e DISPLAY=host.docker.internal:0 \
-            -e KHIOPS_TMP_DIR=/macos-tmp \
-            -v /tmp/.X11-unix:/tmp/.X11-unix \
-            -v "$HOME":/macos-home \
-            -v /tmp:/macos-tmp \
-            khiopsml/khiops-desktop:11 bash -c "cd /macos-home && $APPLICATION" 
-
-        # Revoke access to X11 after Khiops exits
-        xhost - &> /dev/null
-        ```
-
-    Make the script executable:
     ```bash
     chmod +x khiops khiops_coclustering
     ```
 
-    You can then launch Khiops by running:
+    ### Step 4: Launch Khiops
+
+    **From Terminal:**
+
+    Navigate to the directory containing the scripts and run:
+
     ```bash
     ./khiops
     ```
-    and Khiops Coclustering by running:
+
+    For Khiops Coclustering:
+
     ```bash
     ./khiops_coclustering
     ```
 
-    You can also launch Khiops (or Khiops Coclustering) by double-clicking the corresponding script in Finder.
- 
-    !!! note "Khiops and Khiops Coclustering start in the macOS $HOME directory and use the macOS temporary directory for temporary files."
-    !!! warning "The log window may appear completely black. If this happens, resize the window to refresh its display."
+    **From Finder:**
+
+    You can also double-click on the `khiops` or `khiops_coclustering` scripts in Finder to launch them.
+
+    ### What Happens When You Launch
+
+    The launch scripts automatically handle the following:
+
+    1. Verify that all prerequisites are installed
+    2. Configure XQuartz to allow network connections
+    3. Start XQuartz if not already running
+    4. Start Colima (allocating all available CPU cores and memory)
+    5. Pull the Khiops Docker image (first run only)
+    6. Launch Khiops with the GUI displayed through XQuartz
+
+    ### Important Notes
+
+    !!! note "Working Directory and Temporary Files"
+        Khiops starts in your macOS `$HOME` directory and has full access to your home folder. Temporary files are stored in the macOS temporary directory (`/tmp`).
+
+    !!! note "First Launch"
+        The first time you run Khiops, Colima will download the Docker image, which may take a few minutes depending on your internet connection.
+
+    !!! warning "Display Issue"
+        The log window may appear completely black on first launch. If this happens, simply resize the window to refresh its display.
+
+    !!! warning "X11 Network Access"
+        During Khiops execution, bidirectional X11 connections are enabled between your host machine and the Khiops container (`xhost +localhost`). This allows the container to display the GUI on your host. These connections are automatically revoked when Khiops exits. For security-sensitive environments, be aware of this temporary network access during execution.
+
+    !!! tip "Resource Allocation"
+        The scripts automatically allocate all available CPU cores and memory to Khiops for optimal performance. If you need to limit resources, you can modify the `colima start` command in the scripts.
 
 
 You can find all versions on the [releases page][releases].
