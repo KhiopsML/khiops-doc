@@ -1,5 +1,5 @@
 pre-commit
-mkdocs
+mkdocs<2.0
 mkdocs-jupyter
 mkdocs-macros-plugin
 mkdocs-material

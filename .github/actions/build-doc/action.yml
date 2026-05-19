@@ -36,7 +36,7 @@ runs:
   using: composite
   steps:
     - name: Checkout doc sources
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         ref: ${{ inputs.khiops-doc-ref }}
         # Fetch all branches and tags
@@ -124,7 +124,7 @@ runs:
     # The following step is needed to ensure that the post-action steps take the
     # same versions of the build-doc action into account
     - name: Checkout doc sources to the current repository reference
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         # Keep versions.md
         clean: false
