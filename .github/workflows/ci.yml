@@ -53,7 +53,6 @@ jobs:
           khiops-python-version: ${{ env.KHIOPS_PYTHON_OTHER_VERSION }}
           khiops-samples-version: ${{ env.KHIOPS_SAMPLES_OTHER_VERSION }}
           khiops-viz-version: ${{ env.KHIOPS_VIZ_OTHER_VERSION }}
-          khiops-coviz-version: ${{ env.KHIOPS_COVIZ_OTHER_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_OTHER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_OTHER_VERSION }}
           execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
@@ -68,7 +67,6 @@ jobs:
           khiops-python-version: ${{ env.KHIOPS_PYTHON_VERSION }}
           khiops-samples-version: ${{ env.KHIOPS_SAMPLES_VERSION }}
           khiops-viz-version: ${{ env.KHIOPS_VIZ_VERSION }}
-          khiops-coviz-version: ${{ env.KHIOPS_COVIZ_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
           add-versions-to-the-menu: ${{ inputs.build-other-version }}

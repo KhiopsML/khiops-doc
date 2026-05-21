@@ -13,41 +13,25 @@ Welcome to the Khiops Visualization tool! It facilitates an in-depth exploration
 
 You can find all versions of the Khiops Visualization tool on the [the following link][repo-visu] or download the latest stable version for your operating system from the URLs shown below:
 
-[repo-visu]: https://github.com/khiopsrelease/kv-release/releases
+[repo-visu]: https://github.com/KhiopsML/khiops-visualization-desktop/releases/
 
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-Setup-{{ KHIOPS_VIZ_VERSION }}.exe">
+- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-desktop-Setup-{{ KHIOPS_VIZ_VERSION }}.exe">
            **Windows** </a>
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-{{ KHIOPS_VIZ_VERSION }}.dmg">
+- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-{{ KHIOPS_VIZ_VERSION }}.dmg">
           **macOS x86-64**  </a>  (Intel-based)
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-{{ KHIOPS_VIZ_VERSION }}-arm64.dmg">
+- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-{{ KHIOPS_VIZ_VERSION }}-arm64.dmg">
           **macOS ARM** </a>   (:material-apple: Apple Silicon - M1/M2/M3)
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization_{{ KHIOPS_VIZ_VERSION }}_amd64.deb">
+- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-desktop_{{ KHIOPS_VIZ_VERSION }}_amd64.deb">
           **Ubuntu** </a>
-- <a href="https://github.com/KhiopsML/kv-electron/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-{{ KHIOPS_VIZ_VERSION }}.x86_64.rpm">
-          **Rocky Linux** </a>
-
-## Download the Khiops CoVisualization Desktop Application
-For users familiar with Khiops co-clustering, co-clustering analysis results ca be visualized with the CoVisualization desktop application. All versions of this application are available [here][repo-covisualisation]. The latest stable version can be downloaded from the URLs shown below:
-
-[repo-covisualisation]: https://github.com/khiopsrelease/kc-release/releases/tag/v11.1.1
-
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-Setup-{{ KHIOPS_COVIZ_VERSION }}.exe">
-          **Windows** </a>
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-{{ KHIOPS_COVIZ_VERSION }}.dmg">
-          **macOS x86-64**  </a>  (Intel-based)  
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-{{ KHIOPS_COVIZ_VERSION }}-arm64.dmg">
-          **macOS ARM** </a>   (:material-apple: Apple Silicon - M1/M2/M3) 
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization_{{ KHIOPS_COVIZ_VERSION }}_amd64.deb">
-          **Ubuntu** </a>
-- <a href="https://github.com/KhiopsML/kc-electron/releases/download/v{{ KHIOPS_COVIZ_VERSION }}/khiops-covisualization-{{ KHIOPS_COVIZ_VERSION }}.x86_64.rpm">
+- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/khiops-visualization-desktop-{{ KHIOPS_VIZ_VERSION }}.x86_64.rpm">
           **Rocky Linux** </a>
 
 ## Documentation
 
 For a comprehensive guide on how to use the Khiops Visualization application:
 
-- [**Khiops Visualization Guide**][Documentation], for supervised analysis
-- [**Khiops Co-Visualization Guide**][coviz], for unsupervised analysis
+- Khiops Visualization Guide for [supervised analysis][Documentation]
+- Khiops Visualization Guide  for [unsupervised analysis][coviz]
 
 [Documentation]: ../ui-docs/visualization.md
 [coviz]: ../ui-docs/covisualization.md

@@ -17,9 +17,6 @@ inputs:
   khiops-viz-version:
     description: Version of the Khiops visualization tool
     required: true
-  khiops-coviz-version:
-    description: Version of the Khiops covisualization tool
-    required: true
   khiops-gcs-driver-version:
     description: Version of the Khiops GCS driver
     required: true
@@ -84,7 +81,6 @@ runs:
         KHIOPS_PYTHON_VERSION: ${{ inputs.khiops-python-version }}
         KHIOPS_SAMPLES_VERSION: ${{ inputs.khiops-samples-version }}
         KHIOPS_VIZ_VERSION: ${{ inputs.khiops-viz-version }}
-        KHIOPS_COVIZ_VERSION: ${{ inputs.khiops-coviz-version }}
         KHIOPS_GCS_DRIVER_VERSION: ${{ inputs.khiops-gcs-driver-version }}
         KHIOPS_S3_DRIVER_VERSION: ${{ inputs.khiops-s3-driver-version }}
         KHIOPS_SAMPLES_DIR: ./khiops_samples

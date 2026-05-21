@@ -73,7 +73,6 @@ in the `environment.env` file:
   - `KHIOPS_PYTHON_VERSION`: version of the Khiops Python library package
   - `KHIOPS_SAMPLES_VERSION`: Git tag of the `khiops-samples` repository
   - `KHIOPS_VIZ_VERSION`: version of the Khiops Visualization tool
-  - `KHIOPS_COVIZ_VERSION`: version of the Khiops Covisualization tool
   - `KHIOPS_GCS_DRIVER_VERSION`: version of the Khiops GCS access driver
   - `KHIOPS_S3_DRIVER_VERSION`: version of the Khiops S3 access driver
 * for the other version:
@@ -82,7 +81,6 @@ in the `environment.env` file:
   - `KHIOPS_PYTHON_OTHER_VERSION`: version of the Khiops Python library package
   - `KHIOPS_SAMPLES_OTHER_VERSION`: Git tag of the `khiops-samples` repository
   - `KHIOPS_VIZ_OTHER_VERSION`: version of the Khiops Visualization tool
-  - `KHIOPS_COVIZ_OTHER_VERSION`: version of the Khiops Covisualization tool
   - `KHIOPS_GCS_DRIVER_OTHER_VERSION`: version of the Khiops GCS access driver
   - `KHIOPS_S3_DRIVER_OTHER_VERSION`: version of the Khiops S3 access driver
 
