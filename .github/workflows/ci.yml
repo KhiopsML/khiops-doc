@@ -22,10 +22,12 @@ permissions:
   contents: write
 jobs:
   build-or-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Install required system dependencies
-        run: sudo apt-get install wget libarchive-tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install wget libarchive-tools
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
