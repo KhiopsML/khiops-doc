@@ -1,4 +1,3 @@
-  
 ## This is not clustering 
 
 Among unsupervised approaches, **clustering** algorithms are undoubtedly the best known. But don't be fooled, **coclustering** is a very different problem. To clarify the distinction between clustering and coclustering, let's start by distinguishing their respective objectives. 
@@ -28,12 +27,12 @@ As shown in this figure, clustering algorithms are used to find **homogeneous su
   <figcaption></figcaption>
 </figure>
 
-Coclustering algorithms simultaneously group the **rows** and **columns** of a matrix, usually a **contingency matrix** describing the co-occurrences of two categorical variables. This contingency matrix contains the number of instances for each pair of modalities of the two categorical variables studied. The intersection (i.e. the cartesian product) of the groups formed on the two dimentions of the matrix constitute a set of **coclusters** (represented by the bins in the figure above). A cocluster characterizes a **sub-part** of the matrix by aggregating the information it contains, i.e. the number of instances whose modality pair of the two variables belongs to the cocluster. Finally, a coclustering model gives an aggregated view of a contingency matrix describing the **dependency** between the two variables under study, and it can be seen as a model of the **joined density** of the two variables.  
+Coclustering algorithms simultaneously group the **rows** and **columns** of a matrix, usually a **contingency matrix** describing the co-occurrences of two categorical variables. This contingency matrix contains the number of instances for each pair of modalities of the two categorical variables studied. The intersection (i.e. the cartesian product) of the groups formed on the two dimensions of the matrix constitute a set of **coclusters** (represented by the bins in the figure above). A cocluster characterizes a **sub-part** of the matrix by aggregating the information it contains, i.e. the number of instances whose modality pair of the two variables belongs to the cocluster. Finally, a coclustering model gives an aggregated view of a contingency matrix describing the **dependency** between the two variables under study, and it can be seen as a model of the **joined density** of the two variables.  
 
 
 
 !!! info "What you need to know"
-    Like **clusterring**, **coclustering** is a powerful tool for exploratory annalysis, but these two types of approach apply to different kinds of **data** (as shown in the figure below) and their **objectives** are not the same.
+    Like **clustering**, **coclustering** is a powerful tool for exploratory analysis, but these two types of approach apply to different kinds of **data** (as shown in the figure below) and their **objectives** are not the same.
 
 <figure markdown>
 <picture>
@@ -109,7 +108,7 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
 
 Like other algorithms based on the MODL (Minimum Description Length) approach, **coclustering** involves selecting the most probable model given the data. 
 During training, a trade-off is made to select the best model. 
-On one hand, **overly detailed models** are discarded because they tend to **overfit**, capturing noise rather than significat patterns (right side of the figure above). 
+On one hand, **overly detailed models** are discarded because they tend to **overfit**, capturing noise rather than significant patterns (right side of the figure above). 
 On the other hand, **coarse models** are avoided because they **underfit**, missing important dependencies between variables (left side of the figure above).
 
 The optimization criterion used to navigate this trade-off combines two antagonistic components:
@@ -177,7 +176,7 @@ The role of each parameter can be easily interpreted:
 
 
 
-## Optimisation criterion 
+## Optimization criterion 
 
 The core of the coclustering approach is its optimization criterion, rooted in the MODL formalism. Its purpose is to identify the most probable model given the training data, denoted by $d$. Building on the concepts introduced in the [*Original Formalism*][a_unique_formalism] section and referring to [information theory:octicons-link-external-16:][information_theory]{:target="_blank"} (and more specifically to the [MDL][MDL] principle), this criterion can be expressed as:
 
@@ -187,7 +186,7 @@ $$-\log(P(h).P(d|h)) = \underbrace{L(h)}_{\textbf{Prior}} + \underbrace{L(d|h)}_
 [a_unique_formalism]: modl.md
 [MDL]: https://en.wikipedia.org/wiki/Minimum_description_length
 
-where $L(h)$ is the description length of the model *(the prior)* and $L(d|h)$ the description length of the trainig data given the model *(the likelihood)*.
+where $L(h)$ is the description length of the model *(the prior)* and $L(d|h)$ the description length of the training data given the model *(the likelihood)*.
 Given the model parameters introduced above, the optimization criterion used to select the most probable coclustering model can be formalized as follows.
 
 **The prior:**
@@ -267,7 +266,7 @@ L(d|h) & = -\log P(d|h) \\
 
 The goal of this algorithm is to find the best co-clustering mode by minimizing the optimization criterion. However, the number of candidate models increases **exponentially** with the size of the training data, making exhaustive exploration non-tractable. Consequently, the presented algorithm is a **heuristic** designed to find a high-quality approximate solution within a reasonable amount of time.
 
-The following figure gives an overview the step-by-step operation of this algorithm, for further details please refer to [this paper:octicons-link-external-16:][algo_paper].
+The following figure gives an overview of the step-by-step operation of this algorithm, for further details please refer to [this paper:octicons-link-external-16:][algo_paper].
 
 [algo_paper]: http://www.marc-boulle.fr/publications/BoulleHOPR10.pdf
 
@@ -276,7 +275,7 @@ The following figure gives an overview the step-by-step operation of this algori
   <source src="../../assets/images/algo-coclustering.gif" type="image/gif" media="(not type: video/mp4)">
 </video>
 
-- **Initilization:** a “fine” model is randomly drawn, setting the number of groups for each variable so that coclusters contain an average of one instance.
+- **Initialization:** a “fine” model is randomly drawn, setting the number of groups for each variable so that coclusters contain an average of one instance.
 - **Step A:** a fast optimization is performed alternately for each variable, i.e. by freezing the other partition, the optimization criterion becomes univariate and the same algorithm as for [optimal encoding][encoding] is used.
 - **Step B:** next, a greedy algorithm merges the groups that degrade the optimization criterion as least as possible, until a single cocluster is obtained. The best evaluated model is selected for the next step.
 - **Step C:** similarly to step **A**, an in-depth alternate optimization is performed (i.e. with more iterations).
