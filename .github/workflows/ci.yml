@@ -36,6 +36,14 @@ jobs:
         uses: actions/checkout@v6
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
+      - name: Retrieve the version number of Khiops Visualization Desktop from the latest release on GitHub
+        if: env.KHIOPS_VIZ_VERSION == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # "gh release view" shows the latest release in the project, we extract its version (without the leading "v")
+          LAST_TAG="$(gh --repo https://github.com/KhiopsML/khiops-visualization-desktop/ release view --json tagName --jq '.tagName')"
+          echo "KHIOPS_VIZ_VERSION=${LAST_TAG#v}" >> "$GITHUB_ENV"
       - name: Prepare the versions markdown file
         if: inputs.build-other-version
         run: |
