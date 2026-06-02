@@ -52,6 +52,7 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - tables
+  - footnotes
 
 extra:
   KHIOPS_VERSION: !ENV [KHIOPS_VERSION, 11.0.0]
@@ -190,12 +191,12 @@ nav:
   - Foundations:
       - What Makes Khiops Different: learn/understand.md
       - An Original Formalism: learn/modl.md  
-      - Auto-ML pipeline:
+      - Auto-ML Pipeline:
         - Optimal Encoding: learn/preprocessing.md
         - Auto Feature Engineering: learn/autofeature_engineering.md
         - Parsimonious Training: learn/learning_models.md
-      - Unsupervised approaches:
- #       - Optimal histograms: learn/histograms.md
+      - Unsupervised Approaches:
+        - Optimal Histograms: learn/histograms.md
         - Coclustering: learn/coclustering.md
  #       - Coclustering inst x var: learn/coclustering_indi_var.md
       - Auto Hardware Adaptation: learn/hardware_adaptation.md
