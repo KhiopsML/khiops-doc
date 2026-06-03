@@ -29,7 +29,7 @@ Khiops supports a diversified set of installation options, to meet different nee
     - Ubuntu 22 and 24 (LTS) on ARM architectures
     - Debian 11, 12 and 13
     - Rocky Linux 8, 9 and 10
-    - macOS 12 or later, only via :simple-anaconda: **Conda**. Full support for macOS 13 or later on ARM architectures, limited support for macOS 12 or for x86-64 architectures.
+    - macOS 12 or later. Full support for macOS 13 or later on ARM architectures, limited support for macOS 12 or for x86-64 architectures.
 
     The :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda:**Conda** package, which has been tested in these environments.
 

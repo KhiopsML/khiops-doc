@@ -4,7 +4,7 @@
 
 # Install the Khiops Library Using Conda 
 
-The Conda package installation guarantees optimal performance since it handles installing or upgrading all Khiops dependencies, including the MPI library, in your Conda environment. 
+The Conda package supports the installation and upgrade of all Khiops dependencies, including the MPI library, in your Conda environment. 
 
 ## Instructions
 
@@ -25,6 +25,8 @@ Once the environment is activated, **you can install Khiops as follow**:
 ```sh
 conda install -c conda-forge khiops={{ CONDA_KHIOPS_PYTHON_VERSION }}
 ```
+
+If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors SDK and Khiops drivers**](../drivers-and-vendors-python-sdk)).
 
 <br>
 

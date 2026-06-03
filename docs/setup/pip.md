@@ -3,60 +3,43 @@
 {% set ROCKY_KHIOPS_VERSION = KHIOPS_VERSION.replace("-", "_") %}
 -->
 
-# Install the Khiops Library Using Pip <small> :tools: For Advanced users :tools: </small>
+# Install the Khiops Library Using Pip
 
-Opting for `pip` is ideal for those with a comprehensive grasp of Python's ecosystem and an understanding of operating system specifics. This approach, while offering adaptability for custom setups, necessitates knowledge of environment setup and dependency handling.
-
-The Khiops executables must be installed as a prerequisite. This also ensures the installation of the appropriate distribution and version of the MPI library.
+The `pip` package supports the installation and upgrade of all Khiops dependencies, including the MPI library, in your virtual environment.
 
 We support :simple-python: **Python from 3.10 to 3.14**. Usage of previous
 versions of Python can be attempted, but there is no support for it.
 
-=== "Ubuntu / Debian (ARM and x86)"
+===  "Linux and macOS"
 
-    You need to download and install the `khiops-core` package (via Apt) and then the Khiops library (via Pip). You can do this through the following shell commands:
+    In a dedicated virtual environment (recommended)
+
     ``` sh
-    sudo apt-get update -y && sudo apt-get install wget -y && \
-    source /etc/os-release && \
-    ARCH=$(dpkg --print-architecture) && \
-    TEMP_DEB="$(mktemp)" && \
-    wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.${ARCH}.deb" && \
-    sudo dpkg -i "$TEMP_DEB" || sudo apt-get -f -y install && \
-    rm -f $TEMP_DEB && \
+    python -m venv myvenv python=3.12
+    source myenv/bin/activate
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
 === "Windows"
-    
-    To install the Khiops executables, required for the Khiops Python library to operate, you must first install the Khiops application before executing the `pip` installation command:
 
-    <a href="https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe">
-        <button class="btn btn-light btn-sm">
-          Download for Windows
-        </button>
-    </a>
-
-    Then, you can run the following Pip command:
+    In a dedicated virtual environment (recommended)
 
     ```sh
+    python -m venv myvenv python=3.12
+    myenv\Scripts\activate.bat
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
-=== "Rocky Linux"
-    The default Python version on Rocky Linux 8 is 3.6, which does not meet our requirements (at least Python 3.10), **please ensure a compatible Python version is installed before continuing**.
+If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors SDK and Khiops drivers**](../drivers-and-vendors-python-sdk)). 
 
-    Then, you need to download and install the `khiops-core` package (via Yum) and then the Khiops library (via Pip). You can do this through the following command:
+This can be performed, still in a dedicated virtual environment as recommended, by specifying the type of remote storage (`s3`, `gcs` or `azure`) in square brackets.
 
-    ```sh
-    sudo yum update -y && sudo yum install wget python3-pip -y && \
-    CENTOS_VERSION=$(rpm -E %{rhel}) && \
-    TEMP_RPM="$(mktemp).rpm" && \
-    wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi-{{ ROCKY_KHIOPS_VERSION }}-1.el${CENTOS_VERSION}.x86_64.rpm" && \
-    sudo yum install "$TEMP_RPM" -y && \
-    rm -f $TEMP_RPM && \
-    pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
-    ```
 
+
+```sh 
+pip install khiops[s3]=={{ PIP_KHIOPS_PYTHON_VERSION }} # for a specific storage type only
+pip install khiops[s3,gcs,azure]=={{ PIP_KHIOPS_PYTHON_VERSION }} # for all the supported storage types
+```
 
 ## User Guide
 
@@ -71,76 +54,13 @@ versions of Python can be attempted, but there is no support for it.
 
 ## What You Should Know
 
-You can consult the limitations or known issues for your operating system:
+??? danger "Pip and Conda Khiops installations **should not be mixed.**"
 
-=== "Users on :simple-linux: Linux"
-    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
+    If the users wish to switch from a Pip-based installation to a Conda-based installation, they need to deactivate the Python virtual environment Khiops had been installed into, via Pip. Or, if no virtual environment has been used, the users need to uninstall the Khiops Library package:
 
-    ??? tip "Important Note for users upgrading from the pre-10.2.0 versions of the `pyKhiops` package"
-
-        If you are upgrading from a version prior to Khiops 10.2.0, it is essential to first make sure the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
-
-        To uninstall pykhiops, please execute the following command in your terminal or command prompt, in your Python environment (use **admin rights** if necessary):
-
-        ```sh
-        pip uninstall pykhiops -y
-        ```
-    ??? danger "Pip and Conda Khiops installations **should not be mixed.**"
-
-        If the users wish to switch from a Pip-based installation to a Conda-based installation, they need to deactivate the Python virtual environment Khiops had been installed into, via Pip. Or, if no virtual environment has been used, the users need to uninstall the Khiops Python package:
-
-        ``` sh
-        pip uninstall khiops
-        ```
-
-        Even though the Khiops executables would remain installed on the operating system, the Conda-based installation would take precedence over them.
-
-    !!! warning
-        The `khiops-core` binary will install or upgrade the system-wide `MPICH` library on your system. If you depend on another version of `MPICH` for other programs, please prefer an installation using Conda.
-
-    !!! warning
-
-        The installation of Khiops will utilize MPICH version 4.0.3 due to compatibility issues.
-        This is why you need to use a dedicated command:
-        ``` sh
-        conda install -c conda-forge -c khiops khiops
-        ```
-
-        Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
-
-
-=== "Users on :material-microsoft-windows: Windows"
-    !!! info "Currently, our packages are released on GitHub. In the coming weeks, we will transition to official repositories."
-
-    ??? tip "Important Note for users upgrading from the pre-10.2.0 versions of the `pyKhiops` package"
-
-        If you are upgrading from a version prior to Khiops 10.2.0, it is essential to first make sure the `pykhiops` package is not installed in your Python environment. This ensures that your upgrade process is smooth and that the new version of Khiops installs without conflicts.
-
-        To uninstall pykhiops, please execute the following command in your terminal or command prompt, in your Python environment (use **admin rights** if necessary):
-
-        ```sh
-        pip uninstall pykhiops -y
-        ```
-    ??? danger "Pip and Conda Khiops installations **should not be mixed.**"
-
-        If the users wish to switch from a Pip-based installation to a Conda-based installation, they need to deactivate the Python virtual environment Khiops had been installed into, via Pip. Or, if no virtual environment has been used, the users need to uninstall the Khiops Python package:
-
-        ``` sh
-        pip uninstall khiops
-        ```
-
-        Even though the Khiops executables would remain installed on the operating system, the Conda-based installation would take precedence over them.
-
-    !!! warning
-        On the first run of Khiops, **an MPI-related popup may appear** due to parallel execution sockets; please allow access for optimal functionality.
-    !!! warning
-        The Khiops installer relies on embedded installers for Java and MPI. Antivirus software may remove executable files (.exe, .jar) during installation. In this case, **you should add exceptions to your antivirus software or disable it during installation.**
-    !!! warning
-        The java installer results in a system reboot on some systems (e.g. on Windows Server 2008)
-
-=== "Users on :material-apple: macOS"
-    !!! warning
-        Native packages for the Khiops executables are not yet available for macOS, which means that you cannot install Khiops on macOS using Pip for now. You can use Conda or run our Docker container (x86-64 only).
+    ``` sh
+    pip uninstall khiops
+    ```
 
 <br>
 

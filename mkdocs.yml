@@ -118,8 +118,8 @@ nav:
   - Installation:
       - setup/index.md
       - Khiops Python Library:
-          - conda: setup/conda.md
           - pip: setup/pip.md
+          - conda: setup/conda.md
           - docker notebook: setup/khiops-notebook.md
       - Applications:
           - Khiops Application: setup/nocode.md
