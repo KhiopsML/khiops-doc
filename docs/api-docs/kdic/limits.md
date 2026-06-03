@@ -175,9 +175,9 @@ Limitation of database deployment:
 
 ## Temporary files
 
-Khiops uses temporary files for various internal tasks and stores them in the environment’s temporary directory (usually ‘\\Users\\{username}\\AppData\\Local\\Temp’ on Windows and ‘/tmp’ on Linux).
+Khiops uses temporary files for various internal tasks and stores them in the environment’s temporary directory (usually `\\Users\\{username}\\AppData\\Local\\Temp` on Windows and `/tmp` on Linux).
 
-Khiops prefixes its temporary file names with a tilde (‘~’) and stores them in a sub-directory prefixed by ‘~Khiops’.
+Khiops prefixes its temporary file names with a tilde (`~`) and stores them in a sub-directory prefixed by `~Khiops`.
 
 If Khiops exits successfully, it deletes all temporary files generated in the session. In case the application is forcibly killed or another uncontrollable event occurs (such as a power or disk failure), Khiops might not remove these files. When this happens, the following Khiops sessions will search for the ‘~~anchor~~’ file in old temporary directories, check the expiration date stored there and delete them if this date is before one day. If the undeleted files are too large and the user needs to free the space immediately, he can delete them manually.
 
@@ -193,5 +193,5 @@ The user interface, written in Java, may crash in some rare cases (sometimes in 
 
 Khiops can be started many times simultaneously on the same machine. However, it is recommended to use Khiops in batch mode when tens of instances of Khiops are used in the same time, to avoid potential problems caused by too many opened java virtual machines.
 
-Under Windows, Khiops can be started using the "Execute Khiops Script” context menu, by a right-click on Khiops script file (".\_kh"). However, this does not work for UNC paths (ex: [\\\\server\\filename](file:\\\\server\\filename)), since they are not supported by Windows cmd.exe.
+Under Windows, Khiops can be started using the "Execute Khiops Script” context menu, by a right-click on Khiops script file (".\_kh"). However, this does not work for UNC paths (ex: `file:\\\\server\\filename`), since they are not supported by Windows cmd.exe.
 

@@ -15,13 +15,13 @@ You can find all versions of the Khiops Visualization tool on the [the following
 
 [repo-visu]: https://github.com/KhiopsML/khiops-visualization-desktop/releases/
 
-- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-Setup-{{ KHIOPS_VIZ_VERSION }}.exe">
+- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-{{ KHIOPS_VIZ_VERSION }}.exe">
            **Windows** </a>
 - <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-{{ KHIOPS_VIZ_VERSION }}.dmg">
           **macOS x86-64**  </a>  (Intel-based)
 - <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-{{ KHIOPS_VIZ_VERSION }}-arm64.dmg">
           **macOS ARM** </a>   (:material-apple: Apple Silicon - M1/M2/M3)
-- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop_{{ KHIOPS_VIZ_VERSION }}_amd64.deb">
+- <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-{{ KHIOPS_VIZ_VERSION }}_amd64.deb">
           **Ubuntu** </a>
 - <a href="https://github.com/KhiopsML/khiops-visualization-desktop/releases/download/v{{ KHIOPS_VIZ_VERSION }}/Khiops-Visualization-Desktop-{{ KHIOPS_VIZ_VERSION }}.x86_64.rpm">
           **Rocky Linux** </a>
