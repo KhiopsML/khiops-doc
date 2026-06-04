@@ -18,6 +18,11 @@ on:
         required: true
         type: boolean
         default: false
+      check-links:
+        description: Check for broken links
+        required: true
+        type: boolean
+        default: false
 permissions:
   contents: write
 jobs:
@@ -82,6 +87,13 @@ jobs:
       - name: Move other version site inside the main site
         if: inputs.build-other-version
         run: mv ${{ env.KHIOPS_OTHER_VERSION }} site/
+      - name: Check for broken links
+        if: inputs.check-links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --root-dir site --no-progress --accept 200,403 --exclude 'file:///.*\d+\.\d+\.\d+' 'site/**/*.html'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload the site docs as an artifact (PR)
         if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
         uses: actions/upload-artifact@v7

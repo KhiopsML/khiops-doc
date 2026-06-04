@@ -1,0 +1,45 @@
+---
+name: Check Links
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+      - dev-v10
+jobs:
+  check-links:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Set up the version information in the environment
+        run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
+      - name: Build site
+        env:
+          KHIOPS_VERSION: ${{ env.KHIOPS_VERSION }}
+          KHIOPS_PYTHON_VERSION: ${{ env.KHIOPS_PYTHON_VERSION }}
+          KHIOPS_SAMPLES_VERSION: ${{ env.KHIOPS_SAMPLES_VERSION }}
+          KHIOPS_VIZ_VERSION: ${{ env.KHIOPS_VIZ_VERSION }}
+          KHIOPS_GCS_DRIVER_VERSION: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
+          KHIOPS_S3_DRIVER_VERSION: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
+          EXECUTE_KHIOPS_TUTORIALS: "false"
+        run: mkdocs build --strict
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --root-dir site --cache --no-progress --accept 200,403 --exclude 'file:///.*\d+\.\d+\.\d+' 'site/**/*.html'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
