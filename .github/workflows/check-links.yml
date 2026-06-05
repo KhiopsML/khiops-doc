@@ -20,6 +20,14 @@ jobs:
         run: pip install -r requirements.txt
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
+      - name: Retrieve the version number of Khiops Visualization Desktop from the latest release on GitHub
+        if: env.KHIOPS_VIZ_VERSION == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # "gh release view" shows the latest release in the project, we extract its version (without the leading "v")
+          LAST_TAG="$(gh --repo https://github.com/KhiopsML/khiops-visualization-desktop/ release view --json tagName --jq '.tagName')"
+          echo "KHIOPS_VIZ_VERSION=${LAST_TAG#v}" >> "$GITHUB_ENV"
       - name: Build site
         env:
           KHIOPS_VERSION: ${{ env.KHIOPS_VERSION }}
