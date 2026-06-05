@@ -66,7 +66,7 @@ However, in most industrial applications, raw data is scattered across multiple,
 <figure markdown>
 <picture>
   <source srcset="/assets/images/dictionary_data_preparation.webp" type="image/webp">
-  <img style="width:70%;" src="/dictionary_data_preparation.png" alt="data preparation" loading="lazy"> 
+  <img style="width:70%;" src="/assets/images/dictionary_data_preparation.png" alt="data preparation" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -93,7 +93,7 @@ During training, the machine learning pipeline is executed in two stages. First,
 <figure markdown>
 <picture>
   <source srcset="/assets/images/dictionary_train_1.webp" type="image/webp">
-  <img style="width:100%;" src="/dictionary_train_1.png" alt="training 1/2" loading="lazy"> 
+  <img style="width:100%;" src="/assets/images/dictionary_train_1.png" alt="training 1/2" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -107,7 +107,7 @@ During training, the machine learning pipeline is executed in two stages. First,
 <figure markdown>
 <picture>
   <source srcset="/assets/images/dictionary_train_2.webp" type="image/webp">
-  <img style="width:70%;" src="/dictionary_train_2.png" alt="training 2/2" loading="lazy"> 
+  <img style="width:70%;" src="/assets/images/dictionary_train_2.png" alt="training 2/2" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -127,7 +127,7 @@ At the end of training, predictions can be made directly from raw data, which fa
 <figure markdown>
 <picture>
   <source srcset="/assets/images/dictionary_deploy.webp" type="image/webp">
-  <img style="width:70%;" src="/dictionary_deploy.png" alt="using a model" loading="lazy"> 
+  <img style="width:70%;" src="/assets/images/dictionary_deploy.png" alt="using a model" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
