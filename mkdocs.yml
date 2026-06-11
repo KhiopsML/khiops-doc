@@ -6,18 +6,20 @@ repo_name: KhiopsML/Khiops
 repo_url: https://github.com/KhiopsML/khiops
 
 # Copyright
-copyright: Copyright &copy; 2023-2025 Orange S.A.
+copyright: Copyright &copy; 2023-2026 Orange S.A.
 
 theme:
   name: material
-  logo: assets/images/Small_Logo_RGB.png
+  logo: assets/images/khiops-logo.png
   icon:
     repo: fontawesome/brands/github
   palette:
     primary: black
-  favicon: assets/images/Small_Logo_RGB.png
+  favicon: assets/images/khiops-logo.png
   custom_dir: overrides
-  font: false
+  font:
+    text: Inter
+    code: Roboto Mono
   features:
     - navigation.tabs
     - navigation.path
@@ -92,11 +94,8 @@ extra:
             Thanks for your feedback! Help us improve this page by
             using our <a href="https://msurvey.orange.com/khiopsdoc" target="_blank" rel="noopener">feedback form</a>.
 
-# Add extra Orange css
+
 extra_css:
-  - assets/stylesheets/orange-helvetica.min.css
-  - assets/stylesheets/boosted.min.css
-  - assets/stylesheets/orange.css
   - assets/stylesheets/main.css
 
 # Add JS for Material plugins

@@ -8,6 +8,7 @@
 docs/advanced/Notebooks/logs.log
 docs/tutorials/Notebooks/st_results
 docs/tutorials/Notebooks/mt_results
+site/*
 .cache
 # Python
 __pycache__
