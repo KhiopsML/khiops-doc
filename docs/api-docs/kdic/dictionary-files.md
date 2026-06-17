@@ -340,7 +340,7 @@ Note that this key can be derived using derivation rules if necessary.
     { 
         Categorical id_customer;
         Categorical id_product;
-        Entity(Product) Product [id_product];
+        Entity(Product) Product [id_product]; // External table with the join key 'id_product'
         Table(Usage) Usages;
     };
 

@@ -171,7 +171,7 @@ Here's the dictionary file that defines this relational schema:
         Categorical streetNumber;
         Categorical streetName;
         Categorical zipcode;
-        Entity(City) city[zipcode];
+        Entity(City) city[zipcode]; // External table with the join key 'zipcode'
     };
 
     Root Dictionary City (zipcode)
