@@ -1,7 +1,8 @@
 # Logical Operators
 
-These rules use boolean operands (numerical values with 0 for false and not 0 for true) and return
-boolean values encoded as 0 or 1 numerical values.
+These operators accept any Numerical value as an operand, with zero representing false and any non-zero (including missing values) representing true. The results are always encoded as 0 or 1.
+
+Note that the special value `#Missing` represents a missing value and can be used as a numerical operand in any derivation rule.
 
 ## And
 
@@ -11,6 +12,23 @@ Numerical And(Numerical boolean1, ...)
 
 And logical operator.
 
+!!! example
+
+    ```kdic
+    Dictionary Person
+    {
+      Categorical Name;
+      Numerical Age;
+      Categorical City;
+      // Returns 1 if Age is less than 18 (or missing) and City is "New York", otherwise returns 0
+      Numerical IsSelected1 = And(L(Age, 18), EQ(City, "New York"));
+      // Returns 1 if Age is less than 18 and not missing and City is "New York", otherwise returns 0
+      Numerical IsSelected2 = And(And(L(Age, 18), NEQ(Age, #Missing)), EQ(City, "New York"));
+      // Returns 1 if Age is missing and City is "New York", otherwise returns 0
+      Numerical IsSelected3 = And(EQ(Age, #Missing), EQ(City, "New York"));
+    }
+    ```
+
 ## Or
 
 ```kdic-api-docs
@@ -18,6 +36,24 @@ Numerical Or(Numerical boolean1, ...)
 ```
 
 Or logical operator.
+
+!!! example
+
+    ```kdic
+    Dictionary Person
+    {
+      Categorical Name;
+      Numerical Age;
+      Categorical City;
+      // Returns 1 if Age is less than 18 (or missing) or City is "New York", otherwise returns 0
+      Numerical IsSelected1 = Or(L(Age, 18), EQ(City, "New York"));
+      // Returns 1 if Age is less than 18 and not missing, or City is "New York", otherwise returns 0
+      Numerical IsSelected2 = Or(And(L(Age, 18), NEQ(Age, #Missing)), EQ(City, "New York"));
+      // Returns 1 if Age is missing or City is "New York", otherwise returns 0
+      Numerical IsSelected3 = Or(EQ(Age, #Missing), EQ(City, "New York"));
+    }
+    ```
+
 
 ## Not
 
