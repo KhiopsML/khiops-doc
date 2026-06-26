@@ -1,77 +1,31 @@
 # Cloud Storage
 
-Khiops seamlessly integrates with cloud storage services, enabling **direct reading and writing of datasets stored in AWS S3 and Google Cloud Storage (GCS)** buckets. By using Khiops dedicated cloud storage drivers, you can process large-scale datasets **without having to manually download or transfer files**, significantly improving efficiency and scalability in cloud-based workflows.
+Khiops seamlessly integrates with cloud storage services, enabling **direct reading and writing** of datasets stored in 
+**AWS S3 buckets, Google Cloud Storage (GCS) buckets and Azure storage (in files and blobs)**. 
+By using Khiops dedicated cloud storage drivers, you can process large-scale datasets **without having to manually download or transfer files**, significantly improving efficiency and scalability in cloud-based workflows.
 
 With these drivers, Khiops treats cloud storage **just like a local filesystem**, meaning that all Khiops commands and workflows remain unchanged—only the dataset paths need to be adjusted.
 
-!!! info "Driver Installation Support"
-    On **Windows** and *macOS*, Khiops drivers are only supported through Conda. If you are using another installation method on these operating systems, consider switching to a Conda environment to enable driver support.
-    On **Linux**, Khiops drivers are supported through both Conda (Python only) and by using the native binary installation method (compatible with the [Khiops Application][nocode] and Python via pip). For native installation of the S3 and GCS drivers on Linux, the following operating systems are supported:
-    - Rocky Linux 9
-    - Debian 11, 12 and 13
-    - Ubuntu 20.04, 22.04 and 24.04 (LTS) on x86-64 architectures
-    - Ubuntu 22.04 and 24.04 (LTS) on ARM architectures.
-
-[nocode]: ../setup/nocode.md
+Refer to the specific [installation section](../../setup/drivers-and-vendors-python-sdk) if needed. The current section documents the usage of the remote file storage facilities. 
 
 ## Using Khiops with Google Cloud Storage (GCS)
 
 Khiops can read and write datasets stored in GCS buckets using the `khiopsdriver-gcs` package. Once configured, you can reference GCS paths directly in Khiops commands, scenarios and the GUI (where applicable) using the format `gs://<bucket-name>/path/to/file.csv`.
 
-### Installation
-
-If you installed Khiops through Conda as recommended, you can install the driver as follows:
-
-```sh
-conda install -c conda-forge khiops-driver-gcs
-```
-
-??? warning "If you installed Khiops using `pip` **on Linux**... "
-    === "Ubuntu / Debian" on x86-64 architectures
-
-        ```sh
-        CODENAME=$(lsb_release -cs) && \
-        TEMP_DEB="$(mktemp)" && \
-        wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-gcs/releases/download/{{ KHIOPS_GCS_DRIVER_VERSION }}/khiops-driver-gcs_{{ KHIOPS_GCS_DRIVER_VERSION }}-1-${CODENAME}.amd64.deb" && \
-        sudo dpkg -i "$TEMP_DEB" && \
-        rm -f $TEMP_DEB
-        ```
-
-    === "Ubuntu / Debian" on ARM architectures
-
-        ```sh
-        CODENAME=$(lsb_release -cs) && \
-        TEMP_DEB="$(mktemp)" && \
-        wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-gcs/releases/download/{{ KHIOPS_GCS_DRIVER_VERSION }}/khiops-driver-gcs_{{ KHIOPS_GCS_DRIVER_VERSION }}-1-${CODENAME}.arm64.deb" && \
-        sudo dpkg -i "$TEMP_DEB" && \
-        rm -f $TEMP_DEB
-        ```
-
-    === "Rocky Linux"
-
-        ```sh
-        sudo yum update -y && sudo yum install wget -y && \
-        ROCKY_VERSION=$(rpm -E %{rhel}) && \
-        TEMP_RPM="$(mktemp).rpm" && \
-        wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiopsdriver-gcs/releases/download/{{ KHIOPS_GCS_DRIVER_VERSION }}/khiops-driver-gcs_{{ KHIOPS_GCS_DRIVER_VERSION }}-1.el${ROCKY_VERSION}.x86_64.rpm" && \
-        sudo yum install "$TEMP_RPM" -y && \
-        rm -f $TEMP_RPM
-        ```
-
-To verify the installation, run:
+To verify that Khiops can use the remote-storage driver, run:
 
 ```sh
 khiops -s
 ```
 
-You should see an output indicating that the GCS driver is loaded and ready to use for data files following the URI `gs` scheme, as follows:
+You should see an output indicating that the GCS driver is loaded and ready to use for data files following the `gs` URI scheme, as follows:
 
 
 ```sh
 Khiops {{ KHIOPS_VERSION }}
 
-Drivers:
-    GCS driver ({{ KHIOPS_GCS_DRIVER_VERSION }}) for URI scheme 'gs'
+Drivers:  
+	GCS driver ({{ KHIOPS_GCS_DRIVER_VERSION }}) for URI scheme 'gs'	    
 Environment variables:
     None
 Internal environment variables:
@@ -125,51 +79,15 @@ _, model_path = kh.train_predictor(
 
 ## Using Khiops with AWS S3 Storage 
 
-To start using Khiops with your data on S3, install the S3 driver package alongside Khiops. If you installed Khiops through Conda as recommended, you can install the driver as follows:
+To start using Khiops with your data on S3, install the S3 driver package alongside Khiops.
 
-```sh
-conda install -c conda-forge khiops-driver-s3
-```
-
-??? warning "If you installed Khiops using `pip` **on Linux**..."
-    === "Ubuntu / Debian" on x86-64 architectures
-
-        ```sh
-        CODENAME=$(lsb_release -cs) && \
-        TEMP_DEB="$(mktemp)" && \
-        wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-s3/releases/download/{{ KHIOPS_S3_DRIVER_VERSION }}/khiops-driver-s3_{{ KHIOPS_S3_DRIVER_VERSION }}-1-${CODENAME}.amd64.deb" && \
-        sudo dpkg -i "$TEMP_DEB" && \
-        rm -f $TEMP_DEB
-        ```
-
-    === "Ubuntu / Debian" on ARM architectures
-
-        ```sh
-        CODENAME=$(lsb_release -cs) && \
-        TEMP_DEB="$(mktemp)" && \
-        wget -O "$TEMP_DEB" "https://github.com/KhiopsML/khiopsdriver-s3/releases/download/{{ KHIOPS_S3_DRIVER_VERSION }}/khiops-driver-s3_{{ KHIOPS_S3_DRIVER_VERSION }}-1-${CODENAME}.arm64.deb" && \
-        sudo dpkg -i "$TEMP_DEB" && \
-        rm -f $TEMP_DEB
-        ```
-
-    === "Rocky Linux"
-
-        ```sh
-        sudo yum update -y && sudo yum install wget -y && \
-        ROCKY_VERSION=$(rpm -E %{rhel}) && \
-        TEMP_RPM="$(mktemp).rpm" && \
-        wget -O "$TEMP_RPM" "https://github.com/KhiopsML/khiopsdriver-s3/releases/download/{{ KHIOPS_S3_DRIVER_VERSION }}/khiops-driver-s3_{{ KHIOPS_S3_DRIVER_VERSION }}-1.el${ROCKY_VERSION}.x86_64.rpm" && \
-        sudo yum install "$TEMP_RPM" -y && \
-        rm -f $TEMP_RPM
-        ```
-
-To verify the installation, run:
+To verify that Khiops can use the remote-storage driver, run:
 
 ```sh
 khiops -s
 ```
 
-You should see an output indicating that the S3 driver is loaded and ready to use for data files following the URI `s3` scheme, as follows:
+You should see an output indicating that the S3 driver is loaded and ready to use for data files following the `s3` URI scheme, as follows:
 
 
 ```sh
@@ -238,6 +156,79 @@ from khiops import core as kh
 dictionary_file_path = "s3://mydatabucket/khiops_samples/Adult/Adult.kdic"
 data_table_path = "s3://mydatabucket/khiops_samples/Adult/Adult.kdic"
 report_path = "s3://mydatabucket/khiops_samples/Adult/AnalysisResults.khj"
+
+# Train the predictor
+_, model_path = kh.train_predictor(
+    dictionary_file_path,
+    "Adult",
+    data_table_path,
+    "class",
+    report_path,
+    max_trees=0,
+)
+```
+
+## Using Khiops with Azure Storage
+
+To start using Khiops with your data on Azure, install the Azure driver package alongside Khiops.
+
+To verify that Khiops can use the remote-storage driver, run:
+
+```sh
+khiops -s
+```
+
+You should see an output indicating that the Azure driver is loaded and ready to use for data files following the `https` URI scheme as used by Azure, as follows:
+
+
+```sh
+Khiops {{ KHIOPS_VERSION }}
+
+Drivers:
+    Azure driver ({{ KHIOPS_AZURE_DRIVER_VERSION }}) for URI scheme 'https'
+Environment variables:
+    None
+Internal environment variables:
+    None
+```
+
+### Authentication
+
+To access data stored in Azure storage Blob containers or File shares, you need valid authentication credentials. 
+Khiops supports all the standard Azure authentication options. However, only the `AZURE_STORAGE_CONNECTION_STRING` environment variable is currently fully operational for every component, from the Khiops executables to the Khiops Python library.
+
+`AZURE_STORAGE_CONNECTION_STRING` contains a list of parameters like the `AccountName`, `AccountKey` and other technical parameters.
+
+**You must always copy / paste its value from the "Azure portal" in the "Security + networking > Access keys" of a "Storage account"** instead of trying to craft a connection string by yourself.
+```sh
+export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=https;AccountName=...;AccountKey=...;End" 
+```
+
+### Using Azure URIs in Khiops
+
+Please remember that the Azure paths supported by Khiops can either be, 
+
+- file-oriented : `https://<storage account name>.file.core.windows.net/<share name>/path/to/file.csv` 
+- or blob-oriented : `https://<storage account name>.blob.core.windows.net/<container name>/path/to/file.csv`
+
+They can be used in the desktop application (GUI), Python scripts, or within Khiops scenarios. For example:
+
+**Low-Level Khiops Usage:**
+```sh
+khiops -b -i https://khiopsaccount1.file.core.windows.net/my_share/khiops_samples/scenario.kh
+```
+
+**Python Sample:**
+
+```python
+# Imports
+import os
+from khiops import core as kh
+
+# Set the file URIs
+dictionary_file_path = "https://khiopsaccount1.file.core.windows.net/my_share/khiops_samples/Adult/Adult.kdic"
+data_table_path = "https://khiopsaccount1.file.core.windows.net/my_share/khiops_samples/Adult/Adult.kdic"
+report_path = "https://khiopsaccount1.file.core.windows.net/my_share/khiops_samples/Adult/AnalysisResults.khj"
 
 # Train the predictor
 _, model_path = kh.train_predictor(
