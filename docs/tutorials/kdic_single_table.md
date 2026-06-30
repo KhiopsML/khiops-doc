@@ -165,11 +165,11 @@ For situations that require numerous user-defined variables, the Khiops Python l
     # Add 10 unused supplemental numerical variables to the learning dictionary
     number_of_supplemental_variables = 10
     for variable_index in range(1, number_of_supplemental_variables + 1):
-        supplemental_variable = kh.Variable()
-        supplemental_variable.name = "SupplementalVariable" + str(variable_index)
-        supplemental_variable.type = "Numerical"
-    supplemental_variable.used = False
-    dictionary.add_variable(supplemental_variable)
+        dictionary.add_variable_from_spec(
+            name="SupplementalVariable" + str(variable_index),
+            type="Numerical",
+            used=False
+        )
     ```
 
 ## Example Selection
