@@ -6,7 +6,7 @@ By using Khiops dedicated cloud storage drivers, you can process large-scale dat
 
 With these drivers, Khiops treats cloud storage **just like a local filesystem**, meaning that all Khiops commands and workflows remain unchanged—only the dataset paths need to be adjusted.
 
-Refer to the specific [installation section](../../setup/drivers-and-vendors-python-sdk) if needed. The current section documents the usage of the remote file storage facilities. 
+Refer to the [Cloud-ready Khiops Python library installation section](../../setup/drivers-and-sdk-for-library) or [Cloud-ready Khiops application section](../../setup/drivers-and-sdk-for-application) if needed. The current section documents the usage of the remote file storage facilities. 
 
 ## Using Khiops with Google Cloud Storage (GCS)
 
