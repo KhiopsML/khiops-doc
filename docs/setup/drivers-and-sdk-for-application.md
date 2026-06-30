@@ -5,7 +5,7 @@ If you intend to use remote resources with the Khiops desktop application, you w
 They can be installed on the supported Linux distributions only
 
 !!! info "Supported Linux distributions" 
-    - Rocky Linux 9
+    - Rocky Linux 9 and 10
     - Debian 11, 12 and 13
     - Ubuntu 20.04, 22.04 and 24.04 (LTS) on x86-64 architectures
     - Ubuntu 22.04 and 24.04 (LTS) on ARM architectures.

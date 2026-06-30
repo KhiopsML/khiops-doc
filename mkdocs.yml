@@ -125,7 +125,7 @@ nav:
           - Khiops Application: setup/nocode.md
           - Khiops Visualization: setup/visualization.md
           - Khiops Native Interface (KNI): setup/kni.md
-      # anchors to sections are currently unusable because of github.com/mkdocs/issues/4026 in strict mode
+      # anchors to sections are currently unusable in strict mode because of https://github.com/mkdocs/mkdocs/issues/4026
       # and linking to the same page breaks the TOC
       - Cloud storage drivers:
           - Cloud-ready Khiops Python library: setup/drivers-and-sdk-for-library.md

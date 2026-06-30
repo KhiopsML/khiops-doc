@@ -15,7 +15,7 @@ versions of Python can be attempted, but there is no support for it.
     In a dedicated virtual environment (recommended)
 
     ``` sh
-    python -m venv myvenv python=3.12
+    python -m venv myvenv
     source myenv/bin/activate
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
@@ -25,7 +25,7 @@ versions of Python can be attempted, but there is no support for it.
     In a dedicated virtual environment (recommended)
 
     ```sh
-    python -m venv myvenv python=3.12
+    python -m venv myvenv
     myenv\Scripts\activate.bat
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
