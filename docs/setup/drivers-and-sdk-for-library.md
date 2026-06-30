@@ -1,6 +1,6 @@
 # Cloud-ready Khiops Python library
 
-The Khiops library can read and write remote files for the following storage types : **AWS S3, Google Cloud Storage (GCS) and Azure**, after the installation of a few prerequisites.
+The Khiops library can read and write remote files for the following storage types : **AWS S3, Google Cloud Storage (GCS) and Microsoft Azure**, after the installation of a few prerequisites.
 
 === "Pip packages"
 
