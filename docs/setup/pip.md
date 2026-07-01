@@ -30,7 +30,7 @@ versions of Python can be attempted, but there is no support for it.
     pip install khiops=={{ PIP_KHIOPS_PYTHON_VERSION }}
     ```
 
-If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors SDK and Khiops drivers**](../drivers-and-vendors-python-sdk)). 
+If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors SDK and Khiops drivers**](drivers-and-sdk-for-library.md)). 
 
 This can be performed, still in a dedicated virtual environment as recommended, by specifying the type of remote storage (`s3`, `gcs` or `azure`) in square brackets.
 

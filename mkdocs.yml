@@ -127,9 +127,9 @@ nav:
           - Khiops Native Interface (KNI): setup/kni.md
       # anchors to sections are currently unusable in strict mode because of https://github.com/mkdocs/mkdocs/issues/4026
       # and linking to the same page breaks the TOC
-      - Cloud storage drivers:
-          - Cloud-ready Khiops Python library: setup/drivers-and-sdk-for-library.md
-          - Khiops application: setup/drivers-and-sdk-for-application.md
+      - Cloud Storage Drivers:
+          - For the Python Library: setup/drivers-and-sdk-for-library.md
+          - For the Khiops Application: setup/drivers-and-sdk-for-application.md
   - How to:
       - tutorials/introduction.md
       - Scikit-learn API:

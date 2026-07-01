@@ -1,20 +1,20 @@
-# Cloud-ready Khiops Python library
+# Cloud Storage Drivers for Khiops Python
 
-The Khiops library can read and write remote files for the following storage types : **AWS S3, Google Cloud Storage (GCS) and Microsoft Azure**, after the installation of a few prerequisites.
+The Khiops Python library can read and write remote files from the following storage services after a few prerequisites are installed: **AWS S3, Google Cloud Storage (GCS), and Microsoft Azure**.
 
 === "Pip packages"
 
-    The installation of all the prerequisites can be done in one step during the [**Pip installation**](../pip) of the Khiops Python library.
+    All prerequisites can be installed in one step during the [**Pip installation**](pip.md) of the Khiops Python library.
     
     ```commandline
-      # In a dedicated virtual environment (recommended)
-      pip install khiops[s3] # for a specific storage type only
-      pip install khiops[s3,gcs,azure] # for all the supported storage types
+        # In a dedicated virtual environment (recommended)
+        pip install khiops[s3] # for a specific storage service only
+        pip install khiops[s3,gcs,azure] # for all supported storage services
     ```
 
 === "Conda packages"
 
-    If you intend to use remote resources while working with the Khiops Library under Conda, you will have to install the vendor-specific Python SDK(s) and the Khiops driver(s). 
+    To use remote resources with the Khiops Python library under Conda, install the vendor-specific Python SDKs and the corresponding Khiops drivers.
 
     For AWS S3
     ```commandline
