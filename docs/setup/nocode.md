@@ -18,7 +18,7 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
 
     This new application replaces both the previous Khiops Visualization and Covisualization applications. **We recommend uninstalling them before proceeding with the installation.**
 
-    [:material-download: Download for Windows]("https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe"){ .md-button .md-button--primary }
+    [:material-download: Download for Windows](https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe){ .md-button .md-button--primary }
 
 === "Ubuntu / Debian (ARM and x86)"
     Installing the Khiops desktop application involves two packages:
