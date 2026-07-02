@@ -26,7 +26,7 @@ Once the environment is activated, **you can install Khiops as follow**:
 conda install -c conda-forge khiops={{ CONDA_KHIOPS_PYTHON_VERSION }}
 ```
 
-If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors SDK and Khiops drivers**](../drivers-and-vendors-python-sdk)).
+If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors-specific SDK and Khiops drivers**](drivers-and-sdk-for-library.md)).
 
 <br>
 
