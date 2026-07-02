@@ -26,7 +26,7 @@ Once the environment is activated, **you can install Khiops as follow**:
 conda install -c conda-forge khiops={{ CONDA_KHIOPS_PYTHON_VERSION }}
 ```
 
-If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors SDK and Khiops drivers**](../drivers-and-vendors-python-sdk)).
+If you intend to use remote resources while working with the Khiops Library you will have to install additional dependencies ([**vendors-specific SDK and Khiops drivers**](drivers-and-sdk-for-library.md)).
 
 <br>
 
@@ -81,15 +81,6 @@ You can consult the limitations or known problems corresponding to your operatin
         sudo $FW --block $(which MODL)
         ```
     
-    !!! warning 
-
-        The installation of Khiops will utilize MPICH version 3.4.3 due to compatibility issues. 
-        This is why you need to use a dedicated command:
-        ``` sh
-        conda install -c conda-forge -c khiops khiops
-        ```
-            
-        Be aware that this may result in **slower execution times** compared to other platforms. This limitation is expected to be addressed in a future MPICH release.
 
 === "Users on :material-microsoft-windows: Windows"
     ??? tip "Important Note for users upgrading from the previous pyKhiops package (up to 10.1)"

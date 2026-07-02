@@ -6,18 +6,20 @@ repo_name: KhiopsML/Khiops
 repo_url: https://github.com/KhiopsML/khiops
 
 # Copyright
-copyright: Copyright &copy; 2023-2025 Orange S.A.
+copyright: Copyright &copy; 2023-2026 Orange S.A.
 
 theme:
   name: material
-  logo: assets/images/Small_Logo_RGB.png
+  logo: assets/images/khiops-logo.png
   icon:
     repo: fontawesome/brands/github
   palette:
     primary: black
-  favicon: assets/images/Small_Logo_RGB.png
+  favicon: assets/images/khiops-logo.png
   custom_dir: overrides
-  font: false
+  font:
+    text: Inter
+    code: Roboto Mono
   features:
     - navigation.tabs
     - navigation.path
@@ -55,9 +57,9 @@ markdown_extensions:
   - footnotes
 
 extra:
-  KHIOPS_VERSION: !ENV [KHIOPS_VERSION, 11.0.0]
+  KHIOPS_VERSION: !ENV [KHIOPS_VERSION, 11.0.1]
   KHIOPS_OTHER_VERSION: !ENV KHIOPS_OTHER_VERSION
-  KHIOPS_PYTHON_VERSION: !ENV [KHIOPS_PYTHON_VERSION, 11.0.0.3]
+  KHIOPS_PYTHON_VERSION: !ENV [KHIOPS_PYTHON_VERSION, 11.0.1.0]
   KHIOPS_SAMPLES_VERSION: !ENV [KHIOPS_SAMPLES_VERSION, 11.0.0]
   KHIOPS_VIZ_VERSION: !ENV [KHIOPS_VIZ_VERSION, 11.3.1]
   KHIOPS_GCS_DRIVER_VERSION: !ENV [KHIOPS_GCS_DRIVER_VERSION, 0.0.23]
@@ -92,11 +94,8 @@ extra:
             Thanks for your feedback! Help us improve this page by
             using our <a href="https://msurvey.orange.com/khiopsdoc" target="_blank" rel="noopener">feedback form</a>.
 
-# Add extra Orange css
+
 extra_css:
-  - assets/stylesheets/orange-helvetica.min.css
-  - assets/stylesheets/boosted.min.css
-  - assets/stylesheets/orange.css
   - assets/stylesheets/main.css
 
 # Add JS for Material plugins
@@ -127,9 +126,9 @@ nav:
           - Khiops Native Interface (KNI): setup/kni.md
       # anchors to sections are currently unusable in strict mode because of https://github.com/mkdocs/mkdocs/issues/4026
       # and linking to the same page breaks the TOC
-      - Cloud storage drivers:
-          - Cloud-ready Khiops Python library: setup/drivers-and-sdk-for-library.md
-          - Khiops application: setup/drivers-and-sdk-for-application.md
+      - Cloud Storage Drivers:
+          - For the Python Library: setup/drivers-and-sdk-for-library.md
+          - For the Khiops Application: setup/drivers-and-sdk-for-application.md
   - How to:
       - tutorials/introduction.md
       - Scikit-learn API:

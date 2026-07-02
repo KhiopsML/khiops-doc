@@ -1,184 +1,205 @@
-<!-- Custom HTML site displayed as the Home chapter -->
-
 {% extends "main.html" %}
 {% block tabs %}
 {{ super() }}
 
-<!-- Main site Entry button descriptions -->
-<section class="md-container container">
-  <div class="row my-5">
-    <div class="col">
-      <!--<p class="mb-2">The Orange Open Source AutoML library</p>-->
-      <div class="mb-2 d-flex align-items-end">
-        <h1 class="display-2 mb-0 d-inline-block">
-          Redefining machine learning on structured data
-        </h1>
-      </div>
-      <p class="mb-2">
-        <!--Experience hyperparameter-free machine learning with automated feature engineering and encoding,
-         even more extraordinary with relational data! 
-        Eliminating tedious tweaks allows focusing on data and model explainability.-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="assets/stylesheets/home-refonte.css?v=20260626-2">
 
-        Embark on a fully automated machine learning experience free of hyperparameters.
-        Whether you're working with relational or regular tabular data, 
-        Khiops eliminates the tedious tweaks (including feature engineering and variable encoding),
-        allowing focus on data and model interpretability.
-      </p>
-      <a href="setup/">
-        <button class="btn btn-primary">
-          Get Started
-        </button>
-      </a>
-      
-    </div>
-    <div class="col bg-image" style="background-image: url(assets/images/orange-data-client.webp);"></div>
-  </div>
-</section>
-
-<div class="bg-gray-900 text-white py-2">
-  <div id="service" class="section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h3>What is Khiops ?</h3>
-          <p>Khiops makes machine learning on structured data easier, faster, and more intuitive than ever before, yet extremely sophisticated algorithms. 
-            This open source project offers an ultra-efficient and secure Auto ML pipeline, within everyone's reach! </p>
-          <p>A new lean Machine Learning experience <strong>to enhance the power of Data Scientists.</strong> <br />
-            </p>
-          <div class="justify-content-center d-flex"> <hr class="separator" /></div> 
-        </div>
-      </div>
-      <div class="row justify-content-md-center align-items-center"> 
-        <div class="col-12 col-md-6 col-lg-5">
-          <picture>
-            <source srcset="/assets/images/pyramid.webp" type="image/webp">
-            <img style="width: 100%;padding: 10%;" src="/assets/images/pyramid.png" alt="unique-formalism" loading="lazy"> 
-          </picture>
-        </div> 
-        <div class="col-12 col-md-12 col-lg-7 mt-4">
-          <p><strong>Khiops stands out for its singular formalism that offers significant advantages:</strong>
-            </p>
-            <div class="service-box align-items-center">
-              <img class="service-icon" src="assets/images/automation_circular.webp" loading="lazy";></img>
-              <div class="service-text pt-2">
-                <p class="Small"><strong>Automation:</strong> inherently eliminates preprocessing complexity (cleaning, encoding, feature engineering) through its formalism, avoiding brute-force automation. 
-                  Its hyperparameter-free approach prevents overfitting.</p>
-              </div> 
-            </div>
-            <div class="service-box align-items-center">
-              <img class="service-icon" src="assets/images/interpretable_circular.webp" loading="lazy";></img>
-              <div class="service-text pt-2">
-                <p class="Small"><strong>Interpretability:</strong> it is interpretable by design thanks to optimal encoding (grouping and discretization), 
-                  explicit aggregates from relational data, and parsimonious training selecting a few variables.</p>
-              </div>
-            </div>
-            <div class="service-box align-items-center">
-              <img class="service-icon" src="assets/images/speed_circular.webp" loading="lazy";></img>
-              <div class="service-text pt-2">
-                <p class="Small"><strong>Ultra scalable:</strong> The approach is hyperparameter-free, which avoids costly cross-validation and grid search. 
-                  In addition, Khiops' C++ code is highly optimized and implements an efficient strategy for hardware adaptation. </p>
-              </div>
-            </div>
-        </div>
-
-      </div>
-
-      <div class="row">
-        <a href="learn/understand/">
-          <button class="btn btn-primary">
-            Learn More
-          </button>
+<div class="home-refonte-root">
+  <div class="bg-wrap">
+    <canvas id="bgC"></canvas>
+    <section class="hero">
+      <div>
+        <a class="new-pill" id="eN" href="#v11Sec">
+          <span class="np-b">New</span>
+          <span class="np-t">Khiops V11 - Shapley, text features and sparse data</span>
+          <i class="ti ti-arrow-right"></i>
         </a>
+        <div class="lin" id="e0">
+          <span class="lin-pill"><i class="ti ti-license"></i> Open source software</span>
+        </div>
+        <h1 class="h1" id="e1">Built for the hard part of <em>Machine Learning</em> on structured data</h1>
+        <p class="sub" id="e2">Khiops handles multi-table data preparation, feature construction, and model training in one consistent workflow, so teams can spend less time on setup and more time on analysis.</p>
+        <div class="ibar" id="e3">
+            <div class="icell">
+            <div class="iico r"><i class="ti ti-flask"></i></div>
+            <div class="ititle">Research foundation</div>
+            <div class="idesc">Built on 25 years of published research, with methods designed to control model complexity and avoid overfitting.</div>
+            <div class="iline r"></div>
+          </div>
+          <div class="icell">
+            <div class="iico g"><i class="ti ti-server-2"></i></div>
+            <div class="ititle">Industrial execution</div>
+            <div class="idesc">Runs on large structured datasets with out-of-core and distributed execution, including multi-table schemas.</div>
+            <div class="iline g"></div>
+          </div>
+        </div>
+        <div class="pills" id="e4">
+          <span class="pill"><i class="ti ti-license"></i> BSD-3-Clause-Clear</span>
+          <span class="pill"><i class="ti ti-server-2"></i> Out-of-core + distributed</span>
+          <span class="pill"><i class="ti ti-brand-python"></i> sklearn API</span>
+        </div>
+        <div class="ctas" id="e5">
+          <a class="bp" href="setup/"><i class="ti ti-download"></i> Install Khiops</a>
+          <a class="bg-btn" href="tutorials/introduction/"><i class="ti ti-player-play"></i> Quickstart</a>
+        </div>
+      </div>
+      <div id="e7">
+        <div class="panel">
+          <div class="ptb"><div class="pdo"><div class="pd r"></div><div class="pd a"></div><div class="pd g"></div></div><span class="pfn">Simple, scalable, and interpretable.</span><span></span></div>
+          <div class="ptabs">
+            <button class="ptab on" onclick="showTab('code',this)">Code</button>
+            <button class="ptab" onclick="showTab('bench',this)">Benchmark</button>
+          </div>
+          <div class="pbody">
+            <div id="tc">
+<pre><span class="cc"># sklearn API - no manual data preparation</span>
+<span class="ck">from</span> <span class="co">khiops</span>.sklearn <span class="ck">import</span> <span class="cf">KhiopsClassifier</span>
+
+model = <span class="cf">KhiopsClassifier</span>()
+<span class="cc"># native multi-table data accepted</span>
+model.<span class="cf">fit</span>(X_train, y_train)</pre>
+              <div class="sg">
+                <div class="sc"><div class="sn">0</div><div class="sl">Tuning loops</div></div>
+                <div class="sc"><div class="sn">Native</div><div class="sl">Multi-table</div></div>
+                <div class="sc"><div class="sn">100<span class="u">%</span></div><div class="sl">Interpretable</div></div>
+              </div>
+            </div>
+            <div id="tb" class="bv">
+              <p class="bm">Multi-table benchmark: raw industrial data to model</p>
+              <div class="brow"><div class="bh"><span class="bn">LGBM mono-table</span><span class="bval">AUC 0.5847</span></div><div class="bt"><div class="bf b" id="b0" data-w="58.47"></div></div><div class="bmeta">Accuracy 0.9345</div></div>
+              <div class="brow"><div class="bh"><span class="bn">LGBM with Khiops multi-table preparation</span><span class="bval">AUC 0.7818</span></div><div class="bt"><div class="bf a" id="b1" data-w="78.18"></div></div><div class="bmeta">Accuracy 0.9420</div></div>
+              <div class="brow"><div class="bh"><span class="bn">Khiops</span><span class="bval">AUC 0.7998</span></div><div class="bt"><div class="bf k" id="b2" data-w="79.98"></div></div><div class="bmeta">Accuracy 0.9442</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="proof-strip">
+      <div class="proof-inner">
+        <p class="proof-punch"><em>For massive relational data,</em> where other solutions stop scaling</p>
       </div>
     </div>
+
+    <div class="tooth-transition top" data-plateau="#F6F3EC"></div>
   </div>
-  <!--SERVICE END-->
+
+  <div class="crisp-section" id="crispSec" style="background:#F6F3EC;">
+    <div class="crisp-inner">
+      <div class="s-eye" id="cs0">CRISP-DM</div>
+      <h2 class="s-title" id="cs1">Technical steps,<br><em>handled end to end.</em></h2>
+      <p class="s-sub" id="cs2">In <a class="crisp-link" href="https://fr.wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining" target="_blank" rel="noopener">CRISP-DM</a>, Khiops automates encoding, relational feature engineering, model selection and scalable execution, while teams keep control of business framing and validation.</p>
+
+      <div class="crisp-layout">
+        <div class="wheel-wrap">
+          <svg id="crispSvg" viewBox="-60 -60 620 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;overflow:visible;">
+            <defs>
+              <filter id="segGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="dotGlow" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <radialGradient id="G0" cx="70%" cy="30%" r="70%"><stop offset="0%" stop-color="#C8A020" stop-opacity=".6"/><stop offset="100%" stop-color="#806010" stop-opacity=".15"/></radialGradient>
+              <radialGradient id="G1" cx="90%" cy="50%" r="60%"><stop offset="0%" stop-color="#FF7900" stop-opacity=".8"/><stop offset="100%" stop-color="#CC4400" stop-opacity=".15"/></radialGradient>
+              <radialGradient id="G2" cx="70%" cy="70%" r="70%"><stop offset="0%" stop-color="#FF9A30" stop-opacity=".75"/><stop offset="100%" stop-color="#CC6000" stop-opacity=".15"/></radialGradient>
+              <radialGradient id="G3" cx="30%" cy="70%" r="70%"><stop offset="0%" stop-color="#3ECFA0" stop-opacity=".8"/><stop offset="100%" stop-color="#1A7050" stop-opacity=".15"/></radialGradient>
+              <radialGradient id="G4" cx="10%" cy="50%" r="60%"><stop offset="0%" stop-color="#29C4C4" stop-opacity=".8"/><stop offset="100%" stop-color="#106090" stop-opacity=".15"/></radialGradient>
+              <radialGradient id="G5" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#9080FF" stop-opacity=".75"/><stop offset="100%" stop-color="#4030A0" stop-opacity=".15"/></radialGradient>
+              <image id="pyramidBadge" href="assets/images/khiops-logo.png" width="16" height="16" preserveAspectRatio="xMidYMid meet" style="pointer-events:none"/>
+            </defs>
+            <circle cx="250" cy="250" r="200" fill="none" stroke="rgba(20,15,40,0.05)" stroke-width="90"/>
+            <circle cx="250" cy="250" r="200" fill="none" stroke="rgba(255,121,0,0.08)" stroke-width="88"/>
+            <path d="M 252,49 A 201,201 0 1,1 248,49" fill="none" stroke="rgba(20,15,40,0.16)" stroke-width="1.2"/>
+            <polygon points="248,42 242,57 255,57" fill="rgba(20,15,40,0.18)"/>
+            <circle cx="250" cy="250" r="110" fill="#FFFFFF" stroke="rgba(255,121,0,0.4)" stroke-width="1.5"/>
+            <image href="assets/images/khiops-logo.png" x="186" y="188" width="128" height="122" preserveAspectRatio="xMidYMid meet"/>
+            <path id="s0" class="cseg" d="M 250,5 A 245,245 0 0,1 462,127 L 384,172 A 155,155 0 0,0 250,95 Z" fill="rgba(200,160,32,0.04)" stroke="rgba(200,160,32,0.2)" stroke-width="1" style="cursor:pointer"/>
+            <path id="s1" class="cseg" d="M 462,127 A 245,245 0 0,1 462,373 L 384,328 A 155,155 0 0,0 384,172 Z" fill="rgba(255,121,0,0.04)" stroke="rgba(255,121,0,0.2)" stroke-width="1" style="cursor:pointer"/>
+            <path id="s2" class="cseg" d="M 462,373 A 245,245 0 0,1 250,495 L 250,405 A 155,155 0 0,0 384,328 Z" fill="rgba(255,150,48,0.04)" stroke="rgba(255,150,48,0.2)" stroke-width="1" style="cursor:pointer"/>
+            <path id="s3" class="cseg" d="M 250,495 A 245,245 0 0,1 38,373 L 116,328 A 155,155 0 0,0 250,405 Z" fill="rgba(62,207,160,0.04)" stroke="rgba(62,207,160,0.2)" stroke-width="1" style="cursor:pointer"/>
+            <path id="s4" class="cseg" d="M 38,373 A 245,245 0 0,1 38,127 L 116,172 A 155,155 0 0,0 116,328 Z" fill="rgba(41,196,196,0.04)" stroke="rgba(41,196,196,0.2)" stroke-width="1" style="cursor:pointer"/>
+            <path id="s5" class="cseg" d="M 38,127 A 245,245 0 0,1 250,5 L 250,95 A 155,155 0 0,0 116,172 Z" fill="rgba(144,128,255,0.04)" stroke="rgba(144,128,255,0.2)" stroke-width="1" style="cursor:pointer"/>
+            <line x1="250" y1="95"  x2="250" y2="5" stroke="rgba(20,15,40,0.1)" stroke-width="0.8"/>
+            <line x1="384" y1="172" x2="462" y2="127" stroke="rgba(20,15,40,0.1)" stroke-width="0.8"/>
+            <line x1="384" y1="328" x2="462" y2="373" stroke="rgba(20,15,40,0.1)" stroke-width="0.8"/>
+            <line x1="250" y1="405" x2="250" y2="495" stroke="rgba(20,15,40,0.1)" stroke-width="0.8"/>
+            <line x1="116" y1="328" x2="38" y2="373" stroke="rgba(20,15,40,0.1)" stroke-width="0.8"/>
+            <line x1="116" y1="172" x2="38" y2="127" stroke="rgba(20,15,40,0.1)" stroke-width="0.8"/>
+            <circle id="pulDot" cx="-200" cy="-200" r="0" fill="#FF7900" filter="url(#dotGlow)"/>
+            <g id="lbl-0" style="pointer-events:none"><line x1="353" y1="72" x2="392" y2="34" stroke="rgba(200,160,32,0.3)" stroke-width="1" stroke-dasharray="3,3"/><rect x="392" y="6" width="172" height="56" rx="7" fill="#FFFFFF" stroke="rgba(200,160,32,0.25)" stroke-width="1"/><text x="404" y="28" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(200,160,32,0.7)" letter-spacing=".07em">01 · BUSINESS</text><text x="404" y="49" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1F1C28">Understanding</text></g>
+            <g id="lbl-1" style="pointer-events:none"><line x1="384" y1="250" x2="430" y2="228" stroke="rgba(255,121,0,0.3)" stroke-width="1" stroke-dasharray="3,3"/><rect x="430" y="204" width="150" height="56" rx="7" fill="#FFFFFF" stroke="rgba(255,121,0,0.3)" stroke-width="1"/><use href="#pyramidBadge" transform="translate(440,214) scale(1.0)"/><text x="464" y="226" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(255,121,0,0.8)" letter-spacing=".07em">02 · DATA</text><text x="440" y="248" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1F1C28">Understanding</text></g>
+            <g id="lbl-2" style="pointer-events:none"><line x1="353" y1="428" x2="392" y2="462" stroke="rgba(255,150,48,0.3)" stroke-width="1" stroke-dasharray="3,3"/><rect x="392" y="450" width="150" height="56" rx="7" fill="#FFFFFF" stroke="rgba(255,150,48,0.25)" stroke-width="1"/><use href="#pyramidBadge" transform="translate(402,460) scale(1.0)"/><text x="426" y="472" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(255,150,48,0.8)" letter-spacing=".07em">03 · DATA</text><text x="402" y="494" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1F1C28">Preparation</text></g>
+            <g id="lbl-3" style="pointer-events:none"><line x1="147" y1="428" x2="108" y2="462" stroke="rgba(62,207,160,0.3)" stroke-width="1" stroke-dasharray="3,3"/><rect x="-44" y="450" width="152" height="56" rx="7" fill="#FFFFFF" stroke="rgba(62,207,160,0.3)" stroke-width="1"/><use href="#pyramidBadge" transform="translate(-34,460) scale(1.0)"/><text x="-10" y="472" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(62,207,160,0.8)" letter-spacing=".07em">04 · MODELING</text><text x="-34" y="494" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1F1C28">Modeling</text></g>
+            <g id="lbl-4" style="pointer-events:none"><line x1="116" y1="250" x2="70" y2="228" stroke="rgba(41,196,196,0.3)" stroke-width="1" stroke-dasharray="3,3"/><rect x="-100" y="204" width="170" height="56" rx="7" fill="#FFFFFF" stroke="rgba(41,196,196,0.3)" stroke-width="1"/><use href="#pyramidBadge" transform="translate(-90,214) scale(1.0)"/><text x="-66" y="226" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(41,196,196,0.8)" letter-spacing=".07em">05 · EVALUATION</text><text x="-90" y="248" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1F1C28">Evaluation</text></g>
+            <g id="lbl-5" style="pointer-events:none"><line x1="147" y1="72" x2="108" y2="34" stroke="rgba(144,128,255,0.3)" stroke-width="1" stroke-dasharray="3,3"/><rect x="-44" y="6" width="152" height="56" rx="7" fill="#FFFFFF" stroke="rgba(144,128,255,0.25)" stroke-width="1"/><use href="#pyramidBadge" transform="translate(-34,16) scale(1.0)"/><text x="-10" y="28" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(144,128,255,0.8)" letter-spacing=".07em">06 · DEPLOY</text><text x="-34" y="49" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1F1C28">Deployment</text></g>
+          </svg>
+        </div>
+
+        <div class="cinfo" id="cinfo" tabindex="0" aria-label="CRISP phase details carousel">
+          <div class="idle-msg" id="idleMsg">
+            <p class="idle-t">What is automated<br>in practice.</p>
+            <div class="idle-caps">
+              <div class="cap idle-cap"><div class="cap-i o"><i class="ti ti-wand"></i></div><div class="cap-t"><strong>Data preparation</strong>Encoding, missing values and relational aggregates are handled within one consistent pipeline.</div></div>
+              <div class="cap idle-cap"><div class="cap-i g"><i class="ti ti-target"></i></div><div class="cap-t"><strong>Modeling</strong>Parsimonious models are trained without hyperparameter search loops.</div></div>
+              <div class="cap idle-cap"><div class="cap-i n"><i class="ti ti-server-2"></i></div><div class="cap-t"><strong>Scale</strong>Out-of-core and distributed execution supports large structured datasets.</div></div>
+            </div>
+            <p class="idle-h"><i class="ti ti-device-mobile"></i> <span>Tap a phase, use arrows, or swipe to navigate.</span></p>
+          </div>
+          <div class="pdots" id="pdots"><div class="pdot" id="d0"></div><div class="pdot" id="d1"></div><div class="pdot" id="d2"></div><div class="pdot" id="d3"></div><div class="pdot" id="d4"></div><div class="pdot" id="d5"></div></div>
+          <div class="cnav" id="cnav">
+            <button class="cbtn" id="cprev" type="button" aria-label="Previous phase"><i class="ti ti-chevron-left"></i> Prev</button>
+            <span class="ccount" id="ccount">Phase 01 / 06</span>
+            <button class="cbtn" id="cnext" type="button" aria-label="Next phase">Next <i class="ti ti-chevron-right"></i></button>
+          </div>
+          <div class="ptag" id="ptag"></div>
+          <h3 class="pttl" id="pttl"></h3>
+          <p class="pbdy" id="pbdy"></p>
+          <div class="pcaps" id="pcaps"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tooth-transition bottom" data-plateau="#0D0C14"></div>
+  </div>
+
+  <div class="bg-wrap v11-section" id="v11Sec">
+    <canvas id="v11C"></canvas>
+    <div class="v11-inner">
+      <div class="s-eye">What's new</div>
+      <div class="v11-head"><span class="v11-chip">V11</span><h2 class="s-title" style="margin-bottom:0;">The new release<br><em>pushes the limits.</em></h2></div>
+      <p class="s-sub" style="margin-bottom:0;">Three major advances in Khiops V11, available now.</p>
+      <div class="v11-grid" id="v11Grid">
+        <div class="vcard a"><div class="vc-ico"><i class="ti ti-chart-pie"></i></div><div class="vc-t">Reinforced interpretability</div><div class="vc-d">Khiops provides <strong>analytical Shapley values</strong>: exact per-prediction contributions, without costly sampling-based approximations.</div><div class="vc-foot"><span class="vc-tag">Native Shapley</span></div></div>
+        <div class="vcard b"><div class="vc-ico"><i class="ti ti-file-text"></i></div><div class="vc-t">Text becomes a feature</div><div class="vc-d">Text variables now join automatic feature generation. <strong>Model directly on verbatims</strong> without a separate upstream NLP pipeline.</div><div class="vc-foot"><span class="vc-tag">Text features</span></div></div>
+        <div class="vcard c"><div class="vc-ico"><i class="ti ti-database"></i></div><div class="vc-t">Volumes pushed further</div><div class="vc-d">Native <strong>sparse implementation</strong> processes sparse inputs without densification, allowing larger practical volumes.</div><div class="vc-foot"><span class="vc-tag">Sparse data</span></div></div>
+      </div>
+      <a class="v11-link" href="https://github.com/KhiopsML/khiops/releases#release-{{ config.extra.KHIOPS_VERSION }}"><span>Read release notes</span> <i class="ti ti-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <div class="below-wrap">
+  <div class="below">
+    <p class="beye">Choose your entry point</p>
+    <div class="pgrid">
+      <a class="pcard" href="tutorials/introduction/"><div class="pcico a"><i class="ti ti-rocket"></i></div><div class="pctit">I'm new to Machine Learning</div><div class="pcdesc">Build a first model quickly with no manual data preparation and no hyperparameter tuning loop.</div><span class="pclink a"><span>Start the tutorial</span> <i class="ti ti-arrow-right"></i></span></a>
+      <a class="pcard" href="learn/understand/"><div class="pcico b"><i class="ti ti-chart-dots"></i></div><div class="pctit">I'm a Data Scientist</div><div class="pcdesc">Explore MODL foundations, optimal encodings and relational performance characteristics in depth.</div><span class="pclink b"><span>Explore foundations</span> <i class="ti ti-arrow-right"></i></span></a>
+    </div>
+  </div>
+  </div>
 </div>
 
-<div class="bg-supporting-yellow py-4">
-  <div class="container text-center">
-    <h2 class="display-4 m-0">
-      Challenge your data, we take care of the rest.
-    </h2>
-  </div>
-</div>
-<div class="container pt-5">
-  <div class="row pb-5 clearfix align-items-center justify-content-center" style="flex-direction: row-reverse;">
-    <div class="col-12 col-md-6 mb-3 ms-md-3">
-      <h3>Auto ML as never seen before </h3>
-      <p>
-        Khiops is based on a breakthrough mathematical formalism which enables end-to-end ML pipeline 
-        without over-fitting or hyperparameters adjustment. 
-        No more need for time-consuming data preparation or manual feature engineering —these tasks becoming unnecessary due to Khiops’ robust formalism. 
-        The models learned are accurate and parsimonious, making them easy to interpret.
-      </p>
-      <p> <a class="link-chevron" href="tutorials/introduction/">Find Out More</a> </p>
-      <p> <a class="link-chevron" href="learn/understand/">Deep Dive into the Foundations</a> </p>
-    </div>
-    <div class="col-10 col-md-5 mb-3 ms-md-3">
-      <picture>
-        <source srcset="assets/images/AutoML.webp" type="image/webp">
-        <img src="assets/images/AutoML.png" class="w-100" alt="automl-pipeline" loading="lazy">
-      </picture>
-    </div>
-  </div>
-  <div class="row pb-5 clearfix align-items-center justify-content-center">
-    <div class="col-12 col-md-6 mb-3 ms-md-3">
-      <h3>Khiops.fit(X, y)</h3>
-      <p>
-        Khiops is a low-code Python library featuring an efficient Auto ML pipeline in a simple .fit() function.
-        Sophisticated algorithms have never been so easy to use, thanks to its sklearn-like implementation. 
-        Khiops allows anyone to practice Machine Learning safely. 
-        You can analyze your models and better understand your data with minimal coding required.
-      </p>
-      <p> <a class="link-chevron" href="setup/">Getting Started</a> </p>
-      <p> <a class="link-chevron" href="tutorials/Notebooks/No_data_Cleaning/">Browse a Notebook example</a> </p>
-    </div>
-    <div class="col-10 col-md-5 mb-3 ms-md-3">
-      <picture>
-        <source srcset="assets/images/notebook.webp" type="image/webp">
-        <img src="assets/images/notebook.png" class="w-100" alt="..." loading="lazy">
-      </picture>
-    </div>
-  </div>
-  <div class="row pb-5 clearfix align-items-center justify-content-center" style="flex-direction: row-reverse;">
-    <div class="col-12 col-md-6 mb-3 ms-md-3">
-      <h3>Standalone visualization tool, and more</h3>
-      <p>
-        The library has an interactive visualization tool that enables access to comprehensive preparation and modelization results directly from a notebook or a dedicated app. 
-        As a result, you won't have to write specific visualization codes to showcase your models. 
-        Additionally, Khiops offers a desktop version that allows you to use all the learning algorithms without needing to write any Python codes.
-      </p>
-      <p> <a class="link-chevron" href="setup/demovisualization/">Discover the visualization app</a> </p>
-      <p> <a class="link-chevron" href="setup/nocode/">Start with Khiops Desktop</a> </p>
-    </div>
-    <div class="col-10 col-md-5 mb-3 ms-md-3">
-      <picture>
-        <source srcset="assets/images/visu.webp" type="image/webp">
-        <img src="assets/images/visu.png" class="w-100" alt="visualization" loading="lazy">
-      </picture>
-    </div>
-
-  </div>
-  <div class="row pb-5 clearfix align-items-center justify-content-center">
-      <div class="col-12 col-md-6 mb-3 ms-md-3">
-      <h3>Ready for smooth production</h3>
-      <p>
-        Khiops is a highly robust system designed for industrial usage, ensuring optimal functionality. 
-        The processing of its algorithms adjusts to the hardware resources available, allowing for seamless transitions between out-of-core and distributed calculations.
-        Khiops adapts calculation time based on the size of your data. 
-        By using Khiops, you can reduce your expenses for cloud providers.
-      </p>
-      <p> <a class="link-chevron" href="learn/hardware_adaptation/">Learn more about hardware adaptation and out of core</a> </p>
-    </div>
-    <div class="col-10 col-md-5 mb-3 ms-md-3">
-      <picture>
-        <img src="assets/images/bench_hardware_short.png" class="w-100" alt="..." loading="lazy">
-      </picture>
-    </div>
-  </div>
-</div>
-
+<script defer src="assets/javascripts/home-i18n.js?v=20260701"></script>
+<script defer src="assets/javascripts/home-app.js?v=20260701"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof setLang === 'function') {
+      setLang('en');
+    }
+    if (typeof showTab === 'function') {
+      const first = document.querySelector('.ptab');
+      if (first) showTab('code', first);
+    }
+  });
+</script>
 
 {% endblock %}
 {% block content %}{% endblock %}

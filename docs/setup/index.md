@@ -19,8 +19,8 @@ Khiops supports a diversified set of installation options, to meet different nee
     - [**Khiops Visualization**][vis]: for intuitive visualization of all analysis results (**interactive demo available [here][demo-vis]**)
     - [**Khiops Native Interface (KNI)**][kni]: to deploy Khiops models with a lightweight shared library.
   - **Cloud storage drivers** 
-    - [**Cloud-ready Khiops Python library**](drivers-and-sdk-for-library)
-    - [**Khiops application**](drivers-and-sdk-for-application)
+    - [**Cloud-ready Khiops Python library**](drivers-and-sdk-for-library.md)
+    - [**Khiops application**](drivers-and-sdk-for-application.md)
 
 !!! warning "Supported Platforms"
     We support :simple-python: **Python from 3.10 to 3.14** on the following operating systems:
