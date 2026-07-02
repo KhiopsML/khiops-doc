@@ -148,7 +148,7 @@ const PH=[
       bdy:'Models remain interpretable through explicit encodings, selected variables and additive contributions.',
       caps:[
         {i:'ti-eye',c:'o',t:'Robust by design',b:'The robustness of the formalism allows for confident deployment to production. And if there is no relevant information, the model does not invent anything. Something surprising? Challenge the data, not the model.'},
-        {i:'ti-presentation',c:'o',t:'Dedicated visualization tool',b:'The library has an interactive visualization tool that enables access to comprehensive preparation and modelization results directly.'}] }
+        {i:'ti-presentation',c:'o',t:'Dedicated visualization tool',b:'Khiops has an interactive visualization tool that enables access to comprehensive preparation and modelization results directly.'}] }
   },
   { grad:'G5', lblId:'lbl-5', dot:{x:150,y:77},   lc:'#9080FF', tc:'o',
     fr:{ tag:'Phase 06 — Deployment',
