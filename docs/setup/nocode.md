@@ -90,7 +90,7 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
 
     **Note:** Khiops Visualization must be installed separately and directly on macOS. Follow this [link][vis] to download the DMG installers.
 
-    ### Prerequisites
+    **Prerequisites**
 
     The following software is required to run Khiops on macOS:
 
@@ -99,7 +99,7 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
     - **[Colima](https://github.com/abiosoft/colima)**: Lightweight container runtime that provides a Docker-compatible environment without requiring Docker Desktop.
     - **[XQuartz](https://www.xquartz.org)**: X Window System for macOS. Required to display the Khiops GUI from the Docker container.
 
-    ### Step 1: Install Prerequisites
+    **Step 1: Install Prerequisites**
 
     First, install Homebrew if you don't have it already. Open Terminal and run:
 
@@ -113,7 +113,7 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
     brew install docker colima xquartz
     ```
 
-    ### Step 2: Download Launch Scripts
+    **Step 2: Download Launch Scripts**
 
     Download the launch scripts that automate the setup and execution of Khiops:
 
@@ -122,7 +122,7 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
 
     Save these scripts to a convenient location (e.g., your home directory or a dedicated folder).
 
-    ### Step 3: Make Scripts Executable
+    **Step 3: Make Scripts Executable**
 
     Open Terminal, navigate to the directory where you saved the scripts, and make them executable:
 
@@ -130,9 +130,9 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
     chmod +x khiops khiops_coclustering
     ```
 
-    ### Step 4: Launch Khiops
+    **Step 4: Launch Khiops**
 
-    **From Terminal:**
+    ***From Terminal:***
 
     Navigate to the directory containing the scripts and run:
 
@@ -146,11 +146,11 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
     ./khiops_coclustering
     ```
 
-    **From Finder:**
+    ***From Finder:***
 
     You can also double-click on the `khiops` or `khiops_coclustering` scripts in Finder to launch them.
 
-    ### What Happens When You Launch
+    **What Happens When You Launch**
 
     The launch scripts automatically handle the following:
 
@@ -161,7 +161,7 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
     5. Pull the Khiops Docker image (first run only)
     6. Launch Khiops with the GUI displayed through XQuartz
 
-    ### Important Notes
+    **Important Notes**
 
     !!! note "Working Directory and Temporary Files"
         Khiops starts in your macOS `$HOME` directory and has full access to your home folder. Temporary files are stored in the macOS temporary directory (`/tmp`).
