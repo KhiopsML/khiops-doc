@@ -8,9 +8,6 @@ inputs:
   khiops-python-version:
     description: Version of the Khiops Python library
     required: true
-  khiops-doc-ref:
-    description: Revision of the Khiops documentation web site
-    default: ''
   khiops-samples-version:
     description: Version of the Khiops samples
     required: true
@@ -23,9 +20,6 @@ inputs:
   khiops-s3-driver-version:
     description: Version of the Khiops S3 driver
     required: true
-  add-versions-to-the-menu:
-    description: Add the versions.md to the menu
-    default: 'true'
   execute-khiops-tutorials:
     description: Execute the Khiops tutorials
     required: true
@@ -35,24 +29,22 @@ runs:
     - name: Checkout doc sources
       uses: actions/checkout@v6
       with:
-        ref: ${{ inputs.khiops-doc-ref }}
-        # Fetch all branches and tags
-        fetch-depth: 0
-        fetch-tags: true
-        # Keep versions.md
         clean: false
-    - name: Install requirements
-      shell: bash
-      run: pip install -r requirements.txt
-    - name: Add versions to the menu
-      if: inputs.add-versions-to-the-menu == 'true'
+    - name: Setup uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        enable-cache: true
+        cache-dependency-glob: uv.lock
+    - name: Install documentation requirements
       shell: bash
       run: |
-        # Copy the versions file to the docs folder
-        cp versions.md docs/
-        # Add the versions file to the menu
-        echo -e "\n  - ${{ inputs.khiops-version }}: versions.md" >> mkdocs.yml
+        if [[ "${{ inputs.execute-khiops-tutorials }}" == "true" ]]; then
+          uv sync --frozen --extra notebooks --extra tutorials
+        else
+          uv sync --frozen --extra notebooks
+        fi
     - name: Install Khiops-Related Requirements to Run the Tutorials
+      if: inputs.execute-khiops-tutorials == 'true'
       shell: bash
       env:
         KHIOPS_VERSION: ${{ inputs.khiops-version }}
@@ -67,13 +59,17 @@ runs:
         rm -f khiops_core.deb
         # Install Khiops Python
         KHIOPS_PYTHON_PACKAGE_VERSION=$(echo "$KHIOPS_PYTHON_VERSION" | tr -d '-' | sed -r 's/(\(a|b|rc\).*)\.([^.]*)/\1\2/')
-        pip install "https://github.com/KhiopsML/khiops-python/releases/download/${KHIOPS_PYTHON_VERSION}/khiops-${KHIOPS_PYTHON_PACKAGE_VERSION}.tar.gz"
+        uv pip install "https://github.com/KhiopsML/khiops-python/releases/download/${KHIOPS_PYTHON_VERSION}/khiops-${KHIOPS_PYTHON_PACKAGE_VERSION}.tar.gz"
         # Download samples
         wget -O khiops_samples.zip "https://github.com/KhiopsML/khiops-samples/releases/download/${KHIOPS_SAMPLES_VERSION}/khiops-samples-${KHIOPS_SAMPLES_VERSION}.zip"
         mkdir -p ./khiops_samples && unzip khiops_samples.zip -d ./khiops_samples
         rm -f khiops_samples.zip
-        # Install plotting tools, used in the tutorials
-        pip install matplotlib seaborn pycaret
+    - name: Convert tutorial notebooks
+      shell: bash
+      env:
+        EXECUTE_KHIOPS_TUTORIALS: ${{ inputs.execute-khiops-tutorials }}
+        KHIOPS_SAMPLES_DIR: ./khiops_samples
+      run: uv run python scripts/convert_notebooks.py
     - name: Build site
       shell: bash
       env:
@@ -90,7 +86,7 @@ runs:
         KHIOPS_SAMPLES_DIR="$(cd $(dirname $KHIOPS_SAMPLES_DIR); pwd)/$(basename $KHIOPS_SAMPLES_DIR)"
 
         # Build the site pages into the site/ directory
-        mkdocs build --strict --verbose
+        uv run zensical build --strict
     - name: Fetch Khiops Python API docs
       shell: bash
       run: |
@@ -108,19 +104,10 @@ runs:
         rm -f khiops_api_docs.zip
         # Hide the logo from the Python files
         find site/api-docs/python-api/api -name "*.html" -print0 | xargs -0 sed -i 's/div class="sidebar-logo-container"/div class="sidebar-logo-container" style="visibility: hidden; max-height: 0"/g'
-    - name: Clean the Git doc repo state
+    - name: Clean the build workspace
       shell: bash
       run: |
-        # Remove added markdown file
-        rm -f docs/versions.md
-        # Checkout the mkdocs file so that the Git repo state is clean
-        git checkout mkdocs.yml
         # Remove the samples directory
         rm -fr ./khiops_samples
-    # The following step is needed to ensure that the post-action steps take the
-    # same versions of the build-doc action into account
-    - name: Checkout doc sources to the current repository reference
-      uses: actions/checkout@v6
-      with:
-        # Keep versions.md
-        clean: false
+        # Remove generated notebook markdown pages
+        rm -fr docs/tutorials/notebook-pages

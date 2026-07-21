@@ -1,0 +1,30 @@
+[project]
+name = "khiops-doc"
+version = "0.0.0"
+description = "Khiops documentation build environment"
+requires-python = ">=3.11"
+dependencies = [
+  "ghp-import",
+  "kdic-lexer",
+  "zensical==0.0.46",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit",
+]
+notebooks = [
+  "ipykernel",
+  "nbconvert",
+]
+tutorials = [
+  "matplotlib",
+  "pycaret",
+  "seaborn",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+kdic-lexer = { path = "python/kdic_lexer" }
