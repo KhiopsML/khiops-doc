@@ -18,8 +18,8 @@ Featuring **unique learning algorithms**, Khiops automates many steps seamlessly
 
 Ultimately, all you need to do is use the standard Scikit-Learn syntax, and Khiops takes care of handling poor-quality raw data, producing competitive, robust and interpretable models.  
 
-[no_data_preparation]: ../tutorials/Notebooks/No_data_Cleaning.ipynb
-[encoding]: ../tutorials/Notebooks/Optimal_Encoding.ipynb
+[no_data_preparation]: notebook-pages/No_data_Cleaning.md
+[encoding]: notebook-pages/Optimal_Encoding.md
 [tuto]: https://khiopsml.github.io/khiops-python/tutorials/index.html
 
 
@@ -100,7 +100,7 @@ We continue with the previous example, where the multi-table data describes the 
 
 Khiops allows users to describe multi-table data as a Python dictionary (**a running sample is [available here][full_pipeline]**). Here's an example: 
 
-[full_pipeline]: ../tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
+[full_pipeline]: notebook-pages/Use_in_any_ML_pipeline.md
 
 ```python
 X_train = {

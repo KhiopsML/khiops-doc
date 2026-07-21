@@ -149,11 +149,11 @@ The MODL approach is rooted in both Bayesian and Information theories. What make
 
 In essence, this is the crux of Khiops' secret, implementing the MODL approach across all stages of its AutoML pipeline (Stages A, B, and C)<!--, as well as to address [unsupervised learning tasks][unsupervised_tasks]-->. This enables the learning algorithms to accomplish their tasks in a single run!
 
-[unsupervised_tasks]: unsupervised.md
+[unsupervised_tasks]: coclustering.md
 [discretization]: preprocessing.md#discretization 
 [grouping]: preprocessing.md#grouping
 [training]: learning_models.md
-[co-clustering]: unsupervised.md
+[co-clustering]: coclustering.md
 
 <br>
 

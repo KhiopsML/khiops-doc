@@ -17,7 +17,7 @@ Structure(Classifier) SNBClassifier(
 	Structure(Vector) variableWeights, Structure(DataGridStats) dataGridStats1, ...)
 ```
 Builds a Selective Naive Bayes `Classifier` structure. 
-The first parameter is a [`Vector`](vector-rules.md/#vector) of weights for the selected variables, provided as literal values.
+The first parameter is a [`Vector`](vector-rules.md#vector) of weights for the selected variables, provided as literal values.
 The remaining parameters are the same as for the [`NBClassifier`](#nbclassifier) rule.
 
 
@@ -70,7 +70,7 @@ Structure(RankRegressor) SNBRankRegressor(
 ```
 
 Builds a Selective Naive Bayes `RankRegressor`. 
-The first parameter is a [`Vector`](vector-rules.md/#vector) of weights for the selected variables, provided as literal values.
+The first parameter is a [`Vector`](vector-rules.md#vector) of weights for the selected variables, provided as literal values.
 The remaining parameters are the same as for the [`NBRankRegressor`](#nbrankregressor) rule.
 
 

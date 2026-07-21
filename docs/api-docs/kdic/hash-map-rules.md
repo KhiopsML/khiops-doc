@@ -51,8 +51,8 @@ Structure(HashMap) HashMap(Structure(VectorC) keyVector, Structure(Vector) value
 ```
 
 Builds a hash map of numerical values indexed by keys. The operands must be the result of
-[`VectorC`](vector-rules.md/#vectorc) and
-[`Vector`](vector-rules.md/#vector) rules of the same size, with unique keys in the
+[`VectorC`](vector-rules.md#vectorc) and
+[`Vector`](vector-rules.md#vector) rules of the same size, with unique keys in the
 vector of keys.
 
 ## TableHashMap
