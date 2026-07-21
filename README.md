@@ -10,10 +10,16 @@ pip install -r requirements.txt
 ```
 
 ### Run
+Before running the local server, fetch the Python API docs that are normally injected by CI:
+
+```bash
+./scripts/fetch_python_api_docs.sh
+```
+
 Then, to run locally just execute
 
 ```bash
-mkdocs serve
+uv run zensical serve
 ```
 
 Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/ . You don't need to
