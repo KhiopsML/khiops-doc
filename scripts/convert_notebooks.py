@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 import shutil
 from html import escape
 from pathlib import Path
@@ -13,6 +14,8 @@ from nbconvert.preprocessors import ExecutePreprocessor
 ROOT_DIR = Path(__file__).resolve().parents[1]
 SOURCE_DIR = ROOT_DIR / "docs" / "tutorials" / "Notebooks"
 OUTPUT_DIR = ROOT_DIR / "docs" / "tutorials" / "notebook-pages"
+MARKDOWN_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
+HTML_OUTPUT_MARKERS = ("<div", "<table", "<img", "<style", "<svg")
 
 
 def env_flag(name: str) -> bool:
@@ -24,9 +27,11 @@ def notebook_prompt(kind: str, execution_count: int | None) -> str:
     return f"{kind} [{count}]:"
 
 
-def wrap_notebook_cell(kind: str, prompt: str, body: str) -> str:
+def wrap_notebook_cell(kind: str, prompt: str, body: str, *, parse_markdown: bool = False) -> str:
+    classes = f"khiops-notebook-cell khiops-notebook-{kind}"
+    markdown_attr = ' markdown="1"' if parse_markdown else ""
     return (
-        f'<div class="khiops-notebook-cell khiops-notebook-{kind}" data-prompt="{escape(prompt)}" markdown="1">\n\n'
+        f'<div class="{classes}" data-prompt="{escape(prompt)}"{markdown_attr}>\n\n'
         f"{body.strip()}\n\n"
         "</div>"
     )
@@ -56,6 +61,27 @@ def ensure_python_fence(body: str) -> str:
     return body
 
 
+def has_html_output(body: str) -> bool:
+    return any(marker in body for marker in HTML_OUTPUT_MARKERS)
+
+
+def convert_markdown_images(body: str) -> str:
+    def replace_image(match: re.Match[str]) -> str:
+        alt_text, image_path = match.groups()
+        return f'<img alt="{escape(alt_text, quote=True)}" src="{escape(image_path, quote=True)}" />'
+
+    return MARKDOWN_IMAGE_RE.sub(replace_image, body.strip())
+
+
+def render_output_body(body: str) -> str:
+    body = body.strip()
+    if has_html_output(body):
+        return body
+    if MARKDOWN_IMAGE_RE.search(body):
+        return convert_markdown_images(body)
+    return f"<pre>{escape(body)}</pre>"
+
+
 def convert_cell(
     exporter: MarkdownExporter, cell: nbformat.NotebookNode, resources: dict, cell_index: int
 ) -> tuple[str, dict]:
@@ -70,10 +96,14 @@ def convert_cell(
     execution_count = cell.get("execution_count")
     input_body, output_body = split_code_cell_body(body)
     input_body = ensure_python_fence(input_body)
-    converted_parts = [wrap_notebook_cell("input", notebook_prompt("In", execution_count), input_body)]
+    converted_parts = [
+        wrap_notebook_cell("input", notebook_prompt("In", execution_count), input_body, parse_markdown=True)
+    ]
 
     if output_body.strip():
-        converted_parts.append(wrap_notebook_cell("output", notebook_prompt("Out", execution_count), output_body))
+        converted_parts.append(
+            wrap_notebook_cell("output", notebook_prompt("Out", execution_count), render_output_body(output_body))
+        )
 
     return "\n\n".join(converted_parts), resources
 
