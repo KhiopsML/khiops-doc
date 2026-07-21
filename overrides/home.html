@@ -2,7 +2,7 @@
 {% block extrahead %}
 {{ super() }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/stylesheets/home-refonte.css?v=20260721-12">
+<link rel="stylesheet" href="assets/stylesheets/home-refonte.css?v=20260721-15">
 <script>
   document.documentElement.classList.add('khiops-home');
 </script>
@@ -93,13 +93,8 @@ model.<span class="cf">fit</span>(X_train, y_train)</pre>
 </div>
 {% endblock %}
 
-{% block tabs %}
-{{ super() }}
-{% endblock %}
-
-{% block site_nav %}{% endblock %}
-
 {% block container %}
+<div class="md-content home-refonte-content" data-md-component="content">
 <div class="home-refonte-root home-refonte-main">
 
   <div class="crisp-section" id="crispSec" style="background:#F6F3EC;">
@@ -201,6 +196,7 @@ model.<span class="cf">fit</span>(X_train, y_train)</pre>
   </div>
   </div>
 </div>
+</div>
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -217,17 +213,9 @@ model.<span class="cf">fit</span>(X_train, y_train)</pre>
     };
 
     const syncHomeLayout = function() {
-      const heroStage = document.getElementById('homeHeroStage');
       const header = document.querySelector('.md-header');
       const headerHeight = header ? header.offsetHeight : 0;
-
-      if (!heroStage) {
-        return;
-      }
-
-      const mainOffset = Math.max(heroStage.offsetHeight - headerHeight, 0);
       document.documentElement.style.setProperty('--khiops-home-header-offset', headerHeight + 'px');
-      document.documentElement.style.setProperty('--khiops-home-main-offset', mainOffset + 'px');
     };
 
     syncHomeHeader();
