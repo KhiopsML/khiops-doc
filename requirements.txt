@@ -1,6 +1,0 @@
-pre-commit
-ipykernel
-nbconvert
-zensical==0.0.46
-ghp-import
-./python/kdic_lexer

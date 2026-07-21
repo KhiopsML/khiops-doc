@@ -3,10 +3,16 @@ This is the technical repository for the Khiops documentation website.
 
 ## Local Development
 ### Setup
-Install the development requirements
+Install dependencies with uv
 
 ```bash
-pip install -r requirements.txt
+uv sync --frozen --extra notebooks
+```
+
+If you need to execute tutorials locally, install tutorial extras as well:
+
+```bash
+uv sync --frozen --extra notebooks --extra tutorials
 ```
 
 ### Run
@@ -26,17 +32,17 @@ Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/ . Y
 restart the server every time because the site will refresh itself when you modify files.
 
 #### pre-commit
-The setup step will also install the `pre-commit` tool. This allows to automatize some tasks such
-as formatting and cleaning of the notebooks.
+The setup step installs the `pre-commit` tool. This allows to automatize some tasks such as
+formatting and cleaning of the notebooks.
 To use it, it is necessary to install it locally:
 ```bash
-pre-commit install
+uv run pre-commit install
 ```
 
 The configured tasks will run every time you make a commit. You may also run them at any time with
 the line
 ```bash
-pre-commit run --verbose --all-files
+uv run pre-commit run --verbose --all-files
 ```
 
 ### Highlighting Khiops Dictionary Code
