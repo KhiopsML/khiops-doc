@@ -69,7 +69,6 @@ It is crucial to notice two characteristics:
 - **Cardinality**: The size of $\mathcal{H}$ is directly influenced by the number of examples, denoted by $N$, in our training dataset. Specifically, our first parameter $I$, which denotes the number of intervals, can take any value between 1 and $N$. This unusual property,  where the model's possible configurations are tied to the size of the dataset, is atypical in a Bayesian context. As we will see later, this unique feature of the MODL approach has a significant impact on regularization (to prevent overfitting).
 - **Hierarchy**: When defining a model, decisions are made in cascade across levels 1, 2, and 3; i.e., decisions made at an earlier level influence the number of possibilities at the subsequent level. Level 1 determines the number of intervals, which in level 2 drives the choices for positioning the $I-1$ boundaries between the intervals within the $N$ examples. Notably, MODL leverages rank statistics, using example counts in intervals to define interval boundaries. Lastly, level 3 summarizes the conditional distribution $P(y|x)$, by specifying the class distributions within each interval that is defined by the boundaries set in Level 2. The number of available choices for this distribution is influenced by the parameters ${ I, { N_i}}$ from levels 1 and 2.
 
-[understand]: understand.md
 
 ### Optimization Criterion
 

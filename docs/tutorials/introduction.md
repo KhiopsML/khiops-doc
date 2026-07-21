@@ -41,7 +41,7 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
 - **Skip Variable Encoding**: Before using variables in a machine learning model, they often need to be transformed into a format the algorithm can process (e.g. categorical variables must be converted into numerical representations). Khiops eliminates this complexity with its MODL formalism, which automatically encodes categorical and numerical variables into statistically optimal groups or intervals.
 
-    For example, instead of manually binning a variable like `age`, Khiops will determine ranges like [0, 18], ]18, 35], ]35, 50], etc. These intervals are not arbitrary but are optimally chosen according to the target variable, indeed building a univariate classifier.
+    For example, instead of manually binning a variable like `age`, Khiops will determine ranges like \[0, 18\], \]18, 35\], \]35, 50\], etc. These intervals are not arbitrary but are optimally chosen according to the target variable, indeed building a univariate classifier.
 
     !!! example "Explore the [**Optimal Encoding**][optimal_encoding] tutorial and learn more about the concept on the [**Optimal Encoding**][encoding_foundations] foundations page."
 

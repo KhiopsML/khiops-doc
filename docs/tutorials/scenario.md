@@ -13,7 +13,7 @@ Key command-line features include:
 
 ## Khiops Command Line Options
 
-Usage: khiops [OPTIONS], or khiops_coclustering [OPTIONS]
+Usage: khiops \[OPTIONS\], or khiops_coclustering \[OPTIONS\]
 
 Available options are:
 

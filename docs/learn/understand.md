@@ -135,7 +135,6 @@ Furthermore, **Khiops can seamlessly transition between out-of-core and distribu
 
 
  [auto_hardware_adaptation]: hardware_adaptation.md
- [modl]: modl.md 
  [publications]: ../references.md#publications "See scientific references"
 
 
