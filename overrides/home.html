@@ -1,12 +1,15 @@
 {% extends "main.html" %}
-{% block tabs %}
+{% block extrahead %}
 {{ super() }}
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<link rel="stylesheet" href="assets/stylesheets/home-refonte.css?v=20260626-2">
+<link rel="stylesheet" href="assets/stylesheets/home-refonte.css?v=20260721-12">
+<script>
+  document.documentElement.classList.add('khiops-home');
+</script>
+{% endblock %}
 
+{% block hero %}
+<div class="home-refonte-hero-stage" id="homeHeroStage">
 <div class="home-refonte-root">
   <div class="bg-wrap">
     <canvas id="bgC"></canvas>
@@ -86,6 +89,18 @@ model.<span class="cf">fit</span>(X_train, y_train)</pre>
 
     <div class="tooth-transition top" data-plateau="#F6F3EC"></div>
   </div>
+</div>
+</div>
+{% endblock %}
+
+{% block tabs %}
+{{ super() }}
+{% endblock %}
+
+{% block site_nav %}{% endblock %}
+
+{% block container %}
+<div class="home-refonte-root home-refonte-main">
 
   <div class="crisp-section" id="crispSec" style="background:#F6F3EC;">
     <div class="crisp-inner">
@@ -187,10 +202,58 @@ model.<span class="cf">fit</span>(X_train, y_train)</pre>
   </div>
 </div>
 
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script defer src="assets/javascripts/home-i18n.js?v=20260701"></script>
 <script defer src="assets/javascripts/home-app.js?v=20260701"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    const syncHomeHeader = function() {
+      const header = document.querySelector('.md-header');
+      const headerHeight = header ? header.offsetHeight : 96;
+      const threshold = Math.max(headerHeight * 0.75, 72);
+
+      document.documentElement.classList.toggle('khiops-home-scrolled', window.scrollY > threshold);
+    };
+
+    const syncHomeLayout = function() {
+      const heroStage = document.getElementById('homeHeroStage');
+      const header = document.querySelector('.md-header');
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      if (!heroStage) {
+        return;
+      }
+
+      const mainOffset = Math.max(heroStage.offsetHeight - headerHeight, 0);
+      document.documentElement.style.setProperty('--khiops-home-header-offset', headerHeight + 'px');
+      document.documentElement.style.setProperty('--khiops-home-main-offset', mainOffset + 'px');
+    };
+
+    syncHomeHeader();
+    syncHomeLayout();
+    window.addEventListener('scroll', syncHomeHeader, { passive: true });
+    window.addEventListener('resize', function() {
+      syncHomeLayout();
+      syncHomeHeader();
+    });
+    window.addEventListener('load', function() {
+      syncHomeLayout();
+      syncHomeHeader();
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function() {
+        syncHomeLayout();
+        syncHomeHeader();
+      });
+    }
+
+    window.requestAnimationFrame(function() {
+      syncHomeLayout();
+      syncHomeHeader();
+    });
+
     if (typeof setLang === 'function') {
       setLang('en');
     }
@@ -202,4 +265,3 @@ model.<span class="cf">fit</span>(X_train, y_train)</pre>
 </script>
 
 {% endblock %}
-{% block content %}{% endblock %}
