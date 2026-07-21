@@ -156,7 +156,7 @@ html.khiops-home .md-tabs{
 .bg-wrap>*:not(canvas){position:relative;z-index:1;}
 
 /* HERO */
-.hero{max-width:1120px;margin:0 auto;padding:calc(var(--khiops-home-header-offset) + 24px) 44px 40px;display:grid;grid-template-columns:1fr 420px;gap:72px;align-items:start;}
+.hero{max-width:1120px;margin:0 auto;padding:calc(var(--khiops-home-header-offset) + var(--khiops-home-tabs-offset) + var(--md-default-layout-spacing, 1.5rem)) 44px 40px;display:grid;grid-template-columns:1fr 420px;gap:72px;align-items:start;}
 .lin{display:flex;align-items:center;gap:9px;margin-bottom:26px;flex-wrap:wrap;}
 .lin-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,121,0,0.14);border:1px solid rgba(255,121,0,0.3);color:var(--or);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:999px;}
 .lin-sep{color:var(--t3);font-size:12px;}
