@@ -2,14 +2,14 @@ function visuMenu(menu) {
     const menuContainer = document.getElementById('visu-menu');
     let isFirst = true;
     menu.map(item => {
-        const button = document.createElement('button');
+        const button = document.createElement('a');
         const text = document.createTextNode(item.title);
         button.appendChild(text);
-        button.type = 'button';
+        button.href = 'javascript:void(0)';
         button.setAttribute('title', item.description);
         button.dataset.file = item.file;
         button.classList.add('visu-menu-item', 'md-button');
-        button.addEventListener('click', (e) => loadData(item.file, e));
+        button.addEventListener('click', (e) => { e.preventDefault(); loadData(item.file, e); });
         if (isFirst) {
             isFirst = false;
             setTimeout(() => {
