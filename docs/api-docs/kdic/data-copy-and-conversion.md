@@ -43,7 +43,7 @@ Copy of a timestamp value.
 ## CopyTSTZ
 
 ```kdic-api-docs
-TimestampTZ CopyTSTZ(Timestamp value)
+TimestampTZ CopyTSTZ(TimestampTZ value)
 ```
 
 Copy of a timestampTZ value.
