@@ -133,6 +133,13 @@
   white-space: pre;
 }
 
+#visu-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+}
+
 @media screen and (max-width: 44.984375em) {
   .md-typeset .khiops-notebook-cell {
     padding-left: 0;

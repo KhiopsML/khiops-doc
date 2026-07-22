@@ -180,10 +180,28 @@ html.khiops-home .md-tabs{
 .pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--t2);padding:4px 11px;border-radius:999px;border:1px solid var(--bde);background:rgba(13,12,20,0.7);}
 .pill i{font-size:11px;}
 .ctas{display:flex;align-items:center;gap:10px;margin-bottom:26px;flex-wrap:wrap;}
-.bp{display:inline-flex;align-items:center;gap:7px;background:var(--or);color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;padding:12px 22px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;}
-.bp:hover{background:var(--ord);}
-.bg-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);color:var(--t2);font-family:var(--sans);font-size:14px;font-weight:500;padding:12px 18px;border-radius:10px;border:1px solid var(--bde);cursor:pointer;text-decoration:none;}
-.bg-btn:hover{color:var(--t1);}
+.home-refonte-root .md-typeset .md-button.home-cta-primary{
+  background-color:var(--or);
+  border-color:var(--or);
+  color:#fff;
+}
+.home-refonte-root .md-typeset .md-button.home-cta-primary:hover,
+.home-refonte-root .md-typeset .md-button.home-cta-primary:focus{
+  background-color:var(--ord);
+  border-color:var(--ord);
+  color:#fff;
+}
+.home-refonte-root .md-typeset .md-button.home-cta-secondary{
+  background-color:rgba(255,255,255,0.16);
+  border-color:rgba(255,255,255,0.34);
+  color:#fff;
+}
+.home-refonte-root .md-typeset .md-button.home-cta-secondary:hover,
+.home-refonte-root .md-typeset .md-button.home-cta-secondary:focus{
+  background-color:rgba(255,255,255,0.24);
+  border-color:rgba(255,255,255,0.5);
+  color:#fff;
+}
 .panel{background:rgba(13,14,24,0.9);border:1px solid rgba(255,255,255,0.2);border-radius:14px;overflow:hidden;box-shadow:0 24px 50px rgba(4,6,14,0.62),0 0 0 1px rgba(255,255,255,0.05) inset;}
 .ptb{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:rgba(24,22,36,0.95);border-bottom:1px solid var(--bd);}
 .pdo{display:flex;gap:5px;}
@@ -258,8 +276,6 @@ html.khiops-home .md-tabs{
 .pdot.past{background:rgba(255,121,0,0.35);border-color:rgba(255,121,0,0.35);}
 
 .cnav{display:none;align-items:center;justify-content:space-between;gap:10px;margin:-4px 0 14px;}
-.cbtn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 11px;border-radius:999px;border:1px solid rgba(20,15,40,0.14);background:#fff;color:#444058;font-size:12px;font-weight:600;cursor:pointer;}
-.cbtn:hover{border-color:rgba(255,121,0,0.35);color:#1A1724;}
 .ccount{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#75718A;}
 
 .ptag{display:none;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:999px;margin-bottom:12px;opacity:0;transition:opacity .4s;}
@@ -323,7 +339,7 @@ html.khiops-home .md-tabs{
 .new-pill i{font-size:15px;color:var(--or);}
 
 /* V11 SECTION */
-.v11-section{position:relative;border-top:none;margin-top:-1px;}
+.v11-section{position:relative;border-top:none;margin-top:0;}
 .v11-inner{max-width:1120px;margin:0 auto;padding:84px 44px 96px;position:relative;z-index:1;}
 .v11-head{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
 .v11-chip{font-family:var(--sans);background:var(--or);color:#fff;font-size:13px;font-weight:700;letter-spacing:.05em;padding:5px 13px;border-radius:8px;transform:translateY(-6px);}
@@ -358,7 +374,6 @@ html.khiops-home .md-tabs{
   .crisp-layout{grid-template-columns:1fr;gap:36px;}
   .wheel-wrap{width:100%;height:auto;}
   .cnav{margin-top:2px;}
-  .cbtn{height:34px;padding:0 12px;}
   .below{padding:40px 20px 56px;}
   .below-wrap{border-top:none;}
   .pgrid{grid-template-columns:1fr;}
@@ -383,6 +398,7 @@ html.khiops-home .md-tabs{
 .horizon-svg{position:absolute;left:0;top:0;width:100%;height:100%;display:block;}
 .tooth-transition.top{margin-top:-1px;}
 .tooth-transition.bottom{margin-top:-1px;margin-bottom:-1px;}
+.tooth-transition.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#F6F3EC;pointer-events:none;}
 .dive-hint{position:absolute;left:78%;bottom:8px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;letter-spacing:.08em;line-height:1.1;white-space:nowrap;text-transform:uppercase;font-weight:600;color:var(--t3);z-index:2;pointer-events:none;}
 .dive-hint i{font-size:15px;color:var(--or);animation:bob 2s ease-in-out infinite;}
 @keyframes bob{0%,100%{transform:translateY(0);}55%{transform:translateY(6px);}}
