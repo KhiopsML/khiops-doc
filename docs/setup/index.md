@@ -22,17 +22,15 @@ Khiops supports a diversified set of installation options, to meet different nee
     - [**Cloud-ready Khiops Python library**](drivers-and-sdk-for-library.md)
     - [**Khiops application**](drivers-and-sdk-for-application.md)
 
-!!! warning "Supported Platforms"
-    We support :simple-python: **Python from 3.10 to 3.14** on the following operating systems:
+!!! success "Supported Platforms"
+
+    The following platforms are fully tested:
 
     - Windows 10 or later
-    - Ubuntu 20, 22 and 24 (LTS) on x86-64 architectures
-    - Ubuntu 22 and 24 (LTS) on ARM architectures
-    - Debian 11, 12 and 13
-    - Rocky Linux 8, 9 and 10
-    - macOS 12 or later. Full support for macOS 13 or later on ARM architectures, limited support for macOS 12 or for x86-64 architectures.
-
-    The :simple-googlecolab: **Google Colaboratory** environments are supported. To benefit from Khiops on these environments, users are encouraged to install the Khiops :simple-anaconda:**Conda** package, which has been tested in these environments.
+    - Ubuntu 20.04, 22.04, 24.04, and 26.04 LTS (on both x86-64 & ARM architectures)
+    - Debian 11, 12, and 13
+    - Rocky Linux 8, 9, and 10
+    - macOS 13 or later on ARM (only via the Khiops Python library).
 
     For other platforms, please :material-send: **[Contact Us][contact]**.
 
