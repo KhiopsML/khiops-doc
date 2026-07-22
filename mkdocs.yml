@@ -148,17 +148,17 @@ nav:
       - tutorials/introduction.md
       - Scikit-learn API:
           - Quickstart Guide:  tutorials/quickstart.md
-          - Single-Table Tutorial: tutorials/notebook-pages/single_table_classifier.md
-          - No Need for Data Preparation: tutorials/notebook-pages/No_data_Cleaning.md
-          - Interpretable Variable Encoding: tutorials/notebook-pages/Optimal_Encoding.md
-          - Multi-Table Tutorial: tutorials/notebook-pages/multi_table_classifier.md
-          - "Auto Feature Engineering & More": tutorials/notebook-pages/Use_in_any_ML_pipeline.md
+          - Single-Table Tutorial: tutorials/notebooks/single_table_classifier.md
+          - No Need for Data Preparation: tutorials/notebooks/No_data_Cleaning.md
+          - Interpretable Variable Encoding: tutorials/notebooks/Optimal_Encoding.md
+          - Multi-Table Tutorial: tutorials/notebooks/multi_table_classifier.md
+          - "Auto Feature Engineering & More": tutorials/notebooks/Use_in_any_ML_pipeline.md
       - Core API & Dictionaries:
           - Start Using Dictionaries: tutorials/kdic_intro.md
           - Single-Table Concepts: tutorials/kdic_single_table.md
-          - Single-Table Tutorial: tutorials/notebook-pages/single_table_classifier_core.md
+          - Single-Table Tutorial: tutorials/notebooks/single_table_classifier_core.md
           - Multi-Table Concepts: tutorials/kdic_multi_table.md
-          - Multi-Table Tutorial: tutorials/notebook-pages/multi_table_classifier_core.md
+          - Multi-Table Tutorial: tutorials/notebooks/multi_table_classifier_core.md
       - Deployment & Integration:
           - Cloud Storage: tutorials/storage.md
           - Running Khiops with Docker: tutorials/docker.md

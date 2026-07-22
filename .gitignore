@@ -5,10 +5,10 @@
 .ipynb_checkpoints
 
 # Other
-docs/advanced/Notebooks/logs.log
-docs/tutorials/Notebooks/st_results
-docs/tutorials/Notebooks/mt_results
-docs/tutorials/notebook-pages/
+docs/advanced/notebooks/logs.log
+docs/tutorials/sourced-notebooks/st_results
+docs/tutorials/sourced-notebooks/mt_results
+docs/tutorials/notebooks/
 docs/api-docs/python-api/api/
 site/*
 .cache

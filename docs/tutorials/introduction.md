@@ -37,7 +37,7 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
     !!! example "Follow the [**No Need for Data Preparation**][no_data_cleaning] tutorial to see this in action."
 
-[no_data_cleaning]: ./notebook-pages/No_data_Cleaning.md
+[no_data_cleaning]: ./notebooks/No_data_Cleaning.md
 
 - **Skip Variable Encoding**: Before using variables in a machine learning model, they often need to be transformed into a format the algorithm can process (e.g. categorical variables must be converted into numerical representations). Khiops eliminates this complexity with its MODL formalism, which automatically encodes categorical and numerical variables into statistically optimal groups or intervals.
 
@@ -45,7 +45,8 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
     !!! example "Explore the [**Optimal Encoding**][optimal_encoding] tutorial and learn more about the concept on the [**Optimal Encoding**][encoding_foundations] foundations page."
 
-[optimal_encoding]: ./notebook-pages/Optimal_Encoding.md
+[optimal_encoding]: ./notebooks/Optimal_Encoding.md
+
 [encoding_foundations]: ../learn/preprocessing.md
 
 - **Skip Feature Engineering**: When working with multi-table datasets (arguably the most common scenario in real-world business use cases), feature engineering often becomes one of the most labor-intensive stages. Traditionally, it requires significant domain expertise and trial-and-error to create meaningful features. Khiops automates this process entirely, saving you time and delivering optimal results.
@@ -56,7 +57,7 @@ Khiops introduces a streamlined and effective approach to data science, **simpli
 
     !!! example "Explore the [**Auto Feature Engineering**][autofeature_tuto] tutorial and learn about the methodology in the [dedicated][autofeature] foundations section."
 
-[autofeature_tuto]: ./notebook-pages/Use_in_any_ML_pipeline.md
+[autofeature_tuto]: ./notebooks/Use_in_any_ML_pipeline.md
 [autofeature]: ../learn/autofeature_engineering.md
 
 - **Skip Hyperparameter Tuning and Questioning About Overfitting**: Traditional machine learning libraries often require time-consuming hyperparameter tuning (learning rates or regularization coefficients) to optimize model performance, and careful regularization to prevent overfitting. Khiops eliminates both concerns thanks to its unique MODL formalism rooted in information theory. It operates without hyperparameters and naturally balances model complexity and information gain (only significant patterns are captured).

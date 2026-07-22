@@ -31,6 +31,15 @@ uv run zensical serve
 Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/ . You don't need to
 restart the server every time because the site will refresh itself when you modify files.
 
+### Editing Tutorial Notebooks
+- Edit source notebooks in `docs/tutorials/sourced-notebooks/` (`.ipynb` files).
+- Generated Markdown pages are written to `docs/tutorials/notebooks/` by the converter.
+- After changing a source notebook, regenerate pages with:
+
+```bash
+uv run python scripts/convert_notebooks.py
+```
+
 #### pre-commit
 The setup step installs the `pre-commit` tool. This allows to automatize some tasks such as
 formatting and cleaning of the notebooks.

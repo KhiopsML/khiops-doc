@@ -110,4 +110,4 @@ runs:
         # Remove the samples directory
         rm -fr ./khiops_samples
         # Remove generated notebook markdown pages
-        rm -fr docs/tutorials/notebook-pages
+        rm -fr docs/tutorials/notebooks
