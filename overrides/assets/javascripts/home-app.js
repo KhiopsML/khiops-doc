@@ -249,13 +249,24 @@ window.addEventListener('load',()=>{
   const ids=['eN','e0','e1','e2','e3','e4','e5','e7'];
   gsap.set(ids.map(id=>'#'+id),{opacity:0,y:22});
   gsap.to(ids.map(id=>'#'+id),{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out',delay:.1});
-  
-  if(window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo(['#cs0','#cs1','#cs2'],{opacity:0,y:22},{opacity:1,y:0,duration:.6,stagger:.1,ease:'power2.out',scrollTrigger:{trigger:'#crispSec',start:'top 85%'}});
-    gsap.fromTo('.crisp-layout',{opacity:0,y:28},{opacity:1,y:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:'#crispSec',start:'top 78%'}});
-    gsap.fromTo('.vcard',{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.12,ease:'power2.out',scrollTrigger:{trigger:'#v11Sec',start:'top 84%'}});
-  }
+
+  const animateOnEnter=(target,from,to,threshold=.2)=>{
+    const el=typeof target==='string'?document.querySelector(target):target;
+    if(!el)return;
+    gsap.set(target,from);
+    const io=new IntersectionObserver((entries)=>{
+      if(!entries[0]||!entries[0].isIntersecting)return;
+      gsap.to(target,to);
+      io.disconnect();
+    },{threshold});
+    io.observe(el);
+  };
+
+  animateOnEnter('#crispSec .s-eye',{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'},.2);
+  animateOnEnter('#crispSec .s-title',{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out',delay:.08},.2);
+  animateOnEnter('#crispSec .s-sub',{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out',delay:.16},.2);
+  animateOnEnter('.crisp-layout',{opacity:0,y:28},{opacity:1,y:0,duration:.8,ease:'power2.out'},.2);
+  animateOnEnter('#v11Grid .vcard',{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.12,ease:'power2.out'},.2);
 });
 
 /* ── Transitions « dent » : dunes pleine largeur + pyramide pleine à taille fixe ── */

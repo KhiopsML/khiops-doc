@@ -120,8 +120,8 @@ extra_css:
 # Add JS for Material plugins
 extra_javascript:
   - assets/javascripts/mathjax.min.js
+  - assets/javascripts/mathjax-loader.js
   - assets/javascripts/visu-menu.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
   - macros
