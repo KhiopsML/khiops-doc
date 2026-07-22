@@ -54,10 +54,8 @@ This rule extends the [`Entity Rules`](entity-rules.md) to `TextList` variables.
 ## TableAllTexts
 
 
-Numerical TableCountDistinct(Table table, Categorical value)
-
 ```kdic-api-docs
-TextList TableAllTexts(Table table, TextList)
+TextList TableAllTexts(Table table, Text value)
 ```
 
 Aggregates all `Text` values from a secondary variable in a `TextList`.
@@ -66,7 +64,7 @@ This rule extends the [`Table Rules`](table-rules.md) to `Text` variables.
 ## TableAllTextLists
 
 ```kdic-api-docs
-TextList TextList(Text value, ...)
+TextList TableAllTextLists(Table table, TextList value)
 ```
 
 Concatenates all `TextList` values from a secondary variable into a single `TextList`.
