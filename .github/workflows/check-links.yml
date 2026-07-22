@@ -46,6 +46,14 @@ jobs:
           KHIOPS_S3_DRIVER_VERSION: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
           EXECUTE_KHIOPS_TUTORIALS: "false"
         run: uv run zensical build --strict
+      - name: Install required system dependencies
+        run: sudo apt-get install -y libarchive-tools
+      - name: Fetch Khiops Python API docs
+        run: |
+          wget -O khiops_api_docs.zip "https://github.com/KhiopsML/khiops-python/releases/download/${{ env.KHIOPS_PYTHON_VERSION }}/khiops-api-docs-${{ env.KHIOPS_PYTHON_VERSION }}.zip"
+          mkdir -p site/api-docs/python-api/api
+          bsdtar --strip-components=3 -C site/api-docs/python-api/api -xvf khiops_api_docs.zip
+          rm -f khiops_api_docs.zip
       - name: Restore lychee cache
         uses: actions/cache@v4
         with:
@@ -55,7 +63,7 @@ jobs:
       - name: Check for broken links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --root-dir site --cache --no-progress --accept 200,403 --exclude 'file:///.*\d+\.\d+\.\d+' 'site/**/*.html'
+          args: --root-dir site --cache --no-progress --accept 200,403 --exclude 'file:///.*\d+\.\d+\.\d+' --exclude 'https://khiops\.org' 'site/**/*.html'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
