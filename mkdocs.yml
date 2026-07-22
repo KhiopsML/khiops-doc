@@ -10,7 +10,7 @@ copyright: Copyright &copy; 2023-2026 Orange S.A.
 
 theme:
   name: material
-  logo: assets/images/khiops-logo.png
+  logo: assets/images/generated/khiops-logo-ui.png
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -34,7 +34,7 @@ theme:
       toggle:
         icon: lucide/moon
         name: Switch to system preference
-  favicon: assets/images/khiops-logo.png
+  favicon: assets/images/generated/khiops-logo-favicon.png
   custom_dir: overrides
   font:
     text: Inter

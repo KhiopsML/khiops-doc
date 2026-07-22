@@ -183,7 +183,7 @@ function activate(i){
     const t=document.getElementById('ptag');t.className='ptag '+ph.tc;t.textContent=L.tag;
     document.getElementById('pttl').innerHTML=L.ttl;
     document.getElementById('pbdy').innerHTML=L.bdy;
-    document.getElementById('pcaps').innerHTML=L.caps.map(c=>`<div class="cap"><div class="cap-i ${c.c}"><i class="ti ${c.i}"></i></div><div class="cap-t"><strong>${c.t}</strong>${c.b}</div></div>`).join('')+(L.extra||'');
+    document.getElementById('pcaps').innerHTML=L.caps.map(c=>`<div class="cap"><div class="cap-i ${c.c}">${c.svg}</div><div class="cap-t"><strong>${c.t}</strong>${c.b}</div></div>`).join('')+(L.extra||'');
     info.classList.add('active');
     gsap.fromTo(tg,{opacity:0,y:14},{opacity:1,y:0,duration:.4,stagger:.07,ease:'power2.out'});
   }});
@@ -299,6 +299,6 @@ window.addEventListener('load',()=>{
         </g>
         <circle cx="${APX}" cy="${APEXY}" r="2.6" fill="#FF7900"/>
       </svg>
-      ${idx===0?`<div class="dive-hint"><span>Beneath surface</span><i class="ti ti-chevrons-down"></i></div>`:""}`;
+      ${idx===0?`<div class="dive-hint"><span>Beneath surface</span><span class="ti-svg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m7 8 5 5 5-5"/><path d="m7 13 5 5 5-5"/></svg></span></div>`:""}`;
   });
 })();

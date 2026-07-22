@@ -63,6 +63,27 @@ const WHEEL_NAMES = {
   en:['Understanding','Understanding','Preparation','Modeling','Evaluation','Deployment']
 };
 
+function svgIcon(paths) {
+  return `<span class="ti-svg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${paths}</svg></span>`;
+}
+
+const HOME_ICONS = {
+  bolt: svgIcon('<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>'),
+  chartHistogram: svgIcon('<path d="M4 19h16"/><rect x="6" y="11" width="2.6" height="6"/><rect x="10.7" y="8" width="2.6" height="9"/><rect x="15.4" y="5" width="2.6" height="12"/>'),
+  clock: svgIcon('<circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/>'),
+  cloud: svgIcon('<path d="M7 18h10a4 4 0 0 0 .3-8A5.5 5.5 0 0 0 7 8a4 4 0 0 0 0 10z"/>'),
+  database: svgIcon('<ellipse cx="12" cy="5.5" rx="7" ry="2.8"/><path d="M5 5.5v9c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8v-9"/><path d="M5 10c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8"/>'),
+  eye: svgIcon('<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/>'),
+  function: svgIcon('<path d="M16 4c-3 0-5 2-5 5v7"/><path d="M8 11h8"/><path d="M10 20h4"/>'),
+  presentation: svgIcon('<path d="m9 7 8 5-8 5z"/>'),
+  refresh: svgIcon('<path d="M20 11a8 8 0 0 0-14-4"/><path d="M4 7V3h4"/><path d="M4 13a8 8 0 0 0 14 4"/><path d="M20 17v4h-4"/>'),
+  server: svgIcon('<rect x="4" y="4" width="16" height="6" rx="1.8"/><rect x="4" y="14" width="16" height="6" rx="1.8"/><path d="M8 7h.01M8 17h.01"/>'),
+  shield: svgIcon('<path d="M12 3 5 6v5c0 5 3.2 8 7 10 3.8-2 7-5 7-10V6z"/><path d="m9 12 2 2 4-4"/>'),
+  target: svgIcon('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.4"/>'),
+  variable: svgIcon('<path d="M16 4c-3 0-5 2-5 5v7"/><path d="M8 11h8"/><path d="M10 20h4"/>'),
+  wand: svgIcon('<path d="m4 20 7-7"/><path d="m14 6 4-4"/><path d="m15 9 2-2"/><path d="m12 3 1.5 1.5"/><path d="m18 12 1.5 1.5"/><path d="m20 8 1.5-1.5"/>')
+};
+
 function setLang(lang){
   LANG = lang;
   document.documentElement.lang = lang;
@@ -86,25 +107,25 @@ const PH=[
     fr:{ tag:'Phase 01 — Business Understanding',
       ttl:'La seule phase où<br><em>Khiops s\'efface.</em>',
       bdy:'La réflexion métier ne se délègue pas à un algorithme. <strong>Khiops vous redonne du temps pour y exceller</strong> — en automatisant radicalement toutes les phases suivantes.',
-      caps:[{i:'ti-clock',c:'n',t:'Investissez ici',b:'Business Understanding est la seule phase que Khiops ne remplace pas. Le temps libéré sur les phases 2 à 6 doit être réinvesti ici — c\'est là que la valeur est créée.'}] },
+      caps:[{svg:HOME_ICONS.clock,c:'n',t:'Investissez ici',b:'Business Understanding est la seule phase que Khiops ne remplace pas. Le temps libéré sur les phases 2 à 6 doit être réinvesti ici — c\'est là que la valeur est créée.'}] },
     en:{ tag:'Phase 01 — Business Understanding',
       ttl:'The phase where<br><em>the objective is defined.</em>',
       bdy:'This phase remains a human responsibility: target definition, decision criteria and operational constraints. <strong>Khiops does not replace this step</strong>; it reduces downstream technical overhead.',
-      caps:[{i:'ti-clock',c:'n',t:'Keep expertise here',b:'Use the time saved in phases 2 to 6 to refine hypotheses, costs of errors and deployment constraints.'}] }
+      caps:[{svg:HOME_ICONS.clock,c:'n',t:'Keep expertise here',b:'Use the time saved in phases 2 to 6 to refine hypotheses, costs of errors and deployment constraints.'}] }
   },
   { grad:'G1', lblId:'lbl-1', dot:{x:450,y:250}, lc:'#FF7900', tc:'o',
     fr:{ tag:'Phase 02 — Data Understanding',
       ttl:'Comprendre vos données<br><em>en quelques secondes.</em>',
       bdy:'Avant même de modéliser, Khiops <strong>diagnostique automatiquement</strong> la qualité de vos données et produit des représentations statistiques optimales.',
       caps:[
-        {i:'ti-chart-histogram',c:'o',t:'Histogrammes à densité optimale',b:'Discrétisation MODL — chaque bin statistiquement justifié. Distribution, outliers, valeurs manquantes visibles d\'un coup d\'œil.'},
-        {i:'ti-shield-check',c:'o',t:'Diagnostic qualité instantané',b:'Variables à faible information, distributions dégénérées — détectées avant toute modélisation.'}] },
+        {svg:HOME_ICONS.chartHistogram,c:'o',t:'Histogrammes à densité optimale',b:'Discrétisation MODL — chaque bin statistiquement justifié. Distribution, outliers, valeurs manquantes visibles d\'un coup d\'œil.'},
+        {svg:HOME_ICONS.shield,c:'o',t:'Diagnostic qualité instantané',b:'Variables à faible information, distributions dégénérées — détectées avant toute modélisation.'}] },
     en:{ tag:'Phase 02 — Data Understanding',
       ttl:'Stay focus on <br><em>the story your data tells.</em>',
       bdy:'Khiops processes raw data directly; the time saved on data plumbing allows you to challenge your data—specifically regarding biases, drift, leakage, and so on.',
       caps:[
-        {i:'ti-chart-histogram',c:'o',t:'Interpretable summaries',b:'Khiops discretizes categorical and numerical values with MDL complexity control. For example, it finds the optimal number of intervals and their boundaries for each numerical variable.'},
-        {i:'ti-shield-check',c:'o',t:'The full information from the raw data',b:'Khiops digests raw data directly, making it possible to preserve the full data signal and leverage all its subtleties.'}] }
+        {svg:HOME_ICONS.chartHistogram,c:'o',t:'Interpretable summaries',b:'Khiops discretizes categorical and numerical values with MDL complexity control. For example, it finds the optimal number of intervals and their boundaries for each numerical variable.'},
+        {svg:HOME_ICONS.shield,c:'o',t:'The full information from the raw data',b:'Khiops digests raw data directly, making it possible to preserve the full data signal and leverage all its subtleties.'}] }
 
   },
   { grad:'G2', lblId:'lbl-2', dot:{x:350,y:423}, lc:'rgba(255,150,48,.9)', tc:'o',
@@ -112,59 +133,59 @@ const PH=[
       ttl:'Préparer les données ?<br><em>Khiops le fait.</em>',
       bdy:'Fini le one-hot encoding, les heuristiques pour valeurs manquantes. <strong>Khiops génère automatiquement les variables pertinentes</strong> pour votre cible.',
       caps:[
-        {i:'ti-wand',c:'o',t:'Zéro préparation ad hoc',b:'Pas d\'encodage manuel. Le formalisme MODL traite les données brutes telles qu\'elles arrivent.'},
-        {i:'ti-variable',c:'o',t:'Feature engineering automatique',b:'Khiops construit les agrégats pertinents sur données relationnelles — des variables que vous n\'auriez peut-être pas pensé à créer.'}] },
+        {svg:HOME_ICONS.wand,c:'o',t:'Zéro préparation ad hoc',b:'Pas d\'encodage manuel. Le formalisme MODL traite les données brutes telles qu\'elles arrivent.'},
+        {svg:HOME_ICONS.variable,c:'o',t:'Feature engineering automatique',b:'Khiops construit les agrégats pertinents sur données relationnelles — des variables que vous n\'auriez peut-être pas pensé à créer.'}] },
     en:{ tag:'Phase 03 — Data Preparation',
       ttl:'Preparation and encoding<br><em>in one pipeline.</em>',
       bdy:'Encoding and relational aggregates are inferred from the training objective, reducing manual preprocessing scripts and heuristics.',
       caps:[
-        {i:'ti-variable',c:'o',t:'Autofeature engineering',b:'Multi-table aggregates are generated and selected in the same workflow. The pipeline is robust, scalable and not prone to overfitting, unlike manual feature engineering.'},
-        {i:'ti-function',c:'o',t:'No manual transforms',b:'Log/square transforms and feature normalization are generally unnecessary: rank-based, non-parametric discretization adapts directly to observed values.'}] }
+        {svg:HOME_ICONS.variable,c:'o',t:'Autofeature engineering',b:'Multi-table aggregates are generated and selected in the same workflow. The pipeline is robust, scalable and not prone to overfitting, unlike manual feature engineering.'},
+        {svg:HOME_ICONS.function,c:'o',t:'No manual transforms',b:'Log/square transforms and feature normalization are generally unnecessary: rank-based, non-parametric discretization adapts directly to observed values.'}] }
   },
   { grad:'G3', lblId:'lbl-3', dot:{x:150,y:423},  lc:'#3ECFA0', tc:'o',
     fr:{ tag:'Phase 04 — Modeling',
       ttl:'Des modèles précis,<br><em>sans arbitrage.</em>',
       bdy:'Le formalisme MODL garantit des modèles statistiquement optimaux — sans grid search, sans cross-validation coûteuse, sans overfitting par construction.',
       caps:[
-        {i:'ti-target',c:'o',t:'Précis & Robuste',b:'Sélection parcimonieuse, encodage optimal intégré — les modèles généralisent bien par nature.'},
-        {i:'ti-bolt',c:'g',t:'Automatique & Frugal',b:'Pas d\'hyperparamètre, C++ optimisé. Une fraction du temps et des ressources d\'un AutoML classique.'}],
+        {svg:HOME_ICONS.target,c:'o',t:'Précis & Robuste',b:'Sélection parcimonieuse, encodage optimal intégré — les modèles généralisent bien par nature.'},
+        {svg:HOME_ICONS.bolt,c:'g',t:'Automatique & Frugal',b:'Pas d\'hyperparamètre, C++ optimisé. Une fraction du temps et des ressources d\'un AutoML classique.'}],
       extra:'<div class="tagr"><span class="xt o">Précis</span><span class="xt o">Robuste</span><span class="xt g">Automatique</span><span class="xt b">Frugal RAM</span><span class="xt p">Frugal CPU</span></div>' },
     en:{ tag:'Phase 04 — Modeling',
       ttl:'Parsimonious training,<br><em>without tuning loops.</em>',
       bdy:'Training uses a Minimum Description Length (MDL) model-selection criteria from information theory, ensuring statistically optimal models without costly grid search or cross-validation.',
       caps:[
-        {i:'ti-bolt',c:'g',t:'Efficient hyperparameter-free formalism',b:'Training is executed once, without cross-validated hyperparameter sweeps.'},
-        {i:'ti-target',c:'o',t:'Controlled complexity',b:'Overfitting control is built in: MDL balances model complexity against data fit during training and keeps a small number of features.'},] }
+        {svg:HOME_ICONS.bolt,c:'g',t:'Efficient hyperparameter-free formalism',b:'Training is executed once, without cross-validated hyperparameter sweeps.'},
+        {svg:HOME_ICONS.target,c:'o',t:'Controlled complexity',b:'Overfitting control is built in: MDL balances model complexity against data fit during training and keeps a small number of features.'},] }
   },
   { grad:'G4', lblId:'lbl-4', dot:{x:50,y:250},  lc:'#29C4C4', tc:'o',
     fr:{ tag:'Phase 05 — Evaluation',
       ttl:'Des modèles que vous pouvez<br><em>expliquer au métier.</em>',
       bdy:'Khiops ne produit pas des boîtes noires. Chaque modèle est <strong>interprétable par construction</strong> — variables, encodages et contributions directement lisibles.',
       caps:[
-        {i:'ti-eye',c:'o',t:'Interprétabilité native',b:'Encodages optimaux, contributions par variable — sans post-hoc explainability.'},
-        {i:'ti-presentation',c:'o',t:'Présentable au métier',b:'Résultats structurés pour des décideurs non-techniques, sans jargon.'}] },
+        {svg:HOME_ICONS.eye,c:'o',t:'Interprétabilité native',b:'Encodages optimaux, contributions par variable — sans post-hoc explainability.'},
+        {svg:HOME_ICONS.presentation,c:'o',t:'Présentable au métier',b:'Résultats structurés pour des décideurs non-techniques, sans jargon.'}] },
     en:{ tag:'Phase 05 — Evaluation',
       ttl:'Evaluation with<br><em>auditable outputs.</em>',
       bdy:'Models remain interpretable through explicit encodings, selected variables and additive contributions.',
       caps:[
-        {i:'ti-eye',c:'o',t:'Robust by design',b:'The robustness of the formalism allows for confident deployment to production. And if there is no relevant information, the model does not invent anything. Something surprising? Challenge the data, not the model.'},
-        {i:'ti-presentation',c:'o',t:'Dedicated visualization tool',b:'Khiops has an interactive visualization tool that enables access to comprehensive preparation and modelization results directly.'}] }
+        {svg:HOME_ICONS.eye,c:'o',t:'Robust by design',b:'The robustness of the formalism allows for confident deployment to production. And if there is no relevant information, the model does not invent anything. Something surprising? Challenge the data, not the model.'},
+        {svg:HOME_ICONS.presentation,c:'o',t:'Dedicated visualization tool',b:'Khiops has an interactive visualization tool that enables access to comprehensive preparation and modelization results directly.'}] }
   },
   { grad:'G5', lblId:'lbl-5', dot:{x:150,y:77},   lc:'#9080FF', tc:'o',
     fr:{ tag:'Phase 06 — Deployment',
       ttl:'Du batch à l\'online,<br><span class="eg">à n\'importe quelle échelle.</span>',
       bdy:'Khiops est conçu pour la production industrielle. <strong>Batch ou temps réel</strong>, sur des volumétries massives avec une empreinte mémoire et CPU maîtrisée, y compris sur des données stockées dans le cloud.',
       caps:[
-        {i:'ti-database',c:'o',t:'Volumétries industrielles',b:'Out-of-core nativement — datasets dépassant la RAM, adaptatif au hardware.'},
-        {i:'ti-refresh',c:'g',t:'Batch & scoring en ligne (KNI)',b:'Khiops Native Interface permet le scoring temps réel à latence maîtrisée.'},
-        {i:'ti-cloud',c:'g',t:'Données cloud',b:'Compatible avec des pipelines sur stockages cloud via connecteurs natifs (GCS/S3) et flux batch industrialisés.'}] },
+        {svg:HOME_ICONS.database,c:'o',t:'Volumétries industrielles',b:'Out-of-core nativement — datasets dépassant la RAM, adaptatif au hardware.'},
+        {svg:HOME_ICONS.refresh,c:'g',t:'Batch & scoring en ligne (KNI)',b:'Khiops Native Interface permet le scoring temps réel à latence maîtrisée.'},
+        {svg:HOME_ICONS.cloud,c:'g',t:'Données cloud',b:'Compatible avec des pipelines sur stockages cloud via connecteurs natifs (GCS/S3) et flux batch industrialisés.'}] },
     en:{ tag:'Phase 06 — Deployment',
       ttl:'Deployment from batch<br><span class="eg">to online scoring.</span>',
       bdy:'The same modeling pipeline can be used in production with controlled resource usage, for both periodic batch runs and low-latency scoring.',
       caps:[
-        {i:'ti-database',c:'o',t:'Large-scale execution',b:'Out-of-core and distributed modes support datasets that exceed RAM capacity.'},
-        {i:'ti-refresh',c:'g',t:'Batch and KNI scoring',b:'Khiops Native Interface provides predictable latency for real-time integration.'},
-        {i:'ti-cloud',c:'g',t:'Cloud-compatible data flows',b:'Operational pipelines can use cloud object storage through native connectors (GCS/S3/Azure).'}] }
+        {svg:HOME_ICONS.database,c:'o',t:'Large-scale execution',b:'Out-of-core and distributed modes support datasets that exceed RAM capacity.'},
+        {svg:HOME_ICONS.refresh,c:'g',t:'Batch and KNI scoring',b:'Khiops Native Interface provides predictable latency for real-time integration.'},
+        {svg:HOME_ICONS.cloud,c:'g',t:'Cloud-compatible data flows',b:'Operational pipelines can use cloud object storage through native connectors (GCS/S3/Azure).'}] }
   }
 ];
 
