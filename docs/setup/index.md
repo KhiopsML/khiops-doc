@@ -8,6 +8,8 @@ hide:
 
 # Installation Options {label="Overview"}
 
+!!! note "Looking for legacy v10 documentation? Click [here](https://khiopsml.github.io/khiops-doc-v10/)"
+
 Khiops supports a diversified set of installation options, to meet different needs:
 
   - **Khiops Python Library**:
