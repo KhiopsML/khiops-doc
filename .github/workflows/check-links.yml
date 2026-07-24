@@ -47,7 +47,9 @@ jobs:
           EXECUTE_KHIOPS_TUTORIALS: "false"
         run: uv run zensical build --strict
       - name: Install required system dependencies
-        run: sudo apt-get install -y libarchive-tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libarchive-tools
       - name: Fetch Khiops Python API docs
         run: |
           wget -O khiops_api_docs.zip "https://github.com/KhiopsML/khiops-python/releases/download/${{ env.KHIOPS_PYTHON_VERSION }}/khiops-api-docs-${{ env.KHIOPS_PYTHON_VERSION }}.zip"
