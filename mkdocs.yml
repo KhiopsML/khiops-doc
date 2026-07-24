@@ -36,9 +36,7 @@ theme:
         name: Switch to system preference
   favicon: assets/images/generated/khiops-logo-favicon.png
   custom_dir: overrides
-  font:
-    text: Inter
-    code: Roboto Mono
+  font: false
   features:
     - navigation.tabs
     - navigation.tabs.sticky

@@ -1,6 +1,35 @@
 /* Hide the latest release version from GitHub, as this is not compatible with
  * a multi-version site; see
  * https://github.com/squidfunk/mkdocs-material/issues/2481#issuecomment-804046887 */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-latin-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+  U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+  U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("fonts/roboto-mono-latin-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+  U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+  U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --md-text-font: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --md-code-font: "Roboto Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --md-text-font-family: var(--md-text-font);
+  --md-code-font-family: var(--md-code-font);
+}
+
 .md-source__fact {
   display: none;
 }
