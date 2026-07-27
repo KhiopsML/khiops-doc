@@ -119,7 +119,7 @@ If the scope of analysis is limited to a specific year, you can select the relev
 ### One Data File per Quarter
 
 Suppose service records are stored in a separate file for each quarter.
-You can then use the `TableUnion` rule, as described in the [`Table Concatenation`](#table-concatenation) section.
+You can then use the `TableUnion` rule, as described in the [`Table Concatenation`](.#table-concatenation) section.
 
 !!! success "Example: Merging Several Secondary Data Tables using TableUnion"
     ```kdic
@@ -393,8 +393,8 @@ Below, we present basic examples with data originating from a relational databas
 
     Note that Khiops derivation rules are a powerful feature that enable a wide range of transformations,
     allowing for expressive and detailed conceptual descriptions, including complex structures such as
-    [`double-link lists`](../api-docs/kdic/list-and-graph-rules.md/#BuildList) or 
-    [`graphs`](../api-docs/kdic/list-and-graph-rules.md/#BuildGraph).
+    [`double-link lists`](../api-docs/kdic/list-and-graph-rules.md#buildlist) or 
+    [`graphs`](../api-docs/kdic/list-and-graph-rules.md#buildgraph).
 
     Nonetheless, data management remains essential for preprocessing data from unconventional or non-standard sources to ensure compatibility with Khiops requirements.
 
@@ -428,7 +428,7 @@ The junction table called **CustomerService** stores information about a specifi
 In this case, a Khiops dictionary involving an external table can be used to easily obtain data that meets Khiops' hierarchical requirements.
 
 The external table contains data fully loaded into memory, enabling efficient access when the keys are unrelated to the hierarchical keys of the main entity being analyzed.  
-See [`external tables`](../api-docs/kdic/dictionary-files.md/#interest-of-external-tables) for more information.
+See [`external tables`](../api-docs/kdic/dictionary-files.md#interest-of-external-tables) for more information.
 
 !!! success "Example: Customer and Services - Using an external table"
 
