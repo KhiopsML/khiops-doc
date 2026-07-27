@@ -79,7 +79,7 @@ Here are some examples of aggregates that can be generated from this multi-table
 
 1. $Mode$(Usages, Product)
 2. $Max$(Usages, $YearDay$(useDate))
-3. $Count$($Selection$(Usages, $YearDay$(useDate) in [1;90] and Product="VOD"))$
+3. $Count$($Selection$(Usages, $YearDay$(useDate) in \[1;90\] and Product="VOD"))$
 
 **Interpretation:**
 
@@ -196,8 +196,6 @@ Decision Tree Feature Engineering corresponds to the last **(A')** step of the A
 
 A decision tree is a classification model which aims at predicting a categorical class variable from a set of numerical or categorical input variables. One advantage of decision trees is that they provide understandable models, based on decision rules. Khiops exploit a parameter-free Bayesian approach to build decision trees. This approach consist on an analytic formula for the evaluation of the posterior probability of a decision tree given the data. We thus transform the problem into an sampling problem in the space of decision tree models. Khiops build random informative Trees.
 
-[MODLTREE]: https://link.springer.com/chapter/10.1007/978-3-642-00580-0_2
-
 
 **Input:**
 
@@ -248,12 +246,6 @@ The last term represents the **Likelihood** $-\log(P(d|T))$ which enumerates the
 
 ### Random Trees Generation 
 
-
-
-[information_theory]: https://en.wikipedia.org/wiki/Information_theory "Visit the Wikipedia page"
-[discretization]: preprocessing.md#discretization
-[grouping]: preprocessing.md#grouping
-[publications]: ../references.md#publications
 The purpose of this section is to introduce the intuitions of the Random trees generation, for more details, you can refer to [scientific publications][publications].
 
 Khiops doesn't search to build best tree according to the decision tree criterion. The induction of an optimal decision tree from a data set is NP-hard. The exhaustive search algorithm is then excluded. We use an approximate criterion to generate random informative decision trees.

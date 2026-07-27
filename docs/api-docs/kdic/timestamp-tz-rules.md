@@ -2,7 +2,7 @@
 
 `TimestampTZ` values are encoded in data table files using Khiops native format
 `YYYY-MM-DD HH:MM:SS.zzzzzz`, or an alternative format specified by the
-`TimestampTZFormat` meta-data (see [`Meta-data`](../kdic/dictionary-files.md/#meta-data)).
+`TimestampTZFormat` meta-data (see [`Meta-data`](../kdic/dictionary-files.md#meta-data)).
 
 `TimestampTZ` values consist of a local timestamp value together with time zone information, using
 the ISO 8601 time zone format:

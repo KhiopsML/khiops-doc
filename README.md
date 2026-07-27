@@ -3,34 +3,55 @@ This is the technical repository for the Khiops documentation website.
 
 ## Local Development
 ### Setup
-Install the development requirements
+Install dependencies with uv
 
 ```bash
-pip install -r requirements.txt
+uv sync --frozen --extra notebooks
+```
+
+If you need to execute tutorials locally, install tutorial extras as well:
+
+```bash
+uv sync --frozen --extra notebooks --extra tutorials
 ```
 
 ### Run
+Before running the local server, fetch the Python API docs that are normally injected by CI:
+
+```bash
+./scripts/fetch_python_api_docs.sh
+```
+
 Then, to run locally just execute
 
 ```bash
-mkdocs serve
+uv run zensical serve
 ```
 
 Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/ . You don't need to
 restart the server every time because the site will refresh itself when you modify files.
 
+### Editing Tutorial Notebooks
+- Edit source notebooks in `docs/tutorials/sourced-notebooks/` (`.ipynb` files).
+- Generated Markdown pages are written to `docs/tutorials/notebooks/` by the converter.
+- After changing a source notebook, regenerate pages with:
+
+```bash
+uv run python scripts/convert_notebooks.py
+```
+
 #### pre-commit
-The setup step will also install the `pre-commit` tool. This allows to automatize some tasks such
-as formatting and cleaning of the notebooks.
+The setup step installs the `pre-commit` tool. This allows to automatize some tasks such as
+formatting and cleaning of the notebooks.
 To use it, it is necessary to install it locally:
 ```bash
-pre-commit install
+uv run pre-commit install
 ```
 
 The configured tasks will run every time you make a commit. You may also run them at any time with
 the line
 ```bash
-pre-commit run --verbose --all-files
+uv run pre-commit run --verbose --all-files
 ```
 
 ### Highlighting Khiops Dictionary Code

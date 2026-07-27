@@ -115,7 +115,7 @@ Once you have chosen the desired granularity of the coclustering, you can genera
 
 The resulting new file contains only the clusters that are visible in the current unfolding: all folded clusters become terminal clusters.
 
-This is useful to share a simpler coclustering model with other users. In addition, this new model can be deployed by the Khiops Coclustering tool: see [`the Khiops Coclustering tool guide`](coclustering.md/#prepare-deployment) for more information on the process.
+This is useful to share a simpler coclustering model with other users. In addition, this new model can be deployed by the Khiops Coclustering tool: see [`the Khiops Coclustering tool guide`](coclustering.md#prepare-deployment) for more information on the process.
 <!-- verifier bon lien -->
 
 ### Current clusters view

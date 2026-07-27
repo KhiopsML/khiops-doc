@@ -183,7 +183,7 @@ function activate(i){
     const t=document.getElementById('ptag');t.className='ptag '+ph.tc;t.textContent=L.tag;
     document.getElementById('pttl').innerHTML=L.ttl;
     document.getElementById('pbdy').innerHTML=L.bdy;
-    document.getElementById('pcaps').innerHTML=L.caps.map(c=>`<div class="cap"><div class="cap-i ${c.c}"><i class="ti ${c.i}"></i></div><div class="cap-t"><strong>${c.t}</strong>${c.b}</div></div>`).join('')+(L.extra||'');
+    document.getElementById('pcaps').innerHTML=L.caps.map(c=>`<div class="cap"><div class="cap-i ${c.c}">${c.svg}</div><div class="cap-t"><strong>${c.t}</strong>${c.b}</div></div>`).join('')+(L.extra||'');
     info.classList.add('active');
     gsap.fromTo(tg,{opacity:0,y:14},{opacity:1,y:0,duration:.4,stagger:.07,ease:'power2.out'});
   }});
@@ -249,13 +249,24 @@ window.addEventListener('load',()=>{
   const ids=['eN','e0','e1','e2','e3','e4','e5','e7'];
   gsap.set(ids.map(id=>'#'+id),{opacity:0,y:22});
   gsap.to(ids.map(id=>'#'+id),{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out',delay:.1});
-  
-  if(window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo(['#cs0','#cs1','#cs2'],{opacity:0,y:22},{opacity:1,y:0,duration:.6,stagger:.1,ease:'power2.out',scrollTrigger:{trigger:'#crispSec',start:'top 85%'}});
-    gsap.fromTo('.crisp-layout',{opacity:0,y:28},{opacity:1,y:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:'#crispSec',start:'top 78%'}});
-    gsap.fromTo('.vcard',{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.12,ease:'power2.out',scrollTrigger:{trigger:'#v11Sec',start:'top 84%'}});
-  }
+
+  const animateOnEnter=(target,from,to,threshold=.2)=>{
+    const el=typeof target==='string'?document.querySelector(target):target;
+    if(!el)return;
+    gsap.set(target,from);
+    const io=new IntersectionObserver((entries)=>{
+      if(!entries[0]||!entries[0].isIntersecting)return;
+      gsap.to(target,to);
+      io.disconnect();
+    },{threshold});
+    io.observe(el);
+  };
+
+  animateOnEnter('#crispSec .s-eye',{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'},.2);
+  animateOnEnter('#crispSec .s-title',{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out',delay:.08},.2);
+  animateOnEnter('#crispSec .s-sub',{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out',delay:.16},.2);
+  animateOnEnter('.crisp-layout',{opacity:0,y:28},{opacity:1,y:0,duration:.8,ease:'power2.out'},.2);
+  animateOnEnter('#v11Grid .vcard',{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.12,ease:'power2.out'},.2);
 });
 
 /* ── Transitions « dent » : dunes pleine largeur + pyramide pleine à taille fixe ── */
@@ -288,6 +299,6 @@ window.addEventListener('load',()=>{
         </g>
         <circle cx="${APX}" cy="${APEXY}" r="2.6" fill="#FF7900"/>
       </svg>
-      ${idx===0?`<div class="dive-hint"><span>Beneath surface</span><i class="ti ti-chevrons-down"></i></div>`:""}`;
+      ${idx===0?`<div class="dive-hint"><span>Beneath surface</span><span class="ti-svg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m7 8 5 5 5-5"/><path d="m7 13 5 5 5-5"/></svg></span></div>`:""}`;
   });
 })();

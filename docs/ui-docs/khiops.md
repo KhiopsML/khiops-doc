@@ -265,7 +265,7 @@ Automatic variable construction exploits the set of construction rules specified
 ![](../assets/images-khiops-guides/khiops/VariableConstructionParameters.png)
 
 For details on each construction rule, see the related derivation rule. For example, to learn about `WeekDay`, visit
-[`WeekDay`](../api-docs/kdic/date-rules.md/#weekday).
+[`WeekDay`](../api-docs/kdic/date-rules.md#weekday).
 
 !!! warning
 
@@ -568,7 +568,7 @@ The values in the data table file are parsed in order to guess their type.
 - values with format YYYY-MM-DD HH:MM:SS.zzzzzz are recognized as TimestampTZ variables, with time zone information,
 
 - for other Date, Time, Timestamp or TimestampTZ formats (e.g. Date format DD/MM/YYYY), 
-  a specific meta-data value is used (see [`Meta-data`](../api-docs/kdic/dictionary-files.md/#meta-data)) to specify the format used for the variable,
+    a specific meta-data value is used (see [`Meta-data`](../api-docs/kdic/dictionary-files.md#meta-data)) to specify the format used for the variable,
 
     - DateFormat: see [`Date rules`](../api-docs/kdic/date-rules.md)
   

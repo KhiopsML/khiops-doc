@@ -23,7 +23,7 @@ Additionally, **dictionaries enable robust error handling**. By providing a data
 - **Replace on the fly unreadable values with missing values** (which Khiops can leverage effectively to extract meaningful insights, as shown in this [tutorial][no-data-cleaning]);
 - **Ignore records with an incorrect number of fields**, avoiding column shifts and ensuring consistent data.
 
-[no-data-cleaning]: ../tutorials/Notebooks/No_data_Cleaning.ipynb
+[no-data-cleaning]: notebooks/No_data_Cleaning.md
 
 This approach allows Khiops to process even poor-quality data sources reliably, while preserving the integrity and value of subsequent computations.
 

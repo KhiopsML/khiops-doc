@@ -3,8 +3,8 @@
 Khiops is an end-to-end solution for **Automated Machine Learning** (AutoML), natively handling many time-consuming Data Science tasks—not through brute-force automation, but through a rigorous formalism that makes many manual steps unnecessary. These include feature engineering (A), data cleaning and encoding (B), and the training of parsimonious models (C).
 
 <picture>
-  <source srcset="/assets/images/auto-ml-pipeline.webp" type="image/webp">
-  <img style="max-width:945px;width: -webkit-fill-available;" src="/assets/images/auto-ml-pipeline.png" alt="auto-ml-pipeline"> 
+  <source srcset="../../assets/images/auto-ml-pipeline.webp" type="image/webp">
+  <img style="max-width:945px;width: -webkit-fill-available;" src="../assets/images/auto-ml-pipeline.png" alt="auto-ml-pipeline"> 
 </picture>
 
 
@@ -14,8 +14,8 @@ The distinctiveness of Khiops lies in its departure from typical AutoML solution
 
 
 <picture>
-  <source srcset="/assets/images/Khiops-advantages.webp" type="image/webp">
-  <img style="max-width:400px;width: -webkit-fill-available;margin-top:30px" src="/assets/images/Khiops-advantages.png" alt="Khiops-advantages" loading="lazy"> 
+  <source srcset="../../assets/images/Khiops-advantages.webp" type="image/webp">
+  <img style="max-width:400px;width: -webkit-fill-available;margin-top:30px" src="../assets/images/Khiops-advantages.png" alt="Khiops-advantages" loading="lazy"> 
 </picture>
 
 
@@ -41,8 +41,8 @@ Consider a brief example: the goal is to identify call spammers using call log d
 
 <figure markdown>
 <picture>
-  <source srcset="/assets/images/wrong_relation_data_pipeline.webp" type="image/webp">
-  <img style="width:100%;" src="/assets/images/wrong_relation_data_pipeline.png" alt="wrong_relation_data_pipeline" loading="lazy"> 
+  <source srcset="../../assets/images/wrong_relation_data_pipeline.webp" type="image/webp">
+  <img style="width:100%;" src="../assets/images/wrong_relation_data_pipeline.png" alt="wrong_relation_data_pipeline" loading="lazy"> 
 </picture>
   <figcaption>The wrong way to get information from additional tables</figcaption>
 </figure>
@@ -55,8 +55,8 @@ Instead, the ideal approach is to derive **features that encapsulate the call lo
 
 <figure markdown>
 <picture>
-  <source srcset="/assets/images/relation_data_pipeline.webp" type="image/webp">
-  <img style="width:100%;" src="/assets/images/relation_data_pipeline.png" alt="relation_data_pipeline" loading="lazy"> 
+  <source srcset="../../assets/images/relation_data_pipeline.webp" type="image/webp">
+  <img style="width:100%;" src="../assets/images/relation_data_pipeline.png" alt="relation_data_pipeline" loading="lazy"> 
 </picture>
   <figcaption>Getting aggregates from additional tables (group by)</figcaption>
 </figure>
@@ -70,7 +70,7 @@ One of the strengths of Khiops lies in its automation of this complex step. By l
 
 !!! example "See what Khiops-built aggregates look like using our tutorials [here][tuto_aggregates]."
 
-[tuto_aggregates]: ../tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb "See the Jupyter Notebook"
+[tuto_aggregates]: ../tutorials/notebooks/Use_in_any_ML_pipeline.md "See the tutorial notebook"
 
 ## Interpretability
 
@@ -98,8 +98,8 @@ Consider a new example: predicting whether adult revenue falls *above* or *below
 
 <figure markdown>
 <picture>
-  <source srcset="/assets/images/KhiopsViz_Adult.webp" type="image/webp">
-  <img style="width:100%;" src="/assets/images/KhiopsViz_Adult.png" alt="KhiopsViz_Adult" loading="lazy"> 
+  <source srcset="../../assets/images/KhiopsViz_Adult.webp" type="image/webp">
+  <img style="width:100%;" src="../assets/images/KhiopsViz_Adult.png" alt="KhiopsViz_Adult" loading="lazy"> 
 </picture>
   <figcaption>Discretization of the age variable on the Khiops Visualization tool</figcaption>
 </figure>
@@ -109,8 +109,8 @@ The number of available training samples impacts this balance. More data leads t
 
 <figure markdown>
 <picture>
-  <source srcset="/assets/images/adult_sample_size.webp" type="image/webp">
-  <img style="width:100%;" src="/assets/images/adult_sample_size.png" alt="adult_sample_size" loading="lazy"> 
+  <source srcset="../../assets/images/adult_sample_size.webp" type="image/webp">
+  <img style="width:100%;" src="../assets/images/adult_sample_size.png" alt="adult_sample_size" loading="lazy"> 
 </picture>
   <figcaption>Discretization of the age variable depending on the number of training examples</figcaption>
 </figure>
@@ -129,13 +129,12 @@ Additionally, thanks to efficient low-level coding, Khiops can operate across a 
 Furthermore, **Khiops can seamlessly transition between out-of-core and distributed computations** due to its [strategy of adapting][auto_hardware_adaptation] to available hardware resources. That makes it flexible and versatile, able to accommodate various operational requirements and constraints.
 
 <picture>
-  <source srcset="/assets/images/bench_hardware_short.webp" type="image/webp">
-  <img style="max-width:400px;width: -webkit-fill-available" src="/assets/images/bench_hardware_short.png" alt="bench_hardware_short" loading="lazy"> 
+  <source srcset="../../assets/images/bench_hardware_short.webp" type="image/webp">
+  <img style="max-width:400px;width: -webkit-fill-available" src="../assets/images/bench_hardware_short.png" alt="bench_hardware_short" loading="lazy"> 
 </picture>
 
 
  [auto_hardware_adaptation]: hardware_adaptation.md
- [modl]: modl.md 
  [publications]: ../references.md#publications "See scientific references"
 
 
@@ -147,7 +146,7 @@ For data **exploratory analysis**, Khiops implements three unsupervised algorith
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/unsupervised_algorithms.webp" type="image/webp">
-  <img style="width:100%;" src="../../assets/images/unsupervised_algorithms.png" alt="unsupervised_algorithms" loading="lazy"> 
+  <img style="width:100%;" src="../assets/images/unsupervised_algorithms.png" alt="unsupervised_algorithms" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>

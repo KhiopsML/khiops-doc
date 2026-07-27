@@ -8,7 +8,7 @@ Among unsupervised approaches, **clustering** algorithms are undoubtedly the bes
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/exemple_clustering.webp" type="image/webp">
-  <img style="width:70%;" src="../../assets/images/exemple_clustering.png" alt="exemple_clustering" loading="lazy"> 
+  <img style="width:70%;" src="../assets/images/exemple_clustering.png" alt="exemple_clustering" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -22,7 +22,7 @@ As shown in this figure, clustering algorithms are used to find **homogeneous su
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/exemple_coclustering.webp" type="image/webp">
-  <img style="width:70%;" src="../../assets/images/exemple_coclustering.png" alt="exemple_coclustering" loading="lazy"> 
+  <img style="width:70%;" src="../assets/images/exemple_coclustering.png" alt="exemple_coclustering" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -37,7 +37,7 @@ Coclustering algorithms simultaneously group the **rows** and **columns** of a m
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/data_clustering_coclustering.webp" type="image/webp">
-  <img style="width:95%;" src="../../assets/images/data_clustering_coclustering.png" alt="data_clustering_coclustering" loading="lazy"> 
+  <img style="width:95%;" src="../assets/images/data_clustering_coclustering.png" alt="data_clustering_coclustering" loading="lazy"> 
 </picture>
   <figcaption>Two different kinds of data used</figcaption>
 </figure> 
@@ -61,7 +61,7 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/ex_coclustering_timeseries.webp" type="image/webp">
-  <img style="width:75%;" src="../../assets/images/ex_coclustering_timeseries.png" alt="ex_coclustering_timeseries" loading="lazy"> 
+  <img style="width:75%;" src="../assets/images/ex_coclustering_timeseries.png" alt="ex_coclustering_timeseries" loading="lazy"> 
 </picture>
   <figcaption>An example of a time series group</figcaption>
 </figure> 
@@ -77,7 +77,7 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/ex_coclustering_graph.webp" type="image/webp">
-  <img style="width:75%;" src="../../assets/images/ex_coclustering_graph.png" alt="ex_coclustering_graph" loading="lazy"> 
+  <img style="width:75%;" src="../assets/images/ex_coclustering_graph.png" alt="ex_coclustering_graph" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure> 
@@ -87,7 +87,7 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/ex_coclustering_word_groups.webp" type="image/webp">
-  <img style="width:85%;" src="../../assets/images/ex_coclustering_word_groups.png" alt="ex_coclustering_word_groupsh" loading="lazy"> 
+  <img style="width:85%;" src="../assets/images/ex_coclustering_word_groups.png" alt="ex_coclustering_word_groupsh" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure> 
@@ -101,7 +101,7 @@ Thanks to the extensions allowed by the MODL formalism, coclustering can be appl
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/coclustering-model-selection.webp" type="image/webp">
-  <img style="width:90%;" src="../../assets/images/coclustering-model-selection.png" alt="coclustering model selection" loading="lazy"> 
+  <img style="width:90%;" src="../assets/images/coclustering-model-selection.png" alt="coclustering model selection" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure> 
@@ -130,7 +130,7 @@ The figure below illustrates **when a cocluster provides valuable information** 
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/cocluster-selection.webp" type="image/webp">
-  <img style="width:90%;" src="../../assets/images/cocluster-selection.png" alt="cocluster interest" loading="lazy"> 
+  <img style="width:90%;" src="../assets/images/cocluster-selection.png" alt="cocluster interest" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -157,7 +157,7 @@ The figure above shows an example of a coclustering model describing the depende
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/example_coclustering_model.webp" type="image/webp">
-  <img style="width:90%;" src="../../assets/images/example_coclustering_model.png" alt="coclustering model example" loading="lazy"> 
+  <img style="width:90%;" src="../assets/images/example_coclustering_model.png" alt="coclustering model example" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -244,7 +244,7 @@ The optimization of the likelihood aims to describe **as precisely as possible t
 <figure markdown>
 <picture>
   <source srcset="../../assets/images/vraisemblance_coclustering.webp" type="image/webp">
-  <img style="width:90%;" src="../../assets/images/vraisemblance_coclustering.png" alt="likelywood of coclustering models" loading="lazy"> 
+  <img style="width:90%;" src="../assets/images/vraisemblance_coclustering.png" alt="likelywood of coclustering models" loading="lazy"> 
 </picture>
   <figcaption></figcaption>
 </figure>
@@ -271,8 +271,8 @@ The following figure gives an overview of the step-by-step operation of this alg
 [algo_paper]: http://www.marc-boulle.fr/publications/BoulleHOPR10.pdf
 
 <video autoplay loop muted playsinline style="max-width:839px;width: -webkit-fill-available;">
-  <source src="../../assets/images/algo-coclustering.mp4" type="video/mp4">
-  <source src="../../assets/images/algo-coclustering.gif" type="image/gif" media="(not type: video/mp4)">
+  <source src="../assets/images/algo-coclustering.mp4" type="video/mp4">
+  <source src="../assets/images/algo-coclustering.gif" type="image/gif" media="(not type: video/mp4)">
 </video>
 
 - **Initialization:** a “fine” model is randomly drawn, setting the number of groups for each variable so that coclusters contain an average of one instance.

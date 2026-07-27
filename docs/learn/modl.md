@@ -85,7 +85,7 @@ All the MODL optimization criteria are designed in the same way (optimal encodin
 
 ### Link with Information Theory { #info-theory }
 
-In [Information Theory:octicons-link-external-16:][InformationTheory]{:target="_blank"}, the **model selection** problem described above can be translated into an **encoding** problem, whose purpose is to find the most compact way of encoding an information source for transmission over a telecommunication channel. Let's consider an information source emitting symbols [e.g. a, b, c, etc.] whose alphabet is known. In information theory, the *negative logarithm of the probability* that a symbol is emitted [e.g. $-log(P(a))$] represents its optimal **coding length**, denoted by $L$ and expressed in bits. According to Shannon's intuition, the most efficient encoding strategy assigns a short coding length to the most frequent symbols.
+In [Information Theory:octicons-link-external-16:][InformationTheory]{:target="_blank"}, the **model selection** problem described above can be translated into an **encoding** problem, whose purpose is to find the most compact way of encoding an information source for transmission over a telecommunication channel. Let's consider an information source emitting symbols \[e.g. a, b, c, etc.\] whose alphabet is known. In information theory, the *negative logarithm of the probability* that a symbol is emitted \[e.g. $-log(P(a))$\] represents its optimal **coding length**, denoted by $L$ and expressed in bits. According to Shannon's intuition, the most efficient encoding strategy assigns a short coding length to the most frequent symbols.
 
 In the same way, the probabilities in Bayes' formula above can be replaced by negative logarithms to obtain a MODL criterion to be minimized, that can be interpreted as follows:
 
@@ -149,11 +149,9 @@ The MODL approach is rooted in both Bayesian and Information theories. What make
 
 In essence, this is the crux of Khiops' secret, implementing the MODL approach across all stages of its AutoML pipeline (Stages A, B, and C)<!--, as well as to address [unsupervised learning tasks][unsupervised_tasks]-->. This enables the learning algorithms to accomplish their tasks in a single run!
 
-[unsupervised_tasks]: unsupervised.md
 [discretization]: preprocessing.md#discretization 
 [grouping]: preprocessing.md#grouping
 [training]: learning_models.md
-[co-clustering]: unsupervised.md
 
 <br>
 

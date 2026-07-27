@@ -8,11 +8,6 @@ on:
         required: true
         type: boolean
         default: false
-      build-other-version:
-        description: Build the other version
-        required: true
-        type: boolean
-        default: false
       deploy-gh-pages:
         description: Deploy to GH Pages
         required: true
@@ -49,44 +44,16 @@ jobs:
           # "gh release view" shows the latest release in the project, we extract its version (without the leading "v")
           LAST_TAG="$(gh --repo https://github.com/KhiopsML/khiops-visualization-desktop/ release view --json tagName --jq '.tagName')"
           echo "KHIOPS_VIZ_VERSION=${LAST_TAG#v}" >> "$GITHUB_ENV"
-      - name: Prepare the versions markdown file
-        if: inputs.build-other-version
-        run: |
-          echo "# Current version: [${{ env.KHIOPS_VERSION }}][current_version]" >> versions.md
-          echo "# Other versions:" >> versions.md
-          echo "  - [${{ env.KHIOPS_OTHER_VERSION }}][other_version]" >> versions.md
-          echo "[current_version]: /" >> ./versions.md
-          echo "[other_version]: /${{ env.KHIOPS_OTHER_VERSION }}/" >> versions.md
-      - name: Build other version site
-        if: inputs.build-other-version
-        uses: ./.github/actions/build-doc
-        with:
-          khiops-doc-ref: ${{ env.KHIOPS_DOC_OTHER_REF }}
-          khiops-version: ${{ env.KHIOPS_OTHER_VERSION }}
-          khiops-python-version: ${{ env.KHIOPS_PYTHON_OTHER_VERSION }}
-          khiops-samples-version: ${{ env.KHIOPS_SAMPLES_OTHER_VERSION }}
-          khiops-viz-version: ${{ env.KHIOPS_VIZ_OTHER_VERSION }}
-          khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_OTHER_VERSION }}
-          khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_OTHER_VERSION }}
-          execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
-      - name: Move other version site to dedicated folder
-        if: inputs.build-other-version
-        run: mv site ${{ env.KHIOPS_OTHER_VERSION }}
       - name: Build current version site
         uses: ./.github/actions/build-doc
         with:
-          # khiops-doc-ref is '', that is, the current branch ref
           khiops-version: ${{ env.KHIOPS_VERSION }}
           khiops-python-version: ${{ env.KHIOPS_PYTHON_VERSION }}
           khiops-samples-version: ${{ env.KHIOPS_SAMPLES_VERSION }}
           khiops-viz-version: ${{ env.KHIOPS_VIZ_VERSION }}
           khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
           khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
-          add-versions-to-the-menu: ${{ inputs.build-other-version }}
           execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
-      - name: Move other version site inside the main site
-        if: inputs.build-other-version
-        run: mv ${{ env.KHIOPS_OTHER_VERSION }} site/
       - name: Check for broken links
         if: inputs.check-links
         uses: lycheeverse/lychee-action@v2
@@ -108,8 +75,5 @@ jobs:
       - name: Deploy site to GH pages (Manual)
         if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == true
         run: |
-          # Install tool for pushing to GH pages
-          pip install ghp-import
-
           # Push built site directory contents to GH pages
-          ghp-import -m "Deployed ${GITHUB_SHA:0:7}" --push --force --no-jekyll ./site/
+          uv run ghp-import -m "Deployed ${GITHUB_SHA:0:7}" --push --force --no-jekyll ./site/

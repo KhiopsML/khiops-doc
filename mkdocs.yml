@@ -10,20 +10,37 @@ copyright: Copyright &copy; 2023-2026 Orange S.A.
 
 theme:
   name: material
-  logo: assets/images/khiops-logo.png
+  logo: assets/images/generated/khiops-logo-ui.png
   icon:
     repo: fontawesome/brands/github
   palette:
-    primary: black
-  favicon: assets/images/khiops-logo.png
+    - media: "(prefers-color-scheme)"
+      primary: black
+      accent: indigo
+      toggle:
+        icon: lucide/sun-moon
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: indigo
+      toggle:
+        icon: lucide/sun
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: lucide/moon
+        name: Switch to system preference
+  favicon: assets/images/generated/khiops-logo-favicon.png
   custom_dir: overrides
-  font:
-    text: Inter
-    code: Roboto Mono
+  font: false
   features:
     - navigation.tabs
-    - navigation.path
     - navigation.tabs.sticky
+    - navigation.path
     - navigation.expand
     - navigation.indexes
     - navigation.footer
@@ -101,16 +118,12 @@ extra_css:
 # Add JS for Material plugins
 extra_javascript:
   - assets/javascripts/mathjax.min.js
+  - assets/javascripts/mathjax-loader.js
   - assets/javascripts/visu-menu.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
   - macros
   - search
-  - mkdocs-jupyter:
-      ignore_h1_titles: True
-      execute: !ENV [EXECUTE_KHIOPS_TUTORIALS, false]
-      allow_errors: false
 
 
 nav:
@@ -133,17 +146,17 @@ nav:
       - tutorials/introduction.md
       - Scikit-learn API:
           - Quickstart Guide:  tutorials/quickstart.md
-          - Single-Table Tutorial: tutorials/Notebooks/single_table_classifier.ipynb
-          - No Need for Data Preparation: tutorials/Notebooks/No_data_Cleaning.ipynb
-          - Interpretable Variable Encoding: tutorials/Notebooks/Optimal_Encoding.ipynb
-          - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier.ipynb
-          - "Auto Feature Engineering & More": tutorials/Notebooks/Use_in_any_ML_pipeline.ipynb
+          - Single-Table Tutorial: tutorials/notebooks/single_table_classifier.md
+          - No Need for Data Preparation: tutorials/notebooks/No_data_Cleaning.md
+          - Interpretable Variable Encoding: tutorials/notebooks/Optimal_Encoding.md
+          - Multi-Table Tutorial: tutorials/notebooks/multi_table_classifier.md
+          - "Auto Feature Engineering & More": tutorials/notebooks/Use_in_any_ML_pipeline.md
       - Core API & Dictionaries:
           - Start Using Dictionaries: tutorials/kdic_intro.md
           - Single-Table Concepts: tutorials/kdic_single_table.md
-          - Single-Table Tutorial: tutorials/Notebooks/single_table_classifier_core.ipynb
+          - Single-Table Tutorial: tutorials/notebooks/single_table_classifier_core.md
           - Multi-Table Concepts: tutorials/kdic_multi_table.md
-          - Multi-Table Tutorial: tutorials/Notebooks/multi_table_classifier_core.ipynb
+          - Multi-Table Tutorial: tutorials/notebooks/multi_table_classifier_core.md
       - Deployment & Integration:
           - Cloud Storage: tutorials/storage.md
           - Running Khiops with Docker: tutorials/docker.md
