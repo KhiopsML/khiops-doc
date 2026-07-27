@@ -60,12 +60,12 @@ the `BuildTableView` rule creates a table of instances that are identical to the
 However, these target instances are new and distinct from the source ones, similar to how duplicate records in source table files are handled.
 
 This contrasts with [`Table Management Rules`](../kdic/table-management-rules.md), such as
-[`TableExtraction`](../kdic/table-management-rules.md/#tableextraction), which reference the entities of the source table.
+[`TableExtraction`](../kdic/table-management-rules.md#tableextraction), which reference the entities of the source table.
 
 In the following example, both `BuildTableView` and `TableExtraction` produce similar tables, 
 except that the instances output by BuildTableView are new instances, whereas those produced by TableExtraction are the original source instances.
 
-This distinction impacts rules like [`TableUnion`](../kdic/table-management-rules.md/#tableunion), which rely on identifying distinct entities.
+This distinction impacts rules like [`TableUnion`](../kdic/table-management-rules.md#tableunion), which rely on identifying distinct entities.
 
 !!! example
 
