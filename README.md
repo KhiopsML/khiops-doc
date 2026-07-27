@@ -3,20 +3,25 @@ This is the technical repository for the Khiops documentation website.
 
 ## Local Development
 ### Setup
-Install dependencies with uv
+Install `uv` first (required for all commands below):
+
+- Official installation instructions: https://docs.astral.sh/uv/getting-started/installation/
+
+Then install dependencies with `uv`:
 
 ```bash
 uv sync --frozen --extra notebooks
 ```
 
-If you need to execute tutorials locally, install tutorial extras as well:
-
-```bash
-uv sync --frozen --extra notebooks --extra tutorials
-```
 
 ### Run
-Before running the local server, fetch the Python API docs that are normally injected by CI:
+If you are working or want to browse the Python API pages (`docs/api-docs/python-api.md`), you need to fetch the Python API docs before running the local server.
+
+The `fetch_python_api_docs.sh` script downloads prebuilt Khiops Python API HTML docs from GitHub releases and places them in `docs/api-docs/python-api/api`.
+
+This script is a Bash script and is intended for macOS/Linux shells. On Windows, run it from WSL or Git Bash.
+
+Command:
 
 ```bash
 ./scripts/fetch_python_api_docs.sh
