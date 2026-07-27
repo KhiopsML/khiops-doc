@@ -23,7 +23,7 @@ Creation of a target table from a source table, where each target instance is a 
 
 ### Emulating the BuildDiffTable rule
 
-This example demonstrates how to build a list of sales ordered by date and compute differences between successive sales, as with the [`BuildDiffTable`](../kdic/temporal-rules.md/#builddifftable) rule.
+This example demonstrates how to build a list of sales ordered by date and compute differences between successive sales, as with the [`BuildDiffTable`](../kdic/temporal-rules.md#builddifftable) rule.
 
 !!! example "Emulating the BuildDiffTable rule"
     
