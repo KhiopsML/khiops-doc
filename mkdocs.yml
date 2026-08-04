@@ -219,5 +219,12 @@ nav:
  #       - Coclustering inst x var: learn/coclustering_indi_var.md
       - Auto Hardware Adaptation: learn/hardware_adaptation.md
       - Bibliography: references.md
-  - Discussions: https://github.com/orgs/KhiopsML/discussions
+  - Q&A:
+      - Overview: q-and-a/overview.md
+      - Fundamentals of Modeling: q-and-a/fundamentals-of-modeling.md
+      - Preprocessing and Encoding: q-and-a/preprocessing-and-encoding.md
+      - Scalability and Large Datasets: q-and-a/scalability-and-large-datasets.md
+      - Co-clustering: q-and-a/coclustering.md
+      - Python API and Development: q-and-a/python-api-and-development.md
+      - Deployment and Integration: q-and-a/deployment-and-integration.md
   - Contact Us: contact.md
