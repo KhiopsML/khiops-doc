@@ -34,8 +34,6 @@ jobs:
           python-version: 3.11
       - name: Checkout doc sources (to get the current environment)
         uses: actions/checkout@v6
-      - name: Set up the version information in the environment
-        run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Retrieve the version number of Khiops Visualization Desktop from the latest release on GitHub
         if: env.KHIOPS_VIZ_VERSION == ''
         env:

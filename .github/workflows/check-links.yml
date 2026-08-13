@@ -22,8 +22,6 @@ jobs:
           cache-dependency-glob: uv.lock
       - name: Install documentation requirements
         run: uv sync --frozen --extra notebooks
-      - name: Set up the version information in the environment
-        run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Retrieve the version number of Khiops Visualization Desktop from the latest release on GitHub
         if: env.KHIOPS_VIZ_VERSION == ''
         env:
