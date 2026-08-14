@@ -19,6 +19,7 @@ set -euo pipefail
 #   --khiops-viz-version VER          Khiops Visualization version
 #   --khiops-gcs-driver-version VER   Khiops GCS driver version
 #   --khiops-s3-driver-version VER    Khiops S3 driver version
+#   --khiops-azure-driver-version VER Khiops Azure driver version
 #   --execute-tutorials               Execute khiops-doc's own tutorial
 #                                      notebooks (docs/tutorials/sourced-notebooks)
 
@@ -30,6 +31,7 @@ KHIOPS_PYTHON_TUTORIAL_REF="main"
 KHIOPS_VIZ_VERSION=""
 KHIOPS_GCS_DRIVER_VERSION=""
 KHIOPS_S3_DRIVER_VERSION=""
+KHIOPS_AZURE_DRIVER_VERSION=""
 EXECUTE_TUTORIALS="false"
 
 while [[ $# -gt 0 ]]; do
@@ -42,6 +44,7 @@ while [[ $# -gt 0 ]]; do
     --khiops-viz-version) KHIOPS_VIZ_VERSION="$2"; shift 2 ;;
     --khiops-gcs-driver-version) KHIOPS_GCS_DRIVER_VERSION="$2"; shift 2 ;;
     --khiops-s3-driver-version) KHIOPS_S3_DRIVER_VERSION="$2"; shift 2 ;;
+    --khiops-azure-driver-version) KHIOPS_AZURE_DRIVER_VERSION="$2"; shift 2 ;;
     --execute-tutorials) EXECUTE_TUTORIALS="true"; shift ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
@@ -93,8 +96,8 @@ bash "${SCRIPT_DIR}/build-version.sh" \
   --khiops-python-tutorial-ref "$KHIOPS_PYTHON_TUTORIAL_REF"
 
 # 5. Build the whole site with Zensical
-echo "=== Building site with Zensical ==="
-export KHIOPS_VERSION KHIOPS_VIZ_VERSION KHIOPS_GCS_DRIVER_VERSION KHIOPS_S3_DRIVER_VERSION
+echo "=== Building site with Zensical in dir $(pwd) ==="
+export KHIOPS_VERSION KHIOPS_VIZ_VERSION KHIOPS_GCS_DRIVER_VERSION KHIOPS_S3_DRIVER_VERSION KHIOPS_AZURE_DRIVER_VERSION
 uv run zensical build --strict
 
 echo "=== Done — site built in ./site ==="

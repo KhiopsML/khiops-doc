@@ -18,22 +18,23 @@ Usage: ./local-build.sh [OPTIONS]
 Build the Khiops doc site locally with Zensical.
 
 Options:
-  -h, --help                       Show this help message and exit
-  --khiops-version VER             Khiops core version to install via Conda
-                                    (required)
-  --local-khiops-python DIR        Use a local khiops-python repo instead of
-                                    cloning from GitHub
-  --khiops-python-ref REF          khiops-python Git ref to build docs from
-                                    when not using --local-khiops-python
-                                    (default: main)
-  --khiops-samples-version VER     khiops-samples release to download
-                                    (default: main)
-  --khiops-python-tutorial-ref REF khiops-python-tutorial Git ref (default: main)
-  --khiops-viz-version VER         Khiops Visualization version (default: unknown)
-  --khiops-gcs-driver-version VER  Khiops GCS driver version (default: unknown)
-  --khiops-s3-driver-version VER   Khiops S3 driver version (default: unknown)
-  --execute-tutorials              Execute khiops-doc's own tutorial notebooks
-  --serve                          Run 'zensical serve' after building
+  -h, --help                        Show this help message and exit
+  --khiops-version VER              Khiops core version to install via Conda
+                                     (required)
+  --local-khiops-python DIR         Use a local khiops-python repo instead of
+                                     cloning from GitHub
+  --khiops-python-ref REF           khiops-python Git ref to build docs from
+                                     when not using --local-khiops-python
+                                     (default: main)
+  --khiops-samples-version VER      khiops-samples release to download
+                                     (default: main)
+  --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref (default: main)
+  --khiops-viz-version VER          Khiops Visualization version (default: unknown)
+  --khiops-gcs-driver-version VER   Khiops GCS driver version (default: unknown)
+  --khiops-s3-driver-version VER    Khiops S3 driver version (default: unknown)
+  --khiops-azure-driver-version VER Khiops Azure driver version (default: unknown)
+  --execute-tutorials               Execute khiops-doc's own tutorial notebooks
+  --serve                           Run 'zensical serve' after building
 EOF
   exit 0
 }
@@ -46,6 +47,7 @@ KHIOPS_VERSION=""
 KHIOPS_VIZ_VERSION="unknown"
 KHIOPS_GCS_DRIVER_VERSION="unknown"
 KHIOPS_S3_DRIVER_VERSION="unknown"
+KHIOPS_AZURE_DRIVER_VERSION="unknown"
 EXECUTE_TUTORIALS="false"
 SERVE="false"
 
@@ -60,6 +62,7 @@ while [[ $# -gt 0 ]]; do
     --khiops-viz-version) KHIOPS_VIZ_VERSION="$2"; shift 2 ;;
     --khiops-gcs-driver-version) KHIOPS_GCS_DRIVER_VERSION="$2"; shift 2 ;;
     --khiops-s3-driver-version) KHIOPS_S3_DRIVER_VERSION="$2"; shift 2 ;;
+    --khiops-azure-driver-version) KHIOPS_AZURE_DRIVER_VERSION="$2"; shift 2 ;;
     --execute-tutorials) EXECUTE_TUTORIALS="true"; shift ;;
     --serve) SERVE="true"; shift ;;
     *) echo "Unknown option: $1"; exit 1 ;;
@@ -103,6 +106,7 @@ ARGS=(
   --khiops-viz-version "$KHIOPS_VIZ_VERSION"
   --khiops-gcs-driver-version "$KHIOPS_GCS_DRIVER_VERSION"
   --khiops-s3-driver-version "$KHIOPS_S3_DRIVER_VERSION"
+  --khiops-azure-driver-version "$KHIOPS_AZURE_DRIVER_VERSION"
 )
 [ -n "$LOCAL_KHIOPS_PYTHON" ] && ARGS+=(--khiops-python-repo "$LOCAL_KHIOPS_PYTHON")
 [ "$EXECUTE_TUTORIALS" = "true" ] && ARGS+=(--execute-tutorials)

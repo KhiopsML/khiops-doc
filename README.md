@@ -38,7 +38,7 @@ Useful flags (see `./local-build.sh --help` for the full list):
 - `--khiops-python-ref REF` — Git ref to build from when not local (default: `main`)
 - `--khiops-samples-version VER` — `khiops-samples` release used by the tutorials (default: `main`)
 - `--khiops-python-tutorial-ref REF` — `khiops-python-tutorial` Git ref (default: `main`)
-- `--khiops-viz-version VER`, `--khiops-gcs-driver-version VER`, `--khiops-s3-driver-version VER` — versions displayed/linked on the site (default: `unknown`)
+- `--khiops-viz-version VER`, `--khiops-gcs-driver-version VER`, `--khiops-s3-driver-version VER`, `--khiops-azure-driver-version VER` — versions displayed/linked on the site (default: `unknown`)
 - `--execute-tutorials` — also execute khiops-doc's own tutorial notebooks (`docs/tutorials/sourced-notebooks/`)
 - `--serve` — launch `zensical serve` (live-reloading) after the build
 
@@ -111,7 +111,7 @@ The CI/CD supports the following `workflow_dispatch` inputs, all with sensible d
 - `khiops-samples-version` — `khiops-samples` release
 - `khiops-python-tutorial-ref` — `khiops-python-tutorial` Git ref
 - `khiops-viz-version` — Khiops Visualization version (leave empty to use the latest GitHub release)
-- `khiops-gcs-driver-version`, `khiops-s3-driver-version` — storage driver versions
+- `khiops-gcs-driver-version`, `khiops-s3-driver-version`, `khiops-azure-driver-version` — storage driver versions
 - `execute-khiops-tutorials` (boolean, default `false`) — also execute khiops-doc's own tutorial notebooks
 - `deploy-gh-pages` (boolean, default `false`) — deploy the built site to GH Pages
 - `check-links` (boolean, default `false`) — check the built site for broken links
@@ -134,4 +134,4 @@ You don't need to restart the server every time but you need to refresh the page
 
 ### Deploy to khiops.org
 
-To deploy the web site to khiops.org, launch the "Website" workflow manually: go to the "Actions" tab, run the workflow on the `main` branch, and set the `deploy-gh-pages` input to `true`.
+To deploy the web site to khiops.org, launch the "Website" workflow manually: go to the "Actions" tab, run the workflow on the `dev` branch, and set the `deploy-gh-pages` input to `true`.

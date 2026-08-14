@@ -24,6 +24,9 @@ on:
       khiops-s3-driver-version:
         description: Khiops S3 driver version
         default: "0.0.25"
+      khiops-azure-driver-version:
+        description: Khiops Azure driver version
+        default: "0.0.18"
       execute-khiops-tutorials:
         description: Execute khiops-doc's own tutorial notebooks
         required: true
@@ -91,6 +94,7 @@ jobs:
             --khiops-viz-version "${{ inputs.khiops-viz-version || steps.khiops-viz-version.outputs.value }}"
             --khiops-gcs-driver-version "${{ inputs.khiops-gcs-driver-version }}"
             --khiops-s3-driver-version "${{ inputs.khiops-s3-driver-version }}"
+            --khiops-azure-driver-version "${{ inputs.khiops-azure-driver-version }}"
           )
           if [[ "${{ inputs.execute-khiops-tutorials }}" == "true" ]]; then
             ARGS+=(--execute-tutorials)
@@ -104,7 +108,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload the site docs as an artifact (PR)
-        if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == false
         uses: actions/upload-artifact@v7
         with:
           name: khiops-doc
