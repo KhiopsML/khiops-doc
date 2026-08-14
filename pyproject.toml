@@ -22,6 +22,9 @@ tutorials = [
   "pycaret",
   "seaborn",
 ]
+pythonapi = [
+  "mkdocstrings[python]",
+]
 
 [tool.uv]
 package = false

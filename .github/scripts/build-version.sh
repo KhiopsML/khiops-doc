@@ -55,7 +55,7 @@ git -C ./khiops-python-src checkout "$KHIOPS_PYTHON_REF"
 #    is NOT installed wholesale here — it pulls in its own zensical/mkdocstrings
 #    pins, which khiops-doc already supplies via pyproject.toml.
 uv pip install ./khiops-python-src
-uv pip install pandas scikit-learn ipykernel nbconvert nbformat
+uv pip install pandas scikit-learn ipykernel nbconvert nbformat mkdocstrings[python]
 
 # 3. Download matching khiops-samples (needed by kh-download-datasets)
 echo "--- Downloading khiops-samples ${KHIOPS_SAMPLES_VERSION}"

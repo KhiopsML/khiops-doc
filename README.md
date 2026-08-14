@@ -13,7 +13,7 @@ Install `uv` first (required for all commands below):
 Then install dependencies with `uv`:
 
 ```bash
-uv sync --frozen --extra notebooks
+uv sync --frozen --extra notebooks pythonapi
 ```
 
 Building the site locally also requires:

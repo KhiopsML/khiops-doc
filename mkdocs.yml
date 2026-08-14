@@ -124,6 +124,34 @@ extra_javascript:
 plugins:
   - macros
   - search
+  - mkdocstrings:
+      handlers:
+        python:
+          inventories:
+            - https://docs.python.org/3/objects.inv
+            - https://pandas.pydata.org/pandas-docs/dev/objects.inv
+            - url: https://scikit-learn.org/stable/objects.inv
+              domains: [py, std]
+            - https://numpy.org/doc/stable/objects.inv
+            - https://docs.scipy.org/doc/scipy/objects.inv
+          options:
+            docstring_style: numpy
+            docstring_section_style: spacy
+            scoped_crossrefs: true
+            show_root_heading: true
+            show_root_full_path: true
+            show_symbol_type_heading: false
+            show_symbol_type_toc: false
+            show_source: false
+            group_by_category: true
+            show_category_heading: true
+            summary: true
+            members_order: source
+            merge_init_into_class: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            inherited_members: false
+            show_if_no_docstring: false
 
 
 nav:

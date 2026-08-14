@@ -60,9 +60,9 @@ trap cleanup EXIT
 # 1. Install khiops-doc's own Python dependencies
 echo "=== Installing documentation requirements ==="
 if [ "$EXECUTE_TUTORIALS" = "true" ]; then
-  uv sync --frozen --extra notebooks --extra tutorials
+  uv sync --frozen --extra notebooks --extra tutorials --extra pythonapi
 else
-  uv sync --frozen --extra notebooks
+  uv sync --frozen --extra notebooks --extra pythonapi
 fi
 
 # 2. Download khiops-samples for khiops-doc's own tutorial notebooks
