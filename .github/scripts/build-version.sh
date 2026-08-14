@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -70,7 +69,7 @@ rm -f khiops_samples.zip
 echo "--- Preparing khiops-python doc sources (create-doc -p)"
 (
   cd khiops-python-src
-  uv run kh-download-datasets --force-overwrite --version "$KHIOPS_SAMPLES_VERSION"
+  uv run --active --frozen --no-sync kh-download-datasets --force-overwrite --version "$KHIOPS_SAMPLES_VERSION"
   cd doc/util
   bash create-doc -p -t -d -g "$KHIOPS_PYTHON_TUTORIAL_REF"
 )
