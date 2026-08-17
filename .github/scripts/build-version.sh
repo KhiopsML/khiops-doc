@@ -55,15 +55,7 @@ git -C ./khiops-python-src checkout "$KHIOPS_PYTHON_REF"
 #    is NOT installed wholesale here — it pulls in its own zensical/mkdocstrings
 #    pins, which khiops-doc already supplies via pyproject.toml.
 uv pip install ./khiops-python-src
-uv pip install pandas scikit-learn ipykernel nbconvert nbformat mkdocstrings[python]
-
-# 3. Download matching khiops-samples (needed by kh-download-datasets)
-echo "--- Downloading khiops-samples ${KHIOPS_SAMPLES_VERSION}"
-rm -rf ./khiops_samples
-wget -q -O khiops_samples.zip \
-  "https://github.com/KhiopsML/khiops-samples/releases/download/${KHIOPS_SAMPLES_VERSION}/khiops-samples-${KHIOPS_SAMPLES_VERSION}.zip"
-mkdir -p ./khiops_samples && unzip -q khiops_samples.zip -d ./khiops_samples
-rm -f khiops_samples.zip
+uv pip install nbformat mkdocstrings-python
 
 # 4. Prepare doc sources (Markdown only — no Zensical build here)
 echo "--- Preparing khiops-python doc sources (create-doc -p)"
@@ -128,5 +120,8 @@ awk '
   { print }
 ' mkdocs.yml.tmp > mkdocs.yml
 rm -f mkdocs.yml.tmp /tmp/_api_nav.yml
+
+# 6. Remove stall Python API Markdown file
+rm -f docs/api-docs/python-api.md
 
 echo "=== Python API doc sources ready ==="

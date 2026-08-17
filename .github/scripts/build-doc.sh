@@ -57,6 +57,7 @@ cleanup() {
   echo "--- Cleaning up build workspace"
   rm -rf ./khiops_samples docs/api-docs/python-api docs/tutorials/notebooks
   git checkout -- mkdocs.yml 2>/dev/null || true
+  git checkout -- docs/api-docs/python-api.md 2>/dev/null || true
 }
 trap cleanup EXIT
 
@@ -98,6 +99,9 @@ bash "${SCRIPT_DIR}/build-version.sh" \
 # 5. Build the whole site with Zensical
 echo "=== Building site with Zensical in dir $(pwd) ==="
 export KHIOPS_VERSION KHIOPS_VIZ_VERSION KHIOPS_GCS_DRIVER_VERSION KHIOPS_S3_DRIVER_VERSION KHIOPS_AZURE_DRIVER_VERSION
-uv run zensical build --strict
+
+uv run zensical build --clean --strict
+
+
 
 echo "=== Done — site built in ./site ==="
