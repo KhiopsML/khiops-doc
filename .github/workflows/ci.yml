@@ -72,20 +72,24 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
-      - name: Install Khiops core and khiops-python
+      - name: Install Khiops core
         env:
           KHIOPS_VERSION: ${{ inputs.khiops-version }}
         run: |
+          # Create virtual environment and activate it
+          uv venv
+          . .venv/bin/activate
+
           # Building the Python API docs always executes khiops-python's own
-          # tutorial notebooks (create-doc -t -d), so a real Khiops core +
-          # khiops-python install is required unconditionally.
-          sudo apt-get install lsb-release unzip -y
-          CODENAME=$(lsb_release -cs)
-          wget -O khiops_core.deb "https://github.com/KhiopsML/khiops/releases/download/${KHIOPS_VERSION}/khiops-core-openmpi_${KHIOPS_VERSION}-1-${CODENAME}.amd64.deb"
-          sudo dpkg -i khiops_core.deb || sudo apt-get -f -y install
-          rm -f khiops_core.deb
+          # tutorial notebooks (create-doc -t -d), so a real Khiops core
+          # install is required unconditionally.
+          uv pip install khiops-core==${KHIOPS_VERSION}
       - name: Build documentation
         run: |
+          # Activate virtual environment
+          . .venv/bin/activate
+
+          # Build the documentation
           ARGS=(
             --khiops-version "${{ inputs.khiops-version }}"
             --khiops-python-ref "${{ inputs.khiops-python-ref }}"

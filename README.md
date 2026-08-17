@@ -16,10 +16,7 @@ Then install dependencies with `uv`:
 uv sync --frozen --extra notebooks pythonapi
 ```
 
-Building the site locally also requires:
-
-- [Conda/Miniforge](https://github.com/conda-forge/miniforge) — used to install a pinned version of Khiops core in an isolated, disposable Conda environment. This is now required **unconditionally**, not only when executing tutorials: building the Python API pages always executes `khiops-python`'s own tutorial notebooks.
-- `git`, `wget`, `unzip`
+Building the site locally also requires `git`.
 
 ### Run
 
@@ -29,11 +26,11 @@ The Python API pages (`docs/api-docs/python-api/`) are generated from the `khiop
 ./local-build.sh --khiops-version VERSION
 ```
 
-This installs Khiops core `VERSION` via Conda, clones `khiops-python` (`main` branch by default; use `--local-khiops-python DIR` to build from a local checkout instead), converts its docstrings into the `docs/api-docs/python-api/` tree, regenerates the Python API nav, and builds the whole site with Zensical into `./site`. The Conda environment created for the build is removed automatically when the script exits.
+This installs Khiops core `VERSION` via Uv, clones `khiops-python` (`main` branch by default; use `--local-khiops-python DIR` to build from a local checkout instead), converts its docstrings into the `docs/api-docs/python-api/` tree, regenerates the Python API nav, and builds the whole site with Zensical into `./site`. The Uv environment created for the build is removed automatically when the script exits.
 
 Useful flags (see `./local-build.sh --help` for the full list):
 
-- `--khiops-version VER` — Khiops core version to install via Conda (**required**)
+- `--khiops-version VER` — Khiops core version to install via Uv (**required**)
 - `--local-khiops-python DIR` — build from a local `khiops-python` checkout
 - `--khiops-python-ref REF` — Git ref to build from when not local (default: `main`)
 - `--khiops-samples-version VER` — `khiops-samples` release used by the tutorials (default: `main`)

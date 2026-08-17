@@ -5,8 +5,8 @@ set -euo pipefail
 # (no Docker, no multi-version/mike support).
 #
 # Prerequisites:
-#   - uv (https://docs.astral.sh/uv/), conda/Miniforge
-#   - git, wget, unzip
+#   - uv (https://docs.astral.sh/uv/)
+#   - git
 #
 # Usage:
 #   ./local-build.sh [OPTIONS]
@@ -19,7 +19,7 @@ Build the Khiops doc site locally with Zensical.
 
 Options:
   -h, --help                        Show this help message and exit
-  --khiops-version VER              Khiops core version to install via Conda
+  --khiops-version VER              Khiops core version to install via Pip / Uv
                                      (required)
   --local-khiops-python DIR         Use a local khiops-python repo instead of
                                      cloning from GitHub
@@ -74,29 +74,22 @@ done
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 cd "$SCRIPT_DIR"
 
-if ! command -v conda &>/dev/null; then
-  echo "Error: conda not found. Install Miniforge."
+if ! command -v uv &>/dev/null; then
+  echo "Error: uv not found. Install it."
   exit 1
 fi
 
-CONDA_ENV_NAME="khiops-doc-build"
-CONDA_ENV_ACTIVE="false"
-
 trap '
-  if [ "$CONDA_ENV_ACTIVE" = "true" ]; then
-    conda deactivate 2>/dev/null
-    conda env remove -y -n "$CONDA_ENV_NAME" --quiet 2>/dev/null
-  fi
+  deactivate
+  rm -fr .venv/
 ' EXIT
 
-# Install Khiops core via Conda (always needed — building the Python API
+# Install Khiops core via Pip (always needed — building the Python API
 # docs always executes khiops-python's own tutorial notebooks)
-echo "--- Creating Conda env with Khiops core ${KHIOPS_VERSION}"
-conda create -y -n "$CONDA_ENV_NAME" python=3.12 --quiet
-eval "$(conda shell.bash hook 2>/dev/null)"
-conda activate "$CONDA_ENV_NAME"
-CONDA_ENV_ACTIVE="true"
-conda install -y -c conda-forge khiops-core="$KHIOPS_VERSION"
+echo "--- Creating Python virtualenv env with Khiops core ${KHIOPS_VERSION}"
+uv venv
+. .venv/bin/activate
+uv pip install khiops-core=="$KHIOPS_VERSION"
 
 ARGS=(
   --khiops-version "$KHIOPS_VERSION"
