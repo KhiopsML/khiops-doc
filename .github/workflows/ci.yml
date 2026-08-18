@@ -112,7 +112,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload the site docs as an artifact (PR)
-        if: github.event_name == 'workflow_dispatch' && inputs.deploy-gh-pages == false
+        if: inputs.deploy-gh-pages == false
         uses: actions/upload-artifact@v7
         with:
           name: khiops-doc
