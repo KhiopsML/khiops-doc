@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# build-version.sh — Clone khiops-python, prepare its Zensical-based Python
-# API doc sources (Markdown only, via `create-doc -p`), copy them into
+# prepare-python-api-doc.sh — Clone khiops-python, prepare its Zensical-based
+# Python API doc sources (Markdown only, via `create-doc -p`), copy them into
 # khiops-doc's docs/ tree, and regenerate the "API Python" nav section of
 # mkdocs.yml. Does NOT build the site — that's done once, separately, for
-# the whole khiops-doc site (`zensical build --strict`).
+# the whole khiops-doc site.
 #
 # Usage:
-#   build-version.sh [OPTIONS]
+#   prepare-python-api-doc.sh [OPTIONS]
 #
 # Options:
 #   --khiops-python-repo URL_OR_DIR   khiops-python repo to clone (Git URL or

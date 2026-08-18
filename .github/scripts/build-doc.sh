@@ -90,7 +90,7 @@ uv run python scripts/convert_notebooks.py
 #    khiops-python's own tutorials via create-doc -t -d — requires a real
 #    Khiops core + khiops-python install, independent of --execute-tutorials)
 echo "=== Preparing Python API doc sources ==="
-bash "${SCRIPT_DIR}/build-version.sh" \
+bash "${SCRIPT_DIR}/prepare-python-api-doc.sh" \
   --khiops-python-repo "$KHIOPS_PYTHON_REPO" \
   --khiops-python-ref "$KHIOPS_PYTHON_REF" \
   --khiops-samples-version "$KHIOPS_SAMPLES_VERSION" \

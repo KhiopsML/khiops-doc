@@ -93,9 +93,9 @@ Numerical Diff(Numerical value1, Numerical value2);
 
 ### Basics
 
-The CI/CD workflow (`.github/workflows/ci.yml`) installs Khiops core (via a `.deb` package) and then runs the same build pipeline as `local-build.sh`: it clones `khiops-python` (`main` branch by default), prepares its Zensical-based API doc sources via `create-doc -p` (see `.github/scripts/build-version.sh`), copies them into `docs/api-docs/python-api/`, regenerates the Python API nav, and builds the resulting site with Zensical. This shared pipeline lives in `.github/scripts/build-doc.sh`, used by both the CI workflow and `local-build.sh` — there is no separate `build-doc` composite action.
+The CI/CD workflow (`.github/workflows/ci.yml`) installs Khiops core (via a `.deb` package) and then runs the same build pipeline as `local-build.sh`: it clones `khiops-python` (`main` branch by default), prepares its Zensical-based API doc sources via `create-doc -p` (see `.github/scripts/prepare-python-api-doc.sh`), copies them into `docs/api-docs/python-api/`, regenerates the Python API nav, and builds the resulting site with Zensical. This shared pipeline lives in `.github/scripts/build-doc.sh`, used by both the CI workflow and `local-build.sh` — there is no separate `build-doc` composite action.
 
-Only a single version of the site is built and deployed — there is no multi-version ("other version") support.
+Only a single version of the site is built and deployed.
 
 ### CI/CD Usage
 
