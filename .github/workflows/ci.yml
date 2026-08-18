@@ -62,7 +62,8 @@ jobs:
           # Build the documentation
           ARGS=(
             --khiops-version "${{ env.KHIOPS_VERSION }}"
-            --khiops-python-ref "${{ env.KHIOPS_PYTHON_VERSION }}"
+            --khiops-python-version "${{ env.KHIOPS_PYTHON_VERSION }}"
+            --khiops-python-ref "${{ env.KHIOPS_PYTHON_REF }}"
             --khiops-samples-version "${{ env.KHIOPS_SAMPLES_VERSION }}"
             --khiops-python-tutorial-ref "${{ env.KHIOPS_PYTHON_TUTORIAL_VERSION }}"
             --khiops-viz-version "${{ env.KHIOPS_VIZ_VERSION || steps.khiops-viz-version.outputs.value }}"

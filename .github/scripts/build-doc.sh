@@ -11,6 +11,7 @@ set -euo pipefail
 #   --khiops-version VER              Khiops core version (for site content)
 #   --khiops-python-repo URL_OR_DIR   khiops-python repo to build docs from
 #   --khiops-python-ref REF           khiops-python Git ref to build docs from
+#   --khiops-python-version VER       khiops Python version (for site content)
 #   --khiops-samples-version VER      khiops-samples release
 #   --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref
 #   --khiops-viz-version VER          Khiops Visualization version
@@ -23,6 +24,7 @@ set -euo pipefail
 KHIOPS_VERSION=""
 KHIOPS_PYTHON_REPO="https://github.com/KhiopsML/khiops-python.git"
 KHIOPS_PYTHON_REF="main"
+KHIOPS_PYTHON_VERSION=""
 KHIOPS_SAMPLES_VERSION="main"
 KHIOPS_PYTHON_TUTORIAL_REF="main"
 KHIOPS_VIZ_VERSION=""
@@ -36,6 +38,7 @@ while [[ $# -gt 0 ]]; do
     --khiops-version) KHIOPS_VERSION="$2"; shift 2 ;;
     --khiops-python-repo) KHIOPS_PYTHON_REPO="$2"; shift 2 ;;
     --khiops-python-ref) KHIOPS_PYTHON_REF="$2"; shift 2 ;;
+    --khiops-python-version) KHIOPS_PYTHON_VERSION="$2"; shift 2 ;;
     --khiops-samples-version) KHIOPS_SAMPLES_VERSION="$2"; shift 2 ;;
     --khiops-python-tutorial-ref) KHIOPS_PYTHON_TUTORIAL_REF="$2"; shift 2 ;;
     --khiops-viz-version) KHIOPS_VIZ_VERSION="$2"; shift 2 ;;
@@ -96,10 +99,33 @@ bash "${SCRIPT_DIR}/prepare-python-api-doc.sh" \
   --khiops-samples-version "$KHIOPS_SAMPLES_VERSION" \
   --khiops-python-tutorial-ref "$KHIOPS_PYTHON_TUTORIAL_REF"
 
-# 6. Build the whole site with Zensical
-echo "=== Building site with Zensical in dir $(pwd) ==="
-export KHIOPS_VERSION KHIOPS_VIZ_VERSION KHIOPS_GCS_DRIVER_VERSION KHIOPS_S3_DRIVER_VERSION KHIOPS_AZURE_DRIVER_VERSION
+# 6. Substitute environment variables into the Zensical configuration file
+echo "=== Injecting the environment variables into zensical.toml"
+echo "  KHIOPS_VERSION = ${KHIOPS_VERSION}"
+echo "  KHIOPS_PYTHON_VERSION = ${KHIOPS_PYTHON_VERSION}"
+echo "  KHIOPS_SAMPLES_VERSION = ${KHIOPS_SAMPLES_VERSION}"
+echo "  KHIOPS_VIZ_VERSION = ${KHIOPS_VIZ_VERSION}"
+echo "  KHIOPS_GCS_DRIVER_VERSION = ${KHIOPS_GCS_DRIVER_VERSION}"
+echo "  KHIOPS_S3_DRIVER_VERSION = ${KHIOPS_S3_DRIVER_VERSION}"
+echo "  KHIOPS_AZURE_DRIVER_VERSION = ${KHIOPS_AZURE_DRIVER_VERSION}"
+KHIOPS_VERSIONING_VARS=$(printf '${%s} ' \
+  KHIOPS_VERSION \
+  KHIOPS_PYTHON_VERSION \
+  KHIOPS_SAMPLES_VERSION \
+  KHIOPS_VIZ_VERSION \
+  KHIOPS_GCS_DRIVER_VERSION \
+  KHIOPS_S3_DRIVER_VERSION \
+  KHIOPS_AZURE_DRIVER_VERSION)
+export KHIOPS_VERSION KHIOPS_PYTHON_VERSION KHIOPS_VIZ_VERSION \
+  KHIOPS_SAMPLES_VERSION KHIOPS_GCS_DRIVER_VERSION \
+  KHIOPS_S3_DRIVER_VERSION KHIOPS_AZURE_DRIVER_VERSION
+envsubst "${KHIOPS_VERSIONING_VARS}" \
+  < zensical.toml \
+  > zensical.tmp.toml \
+  && mv zensical.tmp.toml zensical.toml
 
+# 7. Build the whole site with Zensical
+echo "=== Building site with Zensical in dir $(pwd) ==="
 uv run zensical build --clean --strict
 
 echo "=== Done — site built in ./site ==="

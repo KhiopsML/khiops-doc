@@ -25,7 +25,8 @@ Options:
                                      cloning from GitHub
   --khiops-python-ref REF           khiops-python Git ref to build docs from
                                      when not using --local-khiops-python
-                                     (default: main)
+                                     (default: khiops-python-version)
+  --khiops-python-version VER       Khiops Python version (for the website)
   --khiops-samples-version VER      khiops-samples release to download
                                      (default: main)
   --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref (default: main)
@@ -39,11 +40,12 @@ EOF
   exit 0
 }
 
-LOCAL_KHIOPS_PYTHON=""
-KHIOPS_PYTHON_REF="main"
 KHIOPS_SAMPLES_VERSION="main"
 KHIOPS_PYTHON_TUTORIAL_REF="main"
 KHIOPS_VERSION=""
+KHIOPS_PYTHON_VERSION=""
+LOCAL_KHIOPS_PYTHON=""
+KHIOPS_PYTHON_REF="${KHIOPS_PYTHON_VERSION}"
 KHIOPS_VIZ_VERSION="unknown"
 KHIOPS_GCS_DRIVER_VERSION="unknown"
 KHIOPS_S3_DRIVER_VERSION="unknown"
@@ -55,6 +57,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     -h|--help) usage ;;
     --khiops-version) KHIOPS_VERSION="$2"; shift 2 ;;
+    --khiops-python-version) KHIOPS_PYTHON_VERSION="$2"; shift 2 ;;
     --local-khiops-python) LOCAL_KHIOPS_PYTHON="$2"; shift 2 ;;
     --khiops-python-ref) KHIOPS_PYTHON_REF="$2"; shift 2 ;;
     --khiops-samples-version) KHIOPS_SAMPLES_VERSION="$2"; shift 2 ;;
@@ -92,6 +95,7 @@ uv venv
 
 ARGS=(
   --khiops-version "$KHIOPS_VERSION"
+  --khiops-python-version "$KHIOPS_PYTHON_VERSION"
   --khiops-python-ref "$KHIOPS_PYTHON_REF"
   --khiops-samples-version "$KHIOPS_SAMPLES_VERSION"
   --khiops-python-tutorial-ref "$KHIOPS_PYTHON_TUTORIAL_REF"
