@@ -3,30 +3,6 @@ name: Website
 on:
   workflow_dispatch:
     inputs:
-      khiops-version:
-        description: Khiops core version
-        default: "11.0.1"
-      khiops-python-ref:
-        description: khiops-python Git ref/tag to build the API docs from
-        default: "11.0.1.0"
-      khiops-samples-version:
-        description: khiops-samples release
-        default: "11.0.0"
-      khiops-python-tutorial-ref:
-        description: khiops-python-tutorial Git ref
-        default: "11.0.0.0"
-      khiops-viz-version:
-        description: Khiops Visualization version (empty = latest release)
-        default: ""
-      khiops-gcs-driver-version:
-        description: Khiops GCS driver version
-        default: "0.0.23"
-      khiops-s3-driver-version:
-        description: Khiops S3 driver version
-        default: "0.0.25"
-      khiops-azure-driver-version:
-        description: Khiops Azure driver version
-        default: "0.0.18"
       execute-khiops-tutorials:
         description: Execute khiops-doc's own tutorial notebooks
         required: true
@@ -58,8 +34,10 @@ jobs:
           python-version: 3.11
       - name: Checkout doc sources
         uses: actions/checkout@v6
+      - name: Set up the version information in the environment
+        run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Retrieve the version number of Khiops Visualization Desktop from the latest release on GitHub
-        if: inputs.khiops-viz-version == ''
+        if: env.KHIOPS_VIZ_VERSION == ''
         id: khiops-viz-version
         env:
           GH_TOKEN: ${{ github.token }}
@@ -73,8 +51,6 @@ jobs:
           enable-cache: true
           cache-dependency-glob: uv.lock
       - name: Install Khiops core
-        env:
-          KHIOPS_VERSION: ${{ inputs.khiops-version }}
         run: |
           # Create virtual environment and activate it
           uv venv
@@ -83,7 +59,7 @@ jobs:
           # Building the Python API docs always executes khiops-python's own
           # tutorial notebooks (create-doc -t -d), so a real Khiops core
           # install is required unconditionally.
-          uv pip install khiops-core==${KHIOPS_VERSION}
+          uv pip install khiops-core==${{ env.KHIOPS_VERSION }}
       - name: Build documentation
         run: |
           # Activate virtual environment
@@ -91,14 +67,14 @@ jobs:
 
           # Build the documentation
           ARGS=(
-            --khiops-version "${{ inputs.khiops-version }}"
-            --khiops-python-ref "${{ inputs.khiops-python-ref }}"
-            --khiops-samples-version "${{ inputs.khiops-samples-version }}"
-            --khiops-python-tutorial-ref "${{ inputs.khiops-python-tutorial-ref }}"
-            --khiops-viz-version "${{ inputs.khiops-viz-version || steps.khiops-viz-version.outputs.value }}"
-            --khiops-gcs-driver-version "${{ inputs.khiops-gcs-driver-version }}"
-            --khiops-s3-driver-version "${{ inputs.khiops-s3-driver-version }}"
-            --khiops-azure-driver-version "${{ inputs.khiops-azure-driver-version }}"
+            --khiops-version "${{ env.KHIOPS_VERSION }}"
+            --khiops-python-ref "${{ env.KHIOPS_PYTHON_VERSION }}"
+            --khiops-samples-version "${{ env.KHIOPS_SAMPLES_VERSION }}"
+            --khiops-python-tutorial-ref "${{ env.KHIOPS_PYTHON_TUTORIAL_VERSION }}"
+            --khiops-viz-version "${{ env.KHIOPS_VIZ_VERSION || steps.khiops-viz-version.outputs.value }}"
+            --khiops-gcs-driver-version "${{ env.KHIOPS_GCS_DRIVER_VERSION }}"
+            --khiops-s3-driver-version "${{ env.KHIOPS_S3_DRIVER_VERSION }}"
+            --khiops-azure-driver-version "${{ env.KHIOPS_AZURE_DRIVER_VERSION }}"
           )
           if [[ "${{ inputs.execute-khiops-tutorials }}" == "true" ]]; then
             ARGS+=(--execute-tutorials)

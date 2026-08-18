@@ -103,12 +103,6 @@ The CI/CD can only be launched manually, from the GitHub interface. A pull reque
 
 The CI/CD supports the following `workflow_dispatch` inputs, all with sensible defaults:
 
-- `khiops-version` — Khiops core version
-- `khiops-python-ref` — `khiops-python` Git ref/tag to build the API docs from
-- `khiops-samples-version` — `khiops-samples` release
-- `khiops-python-tutorial-ref` — `khiops-python-tutorial` Git ref
-- `khiops-viz-version` — Khiops Visualization version (leave empty to use the latest GitHub release)
-- `khiops-gcs-driver-version`, `khiops-s3-driver-version`, `khiops-azure-driver-version` — storage driver versions
 - `execute-khiops-tutorials` (boolean, default `false`) — also execute khiops-doc's own tutorial notebooks
 - `deploy-gh-pages` (boolean, default `false`) — deploy the built site to GH Pages
 - `check-links` (boolean, default `false`) — check the built site for broken links
