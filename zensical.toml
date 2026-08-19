@@ -1,0 +1,287 @@
+# ------------------------------------------------------------------
+# Root-level keys (must precede any [table] headers in TOML)
+# ------------------------------------------------------------------
+site_name = "Khiops"
+site_url = "https://khiops.org/"
+
+# Repository
+repo_name = "KhiopsML/Khiops"
+repo_url = "https://github.com/KhiopsML/khiops"
+
+# Copyright
+copyright = "Copyright &copy; 2023-2026 Orange S.A."
+
+markdown_extensions = [
+  "attr_list",
+  "md_in_html",
+  "admonition",
+  "pymdownx.details",
+  "pymdownx.superfences",
+  { "pymdownx.highlight" = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true } },
+  "pymdownx.inlinehilite",
+  "pymdownx.snippets",
+  "def_list",
+  { "pymdownx.tasklist" = { custom_checkbox = true } },
+  { "pymdownx.tabbed" = { alternate_style = true } },
+  "attr_list",
+  { "pymdownx.emoji" = { emoji_index = "material.extensions.emoji.twemoji", emoji_generator = "material.extensions.emoji.to_svg" } },
+  { "pymdownx.arithmatex" = { generic = true } },
+  "tables",
+  "footnotes",
+]
+
+extra_css = ["assets/stylesheets/main.css"]
+
+# Add JS for Material plugins
+extra_javascript = [
+  "assets/javascripts/mathjax.min.js",
+  "assets/javascripts/mathjax-loader.js",
+  "assets/javascripts/visu-menu.js",
+]
+
+nav = [
+  { "Installation" = [
+      "setup/index.md",
+      { "Khiops Python Library" = [
+          { "pip" = "setup/pip.md" },
+          { "conda" = "setup/conda.md" },
+          { "docker notebook" = "setup/khiops-notebook.md" },
+        ] },
+      { "Applications" = [
+          { "Khiops Application" = "setup/nocode.md" },
+          { "Khiops Visualization" = "setup/visualization.md" },
+          { "Khiops Native Interface (KNI)" = "setup/kni.md" },
+        ] },
+      # anchors to sections are currently unusable in strict mode because of https://github.com/mkdocs/mkdocs/issues/4026
+      # and linking to the same page breaks the TOC
+      { "Cloud Storage Drivers" = [
+          { "For the Python Library" = "setup/drivers-and-sdk-for-library.md" },
+          { "For the Khiops Application" = "setup/drivers-and-sdk-for-application.md" },
+        ] },
+    ] },
+  { "How to" = [
+      "tutorials/introduction.md",
+      { "Scikit-learn API" = [
+          { "Quickstart Guide" = "tutorials/quickstart.md" },
+          { "Single-Table Tutorial" = "tutorials/notebooks/single_table_classifier.md" },
+          { "No Need for Data Preparation" = "tutorials/notebooks/No_data_Cleaning.md" },
+          { "Interpretable Variable Encoding" = "tutorials/notebooks/Optimal_Encoding.md" },
+          { "Multi-Table Tutorial" = "tutorials/notebooks/multi_table_classifier.md" },
+          { "Auto Feature Engineering & More" = "tutorials/notebooks/Use_in_any_ML_pipeline.md" },
+        ] },
+      { "Core API & Dictionaries" = [
+          { "Start Using Dictionaries" = "tutorials/kdic_intro.md" },
+          { "Single-Table Concepts" = "tutorials/kdic_single_table.md" },
+          { "Single-Table Tutorial" = "tutorials/notebooks/single_table_classifier_core.md" },
+          { "Multi-Table Concepts" = "tutorials/kdic_multi_table.md" },
+          { "Multi-Table Tutorial" = "tutorials/notebooks/multi_table_classifier_core.md" },
+        ] },
+      { "Deployment & Integration" = [
+          { "Cloud Storage" = "tutorials/storage.md" },
+          { "Running Khiops with Docker" = "tutorials/docker.md" },
+          { "Distributed Execution with k8s" = "tutorials/k8s.md" },
+          { "Real-time Deployment" = "tutorials/kni.md" },
+          { "Scenario-Based Execution" = "tutorials/scenario.md" },
+        ] },
+    ] },
+  { "API Python" = [
+      { "Python API Docs" = "api-docs/python-api.md" },
+    ] },
+  { "API Dictionary" = [
+      { "Databases and dictionaries" = [
+          { "Databases" = "api-docs/kdic/database-files.md" },
+          { "Dictionaries" = "api-docs/kdic/dictionary-files.md" },
+          { "Technical Limits" = "api-docs/kdic/limits.md" },
+        ] },
+      { "Dictionary Rules" = [
+          { "Basic" = [
+              { "Numerical Comparisons" = "api-docs/kdic/numerical-comparisons.md" },
+              { "Categorical Comparisons" = "api-docs/kdic/categorical-comparisons.md" },
+              { "Logical Operators" = "api-docs/kdic/logical-operators.md" },
+              { "Data Copy and Conversion" = "api-docs/kdic/data-copy-and-conversion.md" },
+              { "Math Rules" = "api-docs/kdic/math-rules.md" },
+              { "String Rules" = "api-docs/kdic/string-rules.md" },
+              { "Text Rules" = "api-docs/kdic/text-rules.md" },
+              { "Date Rules" = "api-docs/kdic/date-rules.md" },
+              { "Time Rules" = "api-docs/kdic/time-rules.md" },
+              { "Timestamp Rules" = "api-docs/kdic/timestamp-rules.md" },
+              { "TimestampTZ Rules" = "api-docs/kdic/timestamp-tz-rules.md" },
+            ] },
+          { "Multi-Table" = [
+              { "Introduction" = "api-docs/kdic/multi-table-rules-introduction.md" },
+              { "Entity Rules" = "api-docs/kdic/entity-rules.md" },
+              { "Table Rules" = "api-docs/kdic/table-rules.md" },
+              { "Table Management Rules" = "api-docs/kdic/table-management-rules.md" },
+              { "TextList Rules" = "api-docs/kdic/text-list-rules.md" },
+            ] },
+          { "Technical Structures & Rules" = [
+              { "Introduction" = "api-docs/kdic/structures-introduction.md" },
+              { "Vector Rules" = "api-docs/kdic/vector-rules.md" },
+              { "Hash Map Rules" = "api-docs/kdic/hash-map-rules.md" },
+              { "Data Preparation Rules" = "api-docs/kdic/data-preparation-rules.md" },
+              { "Recoding Rules" = "api-docs/kdic/recoding-rules.md" },
+              { "Predictor Rules" = "api-docs/kdic/predictor-rules.md" },
+              { "Interpretation Rules" = "api-docs/kdic/interpretation-rules.md" },
+              { "Reinforcement Rules" = "api-docs/kdic/reinforcement-rules.md" },
+              { "Coclustering Rules" = "api-docs/kdic/coclustering-rules.md" },
+            ] },
+          { "Block and Sparse Data Rules" = [
+              { "Introduction" = "api-docs/kdic/intro-block.md" },
+              { "Basic Sparse Rules" = "api-docs/kdic/basic-sparse-rules.md" },
+              { "Text Sparse Rules" = "api-docs/kdic/text-sparse-rules.md" },
+              { "Preparation Sparse Rules" = "api-docs/kdic/preparation-sparse-rules.md" },
+              { "Table Partition Rules" = "api-docs/kdic/table-partition-rules.md" },
+              { "Table Block Rules" = "api-docs/kdic/table-block-rules.md" },
+            ] },
+        ] },
+    ] },
+  { "Foundations" = [
+      { "What Makes Khiops Different" = "learn/understand.md" },
+      { "An Original Formalism" = "learn/modl.md" },
+      { "Auto-ML Pipeline" = [
+          { "Optimal Encoding" = "learn/preprocessing.md" },
+          { "Auto Feature Engineering" = "learn/autofeature_engineering.md" },
+          { "Parsimonious Training" = "learn/learning_models.md" },
+        ] },
+      { "Unsupervised Approaches" = [
+          { "Optimal Histograms" = "learn/histograms.md" },
+          { "Coclustering" = "learn/coclustering.md" },
+          # { "Coclustering inst x var" = "learn/coclustering_indi_var.md" }
+        ] },
+      { "Auto Hardware Adaptation" = "learn/hardware_adaptation.md" },
+      { "Bibliography" = "references.md" },
+    ] },
+  { "Discussions" = "https://github.com/orgs/KhiopsML/discussions" },
+  { "Contact Us" = "contact.md" },
+]
+
+# ------------------------------------------------------------------
+# theme
+# ------------------------------------------------------------------
+[theme]
+name = "material"
+logo = "assets/images/generated/khiops-logo-ui.png"
+favicon = "assets/images/generated/khiops-logo-favicon.png"
+custom_dir = "overrides"
+font = false
+features = [
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.path",
+  "navigation.expand",
+  "navigation.indexes",
+  "navigation.footer",
+  "content.code.copy",
+  "content.tooltips",
+]
+
+[theme.icon]
+repo = "fontawesome/brands/github"
+
+[[theme.palette]]
+media = "(prefers-color-scheme)"
+primary = "black"
+accent = "indigo"
+
+[theme.palette.toggle]
+icon = "lucide/sun-moon"
+name = "Switch to light mode"
+
+[[theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "black"
+accent = "indigo"
+
+[theme.palette.toggle]
+icon = "lucide/sun"
+name = "Switch to dark mode"
+
+[[theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "black"
+accent = "indigo"
+
+[theme.palette.toggle]
+icon = "lucide/moon"
+name = "Switch to system preference"
+
+# ------------------------------------------------------------------
+# extra
+# ------------------------------------------------------------------
+[extra]
+KHIOPS_VERSION = "11.0.1"              # was !ENV [KHIOPS_VERSION, 11.0.1]
+KHIOPS_OTHER_VERSION = ""              # was !ENV KHIOPS_OTHER_VERSION (no default provided)
+KHIOPS_PYTHON_VERSION = "11.0.1.0"     # was !ENV [KHIOPS_PYTHON_VERSION, 11.0.1.0]
+KHIOPS_SAMPLES_VERSION = "11.0.0"      # was !ENV [KHIOPS_SAMPLES_VERSION, 11.0.0]
+KHIOPS_VIZ_VERSION = "11.3.1"          # was !ENV [KHIOPS_VIZ_VERSION, 11.3.1]
+KHIOPS_GCS_DRIVER_VERSION = "0.0.23"   # was !ENV [KHIOPS_GCS_DRIVER_VERSION, 0.0.23]
+KHIOPS_S3_DRIVER_VERSION = "0.0.25"    # was !ENV [KHIOPS_S3_DRIVER_VERSION, 0.0.25]
+KHIOPS_AZURE_DRIVER_VERSION = "0.0.18" # was !ENV [KHIOPS_AZURE_DRIVER_VERSION, 0.0.18]
+KHIOPS_PYTHON_API_DOC_URI = "api/index.html"
+
+[[extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/KhiopsML/khiops"
+
+[extra.consent]
+title = "Cookie consent"
+description = """We use cookies to recognize your repeated visits and preferences, as well \
+as to measure the effectiveness of our documentation and whether users \
+find what they're searching for. With your consent, you're helping us to \
+make our documentation better."""
+
+[extra.analytics]
+provider = "google"
+property = "G-JGJG6PJWFS"
+
+[extra.analytics.feedback]
+title = "Was this page helpful?"
+
+[[extra.analytics.feedback.ratings]]
+icon = "material/emoticon-happy-outline"
+name = "This page was helpful"
+data = 1
+note = "Thanks for your feedback!"
+
+[[extra.analytics.feedback.ratings]]
+icon = "material/emoticon-sad-outline"
+name = "This page could be improved"
+data = 0
+note = '''Thanks for your feedback! Help us improve this page by using our <a href="https://msurvey.orange.com/khiopsdoc" target="_blank" rel="noopener">feedback form</a>.'''
+
+# ------------------------------------------------------------------
+# plugins
+# ------------------------------------------------------------------
+[plugins]
+macros = {}
+search = {}
+
+[plugins.mkdocstrings.handlers.python]
+inventories = [
+  "https://docs.python.org/3/objects.inv",
+  "https://pandas.pydata.org/pandas-docs/dev/objects.inv",
+  { url = "https://scikit-learn.org/stable/objects.inv", domains = ["py", "std"] },
+  "https://numpy.org/doc/stable/objects.inv",
+  "https://docs.scipy.org/doc/scipy/objects.inv",
+]
+
+[plugins.mkdocstrings.handlers.python.options]
+docstring_style = "numpy"
+docstring_section_style = "spacy"
+scoped_crossrefs = true
+show_root_heading = true
+show_root_full_path = true
+show_symbol_type_heading = false
+show_symbol_type_toc = false
+show_source = false
+group_by_category = true
+show_category_heading = true
+summary = true
+members_order = "source"
+merge_init_into_class = true
+show_signature_annotations = true
+signature_crossrefs = true
+inherited_members = false
+show_if_no_docstring = false

@@ -96,32 +96,18 @@ if [ -d khiops-python-src/doc/site/samples ]; then
   cp khiops-python-src/doc/site/samples/*.ipynb docs/api-docs/python-api/samples/ 2>/dev/null || true
 fi
 
-# 6. Regenerate the "API Python" nav section of mkdocs.yml from the copied files
+# 6. Regenerate the "API Python" nav section of mkdocs.yml from khiops-python's
+#    zensical.toml
 echo "--- Generating Python API nav"
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-API_NAV=$(bash "${SCRIPT_DIR}/generate-python-api-nav.sh" docs)
-echo "$API_NAV" > /tmp/_api_nav.yml
+uv run --active --frozen --no-sync ${SCRIPT_DIR}/generate_python_api_nav.py \
+  --source ./khiops-python-src/zensical.toml --target zensical.toml \
+  --output zensical.toml --section "API Python" \
+  --source-index-title "Home" \
+  --source-index-file "index.md" \
+  --path-prefix "api-docs/python-api/"
 
-awk '
-  /- API Python:/ && !done {
-    indent = match($0, /[^ ]/) - 1
-    skip = 1; done = 1; next
-  }
-  skip && /[^ ]/ && match($0, /[^ ]/) - 1 <= indent { skip = 0 }
-  skip { next }
-  { print }
-' mkdocs.yml > mkdocs.yml.tmp
-
-awk '
-  /- API Dictionary:/ && !inserted {
-    while ((getline line < "/tmp/_api_nav.yml") > 0) print line
-    inserted = 1
-  }
-  { print }
-' mkdocs.yml.tmp > mkdocs.yml
-rm -f mkdocs.yml.tmp /tmp/_api_nav.yml
-
-# 6. Remove stall Python API Markdown file
+# 7. Remove stall Python API Markdown file
 rm -f docs/api-docs/python-api.md
 
 echo "=== Python API doc sources ready ==="

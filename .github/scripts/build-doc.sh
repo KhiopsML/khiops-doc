@@ -56,7 +56,7 @@ export PIP_NO_CACHE_DIR=1
 cleanup() {
   echo "--- Cleaning up build workspace"
   rm -rf ./khiops_samples docs/api-docs/python-api docs/tutorials/notebooks
-  git checkout -- mkdocs.yml 2>/dev/null || true
+  git checkout -- zensical.toml 2>/dev/null || true
   git checkout -- docs/api-docs/python-api.md 2>/dev/null || true
 }
 trap cleanup EXIT
