@@ -78,7 +78,13 @@ jobs:
         if: inputs.check-links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --root-dir site --no-progress --accept 200,403 --exclude 'file:///.*\d+\.\d+\.\d+' 'site/**/*.html'
+          args: >-
+            --no-progress
+            --root-dir ./site
+            --accept 200,403
+            --exclude 'file:///.*\d+\.\d+\.\d+'
+            --remap 'https://khiops.org/ file://${{ github.workspace }}/site/'
+            'site/**/*.html'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload the site docs as an artifact (PR)
