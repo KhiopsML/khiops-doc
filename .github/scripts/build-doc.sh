@@ -2,10 +2,7 @@
 set -euo pipefail
 
 # build-doc.sh — Full Khiops doc build pipeline, shared by CI
-# (.github/actions/build-doc) and local-build.sh. Assumes a working Khiops
-# core + khiops-python installation is already present in the environment
-# (installed by the caller — via apt/dpkg in CI, via Conda locally — since
-# that part is platform-specific and NOT shareable).
+# (.github/actions/build-doc) and local-build.sh.
 #
 # Usage:
 #   build-doc.sh [OPTIONS]
@@ -61,7 +58,10 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# 1. Install khiops-doc's own Python dependencies
+# 1. Install khiops-core
+uv pip install khiops-core=="$KHIOPS_VERSION"
+
+# 2. Install khiops-doc's own Python dependencies
 echo "=== Installing documentation requirements ==="
 if [ "$EXECUTE_TUTORIALS" = "true" ]; then
   uv sync --frozen --extra notebooks --extra tutorials --extra pythonapi
@@ -69,7 +69,7 @@ else
   uv sync --frozen --extra notebooks --extra pythonapi
 fi
 
-# 2. Download khiops-samples for khiops-doc's own tutorial notebooks
+# 3. Download khiops-samples for khiops-doc's own tutorial notebooks
 #    (only needed if they are actually executed)
 if [ "$EXECUTE_TUTORIALS" = "true" ]; then
   echo "=== Downloading khiops-samples ${KHIOPS_SAMPLES_VERSION} ==="
@@ -82,11 +82,11 @@ fi
 export KHIOPS_SAMPLES_DIR="$(pwd)/khiops_samples"
 export EXECUTE_KHIOPS_TUTORIALS="$EXECUTE_TUTORIALS"
 
-# 3. Convert khiops-doc's own tutorial notebooks
+# 4. Convert khiops-doc's own tutorial notebooks
 echo "=== Converting khiops-doc tutorial notebooks ==="
 uv run python scripts/convert_notebooks.py
 
-# 4. Prepare Python API doc sources from khiops-python (always executes
+# 5. Prepare Python API doc sources from khiops-python (always executes
 #    khiops-python's own tutorials via create-doc -t -d — requires a real
 #    Khiops core + khiops-python install, independent of --execute-tutorials)
 echo "=== Preparing Python API doc sources ==="
@@ -96,12 +96,10 @@ bash "${SCRIPT_DIR}/prepare-python-api-doc.sh" \
   --khiops-samples-version "$KHIOPS_SAMPLES_VERSION" \
   --khiops-python-tutorial-ref "$KHIOPS_PYTHON_TUTORIAL_REF"
 
-# 5. Build the whole site with Zensical
+# 6. Build the whole site with Zensical
 echo "=== Building site with Zensical in dir $(pwd) ==="
 export KHIOPS_VERSION KHIOPS_VIZ_VERSION KHIOPS_GCS_DRIVER_VERSION KHIOPS_S3_DRIVER_VERSION KHIOPS_AZURE_DRIVER_VERSION
 
 uv run zensical build --clean --strict
-
-
 
 echo "=== Done — site built in ./site ==="

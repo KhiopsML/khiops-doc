@@ -89,7 +89,6 @@ trap '
 echo "--- Creating Python virtualenv env with Khiops core ${KHIOPS_VERSION}"
 uv venv
 . .venv/bin/activate
-uv pip install khiops-core=="$KHIOPS_VERSION"
 
 ARGS=(
   --khiops-version "$KHIOPS_VERSION"

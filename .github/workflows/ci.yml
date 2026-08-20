@@ -52,14 +52,8 @@ jobs:
           cache-dependency-glob: uv.lock
       - name: Install Khiops core
         run: |
-          # Create virtual environment and activate it
+          # Create virtual environment
           uv venv
-          . .venv/bin/activate
-
-          # Building the Python API docs always executes khiops-python's own
-          # tutorial notebooks (create-doc -t -d), so a real Khiops core
-          # install is required unconditionally.
-          uv pip install khiops-core==${{ env.KHIOPS_VERSION }}
       - name: Build documentation
         run: |
           # Activate virtual environment
