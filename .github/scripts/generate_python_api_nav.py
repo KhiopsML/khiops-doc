@@ -6,8 +6,9 @@ This script:
 
   1. Parses the source file's "project.nav" as-is.
   2. Optionally normalizes the source nav's first entry from a titled
-     mapping (e.g. { "Home" = "index.md" }) to a bare index-page string
-     (e.g. "index.md"), via --source-index-title / --source-index-file.
+     mapping (e.g. { "Home" = "index.md" }) to a nav entry with a custom title
+     (e.g. {"Python API = "index.md"}), via --source-index-title,
+     --source-index-file and --target-index-title.
   3. Optionally prepends a path prefix to every relative file path in the
      source nav, via --path-prefix, so paths remain valid once merged into
      a document with a different docs root.
@@ -29,6 +30,7 @@ Usage:
         --section "API Python" \
         --source-index-title "Home" \
         --source-index-file "index.md" \
+        --target-index-title "Python API" \
         --path-prefix "api-docs/python-api/
 """
 
@@ -72,16 +74,15 @@ def load_source_nav(source_path):
 # ----------------------------------------------------------------------
 
 
-def normalise_index_entry(nav, source_title, source_file):
+def normalise_index_entry(nav, source_title, source_file, target_title):
     """
     If the first item of nav is the single-key mapping
-    { source_title = source_file } (e.g. { "Home" = "index.md" }), replace
-    it in place with the bare string source_file (e.g. "index.md").
+    { source_title = source_file } (e.g. { "Home" = "index.md" }), replace the
+    single-key mapping in place with an entry in the nav which has target_title
+    as its title.
 
-    This turns a titled index-page entry into an MkDocs-style bare index
-    entry, so the section heading's slug/URL is derived from the actual
-    file instead of an unreachable title-derived slug. Path prefixing (see
-    prefix_nav_files) is applied separately, afterwards.
+    This turns a titled index-page entry into an MkDocs-style differently-titled
+    index entry, so the section's nav entry has the custom title.
     """
     if not nav:
         return
@@ -90,7 +91,7 @@ def normalise_index_entry(nav, source_title, source_file):
     if isinstance(first, dict) and len(first) == 1:
         ((title, file_),) = first.items()
         if title == source_title and file_ == source_file:
-            nav[0] = file_
+            nav[0] = {target_title: [file_]}
 
 
 # -------------------------------------------------------------------------
@@ -246,7 +247,7 @@ def main():
     )
     index_group = parser.add_argument_group(
         "index page normalisation",
-        "Optional: if used, both options below must be provided together.",
+        "Optional: if used, all three options below must be provided together."
     )
     index_group.add_argument(
         "--source-index-title",
@@ -257,6 +258,11 @@ def main():
         "--source-index-file",
         default=None,
         help="File path of the source nav's first entry to treat as its index page.",
+    )
+    index_group.add_argument(
+        "--target-index-title",
+        default=None,
+        help="Target of the index file, to be displayed and linked to in the nav sections."
     )
     parser.add_argument(
         "--path-prefix",
@@ -270,11 +276,15 @@ def main():
 
     args = parser.parse_args()
 
-    index_args = (args.source_index_title, args.source_index_file)
+    index_args = (
+        args.source_index_title,
+        args.source_index_file,
+        args.target_index_title
+    )
     if any(index_args) and not all(index_args):
         parser.error(
-            "--source-index-title and --source-index-file must both be"
-            "provided together, or not at all."
+            "--source-index-title, --source-index-file and --target-index-title "
+            "must all be provided together, or not at all."
         )
 
     output_path = args.output or args.target
@@ -284,7 +294,10 @@ def main():
 
         if all(index_args):
             normalise_index_entry(
-                new_nav, args.source_index_title, args.source_index_file
+                new_nav,
+                args.source_index_title,
+                args.source_index_file,
+                args.target_index_title
             )
 
         if args.path_prefix:

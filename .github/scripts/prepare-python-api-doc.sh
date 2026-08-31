@@ -105,6 +105,7 @@ uv run --active --frozen --no-sync ${SCRIPT_DIR}/generate_python_api_nav.py \
   --output zensical.toml --section "API Python" \
   --source-index-title "Home" \
   --source-index-file "index.md" \
+  --target-index-title "Python API" \
   --path-prefix "api-docs/python-api/"
 
 # 7. Remove stall Python API Markdown file
