@@ -62,5 +62,9 @@ pip install khiops[s3,gcs,azure]=={{ PIP_KHIOPS_PYTHON_VERSION }} # for all the 
     pip uninstall khiops
     ```
 
+=== "Users on :material-microsoft-windows: Windows"
+    !!! warning
+        In some companies, Windows AppLocker may block running installed Python packages via an IDE or terminal. If you encounter issues, try installing the Khiops Python library in a recommended directory or run your IDE or terminal as an administrator.
+
 <br>
 
