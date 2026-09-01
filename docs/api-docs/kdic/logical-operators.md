@@ -69,8 +69,8 @@ Not logical operator.
 Numerical If(Numerical test, Numerical valueTrue, Numerical valueFalse)
 ```
 
-Ternary operator returning second operand (true) or third operand (false) according to the
-condition in first operand.
+Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
+condition in the first operand.
 
 ## IfC
 
@@ -78,8 +78,8 @@ condition in first operand.
 Categorical IfC(Numerical test, Categorical valueTrue, Categorical valueFalse)
 ```
 
-Ternary operator returning second operand (true) or third operand (false) according to the
-condition in first operand.
+Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
+condition in the first operand.
 
 ## IfD
 
@@ -87,8 +87,8 @@ condition in first operand.
 Date IfD(Numerical test, Date valueTrue, Date valueFalse)
 ```
 
-Ternary operator returning second operand (true) or third operand (false) according to the
-condition in first operand.
+Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
+condition in the first operand.
 
 ## IfT
 
@@ -96,8 +96,8 @@ condition in first operand.
 Time IfT(Numerical test, Time valueTrue, Time valueFalse)
 ```
 
-Ternary operator returning second operand (true) or third operand (false) according to the
-condition in first operand.
+Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
+condition in the first operand.
 
 ## IfTS
 
@@ -105,8 +105,8 @@ condition in first operand.
 Timestamp IfTS(Numerical test, Timestamp valueTrue, Timestamp valueFalse)
 ```
 
-Ternary operator returning second operand (true) or third operand (false) according to the
-condition in first operand.
+Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
+condition in the first operand.
 
 ## IfTSTZ
 
@@ -114,8 +114,18 @@ condition in first operand.
 TimestampTZ IfTSTZ(Numerical test, TimestampTZ valueTrue, TimestampTZ valueFalse)
 ```
 
-Ternary operator returning second operand (true) or third operand (false) according to the
-condition in first operand.
+Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
+condition in the first operand.
+
+
+## IfText
+
+```kdic-api-docs
+Text IfText(Numerical test, Text valueTrue, Text valueFalse)
+```
+
+Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
+condition in the first operand.
 
 ## Switch
 
