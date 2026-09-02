@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# local-build.sh — Build the Khiops doc site locally with Zensical
-# (no Docker, no multi-version/mike support).
+# local-build.sh - Build the Khiops doc site locally with Zensical
 #
 # Prerequisites:
 #   - uv (https://docs.astral.sh/uv/)
@@ -45,7 +44,7 @@ KHIOPS_PYTHON_TUTORIAL_REF="main"
 KHIOPS_VERSION=""
 KHIOPS_PYTHON_VERSION=""
 LOCAL_KHIOPS_PYTHON=""
-KHIOPS_PYTHON_REF="${KHIOPS_PYTHON_VERSION}"
+KHIOPS_PYTHON_REF=""
 KHIOPS_VIZ_VERSION="unknown"
 KHIOPS_GCS_DRIVER_VERSION="unknown"
 KHIOPS_S3_DRIVER_VERSION="unknown"
@@ -73,6 +72,9 @@ while [[ $# -gt 0 ]]; do
 done
 
 : "${KHIOPS_VERSION:?--khiops-version is required}"
+: "${KHIOPS_PYTHON_VERSION:?--khiops-python-version is required}"
+
+KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 cd "$SCRIPT_DIR"
@@ -87,7 +89,7 @@ trap '
   rm -fr .venv/
 ' EXIT
 
-# Install Khiops core via Pip (always needed — building the Python API
+# Install Khiops core via Pip (always needed - building the Python API
 # docs always executes khiops-python's own tutorial notebooks)
 echo "--- Creating Python virtualenv env with Khiops core ${KHIOPS_VERSION}"
 uv venv

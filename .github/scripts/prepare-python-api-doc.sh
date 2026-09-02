@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# prepare-python-api-doc.sh — Clone khiops-python, prepare its Zensical-based
+# prepare-python-api-doc.sh - Clone khiops-python, prepare its Zensical-based
 # Python API doc sources (Markdown only, via `create-doc -p`), copy them into
 # khiops-doc's docs/ tree, and regenerate the "API Python" nav section of
-# mkdocs.yml. Does NOT build the site — that's done once, separately, for
+# mkdocs.yml. Does NOT build the site - that's done once, separately, for
 # the whole khiops-doc site.
 #
 # Usage:
@@ -52,12 +52,12 @@ git -C ./khiops-python-src checkout "$KHIOPS_PYTHON_REF"
 
 # 2. Install khiops-python itself into the current (khiops-doc) environment,
 #    so mkdocstrings can import/introspect it. Note: doc/util/requirements.txt
-#    is NOT installed wholesale here — it pulls in its own zensical/mkdocstrings
+#    is NOT installed wholesale here - it pulls in its own zensical/mkdocstrings
 #    pins, which khiops-doc already supplies via pyproject.toml.
 uv pip install ./khiops-python-src
 uv pip install nbformat mkdocstrings-python
 
-# 4. Prepare doc sources (Markdown only — no Zensical build here)
+# 4. Prepare doc sources (Markdown only - no Zensical build here)
 echo "--- Preparing khiops-python doc sources (create-doc -p)"
 (
   cd khiops-python-src
@@ -79,7 +79,7 @@ for f in index.md notes.md multi_table_primer.md; do
     cp "khiops-python-src/doc/site/$f" docs/api-docs/python-api/
 done
 
-# Tutorials: only .md and .zip (no .ipynb — avoids mkdocs-jupyter conflicts)
+# Tutorials: only .md and .zip (no .ipynb - avoids mkdocs-jupyter conflicts)
 if [ -d khiops-python-src/doc/site/tutorials ]; then
   mkdir -p docs/api-docs/python-api/tutorials
   find khiops-python-src/doc/site/tutorials -maxdepth 1 -name "*.md" \

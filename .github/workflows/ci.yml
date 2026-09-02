@@ -50,12 +50,11 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
-      - name: Install Khiops core
+      - name: Build documentation
         run: |
           # Create virtual environment
           uv venv
-      - name: Build documentation
-        run: |
+
           # Activate virtual environment
           . .venv/bin/activate
 

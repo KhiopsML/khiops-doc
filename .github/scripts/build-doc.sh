@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# build-doc.sh — Full Khiops doc build pipeline, shared by CI
-# (.github/actions/build-doc) and local-build.sh.
+# build-doc.sh - Full Khiops doc build pipeline, shared by CI
+# (.github/workflows/ci.yml) and local-build.sh.
 #
 # Usage:
 #   build-doc.sh [OPTIONS]
@@ -23,7 +23,7 @@ set -euo pipefail
 
 KHIOPS_VERSION=""
 KHIOPS_PYTHON_REPO="https://github.com/KhiopsML/khiops-python.git"
-KHIOPS_PYTHON_REF="main"
+KHIOPS_PYTHON_REF=""
 KHIOPS_PYTHON_VERSION=""
 KHIOPS_SAMPLES_VERSION="main"
 KHIOPS_PYTHON_TUTORIAL_REF="main"
@@ -49,6 +49,11 @@ while [[ $# -gt 0 ]]; do
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
+
+: "${KHIOPS_VERSION:?--khiops-version is required}"
+: "${KHIOPS_PYTHON_VERSION:?--khiops-python-version is required}"
+
+KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 export PIP_NO_CACHE_DIR=1
@@ -90,7 +95,7 @@ echo "=== Converting khiops-doc tutorial notebooks ==="
 uv run python scripts/convert_notebooks.py
 
 # 5. Prepare Python API doc sources from khiops-python (always executes
-#    khiops-python's own tutorials via create-doc -t -d — requires a real
+#    khiops-python's own tutorials via create-doc -t -d - requires a real
 #    Khiops core + khiops-python install, independent of --execute-tutorials)
 echo "=== Preparing Python API doc sources ==="
 bash "${SCRIPT_DIR}/prepare-python-api-doc.sh" \
@@ -128,4 +133,4 @@ envsubst "${KHIOPS_VERSIONING_VARS}" \
 echo "=== Building site with Zensical in dir $(pwd) ==="
 uv run zensical build --clean --strict
 
-echo "=== Done — site built in ./site ==="
+echo "=== Done - site built in ./site ==="
