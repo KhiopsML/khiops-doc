@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       execute-khiops-tutorials:
-        description: Execute Khiops Tutorials
+        description: Execute khiops-doc's own tutorial notebooks
         required: true
         type: boolean
         default: false
@@ -32,37 +32,63 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: 3.11
-      - name: Checkout doc sources (to get the current environment)
+      - name: Checkout doc sources
         uses: actions/checkout@v6
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Retrieve the version number of Khiops Visualization Desktop from the latest release on GitHub
         if: env.KHIOPS_VIZ_VERSION == ''
+        id: khiops-viz-version
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           # "gh release view" shows the latest release in the project, we extract its version (without the leading "v")
           LAST_TAG="$(gh --repo https://github.com/KhiopsML/khiops-visualization-desktop/ release view --json tagName --jq '.tagName')"
-          echo "KHIOPS_VIZ_VERSION=${LAST_TAG#v}" >> "$GITHUB_ENV"
-      - name: Build current version site
-        uses: ./.github/actions/build-doc
+          echo "value=${LAST_TAG#v}" >> "$GITHUB_OUTPUT"
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v6
         with:
-          khiops-version: ${{ env.KHIOPS_VERSION }}
-          khiops-python-version: ${{ env.KHIOPS_PYTHON_VERSION }}
-          khiops-samples-version: ${{ env.KHIOPS_SAMPLES_VERSION }}
-          khiops-viz-version: ${{ env.KHIOPS_VIZ_VERSION }}
-          khiops-gcs-driver-version: ${{ env.KHIOPS_GCS_DRIVER_VERSION }}
-          khiops-s3-driver-version: ${{ env.KHIOPS_S3_DRIVER_VERSION }}
-          execute-khiops-tutorials: ${{ inputs.execute-khiops-tutorials }}
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Build documentation
+        run: |
+          # Create virtual environment
+          uv venv
+
+          # Activate virtual environment
+          . .venv/bin/activate
+
+          # Build the documentation
+          ARGS=(
+            --khiops-version "${{ env.KHIOPS_VERSION }}"
+            --khiops-python-version "${{ env.KHIOPS_PYTHON_VERSION }}"
+            --khiops-python-ref "${{ env.KHIOPS_PYTHON_REF }}"
+            --khiops-samples-version "${{ env.KHIOPS_SAMPLES_VERSION }}"
+            --khiops-python-tutorial-ref "${{ env.KHIOPS_PYTHON_TUTORIAL_VERSION }}"
+            --khiops-viz-version "${{ env.KHIOPS_VIZ_VERSION || steps.khiops-viz-version.outputs.value }}"
+            --khiops-gcs-driver-version "${{ env.KHIOPS_GCS_DRIVER_VERSION }}"
+            --khiops-s3-driver-version "${{ env.KHIOPS_S3_DRIVER_VERSION }}"
+            --khiops-azure-driver-version "${{ env.KHIOPS_AZURE_DRIVER_VERSION }}"
+          )
+          if [[ "${{ inputs.execute-khiops-tutorials }}" == "true" ]]; then
+            ARGS+=(--execute-tutorials)
+          fi
+          bash .github/scripts/build-doc.sh "${ARGS[@]}"
       - name: Check for broken links
         if: inputs.check-links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --root-dir site --no-progress --accept 200,403 --exclude 'file:///.*\d+\.\d+\.\d+' 'site/**/*.html'
+          args: >-
+            --no-progress
+            --root-dir ./site
+            --accept 200,403
+            --exclude 'file:///.*\d+\.\d+\.\d+'
+            --remap 'https://khiops.org/ file://${{ github.workspace }}/site/'
+            'site/**/*.html'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload the site docs as an artifact (PR)
-        if: github.event_name == 'pull_request' || inputs.deploy-gh-pages == false
+        if: inputs.deploy-gh-pages == false
         uses: actions/upload-artifact@v7
         with:
           name: khiops-doc

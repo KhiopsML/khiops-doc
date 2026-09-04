@@ -182,3 +182,13 @@
     text-align: left;
   }
 }
+
+/* Make sure the function listing and function signature listings in the Python
+ * API have the fonts of the same size as the rest of the pages they belong to
+ */
+.doc-contents table {
+    font-size: 1em !important;
+}
+.doc-section-item code {
+    font-size: 1em !important;
+}

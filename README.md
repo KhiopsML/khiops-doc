@@ -1,8 +1,11 @@
 # Khiops Documentation Website
+
 This is the technical repository for the Khiops documentation website.
 
 ## Local Development
+
 ### Setup
+
 Install `uv` first (required for all commands below):
 
 - Official installation instructions: https://docs.astral.sh/uv/getting-started/installation/
@@ -10,33 +13,48 @@ Install `uv` first (required for all commands below):
 Then install dependencies with `uv`:
 
 ```bash
-uv sync --frozen --extra notebooks
+uv sync --frozen --extra notebooks --extra pythonapi --extra dev
 ```
 
+Building the site locally also requires `git`.
 
 ### Run
-If you are working or want to browse the Python API pages (`docs/api-docs/python-api.md`), you need to fetch the Python API docs before running the local server.
 
-The `fetch_python_api_docs.sh` script downloads prebuilt Khiops Python API HTML docs from GitHub releases and places them in `docs/api-docs/python-api/api`.
-
-This script is a Bash script and is intended for macOS/Linux shells. On Windows, run it from WSL or Git Bash.
-
-Command:
+The Python API pages (`docs/api-docs/python-api/`) are generated from the `khiops-python` source (not fetched as prebuilt HTML). Run:
 
 ```bash
-./scripts/fetch_python_api_docs.sh
+./local-build.sh --khiops-version VERSION --khiops-python-version PYVERSION
 ```
 
-Then, to run locally just execute
+This installs Khiops core `VERSION` via Uv, clones `khiops-python` (`PYVERSION`
+by default; use `--local-khiops-python DIR` to build from a local checkout
+instead), converts its docstrings into the `docs/api-docs/python-api/` tree,
+regenerates the Python API nav, and builds the whole site with Zensical into
+`./site`. The Uv environment created for the build is removed automatically when
+the script exits.
+
+Useful flags (see `./local-build.sh --help` for the full list):
+
+- `--khiops-version VER` - Khiops core version to install via Uv (**required**)
+- `--local-khiops-python DIR` - build from a local `khiops-python` checkout
+- `--khiops-python-version VER` - Khiops Python version to document in the built site (**required**)
+- `--khiops-python-ref REF` - Git ref to build from when not local (default: same value as `khiops-python-version`)
+- `--khiops-samples-version VER` - `khiops-samples` release used by the tutorials (default: `main`)
+- `--khiops-python-tutorial-ref REF` - `khiops-python-tutorial` Git ref (default: `main`)
+- `--khiops-viz-version VER`, `--khiops-gcs-driver-version VER`, `--khiops-s3-driver-version VER`, `--khiops-azure-driver-version VER` - versions displayed/linked on the site (default: `unknown`)
+- `--execute-tutorials` - also execute khiops-doc's own tutorial notebooks (`docs/tutorials/sourced-notebooks/`)
+- `--serve` - launch `zensical serve` (live-reloading) after the build
+
+To preview a build without `--serve`, serve the output directory directly:
 
 ```bash
-uv run zensical serve
+python -m http.server --directory site
 ```
 
-Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/ . You don't need to
-restart the server every time because the site will refresh itself when you modify files.
+Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/.
 
 ### Editing Tutorial Notebooks
+
 - Edit source notebooks in `docs/tutorials/sourced-notebooks/` (`.ipynb` files).
 - Generated Markdown pages are written to `docs/tutorials/notebooks/` by the converter.
 - After changing a source notebook, regenerate pages with:
@@ -45,23 +63,24 @@ restart the server every time because the site will refresh itself when you modi
 uv run python scripts/convert_notebooks.py
 ```
 
-#### pre-commit
-The setup step installs the `pre-commit` tool. This allows to automatize some tasks such as
-formatting and cleaning of the notebooks.
-To use it, it is necessary to install it locally:
+### pre-commit
+
+The setup step installs the `pre-commit` tool. This allows to automatize some tasks such as formatting and cleaning of the notebooks. To use it, it is necessary to install it locally:
+
 ```bash
 uv run pre-commit install
 ```
 
-The configured tasks will run every time you make a commit. You may also run them at any time with
-the line
+The configured tasks will run every time you make a commit. You may also run them at any time with the line
+
 ```bash
 uv run pre-commit run --verbose --all-files
 ```
 
 ### Highlighting Khiops Dictionary Code
+
 The Khiops Dictionary Language code can be highlighted by using the `kdic` syntax in code blocks:
-````md
+
 ```kdic
 Dictionary Example
 {
@@ -69,68 +88,45 @@ Dictionary Example
   Numerical feature;
 };
 ```
-````
 
 The rule signatures can be highlighted with the `kdic-api-docs` syntax:
-````md
+
 ```kdic-api-docs
 Numerical Diff(Numerical value1, Numerical value2);
 ```
-````
 
 ## Production
+
 ### Basics
-The CI/CD of this repository fetches the Khiops Python Sphinx-built
-documentation from the specified (see below) release of
-https://github.com/KhiopsML/khiops-python and builds the specified revision of
-the current repository documentation.
 
-The current CI/CD supports building and deploying _two_ versions of the Khiops
-documentation web site:
+The CI/CD workflow (`.github/workflows/ci.yml`) installs Khiops core (via Uv)
+and then runs the same build pipeline as `local-build.sh`: it clones
+`khiops-python` (at the Git tag given by `KHIOPS_PYTHON_VERSION` by default in
+the CI, unless overriden via the `KHIOPS_PYTHON_REF` variable in
+`environment.env`), prepares its Zensical-based API doc sources via `create-doc
+-p` (see `.github/scripts/prepare-python-api-doc.sh`), copies them into
+`docs/api-docs/python-api/`, regenerates the Python API nav, and builds the
+resulting site with Zensical. This shared pipeline lives in
+`.github/scripts/build-doc.sh`, used by both the CI workflow and
+`local-build.sh` - there is no separate `build-doc` composite action.
 
-- the _current_ version, accessible at the https://khiops.org URL.
-- the _other_ version, accessible at the https://khiops.org/x.y.z[-pre] URL.
-
-### Maintenance
-The versions are specified by the following variables, which are configured
-in the `environment.env` file:
-* for the current version:
-  - `KHIOPS_VERSION`: version of the Khiops binaries package
-  - `KHIOPS_PYTHON_VERSION`: version of the Khiops Python library package
-  - `KHIOPS_SAMPLES_VERSION`: Git tag of the `khiops-samples` repository
-  - `KHIOPS_VIZ_VERSION`: default version of the Khiops Visualization tool (if the variable is empty, the latest release is used)
-  - `KHIOPS_GCS_DRIVER_VERSION`: version of the Khiops GCS access driver
-  - `KHIOPS_S3_DRIVER_VERSION`: version of the Khiops S3 access driver
-* for the other version:
-  - `KHIOPS_DOC_OTHER_REF`: revision of the current Git repository to be deployed
-  - `KHIOPS_OTHER_VERSION`: version of the Khiops binaries package
-  - `KHIOPS_PYTHON_OTHER_VERSION`: version of the Khiops Python library package
-  - `KHIOPS_SAMPLES_OTHER_VERSION`: Git tag of the `khiops-samples` repository
-  - `KHIOPS_VIZ_OTHER_VERSION`: version of the Khiops Visualization tool (in the current version, the latest version is displayed automatically)
-  - `KHIOPS_GCS_DRIVER_OTHER_VERSION`: version of the Khiops GCS access driver
-  - `KHIOPS_S3_DRIVER_OTHER_VERSION`: version of the Khiops S3 access driver
-
-Note: for the current version settings, the version of the current Git
-repository the CI/CD is launched on will be used.
+Only a single version of the site is built and deployed.
 
 ### CI/CD Usage
-The CI/CD can only be launched manually, from the GitHub interface. A pull
-request is not necessary to this end and has no effect on the CI/CD execution.
 
-The CI/CD supports two Boolean inputs:
-- whether to build the other version of the web site or not (`false` by default)
-- whether to deploy or not (`false` by default).
+The CI/CD can only be launched manually, from the GitHub interface. A pull request is not necessary to this end and has no effect on the CI/CD execution.
 
-Hence, by the default, the CI only builds the current version of the Khiops
-documentation, but does not deploy it to GitHub pages.
+The CI/CD supports the following `workflow_dispatch` inputs, all with sensible defaults:
 
-When the CI is instructed to only build the documentation, without deploying it,
-a GitHub workflow artifact is created with the contents of the built
-documentation.
+- `execute-khiops-tutorials` (boolean, default `false`) - also execute khiops-doc's own tutorial notebooks
+- `deploy-gh-pages` (boolean, default `false`) - deploy the built site to GH Pages
+- `check-links` (boolean, default `false`) - check the built site for broken links
+
+By default, the CI only builds the documentation and uploads it as a GitHub workflow artifact, without deploying it to GitHub Pages.
 
 ### Local Inspection of the Khiops Website
-The artifact created by the CI/CD at the build stage allows for manual, local
-inspection of the documentation build (with or without the other version).
+
+The artifact created by the CI/CD at the build stage allows for manual, local inspection of the documentation build.
 
 To do this, unzip the artifact into a directory, then, within that directory, launch an HTTP server, via, for example:
 
@@ -140,18 +136,8 @@ python -m http.server
 
 Then open in a web browser the following URL: http://127.0.0.1:8000/.
 
-You don't need to
-restart the server every time but you need to refresh the pages when you modify files.
+You don't need to restart the server every time but you need to refresh the pages when you modify files.
 
 ### Deploy to khiops.org
-To deploy the web site to khiops.org, you need to check the "Deploy to GH pages"
-checkbox on the GitHub workflow user interface: go to the "Actions" tab and
-execute the "Website" workflow on the `main` branch.
 
-In order to deploy:
-- "current" v10 + "other" (beta) v11: the GH workflow must be launched from the
-  `dev-v10` branch;
-- "current" (beta) v11 + "other" v10: the GH workflow must be launched
-  from the `dev` branch.
-
-
+To deploy the web site to khiops.org, launch the "Website" workflow manually: go to the "Actions" tab, run the workflow on the `dev` branch, and set the `deploy-gh-pages` input to `true`.
