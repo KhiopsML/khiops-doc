@@ -1,0 +1,6796 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://khiops.org/ui-docs/khiops/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/generated/khiops-logo-favicon.png">
+      <meta name="generator" content="zensical-0.0.51">
+    
+    
+      
+        <title>Khiops - Khiops</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-JGJG6PJWFS"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-JGJG6PJWFS",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-JGJG6PJWFS",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quick-start" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Khiops" class="md-header__button md-logo" aria-label="Khiops" data-md-component="logo">
+      
+  <img src="../../assets/images/generated/khiops-logo-ui.png" alt="Khiops">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Khiops
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Khiops
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/KhiopsML/khiops" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    KhiopsML/Khiops
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../setup/" class="md-tabs__link">
+          
+  
+  Installation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorials/introduction/" class="md-tabs__link">
+          
+  
+  How to
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api-docs/python-api/" class="md-tabs__link">
+          
+  
+  API Python
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api-docs/kdic/database-files/" class="md-tabs__link">
+          
+  
+  API Dictionary
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../learn/understand/" class="md-tabs__link">
+          
+  
+  Foundations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://github.com/orgs/KhiopsML/discussions" class="md-tabs__link">
+        
+  
+  Discussions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  Contact Us
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Khiops" class="md-nav__button md-logo" aria-label="Khiops" data-md-component="logo">
+      
+  <img src="../../assets/images/generated/khiops-logo-ui.png" alt="Khiops">
+
+    </a>
+    Khiops
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/KhiopsML/khiops" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    KhiopsML/Khiops
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../setup/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Installation
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Installation
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Khiops Python Library
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Khiops Python Library
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/pip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  pip
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/conda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  conda
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/khiops-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  docker notebook
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Applications
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Applications
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/nocode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Khiops Application
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/visualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Khiops Visualization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/kni/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Khiops Native Interface (KNI)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cloud Storage Drivers
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Cloud Storage Drivers
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/drivers-and-sdk-for-library/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  For the Python Library
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/drivers-and-sdk-for-application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  For the Khiops Application
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  How to
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  How to
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting Started with Khiops
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Scikit-learn API
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Scikit-learn API
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quickstart Guide
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/notebooks/single_table_classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Single-Table Tutorial
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/notebooks/No_data_Cleaning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  No Need for Data Preparation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/notebooks/Optimal_Encoding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interpretable Variable Encoding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/notebooks/multi_table_classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Multi-Table Tutorial
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/notebooks/Use_in_any_ML_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Auto Feature Engineering & More
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Core API & Dictionaries
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Core API & Dictionaries
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kdic_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Start Using Dictionaries
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kdic_single_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Single-Table Concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/notebooks/single_table_classifier_core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Single-Table Tutorial
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kdic_multi_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Multi-Table Concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/notebooks/multi_table_classifier_core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Multi-Table Tutorial
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Deployment & Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Deployment & Integration
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cloud Storage
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running Khiops with Docker
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Distributed Execution with k8s
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kni/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Real-time Deployment
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/scenario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Scenario-Based Execution
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API Python
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  API Python
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api-docs/python-api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Python API
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Python API
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API Reference
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  API Reference
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api-docs/python-api/sklearn/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sklearn
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  sklearn
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/sklearn/estimators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  estimators
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/sklearn/helpers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  helpers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api-docs/python-api/core/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  core
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  core
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/core/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  api
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/core/dictionary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  dictionary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/core/analysis_results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  analysis_results
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/core/coclustering_results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  coclustering_results
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/core/exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  exceptions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/core/helpers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  helpers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api-docs/python-api/tools/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  tools
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  tools
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api-docs/python-api/internal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  internals
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  internals
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  dataset
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/common/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  common
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/filesystems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  filesystems
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  io
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  runner
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/scenario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  scenario
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/task/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  task
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  types
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/internal/version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  version
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api-docs/python-api/tutorials/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tutorials and Code Samples
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Tutorials and Code Samples
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/samples/samples_sklearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Samples sklearn
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/samples/samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Samples core
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Other Topics
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Other Topics
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/multi_table_primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Multi-Table Learning Primer
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/python-api/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API Dictionary
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  API Dictionary
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Databases and dictionaries
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Databases and dictionaries
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/database-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Databases
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/dictionary-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dictionaries
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Technical Limits
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dictionary Rules
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Dictionary Rules
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Basic
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Basic
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/numerical-comparisons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Numerical Comparisons
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/categorical-comparisons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Categorical Comparisons
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/logical-operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Logical Operators
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/data-copy-and-conversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data Copy and Conversion
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/math-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Math Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/string-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  String Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/text-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Text Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/date-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Date Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/time-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Time Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/timestamp-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Timestamp Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/timestamp-tz-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TimestampTZ Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Multi-Table
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Multi-Table
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/multi-table-rules-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Introduction
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/entity-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Entity Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/table-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Table Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/table-management-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Table Management Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/text-list-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TextList Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Technical Structures & Rules
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Technical Structures & Rules
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/structures-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Introduction
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/vector-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Vector Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/hash-map-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hash Map Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/data-preparation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data Preparation Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/recoding-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Recoding Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/predictor-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Predictor Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/interpretation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interpretation Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/reinforcement-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reinforcement Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/coclustering-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coclustering Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Block and Sparse Data Rules
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Block and Sparse Data Rules
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/intro-block/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Introduction
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/basic-sparse-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Basic Sparse Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/text-sparse-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Text Sparse Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/preparation-sparse-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Preparation Sparse Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/table-partition-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Table Partition Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-docs/kdic/table-block-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Table Block Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Foundations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Foundations
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/understand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  What Makes Khiops Different
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/modl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  An Original Formalism
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Auto-ML Pipeline
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Auto-ML Pipeline
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/preprocessing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Optimal Encoding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/autofeature_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Auto Feature Engineering
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/learning_models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Parsimonious Training
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Unsupervised Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Unsupervised Approaches
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/histograms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Optimal Histograms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/coclustering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coclustering
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/hardware_adaptation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Auto Hardware Adaptation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bibliography
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/orgs/KhiopsML/discussions" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Discussions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Contact Us
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Quick start
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fast-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fast path
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-data-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What is a data dictionary?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Standard path
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Train database
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Train database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Database
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sampling
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Selection
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-of-test-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Specification of test database
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspect-test-database-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Inspect test database settings
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Parameters
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predictors
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predictors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Feature engineering
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-predictor-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Advanced predictor parameters
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced predictor parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selective-naive-bayes-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Selective Naive Bayes parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-construction-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Variable construction parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-feature-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Text feature parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pairs-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Variable pairs parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recoders
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Preprocessing
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-unsupervized-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Advanced unsupervized parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        System parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Results
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-dictionary-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Data dictionary menu
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data dictionary menu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Open
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Close
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reload
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Save
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-as" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Save as
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-as-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Export as JSON
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manage-dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Manage dictionaries
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage dictionaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-dictionary-menu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Data dictionary menu
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspect-current-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Inspect current dictionary
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-dictionary-from-data-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build dictionary from data table
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-dictionary-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Edit dictionary file
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Quit
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tools menu
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools menu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Check database
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort-data-table-by-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sort data table by key
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-keys-from-data-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Extract keys from data table
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#train-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Train model
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Deploy model
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluate-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Evaluate model
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpret-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Interpret model
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reinforce-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reinforce model
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Help menu
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+  
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+  <h1 id="__skip">Khiops</h1>
+
+<p>This documentation describes the Khiops GUI Application, which allows users to access Khiops functionalities 
+without writing any code. 
+It provides a straightforward interface for the entire data mining process, including data preparation, modeling, evaluation, 
+interpretation, and deployment of both supervised and unsupervised models on large multi-table databases.</p>
+<h2 id="quick-start">Quick start</h2>
+<h3 id="fast-path">Fast path</h3>
+<p><strong>Explore you data</strong></p>
+<ul>
+<li>
+<p>Enter the name of the file in the <strong>Data table file</strong> field of the <strong>Train database</strong> pane </p>
+</li>
+<li>
+<p>Click on the <strong>Train model</strong> button </p>
+</li>
+<li>
+<p>Click on the <strong>Visualize results</strong> button in the <strong>Results</strong> pane </p>
+</li>
+</ul>
+<p><strong>Build a classification model</strong></p>
+<ul>
+<li>
+<p>Enter the name of the input file in the <strong>Data table file</strong> field of the <strong>Train database</strong> pane </p>
+</li>
+<li>
+<p>Enter the name of the variable to predict in the <strong>Target variable</strong> field of the <strong>Parameters</strong> pane. </p>
+</li>
+<li>
+<p>Click on the <strong>Train model</strong> button </p>
+</li>
+<li>
+<p>Click on the <strong>Visualize results</strong> button in the <strong>Results</strong> pane </p>
+</li>
+</ul>
+<h3 id="what-is-a-data-dictionary">What is a data dictionary?</h3>
+<p>A data dictionary allows you to define the type and name of variables in a data file, with additional key features:</p>
+<ul>
+<li>
+<p>selecting variables to include or exclude from analysis,</p>
+</li>
+<li>
+<p>organizing data within a multi-table schema, such as a star schema or snowflake schema,</p>
+</li>
+<li>
+<p>creating new variables through derivation rules,</p>
+</li>
+<li>
+<p>storing data transformation workflows derived from machine learning model outputs,</p>
+</li>
+<li>
+<p>facilitating data transformation of the input database via the <strong>Deploy model</strong> feature, which includes:</p>
+<ul>
+<li>
+<p>deploying prediction scores using a prediction model,</p>
+</li>
+<li>
+<p>recoding data with a recoder model,</p>
+</li>
+<li>
+<p>generating interpretation indicators with an interpreter model,</p>
+</li>
+<li>
+<p>deploying or reinforcing scores using a reinforcer model,</p>
+</li>
+<li>
+<p>...</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>For comprehensive information on dictionaries, refer to <a href="../../tutorials/kdic_intro/"><code>Start Using Dictionaries</code></a>.</p>
+<p>A dictionary file contains one or several dictionaries; details about their format can be found in <a href="../../api-docs/kdic/dictionary-files/"><code>Dictionary files</code></a>.</p>
+<h3 id="standard-path">Standard path</h3>
+<p><strong>Manage data dictionaries</strong></p>
+<ul>
+<li>Click on the <strong>Manage dictionaries</strong> sub-menu of the <strong>Data dictionary</strong> menu 
+  A dialog box appears, which allows you to build a dictionary from a data file and edit the dictionaries of a dictionary file. </li>
+</ul>
+<p><strong>Use a data dictionary</strong></p>
+<ul>
+<li>
+<p>Click on the <strong>Open</strong> sub-menu of the <strong>Data dictionary</strong> menu </p>
+</li>
+<li>
+<p>Choose the dictionary file (extentions .kdic) </p>
+</li>
+<li>
+<p>Enter the name the dictionary in the <strong>Analysis dictionary</strong> field of the <strong>Train database</strong> pane </p>
+</li>
+</ul>
+<h2 id="train-database">Train database</h2>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_TrainDatabase.png" /> </p>
+<p><strong>Analysis dictionary</strong>: name of dictionary to analyse. Automatically generated from data table file if not specified.</p>
+<p><strong><em>Dictionary file</em></strong>: (read-only) name of the current dictionary file.</p>
+<h3 id="database">Database</h3>
+<p><strong>Database files</strong>: name of the database files to analyse.</p>
+<p><strong>Data table file</strong>: name of the data table file. Mandatory field.</p>
+<p><strong>Detect file format</strong>: heuristic help that scans the first few lines to guess the file format. The header line and field separator are updated on success, with a warning or an error in the log window only if necessary.</p>
+<p><strong>Header line used</strong>: (default: true). If the file does not have a header line, Khiops considers the variables in the dictionary to analyse the fields in the file.</p>
+<p><strong>Field separator</strong>: Character used as field separator in the file. It can be space (S), semi-colon (;), comma (,) or any character. By default, if nothing is specified, the tabulation is used as the field separator.</p>
+<h3 id="sampling">Sampling</h3>
+<p>Khiops can be used to extract a subpart (or its exact complementary) of the records in a database file. This sampling is specified with a sample percentage of the records (to keep or to discard). The sampling is a random sampling, but is reproducible (the random seed is always the same).</p>
+<p><strong>Sample percentage</strong>: percentage of the samples (default: 70%)</p>
+<p><strong>Sampling mode</strong>: to include or exclude the records of the sample (default: <em>include sample</em>).
+This allows to extract a train sample and its exact complementary as a test sample 
+(if the same sample percentage is used both in train and test, in <em>include sample</em> mode in train and <em>exclude sample</em> mode in test).</p>
+<h3 id="selection">Selection</h3>
+<p>Another way to build train or test samples is to use a selection variable and a selection value.</p>
+<p><strong>Selection variable</strong>: when nothing is specified, all the records are analysed. When a selection variable is specified, the records are selected when the value of their selection variable is equal to the selection value.</p>
+<p><strong>Selection value</strong>: used only when a selection variable is specified. In that case, the value must be a correct value (numerical value if the selection variable is a numerical variable).</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For <strong>multi-table</strong> databases, the array of database files may contain multiple entries.
+Each file is identified by a data path that indicates the semantic location of the table.
+This path specifically reflects the sequence of variable names leading to the table, separated by slashes (/).
+In the GUI, these data paths are generated automatically, and one <strong>data table file</strong> must be assigned to each <strong>data path</strong>
+within the multi-table dictionary.
+Additionally, each data table file must be sorted by key. In root tables, keys serve as identifiers,
+meaning that root entities must have unique keys.</p>
+<p><strong><em>Data path</em></strong>: data path of the data table</p>
+<ul>
+<li>
+<p>in a multi-table schema, each data path refers to a Table or Entity variable and identifies a data table file,</p>
+</li>
+<li>
+<p>the main table has an empty data path,</p>
+</li>
+<li>
+<p>in a star schema, the data paths are the names of Table or Entity variables for each secondary table,</p>
+</li>
+<li>
+<p>in a snowflake schema, data paths consist of a list of variable names with a '/' separator,</p>
+</li>
+<li>
+<p>external tables begin with a data root prefixed with '/', which refers to the name of the referenced root dictionary.</p>
+</li>
+</ul>
+<p><strong><em>Dictionary</em></strong>: name of the dictionary that describes the data table.</p>
+<p>For in-depth information about multi-table dictionaries, see <a href="../../tutorials/kdic_multi_table/"><code>Multi-table Concepts</code></a></p>
+</div>
+<h3 id="specification-of-test-database">Specification of test database</h3>
+<p><strong>Test database</strong>: specification of the test database, according to one of the following choices:</p>
+<ul>
+<li>
+<p>Complementary (default): same as the train database, with 'Sampling mode' inverted in the test database, in order to get test samples that are the exact complementary of the train samples,</p>
+</li>
+<li>
+<p>Specific: specific parameters for the test database,</p>
+</li>
+<li>
+<p>None: no test database is used.</p>
+</li>
+</ul>
+<h3 id="inspect-test-database-settings">Inspect test database settings</h3>
+<p>This action allows to inspect the test database parameters.</p>
+<p>The test parameters are editable only in the case of a specific test database.</p>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/TestDatabase.png" /></p>
+<p>The test database is defined exactly in the same way as the train database.</p>
+<p>In the case of a specific database, there is an additional 'Import train database settings' button to import the train database parameters. 
+It allows to fill all the test database fields, by copying them from the 'Train database' pane. 
+The only change is the 'Sampling mode' which value is inverted in the test parameters, in order to get a test sample that is the exact complementary of the train sample.</p>
+<h2 id="parameters">Parameters</h2>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Parameters.png" /></p>
+<p><strong>Target variable</strong>: name of the target variable. The learning task is classification if the target variable is categorical, regression if it is numerical. If the target variable is not specified, the task is unsupervised learning.</p>
+<p><strong>Main target value</strong>: value of the target variable in case of classification, for the lift curves in the evaluation reports.</p>
+<h3 id="predictors">Predictors</h3>
+<h4 id="feature-engineering">Feature engineering</h4>
+<p>Khiops performs automatic feature engineering by constructing variables from multi-table schema, tokenizing text variables, building trees and analysing pairs of variables.</p>
+<p><strong>Keep selected variables only</strong>: in supervised analysis, constructed variables are included in the data preparation reports only if they are selected in the Naive Bayes Selective predictor.</p>
+<p><strong>Max number of constructed variables</strong>: max number of variables to construct (default: 1000). The constructed variables allow to extract numerical or categorical values resulting from computing formula applied to existing variable (e.g. YearDay of a Date variable, Mean of a Numerical Variable from a Table Variable).</p>
+<p><strong>Max number of text features</strong>: max number of text features to construct (default: 10,000). Text features are constructed from variables of type Text or TextList available in the main table or any secondary tables. 
+By default, features are created using words.</p>
+<p><strong>Max number of trees</strong>: max number of trees to construct. The constructed trees allow to combine variables, either native or constructed (default: 10).</p>
+<p><strong>Max number of pairs of variables</strong>: max number of pairs of variables to analyze during data preparation (default: 0). The pairs of variables are preprocessed using a bivariate discretization method. Pairs of variables are not available in regression analysis.</p>
+<p>By default, few features are constructed to get a good trade-off between accuracy, interpretability and deployment speed. 
+Maximum interpretability and deployment speed can be achieved by choosing no feature to be built. 
+Conversely, choosing more features to construct allows to train more accurate predictors at the cost of computation time and loss of interpretability.</p>
+<ul>
+<li>
+<p>Variable construction</p>
+<ul>
+<li>
+<p>allows to exploit a multi-table schema, by automatically flattening the schema into an analysis table that summarizes the information in the schema,</p>
+</li>
+<li>
+<p>being automatic, robust and scalable, accelerates the data mining process to obtain accurate predictors,</p>
+</li>
+<li>
+<p>constructed variables remain understandable by the mean of human readable names, in the limit of their complexity,</p>
+</li>
+<li>
+<p>recommendation: increase incrementally with 10, 100, 1000, 10000… variables to construct, to find a good trade-off between computation time and accuracy.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Text features</p>
+<ul>
+<li>
+<p>allows to exploit text variables defined in the main table or any secondary tables, by tokenizing them into list of tokens,</p>
+</li>
+<li>
+<p>eliminates the need for manual preprocessing or feature engineering, making the process faster, easier, and fully interpretable,</p>
+</li>
+<li>
+<p>this is particularly valuable for databases where text data is embedded within tabular datasets and can complement other variables,</p>
+</li>
+<li>
+<p>while Khiops approach to text data is not designed to replace specialized models (e.g. LLMs), it provides a lightweight, automated, and interpretable solution for incorporating textual insights into tabular analyses, with minimal effort.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Trees</p>
+<ul>
+<li>
+<p>allows to leverage the assumption of the Selective Naive Bayes predictor that considers the input variables independently, to improve accuracy,</p>
+</li>
+<li>
+<p>combines native or constructed variables to extract complex information,</p>
+</li>
+<li>
+<p>tree-based variables are categorical variables, which values are the identifiers of the leaves of a tree; they are pre-processed like other categorical variables (although they do not appear in the preparation report), then used by the classifier, for potentially improved predictor performance,</p>
+</li>
+<li>
+<p>tree based variables are black-boxes, with potentially improved accuracy at the expense of loss of understandability,</p>
+</li>
+<li>
+<p>recommendation: increase incrementally with 10, 20, 50, 100… trees to construct, to find a good trade-off between computation time and accuracy.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Variables pairs</p>
+<ul>
+<li>
+<p>allows to understand the correlation between variables either in supervised classification (not available in regression) or unsupervised learning tasks,</p>
+</li>
+<li>
+<p>the analysis of pairs of variables is a time consuming operation,</p>
+</li>
+<li>
+<p>in the supervised case, a variable pair is considered to be informative if it brings more information than both variables individually (see criterion DeltaLevel); non informative pairs are summarized in analysis reports, but not used in predictors,</p>
+</li>
+<li>
+<p>recommendation: build variable pairs for exploratory analysis of correlations rather than to improve the accuracy of predictors.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Constructed variables are stored in the output dictionaries (recoding or modeling dictionary), with formulae that allow to compute their values during model deployment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Constructed variables and text features are generated independently.
+Trees and pairs can exploit constructed variables, but not text features.</p>
+</div>
+<h4 id="advanced-predictor-parameters">Advanced predictor parameters</h4>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Parameters_Advanced.png" /></p>
+<p><strong>Do data preparation only</strong>: do the data preparation step only. Do not perform the modeling step in supervised analysis.</p>
+<h5 id="selective-naive-bayes-parameters">Selective Naive Bayes parameters</h5>
+<p>These parameters are user constraints that allow to control the variable selection process. Their use might decrease the performance, compared to the default mode (without user constraints).</p>
+<p><strong>Max number of evaluated variables</strong>: max number of variables originating from the data preparation, to use as input variables in the multivariate selection of the Selective Naive Bayes predictor. The evaluated variables are those having the highest predictive importance (Level). This parameter allows to simplify and speed up the training phase (default: 0, means that all the variables are evaluated).</p>
+<p><strong>Max number of selected variables</strong>: max number of variables originating from the multivariate variable selection, to use in the final Selective Naive Bayes predictor predictor. The selected variables are those with the largest importance in the multivariate selection. This parameter allows to simplify and speed up the deployment phase (default: 0, means that all the necessary variables are selected).</p>
+<h4 id="variable-construction-parameters">Variable construction parameters</h4>
+<p>Automatic variable construction exploits the set of construction rules specified in the <strong>Variable construction parameters</strong> window.</p>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/VariableConstructionParameters.png" /></p>
+<p>For details on each construction rule, see the related derivation rule. For example, to learn about <code>WeekDay</code>, visit
+<a href="../../api-docs/kdic/date-rules/#weekday"><code>WeekDay</code></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The construction rules applied to Date, Time, Timestamps or TimestampsTZ variables enable the extraction of numerical values at various periodicities 
+(e.g. year day, month day or week day from a Date variable). 
+By default, these date and time rules are not selected. They are interesting for exploratory analysis. For supervised analysis, 
+they should be used with caution, as the deployment period may differ from the training period.</p>
+</div>
+<p>The <strong>Select all</strong> and <strong>Unselect all</strong> buttons allow to choose all or no construction rules, and the <strong>Default</strong> button restores the initial selection. The <strong>Used</strong> checkboxes allow to select construction rules one by one.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case of <em>multi-table</em> databases, construction rules can be applied to Entity or Table variables. 
+They allow to extract values from sub-tables, such as the mean of the costs of sales of a customer. 
+The TableSelection rule can be combined with other rules in order to be applied on a subset of the sub-tables
+(e.g. mean cost of sales of a customer for sales related to a given category of products).
+Given the combinatorial number of potential selection formula, thousands of variables can be constructed automatically.</p>
+</div>
+<p>Several heuristics are applied during the variable construction process, whenever possible:</p>
+<ul>
+<li>
+<p>Constructed variable do not exploit key variables of secondary tables in multi-table dictionaries, since they are mostly redundant with the key variables of the main table.</p>
+</li>
+<li>
+<p>Constructed variables that exploit the same derivation rules as existing initial variables (used or unused) would be redundant. They are not constructed and new variables are constructed instead.</p>
+</li>
+<li>
+<p>Constructed variables that exploit different parts of the same partition of a secondary table (via the TableSelection construction rule) may be grouped in a sparse variable block.</p>
+</li>
+<li>
+<p>To optimize the overall computation time, temporary variables are also constructed, since they can be reused as operands of several constructed variables. Still, if a temporary variable exploits the same derivation rule as an existing initial variable, the temporary variable is not constructed and the initial variable is used instead.</p>
+</li>
+</ul>
+<h4 id="text-feature-parameters">Text feature parameters</h4>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/TextFeatureParameters.png" /></p>
+<p><strong>Text features</strong>: type of constructed text features :</p>
+<ul>
+<li>
+<p>words : text words obtained with an automatic tokenization process,</p>
+</li>
+<li>
+<p>ngrams: ngrams of bytes; generic, fast, robust, but less interpretable,</p>
+</li>
+<li>
+<p>tokens : text tokens whose interpretability and interest depend on the quality of the input text preprocessing.</p>
+</li>
+</ul>
+<p>The <strong>words</strong> automatic tokenization process uses space or control characters as delimiters.
+The obtained words are either sequences of punctuation characters or sequences of any other character.</p>
+<p>The <strong>tokens</strong> tokenization process simply uses the blank character as delimiter.
+This method assumes that the text has been already preprocessed (eg. lemmatization).</p>
+<h4 id="variable-pairs-parameters">Variable pairs parameters</h4>
+<p>These parameters allow you to choose to analyze all potential variables pair, or to select individual variable pairs or families of variable pairs involving certain variables to analyze first.</p>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/VariablePairsParameters.png" /></p>
+<p><strong>Max number of variable pairs</strong>: max number of pairs of variables to analyze during data preparation (default: 0). The pairs of variables are preprocessed using a bivariate discretization method. Pairs of variables are not available in regression analysis.</p>
+<p>If the number of pairs specified is greater than this maximum value, the pairs are chosen first for the specific pairs, then for the pairs involving the variables with the highest level in the supervised case and by alphabetic order otherwise.</p>
+<p><strong>All pairs</strong>: Analyzes all possible variable pairs.</p>
+<p><strong>Specific variables pairs</strong>: Allows to specify a list of variables pairs. A variable pair can be specified with a single variable to indicate that all pairs involving that variable should be analyzed.</p>
+<ul>
+<li>
+<p><strong>Insert pair</strong>: Adds a variable pair</p>
+</li>
+<li>
+<p><strong>Remove pair</strong>: Removes a variable pair</p>
+</li>
+<li>
+<p><strong>Insert pair</strong>: Removes all specific variable pairs</p>
+</li>
+</ul>
+<p>The list of specific variable pairs is cleaned up on closure, removing pairs with syntactically invalid names and redundant pairs.</p>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/VariablePairsParameters_menu.png" /></p>
+<p><strong>Variable pairs file</strong></p>
+<ul>
+<li>
+<p><strong>Import pairs…</strong>: Imports a list of variable pairs from a tabular text file with two columns. Invalid or redundant pairs are ignored during import.</p>
+</li>
+<li>
+<p><strong>Export pairs…</strong>: Exports the list of variable pairs to a tabular text file with two columns. Only valid and distinct pair are exported.</p>
+</li>
+</ul>
+<h3 id="recoders">Recoders</h3>
+<p>Khiops builds recoders in case of a supervised or unsupervised learning task, to enable the recoding of an input database. The recoded database may then be exploited outside the tool to build alternative predictors while benefiting from Khiops’ preprocessing.</p>
+<p><strong>Build recoder:</strong> Builds a recoding dictionary that recodes the input database with a subset of initial or preprocessed variables.</p>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Parameters_Recoders.png" /></p>
+<p><strong>Keep informative variables only</strong>: if true, all the noninformative variables are discarded, in their initial or recoded representation (default: true).</p>
+<p><strong>Max number of filtered variables:</strong> max number of variables originating from the univariate data preparation (discretizations and value groupings), to keep at the end the data preparation. The filtered variables are the ones having the highest univariate predictive importance, aka Level. (default: 0, means that all the variables are kept).</p>
+<p><strong>Keep initial categorical variables</strong>: (default: false) keep the initial categorical variables before preprocessing.</p>
+<p><strong>Keep initial numerical variables</strong>: (default: false) keep the initial numerical variables before preprocessing.</p>
+<p><strong>Categorical recoding method</strong>: (default: part Id)</p>
+<ul>
+<li>
+<p>part Id: identifier of the part (group of values)</p>
+</li>
+<li>
+<p>part label: comprehensible label of the part, like in reports</p>
+</li>
+<li>
+<p>0-1 binarization: binarization of the part (generates as many Boolean variables as number of parts)</p>
+</li>
+<li>
+<p>conditional info: negative log of the conditional probability of the source variable given the target variable (-log(p(X|Y)). 
+ Potentially a good representation for distance based classifiers, such as k-nearest neighbours or support vector machines</p>
+</li>
+<li>
+<p>none: do not recode the variable</p>
+</li>
+</ul>
+<p><strong>Numerical recoding method</strong>: (default: part id)</p>
+<ul>
+<li>
+<p>part Id</p>
+</li>
+<li>
+<p>part label</p>
+</li>
+<li>
+<p>0-1 binarization</p>
+</li>
+<li>
+<p>conditional info</p>
+</li>
+<li>
+<p>center-reduction: (X – Mean(X)) / StdDev(X)</p>
+</li>
+<li>
+<p>0-1 normalization: (X – Min(X)) / (Max(X) – Min(X))</p>
+</li>
+<li>
+<p>rank normalization: mean normalized rank (rank between 0 and 1) of the instances</p>
+</li>
+<li>
+<p>none</p>
+</li>
+</ul>
+<p><strong>Pairs recoding method</strong>: (default: part Id)</p>
+<ul>
+<li>
+<p>part Id</p>
+</li>
+<li>
+<p>part label</p>
+</li>
+<li>
+<p>0-1 binarization</p>
+</li>
+<li>
+<p>conditional info</p>
+</li>
+<li>
+<p>none</p>
+</li>
+</ul>
+<h3 id="preprocessing">Preprocessing</h3>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Parameters_Preprocessing.png" /></p>
+<p><strong>Group target values</strong>: in case of classification task, indicates that the preprocessing methods should consider building discretization by partitioning both the input values (in intervals or groups of values) and the target values into groups. This is potentially useful in case of classification tasks with numerous target values, by automatically and optimally reducing the number of target values using groups.</p>
+<p><strong>Max part number</strong>: max number of parts generated by preprocessing methods.
+When this interpretability constraint is enabled, it takes precedence over the preprocessing method's selection criterion
+The default value is 0, which allows the method to determine the optimal number automatically:</p>
+<ul>
+<li>
+<p>for MODL supervised or unsupervised methods, it sets the optimal number of intervals or value groups,</p>
+</li>
+<li>
+<p>for the EqualWidth or EqualFrequency unsupervised discretization methods, it defaults to 10 intervals,</p>
+</li>
+<li>
+<p>for the BasicGrouping unsupervised value grouping method, it defaults to 10 groups.</p>
+</li>
+</ul>
+<p>Note: Missing values are treated as a special value (minus infinity) which is smaller than any actual value. If missing values are both informative and numerous, the discretization algorithm builds a special interval containing all missing values. Otherwise, missing values are included in the first built interval, containing the smallest actual values.</p>
+<h4 id="advanced-unsupervized-parameters">Advanced unsupervized parameters</h4>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/UnsupervisedParameters.png" /></p>
+<p><strong>Discretization method</strong>: name of the discretization method in case of unsupervised analysis (default: MODL):</p>
+<ul>
+<li>
+<p>MODL: Bayes optimal discretization method, the criterion allows to find the most probable discretization given the data</p>
+</li>
+<li>
+<p>EqualFrequency: builds intervals having the same frequency (by default: 10 intervals)</p>
+</li>
+<li>
+<p>EqualWidth: which builds intervals having the same width (by default: 10 intervals) |</p>
+</li>
+</ul>
+<p><strong>Grouping method</strong>: name of the value grouping method in case of unsupervised analysis (default: MODL).</p>
+<ul>
+<li>
+<p>MODL: Bayes optimal value grouping method, the criterion allows to find the most probable value grouping given the data. A "garbage" group is used to unconditionally group the infrequent values (the frequency threshold is automatically adjusted)</p>
+</li>
+<li>
+<p>BasicGrouping: builds one group for each frequent explanatory values (by default: 10 groups, the last one containing all the infrequent values)</p>
+</li>
+</ul>
+<h3 id="system-parameters">System parameters</h3>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Parameters_SystemParameters.png" /></p>
+<p><strong>Max number of error messages in log</strong>: allows to control the size of the log, by limiting the number of messages, warning or errors (default: 20).</p>
+<p><strong>Memory limit in MB</strong>: allows to specify the max amount of memory available for the data analysis algorithms. By default, this parameter is set to the limit of the available RAM. This parameter can be decreased in order to keep memory for the other applications.</p>
+<p><strong>Max number of processor cores</strong>: allows to specify the max number of processor cores to use.</p>
+<p><strong>Temp file directory</strong>: name of the directory to use for temporary files (default: none, the system default temp file directory is then used).</p>
+<p>The resources fields related to memory, processor cores and temp file directory allow the user to upper-bound the system resources used by Khiops. Given this, Khiops automatically manages the available system resources to perform at best the data analysis tasks.</p>
+<h2 id="results">Results</h2>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Results.png" /></p>
+<p><strong>Analysis report</strong>: (default: AnalysisResults.khj). Name of the analysis report file in JSON format.
+An additionnal dictionary file with extension <em>.model.kdic</em> is built, which contains the trained models.
+By default, the result files are stored in the train database directory, unless an absolute path is specified.
+The JSON file is useful to inspect the modeling results from any external tool.</p>
+<p><strong>Short description</strong>: (default: empty) brief description to summarize the current analysis, which will be included in the reports.</p>
+<p><strong>Export as xls</strong>: (default: false) option to export each report to a tabular file that can be opened using Excel, with the following extensions:</p>
+<ul>
+<li>
+<p><em>.PreparationReport.xls</em>: data preparation report produced after the univariate data analysis on the train database,</p>
+</li>
+<li>
+<p><em>.TextPreparationReport.xls</em>: data preparation report for text variables,</p>
+</li>
+<li>
+<p><em>.TreePreparationReport.xls</em>: data preparation report for tree variables,</p>
+</li>
+<li>
+<p><em>.Preparation2DReport.xls</em>: data preparation report for bivariate analysis,</p>
+</li>
+<li>
+<p><em>.ModelingReport.xls</em>: modeling report produced once the predictors have been trained,</p>
+</li>
+<li>
+<p><em>.TrainEvaluationReport.xls</em>: evaluation report produced after the evaluation of the predictors on the train database,</p>
+</li>
+<li>
+<p><em>.TestEvaluationReport.xls</em>: evaluation report produced after the evaluation of the predictors on the train database.</p>
+</li>
+</ul>
+<p><strong>Visualize report</strong>: visualize report if available, using <a href="../visualization/"><code>Khiops Visualization</code></a> tool.</p>
+<h2 id="data-dictionary-menu">Data dictionary menu</h2>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_DataDictionary_menu.png" /></p>
+<h4 id="open">Open</h4>
+<p>An open dialog box asks the name of the dictionary file to open.</p>
+<p>In case of invalid dictionary file, the current dictionaries are kept in memory.</p>
+<h4 id="close">Close</h4>
+<p>The dictionaries are removed (from memory only). The potential pending modifications are lost if they have not been saved.</p>
+<h4 id="reload">Reload</h4>
+<p>Reload the current dictionary file into memory</p>
+<h4 id="save">Save</h4>
+<p>The memory dictionaries are saved under the current dictionary file.</p>
+<h4 id="save-as">Save as</h4>
+<p>A save dialog box asks the name of the dictionary file to save.</p>
+<h4 id="export-as-json">Export as JSON</h4>
+<p>A save dialog box asks the name of the JSON file to export the dictionaries under a JSON format, with a .kdicj extension.</p>
+<h4 id="manage-dictionaries">Manage dictionaries</h4>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/DataDictionary.png" /></p>
+<p>This action opens a dialog box that enables you to create a dictionary from a data file, edit the dictionaries within a dictionary file, 
+inspect individual dictionaries, and select the variables to be used for analysis.</p>
+<p><strong>Dictionary file</strong>: (read-only) name of the dictionary file related to the data to analyse. Read-only field that shows the name of the current dictionary file.</p>
+<p><strong>Dictionaries</strong>: list of available dictionaries, with statistics describing the used variables (Name, Variables, Categorical, Numerical, Derived).</p>
+<h5 id="data-dictionary-menu_1">Data dictionary menu</h5>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/DataDictionary_menu.png" /></p>
+<p>This menu performs the sames actions as the <strong>Data dictionary</strong> menu of the main window.</p>
+<h5 id="inspect-current-dictionary">Inspect current dictionary</h5>
+<p>You can inspect a dictionary and choose the variables for analysis by selecting a dictionary from the <strong>Dictionaries</strong> list and then right-clicking on <strong>Inspect current dictionary</strong>.</p>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Dictionary.png" /></p>
+<h5 id="build-dictionary-from-data-table">Build dictionary from data table</h5>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/DictionaryBuilder.png" /></p>
+<p>This action opens a dialog box that allows to build dictionaries from data tables, then saves them in a dictionary file.</p>
+<p><strong>Data table file</strong>: name of the data table file to analyse. Mandatory field.</p>
+<p><strong>Detect file format</strong>: heuristic help that scans the first few lines to guess the file format. The header line and field separator are updated on success, with a warning or an error in the log window only if necessary.</p>
+<p><strong>Header line used</strong>: (default: true). If the file has a header line, Khiops will use the header line fields as variables names; otherwise, the variables will be names Var1, Var2...</p>
+<p><strong>Field separator</strong>: by default, if nothing is specified, the tabulation is used as the field separator.</p>
+<p><strong>Show first lines</strong>: shows first lines of data table in log window.</p>
+<p><strong>Build dictionary from data table</strong>: starts the analysis of the data table file to build a dictionary. The first lines of the file are analyzed in order to determine the type of the variables: Categorical, Numerical, Date, Time or Timestamp. After analysis, the user can choose the name of the dictionary.</p>
+<p><strong>Close</strong>: closes the window. If dictionaries have been built, proposes to save them in a dictionary file</p>
+<p>The values in the data table file are parsed in order to guess their type.</p>
+<ul>
+<li>
+<p>values with format YYYY-MM-DD (e.g. 2014-01-15) are recognized as Date variables,</p>
+</li>
+<li>
+<p>values with format HH:MM:SS (e.g. 11:35:20) are recognized as Time variables,</p>
+</li>
+<li>
+<p>values with format YYYY-MM-DD HH:MM:SS are recognized as Timestamp variables,</p>
+</li>
+<li>
+<p>values with format YYYY-MM-DD HH:MM:SS.zzzzzz are recognized as TimestampTZ variables, with time zone information,</p>
+</li>
+<li>
+<p>for other Date, Time, Timestamp or TimestampTZ formats (e.g. Date format DD/MM/YYYY), 
+    a specific meta-data value is used (see <a href="../../api-docs/kdic/dictionary-files/#meta-data"><code>Meta-data</code></a>) to specify the format used for the variable,</p>
+<ul>
+<li>
+<p>DateFormat: see <a href="../../api-docs/kdic/date-rules/"><code>Date rules</code></a></p>
+</li>
+<li>
+<p>TimeFormat: see <a href="../../api-docs/kdic/time-rules/"><code>Time rules</code></a></p>
+</li>
+<li>
+<p>TimestampFormat: see <a href="../../api-docs/kdic/timestamp-rules/"><code>Timestamp rules</code></a> </p>
+</li>
+<li>
+<p>TimestampTZFormat: see <a href="../../api-docs/kdic/timestamp-tz-rules/"><code>TimestampTZ rules</code></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>other values with numerical format are recognized as Numerical values,</p>
+</li>
+<li>
+<p>other values are recognized as Categorical values or Text values if their length exceeds  100 characters.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Dictionaries are built automatically for convenience, but they should be checked carefully by the data miner. 
+For example, zip codes are made of digits and recognized as Numerical variables, whereas they are Categorical variables. 
+Values such as 20101123 or 20030127 are recognized as Date with format YYYYMMDD, whereas they could be Numerical.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Date, Time, Timestamp or TimestampTZ formats can be erroneous (example: 2010-10-10 is ambiguous w.r.t. the format: "YYYY-MM-DD" or "YYYY-DD-MM"). 
+The meta-data must be corrected directly in the dictionary file is necessary. 
+In some cases, a date, time or timestamp variable may have a format not recognized by Khiops. 
+This is the case for example for formats where the century is not specified (e.g: "YY-MM-DD"). 
+In that case, the corresponding variable should be declared as Categorical (and not used), and a new variable can be built using derivation rules, as illustrated below.</p>
+<div class="language-kdic highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">Unused</span><span class="w"> </span><span class="kt">Categorical</span><span class="w"> </span><span class="na">MyDate</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">// Date with unrecognized format &quot;YY-MM-DD&quot;*</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">Date</span><span class="w"> </span><span class="na">MyCorrectDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">AsDate</span><span class="p">(</span><span class="nf">Concat</span><span class="p">(</span><span class="s">&quot;20&quot;</span><span class="p">,</span><span class="w"> </span><span class="na">MyDate</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;YYYY-MM-DD&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Correction if all centuries are 20th*</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">Unused</span><span class="w"> </span><span class="kt">Numerical</span><span class="w"> </span><span class="na">MyCentury</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">If</span><span class="p">(</span><span class="nf">LE</span><span class="p">(</span><span class="nf">AsNumerical</span><span class="p">(</span><span class="nf">Left</span><span class="p">(</span><span class="na">MyDate</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)),</span><span class="w"> </span><span class="mf">15</span><span class="p">),</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">19</span><span class="p">);</span><span class="w"> </span><span class="c1">// 20th for year below 15, 19th otherwise*</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">Date</span><span class="w"> </span><span class="na">MyCorrectDate2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">AsDate</span><span class="p">(</span><span class="nf">Concat</span><span class="p">(</span><span class="nf">AsCategorical</span><span class="p">(</span><span class="na">MyCentury</span><span class="p">),</span><span class="w"> </span><span class="na">MyDate</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;YYYY-MM-DD&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Correction using MyCentury</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case of <em>multi-table</em> databases, after building and checking the resulting dictionary file, the data miner has to modify the dictionary file using a text editor 
+in order to specify the relations between the dictionaries of the multi-table database. 
+See <a href="../../api-docs/kdic/multi-table-rules-introduction/"><code>Multi-table dictionary</code></a></p>
+</div>
+<h5 id="edit-dictionary-file">Edit dictionary file</h5>
+<p>Edit the current dictionary file with the default system text editor. 
+Typically, this is the text editor associated with the <em>.txt</em> extension. 
+If a tool is linked to the <em>.kdic</em> extension, that tool will be used instead.</p>
+<p>To update the dictionary, save it from the text editor, then use the <strong>Reload dictionary file</strong> button.</p>
+<h4 id="quit">Quit</h4>
+<p>Quits the application.</p>
+<h2 id="tools-menu">Tools menu</h2>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Tools_menu.png" /></p>
+<h3 id="check-database">Check database</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>The train database must be specified, and the dictionary related to the train database must be loaded in memory.</p>
+</div>
+<p>This action checks the integrity of the train database.</p>
+<p>This action reads each line of the train database to perform the integrity checks. 
+During formatting checks, the number of fields in the train database is compared to the number of native variables in the dictionary. Data conversion checks are performed for the fields corresponding to numerical, date, time and timestamp variables. 
+Error messages are displayed in the message log window.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Errors encountered during database checking are always shown.
+However, they are automatically corrected, such as replacing empty or invalid numerical values with a system missing value,
+and discarding unnecessary values.
+As a result, data analysis is still performed, although its reliability may be compromised if database errors are present.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Fields containing separators are managed when they are enclosed in double quotes. 
+However, multi-line fields are intentionally not supported, as this encoding can be error-prone, 
+missing a single double quote may cause the entire file to be misread.
+Errors related to multi-line field encoding are detected and corrected as much as possible.
+Consequently, data analysis can still be performed, but an error is generated to indicate that 
+its reliability is probably compromised.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In case of <em>multi-tables</em> database, data tables must be sorted by key. 
+Sort errors are reported but cannot be corrected, and therefore, no data analysis can be performed.</p>
+</div>
+<h3 id="sort-data-table-by-key">Sort data table by key</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>The dictionary of the input data table must be loaded in memory.</p>
+</div>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/DataTableSorter.png" /></p>
+<p>This action allows to sort a data table according to sort variables. 
+It is dedicated to the preparation of <em>multi-table</em> databases, 
+which requires all data table files to be sorted by key, for efficiency reasons.</p>
+<p>The parameters of the dialog box are the following.</p>
+<p><strong>Sort dictionary</strong>: dictionary that describes all native of the database file. Native variables are the variables stored in date files, of type Numerical, Categorical, Date, Time or Timestamp, and not derived using a formula.</p>
+<p><strong>Sort variables: must be native (not derived) and Categorical</strong></p>
+<ul>
+<li>
+<p><strong>Default key variables</strong>: the sort variables are the key variables retrieved from the sort dictionary.</p>
+</li>
+<li>
+<p><strong>Insert variable</strong>: inserts a variable in the list of sort variables.</p>
+</li>
+<li>
+<p><strong>Remove variable</strong>: removes a variable from the list of sort variables.</p>
+</li>
+</ul>
+<p><strong>Input data table</strong>:</p>
+<ul>
+<li>
+<p>Data table file</p>
+</li>
+<li>
+<p>Detect file format</p>
+</li>
+<li>
+<p>Header line used</p>
+</li>
+<li>
+<p>Field separator</p>
+</li>
+</ul>
+<p><strong>Output database</strong>:</p>
+<ul>
+<li>
+<p>Data table file</p>
+</li>
+<li>
+<p>Header line used</p>
+</li>
+<li>
+<p>Field separator</p>
+</li>
+</ul>
+<p>The <strong>Sort data table by key</strong> action reads the input data, sorts the lines by key, and writes the sorted output data.</p>
+<p>All native variables (either used or not in the sort dictionary) are written in the output database, whereas derived variables are ignored: the output database has the same content as the input database, except that the lines are now sorted by key.</p>
+<p>Note that this feature is very low-level and performs only minimal checks. For example, even the header line can be invalid w.r.t. all native variables defined in the dictionary, provided that the mandatory key fields for sorting are correct.</p>
+<h3 id="extract-keys-from-data-table">Extract keys from data table</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>The dictionary of the input data table must be loaded in memory and the input data table must be sorted by the keys of its dictionary.</p>
+</div>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/DataTableKeyExtractor.png" /></p>
+<p>This action allows to extract keys from a sorted input data table. It is dedicated to the preparation of <em>multi-table</em> databases, where a root entity has to be extracted from a detailed 0-n entity. For example, in case of a web log file with cookies, page, timestamp in each log, extracting keys allow to build a table with unique cookies from the table of logs.</p>
+<p>The parameters of the dialog box are the following.</p>
+<p><strong>Input dictionary</strong>: dictionary that describes the content of the input data table.</p>
+<p><strong>Input data table</strong>:</p>
+<ul>
+<li>
+<p>Data table file</p>
+</li>
+<li>
+<p>Detect file format</p>
+</li>
+<li>
+<p>Header line used</p>
+</li>
+<li>
+<p>Field separator</p>
+</li>
+</ul>
+<p><strong>Extracted key data table</strong>:</p>
+<ul>
+<li>
+<p>Data table file</p>
+</li>
+<li>
+<p>Header line used</p>
+</li>
+<li>
+<p>Field separator</p>
+</li>
+</ul>
+<p>The <strong>Extract keys from data table</strong> action reads the input data, remove duplicate keys and store the unique resulting keys in the output data table.</p>
+<p>The <strong>Build multi-table dictionary</strong> action builds a root dictionary with a Table variable based on the input dictionary, then saves the dictionary file.</p>
+<h3 id="train-model">Train model</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>The train database must be specified.</p>
+<p><strong>Fast path</strong>: if the dictionary related to the train database is not available, it will be automatically inferred from the data.</p>
+<p><strong>Standard path</strong>: the available dictionary, checked by the data analyst, must be loaded in memory.</p>
+</div>
+<p>If the name of the <strong>Target variable</strong> is missing, the data analysis is restricted to unsupervised descriptive statistics.
+Otherwise, the learning task is classification or regression according to the type of the target variable (categorical or numerical).</p>
+<p>The analysis starts by loading the database into memory. 
+Data chunks are potentially used in order to be consistent with the available RAM memory. 
+Khiops then performs discretizations for numerical variables, value groupings for categorical variables. 
+Variables are also constructed according to whether the feature engineering options are activated.
+Finally, the requested predictors are trained and evaluated.</p>
+<p>An analysis report with extension <em>.khj</em> is produced according to it specification in the <strong>Results</strong> pane.
+Additionally, model dictionaries are created and saved in a dictionary file with the extension <em>.model.kdic</em>
+are created, which can be deployed using the <strong>Deploy Model</strong> feature.</p>
+<p>The analysis report mainly includes data preparation reports for each family of generated variables, 
+detailing univariate statistics such as discretizations and value groupings. 
+It also contains a modeling summary that highlights the selected variables, 
+as well as train and test evaluation reports.</p>
+<p>The built dictionaries (available according to the activated options) are:</p>
+<ul>
+<li>
+<p>SNB_&lt;Dic&gt;: dictionary containing the prediction and prediction score formulae for a Selective Naive Bayes predictor,</p>
+</li>
+<li>
+<p>R_&lt;Dic&gt;: dictionary containing the recoded variables (discretizations and value groupings), 
+  generated when <strong>Build recoder</strong> is activated in the <strong>Parameters/Recoders</strong> pane.</p>
+</li>
+</ul>
+<p><strong>The predictor dictionaries</strong></p>
+<p>At the end of the data analysis, Khiops builds predictors and saves them by means of dictionaries 
+including variables dedicated to prediction. 
+The formulae used to compute prediction variables are stored in the dictionaries, 
+enabling the deployment of prediction scores on unseen data. 
+The data miner can select or unselect variables to deploy using the "Unused" keyword in
+the modeling dictionary. 
+For example, to produce a score file, the data miner can select a key variable, in order to enable joins in databases, and the variable related to the probability of the class value of interest.</p>
+<p>The main output variables in a classification dictionary with a target variable named &lt;class&gt; are:</p>
+<ul>
+<li>
+<p>Predicted&lt;class&gt;: predicted value</p>
+</li>
+<li>
+<p>Prob&lt;class&gt;&lt;value&gt;: probability of each target value named &lt;value&gt;</p>
+</li>
+</ul>
+<p>The main output variables in a regression dictionary with a target variable named &lt;target&gt; are:</p>
+<ul>
+<li>
+<p>M&lt;target&gt;: predicted mean of the target</p>
+</li>
+<li>
+<p>SD&lt;target&gt;: predicted standard deviation of the target</p>
+</li>
+</ul>
+<p>Other interesting variables are related to the prediction of the normalized rank of the target value (rank between 0 and 1):</p>
+<ul>
+<li>
+<p>MR&lt;target&gt;: predicted mean of the target rank</p>
+</li>
+<li>
+<p>SDR&lt;target&gt;: predicted standard deviation of the target rank</p>
+</li>
+<li>
+<p>CPR&lt;i&gt;&lt;target&gt;: cumulative probability of the target rank, i.e. probability that the target rank is below i</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is noteworthy that in case of regression, Khiops is able to predict the full conditional distribution of the target values. 
+For example, the regression variables TargetRankCumulativeProbAt(rank) available in the regression dictionary enable to predict the conditional probability of 
+the target variable for any interval of values (more precisely interval of normalized target ranks, i.e. target partile).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case of <em>multi-table</em> database, automatic variable construction allows to explore 
+complex representation spaces from multiple tables by creating many variables in the root entity to summarize the content of the sub-entities.</p>
+</div>
+<h3 id="deploy-model">Deploy model</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>At least one dictionary must be loaded into memory. 
+This can be any type of dictionary, such as a modeling dictionary for classification or regression, 
+a recoder dictionary, an interpretation dictionary, or a reinforcement dictionary.</p>
+</div>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/DeployModel.png" /></p>
+<p>This action opens a dialog box allowing to specify an input and output database, and a dictionary describing the variables to keep, discard or derive. 
+This allows to recode a database or to deploy a predictor on new data. The parameters of the dialog box are the following.</p>
+<p><strong>Deployment dictionary</strong>: dictionary used to select or derive new variables.</p>
+<p><strong>Input database</strong>:</p>
+<ul>
+<li>
+<p>Database</p>
+<ul>
+<li>
+<p>Data table file</p>
+</li>
+<li>
+<p>Detect file format</p>
+</li>
+<li>
+<p>Header line used</p>
+</li>
+<li>
+<p>Field separator</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Sampling</p>
+<ul>
+<li>
+<p>Sample percentage</p>
+</li>
+<li>
+<p>Discard mode</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Selection</p>
+<ul>
+<li>
+<p>Selection variable</p>
+</li>
+<li>
+<p>Selection value</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Output database</strong>:</p>
+<ul>
+<li>
+<p>Data table file</p>
+</li>
+<li>
+<p>Header line used</p>
+</li>
+<li>
+<p>Field separator</p>
+</li>
+<li>
+<p>Output format: tabular (default): standard tabular format; sparse: extended tabular format, with sparse fields in case of blocks of variables</p>
+</li>
+</ul>
+<p>The <strong>Deploy model</strong> action reads the input data, applies the deployment dictionary to select all or part of the variables and add derived variables, 
+and writes the output data.</p>
+<p>This action enables the deployment of any model dictionary, whether for classification, regression,
+interpretation, reinforcement, or other purposes.
+It can also be used to recode data according to the deployment dictionary's specifications,
+resulting in variables that are used, discarded, or newly created through various derivation rules.</p>
+<p>The <strong>Build deployed dictionary</strong> action creates an output dictionary that enables to read and analyses the output files: it contains the deployed variables only, 
+without any derivation rule in the dictionary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For <em>multi-table</em> databases, there are potentially several lines in the array of the input and output 
+database files. One input data table file must be specified for each table in the multi-table dictionary.
+During deployment, only the specified output data table files will be written, while any files associated
+with unused secondary tables in the multi-table dictionary will be omitted from the deployment.
+For the output database, only the data table files that are excluded will be written.</p>
+</div>
+<h3 id="evaluate-model">Evaluate model</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>At least one dictionary must be loaded in memory, and it must correspond to a predictor dictionary.</p>
+</div>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/EvaluateModel.png" /></p>
+<p>This action opens a dialog box allowing to specify an evaluation report, an evaluation database and to choose the predictor(s) to evaluate. 
+The parameters of the dialog box are the following.</p>
+<p><strong>Evaluation report</strong>: name of the evaluation report file.
+The JSON file is useful to inspect the modeling results from any external tool.</p>
+<p><strong>Export as xls</strong>: (default: false). Option to export each report to a tabular file that can be opened using Excel, with the following extensions:</p>
+<p><strong>Main target modality</strong>: value of the target variable in case of classification, for the lift curves in the evaluation reports.</p>
+<p><strong>Evaluation database</strong>:</p>
+<ul>
+<li>
+<p>Initial dictionary: (read-only) name of the dictionary related to the database.</p>
+</li>
+<li>
+<p>Database</p>
+<ul>
+<li>
+<p>Data table file</p>
+</li>
+<li>
+<p>Detect file format</p>
+</li>
+<li>
+<p>Header line used</p>
+</li>
+<li>
+<p>Field separator</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Sampling</p>
+<ul>
+<li>
+<p>Sample percentage</p>
+</li>
+<li>
+<p>Discard mode</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Selection</p>
+<ul>
+<li>
+<p>Selection variable</p>
+</li>
+<li>
+<p>Selection value</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Evaluated predictors</strong>: List of the predictor dictionaries, which are dictionaries among the loaded dictionaries that are recognized as predictor dictionaries. 
+This array allows to choose (parameter "Evaluated" which predictor to evaluate).</p>
+<ul>
+<li>
+<p>Evaluated: to choose whether to evaluate the predictor</p>
+</li>
+<li>
+<p>Predictor: Classifier or Regressor</p>
+</li>
+<li>
+<p>Name: label of the predictor</p>
+</li>
+<li>
+<p>Dictionary: name of the predictor dictionary</p>
+</li>
+<li>
+<p>Target variable: name of the target variable (for classification or regression)</p>
+</li>
+</ul>
+<p>The <strong>Evaluate model</strong> action applies the evaluated predictors to the evaluation database and writes an evaluation report.
+Unlike the <em>Train model</em> action, which trains predictors and evaluates them immediately on the train and 
+test databases, the <em>Evaluate model</em> action enables a deffered evaluation of predictors that were trained earlier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For <em>multi-table</em> databases, there are potentially several lines in the array of evaluation database files.</p>
+</div>
+<h3 id="interpret-model">Interpret model</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>At least one dictionary must be loaded in memory, and it must correspond to a predictor dictionary.</p>
+</div>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/InterpretModel.png" /></p>
+<p>This action opens a dialog box allowing to build an interpretation dictionary from a predictor dictionary.
+The interpretation dictionary calculates the individual importance of predictor variables using 
+<a href="https://en.wikipedia.org/wiki/Shapley_value" target="_blank" title="Visit the Wikipedia page">Shapley values<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1"/></svg></span></a>.</p>
+<p>The parameters of the dialog box are the following.</p>
+<p><strong>Predictor dictionary</strong>: name of the predictor dictionary.</p>
+<p><strong>Number of predictor variables</strong>: (read-only) number of variables used by the predictor.</p>
+<p><strong>Shapley value ranking</strong>: ranking of the Shapley values produced by the interpretation model:</p>
+<ul>
+<li>
+<p>Global: predictor variables are ranked by decreasing global importance,</p>
+</li>
+<li>
+<p>Individual: predictor variables are ranked by decreasing individual Shapley value.</p>
+</li>
+</ul>
+<p><strong>Number of contribution variables</strong>: number of predictor variables exploited the interpretation model.</p>
+<p><strong>Build interpretation dictionary</strong>: builds an interpretation dictionary that computes the Shapley values.</p>
+<p>The interpretation model produces the following variables according to the ranking of the Shapley values:</p>
+<ul>
+<li>
+<p><strong>Global</strong>: the value of each contribution variable is output, as well as the Shapley value for
+          each target value and predictor variable, based on their global importance,</p>
+<ul>
+<li>
+<p>each contribution variable in the interpretation dictionary, associated with a specific target value and predictor variable, 
+  is identified by the following meta-data tags:
+  <em>&lt;Target="target value"&gt;</em> and <em>&lt;ContributionVariable="variable name"&gt;</em>,</p>
+</li>
+<li>
+<p>the predictor interpreted variables are <em>used</em> in the dictionary,</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Individual</strong>: three variables are output for each target value and ranked individual
+        importance: name, part and Shapley value of the predictor variable,</p>
+<ul>
+<li>
+<p>the three contribution variables for each rank (from rank 1 to maximum) are identified by specific meta-data tags:
+  <em>&lt;ContributionVariableRank=rank&gt;</em>, <em>&lt;ContributionPartRank=rank&gt;</em> and <em>&lt;ContributionValueRank=rank&gt;</em>,</p>
+</li>
+<li>
+<p>all these variables also exploit the meta-data tag: <em>&lt;Target="target value"&gt;</em>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="reinforce-model">Reinforce model</h3>
+<div class="admonition prerequisite">
+<p class="admonition-title">Prerequisite</p>
+<p>At least one dictionary must be loaded in memory, and it must correspond to a predictor dictionary.</p>
+</div>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/ReinforceModel.png" /></p>
+<p>This action opens a dialog box allowing to build a reinforcement dictionary from a predictor dictionary.
+The parameters of the dialog box are the following.</p>
+<p><strong>Predictor dictionary</strong>: name of the predictor dictionary.</p>
+<p><strong>Number of predictor variables</strong>: (read-only) number of variables used by the predictor.</p>
+<p><strong>Target value to reinforce</strong>: target value for which one try to increase the probability of occurrence.</p>
+<p><strong>Lever variable</strong>: choice of predictor variables used to reinforce a prediction</p>
+<ul>
+<li>
+<p>Used: indicates whether the variable is used as a lever variable,</p>
+</li>
+<li>
+<p>Type,</p>
+</li>
+<li>
+<p>Name,</p>
+</li>
+<li>
+<p>Importance.</p>
+</li>
+</ul>
+<p><strong>Build reinforcement dictionary</strong>: builds a reinforcement dictionary that computes the reinforcement variables
+for the specified target value.</p>
+<p>The reinforcement model produces the following variables for the target value to reinforce, 
+all of them exploiting the meta-data tag <em>&lt;Target="target value"&gt;</em>:</p>
+<ul>
+<li>
+<p>Initial score, containing the conditional probability of the target value before reinforcement,
+  with meta-data tag <em>&lt;ReinforcementInitialScore&gt;</em>,</p>
+</li>
+<li>
+<p>Four variables are output per rank (from 1 to maximum) of lever variable sorted by decreasing reinforcement level:</p>
+<ul>
+<li>
+<p>name of the lever variable, with meta-data tag <em>&lt;ReinforcementVariableRank=rank&gt;</em>,</p>
+</li>
+<li>
+<p>reinforcement part, with meta-data tag <em>&lt;ReinforcementPartRank=rank&gt;</em>,</p>
+</li>
+<li>
+<p>final score after reinforcement, with meta-data tag <em>&lt;ReinforcementFinalScoreRank=rank&gt;</em>,</p>
+</li>
+<li>
+<p>class change tag, with meta-data tag <em>&lt;ReinforcementClassChangeTagRank=rank&gt;</em>:</p>
+<ul>
+<li>
+<p>0 indicates the initial predicted target value was already the target to reinforce,</p>
+</li>
+<li>
+<p>-1 indicates the final predicted target value remains different from the target to reinforce,</p>
+</li>
+<li>
+<p>1 indicates the final predicted target value is now the target to reinforce.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="help-menu">Help menu</h2>
+<p><img alt="" src="../../assets/images-khiops-guides/khiops/Khiops_Help_menu.png" /></p>
+<p>The actions available from the help menu are</p>
+<ul>
+<li>
+<p><strong>Quick start</strong>: provides a brief guide to help users get started with the tool.</p>
+</li>
+<li>
+<p><strong>Documentation</strong>: gives an overview of the available documentation and additional resources.</p>
+</li>
+<li>
+<p><strong>About Khiops</strong>: displays version information about the software.</p>
+</li>
+</ul>
+
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="https://msurvey.orange.com/khiopsdoc" target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        
+<!-- Footer -->
+<footer class="md-footer">
+  
+    
+  
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">© <a href="https://www.orange.com/en" target="_blank">Orange S.A.</a> 2023-2026 - <a href="/legalmatters/">Legal matters</a> -  <a href="#__consent"> Change cookie settings</a></div>
+      <!-- Social links -->
+      <div class="md-footer-social">
+      </div>
+      </div>
+  </div>
+</footer>
+
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs","navigation.tabs.sticky","navigation.path","navigation.expand","navigation.indexes","navigation.footer","content.code.copy","content.tooltips"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax-loader.js"></script>
+      
+        <script src="../../assets/javascripts/visu-menu.js"></script>
+      
+    
+  </body>
+</html>
