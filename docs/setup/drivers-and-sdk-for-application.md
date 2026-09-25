@@ -6,7 +6,7 @@ These drivers are available only for the supported Linux distributions listed be
 
 !!! info "Supported Linux distributions" 
     - Rocky Linux 9 and 10
-    - Debian 11, 12 and 13
+    - Debian 12 and 13
     - Ubuntu 20.04, 22.04 and 24.04 (LTS) on x86-64 architectures
     - Ubuntu 22.04 and 24.04 (LTS) on ARM architectures.
 
