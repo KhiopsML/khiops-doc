@@ -30,7 +30,7 @@ Khiops supports a diversified set of installation options, to meet different nee
 
     - Windows 10 or later
     - Ubuntu 20.04, 22.04, 24.04, and 26.04 LTS (on both x86-64 & ARM architectures)
-    - Debian 11, 12, and 13
+    - Debian 12 and 13
     - Rocky Linux 8, 9, and 10
     - macOS 13 or later on ARM (only via the Khiops Python library).
 
