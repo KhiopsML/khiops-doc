@@ -32,7 +32,7 @@ The KNI is targeted primarily at system integrators which aim to deploy the scor
     CODENAME=$(lsb_release -cs) && \
     TEMP_DEB_KNI="$(mktemp)" && \
     wget -O "$TEMP_DEB_KNI" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/kni_{{ KHIOPS_VERSION }}-1-${CODENAME}.amd64.deb" && \
-    sudo dpkg -i "$TEMP_DEB_KNI" || sudo apt-get -f -y install && \
+    sudo apt-get install -y ./"$TEMP_DEB_KNI" && \
     rm -f $TEMP_DEB_KNI 
     ```
 

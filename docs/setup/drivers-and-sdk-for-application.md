@@ -16,8 +16,7 @@ These drivers are available only for the supported Linux distributions listed be
         wget -O khiops-gcs.deb https://github.com/KhiopsML/khiopsdriver-gcs/releases/download/{{ KHIOPS_GCS_DRIVER_VERSION }}/khiops-driver-gcs_{{ KHIOPS_GCS_DRIVER_VERSION }}-1-${VERSION_CODENAME}.amd64.deb && \
         wget -O khiops-s3.deb https://github.com/KhiopsML/khiopsdriver-s3/releases/download/{{ KHIOPS_S3_DRIVER_VERSION }}/khiops-driver-s3_{{ KHIOPS_S3_DRIVER_VERSION }}-1-${VERSION_CODENAME}.amd64.deb && \
         wget -O khiops-azure.deb https://github.com/KhiopsML/khiopsdriver-azure/releases/download/{{ KHIOPS_AZURE_DRIVER_VERSION }}/khiops-driver-azure_{{ KHIOPS_AZURE_DRIVER_VERSION }}-1-${VERSION_CODENAME}.amd64.deb && \
-        (sudo dpkg -i --force-all khiops-gcs.deb khiops-s3.deb khiops-azure.deb || true) && \
-        sudo apt-get -f -y install && \
+        sudo apt-get install -y ./khiops-gcs.deb ./khiops-s3.deb ./khiops-azure.deb  && \
         rm -f khiops-gcs.deb khiops-s3.deb khiops-azure.deb
     ```
 
