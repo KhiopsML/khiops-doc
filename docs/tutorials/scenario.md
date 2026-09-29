@@ -271,13 +271,12 @@ If you need to start a Khiops process from your preferred programming language, 
 
 - execute Khiops with this command line and the generic scenario from your chosen language.
 
-!!! example
+!!! examples
 
 	C++: `system(command);`
 
 	Java: `Process process = Runtime.getRuntime().exec(command);`
 
-	…
 
 !!! note "Note on backwards compatibility"
 
@@ -288,7 +287,6 @@ If you need to start a Khiops process from your preferred programming language, 
 	- simply re-register a scenario and make it generic,
 
 	- reuse the same integration process by just updating the scenario files.
-
 
 
 ## Advanced Use of Scenarios

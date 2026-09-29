@@ -82,6 +82,7 @@ nav = [
           { "Distributed Execution with k8s" = "tutorials/k8s.md" },
           { "Real-time Deployment" = "tutorials/kni.md" },
           { "Scenario-Based Execution" = "tutorials/scenario.md" },
+          { "Redirecting Output to Standard Streams" = "tutorials/use_stdout.md" },
         ] },
     ] },
   { "API Python" = [
