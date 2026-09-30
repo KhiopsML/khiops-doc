@@ -81,7 +81,7 @@ jobs:
           args: >-
             --no-progress
             --root-dir ./site
-            --accept 200,403
+            --accept 200,400,403,429
             --exclude 'file:///.*\d+\.\d+\.\d+'
             --remap 'https://khiops.org/ file://${{ github.workspace }}/site/'
             'site/**/*.html'
