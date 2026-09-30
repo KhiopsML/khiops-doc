@@ -38,7 +38,7 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
     TEMP_DEB_KHIOPS="$(mktemp)" && \
     wget -O "$TEMP_DEB_CORE" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-core-openmpi_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.${ARCH}.deb" && \
     wget -O "$TEMP_DEB_KHIOPS" "https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops_{{ KHIOPS_VERSION }}-1-${VERSION_CODENAME}.${ARCH}.deb" && \
-    sudo dpkg -i "$TEMP_DEB_CORE" "$TEMP_DEB_KHIOPS" || sudo apt-get -f -y install && \
+    sudo apt-get install -y ./"$TEMP_DEB_CORE" ./"$TEMP_DEB_KHIOPS" && \
     rm -f $TEMP_DEB_CORE $TEMP_DEB_KHIOPS
     ```
 
