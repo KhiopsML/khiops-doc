@@ -2,11 +2,31 @@
 # Coclustering instances × variables
 
 
+
+<figure id="coclustering-intro" style="width:45%; margin:1.5rem auto;">
+  <picture>
+    <source
+      srcset="/assets/images/coclustering_indi_var_first_picture.webp"
+      type="image/webp"
+    >
+    <img
+      src="/assets/images/coclustering_indi_var_first_picture.png"
+      alt=""
+      style="display:block; width:100%; height:auto;"
+      loading="lazy"
+    >
+  </picture>
+</figure>
+
+Pour saisir l’idée, imaginons un enfant qui découvre le monde : il apprend à reconnaître des objets et des situations, tout en apprenant les mots qui permettent de les décrire. **La découverte et l’apprentissage du vocabulaire progressent ensemble.**
+
+Le coclustering instances × variables repose sur une intuition similaire : **découvrir des profils dans les données tout en apprenant le vocabulaire qui permet de les caractériser.** Il ne s’agit donc pas seulement de regrouper ce qui se ressemble, mais aussi d’apprendre comment décrire ces ressemblances et ces différences.
+
 ## Décrire et Explorer à la fois
 
 Lors de l’étape d’analyse exploratoire, on cherche à comprendre la structure d’une population sans savoir à l’avance ce que l’on va y trouver. On dispose d’**instances**, c’est-à-dire des individus statistiques d'un jeu de données  — *des clients, des documents, des objets, des événements, etc.* — décrits par un ensemble de variables numériques ou catégorielles. Le clustering permet alors de faire émerger des groupes d’instances qui se ressemblent, tout en distinguant des profils suffisamment différents les uns des autres pour révéler et interpréter la structure présente dans les données.
 
-!!! info "Quelle est l'originalité de l'approche?"
+!!! info "L'originalité de l'approche"
     Le coclustering instances × variables **explore les données en apprenant également le langage pour les décrire**. En effet, les **groupes d’instances** et les **parties de variables** qui permettent de les caractériser sont appris **conjoitement**. Pour une variable catégorielle, une partie est un groupe de modalités ; pour une variable numérique, une partie est un intervalle de valeurs. Ces parties peuvent être regroupées entre elles, y compris lorsqu’elles proviennent de variables de types différents.
 
 
@@ -27,7 +47,7 @@ Les variables ne sont donc pas condamnées à appartenir *« en bloc »* à un s
   </picture>
 </figure>
 
-Une image simple est celle d’un **puzzle** : les variables d’origine correspondent à de grandes pièces déjà assemblées, mais ce n’est pas forcément à ce niveau que la structure la plus intéressante apparaît. L’approche commence par **découper ces variables en pièces plus fines**, puis **réassemble les pièces les plus informatives pour faire émerger les profils d’instances**. Le but n’est donc pas seulement de regrouper des individus, mais aussi d’identifier les **morceaux d’information** les plus utiles pour décrire ce qui les rapproche et ce qui les distingue.   
+Une image simple est celle d’un **puzzle** : les variables d’origine correspondent à de grandes pièces déjà assemblées, mais ce n’est pas forcément à ce niveau que la structure la plus intéressante apparaît. L’approche apprend conjointemenet à **découper ces variables en pièces plus fines** et a **réassembler ces pièces** pour faire émerger les profils d’instances. Le but n’est donc pas seulement de regrouper des individus, mais aussi d’identifier les **morceaux d’information** les plus utiles pour décrire ce qui les rapproche et ce qui les distingue.   
 
 **L’illustration suivante présente plus concrètement le fonctionnement du coclustering instances × variables**, à partir d’un jeu de données volontairement simple décrivant les clients d’une entreprise. Elle montre comment les variables sont découpées en parties, comment ces parties peuvent être regroupées, puis comment les profils d’instances se caractérisent par des distributions différentes sur ces groupes de parties.
   
@@ -83,18 +103,39 @@ Une image simple est celle d’un **puzzle** : les variables d’origine corresp
 </div>
 
 
-### Intuition : apprendre les mots en découvrant le monde
+## Revenons sur ce qu'il y a de nouveau
 
-Un enfant n’apprend pas d’abord un dictionnaire complet avant de commencer à comprendre le monde. Il apprend progressivement à reconnaître des situations, des objets ou des catégories, tandis que se construit le vocabulaire qui lui permet de les décrire.
+**Revenons à l’image de l’enfant qui découvre le monde en même temps qu'il apprend à le décire.** Cette image permet d'illustrer ce que le coclustering instances × variables ajoute au [coclustering textes × mots présenté précédemment][coclustering-applications].
 
-**Un dictionnaire entier dans la tête ?** Dans le [coclustering textes × mots][coclustering-applications], le vocabulaire est déjà là : chaque occurrence relie un identifiant de texte à un mot. Le coclustering découvre alors des groupes de textes qui utilisent les mots de manière similaire et, réciproquement, des groupes de mots qui apparaissent dans des groupes de textes similaires. Les deux dimensions se structurent ensemble.
+**Textes × mots : le vocabulaire est donné, ses regroupements sont appris.** Chaque occurrence associe un texte à un mot déjà identifié. Les textes sont regroupés selon leurs distributions sur les groupes de mots, et réciproquement : les deux regroupements sont appris conjointement, mais les mots sont fixés.
 
-**Quand le modèle construit son propre vocabulaire.** Dans le coclustering instances × variables, les instances jouent le rôle des textes à regrouper et les parties de variables jouent un rôle analogue aux mots : elles forment un vocabulaire descriptif. Mais ce vocabulaire n’est pas donné a priori. Il est construit à partir des données et optimisé en même temps que les groupes d’instances et les groupes de parties de variables.
+**Instances × variables : les unités du vocabulaire sont elles aussi apprises.** Les instances jouent le rôle des textes et les parties de variables celui des mots. Ces unités descriptives — intervalles numériques ou ensembles de modalités catégorielles — sont elles-mêmes construites conjointement avec les groupes d’instances et les groupes de parties.
 
-**Autrement dit : le modèle ne cherche pas seulement les profils d’instances ; il apprend aussi la manière utile de les décrire.**
 
-!!! note "Figure à réaliser — Textes × mots et instances × parties de variables"
-    Mettre en parallèle l’application textuelle et le cas général. Le principe du coclustering est conservé, mais, dans le cas général, le vocabulaire descriptif est lui-même appris. Montrer des parties numériques et catégorielles au sein d’un même groupe.
+**Le principe du coclustering est conservé ; la construction du vocabulaire fait désormais partie du même problème d’apprentissage.** 
+
+
+<figure id="coclustering-comparison" style="width:100%; margin:1.5rem 0;">
+  <a
+    href="/assets/images/coclustering_indi_var_new_vs_words_x_IDtext.png"
+    target="_blank"
+    rel="noopener"
+    title=""
+  >
+    <picture>
+      <source
+        srcset="/assets/images/coclustering_indi_var_new_vs_words_x_IDtext.webp"
+        type="image/webp"
+      >
+      <img
+        src="/assets/images/coclustering_indi_var_new_vs_words_x_IDtext.png"
+        alt=""
+        style="display:block; width:100%; height:auto;"
+        loading="lazy"
+      >
+    </picture>
+  </a>
+</figure>
 
 ## Paramètres du modèle
 
