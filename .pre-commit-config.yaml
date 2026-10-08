@@ -2,15 +2,15 @@
 repos:
   # We'll activate these two later once we merged kdic-tutorials
   #- repo: https://github.com/psf/black-pre-commit-mirror
-    # rev: 24.8.0
-    # hooks:
-      #- id: black-jupyter
-        # language_version: python3
+  # rev: 24.8.0
+  # hooks:
+  #- id: black-jupyter
+  # language_version: python3
   #- repo: https://github.com/lyz-code/yamlfix/
-    #rev: 1.17.0
-    #hooks:
-      #- id: yamlfix
-        #language: python
+  #rev: 1.17.0
+  #hooks:
+  #- id: yamlfix
+  #language: python
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.29.2
     hooks:
@@ -24,7 +24,13 @@ repos:
     hooks:
       - id: notebook-clean
         name: notebook-clean
-        entry: jupyter nbconvert --ClearMetadataPreprocessor.enabled=True --inplace
+        entry:
+          jupyter nbconvert --ClearMetadataPreprocessor.enabled=True --inplace
           --log-level=ERROR
         language: python
         files: .*\.ipynb
+  - repo: https://github.com/ComPWA/taplo-pre-commit
+    rev: v0.9.3
+    hooks:
+      - id: taplo-format
+        files: .toml
