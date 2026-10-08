@@ -7,25 +7,14 @@ dependencies = [
   "ghp-import",
   "kdic-lexer",
   "zensical==0.0.51",
-  "mkdocs-material"
+  "mkdocs-material",
 ]
 
 [project.optional-dependencies]
-dev = [
-  "pre-commit",
-]
-notebooks = [
-  "ipykernel",
-  "nbconvert",
-]
-tutorials = [
-  "matplotlib",
-  "pycaret",
-  "seaborn",
-]
-pythonapi = [
-  "mkdocstrings[python]",
-]
+dev = ["pre-commit"]
+notebooks = ["ipykernel", "nbconvert"]
+tutorials = ["matplotlib", "pycaret", "seaborn"]
+pythonapi = ["mkdocstrings[python]"]
 
 [tool.uv]
 package = false
