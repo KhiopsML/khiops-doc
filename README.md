@@ -29,16 +29,19 @@ The Python API pages (`docs/api-docs/python-api/`) are generated from the `khiop
 This installs Khiops core `VERSION` via Uv, clones `khiops-python` (`PYVERSION`
 by default; use `--local-khiops-python DIR` to build from a local checkout
 instead), converts its docstrings into the `docs/api-docs/python-api/` tree,
-regenerates the Python API nav, and builds the whole site with Zensical into
-`./site`. The Uv environment created for the build is removed automatically when
+regenerates the Python API nav, exports the KNI tutorial examples from
+`KNI-tutorial`, and builds the whole site with Zensical into `./site`.
+The Uv environment created for the build is removed automatically when
 the script exits.
 
 Useful flags (see `./local-build.sh --help` for the full list):
 
 - `--khiops-version VER` - Khiops core version to install via Uv (**required**)
 - `--local-khiops-python DIR` - build from a local `khiops-python` checkout
+- `--local-kni-tutorial DIR` - build from a local `KNI-tutorial` checkout
 - `--khiops-python-version VER` - Khiops Python version to document in the built site (**required**)
 - `--khiops-python-ref REF` - Git ref to build from when not local (default: same value as `khiops-python-version`)
+- `--kni-tutorial-ref REF` - `KNI-tutorial` Git ref (default: `khiops-version`)
 - `--khiops-samples-version VER` - `khiops-samples` release used by the tutorials (default: `main`)
 - `--khiops-python-tutorial-ref REF` - `khiops-python-tutorial` Git ref (default: `main`)
 - `--khiops-viz-version VER`, `--khiops-gcs-driver-version VER`, `--khiops-s3-driver-version VER`, `--khiops-azure-driver-version VER` - versions displayed/linked on the site (default: `unknown`)
@@ -52,6 +55,17 @@ python -m http.server --directory site
 ```
 
 Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/.
+
+### LLM-Friendly Documentation (`llms.txt`)
+
+The site exposes an [`llms.txt`](https://llmstxt.org/) index for coding agents and other LLM tools, generated from the manually curated `./llms.md` file by the same build (`.github/scripts/generate_llm_docs.py`):
+
+- Every link in `llms.md` pointing to a `/markdown/` or `/api-docs/` path is validated against the built site; the build fails if a link points to a page that doesn't exist.
+- Python API links point to Markdown pages rendered directly from the `khiops-python` docstrings (via `griffe`, bypassing Zensical's HTML build and its web-only artifacts such as same-page anchors), exported under `./site/markdown/api-docs/python-api/`.
+- KNI source files and example data are exported under `./site/markdown/tutorials/kni-tutorial/`; only the guide and source examples are referenced in `llms.md`, while data and header files stay available as runtime resources without adding noise to the curated index.
+- Any Markdown page under `./site/markdown/` that isn't referenced anywhere in `llms.md` is automatically appended to a generated `## Others` section, so no page is silently left out of `llms.txt`.
+- An `## Excluded` section in `llms.md` can list pages whose links are still validated and kept out of `## Others`, but that must not appear in the published `llms.txt` (e.g. redundant index pages); unlike other sections, it is stripped before writing the output.
+- This build intentionally generates no `llms-full.txt` file.
 
 ### Editing Tutorial Notebooks
 
