@@ -53,6 +53,13 @@ python -m http.server --directory site
 
 Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/.
 
+The source for the LLM-friendly documentation entry point is the manually
+curated `./llms.md` file. The build copies it to `./site/llms.txt` and checks
+that its links point to published pages. The Markdown mirror is generated
+under `./site/markdown/`; Python API links in `llms.md` point to the rendered
+API pages on the Khiops website. This build intentionally generates no
+`llms-full.txt` file.
+
 ### Editing Tutorial Notebooks
 
 - Edit source notebooks in `docs/tutorials/sourced-notebooks/` (`.ipynb` files).

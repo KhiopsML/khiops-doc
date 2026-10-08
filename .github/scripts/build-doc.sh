@@ -133,4 +133,12 @@ envsubst "${KHIOPS_VERSIONING_VARS}" \
 echo "=== Building site with Zensical in dir $(pwd) ==="
 uv run zensical build --clean --strict
 
+# Generate the LLM navigation index and the public Markdown mirror after the
+# site build so the Python API links target the rendered documentation.
+echo "=== Generating LLM documentation index ==="
+uv run --active --frozen --no-sync python "${SCRIPT_DIR}/generate_llm_docs.py" \
+  --docs-dir ./docs \
+  --site-dir ./site \
+  --llms-source ./llms.md
+
 echo "=== Done - site built in ./site ==="
