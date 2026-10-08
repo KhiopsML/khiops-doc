@@ -41,117 +41,117 @@ extra_javascript = [
 
 nav = [
   { "Installation" = [
-      "setup/index.md",
-      { "Khiops Python Library" = [
-          { "pip" = "setup/pip.md" },
-          { "conda" = "setup/conda.md" },
-          { "docker notebook" = "setup/khiops-notebook.md" },
-        ] },
-      { "Applications" = [
-          { "Khiops Application" = "setup/nocode.md" },
-          { "Khiops Visualization" = "setup/visualization.md" },
-          { "Khiops Native Interface (KNI)" = "setup/kni.md" },
-        ] },
-      # anchors to sections are currently unusable in strict mode because of https://github.com/mkdocs/mkdocs/issues/4026
-      # and linking to the same page breaks the TOC
-      { "Cloud Storage Drivers" = [
-          { "For the Python Library" = "setup/drivers-and-sdk-for-library.md" },
-          { "For the Khiops Application" = "setup/drivers-and-sdk-for-application.md" },
-        ] },
+    "setup/index.md",
+    { "Khiops Python Library" = [
+      { "pip" = "setup/pip.md" },
+      { "conda" = "setup/conda.md" },
+      { "docker notebook" = "setup/khiops-notebook.md" },
     ] },
+    { "Applications" = [
+      { "Khiops Application" = "setup/nocode.md" },
+      { "Khiops Visualization" = "setup/visualization.md" },
+      { "Khiops Native Interface (KNI)" = "setup/kni.md" },
+    ] },
+    # anchors to sections are currently unusable in strict mode because of https://github.com/mkdocs/mkdocs/issues/4026
+    # and linking to the same page breaks the TOC
+    { "Cloud Storage Drivers" = [
+      { "For the Python Library" = "setup/drivers-and-sdk-for-library.md" },
+      { "For the Khiops Application" = "setup/drivers-and-sdk-for-application.md" },
+    ] },
+  ] },
   { "How to" = [
-      "tutorials/introduction.md",
-      { "Scikit-learn API" = [
-          { "Quickstart Guide" = "tutorials/quickstart.md" },
-          { "Single-Table Tutorial" = "tutorials/notebooks/single_table_classifier.md" },
-          { "No Need for Data Preparation" = "tutorials/notebooks/No_data_Cleaning.md" },
-          { "Interpretable Variable Encoding" = "tutorials/notebooks/Optimal_Encoding.md" },
-          { "Multi-Table Tutorial" = "tutorials/notebooks/multi_table_classifier.md" },
-          { "Auto Feature Engineering & More" = "tutorials/notebooks/Use_in_any_ML_pipeline.md" },
-        ] },
-      { "Core API & Dictionaries" = [
-          { "Start Using Dictionaries" = "tutorials/kdic_intro.md" },
-          { "Single-Table Concepts" = "tutorials/kdic_single_table.md" },
-          { "Single-Table Tutorial" = "tutorials/notebooks/single_table_classifier_core.md" },
-          { "Multi-Table Concepts" = "tutorials/kdic_multi_table.md" },
-          { "Multi-Table Tutorial" = "tutorials/notebooks/multi_table_classifier_core.md" },
-        ] },
-      { "Deployment & Integration" = [
-          { "Cloud Storage" = "tutorials/storage.md" },
-          { "Running Khiops with Docker" = "tutorials/docker.md" },
-          { "Distributed Execution with k8s" = "tutorials/k8s.md" },
-          { "Real-time Deployment" = "tutorials/kni.md" },
-          { "Scenario-Based Execution" = "tutorials/scenario.md" },
-          { "Redirecting Output to Standard Streams" = "tutorials/use_stdout.md" },
-        ] },
+    "tutorials/introduction.md",
+    { "Scikit-learn API" = [
+      { "Quickstart Guide" = "tutorials/quickstart.md" },
+      { "Single-Table Tutorial" = "tutorials/notebooks/single_table_classifier.md" },
+      { "No Need for Data Preparation" = "tutorials/notebooks/No_data_Cleaning.md" },
+      { "Interpretable Variable Encoding" = "tutorials/notebooks/Optimal_Encoding.md" },
+      { "Multi-Table Tutorial" = "tutorials/notebooks/multi_table_classifier.md" },
+      { "Auto Feature Engineering & More" = "tutorials/notebooks/Use_in_any_ML_pipeline.md" },
     ] },
+    { "Core API & Dictionaries" = [
+      { "Start Using Dictionaries" = "tutorials/kdic_intro.md" },
+      { "Single-Table Concepts" = "tutorials/kdic_single_table.md" },
+      { "Single-Table Tutorial" = "tutorials/notebooks/single_table_classifier_core.md" },
+      { "Multi-Table Concepts" = "tutorials/kdic_multi_table.md" },
+      { "Multi-Table Tutorial" = "tutorials/notebooks/multi_table_classifier_core.md" },
+    ] },
+    { "Deployment & Integration" = [
+      { "Cloud Storage" = "tutorials/storage.md" },
+      { "Running Khiops with Docker" = "tutorials/docker.md" },
+      { "Distributed Execution with k8s" = "tutorials/k8s.md" },
+      { "Real-time Deployment" = "tutorials/kni.md" },
+      { "Scenario-Based Execution" = "tutorials/scenario.md" },
+      { "Redirecting Output to Standard Streams" = "tutorials/use_stdout.md" },
+    ] },
+  ] },
   { "API Python" = [
-      { "Python API Docs" = "api-docs/python-api.md" },
-    ] },
+    { "Python API Docs" = "api-docs/python-api.md" },
+  ] },
   { "API Dictionary" = [
-      { "Databases and dictionaries" = [
-          { "Databases" = "api-docs/kdic/database-files.md" },
-          { "Dictionaries" = "api-docs/kdic/dictionary-files.md" },
-          { "Technical Limits" = "api-docs/kdic/limits.md" },
-        ] },
-      { "Dictionary Rules" = [
-          { "Basic" = [
-              { "Numerical Comparisons" = "api-docs/kdic/numerical-comparisons.md" },
-              { "Categorical Comparisons" = "api-docs/kdic/categorical-comparisons.md" },
-              { "Logical Operators" = "api-docs/kdic/logical-operators.md" },
-              { "Data Copy and Conversion" = "api-docs/kdic/data-copy-and-conversion.md" },
-              { "Math Rules" = "api-docs/kdic/math-rules.md" },
-              { "String Rules" = "api-docs/kdic/string-rules.md" },
-              { "Text Rules" = "api-docs/kdic/text-rules.md" },
-              { "Date Rules" = "api-docs/kdic/date-rules.md" },
-              { "Time Rules" = "api-docs/kdic/time-rules.md" },
-              { "Timestamp Rules" = "api-docs/kdic/timestamp-rules.md" },
-              { "TimestampTZ Rules" = "api-docs/kdic/timestamp-tz-rules.md" },
-            ] },
-          { "Multi-Table" = [
-              { "Introduction" = "api-docs/kdic/multi-table-rules-introduction.md" },
-              { "Entity Rules" = "api-docs/kdic/entity-rules.md" },
-              { "Table Rules" = "api-docs/kdic/table-rules.md" },
-              { "Table Management Rules" = "api-docs/kdic/table-management-rules.md" },
-              { "TextList Rules" = "api-docs/kdic/text-list-rules.md" },
-            ] },
-          { "Technical Structures & Rules" = [
-              { "Introduction" = "api-docs/kdic/structures-introduction.md" },
-              { "Vector Rules" = "api-docs/kdic/vector-rules.md" },
-              { "Hash Map Rules" = "api-docs/kdic/hash-map-rules.md" },
-              { "Data Preparation Rules" = "api-docs/kdic/data-preparation-rules.md" },
-              { "Recoding Rules" = "api-docs/kdic/recoding-rules.md" },
-              { "Predictor Rules" = "api-docs/kdic/predictor-rules.md" },
-              { "Interpretation Rules" = "api-docs/kdic/interpretation-rules.md" },
-              { "Reinforcement Rules" = "api-docs/kdic/reinforcement-rules.md" },
-              { "Coclustering Rules" = "api-docs/kdic/coclustering-rules.md" },
-            ] },
-          { "Block and Sparse Data Rules" = [
-              { "Introduction" = "api-docs/kdic/intro-block.md" },
-              { "Basic Sparse Rules" = "api-docs/kdic/basic-sparse-rules.md" },
-              { "Text Sparse Rules" = "api-docs/kdic/text-sparse-rules.md" },
-              { "Preparation Sparse Rules" = "api-docs/kdic/preparation-sparse-rules.md" },
-              { "Table Partition Rules" = "api-docs/kdic/table-partition-rules.md" },
-              { "Table Block Rules" = "api-docs/kdic/table-block-rules.md" },
-            ] },
-        ] },
+    { "Databases and dictionaries" = [
+      { "Databases" = "api-docs/kdic/database-files.md" },
+      { "Dictionaries" = "api-docs/kdic/dictionary-files.md" },
+      { "Technical Limits" = "api-docs/kdic/limits.md" },
     ] },
+    { "Dictionary Rules" = [
+      { "Basic" = [
+        { "Numerical Comparisons" = "api-docs/kdic/numerical-comparisons.md" },
+        { "Categorical Comparisons" = "api-docs/kdic/categorical-comparisons.md" },
+        { "Logical Operators" = "api-docs/kdic/logical-operators.md" },
+        { "Data Copy and Conversion" = "api-docs/kdic/data-copy-and-conversion.md" },
+        { "Math Rules" = "api-docs/kdic/math-rules.md" },
+        { "String Rules" = "api-docs/kdic/string-rules.md" },
+        { "Text Rules" = "api-docs/kdic/text-rules.md" },
+        { "Date Rules" = "api-docs/kdic/date-rules.md" },
+        { "Time Rules" = "api-docs/kdic/time-rules.md" },
+        { "Timestamp Rules" = "api-docs/kdic/timestamp-rules.md" },
+        { "TimestampTZ Rules" = "api-docs/kdic/timestamp-tz-rules.md" },
+      ] },
+      { "Multi-Table" = [
+        { "Introduction" = "api-docs/kdic/multi-table-rules-introduction.md" },
+        { "Entity Rules" = "api-docs/kdic/entity-rules.md" },
+        { "Table Rules" = "api-docs/kdic/table-rules.md" },
+        { "Table Management Rules" = "api-docs/kdic/table-management-rules.md" },
+        { "TextList Rules" = "api-docs/kdic/text-list-rules.md" },
+      ] },
+      { "Technical Structures & Rules" = [
+        { "Introduction" = "api-docs/kdic/structures-introduction.md" },
+        { "Vector Rules" = "api-docs/kdic/vector-rules.md" },
+        { "Hash Map Rules" = "api-docs/kdic/hash-map-rules.md" },
+        { "Data Preparation Rules" = "api-docs/kdic/data-preparation-rules.md" },
+        { "Recoding Rules" = "api-docs/kdic/recoding-rules.md" },
+        { "Predictor Rules" = "api-docs/kdic/predictor-rules.md" },
+        { "Interpretation Rules" = "api-docs/kdic/interpretation-rules.md" },
+        { "Reinforcement Rules" = "api-docs/kdic/reinforcement-rules.md" },
+        { "Coclustering Rules" = "api-docs/kdic/coclustering-rules.md" },
+      ] },
+      { "Block and Sparse Data Rules" = [
+        { "Introduction" = "api-docs/kdic/intro-block.md" },
+        { "Basic Sparse Rules" = "api-docs/kdic/basic-sparse-rules.md" },
+        { "Text Sparse Rules" = "api-docs/kdic/text-sparse-rules.md" },
+        { "Preparation Sparse Rules" = "api-docs/kdic/preparation-sparse-rules.md" },
+        { "Table Partition Rules" = "api-docs/kdic/table-partition-rules.md" },
+        { "Table Block Rules" = "api-docs/kdic/table-block-rules.md" },
+      ] },
+    ] },
+  ] },
   { "Foundations" = [
-      { "What Makes Khiops Different" = "learn/understand.md" },
-      { "An Original Formalism" = "learn/modl.md" },
-      { "Auto-ML Pipeline" = [
-          { "Optimal Encoding" = "learn/preprocessing.md" },
-          { "Auto Feature Engineering" = "learn/autofeature_engineering.md" },
-          { "Parsimonious Training" = "learn/learning_models.md" },
-        ] },
-      { "Unsupervised Approaches" = [
-          { "Optimal Histograms" = "learn/histograms.md" },
-          { "Coclustering" = "learn/coclustering.md" },
-          # { "Coclustering inst x var" = "learn/coclustering_indi_var.md" }
-        ] },
-      { "Auto Hardware Adaptation" = "learn/hardware_adaptation.md" },
-      { "Bibliography" = "references.md" },
+    { "What Makes Khiops Different" = "learn/understand.md" },
+    { "An Original Formalism" = "learn/modl.md" },
+    { "Auto-ML Pipeline" = [
+      { "Optimal Encoding" = "learn/preprocessing.md" },
+      { "Auto Feature Engineering" = "learn/autofeature_engineering.md" },
+      { "Parsimonious Training" = "learn/learning_models.md" },
     ] },
+    { "Unsupervised Approaches" = [
+      { "Optimal Histograms" = "learn/histograms.md" },
+      { "Coclustering" = "learn/coclustering.md" },
+      # { "Coclustering inst x var" = "learn/coclustering_indi_var.md" }
+    ] },
+    { "Auto Hardware Adaptation" = "learn/hardware_adaptation.md" },
+    { "Bibliography" = "references.md" },
+  ] },
   { "Discussions" = "https://github.com/orgs/KhiopsML/discussions" },
   { "Contact Us" = "contact.md" },
 ]
@@ -262,7 +262,10 @@ search = {}
 inventories = [
   "https://docs.python.org/3/objects.inv",
   "https://pandas.pydata.org/pandas-docs/dev/objects.inv",
-  { url = "https://scikit-learn.org/stable/objects.inv", domains = ["py", "std"] },
+  { url = "https://scikit-learn.org/stable/objects.inv", domains = [
+    "py",
+    "std",
+  ] },
   "https://numpy.org/doc/stable/objects.inv",
   "https://docs.scipy.org/doc/scipy/objects.inv",
 ]
