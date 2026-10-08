@@ -29,16 +29,19 @@ The Python API pages (`docs/api-docs/python-api/`) are generated from the `khiop
 This installs Khiops core `VERSION` via Uv, clones `khiops-python` (`PYVERSION`
 by default; use `--local-khiops-python DIR` to build from a local checkout
 instead), converts its docstrings into the `docs/api-docs/python-api/` tree,
-regenerates the Python API nav, and builds the whole site with Zensical into
-`./site`. The Uv environment created for the build is removed automatically when
-the script exits.
+regenerates the Python API nav, exports the KNI tutorial examples from
+`KNI-tutorial`, and builds the whole site with Zensical into `./site`. The Uv
+environment created for the build is removed automatically when the script
+exits.
 
 Useful flags (see `./local-build.sh --help` for the full list):
 
 - `--khiops-version VER` - Khiops core version to install via Uv (**required**)
 - `--local-khiops-python DIR` - build from a local `khiops-python` checkout
+- `--local-kni-tutorial DIR` - build from a local `KNI-tutorial` checkout
 - `--khiops-python-version VER` - Khiops Python version to document in the built site (**required**)
 - `--khiops-python-ref REF` - Git ref to build from when not local (default: same value as `khiops-python-version`)
+- `--kni-tutorial-ref REF` - `KNI-tutorial` Git ref (default: `khiops-version`)
 - `--khiops-samples-version VER` - `khiops-samples` release used by the tutorials (default: `main`)
 - `--khiops-python-tutorial-ref REF` - `khiops-python-tutorial` Git ref (default: `main`)
 - `--khiops-viz-version VER`, `--khiops-gcs-driver-version VER`, `--khiops-s3-driver-version VER`, `--khiops-azure-driver-version VER` - versions displayed/linked on the site (default: `unknown`)
@@ -57,8 +60,11 @@ The source for the LLM-friendly documentation entry point is the manually
 curated `./llms.md` file. The build copies it to `./site/llms.txt` and checks
 that its links point to published pages. The Markdown mirror is generated
 under `./site/markdown/`; Python API links in `llms.md` point to the rendered
-API pages on the Khiops website. This build intentionally generates no
-`llms-full.txt` file.
+API pages on the Khiops website. KNI source files and example data are also
+exported under `./site/markdown/tutorials/kni-tutorial/`; only the guide and
+source examples are listed in `llms.txt`, while data files remain available as
+runtime resources without adding noise to the curated index. This build
+intentionally generates no `llms-full.txt` file.
 
 ### Editing Tutorial Notebooks
 

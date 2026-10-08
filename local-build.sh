@@ -22,10 +22,12 @@ Options:
                                      (required)
   --local-khiops-python DIR         Use a local khiops-python repo instead of
                                      cloning from GitHub
+  --local-kni-tutorial DIR          Use a local KNI-tutorial repo instead of
+                                     cloning from GitHub
   --khiops-python-ref REF           khiops-python Git ref to build docs from
                                      when not using --local-khiops-python
-                                     (default: khiops-python-version)
   --khiops-python-version VER       Khiops Python version (for the website)
+  --kni-tutorial-ref REF            KNI-tutorial Git ref (default: khiops-version)
   --khiops-samples-version VER      khiops-samples release to download
                                      (default: main)
   --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref (default: main)
@@ -44,7 +46,9 @@ KHIOPS_PYTHON_TUTORIAL_REF="main"
 KHIOPS_VERSION=""
 KHIOPS_PYTHON_VERSION=""
 LOCAL_KHIOPS_PYTHON=""
+LOCAL_KNI_TUTORIAL=""
 KHIOPS_PYTHON_REF=""
+KNI_TUTORIAL_REF=""
 KHIOPS_VIZ_VERSION="unknown"
 KHIOPS_GCS_DRIVER_VERSION="unknown"
 KHIOPS_S3_DRIVER_VERSION="unknown"
@@ -58,7 +62,9 @@ while [[ $# -gt 0 ]]; do
     --khiops-version) KHIOPS_VERSION="$2"; shift 2 ;;
     --khiops-python-version) KHIOPS_PYTHON_VERSION="$2"; shift 2 ;;
     --local-khiops-python) LOCAL_KHIOPS_PYTHON="$2"; shift 2 ;;
+    --local-kni-tutorial) LOCAL_KNI_TUTORIAL="$2"; shift 2 ;;
     --khiops-python-ref) KHIOPS_PYTHON_REF="$2"; shift 2 ;;
+    --kni-tutorial-ref) KNI_TUTORIAL_REF="$2"; shift 2 ;;
     --khiops-samples-version) KHIOPS_SAMPLES_VERSION="$2"; shift 2 ;;
     --khiops-python-tutorial-ref) KHIOPS_PYTHON_TUTORIAL_REF="$2"; shift 2 ;;
     --khiops-viz-version) KHIOPS_VIZ_VERSION="$2"; shift 2 ;;
@@ -75,6 +81,7 @@ done
 : "${KHIOPS_PYTHON_VERSION:?--khiops-python-version is required}"
 
 KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
+KNI_TUTORIAL_REF=${KNI_TUTORIAL_REF:-$KHIOPS_VERSION}
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 cd "$SCRIPT_DIR"
@@ -101,12 +108,14 @@ ARGS=(
   --khiops-python-ref "$KHIOPS_PYTHON_REF"
   --khiops-samples-version "$KHIOPS_SAMPLES_VERSION"
   --khiops-python-tutorial-ref "$KHIOPS_PYTHON_TUTORIAL_REF"
+  --kni-tutorial-ref "$KNI_TUTORIAL_REF"
   --khiops-viz-version "$KHIOPS_VIZ_VERSION"
   --khiops-gcs-driver-version "$KHIOPS_GCS_DRIVER_VERSION"
   --khiops-s3-driver-version "$KHIOPS_S3_DRIVER_VERSION"
   --khiops-azure-driver-version "$KHIOPS_AZURE_DRIVER_VERSION"
 )
 [ -n "$LOCAL_KHIOPS_PYTHON" ] && ARGS+=(--khiops-python-repo "$LOCAL_KHIOPS_PYTHON")
+[ -n "$LOCAL_KNI_TUTORIAL" ] && ARGS+=(--kni-tutorial-repo "$LOCAL_KNI_TUTORIAL")
 [ "$EXECUTE_TUTORIALS" = "true" ] && ARGS+=(--execute-tutorials)
 
 bash .github/scripts/build-doc.sh "${ARGS[@]}"

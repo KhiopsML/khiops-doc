@@ -11,6 +11,9 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 
+KNI_TUTORIAL_EXPORT_SUFFIXES = {".c", ".h", ".java", ".kdic", ".md", ".py", ".txt"}
+
+
 def is_python_api(source: Path) -> bool:
     return source == Path("api-docs/python-api.md") or source.parts[:2] == ("api-docs", "python-api")
 
@@ -78,18 +81,43 @@ def copy_markdown_sources(docs_dir: Path, output_dir: Path, values: dict[str, st
         target.write_text(render_markdown(source, values), encoding="utf-8")
 
 
+def copy_kni_tutorial(source_dir: Path, output_dir: Path) -> int:
+    if not source_dir.is_dir():
+        raise FileNotFoundError(f"KNI tutorial directory does not exist: {source_dir}")
+
+    exported = 0
+    for source in sorted(source_dir.rglob("*")):
+        relative_path = source.relative_to(source_dir)
+        if (
+            not source.is_file()
+            or any(part.startswith(".") for part in relative_path.parts)
+            or source.suffix.lower() not in KNI_TUTORIAL_EXPORT_SUFFIXES
+        ):
+            continue
+
+        target = output_dir / "tutorials" / "kni-tutorial" / relative_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
+        exported += 1
+    return exported
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--docs-dir", type=Path, required=True)
     parser.add_argument("--site-dir", type=Path, required=True)
     parser.add_argument("--llms-source", type=Path, required=True)
+    parser.add_argument("--kni-tutorial-dir", type=Path, required=True)
     args = parser.parse_args()
 
-    copy_markdown_sources(args.docs_dir, args.site_dir / "markdown", template_values())
+    markdown_dir = args.site_dir / "markdown"
+    copy_markdown_sources(args.docs_dir, markdown_dir, template_values())
+    kni_files = copy_kni_tutorial(args.kni_tutorial_dir, markdown_dir)
     write_llms_source(args.llms_source, args.site_dir / "llms.txt", args.site_dir)
     print(
         f"Generated {args.site_dir / 'llms.txt'} and "
-        f"{len(list((args.site_dir / 'markdown').rglob('*.md')))} Markdown pages"
+        f"{len(list(markdown_dir.rglob('*.md')))} Markdown pages "
+        f"({kni_files} KNI tutorial files)"
     )
 
 

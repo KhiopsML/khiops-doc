@@ -49,6 +49,13 @@ This is a curated map of the Khiops documentation. Choose the section that match
 - [Scenario-based execution](https://khiops.org/markdown/tutorials/scenario.md): Run Khiops in batch mode and integrate it into an execution scenario.
 - [Cloud storage](https://khiops.org/markdown/tutorials/storage.md): Read and write datasets stored in cloud services.
 - [Real-time deployment with KNI](https://khiops.org/markdown/tutorials/kni.md): Integrate Khiops models into an information system through the native interface.
+- [KNI tutorial guide](https://khiops.org/markdown/tutorials/kni-tutorial/README.md): Build and run KNI examples in C, Java, and Python.
+- [KNI C single-table example](https://khiops.org/markdown/tutorials/kni-tutorial/cpp/KNIRecodeFile.c): Recode a single-table file with the KNI C API.
+- [KNI C multi-table example](https://khiops.org/markdown/tutorials/kni-tutorial/cpp/KNIRecodeMTFiles.c): Recode a multi-table dataset with the KNI C API.
+- [KNI Java interface](https://khiops.org/markdown/tutorials/kni-tutorial/java/KNI.java): Declare the Java Native Access bindings for KNI.
+- [KNI Java example](https://khiops.org/markdown/tutorials/kni-tutorial/java/KNIRecodeFile.java): Recode a single-table file with KNI from Java.
+- [KNI Python single-table example](https://khiops.org/markdown/tutorials/kni-tutorial/python/KNIRecodeFile.py): Recode a single-table file with the KNI Python package.
+- [KNI Python multi-table example](https://khiops.org/markdown/tutorials/kni-tutorial/python/KNIRecodeMTFiles.py): Recode a multi-table dataset with the KNI Python package.
 - [Redirect output to standard streams](https://khiops.org/markdown/tutorials/use_stdout.md): Control where Khiops trace and log messages are written.
 - [Khiops application](https://khiops.org/markdown/setup/nocode.md): Use the standalone Khiops application without writing Python code.
 

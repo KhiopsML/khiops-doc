@@ -14,6 +14,8 @@ set -euo pipefail
 #   --khiops-python-version VER       khiops Python version (for site content)
 #   --khiops-samples-version VER      khiops-samples release
 #   --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref
+#   --kni-tutorial-repo URL_OR_DIR    KNI-tutorial repository
+#   --kni-tutorial-ref REF            KNI-tutorial Git ref (default: Khiops version)
 #   --khiops-viz-version VER          Khiops Visualization version
 #   --khiops-gcs-driver-version VER   Khiops GCS driver version
 #   --khiops-s3-driver-version VER    Khiops S3 driver version
@@ -27,6 +29,8 @@ KHIOPS_PYTHON_REF=""
 KHIOPS_PYTHON_VERSION=""
 KHIOPS_SAMPLES_VERSION="main"
 KHIOPS_PYTHON_TUTORIAL_REF="main"
+KNI_TUTORIAL_REPO="https://github.com/KhiopsML/KNI-tutorial.git"
+KNI_TUTORIAL_REF=""
 KHIOPS_VIZ_VERSION=""
 KHIOPS_GCS_DRIVER_VERSION=""
 KHIOPS_S3_DRIVER_VERSION=""
@@ -41,6 +45,8 @@ while [[ $# -gt 0 ]]; do
     --khiops-python-version) KHIOPS_PYTHON_VERSION="$2"; shift 2 ;;
     --khiops-samples-version) KHIOPS_SAMPLES_VERSION="$2"; shift 2 ;;
     --khiops-python-tutorial-ref) KHIOPS_PYTHON_TUTORIAL_REF="$2"; shift 2 ;;
+    --kni-tutorial-repo) KNI_TUTORIAL_REPO="$2"; shift 2 ;;
+    --kni-tutorial-ref) KNI_TUTORIAL_REF="$2"; shift 2 ;;
     --khiops-viz-version) KHIOPS_VIZ_VERSION="$2"; shift 2 ;;
     --khiops-gcs-driver-version) KHIOPS_GCS_DRIVER_VERSION="$2"; shift 2 ;;
     --khiops-s3-driver-version) KHIOPS_S3_DRIVER_VERSION="$2"; shift 2 ;;
@@ -54,13 +60,14 @@ done
 : "${KHIOPS_PYTHON_VERSION:?--khiops-python-version is required}"
 
 KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
+KNI_TUTORIAL_REF=${KNI_TUTORIAL_REF:-$KHIOPS_VERSION}
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 export PIP_NO_CACHE_DIR=1
 
 cleanup() {
   echo "--- Cleaning up build workspace"
-  rm -rf ./khiops_samples docs/api-docs/python-api docs/tutorials/notebooks
+  rm -rf ./khiops_samples ./kni-tutorial-src docs/api-docs/python-api docs/tutorials/notebooks
   git checkout -- zensical.toml 2>/dev/null || true
   git checkout -- docs/api-docs/python-api.md 2>/dev/null || true
 }
@@ -104,7 +111,14 @@ bash "${SCRIPT_DIR}/prepare-python-api-doc.sh" \
   --khiops-samples-version "$KHIOPS_SAMPLES_VERSION" \
   --khiops-python-tutorial-ref "$KHIOPS_PYTHON_TUTORIAL_REF"
 
-# 6. Substitute environment variables into the Zensical configuration file
+# 6. Prepare the KNI tutorial examples for the Markdown mirror
+echo "=== Preparing KNI tutorial examples ==="
+bash "${SCRIPT_DIR}/prepare-kni-tutorial.sh" \
+  --khiops-version "$KHIOPS_VERSION" \
+  --kni-tutorial-repo "$KNI_TUTORIAL_REPO" \
+  --kni-tutorial-ref "$KNI_TUTORIAL_REF"
+
+# 7. Substitute environment variables into the Zensical configuration file
 echo "=== Injecting the environment variables into zensical.toml"
 echo "  KHIOPS_VERSION = ${KHIOPS_VERSION}"
 echo "  KHIOPS_PYTHON_VERSION = ${KHIOPS_PYTHON_VERSION}"
@@ -129,7 +143,7 @@ envsubst "${KHIOPS_VERSIONING_VARS}" \
   > zensical.tmp.toml \
   && mv zensical.tmp.toml zensical.toml
 
-# 7. Build the whole site with Zensical
+# 8. Build the whole site with Zensical
 echo "=== Building site with Zensical in dir $(pwd) ==="
 uv run zensical build --clean --strict
 
@@ -139,6 +153,7 @@ echo "=== Generating LLM documentation index ==="
 uv run --active --frozen --no-sync python "${SCRIPT_DIR}/generate_llm_docs.py" \
   --docs-dir ./docs \
   --site-dir ./site \
-  --llms-source ./llms.md
+  --llms-source ./llms.md \
+  --kni-tutorial-dir ./kni-tutorial-src
 
 echo "=== Done - site built in ./site ==="
