@@ -6,11 +6,13 @@ hide:
 
 # Interactive Khiops Visualization Demo
 
-Explore the capabilities of the Khiops Visualization tool through three interactive analyses:
+Explore the capabilities of the Khiops Visualization tool through five interactive analyses:
 
 - **Single Table (Adult dataset)**: A straightforward supervised analysis demonstrating model performance and feature importance (and encoding) in a single-table context;
 - **Single Table with Trees (Adult dataset)**: Enhances the first analysis by integrating trees;
 - **Multi-Table (Accident dataset)**: Showcases a multi-table model, illustrating how our tool handles complex data structures and reveals key insights.
+- **Variable x variable coclustering (Adult dataset)**: A co-clustering analysis to explore the dependance between two variables
+- **Instances x Variables coclustering (Iris dataset)**: A co-clustering analysis exhibiting clusters of instances and clusters of parts of variable coming from any of the original variables
 
 Click on the corresponding button to choose the case you want to explore:
 
@@ -22,7 +24,7 @@ Click on the corresponding button to choose the case you want to explore:
 			{
 				title: "Single Table",
 				description: "Adult dataset",
-				file: "/assets/mock/AdultReport.json"
+				file: "/assets/mock/AdultCoclusteringReport.json"
 			},
 			{
 				title: "Single Table with Trees",
@@ -33,6 +35,16 @@ Click on the corresponding button to choose the case you want to explore:
 				title: "Multi-Table",
 				description: "Accident dataset with three tables",
 				file: "/assets/mock/AccidentReport.json"
+			},
+			{
+				title: "Variable x variable coclustering",
+				description: "Adult dataset with education and occupation variables",
+				file: "/assets/mock/AdultCoclusteringReport.json"
+			},
+			{
+				title: "Instances x variables coclustering",
+				description: "Iris dataset with its five inner variables",
+				file: "/assets/mock/IrisIVCoclusteringReport.json"
 			}
 		])
 	);
