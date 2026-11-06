@@ -981,8 +981,10 @@ name = "khiops-doc"
 version = "0.0.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "bleach" },
     { name = "ghp-import" },
     { name = "kdic-lexer" },
+    { name = "markdown" },
     { name = "mkdocs-material" },
     { name = "zensical" },
 ]
@@ -1006,9 +1008,11 @@ tutorials = [
 
 [package.metadata]
 requires-dist = [
+    { name = "bleach", specifier = ">=6.3,<7" },
     { name = "ghp-import" },
     { name = "ipykernel", marker = "extra == 'notebooks'" },
     { name = "kdic-lexer", directory = "python/kdic_lexer" },
+    { name = "markdown", specifier = ">=3.10,<4" },
     { name = "matplotlib", marker = "extra == 'tutorials'" },
     { name = "mkdocs-material" },
     { name = "mkdocstrings", extras = ["python"], marker = "extra == 'pythonapi'" },
