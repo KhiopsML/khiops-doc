@@ -63,6 +63,32 @@ Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/.
 uv run python scripts/convert_notebooks.py
 ```
 
+### Editing Discussion Topics
+
+The Q&A pages are generated from [Khiops Discussions](https://github.com/orgs/KhiopsML/discussions).
+Edit the source discussion and its labels rather than editing the generated pages.
+
+- Add exactly one label whose name starts with `Topic/`, such as `Topic/Deployment`.
+  The label's description becomes the topic heading. Discussions without a
+  `Topic/` label are not published; discussions with multiple topic labels or
+  an empty label description are reported for correction.
+- For a ready-to-use discussion, its title and initial post become the question
+  and answer. For a user discussion, add a `### Question summary` section to
+  the first reply. Its text becomes the question and the rest of the reply
+  becomes the answer.
+- Attached images and scripts may each be at most 100,000 bytes. A discussion
+  with an oversized file is omitted and reported; scripts are never executed.
+
+The discussion synchronization workflow runs weekly and can also be started
+manually from GitHub Actions. After its first manual run has verified access to
+the source discussions and pull-request creation, enable its weekly schedule
+by setting the repository Actions variable `DISCUSSION_SYNC_SCHEDULE_ENABLED`
+to `true`. It proposes changes in a pull request, including
+additions, changes, removals, discussions without a topic label and invalid
+discussions. Review the pull request before merging. An unchanged oversized-file
+warning that was already merged is repeated in the workflow summary rather
+than creating another identical pull request.
+
 ### pre-commit
 
 The setup step installs the `pre-commit` tool. This allows to automatize some tasks such as formatting and cleaning of the notebooks. To use it, it is necessary to install it locally:

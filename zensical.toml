@@ -152,6 +152,8 @@ nav = [
       { "Auto Hardware Adaptation" = "learn/hardware_adaptation.md" },
       { "Bibliography" = "references.md" },
     ] },
+  # BEGIN GENERATED DISCUSSION NAVIGATION
+  # END GENERATED DISCUSSION NAVIGATION
   { "Discussions" = "https://github.com/orgs/KhiopsML/discussions" },
   { "Contact Us" = "contact.md" },
 ]
