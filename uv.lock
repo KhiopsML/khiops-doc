@@ -981,10 +981,12 @@ name = "khiops-doc"
 version = "0.0.0"
 source = { virtual = "." }
 dependencies = [
-  { name = "ghp-import" },
-  { name = "kdic-lexer" },
-  { name = "mkdocs-material" },
-  { name = "zensical" },
+    { name = "bleach" },
+    { name = "ghp-import" },
+    { name = "kdic-lexer" },
+    { name = "markdown" },
+    { name = "mkdocs-material" },
+    { name = "zensical" },
 ]
 
 [package.optional-dependencies]
@@ -1006,17 +1008,19 @@ tutorials = [
 
 [package.metadata]
 requires-dist = [
-  { name = "ghp-import" },
-  { name = "ipykernel", marker = "extra == 'notebooks'" },
-  { name = "kdic-lexer", directory = "python/kdic_lexer" },
-  { name = "matplotlib", marker = "extra == 'tutorials'" },
-  { name = "mkdocs-material" },
-  { name = "mkdocstrings", extras = ["python"], marker = "extra == 'pythonapi'" },
-  { name = "nbconvert", marker = "extra == 'notebooks'" },
-  { name = "pre-commit", marker = "extra == 'dev'" },
-  { name = "pycaret", marker = "extra == 'tutorials'" },
-  { name = "seaborn", marker = "extra == 'tutorials'" },
-  { name = "zensical", specifier = "==0.0.51" },
+    { name = "bleach", specifier = ">=6.3,<7" },
+    { name = "ghp-import" },
+    { name = "ipykernel", marker = "extra == 'notebooks'" },
+    { name = "kdic-lexer", directory = "python/kdic_lexer" },
+    { name = "markdown", specifier = ">=3.10,<4" },
+    { name = "matplotlib", marker = "extra == 'tutorials'" },
+    { name = "mkdocs-material" },
+    { name = "mkdocstrings", extras = ["python"], marker = "extra == 'pythonapi'" },
+    { name = "nbconvert", marker = "extra == 'notebooks'" },
+    { name = "pre-commit", marker = "extra == 'dev'" },
+    { name = "pycaret", marker = "extra == 'tutorials'" },
+    { name = "seaborn", marker = "extra == 'tutorials'" },
+    { name = "zensical", specifier = "==0.0.51" },
 ]
 provides-extras = ["dev", "notebooks", "tutorials", "pythonapi"]
 
