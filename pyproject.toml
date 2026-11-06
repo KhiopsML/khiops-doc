@@ -7,7 +7,9 @@ dependencies = [
   "ghp-import",
   "kdic-lexer",
   "zensical==0.0.51",
-  "mkdocs-material"
+  "mkdocs-material",
+  "markdown>=3.10,<4",
+  "bleach>=6.3,<7",
 ]
 
 [project.optional-dependencies]
