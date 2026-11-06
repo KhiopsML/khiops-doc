@@ -7,6 +7,7 @@ import argparse
 import os
 import re
 import shutil
+import sys
 from pathlib import Path
 from urllib.parse import quote, unquote, urlparse
 
@@ -39,7 +40,11 @@ def _lineno(member) -> int:
 
 
 def write_llms_source(
-    source_path: Path, output_path: Path, site_dir: Path, markdown_dir: Path
+    source_path: Path,
+    output_path: Path,
+    site_dir: Path,
+    markdown_dir: Path,
+    fail_on_unreferenced: bool = False,
 ) -> None:
     """Validate the curated index and append links for unreferenced Markdown pages."""
     if not source_path.is_file():
@@ -86,6 +91,13 @@ def write_llms_source(
         if source.relative_to(markdown_dir).as_posix() not in referenced_markdown
     ]
     if others:
+        message = "Markdown pages not referenced in llms.md:\n" + "\n".join(
+            f"  - {page}" for page in others
+        )
+        if fail_on_unreferenced:
+            raise ValueError(message)
+        print(f"WARNING: {message}", file=sys.stderr)
+
         url_prefix = markdown_url_prefix or "/markdown/"
         content = content.rstrip() + "\n\n## Others\n\n" + "".join(
             f"- [{relative_path}]({url_prefix}{quote(relative_path, safe='/')})\n"
@@ -279,6 +291,7 @@ def main() -> None:
     parser.add_argument("--site-dir", type=Path, required=True)
     parser.add_argument("--llms-source", type=Path, required=True)
     parser.add_argument("--kni-tutorial-dir", type=Path, required=True)
+    parser.add_argument("--fail-on-unreferenced", action="store_true")
     args = parser.parse_args()
 
     markdown_dir = args.site_dir / "markdown"
@@ -286,7 +299,11 @@ def main() -> None:
     python_api_pages = render_python_api_pages(args.docs_dir, markdown_dir)
     kni_files = copy_kni_tutorial(args.kni_tutorial_dir, markdown_dir)
     write_llms_source(
-        args.llms_source, args.site_dir / "llms.txt", args.site_dir, markdown_dir
+        args.llms_source,
+        args.site_dir / "llms.txt",
+        args.site_dir,
+        markdown_dir,
+        fail_on_unreferenced=args.fail_on_unreferenced,
     )
     print(
         f"Generated {args.site_dir / 'llms.txt'} and "

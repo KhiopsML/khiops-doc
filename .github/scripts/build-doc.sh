@@ -22,6 +22,7 @@ set -euo pipefail
 #   --khiops-azure-driver-version VER Khiops Azure driver version
 #   --execute-tutorials               Execute khiops-doc's own tutorial
 #                                      notebooks (docs/tutorials/sourced-notebooks)
+#   --fail-on-unreferenced             Fail if Markdown pages are missing from llms.md
 
 KHIOPS_VERSION=""
 KHIOPS_PYTHON_REPO="https://github.com/KhiopsML/khiops-python.git"
@@ -36,6 +37,7 @@ KHIOPS_GCS_DRIVER_VERSION=""
 KHIOPS_S3_DRIVER_VERSION=""
 KHIOPS_AZURE_DRIVER_VERSION=""
 EXECUTE_TUTORIALS="false"
+FAIL_ON_UNREFERENCED="false"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -52,6 +54,7 @@ while [[ $# -gt 0 ]]; do
     --khiops-s3-driver-version) KHIOPS_S3_DRIVER_VERSION="$2"; shift 2 ;;
     --khiops-azure-driver-version) KHIOPS_AZURE_DRIVER_VERSION="$2"; shift 2 ;;
     --execute-tutorials) EXECUTE_TUTORIALS="true"; shift ;;
+    --fail-on-unreferenced) FAIL_ON_UNREFERENCED="true"; shift ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
@@ -150,10 +153,15 @@ uv run zensical build --clean --strict
 # Generate the LLM navigation index and the public Markdown mirror after the
 # site build so the Python API links target the rendered documentation.
 echo "=== Generating LLM documentation index ==="
+LLM_ARGS=()
+if [[ "$FAIL_ON_UNREFERENCED" == "true" ]]; then
+  LLM_ARGS+=(--fail-on-unreferenced)
+fi
 uv run --active --frozen --no-sync python "${SCRIPT_DIR}/generate_llm_docs.py" \
   --docs-dir ./docs \
   --site-dir ./site \
   --llms-source ./llms.md \
-  --kni-tutorial-dir ./kni-tutorial-src
+  --kni-tutorial-dir ./kni-tutorial-src \
+  "${LLM_ARGS[@]}"
 
 echo "=== Done - site built in ./site ==="

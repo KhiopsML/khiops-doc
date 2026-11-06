@@ -73,6 +73,9 @@ jobs:
           if [[ "${{ inputs.execute-khiops-tutorials }}" == "true" ]]; then
             ARGS+=(--execute-tutorials)
           fi
+          if [[ "${{ inputs.deploy-gh-pages }}" == "true" ]]; then
+            ARGS+=(--fail-on-unreferenced)
+          fi
           bash .github/scripts/build-doc.sh "${ARGS[@]}"
       - name: Check for broken links
         if: inputs.check-links

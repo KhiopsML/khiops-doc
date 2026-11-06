@@ -63,7 +63,7 @@ The site exposes an [`llms.txt`](https://llmstxt.org/) index for coding agents a
 - Every link in `llms.md` pointing to a `/markdown/` or `/api-docs/` path is validated against the built site; the build fails if a link points to a page that doesn't exist.
 - Python API links point to Markdown pages rendered directly from the `khiops-python` docstrings (via `griffe`, bypassing Zensical's HTML build and its web-only artifacts such as same-page anchors), exported under `./site/markdown/api-docs/python-api/`.
 - KNI source files and example data are exported under `./site/markdown/tutorials/kni-tutorial/`; only the guide and source examples are referenced in `llms.md`, while data and header files stay available as runtime resources without adding noise to the curated index.
-- Any Markdown page under `./site/markdown/` that isn't referenced anywhere in `llms.md` is automatically appended to a generated `## Others` section, so no page is silently left out of `llms.txt`.
+- Any Markdown page under `./site/markdown/` that isn't referenced anywhere in `llms.md` is reported as a warning and automatically appended to a generated `## Others` section. A GH Pages deployment fails if any such pages are found; links in the `## Excluded` section count as references.
 - An `## Excluded` section in `llms.md` can list pages whose links are still validated and kept out of `## Others`, but that must not appear in the published `llms.txt` (e.g. redundant index pages); unlike other sections, it is stripped before writing the output.
 - This build intentionally generates no `llms-full.txt` file.
 
