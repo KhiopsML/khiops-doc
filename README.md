@@ -228,12 +228,24 @@ otherwise, the default is the value read from `environment.env`:
 - `--local-khiops-python DIR` - build from a local `khiops-python` Git repository
 - `--khiops-python-version VER` - Khiops Python version to document in the built site
 - `--khiops-python-ref REF` - `khiops-python` Git ref (tag, branch or commit) to build from, in the GitHub or the local repository (default: `KHIOPS_PYTHON_REF` in `environment.env`, otherwise the Khiops Python version)
-- `--khiops-samples-version VER` - published `khiops-samples` release used by the tutorials and by the `khiops-python` documentation build; branch names such as `main` are not release archives
+- `--kni-tutorial-ref REF` - KNI tutorial Git ref (default: same value as `khiops-version`)
+- `--local-kni-tutorial DIR` - use a local KNI tutorial checkout as-is; the remote and ref options are ignored
+- `--kni-tutorial-repo URL` - KNI tutorial repository to clone (default: `KhiopsML/KNI-tutorial`)
+- `--khiops-samples-version VER` - published `khiops-samples` release used by the tutorials and by the `khiops-python` documentation build; branch names such as `11.0.0` are not release archives
 - `--khiops-python-tutorial-ref REF` - `khiops-python-tutorial` Git ref (default: `KHIOPS_PYTHON_TUTORIAL_VERSION` in `environment.env`, otherwise `main`)
 - `--khiops-viz-version VER` - Khiops Visualization version (default: `KHIOPS_VIZ_VERSION` in `environment.env`, otherwise the latest GitHub release)
 - `--khiops-gcs-driver-version VER`, `--khiops-s3-driver-version VER`, `--khiops-azure-driver-version VER` - driver versions displayed/linked on the site
 - `--execute-tutorials` - also execute khiops-doc's own tutorial notebooks (`docs/tutorials/sourced-notebooks/`)
 - `--serve` - after the build, serve the built `./site` on http://127.0.0.1:8000/ (no live reload; rebuild to see changes). Stop it with Ctrl+C.
+
+After Zensical builds the site, the shared pipeline checks out the requested
+KNI tutorial version (or uses the local checkout) and copies its regular files
+unchanged to `site/tutorials/kni-tutorial/`, excluding hidden files and
+directories. The cloned checkout is removed after copying; a local checkout
+is left untouched. The README, Python reference, sources and data remain static
+resources: no KNI tutorial HTML pages, search entries or sitemap entries are
+generated. The editorial introduction to `llms.txt` links to the README,
+Python reference and example files.
 
 To preview an already built site without rebuilding, serve the output directory directly:
 
@@ -247,6 +259,48 @@ On Windows, use `py -m http.server --bind 127.0.0.1 --directory site` if
 Then open in a web browser the indicated URL, usually http://127.0.0.1:8000/.
 After rebuilding the site, force-refresh the page (Ctrl+F5 on Windows/Linux or
 Cmd+Shift+R on macOS) if the browser still shows the previous version.
+
+### LLM-Friendly Markdown
+
+Zensical generates `site/llms.txt` and Markdown exports for the selected pages
+as part of the normal build. Maintain the editorial introduction in
+`[plugins.llmstxt].markdown_description` in `zensical.toml`; ordered sections,
+page selectors, and descriptions live in `[plugins.llmstxt.sections]`. Selectors
+are relative to the documentation source directory. Intentional exclusions are
+listed alongside them in `[extra.llmstxt].excluded_sources`; update that list
+when the selected source set changes. The plugin's `full_output` option is
+intentionally unset, so the build does not publish `llms-full.txt`.
+
+The index groups pages by their main topic; former nested categories are
+flattened into these sections. Links to the static KNI files and external
+repositories are maintained in `markdown_description` because they are not
+Zensical pages. The plugin places these sections before the generated sections.
+
+Page Markdown is emitted beside its HTML route, not under a separate
+`/markdown/` prefix. For example, the generated
+`site/api-docs/python-api/core/api/index.html` page has a corresponding
+`site/api-docs/python-api/core/api/index.md` export, while `site/llms.txt` is
+published at `/llms.txt`.
+
+Python docstring sections use the `list` presentation. This intentionally
+changes parameter and return layouts in both HTML and Markdown while keeping
+the existing HTML routes and documented content.
+
+The exports are intended for online use. Links and fragments are left as
+Zensical generates them; links inside a Markdown page can point to HTML pages,
+and fragment handling depends on the client. Offline navigation and
+Markdown-only links are not guaranteed.
+
+The shared build validates the index without modifying it or the page exports.
+It checks selected and excluded source coverage, selected exports and local
+index destinations, including indexed KNI resources. A missing local index
+target fails the build with its destination; external URLs and links or
+fragments inside exported pages are not checked by this validator. When a new
+Markdown source is reported as unclassified, update `zensical.toml`: add its
+path or a matching selector to a section under `[plugins.llmstxt.sections]`,
+or intentionally exclude it under `[extra.llmstxt].excluded_sources`.
+Do not edit the generated `site/llms.txt` directly. Update selectors and
+exclusions together when the intended export set changes.
 
 ### Editing Tutorial Notebooks
 
