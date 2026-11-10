@@ -18,3 +18,8 @@ __pycache__
 .venv-local-build/
 # VS
 .vs
+
+# OpenSpec
+openspec/
+.github/skills/openspec-*/
+.github/prompts/opsx-*.md
