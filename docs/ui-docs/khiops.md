@@ -99,7 +99,8 @@ A dictionary file contains one or several dictionaries; details about their form
 
 Khiops can be used to extract a subpart (or its exact complementary) of the records in a database file. This sampling is specified with a sample percentage of the records (to keep or to discard). The sampling is a random sampling, but is reproducible (the random seed is always the same).
 
-**Sample percentage**: percentage of the samples (default: 70%)
+**Sample percentage**: percentage of the samples retained during the database analysis and model training (default: 70%). 
+A selection variable can also be applied to select samples (cf. next section Selection). The effects are orthogonal and additive.
 
 **Sampling mode**: to include or exclude the records of the sample (default: *include sample*).
 This allows to extract a train sample and its exact complementary as a test sample 
@@ -110,7 +111,8 @@ This allows to extract a train sample and its exact complementary as a test samp
 
 Another way to build train or test samples is to use a selection variable and a selection value.
 
-**Selection variable**: when nothing is specified, all the records are analysed. When a selection variable is specified, the records are selected when the value of their selection variable is equal to the selection value.
+**Selection variable**: when nothing is specified, all the records are analysed. When a selection variable is specified, the records are selected 
+when the value of their selection variable is equal to the selection value. The sample percentage described in previous section is applied additively.
 
 **Selection value**: used only when a selection variable is specified. In that case, the value must be a correct value (numerical value if the selection variable is a numerical variable).
 
