@@ -12,10 +12,12 @@ A double-click on this file opens Khiops Visualization Desktop.
 
 Khiops Visualization Desktop is composed of several tabbed panes.
 
-Depending on the analysis type, the panes and their contents are not the same. Khiops Visualization Desktop can be composed with 5 panels:
+Depending on the analysis type, the panes and their contents are not the same. Khiops Visualization Desktop can be composed with 7 panels:
 
   - Preparation: displays the Preparation report,
 
+  - Text preparation displays the preparation report for constructed text variables (only in presence of variables with type Text or TextList)
+	 
   - Tree preparation: displays the preparation report for tree variables,
 
   - Preparation 2D: displays the 2D preparation report,
@@ -50,13 +52,11 @@ Categorical and numerical variables have different histograms.
 
 For categorical variables, the number of the bins is automatically set to its optimal value from an MDL approach.
 
-In the case of a variable with many categories, a specific bin ("Default group index") may gather many modalities and is shown with a different color. 
+In the case of a variable with many categories, a specific bin ("Default group") may gather many modalities and is shown with a different color. 
 
 This specific bin is given the name of its most populated modality and clicking on the bin makes its content is available in panel E. As it may gather many small modalities, it may appear as the dominant bin of the distribution and the name might be misleading, therefore the different color.
 
 The yLin/yLog toggle allows to display the y-axis either in linear scale or in log scale.
-
-<!-- Complement sur Change all scales -->
 
 ![](../assets/images-khiops-guides/visualization/UnsupervisedFivePanels.png)
 
@@ -64,6 +64,7 @@ The figure above shows the histogram of the variable "native_country" which has 
 
 For numerical variables, the bounds of the bins is also automatically set to its optimal value from an MDL approach. 
 
+<!-- a mettre a jour avec bouton histo -->
 ![](../assets/images-khiops-guides/visualization/UnsupervisedFivePanelsNumerical.png)
 
 Different representations of the histogram are available. The y-axis shows the density and can be plotted in linear or log scale.
@@ -110,6 +111,8 @@ This discretization is the cartesian product of the parts of each variable.
 By default, the information displayed on the subtab "Matrix" is the mutual information between both groupings, allowing to analyze the correlations between the variables of the pair. 
 Other information such as the frequencies in each cell or conditional probabilities can be selected from the menu.
 
+The Size/Frequency/Uniform buttons enables to adjust rows and columns width.  
+
 The subtab "Cells" displays the information about the cell statistics as a table.
 
 ![](../assets/images-khiops-guides/visualization/Unsupervised-2D.png)
@@ -150,27 +153,42 @@ Panel A shows some information related to the data and the analysis (left) and t
 
 Panel B stores the list of the variables as a table together with some descriptive statistics information.
 
-Clicking on a line of the table in panel B displays the information about the parts obtained from the optimal supervised grouping the selected variable selected in panel C and information about the variable (Name and derivation rule(if any)) in panel D.
+Clicking on a line of the table in panel B displays :
+
+- the information about the parts obtained from the optimal supervised grouping of the corresponding variable in panel C 
+- information about the variable (Name and derivation rule(if any)) in panel D.
 
 Panel C shows the histogram of the group populations (top) and for each group, the distribution of the target modalities conditional to the group (bottom).
 
 Group population histogram can be displayed in linear or log scale from the menu above the figure.
 
-For the target modalities conditional to the group histogram, displayed target modalities can be selected from the "Values" menu and histogram can be displayed as probabilities or lift ("Probabilities/Lift" toggle).
+For the target distribution conditional to the group histogram, displayed target modalities can be selected from the "Values" menu and histogram can be displayed as probabilities or lift ("Probabilities/Lift" toggle).
 
-Clicking on a bin of the population histogram or on the corresponding target conditional histogram displays information about the selected group in panel E.
+Clicking on a bin of the population histogram or on the corresponding target conditional histogram displays information about the selected group in panel D.
 
+<!-- changer lettres par numero -->
 ![](../assets/images-khiops-guides/visualization/ClassificationPreparation.png)
 
 #### Tree Preparation
 
 Decision trees are treated as categorical variables with as many modalities as terminal leaves.
 
-The general layout of panels A, B, C and the information they display are similar to the Preparation tab.
+The general layout of panels A, B, C and the information they display are similar to the Preparation tab with the distinction that the variables are the construted tree variables.
 
-Panel D shows the content of a selected group of leaves as a table of the leaves in the group and their target modalities statistics. Clicking on a leaf displays information about this leaf in panel E: subtab "Leaf infos" shows the histogram of the target modalities conditional to this leaf, together with the leaf population and leaf purity ; subtab "Leaf rules" gives the list of tests leading to this leaf, starting from the root node.
+The analysis of each tree can be viewed by clicking on Inspect button in the tree variables table of panel B.
 
-The left panel (panel F) is a hypertree visualization of the selected decision tree. Only terminal leaves are clickable ; clicking on a leaf dynamically points to the relevant leaf and group of leaves information in the other panels. The population and purity of the leaves can be visualized by their size and color density. This can be toggled on and off and the "values" menu allows to select some of the target modalities only.
+Panel 1 shows the same informations as as Panel C of tree preparation when the inspected tree is selected in table
+Panel 2 shows a [hyperbolic representation:octicons-link-external-16:][hyperbolic-representation]{:target="_blank"} of the tree.
+
+[hyperbolic-representation]: https://en.wikipedia.org/wiki/Hyperbolic_tree "Visit the Wikipedia page"
+Only terminal leaves are clickable ; clicking on a leaf dynamically points to the relevant leaf and group of leaves information in the other panels.
+The population and purity of the leaves can be visualized by their size and color density : this can be toggled on and off.
+The "Values" menu allows to select some of the target modalities only.
+
+Panel 3 shows its representation as a decision tree.
+Panel 4 shows the content of a selected group of leaves as a table of the leaves in the group and their target modalities statistics. 
+Clicking on a leaf displays information about this leaf in panel 5 and 6: tab "Leaf infos" shows the histogram of the target modalities conditional to 
+this leaf, together with the leaf population and leaf purity ; tab "Leaf rules" gives the list of tests leading to this leaf, starting from the root node.
 
 ![](../assets/images-khiops-guides/visualization/SupervisedTree.png)
 
@@ -183,9 +201,11 @@ This discretization is the cartesian product of the parts for each variable.
 By default, the information displayed on the subtab "Matrix" is the frequency of each cell. 
 Other information are the frequencies for a target value and the conditional probabilies.
 
+The Size/Frequency/Uniform buttons enables to adjust rows and columns width.
+
 The subtab "Cells" displays the information about the cell statistics as a table.
 
-Clicking on a cell displays the target modalities histogram conditional to this cell (bottom of panel C) and the information about the parts of the selected cell in panel E.
+Clicking on a cell displays the target modalities histogram conditional to this cell (panel D) and the information about the parts of the selected cell in panel E.
 
 ![](../assets/images-khiops-guides/visualization/Supervised2D.png)
 
@@ -240,12 +260,13 @@ Panel A shows some information related to the data and the analysis.
 
 Panel B stores the list of the variables as a table together with some descriptive statistics information.
 
-Clicking on a line of the table in panel B displays the information about the parts obtained from the optimal supervised grouping the selected variable selected in panel C and
-information about the variable (Name and derivation rule (if any)) in panel D.
+Clicking on a line of the table in panel B displays informations of the corresponding variables in panels C, D, E.
 
-The top of Panel C shows the histogram of the group populations obtained from the optimal supervised grouping for the predictive variable.
+Name and derivation rule (if any)) of the selected variable are shown in panel C.
 
-The bottom of panel C shows the optimal grouping of the (predictive variable, target variable) pair.
+Panel D shows the histogram of the group populations obtained from the optimal supervised grouping for the predictive variable.
+
+Panel E shows the optimal grouping of the (predictive variable, target variable) pair.
 
 Note that the discretization of the target variable depends on the predictive variable, which is useful for interpretation purposes.
 
@@ -257,7 +278,7 @@ The toggle Standard/Frequency selects a representation mode:
    
    - in "Frequency" mode, the span of a group is proportional to its population.
 
-Clicking on a cell of the cartesian product shows information about the selected group in panel E.
+Clicking on a cell of the cartesian product shows information about the selected group in panel F.
 
 ![](../assets/images-khiops-guides/visualization/RegressionPreparation.png)
 
@@ -294,18 +315,24 @@ Control elements appear at the top right of panels.
 
 At the top right of the screen,
 
+<!-- a mettre a jour avec bouton change of scales et positionnement horizontal/vertical des infos -->
 ![](../assets/images-khiops-guides/visualization/TopRightButtons.png)
 
 From left to right:
 
-  - allows to set some environments variables such as the number of significant digits or the clear/dark mode. These settings are kept across sessions;
+  - the two left buttons let choose whether to display infos panel A horizontally at the top or vertically on the left
 
-  - allows to copy the figure of a selected panel (select a panel by clicking in it ; a selected panel appears with a light orange border). This can be pasted in any other document;
+  - the Change all scales button enables to set Linear or Logarithmic scales for all variables at once
 
-  - allows to copy the data of a selected panel.
+  - the gear wheel allows to set some environments variables such as the number of significant digits or the clear/dark mode. These settings are kept across sessions;
 
-At the top right of panel A
+  - the second-to-last button allows to copy the figure of a selected panel (select a panel by clicking in it ; a selected panel appears with a light orange border). This can be pasted in any other document;
 
+  - the last button allows to copy the data of a selected panel.
+
+At the top right of panel B
+
+<!-- a mettre a jour -->
 ![](../assets/images-khiops-guides/visualization/TopRightPanelAButtons.png)
 
 
@@ -331,7 +358,8 @@ At the top right of panel B
 
 ![](../assets/images-khiops-guides/visualization/ScaleChartButton.png)
 
-allows to modifiy the horizontal scale of the histogram (by default, all groups appear in the figure, which may be messy when there are many groups).
+allows to modifiy the horizontal scale of the histogram when the number of groups is high. 
+By default, all groups appear in the figure, which may be messy when there are many groups.
 
 Additional elements apply to bivariate cartesian product visualizations.
 
