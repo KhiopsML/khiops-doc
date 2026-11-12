@@ -17,3 +17,8 @@ __pycache__
 *.egg-info
 # VS
 .vs
+
+# OpenSpec (local experimentation)
+/openspec/
+/.github/skills/openspec-*/
+/.github/prompts/opsx-*.prompt.md
