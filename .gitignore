@@ -15,5 +15,6 @@ site/*
 # Python
 __pycache__
 *.egg-info
+.venv-local-build/
 # VS
 .vs
