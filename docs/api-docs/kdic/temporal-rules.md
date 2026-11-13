@@ -95,4 +95,92 @@ Creation of a target table from a source table, by calculating the differences o
       Numerical diff_date; // Difference of purchase_date with the previous instance
     };
     ```
-    
+
+## BuildTemporalJoin
+
+```kdic-api-docs
+Table(TargetDic) BuildTemporalJoin(Table(SourceDic) sourceTable, TemporalType sourceTime,
+                                   Table(HistoricalDic) historicalTable, TemporalType historicalTime,
+                                   Numerical periodStart, Numerical periodEnd
+                                   :
+                                   Entity(SourceDic) outputSourceEntity,
+                                   Entity(HistoricalDic) outputHistoricalEntity)
+```
+
+For each source-table instance, finds the closest instance in the historical table whose temporal
+value falls within the specified period relative to the source instance. At most one historical
+instance is selected per source instance.
+
+- `sourceTime` and `historicalTime` are evaluated in their respective table dictionaries and must have
+  the same type: `Numerical`, `Date`, `Time`, `Timestamp`, or `TimestampTZ`. Their difference
+  (`historicalTime - sourceTime`) is measured in days for `Date`, seconds for `Time`, `Timestamp`, and
+  `TimestampTZ`, and as the numerical difference for `Numerical`.
+
+- `periodStart` and `periodEnd` must be non-missing numerical constants satisfying
+  `periodStart <= periodEnd`. They define inclusive offsets relative to `sourceTime`, in the
+  corresponding distance unit. A historical instance is eligible when its difference from the source
+  instance is within these bounds.
+
+- Neither input table needs to be sorted. The rule selects the eligible instance with the smallest
+  absolute difference. If candidates are equally distant, it selects the earlier temporal value;
+  if their temporal values are equal, it selects the one that appeared first in the historical table.
+  Historical instances with missing temporal values are ignored; a source instance with a missing
+  temporal value has no match.
+
+- The output contains one newly created instance per source-table instance, in the same order.
+  `outputSourceEntity` refers to the original source instance; `outputHistoricalEntity` refers to the
+  selected historical instance, or is missing if there is no match. The same historical instance can
+  match several source instances.
+
+- The target table has two native `Entity` variables, whose names are specified after the `:` separator
+  as `outputSourceEntity` and `outputHistoricalEntity`. It can include additional derived variables
+  that extract or combine information from both instances.
+
+### Matching purchases with recent credit assessments
+
+For each customer, this example links every purchase to the closest credit assessment recorded on
+or before the purchase date, within the preceding 30 days. A derived variable combines both dates
+to measure the number of days between assessment and purchase. If no assessment falls in the period,
+the `assessment` entity is missing.
+
+!!! example
+
+    ```kdic
+    Root Dictionary Customer(customer_id)
+    {
+      Categorical customer_id;
+      Categorical name;
+      Table(Purchase) purchases; // Customer's purchases
+      Table(CreditAssessment) credit_assessments; // Customer's assessment history
+
+      // Match each purchase to the closest assessment in the preceding 30 days
+      Table(PurchaseWithAssessment) purchases_with_assessment = BuildTemporalJoin(purchases, purchase_date,
+                                                                                  credit_assessments, assessment_date,
+                                                                                  -30, 0
+                                                                                  : purchase, assessment);
+    };
+
+    Dictionary Purchase(customer_id)
+    {
+      Categorical customer_id;
+      Date purchase_date; // Source temporal variable
+      Numerical amount;
+    };
+
+    Dictionary CreditAssessment(customer_id)
+    {
+      Categorical customer_id;
+      Date assessment_date; // Historical temporal variable
+      Numerical credit_score;
+    };
+
+    Dictionary PurchaseWithAssessment
+    {
+      Unused Entity(Purchase) purchase; // Original purchase
+      Unused Entity(CreditAssessment) assessment; // Closest matching history, if any
+      Numerical amount = GetValue(purchase, amount);
+      Numerical credit_score = GetValue(assessment, credit_score);
+      Numerical days_since_assessment = DiffDate(GetValueD(purchase, purchase_date),
+                                                 GetValueD(assessment, assessment_date)); // Days from assessment to purchase
+    };
+    ```
