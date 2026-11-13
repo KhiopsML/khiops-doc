@@ -25,7 +25,7 @@ KHIOPS_VERSION=""
 KHIOPS_PYTHON_REPO="https://github.com/KhiopsML/khiops-python.git"
 KHIOPS_PYTHON_REF=""
 KHIOPS_PYTHON_VERSION=""
-KHIOPS_SAMPLES_VERSION="main"
+KHIOPS_SAMPLES_VERSION="11.0.0"
 KHIOPS_PYTHON_TUTORIAL_REF="main"
 KHIOPS_VIZ_VERSION=""
 KHIOPS_GCS_DRIVER_VERSION=""
@@ -69,12 +69,12 @@ trap cleanup EXIT
 # 1. Install khiops-core
 uv pip install khiops-core=="$KHIOPS_VERSION"
 
-# 2. Install khiops-doc's own Python dependencies
+# 2. Install khiops-doc's own Python dependencies, preserving khiops-core.
 echo "=== Installing documentation requirements ==="
 if [ "$EXECUTE_TUTORIALS" = "true" ]; then
-  uv sync --frozen --extra notebooks --extra tutorials --extra pythonapi
+  uv sync --frozen --inexact --extra notebooks --extra tutorials --extra pythonapi
 else
-  uv sync --frozen --extra notebooks --extra pythonapi
+  uv sync --frozen --inexact --extra notebooks --extra pythonapi
 fi
 
 # 3. Download khiops-samples for khiops-doc's own tutorial notebooks
