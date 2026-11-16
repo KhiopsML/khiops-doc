@@ -250,5 +250,6 @@ ARGS=(
 bash .github/scripts/build-doc.sh "${ARGS[@]}"
 
 if [ "$SERVE" = "true" ]; then
-  uv run zensical serve
+  echo "--- Serving the built site (./site) on http://127.0.0.1:8000 - press Ctrl+C to stop"
+  python -m http.server 8000 --bind 127.0.0.1 --directory site
 fi
