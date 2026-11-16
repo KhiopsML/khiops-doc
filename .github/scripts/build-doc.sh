@@ -58,11 +58,21 @@ KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 export PIP_NO_CACHE_DIR=1
 
+BUILD_BACKUP_DIR=$(mktemp -d)
+cp -p zensical.toml "$BUILD_BACKUP_DIR/zensical.toml"
+if [ -e docs/api-docs/python-api.md ]; then
+  cp -p docs/api-docs/python-api.md "$BUILD_BACKUP_DIR/python-api.md"
+fi
+
 cleanup() {
   echo "--- Cleaning up build workspace"
   rm -rf ./khiops_samples docs/api-docs/python-api docs/tutorials/notebooks
-  git checkout -- zensical.toml 2>/dev/null || true
-  git checkout -- docs/api-docs/python-api.md 2>/dev/null || true
+  cp -p "$BUILD_BACKUP_DIR/zensical.toml" zensical.toml
+  if [ -e "$BUILD_BACKUP_DIR/python-api.md" ]; then
+    cp -p "$BUILD_BACKUP_DIR/python-api.md" docs/api-docs/python-api.md
+  fi
+  rm -f "$BUILD_BACKUP_DIR/zensical.toml" "$BUILD_BACKUP_DIR/python-api.md"
+  rmdir "$BUILD_BACKUP_DIR"
 }
 trap cleanup EXIT
 
@@ -76,6 +86,9 @@ if [ "$EXECUTE_TUTORIALS" = "true" ]; then
 else
   uv sync --frozen --inexact --extra notebooks --extra pythonapi
 fi
+
+# 2. Install khiops-core after the exact sync so it is not removed.
+uv pip install khiops-core=="$KHIOPS_VERSION"
 
 # 3. Download khiops-samples for khiops-doc's own tutorial notebooks
 #    (only needed if they are actually executed)
@@ -92,7 +105,7 @@ export EXECUTE_KHIOPS_TUTORIALS="$EXECUTE_TUTORIALS"
 
 # 4. Convert khiops-doc's own tutorial notebooks
 echo "=== Converting khiops-doc tutorial notebooks ==="
-uv run python scripts/convert_notebooks.py
+uv run --active --frozen --no-sync python scripts/convert_notebooks.py
 
 # 5. Prepare Python API doc sources from khiops-python (always executes
 #    khiops-python's own tutorials via create-doc -t -d - requires a real
@@ -131,6 +144,6 @@ envsubst "${KHIOPS_VERSIONING_VARS}" \
 
 # 7. Build the whole site with Zensical
 echo "=== Building site with Zensical in dir $(pwd) ==="
-uv run zensical build --clean --strict
+uv run --active --frozen --no-sync zensical build --clean --strict
 
 echo "=== Done - site built in ./site ==="

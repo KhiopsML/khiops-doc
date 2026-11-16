@@ -15,13 +15,30 @@ and content conventions.
   selects the question and answer from either the initial post or the first
   reply's `### Question summary` section.
 - [discussion_render.py](discussion_render.py) renders and sanitizes content,
-  builds the overview and topic pages, and copies supported GitHub attachments.
+  preserves nested Markdown lists and nests answer headings beneath their
+  question while preserving their relative levels where possible (up to
+  HTML's `h6`), converts GitHub NOTE, TIP, IMPORTANT, WARNING and CAUTION
+  alerts to styled site admonitions, builds the overview and topic pages, and
+  copies supported GitHub attachments. The overview identifies GitHub
+  Discussions as the source and links to it. GitHub math written as `$...$`,
+  ``$`...`$``, `$$...$$`, or a `math` fenced block is converted for MathJax,
+  including formulas in raw HTML text. Fenced code blocks with a recognized
+  language, including `python` and `kdic`, use syntax highlighting; unknown
+  languages are reported and rendered as plain text. Bare URLs are turned into
+  links outside code blocks, like explicit Markdown links.
+  Images and Python scripts are named using the discussion number, the nearest
+  preceding heading (or the discussion title), and a per-heading sequence number,
+  for example `993-experiments-1.png` and `993-experiments-1.py`. Image and
+  script sequences are independent. Names are deterministic but may change when
+  headings or attachment order change. Repeated references to an attachment
+  within the same heading share a file.
   Attachments over 100,000 bytes cause the discussion to be omitted and
   reported; downloaded scripts are not executed.
 - [generate_discussions.py](generate_discussions.py) ties the steps together.
-  It updates generated files and navigation, maintains a manifest and
-  oversized-attachment report, and writes a summary of additions, changes,
-  removals and invalid or unlabelled discussions.
+  It updates generated files and navigation by comparing them with the
+  repository, removes stale files only from the reserved Q&A output
+  directories, maintains an oversized-attachment report, and summarizes
+  generated file changes and invalid or unlabelled discussions.
 
 ## Workflow
 

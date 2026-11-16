@@ -138,24 +138,32 @@ nav = [
     ] },
   ] },
   { "Foundations" = [
-      { "What Makes Khiops Different" = "learn/understand.md" },
-      { "An Original Formalism" = "learn/modl.md" },
-      { "Auto-ML Pipeline" = [
-          { "Optimal Encoding" = "learn/preprocessing.md" },
-          { "Auto Feature Engineering" = "learn/autofeature_engineering.md" },
-          { "Parsimonious Training" = "learn/learning_models.md" },
-        ] },
-      { "Unsupervised Approaches" = [
-          { "Optimal Histograms" = "learn/histograms.md" },
-          { "Coclustering" = "learn/coclustering.md" },
-          # { "Coclustering inst x var" = "learn/coclustering_indi_var.md" }
-        ] },
-      { "Auto Hardware Adaptation" = "learn/hardware_adaptation.md" },
-      { "Bibliography" = "references.md" },
+    { "What Makes Khiops Different" = "learn/understand.md" },
+    { "An Original Formalism" = "learn/modl.md" },
+    { "Auto-ML Pipeline" = [
+      { "Optimal Encoding" = "learn/preprocessing.md" },
+      { "Auto Feature Engineering" = "learn/autofeature_engineering.md" },
+      { "Parsimonious Training" = "learn/learning_models.md" },
     ] },
+    { "Unsupervised Approaches" = [
+      { "Optimal Histograms" = "learn/histograms.md" },
+      { "Coclustering" = "learn/coclustering.md" },
+      # { "Coclustering inst x var" = "learn/coclustering_indi_var.md" }
+    ] },
+    { "Auto Hardware Adaptation" = "learn/hardware_adaptation.md" },
+    { "Bibliography" = "references.md" },
+  ] },
   # BEGIN GENERATED DISCUSSION NAVIGATION
+  { "Q&A" = [
+    { "Overview" = "q-and-a/overview.md" },
+    { "Coclustering" = "q-and-a/coclustering-da27770b.md" },
+    { "Deployment and integration" = "q-and-a/deployment-18a77285.md" },
+    { "Fundamentals of modeling" = "q-and-a/fundamentals-cf50f290.md" },
+    { "Preprocessing and encoding" = "q-and-a/preprocessing-60033c06.md" },
+    { "Python API and development" = "q-and-a/pythonapi-cae48cf1.md" },
+    { "Scalability and large datasets" = "q-and-a/scalability-81a46944.md" },
+  ] },
   # END GENERATED DISCUSSION NAVIGATION
-  { "Discussions" = "https://github.com/orgs/KhiopsML/discussions" },
   { "Contact Us" = "contact.md" },
 ]
 
