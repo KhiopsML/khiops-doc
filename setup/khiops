@@ -1,0 +1,80 @@
+
+#!/bin/bash
+
+set -e
+
+# Ensure X11 access is revoked on exit (success or error)
+trap 'xhost - &> /dev/null' EXIT
+
+# Check if Colima is installed
+if ! command -v colima &> /dev/null; then
+    echo "Error: Colima is not installed. Please install it with: brew install colima"
+    exit 1
+fi
+
+# Check brew dependency
+if ! command -v brew &> /dev/null; then
+    echo "Error: brew is not installed. Please install it, go to: https://brew.sh"
+    exit 1
+fi
+
+# Check docker dependency
+if ! command -v docker &> /dev/null; then
+    echo "Error: Docker is not installed. Please install it with: brew install docker"
+    exit 1
+fi
+
+# Check XQuartz dependency
+if ! command -v Xquartz &> /dev/null; then
+    echo "Error: XQuartz is not installed. Please install it with: brew install xquartz"
+    exit 1
+fi
+
+# Check and configure XQuartz network connections property
+XQUARTZ_NETCONNECT_STATUS=$(defaults read org.xquartz.X11.plist nolisten_tcp 2>/dev/null || echo "not-set")
+
+if [[ "$XQUARTZ_NETCONNECT_STATUS" == "1" ||  "$XQUARTZ_NETCONNECT_STATUS" == "not-set" ]]; then
+    echo "XQuartz network connections are disabled. Reconfiguring..."
+    
+    # Stop XQuartz if running
+    if pgrep -q Xquartz; then
+        echo "Stopping XQuartz..."
+        killall Xquartz 2>/dev/null
+        sleep 2
+    fi
+    
+    # Set the property to allow network connections
+    defaults write org.xquartz.X11.plist nolisten_tcp -bool false
+    echo "XQuartz configured to allow network connections."
+fi
+
+# Start XQuartz if not already running
+if ! pgrep -q Xquartz; then
+    # Start XQuartz
+    open -a XQuartz
+    sleep 3
+fi
+
+# If not already started, start Colima using host CPU and memory,
+# and a 5 GB disk (Khiops does not use the container disk heavily).
+if ! colima status &> /dev/null; then
+    CPU_NUMBER=$(sysctl -n hw.physicalcpu)
+    echo "Allocating $CPU_NUMBER CPU cores to Khiops."
+    MEMORY_SIZE=$(sysctl -n hw.memsize | awk '{printf "%.0f", $1 / 1024 / 1024 / 1024}')
+    echo "Allocating $MEMORY_SIZE GB of memory to Khiops."
+    echo "Starting Colima..."
+    colima start --cpu $CPU_NUMBER --memory $MEMORY_SIZE --disk 5
+fi
+
+# Allow local X11 connections
+xhost +localhost &> /dev/null
+
+# Run Khiops in Docker with GUI forwarding. It starts in the macOS $HOME directory 
+# and uses the macOS temporary directory for temporary files
+docker run \
+    -e DISPLAY=host.docker.internal:0 \
+    -e KHIOPS_TMP_DIR=/macos-tmp \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v "$HOME":/macos-home \
+    -v /tmp:/macos-tmp \
+    khiopsml/khiops-desktop:11 bash -c "cd /macos-home && khiops"
