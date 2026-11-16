@@ -54,9 +54,6 @@ You can automatically redimension the columns of the table with the buttons: ![]
 
 You can search the occurence of strings in the search box opens by clicking on the button: ![](../assets/images-khiops-guides/covisualization/SearchButton.png)
 
-Long tables are split into pages of at most 500 lines.
-
-![](../assets/images-khiops-guides/covisualization/SplitTable.png)
 
 ### Zoom
 
@@ -229,16 +226,20 @@ This information is also displayed on a tooltip by moving the mouse over the cel
 
 #### Axis representation
 
-By default, the axis of the matrix represent the cluster size: range of the interval in case of a numerical cluster and number of values in the group in case of a categorical cluster. You can choose another representation with the button below the matrix. By choosing "Frequency", the axis represent the frequency of the clusters.
+By default, the axis width of the matrix represents the cluster size: range of the interval in case of a numerical cluster and number of values in the group in case of a categorical cluster. 
+You can choose another representation with the button below the matrix. 
+By choosing "Frequency", the axis width represents the frequency of the clusters.
+By choosing "Uniform, all axis have equal width.
 
 ![](../assets/images-khiops-guides/covisualization/StandardFrequency.png)
 
 #### Contrast
 
 The slide bar located at the right of the matrix increases the color contrast in the matrix: the red cells are redder and blue cells are bluer. 
-The picture below shows the same matrix with different contrasts.
+The tow pictures below shows the same matrix with different contrasts.
 
-![](../assets/images-khiops-guides/covisualization/Contrast.png)
+![](../assets/images-khiops-guides/covisualization/Contrast-1.png)
+![](../assets/images-khiops-guides/covisualization/Contrast-2.png)
 
 #### Summary
 
@@ -331,7 +332,7 @@ The following table summarizes the different correct ways of writing text fields
 
 ### Interaction between views
 
-All views are interactive: an action on a view often changes several other views. Screenshots bellows present several interactions.
+All views are interactive: an action on a view often changes several other views. Screenshots belows present several interactions.
 
 ![](../assets/images-khiops-guides/covisualization/InteractionsCluster.png)
 ![](../assets/images-khiops-guides/covisualization/InteractionsCell.png)
