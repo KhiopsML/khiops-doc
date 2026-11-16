@@ -274,14 +274,26 @@ Edit the source discussion and its labels rather than editing the generated page
   becomes the answer.
 - Attached images and scripts may each be at most 100,000 bytes. A discussion
   with an oversized file is omitted and reported; scripts are never executed.
+- Imported image and Python script filenames include the discussion number,
+  preceding subsection title, and a number (for example `993-experiments-1.png`
+  and `993-experiments-1.py`). They can change when headings or attachment
+  order change.
+- Specify a language on fenced code blocks (for example `python` or `kdic`)
+  to enable syntax highlighting on the site.
+- Write answers in Markdown: supported formatting is kept in the generated
+  pages and rendered using the site's styles. Raw HTML is sanitized during
+  import.
+- Write math using `$...$` for inline formulas, or `$$...$$` or a `math`
+  fenced block for display formulas.
+- Plain web addresses in discussion text are made clickable during import.
 
 The discussion synchronization workflow runs weekly and can also be started
 manually from GitHub Actions. After its first manual run has verified access to
 the source discussions and pull-request creation, enable its weekly schedule
 by setting the repository Actions variable `DISCUSSION_SYNC_SCHEDULE_ENABLED`
-to `true`. It proposes changes in a pull request, including
-additions, changes, removals, discussions without a topic label and invalid
-discussions. Review the pull request before merging. An unchanged oversized-file
+to `true`. It proposes generated file additions, updates and removals in a pull
+request, along with discussions without a topic label and invalid discussions.
+Review the pull request before merging. An unchanged oversized-file
 warning that was already merged is repeated in the workflow summary rather
 than creating another identical pull request.
 

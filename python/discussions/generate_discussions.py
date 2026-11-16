@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -12,24 +13,16 @@ from python.discussions.discussion_source import GitHubError, fetch_discussions
 
 BEGIN = "  # BEGIN GENERATED DISCUSSION NAVIGATION"
 END = "  # END GENERATED DISCUSSION NAVIGATION"
-MANIFEST = Path(".github/discussion-sync/manifest.json")
 OVERSIZED = Path(".github/discussion-sync/oversized.json")
-OWNED_PREFIXES = (
-    "docs/q-and-a/",
-    "docs/assets/images/q-and-a/",
-    "docs/assets/discussion-scripts/q-and-a/",
+GENERATED_DIRECTORIES = (
+    Path("docs/q-and-a"),
+    Path("docs/assets/images/q-and-a"),
+    Path("docs/assets/discussion-scripts/q-and-a"),
 )
 
 
 def json_text(value):
     return json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-
-
-def read_json(path, default):
-    if not path.exists():
-        return default
-    with path.open(encoding="utf-8") as file:
-        return json.load(file)
 
 
 def navigation(text, discussions):
@@ -40,8 +33,8 @@ def navigation(text, discussions):
     if start >= end:
         raise ValueError("Generated discussion navigation markers are out of order")
     topics = {}
-    for item in discussions.values():
-        topic, title = item["topic"], item["topic_title"]
+    for item in discussions:
+        topic, title = item.topic, item.topic_title
         if topic in topics and topics[topic] != title:
             raise ValueError(f"Inconsistent label descriptions for {topic}")
         topics[topic] = title
@@ -53,38 +46,15 @@ def navigation(text, discussions):
     return text[:start] + "\n" + "\n".join(lines) + "\n" + text[end:]
 
 
-def changes(previous, current):
-    result = {"added": [], "changed": [], "removed": []}
-    for identifier in sorted(previous.keys() | current.keys()):
-        old, new = previous.get(identifier), current.get(identifier)
-        if old is None:
-            result["added"].append(new)
-        elif new is None:
-            result["removed"].append(old)
-        elif old != new:
-            if old["topic"] != new["topic"]:
-                result["removed"].append(old)
-                result["added"].append(new)
-            else:
-                result["changed"].append(new)
-    return result
-
-
-def report_text(previous, current, unlabelled, invalid):
-    lines = ["# Discussion synchronization", ""]
-    grouped = changes(previous, current)
-    for name in ("added", "changed", "removed"):
-        lines.extend([f"## {name.title()}", ""])
-        items = grouped[name]
-        if not items:
-            lines.extend(["None.", ""])
-            continue
-        topics = sorted({item["topic"] for item in items})
-        for topic in topics:
-            lines.extend([f"### {heading_text(topic)}", ""])
-            for item in sorted((i for i in items if i["topic"] == topic), key=lambda i: i["number"]):
-                lines.append(f'- [#{item["number"]} {heading_text(item["title"])}]({item["url"]})')
-            lines.append("")
+def report_text(file_changes, unlabelled, invalid):
+    lines = ["# Discussion synchronization", "", "## Generated file changes", ""]
+    for action in ("added", "updated", "removed"):
+        lines.extend([f"### {action.title()}", ""])
+        lines.extend(
+            [f"- `{name}`" for name in file_changes[action]]
+            or ["None."]
+        )
+        lines.append("")
     lines.extend(["## Discussions without a Topic label", ""])
     lines.extend(
         [f'- [#{d["number"]} {heading_text(d["title"])}]({d["url"]})' for d in unlabelled]
@@ -104,18 +74,45 @@ def report_text(previous, current, unlabelled, invalid):
     return "\n".join(lines) + "\n"
 
 
-def checked_output(root, name):
-    if not any(name.startswith(prefix) for prefix in OWNED_PREFIXES):
-        raise ValueError(f"Unexpected generated output path: {name}")
-    path = root / name
-    if not path.resolve().is_relative_to(root.resolve()) or any(
-        part == ".." for part in Path(name).parts
-    ):
+def checked_path(root, name):
+    path = Path(name)
+    path = root / path
+    if not path.resolve().is_relative_to(root.resolve()):
         raise ValueError(f"Unsafe generated output path: {name}")
     relative = path.relative_to(root)
-    if any((root.joinpath(*relative.parts[:i])).is_symlink() for i in range(1, len(relative.parts) + 1)):
+    if any(root.joinpath(*relative.parts[:i]).is_symlink() for i in range(1, len(relative.parts) + 1)):
         raise ValueError(f"Symlink in generated output path: {name}")
     return path
+
+
+def checked_output(root, name):
+    path = Path(name)
+    if not any(path.is_relative_to(directory) for directory in GENERATED_DIRECTORIES):
+        raise ValueError(f"Unexpected generated output path: {name}")
+    return checked_path(root, name)
+
+
+def existing_generated_files(root):
+    files = set()
+    for directory in GENERATED_DIRECTORIES:
+        base = root / directory
+        if base.is_symlink():
+            raise ValueError(f"Symlink in generated output path: {directory}")
+        if not base.exists():
+            continue
+        if not base.is_dir():
+            raise ValueError(f"Generated output path is not a directory: {directory}")
+        for current, directories, filenames in os.walk(base, followlinks=False):
+            current_path = Path(current)
+            for name in directories:
+                if (current_path / name).is_symlink():
+                    raise ValueError(f"Symlink in generated output path: {current_path / name}")
+            for name in filenames:
+                path = current_path / name
+                relative = path.relative_to(root).as_posix()
+                checked_output(root, relative)
+                files.add(relative)
+    return files
 
 
 def extract_discussions(discussions):
@@ -135,7 +132,7 @@ def extract_discussions(discussions):
 
 def write_generated_files(root, generated, old_files):
     for name, content in generated.items():
-        path = checked_output(root, name)
+        path = checked_output(root, name) if name.startswith("docs/") else checked_path(root, name)
         path.parent.mkdir(parents=True, exist_ok=True)
         if not path.exists() or path.read_bytes() != content:
             path.write_bytes(content)
@@ -147,30 +144,32 @@ def write_generated_files(root, generated, old_files):
 
 def synchronize(root, discussions, downloader=download_attachment):
     root = Path(root)
-    old = read_json(root / MANIFEST, {"discussions": {}, "files": []})
     published, unlabelled, invalid = extract_discussions(discussions)
-    pages, assets, attachment_errors, current = render_pages(published, downloader, include_manifest=True)
+    pages, assets, attachment_errors = render_pages(published, downloader)
     invalid.extend(attachment_errors)
     invalid.sort(key=lambda d: d["number"])
     generated = {f"docs/{name}": value.encode() for name, value in pages.items()}
     generated.update({f"docs/{name}": value for name, value in assets.items()})
-    old_files = set(old["files"])
-    for name in old_files | generated.keys():
-        path = checked_output(root, name)
-        if name not in old_files and path.exists():
-            raise ValueError(f"Refusing to overwrite an unowned file: {name}")
+    old_files = existing_generated_files(root)
     nav_path = root / "zensical.toml"
-    new_nav = navigation(nav_path.read_text(encoding="utf-8"), current)
-    report = report_text(old["discussions"], current, unlabelled, invalid)
+    new_nav = navigation(nav_path.read_text(encoding="utf-8"), published)
+    generated["zensical.toml"] = new_nav.encode()
     oversized = [item for item in attachment_errors if "exceeds 100,000 bytes" in item["reason"]]
-    manifest = {"discussions": current, "files": sorted(generated)}
+    generated[OVERSIZED.as_posix()] = json_text(oversized).encode()
+
+    file_changes = {"added": [], "updated": [], "removed": []}
+    for name, content in generated.items():
+        path = checked_output(root, name) if name.startswith("docs/") else checked_path(root, name)
+        if not path.exists():
+            file_changes["added"].append(name)
+        elif path.read_bytes() != content:
+            file_changes["updated"].append(name)
+    file_changes["removed"] = sorted(old_files - generated.keys())
+    for action in file_changes:
+        file_changes[action].sort()
+    report = report_text(file_changes, unlabelled, invalid)
 
     write_generated_files(root, generated, old_files)
-    nav_path.write_text(new_nav, encoding="utf-8")
-    for path, data in ((MANIFEST, manifest), (OVERSIZED, oversized)):
-        target = root / path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json_text(data), encoding="utf-8")
     return report
 
 
