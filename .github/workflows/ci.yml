@@ -29,11 +29,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install wget libarchive-tools
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.11
+          python-version: 3.14
+          check-latest: true
       - name: Checkout doc sources
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up the version information in the environment
         run: cat environment.env | grep -vE "^(#|$)" >> "$GITHUB_ENV"
       - name: Retrieve the version number of Khiops Visualization Desktop from the latest release on GitHub
@@ -46,10 +47,11 @@ jobs:
           LAST_TAG="$(gh --repo https://github.com/KhiopsML/khiops-visualization-desktop/ release view --json tagName --jq '.tagName')"
           echo "value=${LAST_TAG#v}" >> "$GITHUB_OUTPUT"
       - name: Setup uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v10.3.2
         with:
-          enable-cache: true
-          cache-dependency-glob: uv.lock
+          enable-cache: false
+          version: 0.13.5
+          python-version: '3.14'
       - name: Build documentation
         run: |
           # Create virtual environment

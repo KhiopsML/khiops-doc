@@ -8,7 +8,7 @@ The Conda package supports the installation and upgrade of all Khiops dependenci
 
 ## Instructions
 
-Khiops supports :simple-python: **Python versions supported by `conda-forge`, up to 3.14**. By default, we recommend creating a dedicated Conda environment to ensure compatibility and avoid conflicts with other packages. To create an environment (for instance with Python 3.12), use the following command:
+Khiops supports :simple-python: **Python versions supported by `conda-forge`, up to 3.15**. By default, we recommend creating a dedicated Conda environment to ensure compatibility and avoid conflicts with other packages. To create an environment (for instance with Python 3.12), use the following command:
 
 ```sh
 conda create --name khiops_env python=3.12

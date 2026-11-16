@@ -1,14 +1,12 @@
 <!-- Transform the pre-release versions for the rocky and python packages
 {% set PIP_KHIOPS_PYTHON_VERSION = KHIOPS_PYTHON_VERSION.replace("-rc.", "rc").replace("-b.", "b").replace("-a.", "a") %}
-{% set ROCKY_KHIOPS_VERSION = KHIOPS_VERSION.replace("-", "_") %}
 -->
 
 # Install the Khiops Library Using Pip
 
 The `pip` package supports the installation and upgrade of all Khiops dependencies, including the MPI library, in your virtual environment.
 
-We support :simple-python: **Python from 3.10 to 3.14**. Usage of previous
-versions of Python can be attempted, but there is no support for it.
+We support :simple-python: **Python from 3.11 to 3.15**.
 
 ===  "Linux and macOS"
 

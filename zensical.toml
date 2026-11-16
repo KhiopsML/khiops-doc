@@ -44,6 +44,7 @@ nav = [
       "setup/index.md",
       { "Khiops Python Library" = [
           { "pip" = "setup/pip.md" },
+          { "uv" = "setup/uv.md" },
           { "conda" = "setup/conda.md" },
           { "docker notebook" = "setup/khiops-notebook.md" },
         ] },
