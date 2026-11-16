@@ -150,6 +150,10 @@ require_value "$KHIOPS_AZURE_DRIVER_VERSION" --khiops-azure-driver-version KHIOP
 
 KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
 
+# Synchronize Python and Uv versions with the CI (.github/workflows/ci.yml)
+CI_PYTHON_VERSION="3.14"
+CI_UV_VERSION="0.13.5"
+
 if ! command -v uv &>/dev/null; then
   echo "Error: uv not found. Install it or make sure its directory is on PATH."
   echo "On Windows, use Git Bash explicitly; a bare 'bash' command may launch WSL instead."
@@ -163,6 +167,10 @@ if [ "$EXECUTE_TUTORIALS" = "true" ]; then
   for tool in wget unzip; do
     command -v "$tool" &>/dev/null || { echo "Error: $tool not found." >&2; exit 1; }
   done
+fi
+UV_INSTALLED_VERSION=$(uv --version | cut -d' ' -f2)
+if [ "$UV_INSTALLED_VERSION" != "$CI_UV_VERSION" ]; then
+  echo "--- Warning: uv ${UV_INSTALLED_VERSION} is installed, the CI uses ${CI_UV_VERSION}"
 fi
 
 latest_release_tag() {
@@ -210,10 +218,11 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# Install Khiops core via Pip (always needed - building the Python API
-# docs always executes khiops-python's own tutorial notebooks)
-echo "--- Creating Python virtualenv env with Khiops core ${KHIOPS_VERSION}"
-uv venv --clear "$BUILD_VENV"
+# Create the build virtual environment (Khiops core is installed into it by
+# build-doc.sh; it is always needed, as building the Python API docs always
+# executes khiops-python's own tutorial notebooks)
+echo "--- Creating Python virtualenv (Khiops core ${KHIOPS_VERSION} will be installed by build-doc.sh)"
+uv venv --clear --python "$CI_PYTHON_VERSION" "$BUILD_VENV"
 if [ -f "$BUILD_VENV/Scripts/activate" ]; then
   . "$BUILD_VENV/Scripts/activate"
 elif [ -f "$BUILD_VENV/bin/activate" ]; then
