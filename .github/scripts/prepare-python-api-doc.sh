@@ -4,7 +4,7 @@ set -euo pipefail
 # prepare-python-api-doc.sh - Clone khiops-python, prepare its Zensical-based
 # Python API doc sources (Markdown only, via `create-doc -p`), copy them into
 # khiops-doc's docs/ tree, and regenerate the "API Python" nav section of
-# mkdocs.yml. Does NOT build the site - that's done once, separately, for
+# zensical.toml. Does NOT build the site - that's done once, separately, for
 # the whole khiops-doc site.
 #
 # Usage:
@@ -47,7 +47,12 @@ echo "=== Preparing Python API docs from ${KHIOPS_PYTHON_REPO} @ ${KHIOPS_PYTHON
 
 # 1. Clone khiops-python
 rm -rf ./khiops-python-src
-git clone "$KHIOPS_PYTHON_REPO" ./khiops-python-src
+
+# Force LF line endings and long paths in this clone, irrespective of the user's
+# Git configuration: on Windows, the default core.autocrlf=true would
+# transform khiops-python's scripts (such as create-doc) into CRLF files that
+# Bash cannot run.
+git clone -c core.autocrlf=input -c core.longpaths=true "$KHIOPS_PYTHON_REPO" ./khiops-python-src
 git -C ./khiops-python-src checkout "$KHIOPS_PYTHON_REF"
 
 if [ ! -f khiops-python-src/doc/util/create-doc ] || [ ! -f khiops-python-src/zensical.toml ]; then
@@ -65,7 +70,7 @@ fi
 uv pip install ./khiops-python-src
 uv pip install nbformat mkdocstrings-python
 
-# 4. Prepare doc sources (Markdown only - no Zensical build here)
+# 3. Prepare doc sources (Markdown only - no Zensical build here)
 echo "--- Preparing khiops-python doc sources (create-doc -p)"
 (
   cd khiops-python-src
@@ -74,7 +79,7 @@ echo "--- Preparing khiops-python doc sources (create-doc -p)"
   bash create-doc -p -t -d -g "$KHIOPS_PYTHON_TUTORIAL_REF"
 )
 
-# 5. Copy prepared doc sources into the khiops-doc docs tree
+# 4. Copy prepared doc sources into the khiops-doc docs tree
 echo "--- Copying doc sources into docs/api-docs/python-api/"
 rm -rf docs/api-docs/python-api
 mkdir -p docs/api-docs/python-api
@@ -104,8 +109,8 @@ if [ -d khiops-python-src/doc/site/samples ]; then
   cp khiops-python-src/doc/site/samples/*.ipynb docs/api-docs/python-api/samples/ 2>/dev/null || true
 fi
 
-# 6. Regenerate the "API Python" nav section of mkdocs.yml from khiops-python's
-#    zensical.toml
+# 5. Regenerate the "API Python" nav section of zensical.toml from
+#    khiops-python's zensical.toml
 echo "--- Generating Python API nav"
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 uv run --active --frozen --no-sync ${SCRIPT_DIR}/generate_python_api_nav.py \
@@ -116,7 +121,7 @@ uv run --active --frozen --no-sync ${SCRIPT_DIR}/generate_python_api_nav.py \
   --target-index-title "Python API" \
   --path-prefix "api-docs/python-api/"
 
-# 7. Remove stall Python API Markdown file
+# 6. Remove stale Python API Markdown file
 rm -f docs/api-docs/python-api.md
 
 echo "=== Python API doc sources ready ==="
