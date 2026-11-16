@@ -6,7 +6,21 @@ set -euo pipefail
 # Prerequisites:
 #   - uv (https://docs.astral.sh/uv/)
 #   - git
-#   - curl (for resolving omitted versions)
+#   - curl (only to resolve the Khiops Visualization version when it is given
+#     neither on the command line nor in environment.env)
+#   - envsubst (gettext)
+#   - wget and unzip (only with --execute-tutorials)
+#
+# Versions not specified on the command line are read from environment.env (same
+# file as for the CI). All of them are mandatory, except:
+#   - the Khiops Visualization version (latest release when omitted),
+#   - the khiops-python Git reference (defaults to the khiops-python version),
+#   - the khiops-python-tutorial Git reference (defaults to `main`).
+#
+# Unlike the CI, which runs on a reviewed repository state, this script cannot
+# assume that environment.env is correct: it therefore fails on missing
+# mandatory versions instead of passing empty values to build-doc.sh, and
+# defaults to `main` for the tutorial repository reference.
 #
 # Usage:
 #   ./local-build.sh [OPTIONS]
@@ -20,38 +34,55 @@ Build the Khiops doc site locally with Zensical.
 Options:
   -h, --help                        Show this help message and exit
   --khiops-version VER              Khiops core version to install via Pip / Uv
-                                     (default: latest GitHub release)
-  --local-khiops-python DIR         Use a local khiops-python repo instead of
-                                     cloning from GitHub
-  --khiops-python-ref REF           khiops-python Git ref to build docs from
-                                     when not using --local-khiops-python
-                                     (default: khiops-python-version, or the
-                                      latest release tag when omitted)
+                                     (default: read from environment.env)
+  --local-khiops-python DIR         Use a local khiops-python Git repo instead of
+                                     cloning from GitHub (commits not yet pushed
+                                     can be used; uncommitted changes are not
+                                     included)
+  --khiops-python-ref REF           khiops-python Git ref (tag, branch or commit)
+                                     to build docs from, in the GitHub repo or
+                                     in the local one (--local-khiops-python)
+                                     (default: read from environment.env,
+                                      otherwise, equal to the khiops-python
+                                      version)
   --khiops-python-version VER       Khiops Python version (for the website)
-                                     (default: latest GitHub release)
+                                     (default: read from environment.env)
   --khiops-samples-version VER      khiops-samples release to download
-                                     (default: latest GitHub release)
-  --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref (default: main)
-  --khiops-viz-version VER          Khiops Visualization version (default: unknown)
-  --khiops-gcs-driver-version VER   Khiops GCS driver version (default: unknown)
-  --khiops-s3-driver-version VER    Khiops S3 driver version (default: unknown)
-  --khiops-azure-driver-version VER Khiops Azure driver version (default: unknown)
+                                     (default: read from environment.env)
+  --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref
+                                     (default: read from environment.env,
+                                      otherwise equal to `main`)
+  --khiops-viz-version VER          Khiops Visualization version
+                                     (default: read from environment.env,
+                                      otherwise the latest GitHub release)
+  --khiops-gcs-driver-version VER   Khiops GCS driver version
+                                     (default: read from environment.env)
+  --khiops-s3-driver-version VER    Khiops S3 driver version
+                                     (default: read from environment.env)
+  --khiops-azure-driver-version VER Khiops Azure driver version
+                                     (default: read from environment.env)
   --execute-tutorials               Execute khiops-doc's own tutorial notebooks
-  --serve                           Run 'zensical serve' after building
+  --serve                           Serve the built site (./site) on
+                                     http://127.0.0.1:8000 after building
+                                     (no live reload; rebuild to see changes)
+
+Except for the Khiops Visualization version, the khiops-python Git reference and
+the khiops-python-tutorial Git reference, a version that is neither passed on the
+command line nor defined in environment.env makes the script fail.
 EOF
   exit 0
 }
 
 KHIOPS_SAMPLES_VERSION=""
-KHIOPS_PYTHON_TUTORIAL_REF="main"
+KHIOPS_PYTHON_TUTORIAL_REF=""
 KHIOPS_VERSION=""
 KHIOPS_PYTHON_VERSION=""
 LOCAL_KHIOPS_PYTHON=""
 KHIOPS_PYTHON_REF=""
-KHIOPS_VIZ_VERSION="unknown"
-KHIOPS_GCS_DRIVER_VERSION="unknown"
-KHIOPS_S3_DRIVER_VERSION="unknown"
-KHIOPS_AZURE_DRIVER_VERSION="unknown"
+KHIOPS_VIZ_VERSION=""
+KHIOPS_GCS_DRIVER_VERSION=""
+KHIOPS_S3_DRIVER_VERSION=""
+KHIOPS_AZURE_DRIVER_VERSION=""
 EXECUTE_TUTORIALS="false"
 SERVE="false"
 
@@ -77,11 +108,61 @@ done
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 cd "$SCRIPT_DIR"
 
+ENV_FILE="$SCRIPT_DIR/environment.env"
+
+# Print the value of KEY from environment.env (empty if absent). Lines are
+# filtered like in the CI (comments and blank lines dropped) and the file is
+# parsed, not sourced, so nothing in it is executed.
+env_file_value() {
+  local line=""
+  if [ -f "$ENV_FILE" ]; then
+    line=$(tr -d '\r' < "$ENV_FILE" | grep -vE '^(#|$)' | grep -E "^$1=" | tail -n 1) || true
+  fi
+  printf '%s' "${line#*=}"
+}
+
+# CLI value (if any) wins; otherwise take the value from environment.env
+: "${KHIOPS_VERSION:=$(env_file_value KHIOPS_VERSION)}"
+: "${KHIOPS_PYTHON_VERSION:=$(env_file_value KHIOPS_PYTHON_VERSION)}"
+: "${KHIOPS_PYTHON_REF:=$(env_file_value KHIOPS_PYTHON_REF)}"
+: "${KHIOPS_SAMPLES_VERSION:=$(env_file_value KHIOPS_SAMPLES_VERSION)}"
+: "${KHIOPS_PYTHON_TUTORIAL_REF:=$(env_file_value KHIOPS_PYTHON_TUTORIAL_VERSION)}"
+: "${KHIOPS_PYTHON_TUTORIAL_REF:=main}"
+: "${KHIOPS_VIZ_VERSION:=$(env_file_value KHIOPS_VIZ_VERSION)}"
+: "${KHIOPS_GCS_DRIVER_VERSION:=$(env_file_value KHIOPS_GCS_DRIVER_VERSION)}"
+: "${KHIOPS_S3_DRIVER_VERSION:=$(env_file_value KHIOPS_S3_DRIVER_VERSION)}"
+: "${KHIOPS_AZURE_DRIVER_VERSION:=$(env_file_value KHIOPS_AZURE_DRIVER_VERSION)}"
+
+# Fail unless the value comes from the CLI or from environment.env
+require_value() {
+  local value="$1" cli_option="$2" env_name="$3"
+  if [ -z "$value" ]; then
+    echo "Error: ${env_name} is specified neither via ${cli_option} nor in ${ENV_FILE}." >&2
+    exit 1
+  fi
+}
+require_value "$KHIOPS_VERSION" --khiops-version KHIOPS_VERSION
+require_value "$KHIOPS_PYTHON_VERSION" --khiops-python-version KHIOPS_PYTHON_VERSION
+require_value "$KHIOPS_SAMPLES_VERSION" --khiops-samples-version KHIOPS_SAMPLES_VERSION
+require_value "$KHIOPS_GCS_DRIVER_VERSION" --khiops-gcs-driver-version KHIOPS_GCS_DRIVER_VERSION
+require_value "$KHIOPS_S3_DRIVER_VERSION" --khiops-s3-driver-version KHIOPS_S3_DRIVER_VERSION
+require_value "$KHIOPS_AZURE_DRIVER_VERSION" --khiops-azure-driver-version KHIOPS_AZURE_DRIVER_VERSION
+
+KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
+
 if ! command -v uv &>/dev/null; then
   echo "Error: uv not found. Install it or make sure its directory is on PATH."
   echo "On Windows, use Git Bash explicitly; a bare 'bash' command may launch WSL instead."
   echo "WSL requires its own Linux installation of uv and the build dependencies."
   exit 1
+fi
+for tool in git envsubst; do
+  command -v "$tool" &>/dev/null || { echo "Error: $tool not found." >&2; exit 1; }
+done
+if [ "$EXECUTE_TUTORIALS" = "true" ]; then
+  for tool in wget unzip; do
+    command -v "$tool" &>/dev/null || { echo "Error: $tool not found." >&2; exit 1; }
+  done
 fi
 
 latest_release_tag() {
@@ -111,21 +192,10 @@ latest_release_tag() {
   printf '%s\n' "$tag"
 }
 
-if [ -z "$KHIOPS_VERSION" ]; then
-  KHIOPS_VERSION=$(latest_release_tag KhiopsML/khiops)
-  KHIOPS_VERSION="${KHIOPS_VERSION#v}"
-  echo "--- Latest Khiops core release: ${KHIOPS_VERSION}"
-fi
-if [ -z "$KHIOPS_PYTHON_VERSION" ]; then
-  KHIOPS_PYTHON_TAG=$(latest_release_tag KhiopsML/khiops-python)
-  KHIOPS_PYTHON_VERSION="${KHIOPS_PYTHON_TAG#v}"
-  KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_TAG}
-  echo "--- Latest Khiops Python release: ${KHIOPS_PYTHON_VERSION}"
-fi
-KHIOPS_PYTHON_REF=${KHIOPS_PYTHON_REF:-$KHIOPS_PYTHON_VERSION}
-if [ -z "$KHIOPS_SAMPLES_VERSION" ]; then
-  KHIOPS_SAMPLES_VERSION=$(latest_release_tag KhiopsML/khiops-samples)
-  echo "--- Latest Khiops samples release: ${KHIOPS_SAMPLES_VERSION}"
+if [ -z "$KHIOPS_VIZ_VERSION" ]; then
+  KHIOPS_VIZ_VERSION=$(latest_release_tag KhiopsML/khiops-visualization-desktop)
+  KHIOPS_VIZ_VERSION="${KHIOPS_VIZ_VERSION#v}"
+  echo "--- Latest Khiops Visualization Desktop release: ${KHIOPS_VIZ_VERSION}"
 fi
 
 BUILD_VENV=".venv-local-build"
