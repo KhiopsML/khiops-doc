@@ -1,8 +1,18 @@
+# Dictionaries
+
 ## Standard Dictionaries
+
+!!! note
+
+    A Khiops dictionary is a text-based schema describing data entities,
+    their variables and types, and how they relate. It tells Khiops how to
+    interpret structured data and can include derivation rules to build new
+    variables. Dictionaries preserve the structure and domain knowledge of
+    the data, help Khiops automatically prepare useful features for analysis,
+    and support consistent deployment of trained models.
 
 Khiops dictionaries allow to describe the structure of the database to analyze and to enable the deployment of the data analysis trained models:
 see [`Start Using Dictionaries`](../../tutorials/kdic_intro.md).
-<!-- probleme : la presentation n'est plus presente a ce lien -->
 
 A **dictionary file** is a text file with extension *.kdic*, containing the definition of one or many dictionaries.
 
@@ -196,7 +206,7 @@ Dictionary grammar:
 
     - internal comments: comments lines that follow the last variable and appear before the closing brace '}',
 
-- for multi-table schemas, an optional 'Root' tag and key fields can be included (see [`Multi-table dictionary`](dictionary-files.md#multi-table-dictionary)).
+- an optional 'Root' tag and key fields can be included, notably for multi-table schemas (see [`Multi-table dictionary`](dictionary-files.md#multi-table-dictionary)).
 
 ```kdic
 ['//' <label> <EOL>]
@@ -244,8 +254,8 @@ In this section, we present star schemas, snowflake schemas, external tables, th
 
 ### Star schema
 
-For each dictionary, one or multiple *key fields* must be specified on the first line of the definition, enclosed in parentheses 
-(e.g. *Dictionary Customer (id\_customer)*). 
+When secondary tables are read from files, each dictionary describing those tables or the main table must specify one or more *key fields* on the first line of its definition, enclosed in parentheses
+(e.g. *Dictionary Customer (id\_customer)*).
 
 - when multiple key fields are used, they should be separated by commas (e.g. *Dictionary Customer (id\_country, id\_customer)*),
 
@@ -264,13 +274,11 @@ The relation between the dictionaries has to be specified by creating new Entity
 
 - e.g. in *Dictionary Customer*, a *Table(Usage) Usages* variable for a 0-n relationship between a customer and its usages (where *Usage* is the dictionary of the sub-entity).
 
-The keys in the dictionaries of the sub-entities must have at least the same number of fields as in the main dictionary,
-but these key fields do not need to have the same names.
+The keys in the dictionaries of sub-entities read from files must have at least the same number of fields as in the main dictionary.
+The corresponding key values must match, but the key fields do not need to have the same names.
 
-There must be one table file per table used in the schema. 
-All tables must be sorted by key, and as for the main table, each record must have a unique key.
-
-<!--- TODO les fichers image30/31/32.emf ont ete convertis en .png : est ce un probleme pour la perte de definition des images ? --->
+There must be one table file per native table used in the schema.
+The files must be sorted by key. Records in a `Root` dictionary must have unique keys; records in other dictionaries may share key values.
 
 ![Customer3tables.png](../../assets/images-khiops-guides/khiops/image30.png)
 
@@ -307,8 +315,8 @@ All tables must be sorted by key, and as for the main table, each record must ha
 
 ### Snowflake schema
 
-The example in the preceding section illustrates the case of a star schema, with the customer in a main table and its address and usages in secondary tables. Secondary tables can themselves be in relation to sub-entities, leading to a snowflake schema. 
-In this case, the number of key fields must increase with the depth of the schema (but not necessarily at the last depth).
+The example in the preceding section illustrates the case of a star schema, with the customer in a main table and its address and usages in secondary tables. Secondary tables can themselves be in relation to sub-entities, leading to a snowflake schema.
+For secondary tables read from files, the number of key fields must increase with the depth of the schema, except that a leaf dictionary need not extend its parent's key.
 
 ![CustomerSF4tables.png](../../assets/images-khiops-guides/khiops/image31.png)
 
@@ -358,7 +366,7 @@ Examples of datasets with multi-table schemas and external tables are given in t
 
 A multi-table schema is a hierarchical schema, with a **main dictionary** and relations to secondary dictionaries using `Entity` variables for 0-1 relationships and `Table` variables for 0-n relationships.
 
-Each entity can be uniquely identified by its **data path**, which is the sequence of relation variable names leading to the entity, separated by slashes (/):
+A **data path** identifies a location in the schema, not an individual instance. It is the sequence of relation variable names leading to that location, separated by slashes (/):
 
 - The main entity has an empty data path.
 
@@ -392,8 +400,8 @@ Khiops allows to analyse multi-table databases, from standard mono-table to comp
 |   | Database format  |
 | -----| ----------|
 | ![](../../assets/images-khiops-guides/khiops/image33.png) | Mono-table : <br>  - standard representation <br> Fields types : <br>  - Numerical, Categorical <br> - Text <br> - Date, Time, Timestamps, TimestampsTZ |
-| ![](../../assets/images-khiops-guides/khiops/image34.png) | Star schema standard representation : <br> - Multi-table extension <br> - Each table must have a key <br> - The main table can be tagged as *Root* <br> Additional fields types in the main table : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
-| ![](../../assets/images-khiops-guides/khiops/image35.png) | Snowflake schema : <br> - Extended star schema <br> - Each table must have a key <br> - The main table can be tagged as *Root* <br> Additional fields types in *any* table of the schema : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
+| ![](../../assets/images-khiops-guides/khiops/image34.png) | Star schema standard representation : <br> - Multi-table extension <br> - Tables read from files must have keys <br> - The main table can be tagged as *Root* <br> Additional fields types in the main table : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
+| ![](../../assets/images-khiops-guides/khiops/image35.png) | Snowflake schema : <br> - Extended star schema <br> - Tables read from files must have keys <br> - The main table can be tagged as *Root* <br> Additional fields types in *any* table of the schema : <br> - Entity: 0-1 relationship <br> - Table : 0-n relationship|
 | ![](../../assets/images-khiops-guides/khiops/image36.png) | External tables : <br> - External tables allow to reuse common tables referenced by all entities <br> - Must be root tables <br> - Must be referenced explicitely, using keys from the referencing entities | 
 
 
@@ -461,7 +469,7 @@ which is in the "upper" scope of the secondary table. In this case, the scope op
 
 ### Derivation Rules to Build New Entities
 
-In a multi-table schema, each memory instance is constructed and populated from a record in a data file.
+In a multi-table schema, instances can be constructed and populated from records in data files.
 
 Rules such as `TableSelection` allow referencing existing entities.
 
@@ -475,9 +483,11 @@ These rules:
 
 - Can include additional specific output parameters, specified after the ':' separator in the list of rule parameters, to define the value of target variables.
 
+Unlike dictionaries used to link tables read from files, target dictionaries used by instance-building rules do not require keys; any specified key fields are treated like other target fields.
+
 For more details, see [`Instance building rules`](../kdic/instance-building-rules-introduction.md).
 
-Note that all built entities in a multi-table schema can be identified by their [`data path`](#data-path), whether they are created from records or through instance building rules.
+A [`data path`](#data-path) identifies a location in the schema, whether its instances come from records or instance building rules.
 
 
 ## Deeper Insights 
@@ -494,8 +504,8 @@ along with relational variables that encode the hierarchical structure of a cust
     - `Address`: a secondary instance
   
     - `Services`: an array of secondary instances associated with the customer
-  
-        - `Usages`: an array of secondary instances, one per service
+
+        - `Usages`: an array of secondary instances associated with each service
 
 In memory, this hierarchical structure closely resembles objects in programming languages,
 which can be composed of sub-objects or arrays of sub-objects. 
@@ -504,18 +514,13 @@ Khiops dictionaries provide a language that allows us to describe and formalize 
 
 ### Reading Instances from Flat Files
 
-In the context of Khiops, **keys** are introduced within each dictionary solely to facilitate reading data from files
-and constructing hierarchical in-memory instances. 
-These keys are organized hierarchically according to the Khiops dictionary schema: the key fields of a parent entity are
-a subset of the key fields of its sub-entities.
+When multi-table data is read from files, **keys** let Khiops group records into hierarchical instances. A child record's key begins with its parent's key values, though the corresponding fields may have different names.
 
-The mapping between in-memory instances and data stored on disk is managed using one tabular file per node in the hierarchical schema, 
-with each file sorted by its key. During data loading and processing, all data files are read simultaneously. 
-For each segment of the files where the key values start with the current main entity's key, an in-memory entity is
-reconstructed, processed, and then discarded from memory to make room for the next instance.
+When the main and secondary tables are read from files, each native data path has a corresponding file, sorted by key. Khiops reads the main and secondary files in key order, grouping each main record with its matching secondary records to build an in-memory hierarchy. It processes one main instance at a time, then releases it from memory. External tables are loaded separately.
 
-This organization ensures scalable analysis, even with very large flat files that far exceed available RAM, 
-by enabling efficient sequential access and hierarchical reconstruction of data.
+This sequential processing enables Khiops to analyze files that are larger than the available memory.
+
+**Advanced:** Instance-building rules can also create instances in memory. Their target dictionaries do not need keys; any specified key fields are treated like ordinary fields. See [`Instance building rules`](instance-building-rules-introduction.md).
 
 
 ### Interest of External Tables
@@ -560,10 +565,7 @@ This section aims to clarify the similarities and differences to ensure a better
 
 ### Data Dictionary
 
-A **[data dictionary:octicons-link-external-16:][data-dictionary]{:target="_blank"}** 
-is an abstract framework that organizes data and their relationships. For example, it might define a customer with properties like name and age, and link the customer to various services with details such as type and amount.
-
-A **data dictionary** is a centralized repository that defines and describes the structure, contents, and format of data within a database or data system. It includes metadata such as variable names, types, labels, and relationships. 
+A **[data dictionary:octicons-link-external-16:][data-dictionary]{:target="_blank"}** is a centralized repository that defines and describes the structure, contents, and format of data within a database or data system. It includes metadata such as variable names, types, labels, and relationships.
 
 **In Khiops**, dictionaries serve a similar purpose: they define the data structure, specify variable types, and include metadata, labels and derivation rules.  
 However, they are specifically designed to facilitate the automation of the data mining process.
@@ -593,17 +595,15 @@ Data models can be of three types:
 
 **In Khiops**, hierarchical schemas are used to describe entities for analysis, similar to folders, enriching traditional flat data tables with relation variables that capture more complex details.  
 Another key goal is scalability, enabling the processing of large datasets that cannot fit entirely into memory.  
-Similarly to data models, Khiops dictionaries can be used at different levels:  
+Similarly to data models, data can be described at different levels:
 
-- **Conceptual level:** To describe data using domain knowledge.  
+- **Conceptual level:** The dictionary describes data using domain knowledge.
 
-- **Logical level:** To specify data sources and their structure, while maintaining the mapping between conceptual and logiucal representations.  
+- **Logical level:** The dictionary describes data sources and their structure, while maintaining the mapping between conceptual and logical representations.
 
-- **Physical level:** To manage actual data files stored locally or in the cloud.
+- **Physical level:** The data paths are mapped to actual data files stored locally or in the cloud.
 
-See [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_schema.md) for more details,
-including numerous examples of mapping between conceptual and logical schemas using Khiops dictionaries,
-as well as cases where data management is necessary to preprocess data according to Khiops requirements.
+For an overview of these data models, see [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_logical_physical_data_models.md). For detailed examples of mapping between conceptual and logical schemas using Khiops dictionaries, as well as data management to meet Khiops requirements, see [`Mapping and Transforming Schemas`](../../tutorials/conceptual_schema_mapping.md).
 
 ### Databases
 
@@ -616,18 +616,18 @@ The choice depends on performance, data structure, scalability, and use cases su
 **In Khiops**, the traditional **single-table data schema** used in data mining is extended to support **hierarchical schemas**.
 This allows **domain knowledge encoding, automated feature engineering, and predictive modeling**, bridging the gap between raw relational data and machine learning workflows.  
 
-With Khiops dictionaries, data analysts can describe data at both the conceptual level, using domain knowledge, and at the logical level, to specify data sources and the mapping between the conceptual and logical schemas (see [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_schema.md)).
+With Khiops dictionaries, data analysts can describe data at both the conceptual level, using domain knowledge, and at the logical level, to specify data sources and the mapping between the conceptual and logical schemas (see [`Mapping and Transforming Schemas`](../../tutorials/conceptual_schema_mapping.md)).
 
-The logical schemas definied using Khiops dictionaries share clear similarities with existing database technologies:
+The logical schemas defined using Khiops dictionaries share clear similarities with existing database technologies:
 
 - **[Hierarchical data base:octicons-link-external-16:][hierarchical-database]{:target="_blank"}:**  
   Khiops logical schemas are hierarchical, but conceptual schemas can be non-hierarchical, supporting complex structures like double-link lists or graphs (see [`List and Graph Rules`](list-and-graph-rules.md)).
 
 - **[Relational data base:octicons-link-external-16:][relational-database]{:target="_blank"}:**  
-  Khiops dictionaries involved in multi-table schemas have keys similar to relational tables, but with notable differences:  
-  
-    - The schema is hierarchical, with keys organized along the hierarchy, increasing in length with depth but sharing prefixes.  
-  
+  Khiops dictionaries for multi-table data read from files have keys similar to relational tables, but with notable differences:
+
+    - The schema is hierarchical: child key values start with their parent's key values, and leaf keys need not extend their parent's key.
+
     - A single dictionary can describe multiple data tables, e.g., separate tables for retail and online services, using the same dictionary.  
   
     - References to external tables resemble foreign keys but can be dynamically computed via derivation rules rather than fixed variables.
@@ -651,8 +651,9 @@ The logical schemas definied using Khiops dictionaries share clear similarities 
 !!! note
 
     Khiops cannot directly connect to relational databases.
-    Instead, data must be prepared as one sorted file per entity within a hierarchical schema after transforming from the [`logical to conceptual schema`](../../tutorials/conceptual_schema.md).  
-    While this data preparation step is necessary, it is much simpler than traditional feature engineering, which often involves converting complex structured data into a single-table format for analysis.
+    Instead, data must be made available as files compatible with the logical schema; native secondary tables are provided as sorted files.
+    Dictionary rules can then map the logical schema to the [`conceptual schema`](../../tutorials/conceptual_schema_mapping.md), sometimes avoiding further data preparation.
+    This approach can be simpler than traditional feature engineering, which often involves converting complex structured data into a single-table format for analysis.
 
 ### Programming Languages
 
@@ -715,9 +716,9 @@ We present key features of Khiops dictionaries as a specialized programming lang
 
 - **Strongly typed**: Variables have explicit types checked at compile time for correctness and optimization.
 
-- **Automatic memory management**: Efficiently handles memory using `strong pointers` for core hierarchical schema and `weak pointers` for references to existing entitie, inspired by modern languages, reducing manual effort.
+- **Automatic memory management**: Efficiently handles memory using `strong pointers` for core hierarchical schema and `weak pointers` for references to existing entities, inspired by modern languages, reducing manual effort.
 
-- **Automatic propagation of missing values**: Derived variables from missing data are automatically marked as missing, ensuring data integrity.
+- **Missing-value handling**: Most derivation rules propagate missing inputs to a missing result, helping preserve data integrity. Comparison and logical rules return Boolean results even when inputs are missing, avoiding three-valued (true, false, missing) logic.
 
 - **Parallel processing**: Leverages available resources (cores, machines, RAM, disk) to maximize processing speed.
 

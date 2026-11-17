@@ -1,3 +1,5 @@
+# Coclustering
+
 ## This is not clustering 
 
 Among unsupervised approaches, **clustering** algorithms are undoubtedly the best known. But don't be fooled, **coclustering** is a very different problem. To clarify the distinction between clustering and coclustering, let's start by distinguishing their respective objectives. 

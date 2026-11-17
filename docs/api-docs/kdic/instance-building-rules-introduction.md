@@ -1,6 +1,8 @@
 #  Instance building rules
 
-In a multi-table schema, each in-memory instance is constructed and populated from a record in a data file.
+An **instance** is an in-memory representation of an entity described by a dictionary, populated with its variable values and related entities or tables. For details, see [`In-Memory Instances`](dictionary-files.md#in-memory-instances).
+
+In a multi-table schema, instances can be constructed and populated from records in data files.
 
 - The instance is filled with variables of the correct type according to its Khiops dictionary, with each variable mapped to the corresponding file column based on its name.
 
@@ -17,8 +19,8 @@ Note that:
 
 - As with any dictionary, target dictionaries may contain unused variables or, conversely, new variables derived from existing ones.
 
-- Dictionary keys, which are mandatory for retrieving records read from data files in a multi-table schema, are **not required** for tables created by instance creation rules.
-    
+- Unlike instances read from data files, which are retrieved using dictionary keys, instances created by instance-building rules **do not require keys**; any specified key fields are treated like other target fields.
+
 - Target dictionaries cannot be `Root`, as this is reserved for external tables.
     
 - Instance creation rules can only be used to define new variables of type Entity or Table, with the target dictionary specified in the variable declaration. These rules cannot be used directly as operands of other rules.

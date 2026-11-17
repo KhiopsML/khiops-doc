@@ -1,6 +1,6 @@
-# Json extraction rules
+# JSON extraction rules
 
-The JSON extraction rules outlined here provide a flexible framework for transforming JSON data into structured entities and tables within a target dictionary. 
+The JSON extraction rules outlined here provide a flexible framework for transforming JSON data into structured entities and tables within a target dictionary.
 These rules enable seamless integration of complex JSON objects and arrays,
 supporting various Khiops variable types such as Numerical, Categorical, Date, Text, Entity or Table.
 By following these guidelines, users can efficiently map JSON data to Khiops dictionaries, ensuring accurate and consistent data ingestion for analysis and processing.
@@ -13,9 +13,9 @@ Entity(TargetDic) BuildEntityFromJson(Text jsonValue)
 
 Creation of an entity from a JSON field according to the structure defined in the target dictionary, provided that the hierarchical structure of the target dictionary, including its sub-entities and sub-tables, matches that of the JSON object field, with its nested objects and arrays.
 
-This derivation rule is similar to `BuildTableFromJson`, but with an input JSON value of type `object` instead of `array`, and an ouput `Entity` rather than `Table`.
+This derivation rule is similar to `BuildTableFromJson`, but with an input JSON value of type `object` instead of `array`, and an output `Entity` rather than `Table`.
 
-JSON (JavaScript Object Notation) is a lightweight data-interchange format: <https://www.json.org/json-en.html>. A JSON field contains information organized hierarchically, with nested objects and repeated values in arrays. It consists of a list of key/value pairs, where keys are strings and values can be:
+JSON (JavaScript Object Notation) is a lightweight data-interchange format: <https://www.json.org/json-en.html>. A JSON object consists of key/value pairs, where keys are strings. Objects and arrays can contain nested values of these types:
 
 - string
 
@@ -33,11 +33,11 @@ JSON (JavaScript Object Notation) is a lightweight data-interchange format: <htt
 
 The `BuildEntityFromJson` rule creates an instance of an entity based on the target dictionary, where each target variable is filled if its name matches a JSON key and the JSON value is compatible with the variable's type.
 
-- JSON null values are ignored; the corresponding target variable remains unchanged, similar to when the JSON key is missing.
+- If a JSON key is missing or its value is `null`, the corresponding target variable retains its default value.
 
-- Invalid JSON values with incompatible types are also ignored.
+- If a JSON value is incompatible with the target variable's type, it is ignored and the variable retains its default value.
 
-- When a JSON array is associated with a target Table, one instance is created for each value in the array, resulting in a table with the same number of instances as the array length. If null or invalid values are present in the JSON array, instances are still created, but only with missing values.
+- When a JSON array is mapped to a target `Table`, an instance is created for each array element, so the resulting table has the same number of instances as the array length. Null elements produce instances with default values; incompatible values leave the corresponding target variables at their defaults.
 
 **Rules for populating target Khiops variables from JSON values:**
 
@@ -45,7 +45,7 @@ The `BuildEntityFromJson` rule creates an instance of an entity based on the tar
 
     - Default: missing
 
-    - Filled if the json JSON values is:
+    - Filled if the JSON value is:
 
         - a number
 
@@ -57,7 +57,7 @@ The `BuildEntityFromJson` rule creates an instance of an entity based on the tar
 
     - Default: empty string ""
 
-    - Filled if the json JSON values is:
+    - Filled if the JSON value is:
 
         - a string
 
@@ -123,9 +123,9 @@ The `BuildEntityFromJson` rule creates an instance of an entity based on the tar
 
 **Additional notes**
 
-- No target instance is created if the JON value is invalid with respect to the JSON format.
+- If the input text is not valid JSON, no target instance is created.
 
-- Each target variable retains its default value if there is no matching or valid JSON value.
+- Each target variable retains its default value if there is no matching JSON key or the value is null or incompatible.
 
 - Only native variables (not derived from derivation rules) can be filled with JSON values.
 
@@ -222,11 +222,8 @@ As usual, any target variable can be used or not, and additional target variable
 
     Note:
 
-    - In this example, where the Hobby dictionary contains a single Categorical variable, the JSON field could be simplified to 
-    ```json
-    "hobbies":["Reading", "Hiking", "Cooking"].
-    ```
-    
+    - In this example, where the Hobby dictionary contains a single Categorical variable, the `hobbies` array could be simplified to `["Reading", "Hiking", "Cooking"]`.
+
     - The `birthday` Date variable exploits the default format: no need for a `DateFormat` meta-data. Conversely, the `purchaseDate` Timestamp variable exploits a specific format, requiring a `TimestampFormat` meta-data.
 
 ### Method for specifying target Khiops dictionaries
@@ -358,13 +355,13 @@ Table(TargetDic) BuildTableFromJson(Text jsonValue)
 
 Creation of a table from a JSON field according to the structure defined in the target dictionary, provided that the hierarchical structure of the target dictionary, including its sub-entities and sub-tables, matches that of the JSON array values, with their nested objects and arrays.
 
-This derivation rule is similar to `BuildEntityFromJson`, with an input JSON value of type `array` instead of `object`, and an ouput `Table` rather than `Entity`.
+This derivation rule is similar to `BuildEntityFromJson`, with an input JSON value of type `array` instead of `object`, and an output `Table` rather than `Entity`.
 
 ### Example with a simple table
 
 !!! example
 
-    Let us consider the following dictionary Customer, with a secondary table products built from a json field
+    Let us consider the following dictionary Customer, with a secondary table products built from a JSON field
 
     ```kdic-api-docs
     Dictionary Customer
@@ -411,7 +408,7 @@ For a JSON array of numbers, it is still possible to fill a Table variable, prov
 
 !!! example
 
-    Let us consider the following dictionary Movie, with a secondary table notes built from a json field
+    Let us consider the following dictionary Movie, with a secondary table notes built from a JSON field
 
     ```kdic-api-docs
     Dictionary Movie
@@ -445,7 +442,7 @@ For a JSON array of numbers, it is still possible to fill a Table variable, prov
 
     - The first part `[3, 1, "4", 5, 3, true, false]` includes numbers, strings containing valid numerical data, and boolean values (true -\>     1, false -\> 0), which are used to set Numerical values.
 
-    - The second part `[{}, [], "NaN", null, null]` contains invalid JSON values, and all related notes will retain missing values.
+    - The second part `[{}, [], "NaN", null, null]` contains values incompatible with the target variable, and all related notes will retain missing values.
 
 ### Handling JSON arrays of arrays of numbers
 
@@ -478,10 +475,10 @@ It is also possible to handle a JSON array of arrays of numbers (or other JSON t
     };
     ```
 
-    Using the BuildTableFromJson rule, the table of notes series can be filled from the values of a json text field containing the value:
+    Using the BuildTableFromJson rule, the table of notes series can be filled from the values of a JSON text field containing the value:
     `[[3, 4], [3, 4, 3, 1, 4, 5, 3], [5, 5, 4, 3]]`
 
-    This will create three instances of NoteSeries, each filled with the corresponding array:
+    This will create three instances of `NotesHistory`, each filled with the corresponding array:
 
     - The first instance is filled with `[3, 4]`
 
@@ -513,11 +510,11 @@ You can use regex to convert these strings into JSON arrays, then apply `BuildTa
       //     JSON array: ["butter", "floor", "sugar", "eggs", "sea salt"]
       // A regex is used to match each ingredient
       // - (\w[ \w]*)
-      //   - a word, optionnaly followed by a series of word with blannk separator
+      //   - a word, optionally followed by other words separated by spaces
       //   - the recognized pattern, designated as $1, is replaced by "$1" (between double-quotes)
       // - [ \.]*
-      //   - the other blank or dot characters are ignored
-      // The result is then surrounded between brackets using concatanation
+      //   - other spaces or periods are ignored
+      // The result is then enclosed in brackets by concatenation
       Text	ingredients_json = TextConcat("[", TextRegexReplaceAll(ingredients_text, 1, "(\w[ \w]*)[ \.]*", """$1"""), "]");
     
       // Transform JSON data into a table of ingredients

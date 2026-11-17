@@ -1,5 +1,7 @@
 
 
+# Optimal Histograms
+
 **An old unresolved problem**
 
 Before embarking on any data science project, conducting a thorough [exploratory data analysis:octicons-link-external-16:][EDA]{:target="_blank"} is essential. This initial step helps data scientists understand the underlying structure of the data, and identify potential issues related to data quality and consistency. Common methods used during *exploratory data analysis* include summary statistics, correlation analysis, scatter plots, box plots, and various data visualization techniques. Among these, *histograms* stand out as a basic and indispensable tool for univariate analysis, providing a clear visual representation of the distribution of each variable, enabling analysts to quickly grasp the shape, spread, and potential irregularities.

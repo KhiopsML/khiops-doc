@@ -1,5 +1,7 @@
 
 
+# Single-Table Concepts
+
 This section introduces the use of dictionaries to easily implement the data management steps of a typical data science project, where the training data consists of a single table. For full documentation, please refer to the dictionaries [reference page][reference_page].
 
 

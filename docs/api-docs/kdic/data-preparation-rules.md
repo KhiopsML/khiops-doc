@@ -1,3 +1,5 @@
+# Data Preparation Rules
+
 ## DataGrid
 
 ```kdic-api-docs

@@ -1,3 +1,5 @@
+# Technical Limits
+
 ## Numerical precision
 
 Numerical precision:
