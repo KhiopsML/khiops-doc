@@ -1,5 +1,14 @@
 ## Standard Dictionaries
 
+!!! note
+
+    A Khiops dictionary is a text-based schema describing data entities,
+    their variables and types, and how they relate. It tells Khiops how to
+    interpret structured data and can include derivation rules to build new
+    variables. Dictionaries preserve the structure and domain knowledge of
+    the data, help Khiops automatically prepare useful features for analysis,
+    and support consistent deployment of trained models.
+
 Khiops dictionaries allow to describe the structure of the database to analyze and to enable the deployment of the data analysis trained models:
 see [`Start Using Dictionaries`](../../tutorials/kdic_intro.md).
 <!-- probleme : la presentation n'est plus presente a ce lien -->
@@ -597,7 +606,7 @@ Similarly to data models, Khiops dictionaries can be used at different levels:
 
 - **Conceptual level:** To describe data using domain knowledge.  
 
-- **Logical level:** To specify data sources and their structure, while maintaining the mapping between conceptual and logiucal representations.  
+- **Logical level:** To specify data sources and their structure, while maintaining the mapping between conceptual and logical representations.  
 
 - **Physical level:** To manage actual data files stored locally or in the cloud.
 
@@ -618,7 +627,7 @@ This allows **domain knowledge encoding, automated feature engineering, and pred
 
 With Khiops dictionaries, data analysts can describe data at both the conceptual level, using domain knowledge, and at the logical level, to specify data sources and the mapping between the conceptual and logical schemas (see [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_schema.md)).
 
-The logical schemas definied using Khiops dictionaries share clear similarities with existing database technologies:
+The logical schemas defined using Khiops dictionaries share clear similarities with existing database technologies:
 
 - **[Hierarchical data base:octicons-link-external-16:][hierarchical-database]{:target="_blank"}:**  
   Khiops logical schemas are hierarchical, but conceptual schemas can be non-hierarchical, supporting complex structures like double-link lists or graphs (see [`List and Graph Rules`](list-and-graph-rules.md)).
@@ -715,7 +724,7 @@ We present key features of Khiops dictionaries as a specialized programming lang
 
 - **Strongly typed**: Variables have explicit types checked at compile time for correctness and optimization.
 
-- **Automatic memory management**: Efficiently handles memory using `strong pointers` for core hierarchical schema and `weak pointers` for references to existing entitie, inspired by modern languages, reducing manual effort.
+- **Automatic memory management**: Efficiently handles memory using `strong pointers` for core hierarchical schema and `weak pointers` for references to existing entities, inspired by modern languages, reducing manual effort.
 
 - **Automatic propagation of missing values**: Derived variables from missing data are automatically marked as missing, ensuring data integrity.
 

@@ -7,15 +7,15 @@ The `BuildList` and `BuildGraph` rules help transform raw data into linked lists
 ```kdic-api-docs
 Table(TargetDic) BuildList(Table(SourceDic) sourceTable 
                            :
-                           Entity(SourceDic) Content, 
-                           Entity(TargetDic) Prev, Entity(TargetDic) Next)
+                           Entity(SourceDic) sourceEntity, 
+                           Entity(TargetDic) previousElement, Entity(TargetDic) nextElement)
 ```
 
 Creation of a target table from a source table, where each target instance is a list element, with a reference to the current source instance and links to the previous and next elements of the list
 
 - The source table must be sorted according to user needs.
 
-- The target dictionary must contain one variable of type Entity(SourceDir) containing the current source instance and two variables of type Entity(TargetDic), designated in the rule as Prev and Next, intended to hold references to the previous and next list elements.
+- The target dictionary must contain an `Entity(SourceDic)` variable named `sourceEntity` for the current source instance and two `Entity(TargetDic)` variables named `previousElement` and `nextElement` for references to the previous and next list elements.
 
 - This allows adding new derived variables in the target dictionary that exploit the current instance values and those of its previous or next ones, or even several previous instances.
 
@@ -38,9 +38,9 @@ This example demonstrates how to build a list of sales ordered by date and compu
       Unused Table(Sale) sorted_sales = TableSort(sales, purchase_date);
 
       // Linked list built from the sorted sales
-      Table(OrderedSale) list_sales = BuildList(sorted_sales : sale, prev_sale, next_sale);
+      Table(OrderedSale) list_sales = BuildList(sorted_sales : sourceEntity, previousElement, nextElement);
     };
-    
+
     Dictionary Sale (customer_id)
     {
       Categorical customer_id;
@@ -52,15 +52,15 @@ This example demonstrates how to build a list of sales ordered by date and compu
     
     Dictionary OrderedSale
     {
-      Entity(Sale) sale;             // Reference to current sale
-      Entity(OrderedSale) prev_sale; // Link to previous sale element
-      Entity(OrderedSale) next_sale; // Link to next sale element
-    
+      Entity(Sale) sourceEntity;                      // Reference to current sale
+      Entity(OrderedSale) previousElement;            // Link to previous sale element
+      Entity(OrderedSale) nextElement;                // Link to next sale element
+
       // Differences computed between two succesive elements of the list
-      Unused Entity(Sale) previous_sale = GetEntity(prev_sale, sale);    // Access to previous sale
-      Numerical diff_type = EQc(GetValueC(sale, sale_type), GetValueC(previous_sale, sale_type));
-      Numerical diff_cost = Diff(GetValue(sale, cost), GetValue(previous_sale, cost));
-      Numerical diff_date = DiffDate(GetValueD(sale, purchase_date), GetValueD(previous_sale, purchase_date));
+      Unused Entity(Sale) previous_sale = GetEntity(previousElement, sourceEntity); // Access to previous sale
+      Numerical diff_type = EQc(GetValueC(sourceEntity, sale_type), GetValueC(previous_sale, sale_type));
+      Numerical diff_cost = Diff(GetValue(sourceEntity, cost), GetValue(previous_sale, cost));
+      Numerical diff_date = DiffDate(GetValueD(sourceEntity, purchase_date), GetValueD(previous_sale, purchase_date));
     };
     ```
 
@@ -78,9 +78,9 @@ This example illustrates how to use a list of measures to compute a smoothed val
       Unused Table(Measure) sorted_measures = TableSort(measures, t);
 
       // Linked list built from from the sorted measures
-      Table(MeasureElement) list_measures = BuildList(sorted_measures:measure, prev, next);
+      Table(MeasureElement) list_measures = BuildList(sorted_measures:sourceEntity, previousElement, nextElement);
     };
-    
+
     Dictionary Measure (id)
     {
       Categorical id;
@@ -90,23 +90,23 @@ This example illustrates how to use a list of measures to compute a smoothed val
     
     Dictionary MeasureElement
     {
-      Entity(Measure) measure;      // Reference to current measure
-      Entity(MeasureElement) prev;  // Link to previous element
-      Entity(MeasureElement) next;  // Link to previous element
+      Entity(Measure) sourceEntity;                      // Reference to current measure
+      Entity(MeasureElement) previousElement;            // Link to previous element
+      Entity(MeasureElement) nextElement;                 // Link to next element
 
       // Access to neighboring list elements
-      Entity(MeasureElement) prev_prev = GetEntity(prev, prev);
-      Entity(MeasureElement) next_next = GetEntity(next, next);
+      Entity(MeasureElement) previousPrevious = GetEntity(previousElement, previousElement);
+      Entity(MeasureElement) nextNext = GetEntity(nextElement, nextElement);
 
       // Window of list measures around the current measure
-      Table(Measure)  window = EntitySet(GetEntity(prev_prev, measure),
-                                         GetEntity(prev, measure),
-                                         measure,
-                                         GetEntity(next, measure),
-                                         GetEntity(next_next, measure));
+      Table(Measure) window = EntitySet(GetEntity(previousPrevious, sourceEntity),
+                                        GetEntity(previousElement, sourceEntity),
+                                        sourceEntity,
+                                        GetEntity(nextElement, sourceEntity),
+                                        GetEntity(nextNext, sourceEntity));
 
       // Current time and value, with a smoothed version of the value        
-      Numerical t = GetValue(measure, t);
+      Numerical t = GetValue(sourceEntity, t);
       Numerical smoothed_x = TableMean(window, x);
     };
     ```
@@ -117,18 +117,18 @@ This example illustrates how to use a list of measures to compute a smoothed val
 Entity(GraphDic) BuildGraph(Table(NodeDataDic) inputNodeTable,
                             Categorical nodeId,
                             Table(EdgeDataDic) inputEdgeTable,
-                            Categorical node1Id, Categorical node2Id
+                            Categorical edgeNode1Id, Categorical edgeNode2Id
                             :
                             Table(NodeDic) graphNodeTable,
                             Entity(NodeDataDic) nodeData,
-                            Table(EdgeDic) nodeAdjacentEdges,
+                            Table(EdgeDic) adjacentEdges,
                             Table(EdgeDic) graphEdgeTable,
                             Entity(EdgeDataDic) edgeData,
                             Entity(NodeDic) edgeNode1,
                             Entity(NodeDic) edgeNode2)
 ```
 
-Creation of an undirected graph from an input table of nodes and an output table of edges, where each input node has an identifier and each input edge has a pair of node identifiers.
+Creation of an undirected graph from an input table of nodes and an input table of edges, where each input node has an identifier and each input edge has a pair of node identifiers.
 
 The target dictionary GraphDic contains:
 
@@ -144,17 +144,17 @@ The target dictionary GraphDic contains:
 
 - Table(`EdgeDataDic`) inputEdgeTable : table of input edges
 
-    - Categorical node1Id, node2Id : identifiers of node pairs associated with each edge in inputEdgeTable
+    - Categorical `edgeNode1Id`, `edgeNode2Id` : identifiers of the two nodes connected by each edge in `inputEdgeTable`
 
 **Outputs:**
 
-- Table(`NodeDic`) graphNodeTable : table of graph nodes within the targe dictionary `GraphDic`
+- Table(`NodeDic`) graphNodeTable : table of graph nodes within the target dictionary `GraphDic`
 
     - Entity(`NodeDataDic`) nodeData : stores source node data within each node
 
-    - Table`EdgeDic`) nodeAdjacentEdges : list of edges adjacent to each node
+    - Table(`EdgeDic`) adjacentEdges : list of edges adjacent to each node
 
-- Table(`EdgeDic`) graphEdgeTable : table of graph edges within the targe dictionary `GraphDic`
+- Table(`EdgeDic`) graphEdgeTable : table of graph edges within the target dictionary `GraphDic`
 
     - Entity(`EdgeDataDic`) edgeData : stores source edge data within each edge
 

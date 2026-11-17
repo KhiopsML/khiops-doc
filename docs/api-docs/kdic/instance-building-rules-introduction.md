@@ -1,5 +1,7 @@
 #  Instance building rules
 
+An **instance** is an in-memory representation of an entity described by a dictionary, populated with its variable values and related entities or tables. For details, see [`In-Memory Instances`](dictionary-files.md#in-memory-instances).
+
 In a multi-table schema, each in-memory instance is constructed and populated from a record in a data file.
 
 - The instance is filled with variables of the correct type according to its Khiops dictionary, with each variable mapped to the corresponding file column based on its name.

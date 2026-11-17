@@ -3,23 +3,23 @@
 ## BuildDiffTable
 
 ```kdic-api-docs
-Table(TargetDic) BuildDiffTable(Table(SourceDic),
-                                Type1 Var1, Type1 Var2, ... 
+Table(targetDic) BuildDiffTable(Table(sourceDic) sourceTable,
+                                Type1 sourceValue1, Type1 sourceValue2, ... 
                                 : 
-                                TargetType1 DiffVar1, TargetType2 DiffVar2, ...)
+                                TargetType1 diffVar1, TargetType2 diffVar2, ...)
 ```
 
 Creation of a target table from a source table, by calculating the differences of values between two consecutive records for a subset of chosen source variables:
 
 - The source table must be sorted according to user needs.
 
-- The source variables Var1, Var2, etc., are specified by the user as those for which the difference is to be calculated.
+- `sourceValue1`, `sourceValue2`, etc. are variables or expressions evaluated in the source table's dictionary; differences are calculated for them.
 
-- The differences are stored in the target table in Numerical target variables named DiffVar1, DiffVar2, etc.
+- The differences are stored in the target table in Numerical target variables named `diffVar1`, `diffVar2`, etc.
 
-- The calculation of differences depends on the variable type:
+- The difference calculation depends on the type of each source value:
 
-    - Numerical, Time, Date, Timestamp, TimestampTZ: difference of values, stored as Numerical in the target variables
+    - Numerical, Time, Date, Timestamp, TimestampTZ: the difference is stored as a Numerical value in the target variable
 
     - Categorical: boolean value, with 1 indicating a change in the categorical value
 

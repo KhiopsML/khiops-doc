@@ -5,7 +5,7 @@
 ```kdic-api-docs
 Entity (TargetDic) BuildEntity(Type1 sourceValue1, Type2 sourceValue2... 
                                :
-                               Type1 targetVar1, Type2 targetVar...)
+                               Type1 targetVar1, Type2 targetVar2...)
 ```
 
 Creation of an entity by explicitly specifying the value of the target variables.
@@ -107,8 +107,12 @@ Creation of a composite target table from multiple source tables.
 
 - This approach allows combining multiple alternative representations (e.g., of a time series) into a single, cohesive table.
 
-!!! example
+### Combining sales data with derived time intervals
 
+In the following example, sales are sorted by purchase date and a separate table is built with the time between purchases.
+Using `BuildCompositeTable`, both tables are combined into a single view for analyzing sales and purchase intervals.
+
+!!! example
 
     ```kdic
     Root Dictionary Customer (customer_id)
