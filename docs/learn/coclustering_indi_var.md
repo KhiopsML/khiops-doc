@@ -134,43 +134,13 @@ Think of a **jigsaw puzzle**: the original variables are like large, preassemble
     </picture>
   </a>
 </figure>
+### New Parameters for Learning the Vocabulary
 
-## Paramètres du modèle
+**The main addition to the model is that it learns how to divide each variable into meaningful parts.** These parts form the descriptive “vocabulary” grouped by coclustering.
 
-Plutôt que de redéfinir le modèle depuis le début, nous allons partir du modèle de coclustering déjà présenté et nous concentrer uniquement sur ce que l’approche instances × variables lui ajoute. La section [*Model parameters* de la page Coclustering][coclustering-parametres] décrit un modèle sur deux variables catégorielles par quatre familles de paramètres : (i) le nombre de groupes, (ii) leur composition, (iii) les effectifs dans les coclusters et (iv) les effectifs des modalités. Le modèle instances × variables conserve cette logique, mais insère un niveau supplémentaire : **avant de regrouper les parties de variables, il faut les définir elles-mêmes !**
+Consider two variables describing customers: **age** and **contact channel**. In the example below, each is divided into two parts: intervals for age and sets of categorical values for the channel.
 
-### Recodage des données
-
-**Avant toute chose, les données sont recodées dans une représentation adaptée au coclustering instances × variables.** Une instance, décrite à l’origine par plusieurs variables numériques ou catégorielles, est représentée ici par une **collection d’observations** : chaque valeur $v$ observée pour une variable $X_k$ devient un triplet $(u,k,v)$, où $u$ identifie l’instance et $k$ la variable. Ainsi, une même instance génère généralement plusieurs observations. On note $M$ le nombre d’instances, $P$ le nombre de variables et $N$ le nombre total d’observations.
-
-<figure id="coclustering-inst-var-data-recoding" style="width:75%;">
-  <picture>
-    <source
-      srcset="/assets/images/coclustering_inst_var_data_recoding.webp"
-      type="image/webp"
-    >
-    <img
-      src="/assets/images/coclustering_inst_var_data_recoding.png"
-      alt=""
-      style="display:block; width:100%; height:auto;"
-      loading="lazy"
-    >
-  </picture>
-</figure>
-
-Dans un tableau complet avec une seule valeur par variable, chaque instance génère $P$ observations et $N=M\times P$. Cette représentation permet également de gérer naturellement les valeurs manquantes, pour lesquelles aucune observation n’est créée.
-
-
-Maintenant que les données sont recodées, il reste à construire le vocabulaire qui permettra de les analyser : **les parties de variables.**
-
-### De nouveaux paramètres pour apprendre le vocabulaire
-
-**La principale nouveauté du modèle consiste à apprendre comment découper chaque variable en parties pertinentes.** Ces parties constituent le « vocabulaire » descriptif regroupé par le coclustering.
-
-Prenons deux variables décrivant des clients : **l’âge** et **le canal de contact**. Dans l’exemple ci-dessous, chacune est divisée en deux parties : des intervalles pour l’âge, des ensembles de modalités pour le canal.
-
-
-<figure id="coclustering-inst-var-data-recoding" style="width:95%;">
+<figure id="coclustering-variable-partitions" style="width:95%; margin:1.5rem auto;">
   <picture>
     <source
       srcset="/assets/images/coclustering_inst_var_variable_partitions_v1.webp"
@@ -185,35 +155,35 @@ Prenons deux variables décrivant des clients : **l’âge** et **le canal de co
   </picture>
 </figure>
 
-Pour chaque variable $X_k$, les notations désignent les objets visibles dans la figure :
+For each variable $X_k$, the notation refers to the objects shown in the figure:
 
-- **$J_k$ est le nombre de parties** : ici, deux pour chaque variable.
-- **$V_{k,t}$ désigne une partie** : $k$ identifie la variable et $t$ la partie.
-- **$\mathcal P_k$ désigne la partition complète**, c’est-à-dire l’ensemble de ces parties :
+- **$J_k$ is the number of parts**: here, two for each variable.
+- **$V_{k,t}$ denotes a part**: $k$ identifies the variable and $t$ the part.
+- **$\mathcal P_k$ denotes the complete partition**, that is, the set of these parts:
 
 $$
 \mathcal P_k = \{V_{k,1},\ldots,V_{k,J_k}\}.
 $$
 
-Les parties ne se recouvrent pas et couvrent l’ensemble du domaine de la variable.
+The parts do not overlap and together cover the variable’s entire domain.
 
-**Pour une variable numérique, les intervalles sont déterminés par l’ordre des rangs et les effectifs des parties.** Dans la figure, trois observations dans la première partie fixent la coupure après le troisième rang ; les cinq observations suivantes constituent la seconde partie.
+**For a numerical variable, the intervals are determined by the rank order and the observation counts in each part.** In the figure, three observations in the first part place the boundary after the third rank; the next five observations form the second part.
 
-Ces parties forment les unités que le coclustering regroupe sur son second axe.
+These parts form the units that coclustering groups along its second axis.
 
 
-### Une hiérarchie de paramètres { #hierarchie-parametres }
+### A Hierarchy of Parameters { #hierarchie-parametres }
 
-Comme dans le [coclustering présenté précédemment][coclustering-parametres], la description du modèle suit une hiérarchie de choix. Celle-ci fournit la trame du *prior* présenté dans la section suivante et prépare son interprétation en termes de [longueur de description][modl-information].
+As in the [coclustering model introduced earlier][coclustering-parametres], the model is described through a hierarchy of choices. This hierarchy forms the basis of the *prior* presented in the next section and of its interpretation in terms of [description length][modl-information].
 
-1. **Définir la taille du vocabulaire :** choisir le nombre de parties $J_k$ de chaque variable.
-2. **Préciser les parties :** choisir les partitions $\mathcal P_k$ des variables catégorielles. Pour les variables numériques, le contenu des intervalles se déduit des effectifs introduits au point 4.
-3. **Former les groupes :** choisir $K^u$ groupes d’instances et $K^p$ groupes de parties. Leur composition est décrite par les partitions $\mathcal C^u$ et $\mathcal C^p$, qui définissent respectivement les **lignes et les colonnes de la matrice de coclustering**.
-4. **Décrire les effectifs d’observations :** préciser, dans la matrice $\Phi$, le nombre d’observations de chaque cocluster, puis détailler les effectifs par instance, par partie et par modalité catégorielle.
+1. **Define the vocabulary size:** choose the number of parts $J_k$ for each variable.
+2. **Specify the parts:** choose the partitions $\mathcal P_k$ of the categorical variables. For numerical variables, the contents of the intervals are determined by the counts introduced in step 4.
+3. **Form the groups:** choose $K^u$ instance groups and $K^p$ groups of parts. Their composition is described by the partitions $\mathcal C^u$ and $\mathcal C^p$, which define the **rows and columns of the coclustering matrix**, respectively.
+4. **Describe the observation counts:** specify, in the matrix $\Phi$, the number of observations in each cocluster, then detail the counts by instance, by part, and by categorical value.
 
-La figure reprend les quatre parties de l’exemple précédent. Elles forment ici deux groupes de parties, **chacun réunissant une partie numérique et une partie catégorielle**, croisés avec deux groupes d’instances.
+The figure reuses the four parts from the previous example. Here, they form two groups of parts, **each combining a numerical part and a categorical part**, crossed with two instance groups.
 
-<figure id="coclustering-inst-var-data-recoding" style="width:95%;">
+<figure id="coclustering-model-parameters" style="width:95%; margin:1.5rem auto;">
   <picture>
     <source
       srcset="/assets/images/coclustering_inst_var_model_parameters_v1.webp"
@@ -229,17 +199,17 @@ La figure reprend les quatre parties de l’exemple précédent. Elles forment i
 </figure>
 
 
-Les effectifs détaillent les totaux de la matrice à plusieurs niveaux :
+The counts break down the matrix totals at several levels:
 
-- **$\delta^u$ détaille le total de chaque ligne entre ses instances** : ici, chaque client contribue deux observations.
-- **$\delta^p$ détaille le total de chaque colonne entre ses parties** : dans le zoom, les huit observations de la colonne A se répartissent en trois pour la partie numérique et cinq pour la partie catégorielle.
-- **$\lambda_k$ précise les effectifs des modalités de chaque variable catégorielle** : au sein de la partie contenant *Web* et *App*, les cinq observations se répartissent en trois occurrences de *Web* et deux d’*App*.
+- **$\delta^u$ breaks down each row total across its instances**: here, each customer contributes two observations.
+- **$\delta^p$ breaks down each column total across its parts**: in the close-up, the eight observations in column A are split into three for the numerical part and five for the categorical part.
+- **$\lambda_k$ gives the value counts for each categorical variable**: within the part containing *Web* and *App*, the five observations comprise three occurrences of *Web* and two of *App*.
 
-Cet ordre décrit la construction probabiliste d’un modèle ; **le découpage des variables, le regroupement de leurs parties et le regroupement des instances sont optimisés conjointement.**
+This order describes the probabilistic construction of a model; **variable partitioning, the grouping of variable parts, and the grouping of instances are optimized jointly.**
 
 ## Critère d’optimisation
 
-**Le principe de sélection MODL reste le même.** Nous recherchons le modèle $h$ le plus probable sachant les données $d$, selon le principe de [sélection bayésienne][modl-bayes]. Cela revient à minimiser la somme de deux [longueurs de description][modl-information] : celle du modèle et celle des données sachant le modèle.
+**Le principe MODL reste le même : sélectionner le modèle $h$ le plus probable sachant les données $d$.** Selon le principe de [sélection bayésienne][modl-bayes], cela revient à minimiser deux [longueurs de description][modl-information] : celle du modèle et celle des données sachant le modèle.
 
 $$
 C(h)
@@ -249,90 +219,132 @@ C(h)
 \underbrace{-\log P(d\mid h)}_{L(d\mid h)\;:\;\text{description des données sachant le modèle}}.
 $$
 
-**L’apprentissage du vocabulaire ajoute des termes à ces deux composantes.** Dans le *prior*, il faut décrire les paramètres supplémentaires liés aux parties de variables. Dans la *vraisemblance*, il faut préciser les valeurs catégorielles ou les rangs numériques associés aux observations à l’intérieur de ces parties. Nous allons examiner ces ajouts en nous appuyant sur les [termes du coclustering déjà présentés][coclustering-critere].
+L’apprentissage du vocabulaire ajoute des choix à décrire dans le modèle et des informations à coder pour retrouver les valeurs ou les rangs des observations.
+
 
 ### Le prior
 
-**Le prior suit la [hiérarchie de paramètres introduite précédemment](#hierarchie-parametres).** À chaque étape, les possibilités compatibles avec les choix précédents sont considérées comme équiprobables. Choisir parmi $q$ possibilités correspond ainsi à une probabilité $1/q$, soit un coût de description de $\log q$. Nous retrouvons le même principe combinatoire que pour le coclustering précédent, appliqué ici à un modèle qui apprend également son vocabulaire.
+**Le prior suit la [hiérarchie des paramètres](#hierarchie-parametres).** À chaque étape, les choix compatibles avec les précédents sont équiprobables. Choisir parmi $q$ possibilités coûte donc $\log q$.
 
-La longueur de description du modèle se décompose alors suivant les quatre niveaux :
+Les [mécanismes du coclustering][coclustering-critere] se retrouvent sur les axes instances et parties de variables. Trois familles de choix supplémentaires interviennent :
 
-$$
--\log P(h)
-=
-\underbrace{L_A+L_B}_{\text{nouveaux choix}}
-+
-\underbrace{L_C}_{\text{coclustering}}
-+
-\underbrace{L_{D_1}+L_{D_2}+L_{D_3}}_{\text{effectifs, avec }L_{D_3}\text{ nouveau}}.
-$$
+- **Le nombre de parties $J_k$.** Il est choisi parmi $1,\ldots,|V_k|$ pour une variable catégorielle de domaine $V_k$, ou parmi $1,\ldots,N$ pour une variable numérique, où $N$ est le nombre total d’observations. Ces choix sont équiprobables : le coût, respectivement $\log|V_k|$ ou $\log N$, est identique pour tous les nombres de parties possible. 
 
-#### Choisir la taille du vocabulaire
+- **La composition des parties catégorielles.** Choisir la partition $\mathcal P_k$ coûte $\log B(|V_k|,J_k)$. La fonction $B$ dénombre les partitions possibles selon la [convention du coclustering précédent][coclustering-critere], qui autorise des classes vides.
 
-Pour chaque variable $X_k$, le nombre de parties $J_k$ est choisi uniformément : parmi $1,\ldots,|V_k|$ pour une variable catégorielle, et parmi $1,\ldots,N$ pour une variable numérique. Le coût associé est donc respectivement $\log|V_k|$ ou $\log N$.
+- **Les effectifs des modalités au sein des parties.** Pour une partie catégorielle contenant $n$ observations et $r$ modalités, les composantes correspondantes de $\lambda_k$ décrivent une répartition de ces $n$ observations entre les $r$ modalités. Son coût est :
 
-**Ce premier choix fixe la taille du vocabulaire, pas encore le contenu de ses parties.** À données fixées, son coût ne dépend pas de la valeur retenue pour $J_k$ : c’est l’ensemble du critère qui permettra de départager les granularités.
+    $$
+    \log\binom{n+r-1}{r-1}.
+    $$
 
-#### Choisir la composition des parties catégorielles
+Dans la partie *Web/App* de notre exemple, les cinq observations admettent **six répartitions d’effectifs possibles**, de $(0,5)$ à $(5,0)$. Décrire les effectifs observés — trois *Web* et deux *App* — coûte donc $\log 6$.
 
-Une fois $J_k$ fixé, il faut préciser **quelles modalités sont réunies dans chaque partie**. La partition $\mathcal P_k$ est choisie uniformément parmi les partitions possibles du domaine $V_k$, pour un coût :
+Pour les variables numériques, **aucun choix indépendant de bornes n’est ajouté** : les intervalles sont déterminés par les effectifs $\delta^p$ et l’ordre des rangs.
 
-$$
-\log B(|V_k|,J_k).
-$$
 
-La fonction $B(a,b)$ compte les partitions de $a$ éléments en au plus $b$ parties non vides, conformément à la convention qui autorise des classes vides, également utilisée dans le [coclustering précédent][coclustering-critere].
+### La vraisemblance
 
-Pour les variables numériques, **aucun choix indépendant de bornes n’est ajouté** : les intervalles de rangs seront déterminés par les effectifs des parties et leur ordre. Leur description intervient donc avec les effectifs, au niveau D.
+Les termes du [coclustering précédent][coclustering-critere] décrivent l’affectation des observations aux coclusters, aux instances et aux parties. **Il reste à préciser la valeur de chaque observation à l’intérieur de sa partie.**
 
-#### Retrouver les choix du coclustering
-
-Nous retrouvons ensuite les mécanismes déjà présentés : choisir le nombre et la composition des groupes, puis les effectifs d’observations associés à cette structure. Les deux axes sont désormais les **instances** et les **parties de variables**.
-
-La matrice $\Phi$ décrit les effectifs des coclusters. Les vecteurs $\delta^u$ et $\delta^p$ détaillent les totaux des lignes entre leurs instances et ceux des colonnes entre leurs parties. À chaque étape, le prior est uniforme parmi les configurations compatibles avec les choix précédents.
-
-#### Décrire les effectifs à l’intérieur des parties catégorielles
-
-**Regrouper des modalités ne signifie pas oublier leurs fréquences respectives.** Pour chaque partie catégorielle, il reste à préciser combien de ses observations correspondent à chacune de ses modalités ; ces effectifs sont les composantes correspondantes du vecteur $\lambda_k$.
-
-Si une partie contient $n$ observations et $r$ modalités, il existe $\binom{n+r-1}{r-1}$ vecteurs d’effectifs possibles dont la somme vaut $n$. Leur choix uniforme donne le coût :
-
-$$
-\log\binom{n+r-1}{r-1},
-\qquad n=\delta^p_{k,t},\quad r=|V_{k,t}|.
-$$
-
-Ce coût est additionné sur toutes les parties catégorielles. Par exemple, une partie $\{A,C\}$ contenant 100 observations admet 101 répartitions d’effectifs possibles : de 0 observation de $A$ et 100 de $C$, jusqu’à 100 de $A$ et 0 de $C$. Le prior décrit laquelle est retenue — par exemple, 70 et 30.
-
-**Les nouveaux termes prolongent donc le même raisonnement : dénombrer les choix nécessaires pour décrire le modèle.** À ce stade, nous avons décrit les partitions et les effectifs. La vraisemblance précise ensuite comment les observations elles-mêmes sont affectées conformément à ces choix.
-
-### La vraisemblance 
-
-**Une fois le modèle défini, il reste à décrire les données en respectant ses partitions et ses effectifs.** Nous retrouvons d’abord les mécanismes du [coclustering précédent][coclustering-critere] : affecter les observations aux coclusters, puis aux instances et aux parties, conformément à $\Phi$, $\delta^u$ et $\delta^p$. La nouveauté intervient ensuite : **connaître la partie associée à une observation ne suffit pas à connaître sa valeur.** Il reste à préciser sa modalité, pour une variable catégorielle, ou son rang, pour une variable numérique.
-
-#### Pour une partie catégorielle 
-
-Le vecteur $\lambda_k$ a déjà fixé le nombre d’occurrences de chaque modalité. **La vraisemblance porte maintenant sur leur affectation aux observations**, en respectant ces effectifs. Pour une partie $V_{k,t}$ contenant $n=\delta^p_{k,t}$ observations, dont $n_v$ occurrences de chaque modalité $v$, le coût est :
+**Pour une partie catégorielle**, les effectifs des modalités sont déjà fixés par $\lambda_k$. Il faut maintenant préciser **quelles observations portent chaque modalité**. Pour une partie $V_{k,t}$ contenant $n$ observations, dont $n_v$ occurrences de chaque modalité $v$, le coût est :
 
 $$
 \log\frac{n!}{\displaystyle\prod_{v\in V_{k,t}}n_v!}.
 $$
 
-Il s’agit du logarithme du nombre d’affectations possibles respectant les effectifs $n_v$, donnés par les composantes correspondantes de $\lambda_k$.
+Reprenons nos cinq observations : nous savons qu’il y a trois *Web* et deux *App*. Il reste à choisir lesquelles portent *Web*. Il existe $\binom{5}{3}=10$ affectations possibles, pour un coût de $\log 10$.
 
-Reprenons la partie $\{A,C\}$ contenant 100 observations, dont 70 de $A$ et 30 de $C$. Le prior a décrit les effectifs **70 et 30** ; il reste à préciser **quelles sont les 70 observations portant $A$**, les autres portant $C$. Le coût correspondant est $\log\binom{100}{70}$.
+**Le prior décrit donc les effectifs ; la vraisemblance décrit les affectations compatibles avec ces effectifs.**
 
-#### Pour une partie numérique 
-
-Les effectifs des parties et leur ordre déterminent déjà les intervalles de rangs. À l’intérieur d’une partie contenant $n=\delta^p_{k,t}$ observations, il reste à associer les $n$ rangs distincts aux $n$ observations. Il existe $n!$ affectations possibles, d’où le coût :
+**Pour une partie numérique**, l’intervalle de rangs est déjà déterminé. Associer ses $n$ rangs distincts aux $n$ observations donne $n!$ affectations possibles, pour un coût :
 
 $$
 \log(n!).
 $$
 
-Contrairement au cas catégoriel, aucun vecteur d’effectifs par valeur n’est nécessaire : **chaque rang apparaît exactement une fois**.
 
-Ces coûts s’additionnent sur toutes les parties, en complément des termes du coclustering déjà connus. **Le critère ne compare donc pas seulement des coclusterings construits sur des vocabulaires différents : il prend aussi en compte la description de ces vocabulaires et celle des valeurs ou des rangs derrière leurs occurrences.** Le vocabulaire et les groupes peuvent ainsi être évalués conjointement, selon un même critère.
+### Le critère complet : jouons au jeu des différences.
+
+En réunissant tous les termes, le critère s’écrit $C(h)=L(h)+L(d\mid h)$. Les ajouts propres à l’apprentissage du vocabulaire sont indiqués en rouge.
+
+Pour alléger l’écriture, on note $M$ le nombre d’instances, $J=\sum_k J_k$ le nombre total de parties, et $\mathrm{Cat}$ et $\mathrm{Num}$ les ensembles d’indices des variables catégorielles et numériques.
+
+#### Description du modèle — le prior :
+
+$$
+\begin{aligned}
+L(h) ={}&
+{\color{red}
+\sum_{k\in\mathrm{Cat}}\log|V_k|
++
+\sum_{k\in\mathrm{Num}}\log N
+}
+\\[0.5em]
+&+
+{\color{red}
+\sum_{k\in\mathrm{Cat}}\log B(|V_k|,J_k)
+}
+\\[0.5em]
+&+ \log M + \log J
+\\[0.5em]
+&+ \log B(M,K^u) + \log B(J,K^p)
+\\[0.5em]
+&+ \log\binom{N+K^uK^p-1}{K^uK^p-1}
+\\[0.5em]
+&+ \sum_{i=1}^{K^u}
+\log\binom{\phi_{i\cdot}+|\mathcal C_i^u|-1}
+{|\mathcal C_i^u|-1}
+\\[0.5em]
+&+ \sum_{j=1}^{K^p}
+\log\binom{\phi_{\cdot j}+|\mathcal C_j^p|-1}
+{|\mathcal C_j^p|-1}
+\\[0.5em]
+&+
+{\color{red}
+\sum_{k\in\mathrm{Cat}}\sum_{t=1}^{J_k}
+\log\binom{\delta^p_{k,t}+|V_{k,t}|-1}
+{|V_{k,t}|-1}
+}.
+\end{aligned}
+$$
+
+#### Description des données sachant le modèle — la vraisemblance : 
+
+$$
+\begin{aligned}
+L(d\mid h) ={}&
+\log(N!)
+-
+\sum_{i=1}^{K^u}\sum_{j=1}^{K^p}\log(\phi_{ij}!)
+\\[0.5em]
+&+ \sum_{i=1}^{K^u}\log(\phi_{i\cdot}!)
+-
+\sum_{u=1}^{M}\log(\delta_u^u!)
+\\[0.5em]
+&+ \sum_{j=1}^{K^p}\log(\phi_{\cdot j}!)
+-
+\sum_k\sum_{t=1}^{J_k}\log(\delta^p_{k,t}!)
+\\[0.5em]
+&+
+{\color{red}
+\sum_{k\in\mathrm{Cat}}\sum_{t=1}^{J_k}
+\log\frac{\delta^p_{k,t}!}
+{\displaystyle\prod_{v\in V_{k,t}}\lambda_{k,v}!}
+}
+\\[0.5em]
+&+
+{\color{red}
+\sum_{k\in\mathrm{Num}}\sum_{t=1}^{J_k}
+\log(\delta^p_{k,t}!)
+}.
+\end{aligned}
+$$
+
+Ici, $\phi_{ij}$ est l’effectif du cocluster $(i,j)$, et $\phi_{i\cdot}$ et $\phi_{\cdot j}$ sont les totaux de sa ligne et de sa colonne. Les cardinalités $|\mathcal C_i^u|$ et $|\mathcal C_j^p|$ comptent respectivement les instances et les parties de chaque groupe. Enfin, $\lambda_{k,v}$ désigne la composante de $\lambda_k$ associée à la modalité $v$.
+
+**La formule a de quoi impressionner… mais le jeu des différences tient en cinq familles de termes rouges !** Ce sont précisément les ajouts que nous venons d’expliquer. Les autres termes reprennent les mécanismes du [critère de coclustering déjà présenté][coclustering-critere], appliqués aux instances et aux parties de variables.
+
 
 ## Algorithme d’optimisation 
 
