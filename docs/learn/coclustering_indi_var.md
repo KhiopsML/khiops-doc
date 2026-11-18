@@ -1,5 +1,4 @@
-
-# Coclustering instances × variables
+# Instances × Variables Coclustering
 
 
 
@@ -18,19 +17,19 @@
   </picture>
 </figure>
 
-Pour saisir l’idée, imaginons un enfant qui découvre le monde : il apprend à reconnaître des objets et des situations, tout en apprenant les mots qui permettent de les décrire. **La découverte et l’apprentissage du vocabulaire progressent ensemble.**
+To get the idea, picture a child discovering the world: as they learn to recognize objects and situations, they also learn the words to describe them. **Discovery and vocabulary learning go hand in hand.**
 
-Le coclustering instances × variables repose sur une intuition similaire : **découvrir des profils dans les données tout en apprenant le vocabulaire qui permet de les caractériser.** Il ne s’agit donc pas seulement de regrouper ce qui se ressemble, mais aussi d’apprendre comment décrire ces ressemblances et ces différences.
+Instances × variables coclustering follows a similar intuition: **discover profiles in the data while learning the vocabulary needed to characterize them.** The goal is not just to group similar instances, but also to learn how to describe their similarities and differences.
 
-## Décrire et Explorer à la fois
+## Describing and Exploring Together
 
-Lors de l’étape d’analyse exploratoire, on cherche à comprendre la structure d’une population sans savoir à l’avance ce que l’on va y trouver. On dispose d’**instances**, c’est-à-dire des individus statistiques d'un jeu de données  — *des clients, des documents, des objets, des événements, etc.* — décrits par un ensemble de variables numériques ou catégorielles. Le clustering permet alors de faire émerger des groupes d’instances qui se ressemblent, tout en distinguant des profils suffisamment différents les uns des autres pour révéler et interpréter la structure présente dans les données.
+Exploratory analysis aims to understand the structure of a population without knowing in advance what we will find. The data consist of **instances**, the statistical units in a dataset — *customers, documents, objects, events, and so on* — described by numerical or categorical variables. Clustering brings similar instances together, while identifying profiles that are distinct enough to reveal and help interpret the structure of the data.
 
-!!! info "L'originalité de l'approche"
-    Le coclustering instances × variables **explore les données en apprenant également le langage pour les décrire**. En effet, les **groupes d’instances** et les **parties de variables** qui permettent de les caractériser sont appris **conjoitement**. Pour une variable catégorielle, une partie est un groupe de modalités ; pour une variable numérique, une partie est un intervalle de valeurs. Ces parties peuvent être regroupées entre elles, y compris lorsqu’elles proviennent de variables de types différents.
+!!! info "What Makes This Approach Different"
+    Instances × variables coclustering **explores the data while learning the language used to describe them**. The **instance groups** and the **variable parts** that characterize them are learned **jointly**. For a categorical variable, a part is a group of categorical values; for a numerical variable, it is an interval of values. These parts can be grouped together, even when they come from variables of different types.
 
 
-Les variables ne sont donc pas condamnées à appartenir *« en bloc »* à un seul groupe : elles sont découpées en parties, dont certaines peuvent être très structurantes et d’autres beaucoup moins. **Cette expressivité est une des forces de l’approche.** 
+Variables therefore need not belong *“as a whole”* to a single group: they are split into parts, some of which reveal strong structure while others are less informative. **This expressive power is one of the approach’s strengths.**
 
 <figure id="coclustering-intro" style="width:90%; margin:1.5rem auto;">
   <picture>
@@ -47,10 +46,9 @@ Les variables ne sont donc pas condamnées à appartenir *« en bloc »* à un s
   </picture>
 </figure>
 
-Une image simple est celle d’un **puzzle** : les variables d’origine correspondent à de grandes pièces déjà assemblées, mais ce n’est pas forcément à ce niveau que la structure la plus intéressante apparaît. L’approche apprend conjointemenet à **découper ces variables en pièces plus fines** et a **réassembler ces pièces** pour faire émerger les profils d’instances. Le but n’est donc pas seulement de regrouper des individus, mais aussi d’identifier les **morceaux d’information** les plus utiles pour décrire ce qui les rapproche et ce qui les distingue.   
+Think of a **jigsaw puzzle**: the original variables are like large, preassembled sections, but the most interesting structure may emerge at a finer scale. The approach jointly learns to **split these variables into smaller pieces** and **reassemble those pieces** to reveal instance profiles. The aim is not just to group instances, but also to identify the **pieces of information** that best describe what they have in common and what sets them apart.
 
-**L’illustration suivante présente plus concrètement le fonctionnement du coclustering instances × variables**, à partir d’un jeu de données volontairement simple décrivant les clients d’une entreprise. Elle montre comment les variables sont découpées en parties, comment ces parties peuvent être regroupées, puis comment les profils d’instances se caractérisent par des distributions différentes sur ces groupes de parties.
-  
+**The following illustration shows how instances × variables coclustering works in practice**, using a deliberately simple dataset describing a company’s customers. It shows how variables are split into parts, how these parts can be grouped, and how instance profiles are characterized by different distributions over these groups of parts.
 <figure id="coclustering-overview" style="width:100%; margin:1.5rem 0;">
   <a
     href="/assets/images/coclustering_indi_var_overview.png"
@@ -73,7 +71,7 @@ Une image simple est celle d’un **puzzle** : les variables d’origine corresp
   </a>
 </figure>
 
-**Le modèle obtenu se lit comme une carte des profils de la population** *(voir en bas à droite de la figure ci-dessus)*. Chaque ligne de la matrice représente un groupe d’instances, et chaque colonne un groupe de parties de variables. Dans cet exemple, les clients d’un même groupe présentent des distributions similaires de leurs observations sur ces groupes de parties. **Ces distributions caractérisent les profils** et permettent de comprendre ce qui les rapproche et ce qui les distingue.
+**The resulting model can be read as a map of the population’s profiles** *(see the bottom-right corner of the figure above)*. Each matrix row represents an instance group, and each column a group of variable parts. In this example, customers within the same group have similar distributions of observations over these groups of parts. **These distributions characterize the profiles** and help us understand their similarities and differences.
 
 
 <div style="display:flex; align-items:center; gap:1.5rem; margin:1.5rem 0;">
@@ -95,24 +93,24 @@ Une image simple est celle d’un **puzzle** : les variables d’origine corresp
 
   <div style="flex:1;">
     <p style="margin:0;">
-      <strong>Le modèle nul</strong> — qui ne retient aucune structure — reste une réponse possible et porteuse d’information.
-      Lorsque les données ne justifient pas une structure plus complexe, l’optimisation peut sélectionner un modèle avec une seule partie par variable, un seul groupe d’instances et un seul groupe de parties de variables. Autrement dit, la méthode <strong>n’est pas contrainte de produire artificiellement des profils</strong>. 
+      <strong>The null model</strong> — which retains no structure — is also a possible and informative outcome.
+      When the data do not justify a more complex structure, optimization may select a model with a single part per variable, a single instance group, and a single group of variable parts. In other words, the method <strong>does not have to force profiles onto the data</strong>.
     </p>
   </div>
 
 </div>
 
 
-## Revenons sur ce qu'il y a de nouveau
+## A Closer Look at What Changes
 
-**Revenons à l’image de l’enfant qui découvre le monde en même temps qu'il apprend à le décire.** Cette image permet d'illustrer ce que le coclustering instances × variables ajoute au [coclustering textes × mots présenté précédemment][coclustering-applications].
+**Let’s return to the child discovering the world while learning to describe it.** This analogy illustrates what instances × variables coclustering adds to the [texts × words coclustering introduced earlier][coclustering-applications].
 
-**Textes × mots : le vocabulaire est donné, ses regroupements sont appris.** Chaque occurrence associe un texte à un mot déjà identifié. Les textes sont regroupés selon leurs distributions sur les groupes de mots, et réciproquement : les deux regroupements sont appris conjointement, mais les mots sont fixés.
+**Texts × words: the vocabulary is given; its groups are learned.** Each occurrence links a text to an already identified word. Texts are grouped according to their distributions over word groups, and vice versa: both groupings are learned jointly, but the words themselves are fixed.
 
-**Instances × variables : les unités du vocabulaire sont elles aussi apprises.** Les instances jouent le rôle des textes et les parties de variables celui des mots. Ces unités descriptives — intervalles numériques ou ensembles de modalités catégorielles — sont elles-mêmes construites conjointement avec les groupes d’instances et les groupes de parties.
+**Instances × variables: the vocabulary units are learned too.** Instances play the role of texts, and variable parts play the role of words. These descriptive units — numerical intervals or sets of categorical values — are themselves constructed jointly with the instance groups and the groups of variable parts.
 
 
-**Le principe du coclustering est conservé ; la construction du vocabulaire fait désormais partie du même problème d’apprentissage.** 
+**The coclustering principle stays the same; building the vocabulary is now part of the same learning problem.**
 
 
 <figure id="coclustering-comparison" style="width:100%; margin:1.5rem 0;">
@@ -139,48 +137,105 @@ Une image simple est celle d’un **puzzle** : les variables d’origine corresp
 
 ## Paramètres du modèle
 
-Plutôt que de redéfinir le modèle depuis le début, nous allons partir du modèle de coclustering déjà présenté et nous concentrer uniquement sur ce que l’approche instances × variables lui ajoute. La section [*Model parameters* de la page Coclustering][coclustering-parametres] décrit un modèle sur deux variables catégorielles par quatre familles de paramètres : le nombre de groupes, leur composition, les effectifs dans les coclusters et les effectifs des modalités. Le modèle instances × variables conserve cette logique, mais insère un niveau supplémentaire : **avant de regrouper les parties de variables, il faut les définir elles-mêmes !**
+Plutôt que de redéfinir le modèle depuis le début, nous allons partir du modèle de coclustering déjà présenté et nous concentrer uniquement sur ce que l’approche instances × variables lui ajoute. La section [*Model parameters* de la page Coclustering][coclustering-parametres] décrit un modèle sur deux variables catégorielles par quatre familles de paramètres : (i) le nombre de groupes, (ii) leur composition, (iii) les effectifs dans les coclusters et (iv) les effectifs des modalités. Le modèle instances × variables conserve cette logique, mais insère un niveau supplémentaire : **avant de regrouper les parties de variables, il faut les définir elles-mêmes !**
 
 ### Recodage des données
 
 **Avant toute chose, les données sont recodées dans une représentation adaptée au coclustering instances × variables.** Une instance, décrite à l’origine par plusieurs variables numériques ou catégorielles, est représentée ici par une **collection d’observations** : chaque valeur $v$ observée pour une variable $X_k$ devient un triplet $(u,k,v)$, où $u$ identifie l’instance et $k$ la variable. Ainsi, une même instance génère généralement plusieurs observations. On note $M$ le nombre d’instances, $P$ le nombre de variables et $N$ le nombre total d’observations.
 
-!!! note "Figure à réaliser — Une instance, une collection d’observations"
-    Montrer une instance du tableau d’origine, décrite par plusieurs variables, puis sa représentation sous la forme d’une collection de triplets $(u,k,v)$. Le même identifiant $u$ doit apparaître dans tous les triplets issus de cette instance.
+<figure id="coclustering-inst-var-data-recoding" style="width:75%;">
+  <picture>
+    <source
+      srcset="/assets/images/coclustering_inst_var_data_recoding.webp"
+      type="image/webp"
+    >
+    <img
+      src="/assets/images/coclustering_inst_var_data_recoding.png"
+      alt=""
+      style="display:block; width:100%; height:auto;"
+      loading="lazy"
+    >
+  </picture>
+</figure>
 
-Dans un tableau complet avec une seule valeur par variable, chaque instance génère $P$ observations et $N=M\times P$. Cette représentation permet également de gérer naturellement les valeurs manquantes, pour lesquelles aucune observation n’est créée, ainsi que les variables multivaluées, pour lesquelles plusieurs observations sont créées.
+Dans un tableau complet avec une seule valeur par variable, chaque instance génère $P$ observations et $N=M\times P$. Cette représentation permet également de gérer naturellement les valeurs manquantes, pour lesquelles aucune observation n’est créée.
 
-<!-- TODO AVANT PUBLICATION : confirmer avec Marc la prise en charge des valeurs
-manquantes et multivaluées dans le logiciel. La question reste ouverte dans le
-brouillon ; le paragraphe ci-dessus décrit les possibilités de la représentation. -->
 
-Une fois les données ainsi recodées, reste à construire le vocabulaire qui permettra de les analyser : les parties de variables.
+Maintenant que les données sont recodées, il reste à construire le vocabulaire qui permettra de les analyser : **les parties de variables.**
 
 ### De nouveaux paramètres pour apprendre le vocabulaire
 
-**La principale nouveauté du modèle consiste à apprendre comment découper chaque variable en parties pertinentes.** Ces parties constituent les unités descriptives — le « vocabulaire » — regroupées par le coclustering. Pour chaque variable $X_k$, le modèle introduit d’abord un nombre de parties $J_k$. La partition du domaine $V_k$ de cette variable est notée :
+**La principale nouveauté du modèle consiste à apprendre comment découper chaque variable en parties pertinentes.** Ces parties constituent le « vocabulaire » descriptif regroupé par le coclustering.
+
+Prenons deux variables décrivant des clients : **l’âge** et **le canal de contact**. Dans l’exemple ci-dessous, chacune est divisée en deux parties : des intervalles pour l’âge, des ensembles de modalités pour le canal.
+
+
+<figure id="coclustering-inst-var-data-recoding" style="width:95%;">
+  <picture>
+    <source
+      srcset="/assets/images/coclustering_inst_var_variable_partitions_v1.webp"
+      type="image/webp"
+    >
+    <img
+      src="/assets/images/coclustering_inst_var_variable_partitions_v1.png"
+      alt=""
+      style="display:block; width:100%; height:auto;"
+      loading="lazy"
+    >
+  </picture>
+</figure>
+
+Pour chaque variable $X_k$, les notations désignent les objets visibles dans la figure :
+
+- **$J_k$ est le nombre de parties** : ici, deux pour chaque variable.
+- **$V_{k,t}$ désigne une partie** : $k$ identifie la variable et $t$ la partie.
+- **$\mathcal P_k$ désigne la partition complète**, c’est-à-dire l’ensemble de ces parties :
 
 $$
-\mathcal P_k=\{V_{k,1},\ldots,V_{k,J_k}\}.
+\mathcal P_k = \{V_{k,1},\ldots,V_{k,J_k}\}.
 $$
 
-Elle constitue une collection de **sous-ensembles disjoints** dont l’union correspond au domaine de la variable :
+Les parties ne se recouvrent pas et couvrent l’ensemble du domaine de la variable.
 
-- **Pour une variable catégorielle**, chaque $V_{k,t}$ est un ensemble de modalités, par exemple $\{A,C\}$ ou $\{B\}$.
-- **Pour une variable numérique**, chaque $V_{k,t}$ est un intervalle dont les bornes sont déduites des effectifs de chacune des parties et de leur ordre, en exploitant les rangs des valeurs.
+**Pour une variable numérique, les intervalles sont déterminés par l’ordre des rangs et les effectifs des parties.** Dans la figure, trois observations dans la première partie fixent la coupure après le troisième rang ; les cinq observations suivantes constituent la seconde partie.
 
-**Ces parties constituent elles-mêmes l’un des deux axes du coclustering et peuvent être regroupées librement, quelle que soit leur variable d’origine ou leur type.** Un même groupe peut ainsi réunir, par exemple, certaines modalités d’une variable catégorielle et certains intervalles d’une variable numérique. Le modèle dispose ainsi d’un vocabulaire commun pour caractériser les profils, même lorsque les données mélangent variables numériques et catégorielles. **Le découpage des variables, le regroupement de leurs parties et le regroupement des instances sont optimisés conjointement.**
+Ces parties forment les unités que le coclustering regroupe sur son second axe.
+
 
 ### Une hiérarchie de paramètres { #hierarchie-parametres }
 
-Comme dans le [coclustering présenté précédemment][coclustering-parametres], les paramètres sont introduits dans un ordre hiérarchique, correspondant à des choix successifs lors de l’instanciation d’un modèle. Cette hiérarchie fournit directement la trame du *prior* présenté dans la section suivante et prépare son interprétation en termes de [longueur de description][modl-information].
+Comme dans le [coclustering présenté précédemment][coclustering-parametres], la description du modèle suit une hiérarchie de choix. Celle-ci fournit la trame du *prior* présenté dans la section suivante et prépare son interprétation en termes de [longueur de description][modl-information].
 
-1. **Définir la taille du vocabulaire :** pour chaque variable $X_k$, choisir son nombre de parties $J_k$.
-2. **Définir les parties :** pour chaque variable $X_k$, numérique ou catégorielle, la partition de son domaine en $J_k$ parties est notée $\mathcal P_k=\{V_{k,1},\ldots,V_{k,J_k}\}$.
-3. **Former les groupes :** regrouper les instances en $K^u$ groupes, formant la partition $\mathcal C^u$, et les parties de variables en $K^p$ groupes, formant la partition $\mathcal C^p$. Ces deux partitions définissent respectivement les **lignes et les colonnes de la matrice de coclustering**.
-4. **Décrire les effectifs d’observations :** chaque case de la matrice $\Phi$ contient le nombre d’observations du cocluster correspondant. Les vecteurs $\delta^u$ et $\delta^p$ détaillent respectivement le total de chaque ligne entre ses instances et le total de chaque colonne entre ses parties. Enfin, pour chaque variable catégorielle $X_k$, $\lambda_k$ précise combien d’observations correspondent à chaque modalité au sein de ses parties.
+1. **Définir la taille du vocabulaire :** choisir le nombre de parties $J_k$ de chaque variable.
+2. **Préciser les parties :** choisir les partitions $\mathcal P_k$ des variables catégorielles. Pour les variables numériques, le contenu des intervalles se déduit des effectifs introduits au point 4.
+3. **Former les groupes :** choisir $K^u$ groupes d’instances et $K^p$ groupes de parties. Leur composition est décrite par les partitions $\mathcal C^u$ et $\mathcal C^p$, qui définissent respectivement les **lignes et les colonnes de la matrice de coclustering**.
+4. **Décrire les effectifs d’observations :** préciser, dans la matrice $\Phi$, le nombre d’observations de chaque cocluster, puis détailler les effectifs par instance, par partie et par modalité catégorielle.
 
-**Cet ordre organise la description du modèle, mais ne correspond pas à des étapes d’apprentissage indépendantes : le vocabulaire et les groupes sont optimisés conjointement.** La section suivante montre comment évaluer ces choix ensemble, en combinant le coût de description du modèle et celui des données sachant le modèle.
+La figure reprend les quatre parties de l’exemple précédent. Elles forment ici deux groupes de parties, **chacun réunissant une partie numérique et une partie catégorielle**, croisés avec deux groupes d’instances.
+
+<figure id="coclustering-inst-var-data-recoding" style="width:95%;">
+  <picture>
+    <source
+      srcset="/assets/images/coclustering_inst_var_model_parameters_v1.webp"
+      type="image/webp"
+    >
+    <img
+      src="/assets/images/coclustering_inst_var_model_parameters_v1.png"
+      alt=""
+      style="display:block; width:100%; height:auto;"
+      loading="lazy"
+    >
+  </picture>
+</figure>
+
+
+Les effectifs détaillent les totaux de la matrice à plusieurs niveaux :
+
+- **$\delta^u$ détaille le total de chaque ligne entre ses instances** : ici, chaque client contribue deux observations.
+- **$\delta^p$ détaille le total de chaque colonne entre ses parties** : dans le zoom, les huit observations de la colonne A se répartissent en trois pour la partie numérique et cinq pour la partie catégorielle.
+- **$\lambda_k$ précise les effectifs des modalités de chaque variable catégorielle** : au sein de la partie contenant *Web* et *App*, les cinq observations se répartissent en trois occurrences de *Web* et deux d’*App*.
+
+Cet ordre décrit la construction probabiliste d’un modèle ; **le découpage des variables, le regroupement de leurs parties et le regroupement des instances sont optimisés conjointement.**
 
 ## Critère d’optimisation
 
