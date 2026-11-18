@@ -12,6 +12,9 @@ set -euo pipefail
 #   --khiops-python-repo URL_OR_DIR   khiops-python repo to build docs from
 #   --khiops-python-ref REF           khiops-python Git ref to build docs from
 #   --khiops-python-version VER       khiops Python version (for site content)
+#   --kni-tutorial-repo URL           KNI tutorial repository to prepare
+#   --kni-tutorial-ref REF            KNI tutorial Git ref (default: Khiops version)
+#   --local-kni-tutorial DIR          Use a local KNI tutorial checkout
 #   --khiops-samples-version VER      khiops-samples release
 #   --khiops-python-tutorial-ref REF  khiops-python-tutorial Git ref
 #   --khiops-viz-version VER          Khiops Visualization version
@@ -25,6 +28,9 @@ KHIOPS_VERSION=""
 KHIOPS_PYTHON_REPO="https://github.com/KhiopsML/khiops-python.git"
 KHIOPS_PYTHON_REF=""
 KHIOPS_PYTHON_VERSION=""
+KNI_TUTORIAL_REPO="https://github.com/KhiopsML/KNI-tutorial.git"
+KNI_TUTORIAL_REF=""
+LOCAL_KNI_TUTORIAL=""
 KHIOPS_SAMPLES_VERSION="11.0.0"
 KHIOPS_PYTHON_TUTORIAL_REF="main"
 KHIOPS_VIZ_VERSION=""
@@ -39,6 +45,9 @@ while [[ $# -gt 0 ]]; do
     --khiops-python-repo) KHIOPS_PYTHON_REPO="$2"; shift 2 ;;
     --khiops-python-ref) KHIOPS_PYTHON_REF="$2"; shift 2 ;;
     --khiops-python-version) KHIOPS_PYTHON_VERSION="$2"; shift 2 ;;
+    --kni-tutorial-repo) KNI_TUTORIAL_REPO="$2"; shift 2 ;;
+    --kni-tutorial-ref) KNI_TUTORIAL_REF="$2"; shift 2 ;;
+    --local-kni-tutorial) LOCAL_KNI_TUTORIAL="$2"; shift 2 ;;
     --khiops-samples-version) KHIOPS_SAMPLES_VERSION="$2"; shift 2 ;;
     --khiops-python-tutorial-ref) KHIOPS_PYTHON_TUTORIAL_REF="$2"; shift 2 ;;
     --khiops-viz-version) KHIOPS_VIZ_VERSION="$2"; shift 2 ;;
@@ -132,5 +141,24 @@ envsubst "${KHIOPS_VERSIONING_VARS}" \
 # 7. Build the whole site with Zensical
 echo "=== Building site with Zensical in dir $(pwd) ==="
 uv run zensical build --clean --strict
+
+# 8. Copy KNI resources after the build so Zensical does not index them.
+echo "=== Preparing KNI tutorial resources ==="
+KNI_TUTORIAL_ARGS=(
+  --kni-tutorial-repo "$KNI_TUTORIAL_REPO"
+  --kni-tutorial-ref "${KNI_TUTORIAL_REF:-$KHIOPS_VERSION}"
+  --output-dir "site/tutorials/kni-tutorial"
+  --work-dir "."
+)
+[ -n "$LOCAL_KNI_TUTORIAL" ] && KNI_TUTORIAL_ARGS+=(--local-kni-tutorial "$LOCAL_KNI_TUTORIAL")
+bash "${SCRIPT_DIR}/prepare-kni-doc.sh" \
+  "${KNI_TUTORIAL_ARGS[@]}"
+
+# 9. Validate native Markdown artifacts before success/deploy.
+echo "=== Validating native Markdown artifacts ==="
+uv run --active --frozen --no-sync \
+  "${SCRIPT_DIR}/validate_llm_markdown.py" \
+  --site-dir site \
+  --config zensical.toml
 
 echo "=== Done - site built in ./site ==="
