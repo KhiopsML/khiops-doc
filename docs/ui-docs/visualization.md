@@ -69,7 +69,6 @@ The figure above shows the histogram of the variable "native_country" which has 
 
 For numerical variables, the bounds of the bins is also automatically set to its optimal value from an MDL approach. 
 
-<!-- a mettre a jour avec bouton histo -->
 ![](../assets/images-khiops-guides/visualization/UnsupervisedFivePanelsNumerical.png)
 
 Different representations of the histogram are available. The y-axis shows the density and can be plotted in linear or log scale.
@@ -171,7 +170,6 @@ For the target distribution conditional to the group histogram, displayed target
 
 Clicking on a bin of the population histogram or on the corresponding target conditional histogram displays information about the selected group in panel D.
 
-<!-- changer lettres par numero -->
 ![](../assets/images-khiops-guides/visualization/ClassificationPreparation.png)
 
 #### Tree Preparation
@@ -321,8 +319,6 @@ This tab shows information related to the project, in particular, the content of
 Control elements appear at the top right of panels.
 
 At the top right of the screen,
-
-<!-- a mettre a jour avec bouton change of scales et positionnement horizontal/vertical des infos -->
 ![](../assets/images-khiops-guides/visualization/TopRightButtons.png)
 
 From left to right:
@@ -338,8 +334,6 @@ From left to right:
   - the last button allows to copy the data of a selected panel.
 
 At the top right of panel B
-
-<!-- a mettre a jour -->
 ![](../assets/images-khiops-guides/visualization/TopRightPanelAButtons.png)
 
 
@@ -355,17 +349,11 @@ From left to right:
 
   - allows to select/unselect columns to the table;
 
-  - allows to open the panel in full screen. The control
+  - allows to open the panel in full screen. 
+ 
+The control ![](../assets/images-khiops-guides/visualization/GoBack.png) at the top right of the full screen panel allows to go back to the multi-panel interface.
 
-![](../assets/images-khiops-guides/visualization/GoBack.png)
-
-at the top right of the full screen panel allows to go back to the multi-panel interface.
-
-At the top right of panel B
-
-![](../assets/images-khiops-guides/visualization/ScaleChartButton.png)
-
-allows to modifiy the horizontal scale of the histogram when the number of groups is high. 
+At the top right of panel B ![](../assets/images-khiops-guides/visualization/ScaleChartButton.png) allows to modifiy the horizontal scale of the histogram when the number of groups is high. 
 By default, all groups appear in the figure, which may be messy when there are many groups.
 
 Additional elements apply to bivariate cartesian product visualizations.

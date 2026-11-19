@@ -27,13 +27,13 @@ For illustration purpose, let us consider the correlation between the education 
 
 Applying the **Khiops Coclustering** back-end tool, we obtain a 9\*9 fine-grained data grid. The [`Khiops Visualization Desktop`](covisualization.md) tool enables the exploration of the correlation between the two variables. 
 Displaying the mutual information highlights the over-represented cells (in red), i.e. cells with a frequency higher than expected in case of independent variables, and the under-represented cells (in blue). 
-In the screenshot below, the selected cell indicates a high concentration of education *Prof-school* or *Doctorate* jointly with occupation *Prof-specialty* or *Armed-Forces*.
+In the screenshot below, the selected cell indicates a high concentration of education *Bachelors* jointly with occupation *Prof-specialty*.
 
 ![](../assets/images-khiops-guides/coclustering/AdultCovizuOptimal.jpg)
 
 Folding down both hierarchies allows to obtain a simplified 3\*3 data grid which provides a quick summary with an easier interpretation.
 
-In the screenshot below, the selected cell indicates a high concentration of education *Bachelor*, *Master*, *Prof-school* or *Doctorate* jointly with occupation *Exec-managerial*, *Prof-specialty* or *Armed-Forces*.
+In the screenshot below, the selected cell indicates a high concentration of education *Bachelor*, *Masters*, *Prof-school* or *Doctorate* jointly with occupation *Prof-specialty* or *Exec-managerial*.
 ![](../assets/images-khiops-guides/coclustering/AdultCovizu3-3.png)
 
 Beyond the illustrative example, this kind of analysis provides insightful summaries when applied to databases with millions of instances and variables with thousands of values.

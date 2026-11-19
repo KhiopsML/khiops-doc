@@ -63,8 +63,10 @@ The sliding bars allow zooming on the chart of the distribution views
 
 ## The different views and features
 
-We will now explore the various features offered by Khiops Visualization Desktop using a two dimensional variable * variable example. 
+We will now explore the various features offered by Khiops Visualization Desktop using a two dimensional variable * variable example : the Adult database with coclustering variables *Education* and *Occupation*.
+
 Khiops Visualization allows to explore coclustering of more than 2 dimensions: these features are detailed in the section [`Managing three dimensions or more`](#managing-three-dimensions-or-more).
+
 It also allows to explore Instances * Variables coclustering whose specific features are detailed in the section [`View Instances * Variables coclustering`](#view-instances-variables-coclustering).
 
 ### Hierarchy view
@@ -93,15 +95,16 @@ The best way to fold or unfold hierarchies is to use the "Select automatically t
 
 ![](../assets/images-khiops-guides/covisualization/UnfoldHierarchy.png)  
 
-This window allows choosing the best number of clusters on both dimensions: optimal unfolding of each partition so as to keep the most informative model. The top chart shows the evolution of the level according to the number of clusters, that is the percentage of information kept at each granularity of the hierarchy. This allows obtaining a simplified and easily interpretable hierarchy with few clusters while keeping most of the information. In real cases, 80% of the information often comes from a small fraction of the clusters.
+This window allows choosing the best number of clusters on both dimensions: optimal unfolding of each partition so as to keep the most informative model. 
+
+The top chart shows the evolution of the information rate according to the number of clusters, that is the percentage of information kept at each granularity of the hierarchy. This allows obtaining a simplified and easily interpretable hierarchy with few clusters while keeping most of the information. In real cases, 80% of the information often comes from a small fraction of the clusters.
 
 The bottom chart shows the detailed number of clusters for each dimension (a mouse-click on the legend highlights the corresponding curve).
 
 Once the number of clusters is chosen (and therefore the information kept with the coclustering), by clicking the button "Ok", you return to the main window where the hierarchies are now unfolded.
 
-The checkboxes on the bottom of this view allow selecting which hierarchy to unfold. By default all hierarchies are unfolded.
+The checkboxes of the Fold/Unfold column allow selecting which hierarchy to unfold. By default all hierarchies are unfolded.
 
-<!-- legendes a reprendre de l'image24 -->
 ![](../assets/images-khiops-guides/covisualization/UnfoldHierarchyWindow.png)
 
 #### How to save the current hierarchy
@@ -144,7 +147,9 @@ An item belongs to a cluster if it belongs to one of its sub-clusters.
 
 ![](../assets/images-khiops-guides/covisualization/Composition.png)
 
-This table has one line per item, the value of which is displayed in the column "Value". The column "Cluster" contains the cluster that contains the item in the current unfolding.
+This table has one line per item, the value of which is displayed in the column "Value". 
+
+The column "Cluster" contains the cluster that contains the item in the current unfolding.
 
 The column "Terminal Cluster" contains the smallest cluster in the hierarchy that contains the item. This is not necessarily a visible cluster in the hierarchy view unless the hierarchy is completely unfolded.
 
@@ -156,15 +161,15 @@ The search edit box allows finding values in the selected cluster. You can find 
 
 A double-click on a line shows the composition of the cluster containing this item. Accordingly, it modifies the selected cluster in the hierarchy view.
 In the example below, the user finds the item with value "clerical" and double-clicks on it. 
-In the hierarchy, the cluster "Adm-clerical, Protec .." is highlighted; this is the cluster that owns this item.
+In the hierarchy, the cluster "Adm-clerical, Protective-serv" is highlighted; this is the cluster that owns this item.
 
 ![](../assets/images-khiops-guides/covisualization/SearchClerical.png)
 ### Distribution view
 
 This view allows visualizing the distribution of a dimension on the selected cluster of the other dimension.
 
-In the example below, the upper histogram represents the distribution of "education" given the selected cluster "A10" of occupation. 
-The lower histogram represents the distribution of "occupation" given the selected cluster "Masters" of "education".
+In the example below, the upper histogram represents the distribution of "occupation" given the selected cluster "Masters" of "education". 
+The lower histogram represents the distribution of "education" given the selected cluster "B11" of occupation.
 
 ![](../assets/images-khiops-guides/covisualization/DistributionView.png)
 
@@ -236,7 +241,7 @@ By choosing "Uniform, all axis have equal width.
 #### Contrast
 
 The slide bar located at the right of the matrix increases the color contrast in the matrix: the red cells are redder and blue cells are bluer. 
-The tow pictures below shows the same matrix with different contrasts.
+The two pictures below shows the same matrix with different contrasts.
 
 ![](../assets/images-khiops-guides/covisualization/Contrast-1.png)
 ![](../assets/images-khiops-guides/covisualization/Contrast-2.png)
@@ -261,7 +266,7 @@ Several fields can be associated for each item.
 
 #### How to import external data
 
-The external data is imported via text files. There is one file for each dimension. The external data files are tab-separated value files; the first line of these files contains the column labels. There is one column for each data field and a "key" column to link data to items.
+The external data is imported via text files. There is one file for each dimension. The first line of these files contains the column labels. There is one column for each data field and a "key" column to link data to items.
 
 The following table shows a sample of an external data file. It associates three fields to each item: a text, the age and the weight.
 
@@ -270,14 +275,14 @@ The following table shows a sample of an external data file. It associates three
 | Bachelors | Some text | 25  | 60     |
 | Masters   | ...       | ... | ...    |
 
-Importing the external files into Khiops Visualization is performed by clicking on the button "External data..."
+Importing the external files into Khiops Visualization is performed by clicking on the button "Import external data..."
 
 ![](../assets/images-khiops-guides/covisualization/ImportExternalDataButton.png)
 
 A new window appears, to choose the location of the external data file.
 
-Once the file location is filled (via "Import new file" button), you have to choose the join key among the columns of the file and the dimension to which the data belongs. 
-After the import ("Load datas" button), Khiops Visualization displays these data in the "external data" view.
+Once the file location is filled, you have to specify the filed separator used in the file, the join key among the columns of the file and the dimension to which the data belongs. 
+After the import ("Load data" button), Khiops Visualization displays these data in the "external data" view.
 
 ![](../assets/images-khiops-guides/covisualization/ImportExternalDataWindow.png)
 
@@ -340,6 +345,8 @@ All views are interactive: an action on a view often changes several other views
 ## Managing three dimensions or more
 
 With three (or more) dimensions, the two "main" dimensions are presented as if there were only two dimensions. The other dimensions are contextual, you can view them one by one in the "context" tab.
+In the two figures below, we used Iris dataset with three coclustering variables *PetalLength*, *PetalWidth* and *Class*.
+
 
 ![](../assets/images-khiops-guides/covisualization/3DimAxis.png)
 
@@ -355,7 +362,8 @@ The indicators of the cells can be computed in two ways:
 
 ## View Instances Variables coclustering 
 
-The Instances * Variables coclustering is based on an identifier in the first dimension called *Instance index*, and all numerical and categorical variables called *inner variables* in the second dimension called *Variables* :
+The Instances * Variables coclustering is based on an identifier in the first dimension called *Instance index*, and all numerical and categorical variables called *inner variables* in the second dimension called *Variables*.
+In the figure below, the coclustering obtained with the Adult dataset and its 16 variables :
 
 ![](../assets/images-khiops-guides/covisualization/IV-Adult-Global.png)
 
@@ -364,11 +372,13 @@ For the Variables dimension, an additional Search button enables to find out whi
 ![](../assets/images-khiops-guides/covisualization/IV-Adult-HierarchySearchInnerVariable.png)
 ![](../assets/images-khiops-guides/covisualization/IV-Adult-SearchInnerVariable.png)
 
-In the composition panel, an additional *Part details* column gives the exhaustive list of the parts and their frequency as the Part column is reduced to the name of the first three parts. 
+In the composition panel, an additional *Part details* column gives the exhaustive list of the parts and their frequency as the Part column is reduced to the name of the first three parts.
+
 ![](../assets/images-khiops-guides/covisualization/IV-Adult-Composition.png)
 ![](../assets/images-khiops-guides/covisualization/IV-Adult-CompositionPartDetails.png)
 
 In the matrix panel, an additional *Inner variables* list enables to shade the clusters which do not contain any part of the selected inner variables.
+
 ![](../assets/images-khiops-guides/covisualization/IV-Adult-SelectAge.png)
 
 
@@ -377,13 +387,8 @@ In the matrix panel, an additional *Inner variables* list enables to shade the c
 In order to be responsive on very large files, some display limitations are taken into account in Khiops Visualization Desktop:
 
   - The khcj file size should not exceed 400 MB.
-
-  - The "composition" view displays the first 1,000 items. However the "copy data" feature allows to copy the first 100,000 values.
-
-  - Khiops Visualization Desktop evaluates the available memory and displays the coocurence matrix only if there is enough available memory.
+  
+  - Khiops Visualization Desktop evaluates the available memory and automatically unfold the coclustering hierarchy if there isn't enough available memory to display the complete coclustering.
 
   - There are slight occasional problems of automatic refreshment for large matrices. In this case you can easily refresh the matrix by switching the axis 
     representation (Cf. [`Axis representation`](#axis-representation)).
-
-If the khcj file is too big to be visualized in Khiops Visualization Desktop, you can simplify the coclustering with Khiops Coclustering 
-(see [`Tools menu`](coclustering.md#tools-menu) in Khiops application).
