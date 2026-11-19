@@ -305,7 +305,7 @@ This rule is the same as the BuildTableView for a single entity.
 ## BuildEntityAdvancedView
 
 ```kdic-api-docs
-Entity (TargetDic) BuildEntityAdvancedView(Entity (SourceDic) table,
+Entity (TargetDic) BuildEntityAdvancedView(Entity (SourceDic) entity,
                                            Type1 sourceValue1, Type2 sourceValue2...
                                            :
                                            Type1 targetVar1, Type2 targetVar...)

@@ -56,9 +56,9 @@ This example demonstrates how to build a list of sales ordered by date and compu
       Entity(OrderedSale) previousElement;            // Link to previous sale element
       Entity(OrderedSale) nextElement;                // Link to next sale element
 
-      // Differences computed between two succesive elements of the list
+      // Differences computed between two successive elements of the list
       Unused Entity(Sale) previous_sale = GetEntity(previousElement, sourceEntity); // Access to previous sale
-      Numerical diff_type = EQc(GetValueC(sourceEntity, sale_type), GetValueC(previous_sale, sale_type));
+      Numerical diff_type = NEQc(GetValueC(sourceEntity, sale_type), GetValueC(previous_sale, sale_type));
       Numerical diff_cost = Diff(GetValue(sourceEntity, cost), GetValue(previous_sale, cost));
       Numerical diff_date = DiffDate(GetValueD(sourceEntity, purchase_date), GetValueD(previous_sale, purchase_date));
     };

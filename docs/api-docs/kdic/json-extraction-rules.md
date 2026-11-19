@@ -13,9 +13,9 @@ Entity(TargetDic) BuildEntityFromJson(Text jsonValue)
 
 Creation of an entity from a JSON field according to the structure defined in the target dictionary, provided that the hierarchical structure of the target dictionary, including its sub-entities and sub-tables, matches that of the JSON object field, with its nested objects and arrays.
 
-This derivation rule is similar to `BuildTableFromJson`, but with an input JSON value of type `object` instead of `array`, and an ouput `Entity` rather than `Table`.
+This derivation rule is similar to `BuildTableFromJson`, but with an input JSON value of type `object` instead of `array`, and an output `Entity` rather than `Table`.
 
-JSON (JavaScript Object Notation) is a lightweight data-interchange format: <https://www.json.org/json-en.html>. A JSON field contains information organized hierarchically, with nested objects and repeated values in arrays. It consists of a list of key/value pairs, where keys are strings and values can be:
+JSON (JavaScript Object Notation) is a lightweight data-interchange format: <https://www.json.org/json-en.html>. A JSON object consists of key/value pairs, where keys are strings. Objects and arrays can contain nested values of these types:
 
 - string
 
@@ -222,11 +222,8 @@ As usual, any target variable can be used or not, and additional target variable
 
     Note:
 
-    - In this example, where the Hobby dictionary contains a single Categorical variable, the JSON field could be simplified to 
-    ```json
-    "hobbies":["Reading", "Hiking", "Cooking"].
-    ```
-    
+    - In this example, where the Hobby dictionary contains a single Categorical variable, the `hobbies` array could be simplified to `["Reading", "Hiking", "Cooking"]`.
+
     - The `birthday` Date variable exploits the default format: no need for a `DateFormat` meta-data. Conversely, the `purchaseDate` Timestamp variable exploits a specific format, requiring a `TimestampFormat` meta-data.
 
 ### Method for specifying target Khiops dictionaries
@@ -481,7 +478,7 @@ It is also possible to handle a JSON array of arrays of numbers (or other JSON t
     Using the BuildTableFromJson rule, the table of notes series can be filled from the values of a json text field containing the value:
     `[[3, 4], [3, 4, 3, 1, 4, 5, 3], [5, 5, 4, 3]]`
 
-    This will create three instances of NoteSeries, each filled with the corresponding array:
+    This will create three instances of `NotesHistory`, each filled with the corresponding array:
 
     - The first instance is filled with `[3, 4]`
 

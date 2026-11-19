@@ -4,9 +4,9 @@
 
 ```kdic-api-docs
 Table(targetDic) BuildDiffTable(Table(sourceDic) sourceTable,
-                                Type1 sourceValue1, Type1 sourceValue2, ... 
-                                : 
-                                TargetType1 diffVar1, TargetType2 diffVar2, ...)
+                                Type1 sourceValue1, Type2 sourceValue2, ...
+                                :
+                                Numerical diffVar1, Numerical diffVar2, ...)
 ```
 
 Creation of a target table from a source table, by calculating the differences of values between two consecutive records for a subset of chosen source variables:
@@ -137,7 +137,7 @@ instance is selected per source instance.
 
 ### Matching purchases with recent credit assessments
 
-For each customer, this example links every purchase to the closest credit assessment recorded on
+For each customer, this example links every purchase to the earliest credit assessment recorded on
 or before the purchase date, within the preceding 30 days. A derived variable combines both dates
 to measure the number of days between assessment and purchase. If no assessment falls in the period,
 the `assessment` entity is missing.
@@ -176,7 +176,7 @@ the `assessment` entity is missing.
     Dictionary PurchaseWithAssessment
     {
       Unused Entity(Purchase) purchase; // Original purchase
-      Unused Entity(CreditAssessment) assessment; // Closest matching history, if any
+      Unused Entity(CreditAssessment) assessment; // Earliest matching history, if any
       Numerical amount = GetValue(purchase, amount);
       Numerical credit_score = GetValue(assessment, credit_score);
       Numerical days_since_assessment = DiffDate(GetValueD(purchase, purchase_date),
