@@ -387,40 +387,13 @@ See [`external tables`](../api-docs/kdic/dictionary-files.md#interest-of-externa
     ```
 
 
-### Relational Database with Non-Hierarchical Relationalships
+### Relational Databases with Non-Hierarchical Relationships
 
-Non-hierarchical schemas are commonly used in relational database modeling, as illustrated by the following example from the telecommunications domain.
-
-!!! success "Example: Example from the Telecommunication Domain"
-
-    In the telecommunications domain, each customer has a unique identifier, and each of their phone devices is identified by a phone number. 
-    Call Detail Records (CDRs) are linked to their respective phone numbers in the database, and the relationship between the CDRs and the customer is established through an additional table.
-
-    ```
-    +--------------------+           +------------------------+
-    |    Customer        |           |    PhoneDevice         |
-    +--------------------+           +------------------------+
-    | - customer_id (PK) |<----------| - customer_id (FK)     |
-    +--------------------+           | - phone_number (FK)    |
-                                     +------------------------+
-                                              |
-                                              |
-                                              v
-                                    +--------------------------+
-                                    | Call Detail Record (CDR) |
-                                    +--------------------------+
-                                    | - phone_number (PK)      |
-                                    | - call_duration          |
-                                    | - timestamp              |
-                                    +--------------------------+
-    ```
-
-In our previous Customer and Service example, we show below how the data could also be stored using a non-hierarchical schema:
+The Customer–Service example introduced earlier can also be represented as a non-hierarchical relational schema, as shown below.
 
 !!! success "Example: Customer and Services - From Hierarchical to Non-Hierarchical Schema"
 
-    The Customer and Service data can be modeled using a **one-to-many** relationship, where each Customer may have multiple Services.  
-    Each Service, however, is associated with only one Customer through a junction table called **CustomerService**, which stores information about a specific use of the service by that customer.
+    Each Customer may have multiple Services, while each Service is associated with only one Customer. The **CustomerService** junction table links them and stores information about that customer's use of the service.
     
     ```
     +--------------------+             +-------------------------+
@@ -442,8 +415,7 @@ In our previous Customer and Service example, we show below how the data could a
                                        +------------------------+
     ```
 
-In this case, the data need to be transformed into a hierarchical schema compatible with Khiops requirements using data management.
-Note that, in some cases, the Khiops tool itself can be used for such data management tasks, as described below for our previous Customer and Service example.
+This Customer–Service data must be transformed into a hierarchical schema compatible with Khiops. Data management is usually needed, although Khiops itself can also perform part of the transformation, as shown in the following example.
 
 !!! success "Example: Customer and Services - Data Management to Transform Data to a Hierarchical Schema"
 
@@ -483,3 +455,28 @@ Note that, in some cases, the Khiops tool itself can be used for such data manag
     - Sort the resulting data table by `customer_id`.
 
     This process yields a Service data table that complies with the hierarchical schema requirements of Khiops.
+
+!!! success "Another Example: Telecommunications Domain"
+
+    A similar non-hierarchical structure occurs in telecommunications. Each customer has a unique identifier, and each phone device is identified by a phone number. Call Detail Records (CDRs) are linked to phone numbers, while an additional table links the devices to their customers.
+
+    Although these relationships form a tree, their keys do not form a Khiops hierarchy: a CDR key based on `phone_number` does not include `customer_id` as its leading field. The data must therefore be transformed before CDRs can be organized hierarchically under customers in Khiops.
+
+    ```
+    +--------------------+           +------------------------+
+    |    Customer        |           |    PhoneDevice         |
+    +--------------------+           +------------------------+
+    | - customer_id (PK) |<----------| - customer_id (FK)     |
+    +--------------------+           | - phone_number (FK)    |
+                                     +------------------------+
+                                              |
+                                              |
+                                              v
+                                    +--------------------------+
+                                    | Call Detail Record (CDR) |
+                                    +--------------------------+
+                                    | - phone_number (FK)      |
+                                    | - call_duration          |
+                                    | - timestamp              |
+                                    +--------------------------+
+    ```
