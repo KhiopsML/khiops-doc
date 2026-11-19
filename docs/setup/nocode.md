@@ -16,7 +16,10 @@ For further details, refer to [README][readme] and [WHATSNEW][whatsnew].
 === "Windows"
     The :material-microsoft-windows: Khiops installer automatically installs the Khiops application, all its dependencies, plus some data samples formatted as expected by Khiops, and the Khiops Visualization application.
 
-    This new application replaces both the previous Khiops Visualization and Covisualization applications. **We recommend uninstalling them before proceeding with the installation.**
+    The Khiops application includes two tools : Khiops and Khiops Coclustering
+
+    The new Khiops Visualization application replaces both the previous Khiops Visualization and Covisualization applications. **We recommend uninstalling them before proceeding with the installation.**
+    The 2-in-1 Khiops Visualization appplication allows you to open both the analysis produced by Khiops and those produced by Khiops Coclustering.
 
     [:material-download: Download for Windows](https://github.com/KhiopsML/khiops/releases/download/{{ KHIOPS_VERSION }}/khiops-{{ KHIOPS_VERSION }}-setup.exe){ .md-button .md-button--primary }
 
@@ -185,8 +188,8 @@ You can find all versions on the [releases page][releases].
 
 For comprehensive guides on using the Khiops application and its GUI:
 
-- [**Khiops Guide**][khiops-guide], for supervised analysis
-- [**Khiops Coclustering Guide**][coclustering-guide], for unsupervised analysis
+- [**Khiops Guide**][khiops-guide], for analysis produced by Khiops tool (supervised and unsupervised analysis)
+- [**Khiops Coclustering Guide**][coclustering-guide], for analysis produced by Khiops Coclustering tool (unsupervised coclustering analysis)
 
 
 
