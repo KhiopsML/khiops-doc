@@ -5,10 +5,10 @@ In such situations, transforming raw data into a well-defined conceptual schema 
 
 Khiops dictionaries facilitate this transformation by allowing you to specify the raw data in its logical format, retaining unused variables if necessary, and then defining derivation rules to construct the conceptual schema from the logical one.
 
-The following series of examples illustrates this process in detail.
+The examples below use a conceptual schema with customers and their monthly services, each described by a type, month and amount. For the basic schema, see [Conceptual, Logical, and Physical Data Models](conceptual_logical_physical_data_models.md).
 
 
-### Large Service Table File with Out-of-Scope Records 
+### Large Service Table File with Out-of-Scope Records
 
 Suppose service records are stored in a large data file containing historical records spanning multiple years.
 If the scope of analysis is limited to a specific year, you can select the relevant records using the `TableSelection` rule.
@@ -39,7 +39,7 @@ If the scope of analysis is limited to a specific year, you can select the relev
 ### One Data File per Quarter
 
 Suppose service records are stored in a separate file for each quarter.
-You can then use the `TableUnion` rule, as described in the [`Table Concatenation`](.#table-concatenation) section.
+You can then use the [`TableUnion`](../api-docs/kdic/table-management-rules.md#tableunion) rule.
 
 !!! success "Example: Merging Several Secondary Data Tables using TableUnion"
     ```kdic
@@ -70,9 +70,9 @@ You can then use the `TableUnion` rule, as described in the [`Table Concatenatio
 
 ### One Partial Data File per Service
 
-Suppose service records are stored in separate files for each service, with no column indicating the service name.
+Suppose service records are stored in separate files for each service type, with no column indicating the type.
 
-To obtain data according to the conceptual schema, we first need to create new in-memory records from the raw data by adding the service name to each record.
+To obtain data according to the conceptual schema, we first need to create new in-memory instances from the raw data, adding the service type to each instance.
 This can be achieved using the `BuildTableAdvancedView` rule from the [`Instance Building Rules`](../api-docs/kdic/instance-building-rules-introduction.md).
 
 You can then use the `TableUnion` rule to combine all the service tables into a single unified table.
@@ -125,13 +125,13 @@ Suppose that the `amount` values for each service are stored in as many columns 
 This situation is common in real-world data marts, where data collected from relational databases has been summarized into a single table using a propositionalization process.
 This practice is also frequent in many time series datasets, with one column per value of the series.
 
-To obtain data according to the conceptual schema, we first need to create new in-memory records for each instance of a service.
+To obtain data according to the conceptual schema, we first need to create an in-memory instance for each service and month.
 This can be achieved using the `BuildEntity` rule from the [`Instance Building Rules`](../api-docs/kdic/instance-building-rules-introduction.md).
 
 You can then use the `EntitySet` rule to collect all the built instances into a single table.
 
 Note that in this example, the conceptual schema follows a star schema, while the logical schema is a single table.
-The customer_id variable in the secondary table is not necessary, as no join is required to create the secondary instances.
+No join key is needed to create the secondary instances, though this example retains `customer_id` in the `Service` dictionary.
 
 !!! success "Example: Building Table Entities From Raw Column Values"
 
@@ -194,7 +194,7 @@ Note that, as in the previous example, the conceptual schema follows a star sche
 
 !!! success "Example: Building a table from JSON data"
 
-    In the following example, the `Service` dictionary describes the fields of each object in the JSON `services` array. `BuildTableFromJson` creates one `Service` instance for each object.
+    In the following example, `jsonServicesData` contains a JSON array of objects. The `Service` dictionary describes each object's fields, and `BuildTableFromJson` creates one `Service` instance for each object.
 
     ```kdic
     Dictionary Customer (customer_id)
@@ -218,54 +218,53 @@ Note that, as in the previous example, the conceptual schema follows a star sche
     };
     ```
 
-    If the `jsonServicesData` variable contains the following JSON value (beautified for clarity),
-    the `services` Table contains six `Service` instances, one for each object in the JSON `services` array.
+    If `jsonServicesData` contains the following JSON array, the `services` Table contains six `Service` instances, one for each object in the array.
 
     ```json
-    {"services":[{"customer_id":"Id0000","name":"online","month":"2026-01-01","amount":1500},{"customer_id":"Id0000","name":"retail","month":"2026-01-01","amount":2000},{"customer_id":"Id0000","name":"online","month":"2026-02-01","amount":1600},{"customer_id":"Id0000","name":"retail","month":"2026-02-01","amount":2100},{"customer_id":"Id0000","name":"online","month":"2026-03-01","amount":1700},{"customer_id":"Id0000","name":"retail","month":"2026-03-01","amount":2200}]}
+    [{"customer_id":"Id0000","type":"online","month":"2026-01-01","amount":1500},{"customer_id":"Id0000","type":"retail","month":"2026-01-01","amount":2000},{"customer_id":"Id0000","type":"online","month":"2026-02-01","amount":1600},{"customer_id":"Id0000","type":"retail","month":"2026-02-01","amount":2100},{"customer_id":"Id0000","type":"online","month":"2026-03-01","amount":1700},{"customer_id":"Id0000","type":"retail","month":"2026-03-01","amount":2200}]
     ```
 
+    The same array is formatted below for clarity:
+
     ```json
-    {
-      "services": [
-        {
-          "customer_id": "Id0000",
-          "name": "online",
-          "month": "2026-01-01",
-          "amount": 1500
-        },
-        {
-          "customer_id": "Id0000",
-          "name": "retail",
-          "month": "2026-01-01",
-          "amount": 2000
-        },
-        {
-          "customer_id": "Id0000",
-          "name": "online",
-          "month": "2026-02-01",
-          "amount": 1600
-        },
-        {
-          "customer_id": "Id0000",
-          "name": "retail",
-          "month": "2026-02-01",
-          "amount": 2100
-        },
-        {
-          "customer_id": "Id0000",
-          "name": "online",
-          "month": "2026-03-01",
-          "amount": 1700
-        },
-        {
-          "customer_id": "Id0000",
-          "name": "retail",
-          "month": "2026-03-01",
-          "amount": 2200
-        }
-      ]
-    }
+    [
+      {
+        "customer_id": "Id0000",
+        "type": "online",
+        "month": "2026-01-01",
+        "amount": 1500
+      },
+      {
+        "customer_id": "Id0000",
+        "type": "retail",
+        "month": "2026-01-01",
+        "amount": 2000
+      },
+      {
+        "customer_id": "Id0000",
+        "type": "online",
+        "month": "2026-02-01",
+        "amount": 1600
+      },
+      {
+        "customer_id": "Id0000",
+        "type": "retail",
+        "month": "2026-02-01",
+        "amount": 2100
+      },
+      {
+        "customer_id": "Id0000",
+        "type": "online",
+        "month": "2026-03-01",
+        "amount": 1700
+      },
+      {
+        "customer_id": "Id0000",
+        "type": "retail",
+        "month": "2026-03-01",
+        "amount": 2200
+      }
+    ]
     ```
 
 ## Transforming Data to Conceptual Schema
@@ -285,10 +284,10 @@ Data used for data mining come from a wide variety of sources and formats :
 - And others
 
 Khiops employs hierarchical schemas to improve scalability.
-Because each table in the schema shares the same key variable as the main tables, all data tables, sorted by key, can be read at the same time.
+Each native secondary table's key begins with its parent table's key, so data table files sorted by their keys can be read together.
 This enables quick and efficient reconstruction of the in-memory snowflake schema of each main instance, one at a time.
 
-Describing the available data at a conceptual level using Khiops dictionaries is sometimes straightforward, 
+Describing the available data at a conceptual level using Khiops dictionaries is sometimes straightforward,
 as illustrated with the following entity-relationship model.
 
 !!! success "Example: Customer and Services - Basic Entity-Relationship Model"
@@ -318,9 +317,9 @@ Below, we present basic examples with data originating from a relational databas
 
     Nonetheless, data management remains essential for preprocessing data from unconventional or non-standard sources to ensure compatibility with Khiops requirements.
 
-### Relational Database with Many-to-Many Relationalship
+### Relational Database with a Many-to-Many Relationship
 
-The Customer and Service data can be modeled using a **many-to-many** relationship, where each Customer can use multiple Services.  
+The Customer and Service data can be modeled using a **many-to-many** relationship, where each Customer can use multiple Services and each Service can be used by multiple Customers.
 The junction table called **CustomerService** stores information about a specific use of the service by that customer.
 
 !!! success "Example: Customer and Services, Using a Many-to-Many Relationship"
@@ -450,17 +449,17 @@ This Customer–Service data must be transformed into a hierarchical schema comp
 
     - Sort the `Service` and `CustomerService` data tables by their `used_service_id` key.
     
-    - Deploy `Service` to create a new Service data table with `customer_id` as the key, instead of `used_service_id`.
-    
+    - Deploy `Service` to create a new Service data table containing the derived `customer_id`.
+
     - Sort the resulting data table by `customer_id`.
 
-    This process yields a Service data table that complies with the hierarchical schema requirements of Khiops.
+    The resulting table can be used with the conceptual `Service` dictionary keyed by `customer_id`, making it compatible with the Customer hierarchy.
 
 !!! success "Another Example: Telecommunications Domain"
 
     A similar non-hierarchical structure occurs in telecommunications. Each customer has a unique identifier, and each phone device is identified by a phone number. Call Detail Records (CDRs) are linked to phone numbers, while an additional table links the devices to their customers.
 
-    Although these relationships form a tree, their keys do not form a Khiops hierarchy: a CDR key based on `phone_number` does not include `customer_id` as its leading field. The data must therefore be transformed before CDRs can be organized hierarchically under customers in Khiops.
+    Although these relationships form a tree, their keys do not form a Khiops hierarchy: CDRs are linked by `phone_number`, without `customer_id` as a leading key field. The data must therefore be transformed before CDRs can be organized hierarchically under customers in Khiops.
 
     ```
     +--------------------+           +------------------------+
