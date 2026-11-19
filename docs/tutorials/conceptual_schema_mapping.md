@@ -188,13 +188,13 @@ The customer_id variable in the secondary table is not necessary, as no join is 
 Suppose all data related to services is stored in a single JSON field, a practice becoming increasingly common, for example, in document-oriented databases.
 
 Recoding the raw data according to the conceptual schema is possible using the `BuildTableFromJson` rule from the [`Instance Building Rules`](../api-docs/kdic/instance-building-rules-introduction.md).
-This rule leverages a target dictionary that describes the structure of the JSON data and creates a snowflake of in-memory instances from the objects and arrays contained within the JSON.
+The target dictionary maps JSON to Khiops: an object provides values for an instance, an object assigned to an `Entity` variable describes a related instance, and an array assigned to a `Table` variable creates one instance per element.
 
-Note that like in the previous example, the conceptual schema follows a star schema, while the logical schema is a single table.
+Note that, as in the previous example, the conceptual schema follows a star schema, while the logical schema is a single table.
 
-!!! success "Example: Extracting a table from JSON data"
+!!! success "Example: Building a table from JSON data"
 
-    In the following example, the dictionary `Service` describes a basic JSON structure, with an array of objects, one per service instance.
+    In the following example, the `Service` dictionary describes the fields of each object in the JSON `services` array. `BuildTableFromJson` creates one `Service` instance for each object.
 
     ```kdic
     Dictionary Customer (customer_id)
@@ -218,8 +218,8 @@ Note that like in the previous example, the conceptual schema follows a star sch
     };
     ```
 
-    If the `jsonServicesData variable` contains the following JSON value (beautified for clarity),
-    the `services` Table built using the `BuildTableFromJson` rule will consist of 6 entities, one per object in the JSON array.
+    If the `jsonServicesData` variable contains the following JSON value (beautified for clarity),
+    the `services` Table contains six `Service` instances, one for each object in the JSON `services` array.
 
     ```json
     {"services":[{"customer_id":"Id0000","name":"online","month":"2026-01-01","amount":1500},{"customer_id":"Id0000","name":"retail","month":"2026-01-01","amount":2000},{"customer_id":"Id0000","name":"online","month":"2026-02-01","amount":1600},{"customer_id":"Id0000","name":"retail","month":"2026-02-01","amount":2100},{"customer_id":"Id0000","name":"online","month":"2026-03-01","amount":1700},{"customer_id":"Id0000","name":"retail","month":"2026-03-01","amount":2200}]}
