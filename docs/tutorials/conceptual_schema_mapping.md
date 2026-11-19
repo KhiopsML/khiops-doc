@@ -73,7 +73,7 @@ You can then use the `TableUnion` rule, as described in the [`Table Concatenatio
 Suppose service records are stored in separate files for each service, with no column indicating the service name.
 
 To obtain data according to the conceptual schema, we first need to create new in-memory records from the raw data by adding the service name to each record.
-This can be achieved using the `BuildAdvancedView` rule from the [`Instance Building Rules`](../api-docs/kdic/instance-building-rules-introduction.md).
+This can be achieved using the `BuildTableAdvancedView` rule from the [`Instance Building Rules`](../api-docs/kdic/instance-building-rules-introduction.md).
 
 You can then use the `TableUnion` rule to combine all the service tables into a single unified table.
 
@@ -92,9 +92,9 @@ You can then use the `TableUnion` rule to combine all the service tables into a 
 
         // Build tables, ensuring that the type of service is stored in the corresponding target variable
         Unused Table(Service) onlineServices =
-          BuildTableAdvancedView(onlineRawServices, "retail" : type);
+          BuildTableAdvancedView(onlineRawServices, "online" : type);
         Unused Table(Service) retailServices =
-          BuildTableAdvancedView(retailRawServices, "online" : type);
+          BuildTableAdvancedView(retailRawServices, "retail" : type);
 
         // Raw services from the logical schema
         Unused Table(RawService) onlineRawServices;
