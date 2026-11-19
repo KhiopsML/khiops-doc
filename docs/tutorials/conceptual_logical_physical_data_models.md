@@ -77,4 +77,7 @@ The physical schema consists of the multi-table mapping of the dictionary to act
 
 - Secondary table at data path `services`: `MyServiceFile.txt`
 
+!!! note "When the available data does not match the conceptual schema"
+    Real-world data often differs from the clean example shown here. The next page explores how to map between logical and conceptual schemas, with worked examples using Khiops dictionaries.
+    [Explore schema mapping](conceptual_schema_mapping.md).
 
