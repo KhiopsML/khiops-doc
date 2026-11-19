@@ -610,9 +610,7 @@ Similarly to data models, Khiops dictionaries can be used at different levels:
 
 - **Physical level:** To manage actual data files stored locally or in the cloud.
 
-See [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_schema.md) for more details,
-including numerous examples of mapping between conceptual and logical schemas using Khiops dictionaries,
-as well as cases where data management is necessary to preprocess data according to Khiops requirements.
+For an overview of these data models, see [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_logical_physical_data_models.md). For detailed examples of mapping between conceptual and logical schemas using Khiops dictionaries, as well as data management to meet Khiops requirements, see [`Mapping and Transforming Schemas`](../../tutorials/conceptual_schema_mapping.md).
 
 ### Databases
 
@@ -625,7 +623,7 @@ The choice depends on performance, data structure, scalability, and use cases su
 **In Khiops**, the traditional **single-table data schema** used in data mining is extended to support **hierarchical schemas**.
 This allows **domain knowledge encoding, automated feature engineering, and predictive modeling**, bridging the gap between raw relational data and machine learning workflows.  
 
-With Khiops dictionaries, data analysts can describe data at both the conceptual level, using domain knowledge, and at the logical level, to specify data sources and the mapping between the conceptual and logical schemas (see [`Conceptual, Logical, and Physical Data Models`](../../tutorials/conceptual_schema.md)).
+With Khiops dictionaries, data analysts can describe data at both the conceptual level, using domain knowledge, and at the logical level, to specify data sources and the mapping between the conceptual and logical schemas (see [`Mapping and Transforming Schemas`](../../tutorials/conceptual_schema_mapping.md)).
 
 The logical schemas defined using Khiops dictionaries share clear similarities with existing database technologies:
 
@@ -660,7 +658,7 @@ The logical schemas defined using Khiops dictionaries share clear similarities w
 !!! note
 
     Khiops cannot directly connect to relational databases.
-    Instead, data must be prepared as one sorted file per entity within a hierarchical schema after transforming from the [`logical to conceptual schema`](../../tutorials/conceptual_schema.md).  
+    Instead, data must be prepared as one sorted file per entity within a hierarchical schema after transforming from the [`logical to conceptual schema`](../../tutorials/conceptual_schema_mapping.md).
     While this data preparation step is necessary, it is much simpler than traditional feature engineering, which often involves converting complex structured data into a single-table format for analysis.
 
 ### Programming Languages
