@@ -22,10 +22,12 @@ GENERATED_DIRECTORIES = (
 
 
 def json_text(value):
+    """Serialize a value as stable, readable JSON with a trailing newline."""
     return json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
 def navigation(text, discussions):
+    """Replace the generated navigation block with the discussions' sorted topics."""
     if text.count(BEGIN) != 1 or text.count(END) != 1:
         raise ValueError("Generated discussion navigation markers must each occur exactly once")
     start = text.index(BEGIN) + len(BEGIN)
@@ -47,6 +49,7 @@ def navigation(text, discussions):
 
 
 def report_text(file_changes, unlabelled, invalid):
+    """Format generated-file changes and discussion issues as a Markdown report."""
     lines = ["# Discussion synchronization", "", "## Generated file changes", ""]
     for action in ("added", "updated", "removed"):
         lines.extend([f"### {action.title()}", ""])
@@ -75,6 +78,7 @@ def report_text(file_changes, unlabelled, invalid):
 
 
 def checked_path(root, name):
+    """Resolve a generated path and reject paths escaping the root or crossing symlinks."""
     path = Path(name)
     path = root / path
     if not path.resolve().is_relative_to(root.resolve()):
@@ -86,6 +90,7 @@ def checked_path(root, name):
 
 
 def checked_output(root, name):
+    """Validate that a generated file belongs to a reserved output directory."""
     path = Path(name)
     if not any(path.is_relative_to(directory) for directory in GENERATED_DIRECTORIES):
         raise ValueError(f"Unexpected generated output path: {name}")
@@ -93,6 +98,7 @@ def checked_output(root, name):
 
 
 def existing_generated_files(root):
+    """Collect existing generated files while rejecting symlinks in output directories."""
     files = set()
     for directory in GENERATED_DIRECTORIES:
         base = root / directory
@@ -116,6 +122,7 @@ def existing_generated_files(root):
 
 
 def extract_discussions(discussions):
+    """Sort discussions and partition them into published, unlabelled, and invalid items."""
     published, unlabelled, invalid = [], [], []
     for discussion in sorted(discussions, key=lambda d: d["number"]):
         try:
@@ -131,6 +138,7 @@ def extract_discussions(discussions):
 
 
 def write_generated_files(root, generated, old_files):
+    """Write changed generated files and remove stale files from reserved outputs."""
     for name, content in generated.items():
         path = checked_output(root, name) if name.startswith("docs/") else checked_path(root, name)
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -143,6 +151,7 @@ def write_generated_files(root, generated, old_files):
 
 
 def synchronize(root, discussions, downloader=download_attachment):
+    """Generate and write Q&A pages, assets, navigation, state, and a change report."""
     root = Path(root)
     published, unlabelled, invalid = extract_discussions(discussions)
     pages, assets, attachment_errors = render_pages(published, downloader)
@@ -174,6 +183,7 @@ def synchronize(root, discussions, downloader=download_attachment):
 
 
 def main():
+    """Run the command-line synchronization and return its process exit status."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--report", type=Path, required=True)

@@ -1,13 +1,21 @@
 # Questions and answers
 
-These questions and answers are imported from [Khiops Discussions on GitHub](https://github.com/orgs/KhiopsML/discussions).
+This section highlights the most useful community questions about Khiops, selected for practical use in real projects.
+
+The objective is simple: help users find reliable guidance quickly, from first experiments to production-scale deployments.
+
+!!! question Have a question or request?
+    - **Ask in [GitHub Discussions](https://github.com/orgs/KhiopsML/discussions)**
+    - **Report bugs or request product changes in the [Khiops repository issues](https://github.com/KhiopsML/khiops/issues)**
+
+The questions and answers are imported from [Khiops Discussions on GitHub](https://github.com/orgs/KhiopsML/discussions),
 
 ## Coclustering
 
-- [What is the difference between Variable x Variable \(VxV\) and Instances x Variables \(IxV\) coclustering?](coclustering.md#discussion-1184)
+- [What is the difference between Variable x Variable (VxV) and Instances x Variables (IxV) coclustering?](coclustering.md#discussion-1184)
 - [How do VxV and IxV coclustering compare on simple bivariate patterns?](coclustering.md#discussion-1185)
 - [Why does VxV coclustering become sparse in higher dimensions, and what protects IxV?](coclustering.md#discussion-1186)
-- [What does an IxV coclustering analysis look like on a real dataset \(Iris\)?](coclustering.md#discussion-1187)
+- [What does an IxV coclustering analysis look like on a real dataset (Iris)?](coclustering.md#discussion-1187)
 
 ## Deployment and integration
 

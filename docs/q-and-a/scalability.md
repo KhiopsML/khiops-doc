@@ -2,7 +2,7 @@
 
 ## Can users disable Khiops’ memory requirement checks? { #discussion-934 }
 
-##### Context
+#### Context
 
 Khiops sometimes prevents the execution of a data mining workflow, citing a lack of memory based on a rough estimate of the required memory. After using a machine with significantly more available RAM, we often notice that far less memory was actually used during the process. Allowing Khiops to run the task regardless of the available resources would be more convenient. After all, if I know my data well, Khiops simply prevents me from analyzing it in a too conservative manner. And if the program crashes, well, that's what can happen with all alternative methods, such as Scikit-Learn: why bother?
 

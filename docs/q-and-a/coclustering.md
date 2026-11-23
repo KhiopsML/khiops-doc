@@ -1,6 +1,6 @@
 # Coclustering
 
-## What is the difference between Variable x Variable \(VxV\) and Instances x Variables \(IxV\) coclustering? { #discussion-1184 }
+## What is the difference between Variable x Variable (VxV) and Instances x Variables (IxV) coclustering? { #discussion-1184 }
 
 ### Khiops coclustering
 
@@ -381,7 +381,7 @@ Estimating joint density remains challenging. If the **intrinsic dimension** of 
 
 *Source: [discussion #1186](https://github.com/orgs/KhiopsML/discussions/1186)*
 
-## What does an IxV coclustering analysis look like on a real dataset \(Iris\)? { #discussion-1187 }
+## What does an IxV coclustering analysis look like on a real dataset (Iris)? { #discussion-1187 }
 
 ### Exploratory analysis of the Iris dataset using Instances x Variables Coclustering
 

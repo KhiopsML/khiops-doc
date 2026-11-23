@@ -190,7 +190,7 @@ def heading_text(value):
     value = " ".join(value.split())
     value = html.escape(value, quote=False)
     value = value.replace("{{", "&#123;&#123;").replace("{%", "&#123;%")
-    return re.sub(r"([\\`*_{}\[\]()#+.!|>-])", r"\\\1", value)
+    return re.sub(r"([\\`*_{}\[\]#+.!|>-])", r"\\\1", value)
 
 
 class AttachmentRewriter(HTMLParser):
@@ -531,8 +531,19 @@ def render_pages(items, downloader=download_attachment):
     overview = [
         "# Questions and answers",
         "",
-        "These questions and answers are imported from "
-        "[Khiops Discussions on GitHub](https://github.com/orgs/KhiopsML/discussions).",
+        "This section highlights the most useful community questions about Khiops, "
+        "selected for practical use in real projects.",
+        "",
+        "The objective is simple: help users find reliable guidance quickly, from "
+        "first experiments to production-scale deployments.",
+        "",
+        "!!! question Have a question or request?",
+        "    - **Ask in [GitHub Discussions](https://github.com/orgs/KhiopsML/discussions)**",
+        "    - **Report bugs or request product changes in the "
+        "[Khiops repository issues](https://github.com/KhiopsML/khiops/issues)**",
+        "",
+        "The questions and answers are imported from "
+        "[Khiops Discussions on GitHub](https://github.com/orgs/KhiopsML/discussions),",
         "",
     ]
     for topic in sorted(grouped):
