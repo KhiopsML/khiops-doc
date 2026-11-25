@@ -27,8 +27,8 @@ Returns the initial prediction score for the prediction of a given target value.
 ## ReinforcementVariableAt
 
 ```kdic-api-docs
-Categorical ContributionVariableAt(Structure(ClassifierReinforcer),
-                                   Categorical targetValue, Numerical rank)
+Categorical ReinforcementVariableAt(Structure(ClassifierReinforcer),
+                                    Categorical targetValue, Numerical rank)
 ```
 
 Returns the name of the lever variable at the specified reinforcement rank (starting at 1) for a target value,
@@ -59,8 +59,8 @@ based on lever variables ordered by decreasing reinforcement scores.
 ## ReinforcementClassChangeTagAt
 
 ```kdic-api-docs
-Numerical ReinforcementFinalScoreAt(Structure(ClassifierReinforcer),
-                                    Categorical targetValue, Numerical rank)
+Numerical ReinforcementClassChangeTagAt(Structure(ClassifierReinforcer),
+                                        Categorical targetValue, Numerical rank)
 ```
 
 Returns the class change tag after reinforcement at the specified reinforcement rank (starting at 1) for a target value,

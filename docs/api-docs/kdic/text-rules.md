@@ -20,7 +20,7 @@ Conversion of a text value to a categorical value
 ## ToText
 
 ```kdic-api-docs
-Text TextLength(Categorical value)
+Text ToText(Categorical value)
 ```
 
 Conversion of a categorical value to a text value
