@@ -3,6 +3,9 @@
 The reinforcement rules exploit a set of lever variables among the variables of a classifier to
 improve prediction scores.
 
+For the rules that take a `rank`, valid ranks are between 1 and the number of lever variables.
+Any other rank returns an empty or missing value.
+
 
 ## ClassifierReinforcer
 

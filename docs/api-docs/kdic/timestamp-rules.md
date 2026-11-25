@@ -98,7 +98,8 @@ Difference in seconds between two timestamp values.
 Timestamp AddSeconds(Timestamp value, Numerical secondNumber)
 ```
 
-Adds a number of seconds to a timestamp value.
+Adds a number of seconds, possibly fractional, to a timestamp value. The result is invalid if the
+number of seconds is not finite or if the resulting timestamp is out of range.
 
 ## IsTimestampValid
 

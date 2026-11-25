@@ -115,8 +115,8 @@ Time BuildTime(Numerical hour, Numerical minute, Numerical second)
 
 Builds a time value from `hour`, `minute` and `second`.
 
-The rule uses the floor value of hour and minute, and the full value of second. The hour must be
+The hour and minute must be integers; the second may have a fraction. The hour must be
 between 0 and 23. The minute must be between 0 and 59. The second must be between 0 and 59, with
-optional fraction of second.
+optional fraction of second. Otherwise, the result is an invalid time.
 
 

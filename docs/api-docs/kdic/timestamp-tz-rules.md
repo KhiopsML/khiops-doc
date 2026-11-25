@@ -76,7 +76,7 @@ Builds a `Timestamp` value from a `TimestampTZ` value after conversion to local 
 TimestampTZ SetTimeZoneMinutes(Timestamp value, Numerical minutes)
 ```
 
-Modify the time zone information of a timestampTZ value. The minutes must be between -12\*60 and +14\*60.
+Modify the time zone information of a timestampTZ value. The minutes must be an integer between -12\*60 and +14\*60.
 
 !!! example
 
@@ -109,7 +109,8 @@ Difference in seconds between two timestampTZ values.
 Timestamp AddSecondsTSTZ(TimestampTZ value, Numerical secondNumber)
 ```
 
-Adds a number of seconds to a timestampTZ value.
+Adds a number of seconds, possibly fractional, to a timestampTZ value. The result is invalid if the
+number of seconds is not finite or if the resulting timestamp is out of range.
 
 ## IsTimestampTZValid
 
@@ -126,4 +127,4 @@ TimestampTZ BuildTimestampTZ(Timestamp timestampValue, Numerical timezone)
 ```
 
 Builds a timestampTZ value from a timestamp value and time zone information in minutes. The minutes
-must be between `-12*60` and `+14*60`.
+must be an integer between `-12*60` and `+14*60`.
