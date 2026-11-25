@@ -2,6 +2,8 @@
 
 These rules return boolean values encoded as 0 or 1 numerical values.
 
+The empty value (`""`) is a regular value for these comparisons: it is equal to itself and smaller than any non-empty value.
+
 ## EQc
 
 ```kdic-api-docs

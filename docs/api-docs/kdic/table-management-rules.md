@@ -25,7 +25,7 @@ Root Dictionary Customer(customer_id)
 Entity TableAt(Table table, Numerical rank)
 ```
 
-Extraction of an entity of a table at a given rank.
+Extraction of an entity of a table at a given rank. If the rank is out of bounds or missing, the returned entity does not exist.
 
 !!! example
 

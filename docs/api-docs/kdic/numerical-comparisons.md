@@ -7,7 +7,11 @@ These rules evaluate numerical expressions and return boolean results encoded as
 
 - The special value `#Missing` represents a missing value and can be used as a numerical operand in any derivation rule.
 
-- When involved in comparisons, `#Missing` is considered inferior to any valid value.
+- Unlike most derivation rules, which return a missing value when an operand is missing, comparison rules always return `0` or `1`, never a missing value. Their results can thus be used directly as conditions in `If`, `And` or `Or`.
+
+- When involved in comparisons, `#Missing` is treated as `-inf`, a value smaller than any valid value. For example, `L(#Missing, 18)` returns `1` and `EQ(#Missing, #Missing)` returns `1`.
+
+- To test whether a value is missing, use `EQ(value, #Missing)`.
 
 ## EQ
 

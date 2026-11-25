@@ -29,7 +29,7 @@ Text TextListAt(TextList value, Numerical index)
 ```
 
 Returns a text value at given index (index starts at 1). 
-Returns `""` if the index is out of bounds.
+Returns `""` if the index is out of bounds or missing.
 
 
 ## TextListConcat

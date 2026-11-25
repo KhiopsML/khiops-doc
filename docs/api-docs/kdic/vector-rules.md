@@ -48,4 +48,4 @@ Numerical ValueAt(Structure(Vector) vector, Numerical index)
 ```
 
 Returns the value of a `Numerical` vector at given index (indexes starts at 1). Returns a missing
-value if the index is out of bounds.
+value if the index is out of bounds or missing.

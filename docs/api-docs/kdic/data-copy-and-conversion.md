@@ -86,6 +86,20 @@ Numerical RecodeMissing(Numerical inputValue, Numerical replaceValue)
 
 Returns the input value if it is different from the missing value and the replace value otherwise.
 
+This rule makes it possible to control the handling of missing values before using them in other rules, which
+most often return a missing value if one of their operands is missing.
+
+!!! example
+
+    ```kdic
+    Dictionary Person
+    {
+      Numerical Age;
+      // Replaces a missing Age by 0
+      Numerical AgeOrZero = RecodeMissing(Age, 0);
+    }
+    ```
+
 ## AsCategorical
 
 ```kdic-api-docs
