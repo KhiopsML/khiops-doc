@@ -108,4 +108,4 @@ Categorical AsCategorical(Numerical value)
 
 Conversion of a numerical value to a categorical value. This allows to process the input numerical
 values as unordered categorical values, and thus to analyse the variable using a value grouping
-method rather than a discretization method.
+method rather than a discretization method. A missing value gives an empty value.
