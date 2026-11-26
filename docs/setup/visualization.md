@@ -30,8 +30,8 @@ You can find all versions of the Khiops Visualization tool on the [the following
 
 For a comprehensive guide on how to use the Khiops Visualization application:
 
-- Khiops Visualization Guide for [supervised analysis][Documentation]
-- Khiops Visualization Guide  for [unsupervised analysis][coviz]
+- Khiops Visualization Guide for [analyses produced by Khiops tool][Documentation]
+- Khiops Visualization Guide  for [coclustering analyses produced by Khiops Coclustering tool][coviz]
 
 [Documentation]: ../ui-docs/visualization.md
 [coviz]: ../ui-docs/covisualization.md
