@@ -110,7 +110,7 @@ Timestamp AddSecondsTSTZ(TimestampTZ value, Numerical secondNumber)
 ```
 
 Adds a number of seconds, possibly fractional, to a timestampTZ value. The result is invalid if the
-number of seconds is not finite or if the resulting timestamp is out of range.
+number of seconds is missing or too large, or if the resulting timestamp is out of range.
 
 ## IsTimestampTZValid
 
