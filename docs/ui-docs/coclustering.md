@@ -23,17 +23,17 @@ Khiops Coclustering aims at detecting highly informative patterns by the mean of
 
 A coclustering model summarizes the correlation between two or more variables by simultaneously partitioning the values of each variable, into groups of values in the categorical case and into intervals in the numerical case. The cross-product of these univariate partitions forms a multivariate partition, called data grid. By counting the frequencies in the multivariate parts (called cells) of this data grid, we obtain a nonparametric estimator of the joint density of the variables. Each partition is organized into hierarchies, so as to enable an exploratory analysis of the results at any grain level.
 
-For illustration purpose, let us consider the correlation between the education and occupation variables of the Adult database (coming from the US Census Bureau). This database contains about 50,000 instances, with 14 values of occupation and 16 values of education.
+For illustration purpose, let us consider the correlation between the education and occupation variables of the Adult dataset (coming from the US Census Bureau). This database contains about 50,000 instances, with 14 values of occupation and 16 values of education.
 
 Applying the **Khiops Coclustering** back-end tool, we obtain a 9\*9 fine-grained data grid. The [`Khiops Visualization Desktop`](covisualization.md) tool enables the exploration of the correlation between the two variables. 
 Displaying the mutual information highlights the over-represented cells (in red), i.e. cells with a frequency higher than expected in case of independent variables, and the under-represented cells (in blue). 
-In the screenshot below, the selected cell indicates a high concentration of education *Prof-school* or *Doctorate* jointly with occupation *Prof-specialty* or *Armed-Forces*.
+In the screenshot below, the selected cell indicates a high concentration of education *Bachelors* jointly with occupation *Prof-specialty*.
 
 ![](../assets/images-khiops-guides/coclustering/AdultCovizuOptimal.jpg)
 
 Folding down both hierarchies allows to obtain a simplified 3\*3 data grid which provides a quick summary with an easier interpretation.
 
-In the screenshot below, the selected cell indicates a high concentration of education *Bachelor*, *Master*, *Prof-school* or *Doctorate* jointly with occupation *Exec-managerial*, *Prof-specialty* or *Armed-Forces*.
+In the screenshot below, the selected cell indicates a high concentration of education *Bachelor*, *Masters*, *Prof-school* or *Doctorate* jointly with occupation *Prof-specialty* or *Exec-managerial*.
 ![](../assets/images-khiops-guides/coclustering/AdultCovizu3-3.png)
 
 Beyond the illustrative example, this kind of analysis provides insightful summaries when applied to databases with millions of instances and variables with thousands of values.
