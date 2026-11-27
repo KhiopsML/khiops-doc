@@ -18,7 +18,7 @@ interpretation, and deployment of both supervised and unsupervised models on lar
 
 - Click on the **Train model** button 
 
-- Click on the **Visualize results** button in the **Results** pane 
+- Click on the **Visualize report** button in the **Results** pane 
 
 **Build a classification model**
 
@@ -28,7 +28,7 @@ interpretation, and deployment of both supervised and unsupervised models on lar
 
 - Click on the **Train model** button 
 
-- Click on the **Visualize results** button in the **Results** pane 
+- Click on the **Visualize report** button in the **Results** pane 
 
 ### What is a data dictionary? 
 
@@ -70,9 +70,9 @@ A dictionary file contains one or several dictionaries; details about their form
 
 - Click on the **Open** sub-menu of the **Data dictionary** menu 
 
-- Choose the dictionary file (extentions .kdic) 
+- Choose the dictionary file (extensions .kdic) 
 
-- Enter the name the dictionary in the **Analysis dictionary** field of the **Train database** pane 
+- Enter the name of the dictionary in the **Analysis dictionary** field of the **Train database** pane 
 
 
 ## Train database
@@ -105,12 +105,15 @@ Khiops can be used to extract a subpart (or its exact complementary) of the reco
 This allows to extract a train sample and its exact complementary as a test sample 
 (if the same sample percentage is used both in train and test, in *include sample* mode in train and *exclude sample* mode in test).
 
+A selection variable can also be applied to select samples (via the Selection tab). 
+The effects of these two selection ways are orthogonal and additive and the sampling percentage is applied before the selection variable.
 
 ### Selection
 
 Another way to build train or test samples is to use a selection variable and a selection value.
 
-**Selection variable**: when nothing is specified, all the records are analysed. When a selection variable is specified, the records are selected when the value of their selection variable is equal to the selection value.
+
+**Selection variable**: when nothing is specified, all the records are analysed (once the sampling percentage has been applied). When a selection variable is specified, the records are selected when the value of their selection variable is equal to the selection value (once the sampling percentage has been applied).
 
 **Selection value**: used only when a selection variable is specified. In that case, the value must be a correct value (numerical value if the selection variable is a numerical variable).
 
@@ -181,6 +184,7 @@ The only change is the 'Sampling mode' which value is inverted in the test param
 Khiops performs automatic feature engineering by constructing variables from multi-table schema, tokenizing text variables, building trees and analysing pairs of variables.
 
 **Keep selected variables only**: in supervised analysis, constructed variables are included in the data preparation reports only if they are selected in the Naive Bayes Selective predictor.
+Variables implied in selected trees are also included.
 
 **Max number of constructed variables**: max number of variables to construct (default: 1000). The constructed variables allow to extract numerical or categorical values resulting from computing formula applied to existing variable (e.g. YearDay of a Date variable, Mean of a Numerical Variable from a Table Variable).
 
@@ -254,7 +258,7 @@ Constructed variables are stored in the output dictionaries (recoding or modelin
 
 These parameters are user constraints that allow to control the variable selection process. Their use might decrease the performance, compared to the default mode (without user constraints).
 
-**Max number of evaluated variables**: max number of variables originating from the data preparation, to use as input variables in the multivariate selection of the Selective Naive Bayes predictor. The evaluated variables are those having the highest predictive importance (Level). This parameter allows to simplify and speed up the training phase (default: 0, means that all the variables are evaluated).
+**Max number of evaluated variables**: max number of variables originating from the data preparation, to use as input variables in the multivariate selection of the Selective Naive Bayes predictor. The evaluated variables are those having the highest predictive univariate importance (Level). This parameter allows to simplify and speed up the training phase (default: 0, means that all the variables are evaluated).
 
 **Max number of selected variables**: max number of variables originating from the multivariate variable selection, to use in the final Selective Naive Bayes predictor predictor. The selected variables are those with the largest importance in the multivariate selection. This parameter allows to simplify and speed up the deployment phase (default: 0, means that all the necessary variables are selected).
 

@@ -79,7 +79,7 @@ Each interaction is recorded using an internal tool key, the field value, and a 
 
 	- Click on the **Open** sub-menu of the **Data dictionary** menu 
 
-	- Choose the dictionary file (extentions .kdic): `C:\Users\Public\khiops_data\samples\Iris\Iris.kdic`
+	- Choose the dictionary file (extensions .kdic): `C:\Users\Public\khiops_data\samples\Iris\Iris.kdic`
 
 	- Enter the name the dictionary in the **Analysis dictionary** field of the **Train database** pane: `Iris`
 

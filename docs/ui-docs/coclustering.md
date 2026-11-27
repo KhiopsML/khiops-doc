@@ -95,7 +95,7 @@ A dictionary file contains one or several dictionaries; details about their form
 
 - Click on the **Open** sub-menu of the **Data dictionary** menu 
 
-- Choose the dictionary file (extentions .kdic) 
+- Choose the dictionary file (extensions .kdic) 
 
 - Enter the name the dictionary in the **Analysis dictionary** field of the **Database** pane 
 
