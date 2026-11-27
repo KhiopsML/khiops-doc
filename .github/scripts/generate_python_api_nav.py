@@ -35,6 +35,7 @@ Usage:
 """
 
 import argparse
+import json
 import sys
 
 try:
@@ -166,8 +167,7 @@ def replace_section_nav(target_nav, section_title, new_nav):
 
 def toml_str(s):
     """Render a Python string as a double-quoted TOML string literal"""
-    escaped = s.replace("\\", "\\\\").replace('"', '\\"')
-    return f'"{escaped}"'
+    return json.dumps(s, ensure_ascii=False)
 
 
 def render_value(value, indent=""):

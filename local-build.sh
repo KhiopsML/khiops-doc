@@ -79,6 +79,9 @@ KHIOPS_VERSION=""
 KHIOPS_PYTHON_VERSION=""
 LOCAL_KHIOPS_PYTHON=""
 KHIOPS_PYTHON_REF=""
+KNI_TUTORIAL_REPO="https://github.com/KhiopsML/KNI-tutorial.git"
+KNI_TUTORIAL_REF=""
+LOCAL_KNI_TUTORIAL=""
 KHIOPS_VIZ_VERSION=""
 KHIOPS_GCS_DRIVER_VERSION=""
 KHIOPS_S3_DRIVER_VERSION=""
@@ -93,6 +96,9 @@ while [[ $# -gt 0 ]]; do
     --khiops-python-version) KHIOPS_PYTHON_VERSION="$2"; shift 2 ;;
     --local-khiops-python) LOCAL_KHIOPS_PYTHON="$2"; shift 2 ;;
     --khiops-python-ref) KHIOPS_PYTHON_REF="$2"; shift 2 ;;
+    --kni-tutorial-repo) KNI_TUTORIAL_REPO="$2"; shift 2 ;;
+    --kni-tutorial-ref) KNI_TUTORIAL_REF="$2"; shift 2 ;;
+    --local-kni-tutorial) LOCAL_KNI_TUTORIAL="$2"; shift 2 ;;
     --khiops-samples-version) KHIOPS_SAMPLES_VERSION="$2"; shift 2 ;;
     --khiops-python-tutorial-ref) KHIOPS_PYTHON_TUTORIAL_REF="$2"; shift 2 ;;
     --khiops-viz-version) KHIOPS_VIZ_VERSION="$2"; shift 2 ;;
@@ -237,6 +243,7 @@ ARGS=(
   --khiops-version "$KHIOPS_VERSION"
   --khiops-python-version "$KHIOPS_PYTHON_VERSION"
   --khiops-python-ref "$KHIOPS_PYTHON_REF"
+  --kni-tutorial-repo "$KNI_TUTORIAL_REPO"
   --khiops-samples-version "$KHIOPS_SAMPLES_VERSION"
   --khiops-python-tutorial-ref "$KHIOPS_PYTHON_TUTORIAL_REF"
   --khiops-viz-version "$KHIOPS_VIZ_VERSION"
@@ -245,6 +252,8 @@ ARGS=(
   --khiops-azure-driver-version "$KHIOPS_AZURE_DRIVER_VERSION"
 )
 [ -n "$LOCAL_KHIOPS_PYTHON" ] && ARGS+=(--khiops-python-repo "$LOCAL_KHIOPS_PYTHON")
+[ -n "$KNI_TUTORIAL_REF" ] && ARGS+=(--kni-tutorial-ref "$KNI_TUTORIAL_REF")
+[ -n "$LOCAL_KNI_TUTORIAL" ] && ARGS+=(--local-kni-tutorial "$LOCAL_KNI_TUTORIAL")
 [ "$EXECUTE_TUTORIALS" = "true" ] && ARGS+=(--execute-tutorials)
 
 bash .github/scripts/build-doc.sh "${ARGS[@]}"
