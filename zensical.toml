@@ -153,7 +153,17 @@ nav = [
     { "Auto Hardware Adaptation" = "learn/hardware_adaptation.md" },
     { "Bibliography" = "references.md" },
   ] },
-  { "Discussions" = "https://github.com/orgs/KhiopsML/discussions" },
+  # BEGIN GENERATED DISCUSSION NAVIGATION
+  { "Q&A" = [
+    { "Overview" = "q-and-a/overview.md" },
+    { "Coclustering" = "q-and-a/coclustering.md" },
+    { "Deployment and integration" = "q-and-a/deployment.md" },
+    { "Fundamentals of modeling" = "q-and-a/fundamentals.md" },
+    { "Preprocessing and encoding" = "q-and-a/preprocessing.md" },
+    { "Python API and development" = "q-and-a/pythonapi.md" },
+    { "Scalability and large datasets" = "q-and-a/scalability.md" },
+  ] },
+  # END GENERATED DISCUSSION NAVIGATION
   { "Contact Us" = "contact.md" },
 ]
 

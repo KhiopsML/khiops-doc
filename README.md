@@ -259,6 +259,44 @@ Cmd+Shift+R on macOS) if the browser still shows the previous version.
 uv run python scripts/convert_notebooks.py
 ```
 
+### Editing Discussion Topics
+
+The Q&A pages are generated from [Khiops Discussions](https://github.com/orgs/KhiopsML/discussions).
+Edit the source discussion and its labels rather than editing the generated pages.
+
+- Add exactly one label whose name starts with `Topic/`, such as `Topic/Deployment`.
+  The label's description becomes the topic heading. Discussions without a
+  `Topic/` label are not published; discussions with multiple topic labels or
+  an empty label description are reported for correction.
+- For a ready-to-use discussion, its title and initial post become the question
+  and answer. For a user discussion, add a `### Question summary` section to
+  the first reply. Its text becomes the question and the rest of the reply
+  becomes the answer.
+- Attached images and scripts may each be at most 100,000 bytes. A discussion
+  with an oversized file is omitted and reported; scripts are never executed.
+- Imported image and Python script filenames include the discussion number,
+  preceding subsection title, and a number (for example `993-experiments-1.png`
+  and `993-experiments-1.py`). They can change when headings or attachment
+  order change.
+- Specify a language on fenced code blocks (for example `python` or `kdic`)
+  to enable syntax highlighting on the site.
+- Write answers in Markdown: supported formatting is kept in the generated
+  pages and rendered using the site's styles. Raw HTML is sanitized during
+  import.
+- Write math using `$...$` for inline formulas, or `$$...$$` or a `math`
+  fenced block for display formulas.
+- Plain web addresses in discussion text are made clickable during import.
+
+The discussion synchronization workflow runs weekly and can also be started
+manually from GitHub Actions. After its first manual run has verified access to
+the source discussions and pull-request creation, enable its weekly schedule
+by setting the repository Actions variable `DISCUSSION_SYNC_SCHEDULE_ENABLED`
+to `true`. It proposes generated file additions, updates and removals in a pull
+request, along with discussions without a topic label and invalid discussions.
+Review the pull request before merging. An unchanged oversized-file
+warning that was already merged is repeated in the workflow summary rather
+than creating another identical pull request.
+
 ### pre-commit
 
 The Python development environment described in Setup (`uv sync`) installs the

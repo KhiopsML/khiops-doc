@@ -4,9 +4,14 @@ version = "0.0.0"
 description = "Khiops documentation build environment"
 requires-python = ">=3.11"
 dependencies = [
+  "bleach>=6.3,<7",
   "ghp-import",
   "kdic-lexer",
+  "markdown>=3.10,<4",
+  "markdown-it-py>=3,<5",
   "mkdocs-material",
+  "mkdocs-material",
+  "pygments>=2,<3",
   "zensical==0.0.51",
 ]
 
