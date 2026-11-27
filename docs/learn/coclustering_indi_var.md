@@ -207,82 +207,84 @@ The counts break down the matrix totals at several levels:
 
 This order describes the probabilistic construction of a model; **variable partitioning, the grouping of variable parts, and the grouping of instances are optimized jointly.**
 
-## Critère d’optimisation
+## Optimization Criterion
 
-**Le principe MODL reste le même : sélectionner le modèle $h$ le plus probable sachant les données $d$.** Selon le principe de [sélection bayésienne][modl-bayes], cela revient à minimiser deux [longueurs de description][modl-information] : celle du modèle et celle des données sachant le modèle.
+**The MODL principle remains the same: select the model $h$ that is most probable given the data $d$.** Following [Bayesian model selection][modl-bayes], this is equivalent to minimizing the sum of two [description lengths][modl-information]: that of the model and that of the data given the model.
 
 $$
 C(h)
 =
-\underbrace{-\log P(h)}_{L(h)\;:\;\text{description du modèle}}
+\underbrace{-\log P(h)}_{L(h)\;:\;\text{description of the model}}
 +
-\underbrace{-\log P(d\mid h)}_{L(d\mid h)\;:\;\text{description des données sachant le modèle}}.
+\underbrace{-\log P(d\mid h)}_{L(d\mid h)\;:\;\text{description of the data given the model}}.
 $$
 
-L’apprentissage du vocabulaire ajoute des choix à décrire dans le modèle et des informations à coder pour retrouver les valeurs ou les rangs des observations.
+Learning the vocabulary adds choices to the model description and information to encode to recover the values or ranks of the observations.
 
 
-### Le prior
+### The Prior
 
-**Le prior suit la [hiérarchie des paramètres](#hierarchie-parametres).** À chaque étape, les choix compatibles avec les précédents sont équiprobables. Choisir parmi $q$ possibilités coûte donc $\log q$.
+**The prior follows the [parameter hierarchy](#hierarchie-parametres).** At each stage, choices compatible with the preceding choices are equally likely. Choosing among $q$ possibilities therefore costs $\log q$.
 
-Les [mécanismes du coclustering][coclustering-critere] se retrouvent sur les axes instances et parties de variables. Trois familles de choix supplémentaires interviennent :
+The [coclustering mechanisms][coclustering-critere] carry over to the two axes: instances and variable parts. Three additional types of choices are introduced:
 
-- **Le nombre de parties $J_k$.** Il est choisi parmi $1,\ldots,|V_k|$ pour une variable catégorielle de domaine $V_k$, ou parmi $1,\ldots,N$ pour une variable numérique, où $N$ est le nombre total d’observations. Ces choix sont équiprobables : le coût, respectivement $\log|V_k|$ ou $\log N$, est identique pour tous les nombres de parties possible. 
+- **The number of parts $J_k$.** It is chosen from $1,\ldots,|V_k|$ for a categorical variable with domain $V_k$, or from $1,\ldots,N$ for a numerical variable, where $N$ is the total number of observations. These choices are equally likely: the cost, respectively $\log|V_k|$ or $\log N$, is the same for every allowed number of parts.
 
-- **La composition des parties catégorielles.** Choisir la partition $\mathcal P_k$ coûte $\log B(|V_k|,J_k)$. La fonction $B$ dénombre les partitions possibles selon la [convention du coclustering précédent][coclustering-critere], qui autorise des classes vides.
+- **The composition of categorical parts.** Choosing the partition $\mathcal P_k$ costs $\log B(|V_k|,J_k)$. The function $B(a,b)$ counts the partitions of $a$ elements into at most $b$ nonempty classes, following the [convention used in the previous coclustering model][coclustering-critere].
 
-- **Les effectifs des modalités au sein des parties.** Pour une partie catégorielle contenant $n$ observations et $r$ modalités, les composantes correspondantes de $\lambda_k$ décrivent une répartition de ces $n$ observations entre les $r$ modalités. Son coût est :
+- **Value counts within parts.** For a categorical part containing $n$ observations and $r$ categorical values, the corresponding components of $\lambda_k$ specify the counts of these $r$ values, which sum to $n$. The cost is:
 
     $$
     \log\binom{n+r-1}{r-1}.
     $$
 
-Dans la partie *Web/App* de notre exemple, les cinq observations admettent **six répartitions d’effectifs possibles**, de $(0,5)$ à $(5,0)$. Décrire les effectifs observés — trois *Web* et deux *App* — coûte donc $\log 6$.
+In the *Web/App* part of our example, there are **six possible count vectors** for the five observations, from $(0,5)$ to $(5,0)$. Describing the observed counts — three *Web* and two *App* — therefore costs $\log 6$.
 
-Pour les variables numériques, **aucun choix indépendant de bornes n’est ajouté** : les intervalles sont déterminés par les effectifs $\delta^p$ et l’ordre des rangs.
+For numerical variables, **no separate choice of boundaries is introduced**: the intervals are determined by the counts $\delta^p$ and the rank order.
 
 
-### La vraisemblance
+### The Likelihood
 
-Les termes du [coclustering précédent][coclustering-critere] décrivent l’affectation des observations aux coclusters, aux instances et aux parties. **Il reste à préciser la valeur de chaque observation à l’intérieur de sa partie.**
+The terms from the [previous coclustering model][coclustering-critere] describe the assignment of observations to coclusters, instances, and parts. **We still need to specify the categorical value or numerical rank of each observation within its part.**
 
-**Pour une partie catégorielle**, les effectifs des modalités sont déjà fixés par $\lambda_k$. Il faut maintenant préciser **quelles observations portent chaque modalité**. Pour une partie $V_{k,t}$ contenant $n$ observations, dont $n_v$ occurrences de chaque modalité $v$, le coût est :
+**For a categorical part**, the value counts are already fixed by $\lambda_k$. We must now specify **which observations correspond to each value**. For a part $V_{k,t}$ containing $n$ observations, with $n_v$ occurrences of each value $v$, the cost is:
 
 $$
 \log\frac{n!}{\displaystyle\prod_{v\in V_{k,t}}n_v!}.
 $$
 
-Reprenons nos cinq observations : nous savons qu’il y a trois *Web* et deux *App*. Il reste à choisir lesquelles portent *Web*. Il existe $\binom{5}{3}=10$ affectations possibles, pour un coût de $\log 10$.
+Returning to our five observations, we know that three are *Web* and two are *App*. We still need to choose which ones are *Web*. There are $\binom{5}{3}=10$ possible assignments, at a cost of $\log 10$.
 
-**Le prior décrit donc les effectifs ; la vraisemblance décrit les affectations compatibles avec ces effectifs.**
+**At this level, the prior describes the counts; the likelihood describes the assignments consistent with those counts.**
 
-**Pour une partie numérique**, l’intervalle de rangs est déjà déterminé. Associer ses $n$ rangs distincts aux $n$ observations donne $n!$ affectations possibles, pour un coût :
+**For a numerical part**, the rank interval is already determined. Assigning its $n$ distinct ranks to the $n$ observations gives $n!$ possible assignments, at a cost of:
 
 $$
 \log(n!).
 $$
 
 
-### Le critère complet : jouons au jeu des différences.
+### The Full Criterion: Spot the Differences
 
-En réunissant tous les termes, le critère s’écrit $C(h)=L(h)+L(d\mid h)$. Les ajouts propres à l’apprentissage du vocabulaire sont indiqués en rouge.
+Putting all the terms together gives the criterion $C(h)=L(h)+L(d\mid h)$. The additions specific to vocabulary learning are shown in blue.
 
-Pour alléger l’écriture, on note $M$ le nombre d’instances, $J=\sum_k J_k$ le nombre total de parties, et $\mathrm{Cat}$ et $\mathrm{Num}$ les ensembles d’indices des variables catégorielles et numériques.
+To keep the notation compact, let $M$ be the number of instances, $J=\sum_k J_k$ the total number of parts, and $\mathrm{Cat}$ and $\mathrm{Num}$ the sets of indices of categorical and numerical variables.
 
-#### Description du modèle — le prior :
+Here, the numbers of groups $K^u,K^p$ play the roles of $J_1,J_2$ in the previous coclustering model, while the counts $\phi_{ij}$ play the role of $N_{j_1j_2}$.
+
+#### Describing the Model — the Prior:
 
 $$
 \begin{aligned}
 L(h) ={}&
-{\color{red}
+{\color{blue}
 \sum_{k\in\mathrm{Cat}}\log|V_k|
 +
 \sum_{k\in\mathrm{Num}}\log N
 }
 \\[0.5em]
 &+
-{\color{red}
+{\color{blue}
 \sum_{k\in\mathrm{Cat}}\log B(|V_k|,J_k)
 }
 \\[0.5em]
@@ -301,7 +303,7 @@ L(h) ={}&
 {|\mathcal C_j^p|-1}
 \\[0.5em]
 &+
-{\color{red}
+{\color{blue}
 \sum_{k\in\mathrm{Cat}}\sum_{t=1}^{J_k}
 \log\binom{\delta^p_{k,t}+|V_{k,t}|-1}
 {|V_{k,t}|-1}
@@ -309,7 +311,7 @@ L(h) ={}&
 \end{aligned}
 $$
 
-#### Description des données sachant le modèle — la vraisemblance : 
+#### Describing the Data Given the Model — the Likelihood:
 
 $$
 \begin{aligned}
@@ -320,64 +322,62 @@ L(d\mid h) ={}&
 \\[0.5em]
 &+ \sum_{i=1}^{K^u}\log(\phi_{i\cdot}!)
 -
-\sum_{u=1}^{M}\log(\delta_u^u!)
+\sum_{\ell=1}^{M}\log(\delta_\ell^u!)
 \\[0.5em]
 &+ \sum_{j=1}^{K^p}\log(\phi_{\cdot j}!)
 -
 \sum_k\sum_{t=1}^{J_k}\log(\delta^p_{k,t}!)
 \\[0.5em]
 &+
-{\color{red}
+{\color{blue}
 \sum_{k\in\mathrm{Cat}}\sum_{t=1}^{J_k}
 \log\frac{\delta^p_{k,t}!}
 {\displaystyle\prod_{v\in V_{k,t}}\lambda_{k,v}!}
 }
 \\[0.5em]
 &+
-{\color{red}
+{\color{blue}
 \sum_{k\in\mathrm{Num}}\sum_{t=1}^{J_k}
 \log(\delta^p_{k,t}!)
 }.
 \end{aligned}
 $$
 
-Ici, $\phi_{ij}$ est l’effectif du cocluster $(i,j)$, et $\phi_{i\cdot}$ et $\phi_{\cdot j}$ sont les totaux de sa ligne et de sa colonne. Les cardinalités $|\mathcal C_i^u|$ et $|\mathcal C_j^p|$ comptent respectivement les instances et les parties de chaque groupe. Enfin, $\lambda_{k,v}$ désigne la composante de $\lambda_k$ associée à la modalité $v$.
+Here, $\phi_{ij}$ is the observation count in cocluster $(i,j)$, and $\phi_{i\cdot}$ and $\phi_{\cdot j}$ are its row and column totals. The cardinalities $|\mathcal C_i^u|$ and $|\mathcal C_j^p|$ give the numbers of instances and parts in each group, respectively. Finally, $\lambda_{k,v}$ denotes the component of $\lambda_k$ associated with the categorical value $v$.
 
-**La formule a de quoi impressionner… mais le jeu des différences tient en cinq familles de termes rouges !** Ce sont précisément les ajouts que nous venons d’expliquer. Les autres termes reprennent les mécanismes du [critère de coclustering déjà présenté][coclustering-critere], appliqués aux instances et aux parties de variables.
+For a categorical part $V_{k,t}$, the notation used in the examples corresponds to $n=\delta^p_{k,t}$, $r=|V_{k,t}|$, and $n_v=\lambda_{k,v}$.
+
+These expressions apply to models compatible with the data. In the count allocation terms, a class with no elements has a count of zero and, by convention, contributes zero cost.
+
+**The formula may look daunting… but there are just five families of blue terms to spot!** These are precisely the additions we have just explained. The remaining terms use the same mechanisms as the [coclustering criterion introduced earlier][coclustering-critere], applied to instances and variable parts.
+
+## Optimization algorithm
+
+**When variable parts are fixed, we recover the coclustering problem introduced earlier: each observation links an instance to a part.** The algorithm therefore reuses the [MODL coclustering optimizer][coclustering-algorithme], while exploring different ways to build this vocabulary.
+
+**A — Explore starting vocabularies.** Variables are initially partitioned at several levels of granularity, as illustrated by the two starting vocabularies for *Age* and *Channel*. For each, the optimization algorithm searches for groups of instances and groups of variable parts. The resulting models are then compared using the **full criterion**, which also accounts for the cost of defining the vocabulary. The best candidate provides the starting point for the next stage of the search.
+
+**B — Adjust parts and groups.** The initial vocabulary can still change. The figure illustrates two local operations: moving a categorical value between parts of the same variable, or moving an entire part between groups of parts. In the latter case, the part’s content remains unchanged. Parts or groups can also be merged, and instance groups can change as well. **A change is accepted when it lowers the full criterion.**
+
+These adjustments continue as long as a tested operation improves the model. **The vocabulary and the groups are thus optimized jointly**, using the same criterion. This optimization algorithm remains heuristic: it aims to find a good solution, without guaranteeing a global optimum.
 
 
-## Algorithme d’optimisation 
+<figure id="coclustering_inst_var_algo" style="width:100%; margin:1.5rem auto;">
+  <picture>
+    <source
+      srcset="/assets/images/coclustering_inst_var_optimization_algorithm.webp"
+      type="image/webp"
+    >
+    <img
+      src="/assets/images/coclustering_inst_var_optimization_algorithm.png"
+      alt=""
+      style="display:block; width:100%; height:auto;"
+      loading="lazy"
+    >
+  </picture>
+</figure>
 
-Le critère est discret et non convexe ; une exploration exhaustive n’est pas envisageable. L’algorithme procède donc par plusieurs initialisations, exploite l’[optimiseur MODL de coclustering][coclustering-algorithme] lorsque les parties sont fixées, puis affine conjointement les partitions.
 
-1. **Tokeniser les variables à plusieurs granularités.** Pour une granularité donnée, toutes les variables sont initialement découpées avec le même nombre cible de parties. Les variables numériques utilisent des intervalles de fréquences équilibrées ; les variables catégorielles isolent les modalités les plus fréquentes et regroupent les moins fréquentes.
-2. **Répéter l’initialisation pour des puissances de deux.** L’article[^article] utilise $2,4,8,\ldots$ jusqu’à $M$, ce qui conduit à environ $\log_2(M)$ lancements du coclustering de base.
-3. **Optimiser un coclustering MODL sur instances × parties.** À parties fixées, on retrouve un problème de coclustering de deux variables catégorielles : l’identifiant d’instance et l’identifiant de partie. Le nombre de groupes est optimisé automatiquement.
-4. **Évaluer tous les candidats avec le critère complet.** Les solutions obtenues avec les différentes tokenisations sont comparées selon le critère instances × variables, qui inclut précisément le coût de définition des parties.
-5. **Affiner conjointement la meilleure solution.** Un procédé glouton teste des opérations telles que déplacer une partie entre groupes, déplacer une valeur entre parties, fusionner des parties ou fusionner des groupes. Une opération est acceptée lorsqu’elle diminue le critère.
-6. **S’arrêter à un optimum local.** Lorsque plus aucune opération testée n’améliore le critère, la solution devient le point de départ de l’analyse exploratoire. Il s’agit d’une heuristique : elle vise une solution de haute qualité sans garantie d’optimum global.
-
-!!! note "Figure à réaliser — Stratégie d’optimisation"
-    Représenter plusieurs vocabulaires initiaux, l’optimisation MODL du coclustering pour chacun d’eux, la sélection par le critère complet, puis l’affinage conjoint des parties et des groupes.
-
-!!! tip "À retenir"
-    - Le besoin reste celui du clustering : des instances semblables dans un même profil et des profils distincts entre eux.
-    - La nouveauté est d’apprendre conjointement le vocabulaire descriptif : groupes de modalités pour les variables catégorielles et intervalles pour les variables numériques.
-    - Les groupes portent sur les parties de variables : ils peuvent mêler plusieurs variables et plusieurs types, ce qui rend la représentation particulièrement expressive.
-    - Le prior donne un coût aux choix successifs du modèle ; la vraisemblance mesure combien d’information reste nécessaire pour retrouver les observations exactes.
-    - Le modèle nul est un résultat informatif possible : la méthode n’est pas obligée de fabriquer une segmentation lorsque les données ne la soutiennent pas.
-    - L’optimisation réutilise le coclustering MODL sur plusieurs tokenisations, puis ajuste les parties et les groupes de manière conjointe.
-
-<!--
-Points éditoriaux encore ouverts dans le brouillon :
-- Confirmer le choix des notations de l’article pour la version publique.
-- Décider jusqu’où détailler les formules C4a–C4m ; cette version conserve
-  le niveau de détail du brouillon sans ajouter leur développement complet.
-- Valider avec Marc le comportement du logiciel pour les valeurs manquantes
-  et multivaluées, distinct des possibilités du formalisme.
-- Réaliser les figures manuellement ; confirmer notamment la piste du puzzle.
-- Compléter la référence publique de l’article ci-dessous lorsqu’elle sera disponible.
--->
 
 [^article]: A. Bouchareb, M. Boullé, F. Clérot, C. Hue et F. Rossi. *Fully Automated Co-clustering of Mixed Data Using a Maximum A Posteriori Approach*. Article fourni pour cette rédaction.
 
