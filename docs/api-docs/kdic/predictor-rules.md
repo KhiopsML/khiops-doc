@@ -97,7 +97,7 @@ Numerical TargetRankDensityAt(Structure(RankRegressor) rankRegressor, Numerical 
 ```
 
 Computes the `RankRegressor` density of the target rank for a given normalized rank (between 0 and
-1).
+1). A rank outside this range is set to the nearest bound, so a missing rank is treated as 0.
 
 ## TargetRankCumulativeProbAt
 
@@ -105,7 +105,8 @@ Computes the `RankRegressor` density of the target rank for a given normalized r
 Numerical TargetRankCumulativeProbAt(Structure(RankRegressor) rankRegressor, Numerical rank)
 ```
 
-Computes the `RankRegressor` probability that the target rank is below a given normalized rank.
+Computes the `RankRegressor` probability that the target rank is below a given normalized rank. A
+rank outside [0, 1] is set to the nearest bound, so a missing rank is treated as 0.
 
 
 ## NBRegressor
@@ -154,4 +155,5 @@ Computes the `Regressor` standard deviation of the target value.
 Numerical TargetDensityAt(Structure(Regressor) regressor, Numerical value)
 ```
 
-Computes the `Regressor` density of the target for a given value.
+Computes the `Regressor` density of the target for a given value. Returns a missing value if the
+value is missing, or if the target had missing values in the training data.

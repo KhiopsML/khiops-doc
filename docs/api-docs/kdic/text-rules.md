@@ -20,7 +20,7 @@ Conversion of a text value to a categorical value
 ## ToText
 
 ```kdic-api-docs
-Text TextLength(Categorical value)
+Text ToText(Categorical value)
 ```
 
 Conversion of a categorical value to a text value
@@ -190,6 +190,8 @@ If `startChar` is not valid (must start at 1), returns -1.
 
 If the substring is not found, returns -1.
 
+Note that `-1` is returned, not a missing value.
+
 ## TextReplace
 
 ```kdic-api-docs
@@ -240,6 +242,8 @@ Searches the position of a regular expression in a text value.
 If `startChar` is not valid (must start at 1), returns -1.
 
 If the regular expression is not found, returns -1.
+
+Note that `-1` is returned, not a missing value.
 
 ## TextRegexReplace
 
@@ -299,6 +303,8 @@ Numerical TextHash(Text value, Numerical max)
 ```
 
 Computes a hash value of a text value, between 0 and max-1.
+
+Returns a missing value if `max` is missing or less than 1.
 
 ## TextEncrypt
 

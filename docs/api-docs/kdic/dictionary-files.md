@@ -158,6 +158,14 @@ If a value is too long, it can be split into sub-values concatenated with '+' ch
 Numerical constants can be expressed in scientific notation (e.g., 1.3E7), using a dot as the decimal separator. 
 The special value *#Missing* indicates a missing numerical value.
 
+!!! note "Missing values in derivation rules"
+
+    - Most derivation rules, such as arithmetic operators (`Sum`, `Product`, `Divide`...), return a missing value when one of their operands is missing or invalid (for example, a division by zero), which preserves data integrity. For example, `Sum(Age, 1)` is missing if `Age` is missing, whereas `Sum(RecodeMissing(Age, 0), 1)` treats a missing `Age` as 0. To control this behavior, use [`RecodeMissing`](data-copy-and-conversion.md#recodemissing) or test `EQ(value, #Missing)`.
+    - Statistical rules (`Mean`, `Min`, `Max`, `TableSum`...) ignore missing values, and return a missing value only if all values are missing.
+    - Comparison and logical rules always return `0` or `1`. See [`Numerical Comparisons`](numerical-comparisons.md) and [`Logical Operators`](logical-operators.md).
+
+    Missing values come from empty or erroneous fields in [database files](database-files.md), or from rules returning a missing value.
+
 Date, Time, Timestamp or TimestampTZ constants are not directly supported but can be generated via conversion rules
 (see [`Date Rules`](date-rules.md): e.g. AsDate("2014-01-15", "YYYY-MM-DD")).
 

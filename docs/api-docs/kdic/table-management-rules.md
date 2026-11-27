@@ -25,7 +25,7 @@ Root Dictionary Customer(customer_id)
 Entity TableAt(Table table, Numerical rank)
 ```
 
-Extraction of an entity of a table at a given rank.
+Extraction of an entity of a table at a given rank. If the rank is out of bounds or missing, the returned entity does not exist.
 
 !!! example
 
@@ -85,7 +85,8 @@ Table TableExtraction(Table table, Numerical firstRank, Numerical lastRank)
 ```
 
 Extraction of a sub-table containing the entities of the table between `firstRank` and `lastRank`.
-Ranks below 1 or beyond the size of the table are ignored.
+Ranks below 1 or beyond the size of the table are ignored. If a rank is missing, the sub-table is
+empty.
 
 !!! example
 
@@ -133,6 +134,8 @@ Table TableSelection(Table table, Numerical selectionCriterion)
 ```
 
 Selection of a sub-table containing the entities of the table that meet the selection criterion.
+As for [logical rules](logical-operators.md), any non-zero value, including a missing value, selects the
+entity.
 
 !!! example
 
@@ -185,7 +188,8 @@ Selection of a sub-table containing the entities of the table that meet the sele
 Entity TableSelectFirst(Table table, Numerical selectionCriterion)
 ```
 
-Return the first entity of the table that meet the selection criterion. It is equivalent to
+Return the first entity of the table that meet the selection criterion (any non-zero value, including
+a missing value, is true). It is equivalent to
 combining the [`TableSelection`](#tableselection)
 and [`TableAt`](#tableat) rules at the first rank.
 

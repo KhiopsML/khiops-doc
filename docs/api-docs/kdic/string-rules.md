@@ -152,6 +152,8 @@ If `startChar` is not valid (must start at 1), returns -1.
 
 If the substring is not found, returns -1.
 
+Note that `-1` is returned, not a missing value.
+
 ## Replace
 
 ```kdic-api-docs
@@ -202,6 +204,8 @@ Searches the position of a regular expression in a categorical value.
 If `startChar` is not valid (must start at 1), returns -1.
 
 If the regular expression is not found, returns -1.
+
+Note that `-1` is returned, not a missing value.
 
 ## RegexReplace
 
@@ -261,6 +265,8 @@ Numerical Hash(Categorical value, Numerical max)
 ```
 
 Computes a hash value of a categorical value, between 0 and max-1.
+
+Returns a missing value if `max` is missing or less than 1.
 
 ## Encrypt
 

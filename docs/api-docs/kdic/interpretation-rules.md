@@ -5,6 +5,9 @@ The interpretation rules allow to calculate the individual importance of classif
 
 [shapley-values]: https://en.wikipedia.org/wiki/Shapley_value "Visit the Wikipedia page"
 
+For the rules that take a `rank`, valid ranks are between 1 and the number of classifier variables.
+Any other rank returns an empty or missing value.
+
 
 ## ClassifierInterpreter
 

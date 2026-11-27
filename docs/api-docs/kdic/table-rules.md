@@ -1,10 +1,12 @@
 # Table Rules
-Table rules return an empty (categorical) or missing (numerical) value when the table is empty.
+Table rules return an empty (categorical) or missing (numerical) value when the table is empty, except `TableCount`, `TableCountDistinct` and `TableEntropy`, which return `0`.
 
 If the table is empty, the rules below return:
 
 - An empty value (`""`) for rules that return `Categorical`
-- A missing value for rules that return `Numerical`
+- A missing value for the other rules that return `Numerical`
+
+`TableMean`, `TableStdDev`, `TableMedian`, `TableMin`, `TableMax` and `TableSum` ignore missing values, and return a missing value only if all values are missing.
 
 ## TableCount
 

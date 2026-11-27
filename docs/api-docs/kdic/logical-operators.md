@@ -1,8 +1,8 @@
 # Logical Operators
 
-These operators accept any Numerical value as an operand, with zero representing false and any non-zero (including missing values) representing true. The results are always encoded as 0 or 1.
+These operators always return `0` (false) or `1` (true), even if an operand is missing (unlike most derivation rules). Operands are normally the results of [comparison rules](numerical-comparisons.md), but any Numerical value is accepted, as in many programming languages: zero is false and any non-zero value, including a missing value, is true (so `Not(#Missing)` returns `0`).
 
-Note that the special value `#Missing` represents a missing value and can be used as a numerical operand in any derivation rule.
+To treat missing values differently, use `EQ(value, #Missing)` or [`RecodeMissing`](data-copy-and-conversion.md#recodemissing).
 
 ## And
 
@@ -70,7 +70,7 @@ Numerical If(Numerical test, Numerical valueTrue, Numerical valueFalse)
 ```
 
 Ternary operator returning the second operand (`valueTrue`) or the third operand (`valueFalse`) according to the
-condition in the first operand.
+condition in the first operand. The condition follows the same convention as the logical operators: zero is false and any non-zero value, including a missing value, is true.
 
 ## IfC
 
@@ -134,8 +134,8 @@ Numerical Switch(Numerical test, Numerical valueDefault, Numerical value1, ..., 
 ```
 
 Switch operator that returns the numerical value corresponding to the index given by the test
-operand if it is between 1 and K. The default value is returned if the index if outside the
-bounds.
+operand if it is between 1 and K. The default value is returned if the index is outside the
+bounds, or if it is missing.
 
 ## SwitchC
 
@@ -144,7 +144,7 @@ Categorical SwitchC(Numerical test, Categorical valueDefault, Categorical value1
 ```
 
 Switch operator that returns the categorical value corresponding to the index given by the test
-operand if it is between 1 and K. The default value is returned if the index if outside the
-bounds.
+operand if it is between 1 and K. The default value is returned if the index is outside the
+bounds, or if it is missing.
 
 

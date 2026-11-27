@@ -86,6 +86,20 @@ Numerical RecodeMissing(Numerical inputValue, Numerical replaceValue)
 
 Returns the input value if it is different from the missing value and the replace value otherwise.
 
+This rule makes it possible to control the handling of missing values before using them in other rules, which
+most often return a missing value if one of their operands is missing.
+
+!!! example
+
+    ```kdic
+    Dictionary Person
+    {
+      Numerical Age;
+      // Replaces a missing Age by 0
+      Numerical AgeOrZero = RecodeMissing(Age, 0);
+    }
+    ```
+
 ## AsCategorical
 
 ```kdic-api-docs
@@ -94,4 +108,4 @@ Categorical AsCategorical(Numerical value)
 
 Conversion of a numerical value to a categorical value. This allows to process the input numerical
 values as unordered categorical values, and thus to analyse the variable using a value grouping
-method rather than a discretization method.
+method rather than a discretization method. A missing value gives an empty value.

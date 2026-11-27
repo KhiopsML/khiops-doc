@@ -1,7 +1,8 @@
 # Math Rules
 
 Most of these rules return a numerical value from operators having one or many numerical operands.
-When one operand is missing or invalid, the result is missing.
+When one operand is missing or invalid (for example, the logarithm of a negative value or a division by zero), the result is missing.
+The exceptions are `Mean`, `StdDev`, `Min`, `Max`, `ArgMin` and `ArgMax`, which ignore missing values (the result is missing only if all values are missing).
 
 ## FormatNumerical
 
@@ -226,7 +227,7 @@ Pi constant.
 Numerical Mean(Numerical value1, ...)
 ```
 
-Mean of numerical values.
+Mean of numerical values. Missing values are ignored.
 
 ## StdDev
 
@@ -234,7 +235,7 @@ Mean of numerical values.
 Numerical StdDev(Numerical value1, ...)
 ```
 
-Standard deviation of numerical values.
+Standard deviation of numerical values. Missing values are ignored.
 
 ## Min
 
@@ -242,7 +243,7 @@ Standard deviation of numerical values.
 Numerical Min(Numerical value1, ...)
 ```
 
-Min of numerical values (among non-missing values).
+Min of numerical values. Missing values are ignored.
 
 ## Max
 
@@ -250,7 +251,7 @@ Min of numerical values (among non-missing values).
 Numerical Max(Numerical value1, ...)
 ```
 
-Max of numerical values (among non-missing values).
+Max of numerical values. Missing values are ignored.
 
 ## ArgMin
 
@@ -259,7 +260,7 @@ Numerical ArgMin(Numerical value1, ...)
 ```
 
 Index of the min value in a numerical series. The index starts at 1 and relates to the first value
-that is equal to the min.
+that is equal to the min. Missing values are ignored.
 
 ## ArgMax
 
@@ -268,5 +269,5 @@ Numerical ArgMax(Numerical value1, ...)
 ```
 
 Index of the max value in a numerical series. The index starts at 1 and relates to the first value
-that is equal to the max.
+that is equal to the max. Missing values are ignored.
 

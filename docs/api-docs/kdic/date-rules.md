@@ -114,7 +114,8 @@ Difference in days between two date values.
 Date AddDays(Date value, Numerical dayNumber)
 ```
 
-Adds a number of days to a date value.
+Adds a number of days to a date value. `dayNumber` must be an integer, and the result must be a valid
+date, otherwise the result is an invalid date.
 
 ## IsDateValid
 
@@ -132,5 +133,5 @@ Date BuildDate(Numerical year, Numerical month, Numerical day)
 
 Builds a date value from year, month and day.
 
-The year must be between 1 and 9999. The month must be between 1 and 12. The day must be between
+The year, month and day must be integers. The year must be between 1 and 9999. The month must be between 1 and 12. The day must be between
 1 and 31, and consistent with the month and year.
